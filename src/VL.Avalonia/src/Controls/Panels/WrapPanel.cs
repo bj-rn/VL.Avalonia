@@ -23,16 +23,16 @@ public partial class WrapPanelSpectralWrapper
     [ImplementChildren]
     protected Spread<Control?> _children;
 
-    [ImplementProperty("WrapPanel.NameProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("WrapPanel.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<string> _name;
 
     [ImplementProperty("WrapPanel.OrientationProperty")]
     protected Optional<Orientation> _orientation;
 
-    [ImplementProperty("WrapPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("WrapPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<HorizontalAlignment> _horizontalAlignment;
 
-    [ImplementProperty("WrapPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("WrapPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<VerticalAlignment> _verticalAlignment;
 }
 

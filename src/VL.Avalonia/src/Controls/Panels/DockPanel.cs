@@ -26,13 +26,13 @@ public partial class DockPanelSpectralWrapper
     [ImplementChildren]
     protected Spread<Control?> _children;
 
-    [ImplementProperty("Panel.NameProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<string> _name;
 
-    [ImplementProperty("DockPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("DockPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<HorizontalAlignment> _horizontalAlignment;
 
-    [ImplementProperty("DockPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("DockPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<VerticalAlignment> _verticalAlignment;
 }
 

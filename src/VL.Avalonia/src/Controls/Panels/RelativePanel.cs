@@ -23,7 +23,7 @@ public partial class RelativePanelWrapperSpectral
     [ImplementChildren]
     protected Spread<Control?> _children;
 
-    [ImplementProperty("RelativePanel.NameProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<string> _name;
 }
 

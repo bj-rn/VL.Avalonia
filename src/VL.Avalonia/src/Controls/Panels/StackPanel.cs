@@ -26,7 +26,7 @@ public partial class StackPanelSpectralWrapper
     [ImplementChildren]
     protected Spread<Control?> _children;
 
-    [ImplementProperty("StackPanel.NameProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("StackPanel.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<string> _name;
 
     [ImplementProperty("StackPanel.OrientationProperty")]
@@ -35,10 +35,10 @@ public partial class StackPanelSpectralWrapper
     [ImplementProperty("StackPanel.SpacingProperty")]
     protected Optional<float> _spacing;
 
-    [ImplementProperty("StackPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("StackPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<HorizontalAlignment> _horizontalAlignment;
 
-    [ImplementProperty("StackPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("StackPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<VerticalAlignment> _verticalAlignment;
 }
 

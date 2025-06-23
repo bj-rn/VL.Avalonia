@@ -44,7 +44,7 @@ public partial class ButtonWrapper
         }
     }
 
-    [ImplementProperty("Button.ClickModeProperty", PinVisibility = Model.PinVisibility.Hidden)]
+    [ImplementProperty("Button.ClickModeProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<ClickMode> _clickMode;
 
     [ImplementProperty("Button.IsEnabledProperty", Order = 10)]
