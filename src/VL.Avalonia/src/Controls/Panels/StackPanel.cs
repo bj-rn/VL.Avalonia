@@ -33,7 +33,7 @@ public partial class StackPanelSpectralWrapper
     protected Optional<Orientation> _orientation;
 
     [ImplementProperty("StackPanel.SpacingProperty")]
-    protected Optional<int> _spacing;
+    protected Optional<float> _spacing;
 
     [ImplementProperty("StackPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Hidden)]
     protected Optional<HorizontalAlignment> _horizontalAlignment;
