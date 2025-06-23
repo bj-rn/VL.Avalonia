@@ -576,6 +576,35 @@ namespace VL.Avalonia
             new StyleMargin(style, new Thickness(horizontal, vertical));
         #endregion
 
+        #region Opacity
+        public record struct StyleOpacity(IAvaloniaStyle? Style, float Opacity) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "Opacity", (double)Opacity);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+
+        public static StyleOpacity SetOpacity(IAvaloniaStyle? style, float opacity = 1.0f) =>
+            new StyleOpacity(style, opacity);
+
+        public record struct StyleOpacityMask(IAvaloniaStyle? Style, IBrush OpacityMask) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "Opacity", OpacityMask);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+
+        public static StyleOpacityMask SetOpacityMask(IAvaloniaStyle? style, IBrush OpacityMask) =>
+            new StyleOpacityMask(style, OpacityMask);
+
+        #endregion
+
         #endregion
     }
 }

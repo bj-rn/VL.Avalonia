@@ -19,13 +19,18 @@ public partial class RectangleWrapper
     [ImplementClasses]
     protected Optional<string> _classes;
 
+    [ImplementProperty("Rectangle.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<string> _name;
+
+    [ImplementProperty("Rectangle.FillProperty")]
     protected Optional<IBrush> _fill;
-    public void SetFill(Optional<IBrush> fill)
-    {
-        if (_fill != fill)
-        {
-            _fill = fill;
-            _output.SetValue(Rectangle.FillProperty, fill.Value);
-        }
-    }
+
+    [ImplementProperty("Rectangle.WidthProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<float> _width;
+
+    [ImplementProperty("Rectangle.HeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<float> _height;
+
+    [ImplementProperty("Rectangle.OpacityProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<float> _opacity;
 }

@@ -1,5 +1,7 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Layout;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Controls.Base;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
@@ -22,47 +24,47 @@ public partial class DockPanelSpectralWrapper
     protected Optional<string> _classes;
 
     [ImplementChildren]
-    protected Spread<Control>? _children;
+    protected Spread<Control?> _children;
+
+    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<string> _name;
+
+    [ImplementProperty("DockPanel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<HorizontalAlignment> _horizontalAlignment;
+
+    [ImplementProperty("DockPanel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<VerticalAlignment> _verticalAlignment;
 }
 
 [ProcessNode(Name = "DockPanel")]
 public partial class DockPanelWrapper : DockPanelSpectralWrapper
 {
     [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control>? _children;
+    protected Spread<Control?> _children;
 }
 
-[ProcessNode(Name = "DockProperty")]
-public class DockProperty
+[ProcessNode(Name = "Dock (DockPanel)")]
+public partial class DockPanelDock : AttachedPropertyBase
 {
-    private Optional<Control> _input;
-    public void SetInput(Optional<Control> input)
-    {
-        if (_input != input)
-        {
-            _input = input;
-
-            UpdateSetters();
-        }
-    }
-    public Control? Output => _input.Value;
-
     private Optional<Dock> _dock;
     public void SetDock(Optional<Dock> dock)
     {
         if (_dock != dock)
         {
             _dock = dock;
-
             UpdateSetters();
         }
     }
 
-    private void UpdateSetters()
+    protected override void UpdateSetters()
     {
-        if (_input.HasValue)
+        if (_dock.HasValue)
         {
-            _input.Value.SetValue(DockPanel.DockProperty, _dock.Value);
+            DockPanel.SetDock(_input.Value, _dock.Value);
+        }
+        else
+        {
+            _input.Value.ClearValue(DockPanel.DockProperty);
         }
     }
 }

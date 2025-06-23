@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="G6QQf3geatIOKNgbn0y1lB" LanguageVersion="2025.7.0-0351-gb3f6445d75" Version="0.128">
-  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0351-gb3f6445d75" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="TmnV2KPGuxrMGfdOkTl8PK" LanguageVersion="2025.7.0-0369-g117540fa59" Version="0.128">
+  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0369-g117540fa59" />
   <Patch Id="ByJYRoNuXytMKx0VmtiA8Z">
     <Canvas Id="OSq9MxHF0ssO5kOcXxGsU2" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
     <!--
@@ -49,6 +49,10 @@
             <Pin Id="OrDfCpErwseP41JhRNrNZA" Name="Children 2" Kind="InputPin" />
             <Pin Id="T1UOSDnwNhKPHV73sBz5zB" Name="Style" Kind="InputPin" />
             <Pin Id="SIU0ZN2PcFfLkeBeDazxhz" Name="Output" Kind="OutputPin" />
+            <Pin Id="BjXMifcBvZgLt2pKuA3xRB" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ptp1U7tjubqLg3FfHCrp1b" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CSHDpOsYlHJQISJsJlwlmR" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ebu6ZPVNxmBPYWKH5cXTmq" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="201,678,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
             <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Skia.Avalonia.vl">
@@ -79,18 +83,12 @@
             </p:NodeReference>
             <Pin Id="GzFFVlrgvbrOj7IhzAwzfG" Name="Children" Kind="InputPin" />
             <Pin Id="CYe6WZNRj6NLlY3oXpIFBO" Name="Style" Kind="InputPin" />
+            <Pin Id="CCqAuvP3vCyQC7hHnOSbho" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="SD4eAEBQSQWQN1lyFyJnKs" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="IBWASuMW18dM5gSSh5vRjZ" Name="Row Definitions" Kind="InputPin" />
             <Pin Id="PgIEJyiB4mjOQV9AT11yDC" Name="Output" Kind="OutputPin" />
-          </Node>
-          <Node Bounds="201,499,77,19" Id="A7xBX9VvpM8NRWO7BLQnUZ">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="DockProperty" />
-            </p:NodeReference>
-            <Pin Id="FKjewmrsOe6Ps4jUvb2nqP" Name="Input" Kind="InputPin" />
-            <Pin Id="MBdsUdCFpVuNdEEpoB2m6Y" Name="Dock" Kind="InputPin" DefaultValue="Top" />
-            <Pin Id="SA5FVYbRvK6LRhHhWSu52s" Name="Output" Kind="OutputPin" />
+            <Pin Id="GM3775q253ILnLNJbLAe5V" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="D4jl6A4Nwm2OgR5JlN2TCC" Name="Show Grid Lines" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="183,289,185,19" Id="BYFsGj0p1J1PJ7Sf9RLhkc">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
@@ -103,6 +101,7 @@
             <Pin Id="TaCk4z5WX7aOC6MOsIpgWB" Name="Items 4" Kind="InputPin" />
             <Pin Id="Ah7XPV4rNunPiUqXv7Apzw" Name="Items 5" Kind="InputPin" />
             <Pin Id="Nqgs5jQrgViOr07NoalxcA" Name="Style" Kind="InputPin" />
+            <Pin Id="QveOswdZKdPLnhM2OarhTo" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="UC6RT55gqpJPwLXlZrmzgg" Name="Command Channel" Kind="InputPin" />
             <Pin Id="DZBZgtgdXtPPYuq4fmj8M7" Name="Header" Kind="InputPin" />
             <Pin Id="DoykL8rHr9kP6Xt1imKjt9" Name="Output" Kind="OutputPin" />
@@ -126,6 +125,7 @@
             </p:NodeReference>
             <Pin Id="RfhAnIA4TtZPIiYjZ8ZYdl" Name="Items" Kind="InputPin" />
             <Pin Id="NO8LZOfXtmoNoy3e9epY9e" Name="Style" Kind="InputPin" />
+            <Pin Id="TQOSKlSgsv0QI3ufqp1gv5" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="IKfflBZ9nJ5Lgu6DToZOUn" Name="Command Channel" Kind="InputPin" />
             <Pin Id="PaF9QubQuwDL6XAfMdjbbt" Name="Header" Kind="InputPin" />
             <Pin Id="FiDvCGp3Ah4QZr6896Hg52" Name="Output" Kind="OutputPin" />
@@ -144,6 +144,7 @@
             </p:NodeReference>
             <Pin Id="Np9ugkvyS6MPgQvcfqfd8s" Name="Items" Kind="InputPin" />
             <Pin Id="P6Gi9pz745jLgz2IIv8fkZ" Name="Style" Kind="InputPin" />
+            <Pin Id="F9Glm2JH29TNfqb9TmV71F" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="JjIskT8WugfPDwFuUBOSvS" Name="Command Channel" Kind="InputPin" />
             <Pin Id="AYWRn6F0TFSQRop01XM3oK" Name="Header" Kind="InputPin" />
             <Pin Id="L1d69Wyi21DNts8PK8AvFe" Name="Output" Kind="OutputPin" />
@@ -162,6 +163,7 @@
             </p:NodeReference>
             <Pin Id="U62pwn6GhLNQcOe7gGAv4O" Name="Items" Kind="InputPin" />
             <Pin Id="SZAHCTbuw4bPIhKepkLnWy" Name="Style" Kind="InputPin" />
+            <Pin Id="CCr5O8zo8ggNkcUyS8yiXK" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="DLvLUKiluBbL4QUTXifHPR" Name="Command Channel" Kind="InputPin" />
             <Pin Id="BRCY80kA2j9NMyqPm3nMe8" Name="Header" Kind="InputPin" />
             <Pin Id="NEn6jJjimIHLPnNVdf56s0" Name="Output" Kind="OutputPin" />
@@ -191,6 +193,7 @@
             </p:NodeReference>
             <Pin Id="EMmW2kypnHeLsL6U4LVvJ5" Name="Items" Kind="InputPin" />
             <Pin Id="OlqhX7cmTWzNjIy0YxWURN" Name="Style" Kind="InputPin" />
+            <Pin Id="EzuB4ueOuzLMqmtYoAwQY7" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="RX6RCTekRTJL47pAZmAuMp" Name="Command Channel" Kind="InputPin" />
             <Pin Id="T08J8FHckNoOsLcDnLp1L8" Name="Header" Kind="InputPin" />
             <Pin Id="OxSkdCq1ksaOv44ljwiwUY" Name="Output" Kind="OutputPin" />
@@ -209,6 +212,7 @@
             </p:NodeReference>
             <Pin Id="RPBBign3SeHOF3kEQqQiG9" Name="Items" Kind="InputPin" />
             <Pin Id="JHeeiJb5BtPPP3o8IJd1IU" Name="Style" Kind="InputPin" />
+            <Pin Id="C7VBlDJZhv9O0ObdvdKqSc" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="Re0HqaqnJ5rOvEgjET5T0T" Name="Command Channel" Kind="InputPin" />
             <Pin Id="I9m7Bf85UMxMiZPVipIbmP" Name="Header" Kind="InputPin" />
             <Pin Id="H1A4G5fyQFNOPcB7eU8WhF" Name="Output" Kind="OutputPin" />
@@ -227,6 +231,7 @@
             </p:NodeReference>
             <Pin Id="OhGwrXOqsNFOuxEKOfILgC" Name="Items" Kind="InputPin" />
             <Pin Id="FKIIlJpAvsvMTWSk2d3p7S" Name="Style" Kind="InputPin" />
+            <Pin Id="IvIZMW7zfQQN3etqt8OM4I" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="D0viFI9XFsuP2esof54ngy" Name="Command Channel" Kind="InputPin" />
             <Pin Id="JdgBZBf57GjMYLzdgdnnAj" Name="Header" Kind="InputPin" />
             <Pin Id="GmmLmQfUP4vNki5W5uChUT" Name="Output" Kind="OutputPin" />
@@ -247,6 +252,7 @@
             <Pin Id="Ei1hU2KPLE8QIjaO8M14Ng" Name="Items 2" Kind="InputPin" />
             <Pin Id="S9eVbXLLK7cMiT9qcR8xhE" Name="Style" Kind="InputPin" />
             <Pin Id="M1UhfGz4f5MPzectupv4pd" Name="Output" Kind="OutputPin" />
+            <Pin Id="Tit7SO33JI3NWkdHdBSZpz" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="CNpKqhiiJXhNjI0TTPZxaT" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="D0t6Hj7xEwINfhfKTuB4Ol" Name="Is Enabled" Kind="InputPin" DefaultValue="True" />
           </Node>
@@ -257,6 +263,7 @@
             </p:NodeReference>
             <Pin Id="LkXuPUDmB57OrD0ZsoUaOR" Name="Items" Kind="InputPin" />
             <Pin Id="EvPLJWHzOZqPjvonauvUBp" Name="Style" Kind="InputPin" />
+            <Pin Id="SZi5R9gKpkhQBJSsIW4aNh" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="Eyhog1pQgBfLkMbJ87uy1C" Name="Command Channel" Kind="InputPin" />
             <Pin Id="IUwJcFLSu8LOkEqXvohh67" Name="Header" Kind="InputPin" />
             <Pin Id="SAluliWAXOkQAudbfcRFXS" Name="Icon" Kind="InputPin" />
@@ -269,6 +276,8 @@
               <Choice Kind="ProcessAppFlag" Name="Separator" />
             </p:NodeReference>
             <Pin Id="Oo245roouixNbPmxXhF7De" Name="Output" Kind="OutputPin" />
+            <Pin Id="N0KEtQFlVfIOAs8E1cOujt" Name="Style" Kind="InputPin" />
+            <Pin Id="SFy0YRwOBcJLkxQGM7mJyg" Name="Classes" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="523,40,145,19" Id="PheirB0GdM5OfdBtU9ZbOT">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
@@ -279,6 +288,7 @@
             <Pin Id="SwMNsVwWmvlNQibPmVUcdr" Name="Items 2" Kind="InputPin" />
             <Pin Id="G88AMa8SsXbLwL0sGNYtt0" Name="Items 3" Kind="InputPin" />
             <Pin Id="KzRBgWIUdqPNmGnNtCBP88" Name="Style" Kind="InputPin" />
+            <Pin Id="BhAvSzqB3ZtNr2snlozbSD" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="DtM4BnYbJtwPAelcsV0EYf" Name="Command Channel" Kind="InputPin" />
             <Pin Id="ELlO0dmwsaJOYi6pU65twj" Name="Header" Kind="InputPin" />
             <Pin Id="JfyMlJGa80JMwfvbBtML0o" Name="Output" Kind="OutputPin" />
@@ -297,6 +307,7 @@
             </p:NodeReference>
             <Pin Id="RWls4dGVpKhO93po3TFCc3" Name="Items" Kind="InputPin" />
             <Pin Id="Pt1mrXt5DRwQFuTgcP2pBG" Name="Style" Kind="InputPin" />
+            <Pin Id="JD2HcyxCbCfMmglwxVPlcD" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="PL2AKd7m9o9NVd69YQTxoy" Name="Command Channel" Kind="InputPin" />
             <Pin Id="B5wZw7qAiIMQE5U7weohil" Name="Header" Kind="InputPin" />
             <Pin Id="RU16fWPmroyPLmJxQqyabH" Name="Output" Kind="OutputPin" />
@@ -310,6 +321,7 @@
             </p:NodeReference>
             <Pin Id="R67CpaLC4PrLtPld0a9b3d" Name="Items" Kind="InputPin" />
             <Pin Id="AMEisf4hHniP3PtcuvxQm4" Name="Style" Kind="InputPin" />
+            <Pin Id="KOGDlkqv95dPoJXAtkG5RJ" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="JVipQyHtymKOmLI1H3fmCA" Name="Command Channel" Kind="InputPin" />
             <Pin Id="FHjI8sN5Re1P2vZol9fOgS" Name="Header" Kind="InputPin" />
             <Pin Id="QnGYlf0dywsN12dyVuVvqa" Name="Output" Kind="OutputPin" />
@@ -327,6 +339,8 @@
               <Choice Kind="ProcessAppFlag" Name="Separator" />
             </p:NodeReference>
             <Pin Id="URvX4Z2lEfXNonf7y4La52" Name="Output" Kind="OutputPin" />
+            <Pin Id="P4TVJwZXbqfNPTXtRAb2kv" Name="Style" Kind="InputPin" />
+            <Pin Id="CLnQD8d1hqvNMWsWcUFxhq" Name="Classes" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="HbMRRwF44dVPl2BSdDrAf3" Comment="Header" Bounds="567,-239,35,15" ShowValueBox="true" isIOBox="true" Value="Super">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -384,6 +398,15 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="191,491,39,19" Id="HKWfcH5IW55OdwRRro3J48">
+            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Dock (DockPanel)" />
+            </p:NodeReference>
+            <Pin Id="C4frsjwSMfFMdah7MmmICC" Name="Input" Kind="InputPin" />
+            <Pin Id="AGhgfJUahwZNkko5IvjPR3" Name="Dock" Kind="InputPin" DefaultValue="Top" />
+            <Pin Id="M9Y90QXv5H0QU7pWySzJer" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="H4LLKQetYKJPteQer7IZo4" Name="Create" />
         <Patch Id="G0hsID6mOUpP3xBmynQFFI" Name="Update" />
@@ -395,7 +418,6 @@
         <Link Id="DYqjxJDqVi5LHJRjOUeU7r" Ids="AMW710yJpKcOa26nPDla80,KZZgWkli1uXOTkuC1kmcIT" />
         <Link Id="CYifMQEPjrRN25lzsK023U" Ids="SIU0ZN2PcFfLkeBeDazxhz,Ik1nsbnoRj2LSClzzeQFeq" />
         <Link Id="EPW2Iwp47vrLiZzX7S3Pk4" Ids="PgIEJyiB4mjOQV9AT11yDC,OrDfCpErwseP41JhRNrNZA" />
-        <Link Id="PvI8UeGNQwuPtTNkVX4qpC" Ids="SA5FVYbRvK6LRhHhWSu52s,Nb1XkwILgdfLgfyHX14To3" />
         <Link Id="LaeVNrNmTtWPr3C9E4nBkv" Ids="HmBMNF4QbFCNJ9arVzZsUz,DZBZgtgdXtPPYuq4fmj8M7" />
         <Link Id="E3T8irKKiysPCLFhFIVPKw" Ids="LAR5whC7PBrNVO7pPnKaNG,PaF9QubQuwDL6XAfMdjbbt" />
         <Link Id="QDnxviSsjpOMX4GZPQwxwS" Ids="Egy0pChLLafMbzCOBZbwZL,AYWRn6F0TFSQRop01XM3oK" />
@@ -409,7 +431,6 @@
         <Link Id="Ss6lxXbGtdpLw7XJp0fCPV" Ids="DoykL8rHr9kP6Xt1imKjt9,BecDwfriZjqM4Qqb1VAZQA" />
         <Link Id="JfZdckYUW57Lu7bK5gkviw" Ids="J1pGP3R8nGqLsb7UO2YfE9,Ei1hU2KPLE8QIjaO8M14Ng" />
         <Link Id="MFayOhDCutoO4IBtkj21is" Ids="NjoXbBb6RUvNBmn8rVwcDG,LkXuPUDmB57OrD0ZsoUaOR" />
-        <Link Id="OXQ1MbC3nVNLbPYTnEhgpp" Ids="M1UhfGz4f5MPzectupv4pd,FKjewmrsOe6Ps4jUvb2nqP" />
         <Link Id="HN5R8NZBCP2OEBANfrrxD2" Ids="F01KuszNjpFNcU0aXXvnHK,IUwJcFLSu8LOkEqXvohh67" />
         <Link Id="BqxNC7DCVdwNyE6GlNE0y2" Ids="FiDvCGp3Ah4QZr6896Hg52,RvILDvpPwdCPEsgiOhrVWi" />
         <Link Id="F7v2VnYLSKRMJlHdGb2lvV" Ids="L1d69Wyi21DNts8PK8AvFe,M71gxJoa5CWNdgpH7Cldqg" />
@@ -426,10 +447,12 @@
         <Link Id="HIuKJZk2n1mQBRSXBXtEog" Ids="NnPMPdjXZRnOozDnoMiamQ,IKfflBZ9nJ5Lgu6DToZOUn" />
         <Link Id="L59KcKjp7oEPWywYQuoOvi" Ids="RHEHMdrtZoTPqppOFCKw6q,TdoYIBu6LyVOYjO1baulG6" />
         <Link Id="SALdIPvJxydMQhuoOtsXIj" Ids="LAR5whC7PBrNVO7pPnKaNG,BMd7G0R19eoMZKKtQUFWJr" />
+        <Link Id="REmfOQeXwWTP0SaOiHZDP7" Ids="M1UhfGz4f5MPzectupv4pd,C4frsjwSMfFMdah7MmmICC" />
+        <Link Id="IZCvInGx7YaPK5V5MUhiSe" Ids="M9Y90QXv5H0QU7pWySzJer,Nb1XkwILgdfLgfyHX14To3" />
       </Patch>
     </Node>
   </Patch>
   <DocumentDependency Id="UYtwosupZDPPxvnpQY9JAV" Location="./VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
   <DocumentDependency Id="Aou9ZwDalv1Opm4a5F4O1G" Location="./VL.Avalonia/VL.Avalonia.vl" />
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0351-gb3f6445d75" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0369-g117540fa59" />
 </Document>

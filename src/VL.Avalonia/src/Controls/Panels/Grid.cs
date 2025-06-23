@@ -1,20 +1,12 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Controls.Base;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
-
-[ProcessNode(Name = "Grid")]
-public partial class GridWrapper : GridSpectralWrapper
-{
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control> _children = Spread<Control>.Empty;
-
-    public GridWrapper() : base() { }
-}
 
 [ProcessNode(Name = "Grid (Spectral)")]
 public partial class GridSpectralWrapper
@@ -30,6 +22,9 @@ public partial class GridSpectralWrapper
 
     [ImplementChildren]
     protected Spread<Control> _children = Spread<Control>.Empty;
+
+    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<string> _name;
 
     protected Spread<ColumnDefinition?> _columnDefinitions = Spread<ColumnDefinition?>.Empty;
     public void SetColumnDefinitions(Spread<ColumnDefinition?> columnDefinitions)
@@ -67,6 +62,16 @@ public partial class GridSpectralWrapper
             _output.RowDefinitions = rd;
         }
     }
+
+    [ImplementProperty("Grid.ShowGridLinesProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _showGridLines;
+}
+
+[ProcessNode(Name = "Grid")]
+public partial class GridWrapper : GridSpectralWrapper
+{
+    [ImplementChildren(IsPinGroup = true)]
+    protected Spread<Control> _children = Spread<Control>.Empty;
 }
 
 [ProcessNode(Name = "ColumnDefinition")]
@@ -95,25 +100,11 @@ public partial class ColumnDefinitionWrapper
         }
     }
 
+    [ImplementProperty("ColumnDefinition.MaxWidthProperty", PinVisibility = Model.PinVisibility.Optional)]
     private Optional<float> _maxWidth;
-    public void SetMaxWidth(Optional<float> maxWidth)
-    {
-        if (_maxWidth != maxWidth)
-        {
-            _maxWidth = maxWidth;
-            _output.MaxWidth = _maxWidth.HasValue ? _maxWidth.Value : double.PositiveInfinity;
-        }
-    }
 
+    [ImplementProperty("ColumnDefinition.MinWidthProperty", PinVisibility = Model.PinVisibility.Optional)]
     private Optional<float> _minWidth;
-    public void SetMinWidth(Optional<float> minWidth)
-    {
-        if (_minWidth != minWidth)
-        {
-            _minWidth = minWidth;
-            _output.MinWidth = _minWidth.HasValue ? _minWidth.Value : 0.0f;
-        }
-    }
 }
 
 [ProcessNode(Name = "RowDefinition")]
@@ -140,104 +131,132 @@ public partial class RowDefinitionWrapper
             _output.SetValue(RowDefinition.HeightProperty, new GridLength(_gridUnitHeight, _gridUnitType));
         }
     }
+
+    [ImplementProperty("RowDefinition.MaxHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
     private Optional<float> _maxHeight;
-    public void SetMaxHeight(Optional<float> maxHeight)
-    {
-        if (_maxHeight != maxHeight)
-        {
-            _maxHeight = maxHeight;
-            _output.MaxHeight = _maxHeight.HasValue ? _maxHeight.Value : double.PositiveInfinity;
-        }
-    }
+
+    [ImplementProperty("RowDefinition.MinHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
     private Optional<float> _minHeight;
-    public void SetMinHeight(Optional<float> minHeight)
-    {
-        if (_minHeight != minHeight)
-        {
-            _minHeight = minHeight;
-            _output.MinHeight = _minHeight.HasValue ? _minHeight.Value : 0.0f;
-        }
-    }
 }
 
-
-[ProcessNode(Name = "GridProperty")]
-public partial class GridProperty
+/// <summary>
+/// Row property. 
+/// Grid defines Row, so that it can be set on any element treated as a cell. Row property specifies child's position with respect to rows. Rows are 0 - based. In order to appear in first row, element should have Row property set to 0. Default value for the property is 0
+/// Grid Attached Property.
+/// </summary>
+[ProcessNode(Name = "Row (Grid)")]
+public partial class GridRowProperty : AttachedPropertyBase
 {
-    private Optional<Control> _input;
-    public void SetInput(Optional<Control> input)
-    {
-        if (_input != input)
-        {
-            _input = input;
-
-            if (_input.HasValue)
-            {
-                UpdateSetters();
-            }
-        }
-    }
-    public Control? Output => _input.Value;
-
-    private Optional<int> _column;
-    public void SetColumn(Optional<int> column)
-    {
-        if (_column != column)
-        {
-            _column = column;
-
-            if (_input.HasValue)
-            {
-                UpdateSetters();
-            }
-        }
-    }
-
-    private Optional<int> _columnSpan;
-    public void SetColumnSpan(Optional<int> columnSpan)
-    {
-        if (_columnSpan != columnSpan)
-        {
-            _columnSpan = columnSpan;
-            if (_input.HasValue)
-            {
-                UpdateSetters();
-            }
-        }
-    }
-
     private Optional<int> _row;
     public void SetRow(Optional<int> row)
     {
         if (_row != row)
         {
             _row = row;
-
-            if (_input.HasValue)
-            {
-                UpdateSetters();
-            }
+            UpdateSetters();
         }
     }
 
+    protected override void UpdateSetters()
+    {
+        if (_row.HasValue)
+        {
+            Grid.SetRow(_input.Value, _row.Value);
+        }
+        else
+        {
+            _input.Value.ClearValue(Grid.RowProperty);
+        }
+    }
+}
+
+/// <summary>
+/// RowSpan property. This is an attached property. Grid defines RowSpan, so that it can be set on any element treated as a cell. RowSpan property specifies child's height with respect to row grid lines. Example, RowSpan == 3 means that child will span across three rows.
+/// Grid Attached Property.
+/// </summary>
+[ProcessNode(Name = "RowSpan (Grid)")]
+public partial class GridRowSpanProperty : AttachedPropertyBase
+{
     private Optional<int> _rowSpan;
     public void SetRowSpan(Optional<int> rowSpan)
     {
         if (_rowSpan != rowSpan)
         {
             _rowSpan = rowSpan;
-            if (_input.HasValue)
-            {
-                UpdateSetters();
-            }
+            UpdateSetters();
         }
     }
 
-    private void UpdateSetters()
+    protected override void UpdateSetters()
     {
-        Grid.SetRowSpan(_input.Value, _rowSpan.HasValue ? _rowSpan.Value : 1);
-        Grid.SetRow(_input.Value, _row.HasValue ? _row.Value : 0);
-        Grid.SetColumn(_input.Value, _column.HasValue ? _column.Value : 0);
-        Grid.SetColumnSpan(_input.Value, _columnSpan.HasValue ? _columnSpan.Value : 1);
+        if (_rowSpan.HasValue)
+        {
+            Grid.SetRowSpan(_input.Value, _rowSpan.Value);
+        }
+        else
+        {
+            _input.Value.ClearValue(Grid.RowSpanProperty);
+        }
+    }
+}
+
+/// <summary>
+/// Column property. 
+/// Grid defines Column, so that it can be set on any element treated as a cell. Column property specifies child's position with respect to columns. Columns are 0 - based. In order to appear in first column, element should have Column property set to 0. Default value for the property is 0
+/// Grid Attached Property.
+/// </summary>
+[ProcessNode(Name = "Column (Grid)")]
+public partial class GridColumnProperty : AttachedPropertyBase
+{
+    private Optional<int> _column;
+    public void SetColumn(Optional<int> column)
+    {
+        if (_column != column)
+        {
+            _column = column;
+            UpdateSetters();
+        }
+    }
+
+    protected override void UpdateSetters()
+    {
+        if (_column.HasValue)
+        {
+            Grid.SetColumn(_input.Value, _column.Value);
+        }
+        else
+        {
+            _input.Value.ClearValue(Grid.ColumnProperty);
+        }
+    }
+}
+
+/// <summary>
+/// ColumnSpan property. This is an attached property. Grid defines ColumnSpan, so that it can be set on any element treated as a cell. ColumnSpan property specifies child's width with respect to column grid lines. Example, ColumnSpan == 3 means that child will span across three columns.
+/// Grid Attached Property.
+/// </summary>
+[ProcessNode(Name = "ColumnSpan (Grid)")]
+public partial class GridColumnSpanProperty : AttachedPropertyBase
+{
+    private Optional<int> _columnSpan;
+    public void SetColumnSpan(Optional<int> columnSpan)
+    {
+        if (_columnSpan != columnSpan)
+        {
+            _columnSpan = columnSpan;
+            UpdateSetters();
+        }
+    }
+
+    protected override void UpdateSetters()
+    {
+        if (_columnSpan.HasValue)
+        {
+            Grid.SetColumnSpan(_input.Value, _columnSpan.Value);
+        }
+        else
+        {
+            _input.Value.ClearValue(Grid.ColumnSpanProperty);
+        }
     }
 }
