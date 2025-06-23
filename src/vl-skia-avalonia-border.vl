@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="G6QQf3geatIOKNgbn0y1lB" LanguageVersion="2025.7.0-0359-gbbb0444d86" Version="0.128">
-  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0359-gbbb0444d86" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="G6QQf3geatIOKNgbn0y1lB" LanguageVersion="2025.7.0-0369-g117540fa59" Version="0.128">
+  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0369-g117540fa59" />
   <Patch Id="ByJYRoNuXytMKx0VmtiA8Z">
     <Canvas Id="OSq9MxHF0ssO5kOcXxGsU2" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -61,9 +61,13 @@
             <Pin Id="EZ6qQRlUNnYPUWBVHHvicQ" Name="Children 4" Kind="InputPin" />
             <Pin Id="SoKeudeIF4oPZVFQzvNZgt" Name="Children 5" Kind="InputPin" />
             <Pin Id="AZdEpzY7WzNMZbJ73gFddP" Name="Style" Kind="InputPin" />
+            <Pin Id="CKdrmpdGmRSMxL1BzEbUZI" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BeTG0u8S5YlM75GLwDjtiA" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="I5EHWD9ciNCQdivfuTAMyF" Name="Orientation" Kind="InputPin" />
             <Pin Id="HLiI19AbqDYOMLkZwpmKAX" Name="Spacing" Kind="InputPin" />
             <Pin Id="Oek1NHYnG1wMm63FKu482a" Name="Output" Kind="OutputPin" />
+            <Pin Id="B9htX49WnBJLpRObgykXOD" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CsowFUVuJe7QJVDV3DkQFx" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="11,780,125,19" Id="Fs2DJc4jrtVPXMUz3Q1gci">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
@@ -80,11 +84,6 @@
             <Pin Id="VD4ssMuGwJrK9Z9287dUyP" Name="Output" Kind="OutputPin" />
           </Node>
           <Pad Id="CJSYQBpzroUOm9Y79i1Zql" Comment="Font Size" Bounds="73,740,35,15" ShowValueBox="true" isIOBox="true" Value="32">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="Integer32" />
-            </p:TypeAnnotation>
-          </Pad>
-          <Pad Id="TDaKmIU2Sg3LR3H4FYzXz1" Comment="Spacing" Bounds="320,1260,35,15" ShowValueBox="true" isIOBox="true" Value="26">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
@@ -135,6 +134,8 @@
             </p:NodeReference>
             <Pin Id="MHP6ptwsUHAObT1fMwX6XY" Name="Child" Kind="InputPin" />
             <Pin Id="UeJDsaGa58HPYvMsBrS1Hi" Name="Style" Kind="InputPin" />
+            <Pin Id="MiPGXYgp9w3MN69D4leC00" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TbnphshEIUiL2zwu9Xrm0h" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="Sp8tx7nc5OXPYQR58F3iOx" Name="Background" Kind="InputPin" />
             <Pin Id="UYhcKVYcwxwLQnHsXV03Gw" Name="Border Brush" Kind="InputPin" />
             <Pin Id="EuwJHGYQJjkNGsSMDus2Y7" Name="Border Thickness" Kind="InputPin" />
@@ -237,6 +238,8 @@
             </p:NodeReference>
             <Pin Id="TUnIHLNvywgQVKBQti1NDe" Name="Child" Kind="InputPin" />
             <Pin Id="C9Sg8OkXEzOO67w02K3drY" Name="Style" Kind="InputPin" />
+            <Pin Id="MFRLXQWseKkLVyuYw3UVq7" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TtUsR587KVGMiYSRAjLICT" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="NR5qPfItHNHQHVYcSWlK4D" Name="Background" Kind="InputPin" />
             <Pin Id="Ss89vACrFNFLouuB4ZIZXB" Name="Border Brush" Kind="InputPin" />
             <Pin Id="VptdLxB38DgLZxjDuS4pjq" Name="Border Thickness" Kind="InputPin" />
@@ -439,6 +442,8 @@
             </p:NodeReference>
             <Pin Id="PRRTIhZR2ELL2HFa0XX4aJ" Name="Child" Kind="InputPin" />
             <Pin Id="CjgBpkGnTXHNlMPbEnS9yy" Name="Style" Kind="InputPin" />
+            <Pin Id="MAYWo9yJBxmOxDyzJEuHlG" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RXNJiqnTqxlNbHMQxpyChU" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="VsOyoyok6BHObqkKhWgVJN" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="KHpfn3NCU1GP218wibSg2v" Name="Border Brush" Kind="InputPin" />
             <Pin Id="S8BnG50V69dLVpRG2iLgdY" Name="Border Thickness" Kind="InputPin" />
@@ -596,6 +601,11 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
+          <Pad Id="C4KbqNgRLmLOADTFPfDfvG" Comment="Spacing" Bounds="320,1260,35,15" ShowValueBox="true" isIOBox="true" Value="26">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="H4LLKQetYKJPteQer7IZo4" Name="Create" />
         <Patch Id="G0hsID6mOUpP3xBmynQFFI" Name="Update" />
@@ -606,7 +616,6 @@
         <Link Id="DYqjxJDqVi5LHJRjOUeU7r" Ids="AMW710yJpKcOa26nPDla80,KZZgWkli1uXOTkuC1kmcIT" />
         <Link Id="GkBs77yAsU5M9W9sv8p0p6" Ids="Oek1NHYnG1wMm63FKu482a,Ik1nsbnoRj2LSClzzeQFeq" />
         <Link Id="AgWjZSxu6qPMlLJw30c8sI" Ids="CJSYQBpzroUOm9Y79i1Zql,V7sjXyl4vpNMf2EkVUB36j" />
-        <Link Id="V3qRcIlEzcIMlZcEQ5xQS7" Ids="TDaKmIU2Sg3LR3H4FYzXz1,HLiI19AbqDYOMLkZwpmKAX" />
         <Link Id="TnGyzB6TbNMO4q3nfq6OsO" Ids="JQ74LDZOTGNLmUkBKiV5ct,K8M62YprMmnNJs4UwQ49Tn,M5ImwOWYQ2VPy4x8uXRoj6" />
         <Link Id="MNTi1mz6NJKMCIooO8VKXI" Ids="TGJiXrkkvpWNg5jgBef1f1,HjYObQruEdsLLXRjgb1nvH" />
         <Link Id="FAeghhUTHWKM6uNOhVpYPY" Ids="PYkKPGO1zZvNAj2931gOxY,AZdEpzY7WzNMZbJ73gFddP" />
@@ -654,10 +663,11 @@
         <Link Id="DuFG1EdFBw9MSOy3raM41e" Ids="CQ9dsRthqCAMIkpHhZLTJk,SfINrkuZSVQLrrW07QPjHO" />
         <Link Id="TppjIl433kKLShBNW0s2vA" Ids="FceKeaXyf8kMI9VAiuE3fA,CjgBpkGnTXHNlMPbEnS9yy" />
         <Link Id="EtzQuKLkLNnP1qqIwdCNPy" Ids="KEq7OwUvAWtOLF0vn4glT4,QrYdQckBDMUP3UTbs8IssJ" />
+        <Link Id="OUjogI2slC2PLzDmm9mhr6" Ids="C4KbqNgRLmLOADTFPfDfvG,HLiI19AbqDYOMLkZwpmKAX" />
       </Patch>
     </Node>
   </Patch>
   <DocumentDependency Id="UYtwosupZDPPxvnpQY9JAV" Location="./VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
   <DocumentDependency Id="Aou9ZwDalv1Opm4a5F4O1G" Location="./VL.Avalonia/VL.Avalonia.vl" />
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0359-gbbb0444d86" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0369-g117540fa59" />
 </Document>

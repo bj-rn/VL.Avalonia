@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="G6QQf3geatIOKNgbn0y1lB" LanguageVersion="2025.7.0-0357-gd997588cb6" Version="0.128">
-  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0357-gd997588cb6" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="G6QQf3geatIOKNgbn0y1lB" LanguageVersion="2025.7.0-0369-g117540fa59" Version="0.128">
+  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0369-g117540fa59" />
   <Patch Id="ByJYRoNuXytMKx0VmtiA8Z">
     <Canvas Id="OSq9MxHF0ssO5kOcXxGsU2" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
     <!--
@@ -50,6 +50,9 @@
             <Pin Id="T1UOSDnwNhKPHV73sBz5zB" Name="Style" Kind="InputPin" />
             <Pin Id="SIU0ZN2PcFfLkeBeDazxhz" Name="Output" Kind="OutputPin" />
             <Pin Id="VuPpv5oEXSLPzyjgEaLjAi" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="ILwL6prmHgHPEzNAgjOSx0" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MgemOLxWAcDOtd8LYtEZF1" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Jte6r98MlRYOAZ4ztOKLeb" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="174,999,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
             <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Skia.Avalonia.vl">
@@ -84,15 +87,8 @@
             <Pin Id="SD4eAEBQSQWQN1lyFyJnKs" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="IBWASuMW18dM5gSSh5vRjZ" Name="Row Definitions" Kind="InputPin" />
             <Pin Id="PgIEJyiB4mjOQV9AT11yDC" Name="Output" Kind="OutputPin" />
-          </Node>
-          <Node Bounds="174,820,77,19" Id="A7xBX9VvpM8NRWO7BLQnUZ">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="DockProperty" />
-            </p:NodeReference>
-            <Pin Id="FKjewmrsOe6Ps4jUvb2nqP" Name="Input" Kind="InputPin" />
-            <Pin Id="MBdsUdCFpVuNdEEpoB2m6Y" Name="Dock" Kind="InputPin" DefaultValue="Top" />
-            <Pin Id="SA5FVYbRvK6LRhHhWSu52s" Name="Output" Kind="OutputPin" />
+            <Pin Id="RmREKfiw4VRQQaKLQ7ufBK" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JMz0uk2p5mXLIGshWd3Tg3" Name="Show Grid Lines" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="183,289,205,19" Id="BYFsGj0p1J1PJ7Sf9RLhkc">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
@@ -520,6 +516,15 @@
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="174,810,39,19" Id="CN3lWiQefYqM7DwEDemB8R">
+            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Dock (DockPanel)" />
+            </p:NodeReference>
+            <Pin Id="GLjGVT6JZXaLUVryMxJwzS" Name="Input" Kind="InputPin" />
+            <Pin Id="RLVHYGOnE44Miq5MF6tDw1" Name="Dock" Kind="InputPin" DefaultValue="Top" />
+            <Pin Id="M8ftlmy1In2OIDmQUdNblC" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="H4LLKQetYKJPteQer7IZo4" Name="Create" />
         <Patch Id="G0hsID6mOUpP3xBmynQFFI" Name="Update" />
@@ -531,7 +536,6 @@
         <Link Id="DYqjxJDqVi5LHJRjOUeU7r" Ids="AMW710yJpKcOa26nPDla80,KZZgWkli1uXOTkuC1kmcIT" />
         <Link Id="CYifMQEPjrRN25lzsK023U" Ids="SIU0ZN2PcFfLkeBeDazxhz,Ik1nsbnoRj2LSClzzeQFeq" />
         <Link Id="EPW2Iwp47vrLiZzX7S3Pk4" Ids="PgIEJyiB4mjOQV9AT11yDC,OrDfCpErwseP41JhRNrNZA" />
-        <Link Id="PvI8UeGNQwuPtTNkVX4qpC" Ids="SA5FVYbRvK6LRhHhWSu52s,Nb1XkwILgdfLgfyHX14To3" />
         <Link Id="LaeVNrNmTtWPr3C9E4nBkv" Ids="HmBMNF4QbFCNJ9arVzZsUz,DZBZgtgdXtPPYuq4fmj8M7" />
         <Link Id="E3T8irKKiysPCLFhFIVPKw" Ids="LAR5whC7PBrNVO7pPnKaNG,PaF9QubQuwDL6XAfMdjbbt" />
         <Link Id="QDnxviSsjpOMX4GZPQwxwS" Ids="Egy0pChLLafMbzCOBZbwZL,AYWRn6F0TFSQRop01XM3oK" />
@@ -544,7 +548,6 @@
         <Link Id="KL72oNf4ReqNT10GefKlj4" Ids="GmmLmQfUP4vNki5W5uChUT,OqNutmp1crDMNPSp5WFRGk" />
         <Link Id="Ss6lxXbGtdpLw7XJp0fCPV" Ids="DoykL8rHr9kP6Xt1imKjt9,BecDwfriZjqM4Qqb1VAZQA" />
         <Link Id="MFayOhDCutoO4IBtkj21is" Ids="NjoXbBb6RUvNBmn8rVwcDG,LkXuPUDmB57OrD0ZsoUaOR" />
-        <Link Id="OXQ1MbC3nVNLbPYTnEhgpp" Ids="M1UhfGz4f5MPzectupv4pd,FKjewmrsOe6Ps4jUvb2nqP" />
         <Link Id="HN5R8NZBCP2OEBANfrrxD2" Ids="F01KuszNjpFNcU0aXXvnHK,IUwJcFLSu8LOkEqXvohh67" />
         <Link Id="BqxNC7DCVdwNyE6GlNE0y2" Ids="FiDvCGp3Ah4QZr6896Hg52,RvILDvpPwdCPEsgiOhrVWi" />
         <Link Id="F7v2VnYLSKRMJlHdGb2lvV" Ids="L1d69Wyi21DNts8PK8AvFe,M71gxJoa5CWNdgpH7Cldqg" />
@@ -576,11 +579,13 @@
         <Link Id="OmNWzpjJUnAOoSoZMzEiCV" Ids="GZAgQVzEU8BLPjElKikVBn,VUvT071rBZdLJiwsIXCIe2" />
         <Link Id="DhGMPM9ZVLJMEoVJvxdHs1" Ids="Cl2gzeCZ6lNPpPdvef3Q2k,Orp8fHoIZscOElAUfZFmij" />
         <Link Id="SUPXEYeRlozQbbobR32dOP" Ids="GyfSae4K6SUQKFGVNHqaZH,KVheL55ROemQO4ar9JjX4f" />
+        <Link Id="Pbo0uG7TWVGPI0UJZRXisK" Ids="M1UhfGz4f5MPzectupv4pd,GLjGVT6JZXaLUVryMxJwzS" />
+        <Link Id="Uy6JSk5N0wxLOb42xIlZ5N" Ids="M8ftlmy1In2OIDmQUdNblC,Nb1XkwILgdfLgfyHX14To3" />
       </Patch>
     </Node>
   </Patch>
   <DocumentDependency Id="UYtwosupZDPPxvnpQY9JAV" Location="./VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
   <DocumentDependency Id="Aou9ZwDalv1Opm4a5F4O1G" Location="./VL.Avalonia/VL.Avalonia.vl" />
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0357-gd997588cb6" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0369-g117540fa59" />
   <NugetDependency Id="LcmyMepseN7MnTGpqqcC2I" Location="Avalonia" Version="11.2.1" />
 </Document>
