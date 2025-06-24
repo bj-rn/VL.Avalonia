@@ -59,4 +59,21 @@ public abstract class ControlWrapperBase<T> where T : Control, new()
         }
     }
 
+    protected Optional<bool> _isEnabled;
+    [Fragment(Order = 9999)]
+    public void SetEnabled([Pin(Visibility = Model.PinVisibility.Optional)] Optional<bool> isEnabled)
+    {
+        if (_isEnabled != isEnabled)
+        {
+            _isEnabled = isEnabled;
+            if (isEnabled.HasValue)
+            {
+                _output.SetValue(Control.IsEnabledProperty, isEnabled.Value);
+            }
+            else
+            {
+                _output.ClearValue(Control.IsEnabledProperty);
+            }
+        }
+    }
 }
