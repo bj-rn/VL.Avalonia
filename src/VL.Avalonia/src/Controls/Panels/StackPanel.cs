@@ -4,7 +4,6 @@ using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
@@ -12,22 +11,10 @@ namespace VL.Avalonia.Controls;
 // http://reference.avaloniaui.net/api/Avalonia.Controls/StackPanel/
 
 [ProcessNode(Name = "StackPanel (Spectral)")]
-public partial class StackPanelSpectralWrapper
+public partial class StackPanelSpectralWrapper : ControlWrapperBase<StackPanel>
 {
-    [ImplementOutput]
-    protected readonly StackPanel _output = new StackPanel();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementChildren]
     protected Spread<Control?> _children;
-
-    [ImplementProperty("StackPanel.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<string> _name;
 
     [ImplementProperty("StackPanel.OrientationProperty")]
     protected Optional<Orientation> _orientation;

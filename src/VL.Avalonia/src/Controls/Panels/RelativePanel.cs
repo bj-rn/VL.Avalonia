@@ -1,30 +1,17 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls.Base;
+
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "RelativePanel (Spectral)")]
-public partial class RelativePanelWrapperSpectral
+public partial class RelativePanelWrapperSpectral : ControlWrapperBase<RelativePanel>
 {
-    [ImplementOutput]
-    protected readonly RelativePanel _output = new RelativePanel();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementChildren]
     protected Spread<Control?> _children;
-
-    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<string> _name;
 }
 
 [ProcessNode(Name = "RelativePanel")]

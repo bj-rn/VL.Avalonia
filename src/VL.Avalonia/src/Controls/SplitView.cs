@@ -3,22 +3,12 @@ using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "SplitView")]
-public partial class SplitViewWrapper
+public partial class SplitViewWrapper : ControlWrapperBase<SplitView>
 {
-    [ImplementOutput]
-    protected readonly SplitView _output = new SplitView();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementContent]
     private Optional<object?> _content;
 

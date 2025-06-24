@@ -7,22 +7,12 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "Menu (Spectral)")]
-public partial class MenuSpectralWrapper
+public partial class MenuSpectralWrapper : ControlWrapperBase<Menu>
 {
-    [ImplementOutput]
-    protected readonly Menu _output = new Menu();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     protected IChannel<Spread<object?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<object?>>();
     protected Spread<object?> _items = Spread<object?>.Empty;
     [Fragment(Order = -5)]
@@ -64,17 +54,8 @@ public partial class MenuWrapper : MenuSpectralWrapper
 
 
 [ProcessNode(Name = "MenuItem (Spectral)")]
-public partial class MenuItemSpectralWrapper
+public partial class MenuItemSpectralWrapper : ControlWrapperBase<MenuItem>
 {
-    [ImplementOutput]
-    protected readonly MenuItem _output = new MenuItem();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     protected IChannel<Spread<object?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<object?>>();
     protected Spread<object?> _items = Spread<object?>.Empty;
     [Fragment(Order = -5)]

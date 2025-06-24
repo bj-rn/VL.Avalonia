@@ -4,7 +4,6 @@ using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls.Panels;
 
@@ -12,22 +11,10 @@ namespace VL.Avalonia.Controls.Panels;
 /// The UniformGrid divides the available space evenly in both directions, into cells. You can specify how many divisions to use, and these can be different in either direction.
 /// </summary>
 [ProcessNode(Name = "UniformGrid (Spectral)")]
-public partial class UniformGridSpectralWrapper
+public partial class UniformGridSpectralWrapper : ControlWrapperBase<UniformGrid>
 {
-    [ImplementOutput]
-    protected readonly UniformGrid _output = new UniformGrid();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementChildren]
     protected Spread<Control?> _children;
-
-    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<string> _name;
 
     /// <summary>
     /// Specifies the column count. If set to 0, column count will be calculated automatically.

@@ -2,7 +2,7 @@
 using VL.Core;
 using VL.Core.Import;
 
-namespace VL.Avalonia.Controls.Base;
+namespace VL.Avalonia.Controls;
 
 [ProcessNode]
 public abstract class AttachedPropertyBase

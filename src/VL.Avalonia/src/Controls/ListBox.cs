@@ -8,7 +8,6 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
-using static VL.Avalonia.Styles;
 
 
 namespace VL.Avalonia.Controls;
@@ -19,17 +18,8 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode(Name = "ListBox")]
-public partial class ListBoxWrapper<T>
+public partial class ListBoxWrapper<T> : ControlWrapperBase<ListBox>
 {
-    [ImplementOutput]
-    protected readonly ListBox _output = new ListBox();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     protected Spread<T?> _items;
     protected IChannel<Spread<T?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<T?>>();
     [Fragment(Order = -1)]
