@@ -225,6 +225,20 @@
             <Pin Id="JQ9s0vUpM9zNp6OPBNFqm5" Name="Resize Direction" Kind="InputPin" />
             <Pin Id="FZ3oqeFIXAgLW3uB6uwOFs" Name="Output" Kind="OutputPin" />
           </Node>
+          <Node Bounds="101,290,52,19" Id="TP3CzC4VTG3NuuOC3pbiLl">
+            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Column (Grid)" />
+            </p:NodeReference>
+            <Pin Id="UqiVnPovrRYQXN9YJKRfNx" Name="Input" Kind="InputPin" />
+            <Pin Id="QGvJiRo4sEFNQRI2nBhYMH" Name="Column" Kind="InputPin" DefaultValue="1" />
+            <Pin Id="BqKCZewiQ8MOM9LoBizUYs" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="HOzQtK3hEogLds2FfdIStE" Bounds="184,180,63,15" ShowValueBox="true" isIOBox="true" Value="Columns">
+            <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="TypeFlag" Name="GridResizeDirection" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -247,7 +261,9 @@
         <Link Id="E8XJpwUumMyPXHbwh8uFGB" Ids="L6GWiyRKeHaNMYYbQcEhQD,F9qAwluAoSFLqZwWmwq4aa" />
         <Link Id="JtCwYyaFRgOMA6y6BIh2Lv" Ids="Tu1os0zIRCYOPt6ARB0koF,TN5phlblrUULAy6j6xexIO" />
         <Link Id="Dh5wtlA6kDzQcnSZOywkxk" Ids="Nw9gkdT4ASYN1HZhCiIMW9,OLnmsxFfanxLgkhvdANeKu" />
-        <Link Id="O15j5eOuiaILLSyEUuj950" Ids="FZ3oqeFIXAgLW3uB6uwOFs,IHSIICkeVUPMcabSaSz4En" />
+        <Link Id="Pe00aQHxvM0LCoKOsR8HVM" Ids="FZ3oqeFIXAgLW3uB6uwOFs,UqiVnPovrRYQXN9YJKRfNx" />
+        <Link Id="PDmSxfpAiT4MhXNf5QMVdN" Ids="BqKCZewiQ8MOM9LoBizUYs,IHSIICkeVUPMcabSaSz4En" />
+        <Link Id="AhSSCvkuavSPvpJJXMahYd" Ids="HOzQtK3hEogLds2FfdIStE,JQ9s0vUpM9zNp6OPBNFqm5" />
       </Patch>
     </Node>
   </Patch>
