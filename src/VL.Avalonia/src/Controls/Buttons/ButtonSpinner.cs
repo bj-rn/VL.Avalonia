@@ -54,5 +54,4 @@ public partial class ButtonSpinnerWrapper : ControlWrapperBase<ButtonSpinner>
 
     [ImplementProperty("ButtonSpinner.AllowSpinProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _allowSpin;
-
 }
