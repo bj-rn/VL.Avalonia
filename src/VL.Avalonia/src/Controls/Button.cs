@@ -5,7 +5,6 @@ using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
@@ -13,20 +12,10 @@ namespace VL.Avalonia.Controls;
 /// The button is a control that reacts to pointer actions (and has some keyboard equivalents). It presents visual feedback in the form of a depressed state when the pointer is down.
 /// </summary>
 [ProcessNode(Name = "Button")]
-public partial class ButtonWrapper
+public partial class ButtonWrapper : ControlWrapperBase<Button>
 {
-    [ImplementOutput]
-    protected readonly Button _output = new Button();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementProperty("Button.ContentProperty", Order = -5)]
     protected Optional<object?> _content;
-
 
     protected ChannelCommand<Unit> _command = new((s, a) => new Unit());
     protected Optional<IChannel<Unit>> _commandChannel;

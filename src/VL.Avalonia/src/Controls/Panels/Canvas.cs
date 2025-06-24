@@ -1,10 +1,8 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls.Base;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls.Panels;
 
@@ -18,22 +16,10 @@ namespace VL.Avalonia.Controls.Panels;
 /// and <c>Canvas.Bottom</c> attached properties.
 /// </remarks>
 [ProcessNode(Name = "Canvas (Spectral)")]
-public partial class CanvasSpectralWrapper
+public partial class CanvasSpectralWrapper : ControlWrapperBase<Canvas>
 {
-    [ImplementOutput]
-    protected readonly Canvas _output = new Canvas();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementChildren]
     protected Spread<Control?> _children;
-
-    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<string> _name;
 }
 
 /// <inheritdoc cref="CanvasSpectralWrapper"/>

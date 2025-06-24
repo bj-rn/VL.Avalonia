@@ -1,30 +1,16 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls.Base;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "Grid (Spectral)")]
-public partial class GridSpectralWrapper
+public partial class GridSpectralWrapper : ControlWrapperBase<Grid>
 {
-    [ImplementOutput]
-    protected readonly Grid _output = new Grid();
-
-    [ImplementStyle]
-    protected Optional<IAvaloniaStyle> _style;
-
-    [ImplementClasses]
-    protected Optional<string> _classes;
-
     [ImplementChildren]
-    protected Spread<Control> _children = Spread<Control>.Empty;
-
-    [ImplementProperty("Control.NameProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<string> _name;
+    protected Spread<Control?> _children;
 
     protected Spread<ColumnDefinition?> _columnDefinitions = Spread<ColumnDefinition?>.Empty;
     public void SetColumnDefinitions(Spread<ColumnDefinition?> columnDefinitions)

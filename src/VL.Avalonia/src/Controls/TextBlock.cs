@@ -3,7 +3,6 @@ using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
@@ -19,73 +18,23 @@ namespace VL.Avalonia.Controls;
 /// More advanced text styling can be performed using Style properties.
 /// </summary>
 [ProcessNode(Name = "TextBlock")]
-public partial class TextBlockWrapper
+public partial class TextBlockWrapper : ControlWrapperBase<TextBlock>
 {
-    [ImplementOutput]
-    private TextBlock _output = new TextBlock();
-
-    [ImplementStyle]
-    private Optional<IAvaloniaStyle> _style;
-
+    [ImplementProperty("TextBlock.TextProperty")]
     private Optional<string> _text;
-    public void SetText(Optional<string> text)
-    {
-        if (_text != text)
-        {
-            _text = text;
-            _output.SetValue(TextBlock.TextProperty, text.Value);
-        }
-    }
 
+    [ImplementProperty("TextBlock.FontFamilyProperty")]
     private Optional<string> _fontFamily;
-    public void SetFontFamily(Optional<string> fontFamily)
-    {
-        if (_fontFamily != fontFamily)
-        {
-            _fontFamily = fontFamily;
 
-            if (_fontFamily.HasValue)
-                _output.SetValue(TextBlock.FontFamilyProperty, new FontFamily(fontFamily.Value));
-        }
-    }
+    [ImplementProperty("TextBlock.FontSizeProperty")]
+    private Optional<float> _fontSize;
 
-    private Optional<int> _fontSize;
-    public void SetFontSize(Optional<int> fontSize)
-    {
-        if (_fontSize != fontSize)
-        {
-            _fontSize = fontSize;
-            _output.SetValue(TextBlock.FontSizeProperty, fontSize.Value);
-        }
-    }
-
+    [ImplementProperty("TextBlock.FontStyleProperty")]
     private Optional<FontStyle> _fontStyle;
-    public void SetFontStyle(Optional<FontStyle> fontStyle)
-    {
-        if (_fontStyle != fontStyle)
-        {
-            _fontStyle = fontStyle;
-            _output.SetValue(TextBlock.FontStyleProperty, fontStyle.Value);
-        }
-    }
 
+    [ImplementProperty("TextBlock.FontWeightProperty")]
     private Optional<FontWeight> _fontWeight;
-    public void SetFontWeight(Optional<FontWeight> fontWeight)
-    {
-        if (_fontWeight != fontWeight)
-        {
-            _fontWeight = fontWeight;
-            _output.SetValue(TextBlock.FontWeightProperty, fontWeight.Value);
-        }
-    }
 
+    [ImplementProperty("TextBlock.TextAlignmentProperty")]
     private Optional<TextAlignment> _textAlignment;
-    public void SetTextAlignment(Optional<TextAlignment> textAlignment)
-    {
-        if (_textAlignment != textAlignment)
-        {
-            _textAlignment = textAlignment;
-            _output.SetValue(TextBlock.TextAlignmentProperty, textAlignment.Value);
-        }
-    }
 }

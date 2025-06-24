@@ -9,7 +9,7 @@ using static VL.Avalonia.Styles;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "SliderPrototype")]
-public partial class SliderWrapper
+public partial class SliderWrapper : ControlWrapperBase<Slider>
 {
     [ImplementOutput]
     private readonly Slider _output = new Slider();
