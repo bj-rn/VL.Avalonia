@@ -12,7 +12,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "RadioButton")]
 public partial class RadioButtonWrapper : ControlWrapperBase<RadioButton>
 {
-    [ImplementProperty("RadioButton.ContentProperty", Order = -5)]
+    [ImplementProperty("RadioButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     [ImplementProperty("RadioButton.GroupNameProperty")]

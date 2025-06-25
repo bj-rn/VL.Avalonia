@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "ButtonSpinner")]
 public partial class ButtonSpinnerWrapper : ControlWrapperBase<ButtonSpinner>
 {
-    [ImplementProperty("Button.ContentProperty", Order = -5)]
+    [ImplementProperty("Button.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     protected IChannel<Unit>? _onSpinIncrease;

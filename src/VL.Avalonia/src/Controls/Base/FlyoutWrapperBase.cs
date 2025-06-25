@@ -8,8 +8,8 @@ using VL.Core.Import;
 namespace VL.Avalonia.Controls;
 
 /// <summary>
-/// Base class for Flyouts.
-/// Implements: <c>Output</c>, <c>Style</c>, <c>Classes</c>, <c>Name</c>.
+/// Base class for FlyoutWrappers.
+/// Implements: <c>Output</c>.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]

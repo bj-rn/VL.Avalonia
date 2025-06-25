@@ -15,7 +15,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "SplitButton")]
 public partial class SplitButtonWrapper : ControlWrapperBase<SplitButton>
 {
-    [ImplementProperty("SplitButton.ContentProperty", Order = -5)]
+    [ImplementProperty("SplitButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     protected ChannelCommand<Unit> _command = new((s, a) => new Unit());

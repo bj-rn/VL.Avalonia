@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "ToggleSplitButton")]
 public partial class ToggleSplitButtonWrapper : ControlWrapperBase<ToggleSplitButton>
 {
-    [ImplementProperty("ToggleSplitButton.ContentProperty", Order = -5)]
+    [ImplementProperty("ToggleSplitButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     // TODO: REFACTOR

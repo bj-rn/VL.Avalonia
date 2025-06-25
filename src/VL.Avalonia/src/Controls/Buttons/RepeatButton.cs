@@ -14,7 +14,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "RepeatButton")]
 public partial class RepeatButtonWrapper : ControlWrapperBase<RepeatButton>
 {
-    [ImplementProperty("RepeatButton.ContentProperty", Order = -5)]
+    [ImplementProperty("RepeatButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     protected ChannelCommand<Unit> _command = new((s, a) => new Unit());

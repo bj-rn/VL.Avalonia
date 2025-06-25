@@ -12,7 +12,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "ToggleButton")]
 public partial class ToggleButtonWrapper : ControlWrapperBase<ToggleButton>
 {
-    [ImplementProperty("ToggleButton.ContentProperty", Order = -5)]
+    [ImplementProperty("ToggleButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     // TODO: REFACTOR

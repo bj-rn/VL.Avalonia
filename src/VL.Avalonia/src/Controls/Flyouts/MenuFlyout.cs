@@ -14,7 +14,7 @@ public partial class MenuFlyoutSpectralWrapper : FlyoutWrapperBase<MenuFlyout>
 {
     protected IChannel<Spread<object?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<object?>>();
     protected Spread<object?> _items;
-    [Fragment(Order = -5)]
+    [Fragment(Order = -10)]
     public virtual void SetItems(Spread<object?> items)
     {
         if (_items != items)

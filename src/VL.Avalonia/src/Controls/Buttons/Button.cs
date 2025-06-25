@@ -15,7 +15,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "Button")]
 public partial class ButtonWrapper : ControlWrapperBase<Button>
 {
-    [ImplementProperty("Button.ContentProperty", Order = -5)]
+    [ImplementProperty("Button.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     protected ChannelCommand<Unit> _command = new((s, a) => new Unit());
