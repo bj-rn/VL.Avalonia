@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using System.Reactive;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
@@ -9,12 +10,12 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 /// <summary>
-/// The button is a control that reacts to pointer actions (and has some keyboard equivalents). It presents visual feedback in the form of a depressed state when the pointer is down.
+/// The <c>SplitButton</c> functions as a Button with primary and secondary parts that can each be pressed separately. The primary part behaves like normal <c>Button</c> and the secondary part opens a <c>Flyout</c> with additional actions.
 /// </summary>
-[ProcessNode(Name = "Button")]
-public partial class ButtonWrapper : ControlWrapperBase<Button>
+[ProcessNode(Name = "SplitButton")]
+public partial class SplitButtonWrapper : ControlWrapperBase<SplitButton>
 {
-    [ImplementProperty("Button.ContentProperty", Order = -5)]
+    [ImplementProperty("SplitButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
     protected ChannelCommand<Unit> _command = new((s, a) => new Unit());
@@ -33,9 +34,6 @@ public partial class ButtonWrapper : ControlWrapperBase<Button>
         }
     }
 
-    [ImplementProperty("Button.ClickModeProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<ClickMode> _clickMode;
-
-    [ImplementProperty("Button.IsEnabledProperty", Order = 10)]
-    protected Optional<bool> _enabled;
+    [ImplementProperty("SplitButton.FlyoutProperty", Order = -3)]
+    protected Optional<FlyoutBase> _flyout;
 }

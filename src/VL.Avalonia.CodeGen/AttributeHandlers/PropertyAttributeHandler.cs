@@ -5,6 +5,7 @@ using System.Linq;
 // TEMPLATE
 /*
     protected Optional<IBrush> _background;
+    /// <inheritdoc cref="_background"/>
     [Fragment(Order = -10)]
     public void SetBackground([Pin(Visibility = Model.PinVisibility.Optional)] Optional<IBrush> background)
     {
@@ -62,6 +63,7 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
 
             var template =
 $@"
+    /// <inheritdoc cref=""{fieldName}""/>
     [Fragment(Order = {order})]
     public void {methodName}([Pin(Visibility = {pinVisibility})] Optional<{typeArg}> {paramBase})
     {{
