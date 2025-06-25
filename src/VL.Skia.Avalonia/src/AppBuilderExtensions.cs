@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Avalonia.Input;
 using Avalonia.Platform;
 using Avalonia.Rendering;
 using Avalonia.Rendering.Composition;
@@ -27,6 +28,7 @@ public static class AppBuilderExtensions
             var platformGraphics = new GammaPlatformGraphics();
             AvaloniaLocator.CurrentMutable
                 .Bind<ICursorFactory>().ToConstant(new GammaSkiaCursorFactory())
+                .Bind<IKeyboardDevice>().ToConstant(GammaDevices.KeyboardDevice)
                 .Bind<IDispatcherImpl>().ToConstant(
                         new GammaDispatcherImpl(Thread.CurrentThread, AppHost.Current.Services.GetService(typeof(IClock)) as IClock, AppHost.Current?.SynchronizationContext))
                 .Bind<IPlatformGraphics>().ToConstant(platformGraphics)

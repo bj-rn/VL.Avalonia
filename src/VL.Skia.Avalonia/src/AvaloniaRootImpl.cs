@@ -16,11 +16,13 @@ namespace VL.Skia.Avalonia
     // https://github.com/vvvv/VL.StandardLibs/blob/dev/azeno/avalonia/VL.AvaloniaUI/src/RootElementImpl.cs
     sealed class AvaloniaRootImpl : ITopLevelImpl
     {
+        public static IKeyboardDevice Keyboard { get; } = new KeyboardDevice();
+
         private readonly Stopwatch _stopwatch = Stopwatch.StartNew();
 
 
         // https://github.com/AvaloniaUI/Avalonia/issues/11381
-        public IKeyboardDevice KeyboardDevice { get; }
+        public IKeyboardDevice KeyboardDevice { get; } = GammaDevices.KeyboardDevice;
         public IMouseDevice MouseDevice { get; }
         public IInputRoot InputRoot { get; set; }
 
