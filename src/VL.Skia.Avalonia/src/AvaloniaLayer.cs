@@ -3,6 +3,7 @@ using Avalonia.Controls.Embedding;
 using Avalonia.Rendering.Composition;
 using Avalonia.Skia;
 using Avalonia.Styling;
+using VL.Core;
 using VL.Core.Import;
 using VL.Lib.IO.Notifications;
 using VL.Model;
@@ -34,10 +35,24 @@ namespace VL.Skia.Avalonia
         }
 
 
-        [Fragment]
-        public object Content
+        private Optional<object> _content;
+
+        [Fragment(Order = -10)]
+        public void SetContent(Optional<object> content)
         {
-            set => controlRoot.Content = value;
+            if (_content != content)
+            {
+                _content = content;
+
+                if (_content.HasValue)
+                {
+                    controlRoot.SetValue(EmbeddableControlRoot.ContentProperty, content.Value);
+                }
+                else
+                {
+                    controlRoot.ClearValue(EmbeddableControlRoot.ContentProperty);
+                }
+            }
         }
 
         private ThemeVariant _requestedThemeVariant = ThemeVariant.Default;
