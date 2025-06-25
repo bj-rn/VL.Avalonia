@@ -4,7 +4,7 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Controls.Buttons;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// The <c>ToggleButton</c> can present a Boolean value by using styles and a pseudo class that is either present (true) or absent (false).

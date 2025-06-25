@@ -1,9 +1,11 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Primitives.PopupPositioning;
+using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 
-namespace VL.Avalonia.Controls.Base;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// Base class for Flyouts.
@@ -11,28 +13,10 @@ namespace VL.Avalonia.Controls.Base;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract class FlyoutWrapperBase<T, T1> where T : Button, new() where T1 : PopupFlyoutBase, new()
+public abstract partial class FlyoutWrapperBase<T> where T : PopupFlyoutBase, new()
 {
-    protected readonly T1 _output = new();
-
-    protected Optional<T> _input;
-    public void SetInput(Optional<T> input)
-    {
-        if (_input != input)
-        {
-            _input = input;
-
-            if (_input.HasValue)
-            {
-                _input.Value?.SetValue(Button.FlyoutProperty, _output);
-            }
-            else
-            {
-                _input.Value?.ClearValue(Button.FlyoutProperty);
-            }
-        }
-    }
-    public T Output => _input.Value;
+    protected readonly T _output = new();
+    public T Output => _output;
 
     //protected Optional<IAvaloniaStyle> _style;
     //[Fragment(Order = -3)]
@@ -56,40 +40,24 @@ public abstract class FlyoutWrapperBase<T, T1> where T : Button, new() where T1 
     //    }
     //}
 
-    protected Optional<string> _name;
-    [Fragment(Order = -1)]
-    public void SetName([Pin(Visibility = Model.PinVisibility.Optional)] Optional<string> name)
-    {
-        if (_name != name)
-        {
-            _name = name;
+    [ImplementProperty("PopupFlyoutBase.PlacementProperty")]
+    protected Optional<PlacementMode> _placement;
 
-            if (name.HasValue)
-            {
-                _output.SetValue(Control.NameProperty, name.Value);
-            }
-            else
-            {
-                _output.ClearValue(Control.NameProperty);
-            }
-        }
-    }
+    [ImplementProperty("PopupFlyoutBase.PlacementGravityProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<PopupGravity> _placementGravity;
 
-    protected Optional<bool> _isEnabled;
-    [Fragment(Order = 9999)]
-    public void SetEnabled([Pin(Visibility = Model.PinVisibility.Optional)] Optional<bool> isEnabled)
-    {
-        if (_isEnabled != isEnabled)
-        {
-            _isEnabled = isEnabled;
-            if (isEnabled.HasValue)
-            {
-                _output.SetValue(Control.IsEnabledProperty, isEnabled.Value);
-            }
-            else
-            {
-                _output.ClearValue(Control.IsEnabledProperty);
-            }
-        }
-    }
+    [ImplementProperty("PopupFlyoutBase.PlacementAnchorProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<PopupAnchor> _pacementAnchor;
+
+    [ImplementProperty("PopupFlyoutBase.HorizontalOffsetProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<float> _horizontalOffset;
+
+    [ImplementProperty("PopupFlyoutBase.VerticalOffsetProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<float> _verticalOffset;
+
+    [ImplementProperty("PopupFlyoutBase.ShowModeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<FlyoutShowMode> _showMode;
+
+    [ImplementProperty("PopupFlyoutBase.OverlayDismissEventPassThroughProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _overlayDismissEventPassThroughProperty;
 }

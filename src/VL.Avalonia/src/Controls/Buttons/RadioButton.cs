@@ -5,7 +5,7 @@ using VL.Core.Import;
 using VL.Lib.Reactive;
 
 
-namespace VL.Avalonia.Controls.Buttons;
+namespace VL.Avalonia.Controls;
 /// <summary>
 /// The <c>RadioButton</c> control presents a group of options from which only one may be selected at a time. A selected option is drawn as a filled circle, and an unselected option as an empty circle.
 /// </summary>

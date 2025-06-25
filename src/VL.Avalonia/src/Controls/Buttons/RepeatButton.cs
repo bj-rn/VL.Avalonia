@@ -6,7 +6,7 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Controls.Buttons;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// The <c>RepeatButton</c> is a control that has the added feature of regularly generating click events while the button is being pressed down.

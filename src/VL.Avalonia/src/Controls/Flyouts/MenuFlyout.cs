@@ -1,13 +1,16 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Controls.Base;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
+/// <summary>
+/// Currently works only for <c>Button</c>
+/// </summary>
+/// <typeparam name="T"></typeparam>
 [ProcessNode(Name = "MenuFlyout (Spectral)")]
-public partial class MenuFlyoutSpectralWrapper<T> : FlyoutWrapperBase<T, MenuFlyout> where T : Button, new()
+public partial class MenuFlyoutSpectralWrapper : FlyoutWrapperBase<MenuFlyout>
 {
     protected IChannel<Spread<object?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<object?>>();
     protected Spread<object?> _items;
@@ -29,7 +32,7 @@ public partial class MenuFlyoutSpectralWrapper<T> : FlyoutWrapperBase<T, MenuFly
 }
 
 [ProcessNode(Name = "MenuFlyout")]
-public partial class MenuFlyoutWrapper<T> : MenuFlyoutSpectralWrapper<T> where T : Button, new()
+public partial class MenuFlyoutWrapper : MenuFlyoutSpectralWrapper
 {
     public MenuFlyoutWrapper() : base() { }
 
