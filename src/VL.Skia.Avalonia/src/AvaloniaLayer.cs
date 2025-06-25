@@ -33,6 +33,7 @@ namespace VL.Skia.Avalonia
             onSetupApplication?.Invoke(AvaloniaInitializer.Instance);
         }
 
+
         [Fragment]
         public object Content
         {
