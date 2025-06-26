@@ -8,22 +8,18 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
-/// <summary>
-/// The <b>TextBox</b> presents an area for typed (keyboard) input. It can be for a single or multiple lines of input.
-/// </summary>
-[ProcessNode(Name = "TextBox")]
-public partial class TextBoxWrapper : ControlWrapperBase<TextBox>
+[ProcessNode]
+public abstract partial class TextBoxWrapperBase<T> : ControlWrapperBase<T> where T : TextBox, new()
 {
     protected ChannelTwoWayBinding<string> _textBinding;
-    public TextBoxWrapper()
+    public TextBoxWrapperBase()
     {
         _textBinding = new ChannelTwoWayBinding<string>(_output, TextBox.TextProperty);
     }
 
-    /// <summary>
+    /// <param name="textChannel">
     /// The text content of the TextBox
-    /// </summary>
-    /// <param name="textChannel"></param>
+    /// </param>
     [Fragment(Order = -10)]
     public void SetTextChannel(IChannel<string>? textChannel) =>
         _textBinding.SetChannel(textChannel);
@@ -31,187 +27,164 @@ public partial class TextBoxWrapper : ControlWrapperBase<TextBox>
     /*
     // Selection and Navigation Properties
     // This should be handled via channel, so not going to include
-    /// <summary>
+    /// <param name="_caretIndex">
     /// Current position of the text cursor/caret
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.CaretIndexProperty")]
     protected Optional<int> _caretIndex;
 
-    /// <summary>
+    /// <param name="_selectionStart">
     /// Starting position of selected text
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.SelectionStartProperty")]
     protected Optional<int> _selectionStart;
 
-    /// <summary>
+    /// <param name="_selectionEnd">
     /// Ending position of selected text
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.SelectionEndProperty")]
     protected Optional<int> _selectionEnd;
     */
 
 
-    /// <summary>
+    /// <param name="watermark">
     /// Placeholder text displayed when TextBox is empty
-    /// </summary>
-    [ImplementProperty("TextBox.WatermarkProperty")]
+    /// </param>
+    [ImplementProperty("TextBox.WatermarkProperty", Order = -7)]
     private Optional<string> _watermark;
 
-    /// <summary>
+    /// <param name="useFloatingWatermark">
     /// Whether watermark floats above text when typing
-    /// </summary>
-    [ImplementProperty("TextBox.UseFloatingWatermarkProperty", PinVisibility = Model.PinVisibility.Optional)]
+    /// </param>
+    [ImplementProperty("TextBox.UseFloatingWatermarkProperty", Order = -6, PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _useFloatingWatermark;
 
-    /// <summary>
+    /// <param name="isReadOnly">
     /// Whether the TextBox is read-only (cannot be edited)
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.IsReadOnlyProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _isReadOnly;
 
-    /// <summary>
+    /// <param name="acceptsReturn">
     /// Whether the TextBox allows and displays newline characters
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.AcceptsReturnProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _acceptsReturn;
 
-    /// <summary>
+    /// <param name="acceptsTab">
     /// Whether the TextBox allows and displays tab characters
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.AcceptsTabProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _acceptsTab;
 
-    /// <summary>
+    /// <param name="passwordChar">
     /// Character used for password masking (e.g., '*')
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.PasswordCharProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<char> _passwordChar;
 
-    /// <summary>
+    /// <param name="revealPassword">
     /// Whether password text should be revealed temporarily
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.RevealPasswordProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _revealPassword;
 
-    /// <summary>
+    /// <param name="maxLength">
     /// Maximum number of characters that can be entered
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.MaxLengthProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<int> _maxLength;
 
-    /// <summary>
+    /// <param name="textWrapping">
     /// How text wraps (NoWrap, Wrap, WrapWithOverflow)
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.TextWrappingProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<TextWrapping> _textWrapping;
 
-    /// <summary>
+    /// <param name="maxLines">
     /// Maximum number of visible lines for sizing
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.MaxLinesProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<int> _maxLines;
 
-    /// <summary>
+    /// <param name="minLines">
     /// Minimum number of visible lines for sizing
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.MinLinesProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<int> _minLines;
 
-    /// <summary>
+    /// <param name="newLine">
     /// Characters inserted when Enter is pressed
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.NewLineProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<string> _newLine;
 
 
-    /// <summary>
+    /// <param name="isUndoEnabled">
     /// Whether undo/redo functionality is enabled
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.IsUndoEnabledProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _isUndoEnabled;
 
-    /// <summary>
+    /// <param name="undoLimit">
     /// Maximum number of items in the undo stack
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.UndoLimitProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<int> _undoLimit;
 
-    /// <summary>
+    /// <param name="selectionBrush">
     /// Brush used to highlight selected text background
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.SelectionBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<IBrush> _selectionBrush;
 
-    /// <summary>
+    /// <param name="selectionForegroundBrush">
     /// Brush used for selected text foreground color
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.SelectionForegroundBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<IBrush> _selectionForegroundBrush;
 
-    /// <summary>
+    /// <param name="caretBrush">
     /// Brush used for the text caret/cursor
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.CaretBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<IBrush> _caretBrush;
 
-    /// <summary>
+    /// <param name="caretBlinkInterval">
     /// How fast the caret blinks (default 500ms)
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.CaretBlinkIntervalProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<TimeSpan> _caretBlinkInterval;
 
-    /// <summary>
+    /// <param name="innerLeftContent">
     /// Custom content positioned on the left side of text
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.InnerLeftContentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<object> _innerLeftContent;
 
-    /// <summary>
+    /// <param name="innerRightContent">
     /// Custom content positioned on the right side of text
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.InnerRightContentProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<object> _innerRightContent;
 
-    /// <summary>
+    /// <param name="isInactiveSelectionHighlightEnabled">
     /// Whether selection is highlighted when not focused
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.IsInactiveSelectionHighlightEnabledProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _isInactiveSelectionHighlightEnabled;
 
-    /// <summary>
+    /// <param name="clearSelectionOnLostFocus">
     /// Whether selection is cleared when focus is lost
-    /// </summary>
+    /// </param>
     [ImplementProperty("TextBox.ClearSelectionOnLostFocusProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _clearSelectionOnLostFocus;
-
-    /// <summary>
-    /// Whether the Cut command can be executed
-    /// </summary>
-    [ImplementProperty("TextBox.CanCutProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<bool> _canCut;
-
-    /// <summary>
-    /// Whether the Copy command can be executed
-    /// </summary>
-    [ImplementProperty("TextBox.CanCopyProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<bool> _canCopy;
-
-    /// <summary>
-    /// Whether the Paste command can be executed
-    /// </summary>
-    [ImplementProperty("TextBox.CanPasteProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<bool> _canPaste;
-
-    /// <summary>
-    /// Whether there are actions that can be undone
-    /// </summary>
-    [ImplementProperty("TextBox.CanUndoProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<bool> _canUndo;
-
-    /// <summary>
-    /// Whether there are actions that can be redone
-    /// </summary>
-    [ImplementProperty("TextBox.CanRedoProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<bool> _canRedo;
 }
 
+/// <summary>
+/// The <b>TextBox</b> presents an area for typed (keyboard) input. It can be for a single or multiple lines of input.
+/// </summary>
+[ProcessNode(Name = "TextBox")]
+public partial class TextBoxWrapper : TextBoxWrapperBase<TextBox>
+{
+}

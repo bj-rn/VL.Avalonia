@@ -18,13 +18,13 @@ public partial class SelectableTextBlockWrapper : TextBlockWrapperBase<Selectabl
     /// Character index for the beginning of the current selection
     /// </param>
     [ImplementProperty("SelectableTextBlock.SelectionStartProperty")]
-    private Optional<int> _selectionStart;
+    protected Optional<int> _selectionStart;
 
     /// <param name="selectionEnd">
     /// Character index for the end of the current selection
     /// </param>
     [ImplementProperty("SelectableTextBlock.SelectionEndProperty")]
-    private Optional<int> _selectionEnd;
+    protected Optional<int> _selectionEnd;
     */
     #endregion
 
@@ -34,13 +34,13 @@ public partial class SelectableTextBlockWrapper : TextBlockWrapperBase<Selectabl
     /// Brush that highlights selected text background
     /// </param>
     [ImplementProperty("SelectableTextBlock.SelectionBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
-    private Optional<IBrush> _selectionBrush;
+    protected Optional<IBrush> _selectionBrush;
 
     /// <param name="selectionForegroundBrush">
     /// Brush used for the foreground color of selected text
     /// </param>
     [ImplementProperty("SelectableTextBlock.SelectionForegroundBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
-    private Optional<IBrush> _selectionForegroundBrush;
+    protected Optional<IBrush> _selectionForegroundBrush;
 
     #endregion
 }
