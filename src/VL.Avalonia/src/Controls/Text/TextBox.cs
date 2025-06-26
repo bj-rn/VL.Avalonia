@@ -8,6 +8,9 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
+/// <summary>
+/// The <b>TextBox</b> presents an area for typed (keyboard) input. It can be for a single or multiple lines of input.
+/// </summary>
 [ProcessNode(Name = "TextBox")]
 public partial class TextBoxWrapper : ControlWrapperBase<TextBox>
 {
