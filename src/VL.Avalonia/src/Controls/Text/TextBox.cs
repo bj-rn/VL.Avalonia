@@ -17,6 +17,5 @@ public partial class TextBoxWrapper : ControlWrapperBase<TextBox>
     [Fragment(Order = -10)]
     public void SetTextChannel(IChannel<string>? textChannel) =>
         _textBinding.SetChannel(textChannel);
-
 }
 

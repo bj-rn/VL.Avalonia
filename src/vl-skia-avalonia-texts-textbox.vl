@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="-2283, 166, 714, 618" IsHidden="true" />
+            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="-1807, 302, 414, 618" IsHidden="true" />
             <Pin Id="OhUk0lcXRfZPS1pGZZQXFi" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="Crih6r1mjYkP4zxje5Ginm" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="EMAaVQMVNf2MIIhNQanTL4" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -152,10 +152,15 @@
             <Pin Id="OfeyFrYRbY1Pxkj8xFjPOe" Name="Output" Kind="OutputPin" />
             <Pin Id="Dd13UtGXBXsQT5p03qxJki" Name="Value" Kind="OutputPin" />
           </Node>
-          <Pad Id="TgCMuF2hYPRNFEYnhqYlme" Comment="" Bounds="269,161,112,57" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="SNDBnjiWxl8P3xNkBWb8Nk" Comment="" Bounds="221,99,129,15" ShowValueBox="true" isIOBox="true" Value="123123123">
+          <Pad Id="TgCMuF2hYPRNFEYnhqYlme" Comment="" Bounds="269,161,112,57" ShowValueBox="true" isIOBox="true" Value="asda@" />
+          <Pad Id="SNDBnjiWxl8P3xNkBWb8Nk" Comment="" Bounds="221,99,129,15" ShowValueBox="true" isIOBox="true" Value="">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="AAsf2EdZk2XLd3cZT1arof" Bounds="82,70,35,15" ShowValueBox="true" isIOBox="true" Value="text">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
         </Canvas>
