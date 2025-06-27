@@ -1,30 +1,27 @@
 ﻿using Avalonia;
+using VL.Lib.Collections;
 using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Helpers;
 
-public class ChannelOneWayBinding<TProperty>
+public class ChannelSpreadToItemsSourceBinding<T> : IDisposable
 {
-    private readonly AvaloniaProperty<TProperty?> _property;
-    private readonly AvaloniaObject _control;
-
-    public ChannelOneWayBinding(AvaloniaObject control, AvaloniaProperty<TProperty?> property)
+    private IChannel<Spread<T>> _channel = ChannelHelpers.CreateChannelOfType<Spread<T>>();
+    public ChannelSpreadToItemsSourceBinding(AvaloniaObject control, AvaloniaProperty property)
     {
-        _property = property;
-        _control = control;
+        control.Bind(property, _channel);
+    }
+    private Spread<T> _items;
+    public void SetItems(Spread<T> items)
+    {
+        if (_items != items)
+        {
+            _channel.OnNext(items);
+        }
     }
 
-    private IChannel<TProperty>? _channel;
-    public void SetChannel(IChannel<TProperty>? channel)
+    public void Dispose()
     {
-        if (_channel != channel)
-        {
-            if (channel != null)
-            {
-                _control.Bind(_property, channel);
-            }
-
-            _channel = channel;
-        }
+        _channel?.Dispose();
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.Data;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
+using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
@@ -10,18 +10,18 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls.Text;
 
 [ProcessNode(Name = "AutoCompleteBox (Spectral)")]
-public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<AutoCompleteBox>, IDisposable
+public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<AutoCompleteBox>
 {
     #region Core Content Properties
 
     protected ChannelTwoWayBinding<string> _textBinding;
     protected ChannelTwoWayBinding<object?> _selectedItemBinding;
-    protected IChannel<Spread<T>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<T>>();
+    protected ChannelSpreadToItemsSourceBinding<T> _itemsSourceBinding;
     public AutoCompleteBoxSpectralWrapper()
     {
         _textBinding = new ChannelTwoWayBinding<string>(_output, AutoCompleteBox.TextProperty);
         _selectedItemBinding = new ChannelTwoWayBinding<object?>(_output, AutoCompleteBox.SelectedItemProperty);
-        _output.Bind(AutoCompleteBox.ItemsSourceProperty, _itemsChannel);
+        _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<T>(_output, AutoCompleteBox.ItemsSourceProperty);
     }
 
     /// <param name="textChannel">
@@ -36,20 +36,12 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// </param>
     protected Spread<T?> _items;
     [Fragment(Order = -5)]
-    public void SetItems(Spread<T?> items)
-    {
-        if (_items != items)
-        {
-            _items = items;
-            _itemsChannel.OnNext(items);
-        }
-    }
+    public void SetItems(Spread<T?> items) =>
+         _itemsSourceBinding.SetItems(items);
 
     /// <param name="selectedItem">
     /// The currently selected item from the dropdown
     /// </param>
-    //[ImplementProperty("AutoCompleteBox.SelectedItemProperty", PinVisibility = Model.PinVisibility.Optional)]
-    //protected Optional<object> _selectedItem;
     public void SetSelectedItemChannel(IChannel<T?>? itemChannel) =>
         _selectedItemBinding.SetChannel(itemChannel as IChannel<object?>);
 
@@ -117,7 +109,7 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// <param name="itemTemplate">
     /// Template used to display items in the dropdown
     /// </param>
-    [ImplementProperty("AutoCompleteBox.ItemTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty("AutoCompleteBox.ItemTemplateProperty")]
     protected Optional<IDataTemplate> _itemTemplate;
 
     ///// <param name="valueMemberBinding">
@@ -129,7 +121,7 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// <param name="watermark">
     /// Placeholder text shown when the text box is empty
     /// </param>
-    [ImplementProperty("AutoCompleteBox.WatermarkProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty("AutoCompleteBox.WatermarkProperty")]
     protected Optional<string> _watermark;
 
     #endregion
@@ -159,9 +151,4 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     protected Optional<Func<string, CancellationToken, Task<IEnumerable<object>>>> _asyncPopulator;
 
     #endregion
-
-    public void Dispose()
-    {
-        _itemsChannel?.Dispose();
-    }
 }
