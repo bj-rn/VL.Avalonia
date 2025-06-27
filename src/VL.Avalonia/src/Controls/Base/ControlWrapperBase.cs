@@ -20,7 +20,7 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     public T Output => _output;
 
     protected Optional<IAvaloniaStyle> _style;
-    [Fragment(Order = -4)]
+    [Fragment(Order = -9)]
     /// <param name="style">
     /// Style Setters
     /// </param>
