@@ -1,4 +1,6 @@
 ﻿using Avalonia;
+using Avalonia.Input;
+using Avalonia.Input.Platform;
 using Avalonia.Platform;
 using Avalonia.Rendering;
 using Avalonia.Rendering.Composition;
@@ -27,6 +29,9 @@ public static class AppBuilderExtensions
             var platformGraphics = new GammaPlatformGraphics();
             AvaloniaLocator.CurrentMutable
                 .Bind<ICursorFactory>().ToConstant(new GammaSkiaCursorFactory())
+                .Bind<IKeyboardDevice>().ToConstant(GammaDevices.KeyboardDevice)
+                .Bind<IPlatformSettings>().ToConstant(new GammaPlatformSettings())
+                .Bind<PlatformHotkeyConfiguration>().ToConstant(CreatePlatformHotKeyConfiguration())
                 .Bind<IDispatcherImpl>().ToConstant(
                         new GammaDispatcherImpl(Thread.CurrentThread, AppHost.Current.Services.GetService(typeof(IClock)) as IClock, AppHost.Current?.SynchronizationContext))
                 .Bind<IPlatformGraphics>().ToConstant(platformGraphics)
@@ -39,6 +44,11 @@ public static class AppBuilderExtensions
             AvaloniaLocator.CurrentMutable.Bind<IPlatformRenderInterface>()
                 .ToConstant(renderInterface);
         });
+
+    private static PlatformHotkeyConfiguration CreatePlatformHotKeyConfiguration()
+        => OperatingSystem.IsMacOS()
+            ? new PlatformHotkeyConfiguration(commandModifiers: KeyModifiers.Meta, wholeWordTextActionModifiers: KeyModifiers.Alt)
+            : new PlatformHotkeyConfiguration(commandModifiers: KeyModifiers.Control);
 
     public static AppBuilder UseGammaSkiaDefaults(this AppBuilder appBuilder) =>
         appBuilder

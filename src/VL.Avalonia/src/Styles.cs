@@ -77,6 +77,57 @@ namespace VL.Avalonia
         public static StyleForeground SetForeground(IAvaloniaStyle? style, IBrush? brush) =>
             new StyleForeground(style, brush);
 
+        public record struct StyleSelectionBrush(IAvaloniaStyle? Style, IBrush? SelectionBrush) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "SelectionBrush", SelectionBrush);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+
+        public static StyleSelectionBrush SetSelectionBrush(IAvaloniaStyle? style, IBrush? selectionBrush) =>
+            new StyleSelectionBrush(style, selectionBrush);
+
+        public record struct StyleSelectionForegroundBrush(IAvaloniaStyle? Style, IBrush? SelectionForegroundBrush) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "SelectionForegroundBrush", SelectionForegroundBrush);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+
+        public static StyleSelectionForegroundBrush SetSelectionForegroundBrush(IAvaloniaStyle? style, IBrush? selectionForegroundBrush) =>
+            new StyleSelectionForegroundBrush(style, selectionForegroundBrush);
+
+        public record struct StyleCaretBrush(IAvaloniaStyle? Style, IBrush? CaretBrush) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "CaretBrush", CaretBrush);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+
+        public static StyleCaretBrush SetCaretBrush(IAvaloniaStyle? style, IBrush? caretBrush) =>
+            new StyleCaretBrush(style, caretBrush);
+
+        public record struct StyleCaretBlinkInterval(IAvaloniaStyle? Style, TimeSpan? CaretBlinkInterval) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "CaretBlinkInterval", CaretBlinkInterval);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+        public static StyleCaretBlinkInterval SetCaretBlinkInterval(IAvaloniaStyle? style, TimeSpan? caretBlinkInterval) =>
+            new StyleCaretBlinkInterval(style, caretBlinkInterval);
+
         #region StyleStroke
         public record struct StyleStroke(IAvaloniaStyle? Style, IBrush? Brush) : IAvaloniaStyle
         {
@@ -382,6 +433,18 @@ namespace VL.Avalonia
 
         public static StyleMaxLines SetMaxLines(IAvaloniaStyle? style, int maxLines) =>
             new StyleMaxLines(style, maxLines);
+
+        public record struct StyleMinLines(IAvaloniaStyle? Style, int MinLines) : IAvaloniaStyle
+        {
+            public Style BuildStyle(StyledElement owner, Style style)
+            {
+                style.TryAddSetter(owner, "MinLines", MinLines);
+                Style?.BuildStyle(owner, style);
+                return style;
+            }
+        }
+        public static StyleMinLines SetMinLines(IAvaloniaStyle? style, int minLines) =>
+            new StyleMinLines(style, minLines);
 
         public record struct StyleTextAlignment(IAvaloniaStyle? Style, TextAlignment TextAlignment) : IAvaloniaStyle
         {

@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls.Primitives;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
@@ -7,46 +8,37 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 /// <summary>
-/// The <c>ToggleButton</c> can present a Boolean value by using styles and a pseudo class that is either present (true) or absent (false).
+/// Base class for <c>ToggleButton</c> inheriting controls
 /// </summary>
-[ProcessNode(Name = "ToggleButton")]
-public partial class ToggleButtonWrapper : ControlWrapperBase<ToggleButton>
+[ProcessNode]
+public abstract partial class ToggleButtonWrapperBase<T> : ControlWrapperBase<T> where T : ToggleButton, new()
 {
     [ImplementProperty("ToggleButton.ContentProperty", Order = -10)]
     protected Optional<object?> _content;
 
-    // TODO: REFACTOR
-    private ChannelFlange<bool> _isCheckedFlange = new ChannelFlange<bool>(false);
-    private IChannel<bool>? _isCheckedChannel;
-    public void SetIsCheckedChannel(IChannel<bool>? isCheckedChannel)
+    protected ChannelTwoWayBinding<bool, bool?> _isCheckedBinding;
+    protected ToggleButtonWrapperBase()
     {
-        if (_isCheckedChannel != isCheckedChannel)
-        {
-            _isCheckedChannel = isCheckedChannel;
-
-            if (isCheckedChannel != null)
-            {
-                _isCheckedFlange.Value = isCheckedChannel.Value;
-                _isCheckedFlange.Update(_isCheckedChannel);
-
-                _isCheckedChannel?.Subscribe(x => _output.SetValue(ToggleButton.IsCheckedProperty, x));
-                _output.IsCheckedChanged += IsCheckedChanged;
-
-                _output.SetValue(ToggleButton.IsCheckedProperty, _isCheckedFlange.Value);
-            }
-            else
-            {
-                _output.IsCheckedChanged -= IsCheckedChanged;
-            }
-        }
+        _isCheckedBinding = new(_output, ToggleButton.IsCheckedProperty, (x) => x, (y) => y ?? false);
     }
 
-    private void IsCheckedChanged(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        if (_isCheckedFlange != null)
-        {
-            _isCheckedFlange.Value = _output.IsChecked ?? false;
-            _isCheckedFlange.Update(_isCheckedChannel);
-        }
-    }
+    [Fragment(Order = -7)]
+    public void SetIsCheckedChannel(IChannel<bool> isCheckedChannel) =>
+        _isCheckedBinding.SetChannel(isCheckedChannel);
+
+    /// <param name="isThreeState">
+    /// Whether the control supports three states (checked, unchecked, and indeterminate)
+    /// </param>
+    [ImplementProperty("ToggleButton.IsThreeStateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _isThreeState;
+}
+
+/// <summary>
+/// The <c>ToggleButton</c> is a button control that can be toggled between checked and unchecked states. Unlike a regular button, it maintains its state after being clicked. It supports three states when IsThreeState is enabled: checked, unchecked, and indeterminate. This control serves as the base class for CheckBox and other toggleable controls.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/buttons/togglebutton">ToggleButton</see>
+/// </summary>
+[ProcessNode(Name = "ToggleButton")]
+public partial class ToggleButtonWrapper : ToggleButtonWrapperBase<ToggleButton>
+{
+
 }

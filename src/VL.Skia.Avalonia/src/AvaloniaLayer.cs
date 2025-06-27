@@ -16,7 +16,7 @@ namespace VL.Skia.Avalonia
     [ProcessNode(HasStateOutput = true, Name = "AvaloniaLayer", FragmentSelection = FragmentSelection.Explicit)]
     public sealed class AvaloniaLayer : ILayer, IDisposable
     {
-        private readonly AvaloniaRootImpl rootImpl;
+        private readonly GammaTopLevelImpl topLevelImpl;
         private readonly EmbeddableControlRoot controlRoot;
 
         [Fragment]
@@ -28,8 +28,8 @@ namespace VL.Skia.Avalonia
             AvaloniaInitializer.Init();
 
             var locator = AvaloniaLocator.Current;
-            rootImpl = new AvaloniaRootImpl(locator.GetRequiredService<Compositor>());
-            controlRoot = new EmbeddableControlRoot(rootImpl);
+            topLevelImpl = new GammaTopLevelImpl(locator.GetRequiredService<Compositor>());
+            controlRoot = new EmbeddableControlRoot(topLevelImpl);
 
             onSetupApplication?.Invoke(AvaloniaInitializer.Instance);
         }
@@ -82,17 +82,17 @@ namespace VL.Skia.Avalonia
         public RectangleF? Bounds => default;
         public bool Notify(INotification notification, CallerInfo caller)
         {
-            return rootImpl.Notify(notification, caller);
+            return topLevelImpl.Notify(notification, caller);
         }
         public void Render(CallerInfo caller)
         {
             if (!controlRoot.IsInitialized)
             {
-                rootImpl.ClientSize = caller.ViewportBounds.ToAvaloniaRect().Size;
+                topLevelImpl.ClientSize = caller.ViewportBounds.ToAvaloniaRect().Size;
                 controlRoot.Prepare();
                 controlRoot.StartRendering();
             }
-            rootImpl.Render(caller);
+            topLevelImpl.Render(caller);
 
             // TODO: this is a hack to trigger the render loop
             GammaRenderTimer.Instance.TriggerTick(TimeSpan.FromMilliseconds(16));

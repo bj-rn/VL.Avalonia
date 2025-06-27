@@ -43,10 +43,10 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
 
         public string? GenerateMethod(AttributeData attr, IFieldSymbol fieldSymbol, string fieldName)
         {
-            var t1 = attr.AttributeClass?.TypeArguments.ElementAtOrDefault(0)?.ToDisplayString();
-            var t2 = attr.AttributeClass?.TypeArguments.ElementAtOrDefault(1)?.ToDisplayString();
+            var tValue = attr.AttributeClass?.TypeArguments.ElementAtOrDefault(0)?.ToDisplayString();
+            var tProperty = attr.AttributeClass?.TypeArguments.ElementAtOrDefault(1)?.ToDisplayString();
 
-            var typeCast = t1 == null ? "" : $"({t1})";
+            var typeCast = tProperty == null ? "" : $"({tProperty})";
 
             var order = int.Parse(attr.NamedArguments.Where(x => x.Key == "Order").FirstOrDefault().Value.Value?.ToString() ?? "0");
             var pinVisibility = PinVisibilities[attr.NamedArguments.Where(x => x.Key == "PinVisibility").FirstOrDefault().Value.Value?.ToString() ?? "0"];
