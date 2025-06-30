@@ -16,7 +16,7 @@ public abstract partial class ToggleButtonWrapperBase<T> : ButtonWrapperBase<T> 
     protected ChannelTwoWayBinding<bool, bool?> _isCheckedBinding;
     protected ToggleButtonWrapperBase() : base()
     {
-        _isCheckedBinding = new(_output, ToggleButton.IsCheckedProperty, (x) => x, (y) => y ?? false);
+        _isCheckedBinding = new ChannelTwoWayBinding<bool, bool?>(_output, ToggleButton.IsCheckedProperty, (x) => x, (y) => y ?? false);
     }
 
     /// <param name="isCheckedChannel">
