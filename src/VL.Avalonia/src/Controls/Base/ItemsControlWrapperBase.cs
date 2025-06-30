@@ -29,7 +29,7 @@ public abstract partial class ItemsControlWrapperBase<TControl, TValue> : Contro
     /// The collection of items
     /// </param>
     protected Spread<TValue> _items;
-    [Fragment(Order = -5)]
+    [Fragment(Order = -10)]
     public virtual void SetItems(Spread<TValue> items) =>
          _itemsSourceBinding.SetItems(items);
 

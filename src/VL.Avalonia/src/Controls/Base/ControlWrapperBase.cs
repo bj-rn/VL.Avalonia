@@ -85,6 +85,12 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
 
     #region InputElement Properties
 
+    /// <param name="focusable">
+    /// Whether the control can receive keyboard focus
+    /// </param>
+    [ImplementProperty("Control.FocusableProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _focusable;
+
     /// <param name="isEnabled">
     /// Whether the control responds to user interaction
     /// </param>

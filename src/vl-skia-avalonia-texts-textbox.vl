@@ -77,14 +77,18 @@
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="Grid" />
             </p:NodeReference>
-            <Pin Id="TGaok5fEPzFPJ1BwEp0YEC" Name="Children" Kind="InputPin" />
             <Pin Id="H99Ad8oZIfyOOXahIQ3DO7" Name="Style" Kind="InputPin" />
+            <Pin Id="TGaok5fEPzFPJ1BwEp0YEC" Name="Children" Kind="InputPin" />
             <Pin Id="L21LApOHcwpOjwzk7C6uMT" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="GzGud4pMRGnPW6e6j1pZfk" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BnDZiWkua49NoqWJOOjrpk" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="OTBwPBPnHP3MucEsdvzmTw" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="HyxrwKbRYnJPEbby4q8H4Y" Name="Row Definitions" Kind="InputPin" />
             <Pin Id="J3ownK7QtMDOy8dLJ91tZ4" Name="Output" Kind="OutputPin" />
             <Pin Id="DfanQRoPnVpNzHh3gtD9B6" Name="Show Grid Lines" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KY79A7h2bJzNvBP1HlCL6R" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="ErvJRaaIngENmQpezCHJ8v" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NFlM0NUFKTVLHfNSenxozd" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="DaUfXBRmvCRL7gzLRaUoFv" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="185,710,124,19" Id="SOErwEX9WWUP4ptKibrPg6">
@@ -118,16 +122,18 @@
             </p:NodeReference>
             <Pin Id="SYK2tVOhoVYLfftuLInAuu" Name="Text Channel" Kind="InputPin" />
             <Pin Id="FTT7KalQqdFPlrTxYSezAK" Name="Style" Kind="InputPin" />
-            <Pin Id="DnZGBLfpt12NcTZfsvZe4V" Name="Classes" Kind="InputPin" IsHidden="true" />
-            <Pin Id="S6LWd6ftfeENmCo8pHk2m0" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="Q1YpOLmQ6s4Mj1g3fsJZv4" Name="Watermark" Kind="InputPin" />
             <Pin Id="UnRJB7c9kGKNH0amlv3zPH" Name="Use Floating Watermark" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DnZGBLfpt12NcTZfsvZe4V" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="S6LWd6ftfeENmCo8pHk2m0" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="B5GHqsoDvK9LKSbc1IuL0C" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="TWPQsZOBrHvOUIbOj8w2BI" Name="Is Read Only" Kind="InputPin" IsHidden="true" />
             <Pin Id="VggJeoR0hNzO9mQG396tH1" Name="Accepts Return" Kind="InputPin" IsHidden="true" />
             <Pin Id="Hc68FZaW4JwMss1wDx6MDP" Name="Accepts Tab" Kind="InputPin" IsHidden="true" />
             <Pin Id="G2TxbpNwfFmOpbf2xLmCla" Name="Password Char" Kind="InputPin" IsHidden="true" />
             <Pin Id="HsG01rejIvcP3R52GwhisB" Name="Reveal Password" Kind="InputPin" IsHidden="true" />
             <Pin Id="K3ipXjCa9p6P90QduHxs8v" Name="Max Length" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GfSMx8spoWbMo288kPYfLp" Name="Text Wrapping" Kind="InputPin" IsHidden="true" />
             <Pin Id="VqCb7iyUnuNPgmfgcKOkwj" Name="Max Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="GJIETjUEV3oOofXBUaeSyC" Name="Min Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="CprT9PQvUCPLx5VrdMYOrN" Name="New Line" Kind="InputPin" IsHidden="true" />
@@ -141,11 +147,9 @@
             <Pin Id="NebgMiUaML6PjrqoCCOF6H" Name="Inner Right Content" Kind="InputPin" IsHidden="true" />
             <Pin Id="IvPGPIgU5unNZXw7RDPEji" Name="Is Inactive Selection Highlight Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="RhlQO8ZJOkUOAaACmxRBpR" Name="Clear Selection On Lost Focus" Kind="InputPin" IsHidden="true" />
-            <Pin Id="ORfHd4iozDjMTzQC7e7OGT" Name="Can Cut" Kind="InputPin" IsHidden="true" />
-            <Pin Id="MBwA5EaLJZKPclpz37zrXv" Name="Can Copy" Kind="InputPin" IsHidden="true" />
-            <Pin Id="LwtYI0B5aRBPuJzUqXvejC" Name="Can Paste" Kind="InputPin" IsHidden="true" />
-            <Pin Id="B17iqFHMFBCNmtbJl9d48l" Name="Can Undo" Kind="InputPin" IsHidden="true" />
-            <Pin Id="DQcYS70LrjZPpxJRYwLZnb" Name="Can Redo" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ma5oFzVuocZOg8KaTQ0eh9" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="G2qwQAZOj8YL1NvL7vzxWL" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EuDswsvRpHQNk36aSQBJ1R" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="JxhiEGhCbbPMOa8oVBtu2L" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="RHUyH67vVVoLzatpAcFGqi" Name="Output" Kind="OutputPin" />
           </Node>
@@ -189,18 +193,20 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="StackPanel" />
             </p:NodeReference>
+            <Pin Id="OOv49vh11wGPlx0HAlEDpH" Name="Style" Kind="InputPin" />
             <Pin Id="NeMIXC5hHuFOUb4PPX6XCc" Name="Children" Kind="InputPin" />
             <Pin Id="IGWlkpH8qTQQOovLFjUlDZ" Name="Children 2" Kind="InputPin" />
             <Pin Id="EXRyZ0sAXeqM2bNAcOtzz0" Name="Children 3" Kind="InputPin" />
             <Pin Id="U7HpiTO2zK9PejF5LKcbRv" Name="Children 4" Kind="InputPin" />
-            <Pin Id="OOv49vh11wGPlx0HAlEDpH" Name="Style" Kind="InputPin" />
             <Pin Id="EI7PfzByqudQDDghTR0mSb" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="SCQIcO4gWZhNyT4qOPXNrD" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LRn4UMXVdOpLuUOdLhySwN" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Exp1RpEimUGL3BmrFQkC7w" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="OSfCOeahCH1L6TyrPujVK0" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="F4hhmAOUSLVOYcrHDbjfiV" Name="Orientation" Kind="InputPin" />
             <Pin Id="A3YyJP0HydOOoMuc99IgpX" Name="Spacing" Kind="InputPin" DefaultValue="20" />
             <Pin Id="Hp6DtQTOA46Mq71pSGFbQP" Name="Output" Kind="OutputPin" />
-            <Pin Id="LRn4UMXVdOpLuUOdLhySwN" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Exp1RpEimUGL3BmrFQkC7w" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GRnWlmQXDixLPO2bplub8y" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="CEpCSywwxgJMvkU7SyntpW" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="379,310,125,19" Id="RpEMTxJtbMpN7HE8gKOU85">
@@ -210,16 +216,18 @@
             </p:NodeReference>
             <Pin Id="IL1uiM1vr40MJEteBh6CzI" Name="Text Channel" Kind="InputPin" />
             <Pin Id="JJ0E7PiD1GeNhtwoW9dH5x" Name="Style" Kind="InputPin" />
-            <Pin Id="LDrtr4ctNezMomNZNrSS5A" Name="Classes" Kind="InputPin" IsHidden="true" />
-            <Pin Id="LRyeSs0s6WuNSh79oehTei" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="Ft22rt4Zsf2LMKpt1y1SLv" Name="Watermark" Kind="InputPin" />
             <Pin Id="NLUkRvRtJdbOXwnvXa4Wwi" Name="Use Floating Watermark" Kind="InputPin" DefaultValue="True" />
+            <Pin Id="LDrtr4ctNezMomNZNrSS5A" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LRyeSs0s6WuNSh79oehTei" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="R98WLS7LVRCLnQahvt4D1T" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="BSsHnFuP1zPN4P69t7WFKN" Name="Is Read Only" Kind="InputPin" IsHidden="true" />
             <Pin Id="AxK7R69mewOMrrWCNXy7TG" Name="Accepts Return" Kind="InputPin" IsHidden="true" />
             <Pin Id="OjxCYPvNZJTN4i54GikI1R" Name="Accepts Tab" Kind="InputPin" IsHidden="true" />
             <Pin Id="TMlLm2ixDmuLKvRVeWsNlQ" Name="Password Char" Kind="InputPin" DefaultValue="*" />
             <Pin Id="S4KwLopeqZuMHIjdQ4eqgW" Name="Reveal Password" Kind="InputPin" DefaultValue="False" />
             <Pin Id="PaapjlPolqyLzxpS3u2dW1" Name="Max Length" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AKZJjyR2ydZMuAtHM38T8O" Name="Text Wrapping" Kind="InputPin" IsHidden="true" />
             <Pin Id="H2jPqjf5LqhNZDXUwzONAD" Name="Max Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="L79aJVepqFxL03kLejEv75" Name="Min Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="DkU2TYrWhtcNYlNCUbohCF" Name="New Line" Kind="InputPin" IsHidden="true" />
@@ -233,11 +241,9 @@
             <Pin Id="NJJR4tT95ZwOf9jPGrPohM" Name="Inner Right Content" Kind="InputPin" />
             <Pin Id="ULykzVSFffzLKeEAbN2zLz" Name="Is Inactive Selection Highlight Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="AGslgTa9xTUN2ZydJQS5PM" Name="Clear Selection On Lost Focus" Kind="InputPin" IsHidden="true" />
-            <Pin Id="O3Yw6KIp6goPLNQBNPcdwJ" Name="Can Cut" Kind="InputPin" IsHidden="true" />
-            <Pin Id="JSRTP1BjMzjPuYTbhBmFFs" Name="Can Copy" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Ez65CDcl3hzNQxYSLuBpal" Name="Can Paste" Kind="InputPin" IsHidden="true" />
-            <Pin Id="JOwOpJENi44ODEdCxgDrbK" Name="Can Undo" Kind="InputPin" IsHidden="true" />
-            <Pin Id="C2QjX3ScoQrNJH0773uxjD" Name="Can Redo" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Kpru9QhR18iMkF0jfeE5Vs" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Te4BorboPKVLt2xOwAxMPz" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UOmetZ07QvZO4b8RATxUir" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="MY5XDR1SQIwMb5MvvoU1ah" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="JRSdWE2wELmLN6QyflAF7Y" Name="Output" Kind="OutputPin" />
           </Node>
@@ -270,10 +276,22 @@
             </p:NodeReference>
             <Pin Id="VC01NZcccquOKWB4t5ZOau" Name="Content" Kind="InputPin" />
             <Pin Id="SNmTqajSCccQGW27LVtYKf" Name="Style" Kind="InputPin" />
-            <Pin Id="HrxkOSyBSGyPDCpCTkQzss" Name="Classes" Kind="InputPin" IsHidden="true" />
-            <Pin Id="RnXe5IMESyENB00V2Rv41D" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UJVELTTWVU9OkL85juKbHo" Name="Command Channel" Kind="InputPin" />
             <Pin Id="IkxISUMMj3FQBkysF5VQI1" Name="Is Checked Channel" Kind="InputPin" />
             <Pin Id="PPkiwvO3QkNQKW46qkcwBc" Name="Output" Kind="OutputPin" />
+            <Pin Id="HrxkOSyBSGyPDCpCTkQzss" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RnXe5IMESyENB00V2Rv41D" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BBth6sUKiBML7cFDlK03hO" Name="Focusable" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VstTRwLfxMlPexq859v8g5" Name="Content Template" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GWAzzPFdootN76XJNF7Eig" Name="Horizontal Content Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="OhIha6i2W4oP06lCz0xIxG" Name="Vertical Content Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JMGL0WUAegXMvT10OcghTs" Name="Click Mode" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ssh73izNBGBMey0GoY1eUH" Name="Flyout" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Vh6r5xRBMB4NxCg2Okx3H3" Name="Hot Key" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PSZgycqmCsiNYfFkZpFC9T" Name="Is Three State" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CT43WKeURMaPiSmOXbXQJi" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TBUeNrmJIl4PkUJP3H9LaJ" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EdxW1kb2RuZO7neaTIQWMT" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="Q8shMRpJaRXP00RSlhDhRP" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="KpTfgaw2VmuLyaSTJN8Sxe" Comment="Content" Bounds="574,210,35,15" ShowValueBox="true" isIOBox="true" Value="X">
@@ -300,16 +318,18 @@
             </p:NodeReference>
             <Pin Id="ViTeh7AnbJLOz5Q3lmug5J" Name="Text Channel" Kind="InputPin" />
             <Pin Id="Gpvbsw1bFdvQWUhcHris1l" Name="Style" Kind="InputPin" />
-            <Pin Id="DQtmZImGuIoLsH0Sx84pvQ" Name="Classes" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NtZcZRgiSD2QF8QpOI5DD8" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="KWk4dNUNB5CO7Q3OHWWo8c" Name="Watermark" Kind="InputPin" />
             <Pin Id="Fjcu2OvVc5GOBXUwqh5UD9" Name="Use Floating Watermark" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DQtmZImGuIoLsH0Sx84pvQ" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NtZcZRgiSD2QF8QpOI5DD8" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KsfuL6xM6h3Ntz7dle3yCw" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="TErOU1n2QYTLzJzwB5y2AJ" Name="Is Read Only" Kind="InputPin" IsHidden="true" />
             <Pin Id="Bd1uVRvGaQmPGnEqAYCJmB" Name="Accepts Return" Kind="InputPin" DefaultValue="True" />
             <Pin Id="SapseYvDKwpPcyONKCSnPe" Name="Accepts Tab" Kind="InputPin" IsHidden="true" />
             <Pin Id="A7yZhTFyE6KNgzxibtDxw3" Name="Password Char" Kind="InputPin" IsHidden="true" />
             <Pin Id="GhbDYWJJyKTOH4futuSsJR" Name="Reveal Password" Kind="InputPin" IsHidden="true" />
             <Pin Id="KcxPBYW5kicLyqSk9U2llF" Name="Max Length" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ah6FsGAY3WcNg1dKpcyb8p" Name="Text Wrapping" Kind="InputPin" IsHidden="true" />
             <Pin Id="MdE47b9UkyILBcEBX2pxRW" Name="Max Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="KtOqkI44QFSNMheFc1Zn86" Name="Min Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="PKjMJOVdbpBQXKO1UGzJwY" Name="New Line" Kind="InputPin" IsHidden="true" />
@@ -323,11 +343,9 @@
             <Pin Id="Ps8WWPiBu5RLcD1jd7rJze" Name="Inner Right Content" Kind="InputPin" IsHidden="true" />
             <Pin Id="AgKzG0BqLcRLUb22jcegLd" Name="Is Inactive Selection Highlight Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="RUzA8vlxDqoLCgekDv5GOb" Name="Clear Selection On Lost Focus" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Jz7apSh9G52NpMdu9EIPz5" Name="Can Cut" Kind="InputPin" IsHidden="true" />
-            <Pin Id="QmVrA6ur9KcLDl4NSlh4lW" Name="Can Copy" Kind="InputPin" IsHidden="true" />
-            <Pin Id="FCbbaghuOWiP0J2IekUf5E" Name="Can Paste" Kind="InputPin" IsHidden="true" />
-            <Pin Id="LWceY5BzjzKNyGHC1MwHG0" Name="Can Undo" Kind="InputPin" IsHidden="true" />
-            <Pin Id="J0OgrkN1KC8M4bFrv6trZ3" Name="Can Redo" Kind="InputPin" IsHidden="true" />
+            <Pin Id="N8EK9St6IVZOvTy4PSL6wj" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CXUxe1zcEKiL2qiymCAgj3" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JLDl5ReRUQdOmO7klhZAyU" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="KQruV3ytDdfMDymdBzDcT0" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="UnQdYgbScZsMv62uXeEdFX" Name="Output" Kind="OutputPin" />
           </Node>
@@ -391,16 +409,18 @@
             </p:NodeReference>
             <Pin Id="PdCOWlwR1Q9OVelKWki6kP" Name="Text Channel" Kind="InputPin" />
             <Pin Id="SdgZhk3RcfoLJjTERG9CSk" Name="Style" Kind="InputPin" />
-            <Pin Id="EkDUaPosWuHOkID0BLtX6D" Name="Classes" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Nm13AH0qSSZMzQZPlpdiHR" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="KmJMDkGpZ33PsrJTXFmgQM" Name="Watermark" Kind="InputPin" />
             <Pin Id="PdCyOPJGpnuOrZaLN3vhqG" Name="Use Floating Watermark" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EkDUaPosWuHOkID0BLtX6D" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Nm13AH0qSSZMzQZPlpdiHR" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="FXY4Z36paM9O1CQCUjaZkG" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="JFr7NCHb5RnLSwNyOl8Mxd" Name="Is Read Only" Kind="InputPin" IsHidden="true" />
             <Pin Id="MvzbdgwqsArPfnyRTT7DpY" Name="Accepts Return" Kind="InputPin" DefaultValue="True" />
             <Pin Id="KcF9LY2IgSFM5iEKDSmKsh" Name="Accepts Tab" Kind="InputPin" IsHidden="true" />
             <Pin Id="LdWuus9yD1nLafB1ilNuAN" Name="Password Char" Kind="InputPin" IsHidden="true" />
             <Pin Id="Oo34fjraZPGQB8VpotxujP" Name="Reveal Password" Kind="InputPin" IsHidden="true" />
             <Pin Id="RWXf46ihdvgOmmOQSe5YVr" Name="Max Length" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TFCifONTOkfOEgHwEQdZ60" Name="Text Wrapping" Kind="InputPin" IsHidden="true" />
             <Pin Id="KYPs3ADVXr3NCsBIretLPc" Name="Max Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="MUVnSJVoHuVPfXh6c2yjRM" Name="Min Lines" Kind="InputPin" IsHidden="true" />
             <Pin Id="AN0oB26JfD4MXnkjIhog9e" Name="New Line" Kind="InputPin" IsHidden="true" />
@@ -414,11 +434,9 @@
             <Pin Id="TCrpKwY8dNNPiJbFgHxWpi" Name="Inner Right Content" Kind="InputPin" IsHidden="true" />
             <Pin Id="Th3rnFTtbWeOctU7kO8zJU" Name="Is Inactive Selection Highlight Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="Vsrona4xQzwPte63y9OHxX" Name="Clear Selection On Lost Focus" Kind="InputPin" IsHidden="true" />
-            <Pin Id="JCetBiErb3gPLBMUFRSY1L" Name="Can Cut" Kind="InputPin" IsHidden="true" />
-            <Pin Id="CML1MfzbBuqMpkhQaTgxBs" Name="Can Copy" Kind="InputPin" IsHidden="true" />
-            <Pin Id="S0j7wkHxWU0NqyWp6CUesD" Name="Can Paste" Kind="InputPin" IsHidden="true" />
-            <Pin Id="TKsqbjflU9QPoVx5CU4OXM" Name="Can Undo" Kind="InputPin" IsHidden="true" />
-            <Pin Id="FA0Rq2MVLf9QLcpcsQOlf7" Name="Can Redo" Kind="InputPin" IsHidden="true" />
+            <Pin Id="ThfMiaDd9gPOQncW8ndR2W" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DzRD5NAp93qPq0dtCkOUjY" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HqhzE17Ig7mL2ERXM59TvK" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="N1Sis4AnKeWLhdHzDRpHzA" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="UXhUJcKDUTdQIu1GPKNBhH" Name="Output" Kind="OutputPin" />
           </Node>
