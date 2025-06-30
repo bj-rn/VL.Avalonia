@@ -1,5 +1,4 @@
-﻿using Avalonia.Controls;
-using Avalonia.Input;
+﻿using Avalonia.Input;
 
 namespace VL.Avalonia.Controls;
 
@@ -15,6 +14,6 @@ public static class ControlExtensions
     /// <param name="method"></param>
     /// <param name="keyModifiers"></param>
     /// <returns></returns>
-    public static void Focus(this Control? input, NavigationMethod method = NavigationMethod.Unspecified, KeyModifiers keyModifiers = KeyModifiers.None) =>
+    public static void Focus(this InputElement? input, NavigationMethod method = NavigationMethod.Unspecified, KeyModifiers keyModifiers = KeyModifiers.None) =>
         input?.Focus(method, keyModifiers);
 }

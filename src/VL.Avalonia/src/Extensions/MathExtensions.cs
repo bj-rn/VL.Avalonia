@@ -34,4 +34,10 @@ public static class MathExtensions
             rect.Width,
             rect.Height
         );
+
+    public static Vector2 FromVector(this Vector vector) =>
+        new Vector2((float)vector.X, (float)vector.Y);
+
+    public static Vector ToVector(this Vector2 vector) =>
+        new Vector((double)vector.X, (double)vector.Y);
 }
