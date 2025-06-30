@@ -25,10 +25,10 @@ public abstract partial class ItemsControlWrapperBase<TControl, TValue> : Contro
         _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<TValue>(_output, ItemsControl.ItemsSourceProperty);
     }
 
+    protected Spread<TValue> _items;
     /// <param name="items">
     /// The collection of items
     /// </param>
-    protected Spread<TValue> _items;
     [Fragment(Order = -10)]
     public virtual void SetItems(Spread<TValue> items) =>
          _itemsSourceBinding.SetItems(items);
