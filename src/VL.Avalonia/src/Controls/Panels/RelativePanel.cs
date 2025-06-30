@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Attributes;
 
 using VL.Core;
 using VL.Core.Import;
@@ -7,18 +6,26 @@ using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
+/// <summary>
+/// The <c>RelativePanel</c> arranges its children by specifying their positions relative to each other or to the panel itself. Each child may use attached properties to align to or position itself beside other children, or to the edges or center of the panel. This allows for flexible, constraint-based layouts similar to those found in UWP or WinUI.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/relativepanel">RelativePanel</see>
+/// </summary>
 [ProcessNode(Name = "RelativePanel (Spectral)")]
-public partial class RelativePanelWrapperSpectral : ControlWrapperBase<RelativePanel>
+public partial class RelativePanelWrapperSpectral : PanelWrapperBase<RelativePanel>
 {
-    [ImplementChildren]
-    protected Spread<Control?> _children;
+
 }
 
+/// <summary>
+/// <inheritdoc cref="RelativePanelWrapperSpectral"/>
+/// </summary>
 [ProcessNode(Name = "RelativePanel")]
 public partial class RelativePanelWrapper : RelativePanelWrapperSpectral
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control?> _children;
+    /// <inheritdoc cref="SetChildren(Spread{Control})"/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }
 
 /// <summary>

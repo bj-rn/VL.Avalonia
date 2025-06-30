@@ -1,43 +1,40 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 
-namespace VL.Avalonia.Controls.Panels;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
-/// A panel that displays child controls at arbitrary locations.
+/// The <c>Canvas</c> panel allows absolute positioning of child controls via attached coordinates. Each child can specify its location using Canvas.Left, Canvas.Top, Canvas.Right, and Canvas.Bottom attached properties. Canvas is ideal for scenarios requiring manual placement, drawing, or overlays.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/canvas">Canvas</see>
 /// </summary>
-/// <remarks>
-/// Unlike other <see cref="Panel"/> implementations, the <see cref="Canvas"/> doesn't lay out
-/// its children in any particular layout. Instead, the positioning of each child control is
-/// defined by the <c>Canvas.Left</c>, <c>Canvas.Top</c>, <c>Canvas.Right</c>
-/// and <c>Canvas.Bottom</c> attached properties.
-/// </remarks>
 [ProcessNode(Name = "Canvas (Spectral)")]
-public partial class CanvasSpectralWrapper : ControlWrapperBase<Canvas>
+public partial class CanvasSpectralWrapper : PanelWrapperBase<Canvas>
 {
-    [ImplementChildren]
-    protected Spread<Control?> _children;
 }
 
 /// <inheritdoc cref="CanvasSpectralWrapper"/>
 [ProcessNode(Name = "Canvas")]
 public partial class CanvasWrapper : CanvasSpectralWrapper
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control?> _children;
+    /// <inheritdoc cref="SetChildren(Spread{Control})"/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }
 
 /// <summary>
-/// Canvas Left AttachedProperty. 
 /// Defines the Left attached property.
+/// Attached Property Canvas
 /// </summary>
 [ProcessNode(Name = "Left (Canvas)")]
 public partial class CanvasLeftProperty : AttachedPropertyBase
 {
     private Optional<float> _left;
+    /// <param name="left">
+    /// (Attached) The distance from the left edge of the Canvas to the child's left edge (NaN for unset).
+    /// </param>
     public void SetLeft(Optional<float> left)
     {
         if (_left != left)
@@ -61,13 +58,16 @@ public partial class CanvasLeftProperty : AttachedPropertyBase
 }
 
 /// <summary>
-/// Canvas Right AttachedProperty. 
 /// Defines the Right attached property.
+/// Attached Property Canvas
 /// </summary>
 [ProcessNode(Name = "Right (Canvas)")]
 public partial class CanvasRightProperty : AttachedPropertyBase
 {
     private Optional<float> _right;
+    /// <param name="right">
+    /// (Attached) The distance from the right edge of the Canvas to the child's right edge (NaN for unset).
+    /// </param>
     public void SetRight(Optional<float> right)
     {
         if (_right != right)
@@ -91,13 +91,16 @@ public partial class CanvasRightProperty : AttachedPropertyBase
 }
 
 /// <summary>
-/// Canvas Top AttachedProperty. 
 /// Defines the Top attached property.
+/// Attached Property Canvas
 /// </summary>
 [ProcessNode(Name = "Top (Canvas)")]
 public partial class CanvasTopProperty : AttachedPropertyBase
 {
     private Optional<float> _top;
+    /// <param name="top">
+    /// (Attached) The distance from the top edge of the Canvas to the child's top edge (NaN for unset).
+    /// </param>
     public void SetTop(Optional<float> top)
     {
         if (_top != top)
@@ -121,13 +124,16 @@ public partial class CanvasTopProperty : AttachedPropertyBase
 }
 
 /// <summary>
-/// Canvas Bottom AttachedProperty. 
 /// Defines the Bottom attached property.
+/// Attached Property Canvas
 /// </summary>
 [ProcessNode(Name = "Bottom (Canvas)")]
 public partial class CanvasBottomProperty : AttachedPropertyBase
 {
     private Optional<float> _bottom;
+    /// <param name="bottom">
+    /// (Attached) The distance from the bottom edge of the Canvas to the child's bottom edge (NaN for unset).
+    /// </param>
     public void SetBottom(Optional<float> bottom)
     {
         if (_bottom != bottom)

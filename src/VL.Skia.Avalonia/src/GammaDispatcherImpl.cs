@@ -45,7 +45,7 @@ namespace VL.Skia.Avalonia
         }
 
         private void OnTimerTick(object? state)
-            => _synchronizationContext?.Post(_invokeTimer, null);
+            => _synchronizationContext.Post(_invokeTimer, null);
 
 
         public void Signal() =>
