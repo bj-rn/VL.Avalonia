@@ -16,7 +16,7 @@ public partial class ToggleSplitButtonWrapper : SplitButtonWrapperBase<ToggleSpl
     #region Toggle State Properties
 
     protected ChannelTwoWayBinding<bool, bool?> _isCheckedBinding;
-    protected ToggleSplitButtonWrapper()
+    public ToggleSplitButtonWrapper() : base()
     {
         _isCheckedBinding = new(_output, ToggleButton.IsCheckedProperty, (x) => x, (y) => y ?? false);
     }
