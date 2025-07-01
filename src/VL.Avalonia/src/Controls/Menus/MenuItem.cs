@@ -26,13 +26,13 @@ public partial class MenuItemWrapper : MenuItemSpectralWrapper
 }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
-[ProcessNode(Name = "MenuItem (Spectral Advanced)")]
+[ProcessNode(Name = "MenuItem (Spectral Advanced Experimental)")]
 public partial class MenuItemSpectralWrapper<T> : MenuItemWrapperBase<T>
 {
 }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
-[ProcessNode(Name = "MenuItem (Advanced)")]
+[ProcessNode(Name = "MenuItem (Advanced Experimental)")]
 public partial class MenuItemWrapper<T> : MenuItemSpectralWrapper<T>
 {
     /// <param name="items">

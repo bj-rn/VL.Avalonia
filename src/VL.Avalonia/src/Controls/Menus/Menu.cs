@@ -29,13 +29,13 @@ public partial class MenuWrapper : MenuSpectralWrapper
 }
 
 /// <inheritdoc cref="MenuSpectralWrapper"/>
-[ProcessNode(Name = "Menu (Spectral Advanced)")]
+[ProcessNode(Name = "Menu (Spectral Advanced Experimental)")]
 public partial class MenuSpectralAdvancedWrapper<T> : MenuBaseWrapper<Menu, T>
 {
 }
 
 /// <inheritdoc cref="MenuSpectralWrapper"/>
-[ProcessNode(Name = "Menu (Advanced)")]
+[ProcessNode(Name = "Menu (Advanced Experimental)")]
 public partial class MenuAdvancedWrapper<T> : MenuSpectralAdvancedWrapper<T>
 {
     [Fragment(Order = PinOrder.Main)]
