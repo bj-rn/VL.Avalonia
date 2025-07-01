@@ -66,19 +66,25 @@ public partial class DockPanelDock : AttachedPropertyBase
         if (_dock != dock)
         {
             _dock = dock;
+
             UpdateSetters();
         }
     }
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_dock.HasValue)
         {
             DockPanel.SetDock(_input.Value, _dock.Value);
         }
         else
         {
-            _input.Value.ClearValue(DockPanel.DockProperty);
+            _input.Value?.ClearValue(DockPanel.DockProperty);
         }
     }
 }

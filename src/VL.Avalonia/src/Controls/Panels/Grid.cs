@@ -172,6 +172,11 @@ public partial class GridRowProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_row.HasValue)
         {
             Grid.SetRow(_input.Value, _row.Value);
@@ -202,6 +207,11 @@ public partial class GridRowSpanProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_rowSpan.HasValue)
         {
             Grid.SetRowSpan(_input.Value, _rowSpan.Value);
@@ -233,6 +243,11 @@ public partial class GridColumnProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_column.HasValue)
         {
             Grid.SetColumn(_input.Value, _column.Value);
@@ -263,6 +278,11 @@ public partial class GridColumnSpanProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_columnSpan.HasValue)
         {
             Grid.SetColumnSpan(_input.Value, _columnSpan.Value);
@@ -297,6 +317,11 @@ public partial class GridIsSharedSizeScopeProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_isSharedSizeScope.HasValue)
         {
             Grid.SetIsSharedSizeScope(_input.Value, _isSharedSizeScope.Value);

@@ -46,6 +46,11 @@ public partial class CanvasLeftProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_left.HasValue)
         {
             Canvas.SetLeft(_input.Value, (double)_left.Value);
@@ -79,6 +84,11 @@ public partial class CanvasRightProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_right.HasValue)
         {
             Canvas.SetRight(_input.Value, (double)_right.Value);
@@ -112,6 +122,11 @@ public partial class CanvasTopProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_top.HasValue)
         {
             Canvas.SetTop(_input.Value, (double)_top.Value);
@@ -145,6 +160,11 @@ public partial class CanvasBottomProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_bottom.HasValue)
         {
             Canvas.SetBottom(_input.Value, (double)_bottom.Value);

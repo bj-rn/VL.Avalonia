@@ -17,16 +17,16 @@ public abstract partial class SelectingItemsControlWrapperBase<TControl, TValue>
 {
     #region Core Selection Properties
 
-    protected ChannelTwoWayBinding<TValue?, object?> _selectedValueBinding;
+    protected ChannelTwoWayBinding<TValue, object?> _selectedValueBinding;
     public SelectingItemsControlWrapperBase()
     {
-        _selectedValueBinding = new(_output, SelectingItemsControl.SelectedItemProperty, (x) => (object?)x, (x) => (TValue?)x);
+        _selectedValueBinding = new ChannelTwoWayBinding<TValue, object?>(_output, SelectingItemsControl.SelectedItemProperty, (x) => (object?)x, (x) => (TValue?)x);
     }
 
     /// <param name="selectedValue">
     /// The value of the selected item, obtained using SelectedValueBinding
     /// </param>
-    public virtual void SetSelectedValueChannel(IChannel<TValue?> selectedValueChannel) =>
+    public virtual void SetSelectedValueChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<TValue> selectedValueChannel) =>
         _selectedValueBinding.SetChannel(selectedValueChannel);
 
     #endregion

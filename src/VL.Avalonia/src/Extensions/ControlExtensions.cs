@@ -1,4 +1,5 @@
-﻿using Avalonia.Input;
+﻿using Avalonia.Controls;
+using Avalonia.Input;
 
 namespace VL.Avalonia.Controls;
 
@@ -16,4 +17,10 @@ public static class ControlExtensions
     /// <returns></returns>
     public static void Focus(this InputElement? input, NavigationMethod method = NavigationMethod.Unspecified, KeyModifiers keyModifiers = KeyModifiers.None) =>
         input?.Focus(method, keyModifiers);
+
+    /// <param name="result">
+    /// Whether the menu is currently open.
+    /// </param>
+    public static void IsOpen(this MenuBase? menu, out bool result) =>
+        result = menu?.IsOpen ?? false;
 }

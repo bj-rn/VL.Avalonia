@@ -13,13 +13,13 @@ namespace VL.Avalonia.Controls;
 public abstract class TooltipWrapperBase<T> where T : Control
 {
     protected readonly ToolTip _output = new ToolTip();
-    protected T? _input;
+    protected T _input;
     [Fragment(Order = -10)]
     public void SetInput(T? input)
     {
         if (_input != input)
         {
-            _input?.ClearValue(ToolTip.TipProperty);
+            _input.ClearValue(ToolTip.TipProperty);
 
             _input = input;
 
@@ -275,6 +275,11 @@ public partial class TooltipWrapper<T> : TooltipWrapperBase<T> where T : Control
 
     protected override void UpdateSetters()
     {
+        if (_input == null)
+        {
+            return;
+        }
+
         UpdatePlacement();
         UpdateHorizontalOffset();
         UpdateVerticalOffset();
