@@ -8,6 +8,7 @@ namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// Implements styling, classes, name
+/// PseudoClasses :open
 /// </summary>
 [ProcessNode]
 public abstract class TooltipWrapperBase<T> where T : Control

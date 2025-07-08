@@ -38,6 +38,9 @@ public partial class MenuSpectralAdvancedWrapper<T> : MenuBaseWrapper<Menu, T>
 [ProcessNode(Name = "Menu (Advanced Experimental)")]
 public partial class MenuAdvancedWrapper<T> : MenuSpectralAdvancedWrapper<T>
 {
+    /// <param name="items">
+    /// The collection of items
+    /// </param>
     [Fragment(Order = PinOrder.Main)]
     public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items)
     {
