@@ -1,92 +1,85 @@
-﻿using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
+﻿using Avalonia.Collections;
+using Avalonia.Controls;
+using Avalonia.Layout;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
-using VL.Lib.Reactive;
-using static VL.Avalonia.Styles;
+using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
-[ProcessNode(Name = "SliderPrototype")]
-public partial class SliderWrapper : ControlWrapperBase<Slider>
+/// <summary>
+/// A control that lets the user select from a range of values by moving a Thumb control along a Track.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/slider">Slider</see>
+/// <br/>PseudoClasses: :vertical, :horizontal, :pressed
+/// <br/>TemplateParts: PART_DecreaseButton, PART_IncreaseButton, PART_Track
+/// </summary>
+[ProcessNode(Name = "Slider")]
+public partial class SliderWrapper : RangeBaseWrapper<Slider>
 {
-    [ImplementOutput]
-    private readonly Slider _output = new Slider();
+    #region Orientation
 
-    [ImplementStyle]
-    private Optional<IAvaloniaStyle> _style;
+    /// <param name="orientation">
+    /// Sets the orientation of a Slider
+    /// </param>
+    [ImplementProperty("Slider.OrientationProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<Orientation> _orientation;
 
-    [ImplementClasses]
-    protected Optional<string> _classes;
+    /// <param name="isDirectionReversed">
+    /// Sets the direction of increasing value.
+    /// true if the direction of increasing value is to the left for a horizontal slider or
+    /// down for a vertical slider; otherwise, false. The default is false.
+    /// </param>
+    [ImplementProperty("Slider.IsDirectionReversedProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<bool> _isDirectionReversed;
 
-    // Wonder how to Observable to channel
-    //private IChannel<float>? _valueChannel;
-    //public IChannel<float>? ValueChannel
-    //{
-    //    private get => _valueChannel;
-    //    set
-    //    {
-    //        if (_valueChannel != value)
-    //        {
-    //            value = _valueChannel;
+    #endregion
 
-    //            if (value != null)
-    //            {
-    //                _output.Bind(Slider.ValueProperty, );
-    //            }
+    #region Ticks
 
-    //        }
-    //    }
-    //}
+    /// <param name="isSnapToTickEnabled">
+    /// Sets a value that indicates whether the Slider automatically moves the Thumb to the closest tick mark.
+    /// </param>
+    [ImplementProperty("Slider.IsSnapToTickEnabledProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<bool> _isSnapToTickEnabled;
 
-    // First approach
-    //private IChannel<float>? _valueChannel;
-    //public void SetValueChannel(IChannel<float>? valueChannel)
-    //{
-    //    if (_valueChannel != valueChannel)
-    //    {
-    //        _valueChannel = valueChannel;
-    //        _valueChannel?.Subscribe((x) =>
-    //        {
-    //            _output.SetValue(Slider.ValueProperty, _valueChannel?.Value ?? 0);
-    //        });
+    /// <param name="tickFrequency">
+    /// Sets the interval between tick marks.
+    /// </param>
+    [ImplementProperty("Slider.TickFrequencyProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<float> _tickFrequency;
 
-    //        _output.SetValue(Slider.ValueProperty, _valueChannel?.Value ?? 0);
-    //    }
-    //}
-    //private IChannel<float>? ValueChannel => _valueChannel;
+    /// <param name="tickPlacement">
+    /// Sets a value that indicates where to draw 
+    /// tick marks in relation to the track.
+    /// </param>
+    [ImplementProperty("Slider.TickPlacementProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<TickPlacement> _tickPlacement;
 
 
-    public IChannel<float>? ValueChannel { private get; set; }
-    ChannelFlange<float> _valueFlange = new ChannelFlange<float>(0.0f);
 
-
-    [ImplementOptional<Slider>(nameof(Slider.MinimumProperty))]
-    private Optional<float> _minimum;
-
-    [ImplementOptional<Slider>(nameof(Slider.MaximumProperty))]
-    private Optional<float> _maximum;
-
-
-    [Fragment(IsHidden = true)]
-    public void SetupVLDefaults()
+    private Optional<Spread<float>> _ticks;
+    /// <param name="ticks">
+    /// Defines the ticks to be drawn on the tick bar.
+    /// </param>
+    public void SetTicks([Pin(Visibility = Model.PinVisibility.Optional)] Optional<Spread<float>> ticks)
     {
-        _output.SetValue(RangeBase.MinimumProperty, 0.0);
-        _output.SetValue(RangeBase.MaximumProperty, 1.0);
-    }
-
-    public SliderWrapper()
-    {
-        SetupVLDefaults();
-
-        _output.ValueChanged += (s, a) =>
+        if (_ticks != ticks)
         {
-            _valueFlange.Value = (float)a.NewValue;
-            _valueFlange.Update(ValueChannel);
+            if (ticks.HasValue && ticks.Value.Count > 0)
+            {
+                var list = new AvaloniaList<double>(ticks.Value.Select(x => (double)x));
 
-            _output.UpdateLayout();
-            // ValueChannel?.OnNext((float)a.NewValue);
-        };
+                _output.SetValue(Slider.TicksProperty, list);
+            }
+            else
+            {
+                _output.ClearValue(Slider.TicksProperty);
+            }
+
+            _ticks = ticks;
+        }
     }
+
+    #endregion
 }
