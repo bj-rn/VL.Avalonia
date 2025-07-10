@@ -35,6 +35,8 @@ public partial class ImageWrapper : ControlWrapperBase<Image>
             {
                 _output.ClearValue(Image.SourceProperty);
             }
+
+            _source = source;
         }
     }
 
