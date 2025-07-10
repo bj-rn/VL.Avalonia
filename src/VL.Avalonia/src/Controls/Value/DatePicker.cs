@@ -30,7 +30,7 @@ public partial class DatePickerWrapper : ControlWrapperBase<DatePicker>
     /// Selected Date for the picker, can be null
     /// </param>
     [Fragment(Order = PinOrder.Main)]
-    public void SetValueChannel(IChannel<DateTime?> selectedDateChannel) =>
+    public void SetSelectedDateChannel(IChannel<DateTime?> selectedDateChannel) =>
         _selectedDateBinding.SetChannel(selectedDateChannel);
 
     #endregion
