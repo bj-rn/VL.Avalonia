@@ -10,8 +10,8 @@ namespace VL.Avalonia.Controls.Value;
 /// <summary>
 /// The TimePicker has two or three 'spinner' controls to allow the user to pick a time value. The time picker can work in 24 or 12 hour formats. The picker controls display when the control is clicked.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/timepicker">Slider</see>
-/// <br/>PseudoClasses: :hasnotime
-/// <br/>TemplateParts: "PART_FirstColumnDivider", PART_FirstPickerHost", PART_FlyoutButton", PART_FlyoutButtonContentGrid", PART_HourTextBlock", PART_MinuteTextBlock", PART_SecondTextBlock", PART_PeriodTextBlock", PART_PickerPresenter", PART_Popup", PART_SecondColumnDivider", PART_SecondPickerHost",  PART_ThirdColumnDivider", PART_ThirdPickerHost", PART_FourthPickerHost". 
+/// <br/><br/>PseudoClasses: :hasnotime
+/// <br/><br/>TemplateParts: "PART_FirstColumnDivider", PART_FirstPickerHost", PART_FlyoutButton", PART_FlyoutButtonContentGrid", PART_HourTextBlock", PART_MinuteTextBlock", PART_SecondTextBlock", PART_PeriodTextBlock", PART_PickerPresenter", PART_Popup", PART_SecondColumnDivider", PART_SecondPickerHost",  PART_ThirdColumnDivider", PART_ThirdPickerHost", PART_FourthPickerHost". 
 /// </summary>
 [ProcessNode(Name = "TimePicker")]
 public partial class TimePickerWrapper : ControlWrapperBase<TimePicker>

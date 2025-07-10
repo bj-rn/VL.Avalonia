@@ -104,6 +104,7 @@ public class ChannelTwoWayBinding<TValue, TProperty> : ChannelTwoWayBindingBase<
 /// <typeparam name="TControl"></typeparam>
 /// <typeparam name="TValue"></typeparam>
 /// <typeparam name="TProperty"></typeparam>
+[Obsolete]
 public class ChannelTwoWayBinding<TControl, TValue, TProperty> : ChannelTwoWayBindingBase<TControl, TProperty, TProperty> where TControl : AvaloniaObject
 {
     protected Action<TControl, AvaloniaProperty<TProperty>, TProperty?> _propertySetter = (control, property, value) => control.SetValue(property, value);

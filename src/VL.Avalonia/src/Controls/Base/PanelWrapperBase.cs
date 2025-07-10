@@ -32,8 +32,14 @@ public abstract partial class PanelWrapperBase<T> : ControlWrapperBase<T> where 
                 if (child is Control control)
                 {
                     // TODO: Handle VisualParent
-
-                    _output.Children.Add(control);
+#if DEBUG
+                    if (control.Parent == null)
+                    {
+#endif
+                        _output.Children.Add(control);
+#if DEBUG
+                    }
+#endif
                 }
             }
         }

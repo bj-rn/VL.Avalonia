@@ -10,8 +10,8 @@ namespace VL.Avalonia.Controls;
 /// <summary>
 /// The DatePicker has three 'spinner' controls to allow the user to pick a date value. The spinners display when the control is clicked.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/datepicker">Slider</see>
-/// <br/>PseudoClasses: :hasnodate
-/// <br/>TemplateParts: PART_ButtonContentGrid, PART_DayTextBlock, PART_FirstSpacer, PART_FlyoutButton, PART_MonthTextBlock, PART_PickerPresenter, PART_Popup, PART_SecondSpacer, PART_YearTextBlock
+/// <br/><br/>PseudoClasses: :hasnodate
+/// <br/><br/>TemplateParts: PART_ButtonContentGrid, PART_DayTextBlock, PART_FirstSpacer, PART_FlyoutButton, PART_MonthTextBlock, PART_PickerPresenter, PART_Popup, PART_SecondSpacer, PART_YearTextBlock
 /// </summary>
 [ProcessNode(Name = "DatePicker")]
 public partial class DatePickerWrapper : ControlWrapperBase<DatePicker>
