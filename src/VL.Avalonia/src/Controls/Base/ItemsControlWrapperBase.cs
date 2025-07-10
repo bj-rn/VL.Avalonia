@@ -13,7 +13,6 @@ namespace VL.Avalonia.Controls;
 /// The <c>ItemsControl</c> is a base control for displaying collections of data items. It provides the foundation for controls like ListBox, ComboBox, Menu, and TreeView by managing item templates, containers, and data binding. The control can display items from any IEnumerable source and provides extensive customization through templates and styling.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/itemscontrol">ItemsControl</see>
 /// </summary>
-/// <summary>
 [ProcessNode]
 public abstract partial class ItemsControlWrapperBase<TControl, TValue> : ControlWrapperBase<TControl> where TControl : ItemsControl, new()
 {
@@ -25,14 +24,13 @@ public abstract partial class ItemsControlWrapperBase<TControl, TValue> : Contro
         _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<TValue>(_output, ItemsControl.ItemsSourceProperty);
     }
 
+    protected Spread<TValue> _items;
     /// <param name="items">
     /// The collection of items
     /// </param>
-    protected Spread<TValue> _items;
-    [Fragment(Order = -5)]
+    [Fragment(Order = PinOrder.Main)]
     public virtual void SetItems(Spread<TValue> items) =>
          _itemsSourceBinding.SetItems(items);
-
 
     /// <param name="itemTemplate">
     /// The template used to display each item in the collection

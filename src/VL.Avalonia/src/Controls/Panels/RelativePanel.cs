@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Attributes;
 
 using VL.Core;
 using VL.Core.Import;
@@ -7,18 +6,26 @@ using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
+/// <summary>
+/// The <c>RelativePanel</c> arranges its children by specifying their positions relative to each other or to the panel itself. Each child may use attached properties to align to or position itself beside other children, or to the edges or center of the panel. This allows for flexible, constraint-based layouts similar to those found in UWP or WinUI.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/relativepanel">RelativePanel</see>
+/// </summary>
 [ProcessNode(Name = "RelativePanel (Spectral)")]
-public partial class RelativePanelWrapperSpectral : ControlWrapperBase<RelativePanel>
+public partial class RelativePanelWrapperSpectral : PanelWrapperBase<RelativePanel>
 {
-    [ImplementChildren]
-    protected Spread<Control?> _children;
+
 }
 
+/// <summary>
+/// <inheritdoc cref="RelativePanelWrapperSpectral"/>
+/// </summary>
 [ProcessNode(Name = "RelativePanel")]
 public partial class RelativePanelWrapper : RelativePanelWrapperSpectral
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control?> _children;
+    /// <inheritdoc cref="SetChildren(Spread{Control})"/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }
 
 /// <summary>
@@ -40,6 +47,11 @@ public partial class RelativePanelRightOfProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_rightOf.HasValue)
         {
             RelativePanel.SetRightOf(_input.Value, _rightOf.Value);
@@ -69,6 +81,11 @@ public partial class RelativePanelLeftOfProperty : AttachedPropertyBase
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_leftOf.HasValue)
         {
             RelativePanel.SetLeftOf(_input.Value, _leftOf.Value);
@@ -99,6 +116,11 @@ public partial class RelativePanelAboveProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_above.HasValue)
         {
             RelativePanel.SetAbove(_input.Value, _above.Value);
@@ -129,6 +151,11 @@ public partial class RelativePanelBelowProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_below.HasValue)
         {
             RelativePanel.SetBelow(_input.Value, _below.Value);
@@ -158,6 +185,11 @@ public partial class RelativePanelAlignLeftWithProperty : AttachedPropertyBase
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignLeftWith.HasValue)
         {
             RelativePanel.SetAlignLeftWith(_input.Value, _alignLeftWith.Value);
@@ -187,6 +219,11 @@ public partial class RelativePanelAlignRightWithProperty : AttachedPropertyBase
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignRightWith.HasValue)
         {
             RelativePanel.SetAlignRightWith(_input.Value, _alignRightWith.Value);
@@ -216,6 +253,11 @@ public partial class RelativePanelAlignTopWith : AttachedPropertyBase
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignTopWith.HasValue)
         {
             RelativePanel.SetAlignTopWith(_input.Value, _alignTopWith.Value);
@@ -245,6 +287,11 @@ public partial class RelativePanelAlignBottomWith : AttachedPropertyBase
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignBottomWith.HasValue)
         {
             RelativePanel.SetAlignBottomWith(_input.Value, _alignBottomWith.Value);
@@ -274,6 +321,11 @@ public partial class RelativePanelAlignHorizontalCenterWith : AttachedPropertyBa
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignHorizontalCenterWith.HasValue)
         {
             RelativePanel.SetAlignHorizontalCenterWith(_input.Value, _alignHorizontalCenterWith.Value);
@@ -303,6 +355,11 @@ public partial class RelativePanelAlignVerticalCenterWith : AttachedPropertyBase
     }
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignVerticalCenterWith.HasValue)
         {
             RelativePanel.SetAlignVerticalCenterWith(_input.Value, _alignVerticalCenterWith.Value);
@@ -333,6 +390,11 @@ public partial class RelativePanelAlignTopWithPanel : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignTopWithPanel.HasValue)
         {
             RelativePanel.SetAlignTopWithPanel(_input.Value, _alignTopWithPanel.Value);
@@ -363,6 +425,11 @@ public partial class RelativePanelAlignBottomWithPanel : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignBottomWithPanel.HasValue)
         {
             RelativePanel.SetAlignBottomWithPanel(_input.Value, _alignBottomWithPanel.Value);
@@ -393,6 +460,11 @@ public partial class RelativePanelAlignLeftWithPanel : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignLeftWithPanel.HasValue)
         {
             RelativePanel.SetAlignLeftWithPanel(_input.Value, _alignLeftWithPanel.Value);
@@ -423,6 +495,11 @@ public partial class RelativePanelAlignRightWithPanel : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignRightWithPanel.HasValue)
         {
             RelativePanel.SetAlignRightWithPanel(_input.Value, _alignRightWithPanel.Value);
@@ -453,6 +530,11 @@ public partial class RelativePanelAlignHorizontalCenterWithPanel : AttachedPrope
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignHorizontalCenterWithPanel.HasValue)
         {
             RelativePanel.SetAlignHorizontalCenterWithPanel(_input.Value, _alignHorizontalCenterWithPanel.Value);
@@ -483,6 +565,11 @@ public partial class RelativePanelAlignVerticalCenterWithPanel : AttachedPropert
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_alignVerticalCenterWithPanel.HasValue)
         {
             RelativePanel.SetAlignVerticalCenterWithPanel(_input.Value, _alignVerticalCenterWithPanel.Value);

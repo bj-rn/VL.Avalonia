@@ -6,13 +6,17 @@ using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
+/// <summary>
+/// The <c>Grid</c> provides a flexible area of rows and columns for arranging child controls. It is the most powerful layout panel in Avalonia, supporting complex arrangements, spanning, and proportional sizing (“star” sizing). Grid supports attached properties for placing and spanning children, spacing properties, and visual debugging with grid lines.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/grid">Grid</see>
+/// </summary>
 [ProcessNode(Name = "Grid (Spectral)")]
-public partial class GridSpectralWrapper : ControlWrapperBase<Grid>
+public partial class GridSpectralWrapper : PanelWrapperBase<Grid>
 {
-    [ImplementChildren]
-    protected Spread<Control?> _children;
-
     protected Spread<ColumnDefinition?> _columnDefinitions = Spread<ColumnDefinition?>.Empty;
+    /// <param name="columnDefinitions">
+    /// Sets Grid Column Definitions
+    /// </param>
     public void SetColumnDefinitions(Spread<ColumnDefinition?> columnDefinitions)
     {
         if (_columnDefinitions != columnDefinitions)
@@ -30,7 +34,9 @@ public partial class GridSpectralWrapper : ControlWrapperBase<Grid>
             _output.ColumnDefinitions = cd;
         }
     }
-
+    /// <summary>
+    /// Sets Grid Row Definitions
+    /// </summary>
     protected Spread<RowDefinition?> _rowDefinitions = Spread<RowDefinition?>.Empty;
     public void SetRowDefinitions(Spread<RowDefinition?> rowDefinitions)
     {
@@ -49,15 +55,36 @@ public partial class GridSpectralWrapper : ControlWrapperBase<Grid>
         }
     }
 
+    /// <param name="showGridLines">
+    /// Show visual grid lines for debugging layout (not intended for production use)
+    /// </param>
     [ImplementProperty("Grid.ShowGridLinesProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _showGridLines;
+
+    /*
+    * NOT IMPLEMENTED ON 11.2.1
+    * 
+    /// <param name="rowSpacing">
+    /// The amount of space in device-independent pixels between grid rows
+    /// </param>
+    [ImplementProperty("Grid.RowSpacingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<double> _rowSpacing;
+
+    /// <param name="columnSpacing">
+    /// The amount of space in device-independent pixels between grid columns
+    /// </param>
+    [ImplementProperty("Grid.ColumnSpacingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<double> _columnSpacing;
+    */
 }
 
 [ProcessNode(Name = "Grid")]
 public partial class GridWrapper : GridSpectralWrapper
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control> _children = Spread<Control>.Empty;
+    /// <inheritdoc cref="SetChildren(Spread{Control})"/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }
 
 [ProcessNode(Name = "ColumnDefinition")]
@@ -145,6 +172,11 @@ public partial class GridRowProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_row.HasValue)
         {
             Grid.SetRow(_input.Value, _row.Value);
@@ -175,6 +207,11 @@ public partial class GridRowSpanProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_rowSpan.HasValue)
         {
             Grid.SetRowSpan(_input.Value, _rowSpan.Value);
@@ -206,6 +243,11 @@ public partial class GridColumnProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_column.HasValue)
         {
             Grid.SetColumn(_input.Value, _column.Value);
@@ -236,6 +278,11 @@ public partial class GridColumnSpanProperty : AttachedPropertyBase
 
     protected override void UpdateSetters()
     {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
         if (_columnSpan.HasValue)
         {
             Grid.SetColumnSpan(_input.Value, _columnSpan.Value);
@@ -243,6 +290,45 @@ public partial class GridColumnSpanProperty : AttachedPropertyBase
         else
         {
             _input.Value.ClearValue(Grid.ColumnSpanProperty);
+        }
+    }
+}
+
+/// <summary>
+/// Whether this element is the root of a shared size scope for column/row sizing
+/// Grid Attached Property
+/// </summary>
+[ProcessNode(Name = "IsSharedSizeScope (Grid)")]
+public partial class GridIsSharedSizeScopeProperty : AttachedPropertyBase
+{
+    protected Optional<bool> _isSharedSizeScope;
+    /// <param name="isSharedSizeScope">
+    /// (Attached) Whether this element is the root of a shared size scope for column/row sizing
+    /// </param>
+    public void SetIsSharedSizeScope(Optional<bool> isSharedSizeScope)
+    {
+        if (_isSharedSizeScope != isSharedSizeScope)
+        {
+            _isSharedSizeScope = isSharedSizeScope;
+
+            UpdateSetters();
+        }
+    }
+
+    protected override void UpdateSetters()
+    {
+        if (_input.HasNoValue)
+        {
+            return;
+        }
+
+        if (_isSharedSizeScope.HasValue)
+        {
+            Grid.SetIsSharedSizeScope(_input.Value, _isSharedSizeScope.Value);
+        }
+        else
+        {
+            _input.Value.ClearValue(Grid.IsSharedSizeScopeProperty);
         }
     }
 }

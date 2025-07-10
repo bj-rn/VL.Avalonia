@@ -16,6 +16,8 @@ public class ChannelSpreadToItemsSourceBinding<T> : IDisposable
     {
         if (_items != items)
         {
+            _items = items;
+
             _channel.OnNext(items);
         }
     }

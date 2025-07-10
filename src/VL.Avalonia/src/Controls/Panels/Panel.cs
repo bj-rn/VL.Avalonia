@@ -1,28 +1,24 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Layout;
-using VL.Avalonia.Attributes;
-using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
+/// <summary>
+/// The <c>Panel</c> is a base class for all controls that can contain multiple child elements. It provides a flexible container for arranging, measuring, and rendering groups of controls. Common panel types include StackPanel, Grid, DockPanel, and Canvas. Panels are fundamental to Avalonia's layout system, supporting custom arrangement and backgrounds.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/panel">Panel</see>
+/// </summary>
 [ProcessNode(Name = "Panel (Spectral)")]
-public partial class PanelSpectralWrapper : ControlWrapperBase<Panel>
+public partial class PanelSpectralWrapper : PanelWrapperBase<Panel>
 {
-    [ImplementChildren]
-    protected Spread<Control?> _children;
-
-    [ImplementProperty("Panel.HorizontalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<HorizontalAlignment> _horizontalAlignment;
-
-    [ImplementProperty("Panel.VerticalAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
-    protected Optional<VerticalAlignment> _verticalAlignment;
 }
 
+/// <inheritdoc cref="PanelSpectralWrapper"/>
 [ProcessNode(Name = "Panel")]
 public partial class PanelWrapper : PanelSpectralWrapper
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control?> _children;
+    /// <inheritdoc/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }

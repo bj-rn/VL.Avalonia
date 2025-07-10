@@ -23,7 +23,7 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
     protected ChannelTwoWayBinding<bool> _isDropDownOpenBinding;
     public ComboBoxSpectralWrapper() : base()
     {
-        _isDropDownOpenBinding = new(_output, ComboBox.IsDropDownOpenProperty);
+        _isDropDownOpenBinding = new ChannelTwoWayBinding<bool>(_output, ComboBox.IsDropDownOpenProperty);
     }
 
     /// <param name="isDropDownOpenChannel">
@@ -110,6 +110,7 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
     #endregion
 }
 
+/// <inheritdoc cref="ComboBoxSpectralWrapper{T}"/>
 [ProcessNode(Name = "ComboBox")]
 public partial class ComboBoxWrapper<T> : ComboBoxSpectralWrapper<T>
 {

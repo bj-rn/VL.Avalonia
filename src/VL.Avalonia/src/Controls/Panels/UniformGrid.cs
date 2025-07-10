@@ -5,32 +5,32 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 
-namespace VL.Avalonia.Controls.Panels;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
-/// The UniformGrid divides the available space evenly in both directions, into cells. You can specify how many divisions to use, and these can be different in either direction.
+/// The <c>UniformGrid</c> arranges its children in a grid where all cells are the same size. You can specify the number of rows, columns, and the starting column for the first row. It also allows setting spacing between rows and columns. If rows or columns are set to 0, UniformGrid will automatically calculate the optimal count to fit all children.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/uniformgrid">UniformGrid</see>
 /// </summary>
 [ProcessNode(Name = "UniformGrid (Spectral)")]
-public partial class UniformGridSpectralWrapper : ControlWrapperBase<UniformGrid>
+public partial class UniformGridSpectralWrapper : PanelWrapperBase<UniformGrid>
 {
-    [ImplementChildren]
-    protected Spread<Control?> _children;
+    #region Layout Properties
 
-    /// <summary>
-    /// Specifies the column count. If set to 0, column count will be calculated automatically.
-    /// </summary>
-    [ImplementProperty("UniformGrid.ColumnsProperty")]
-    protected Optional<int> _columns;
-
-    /// <summary>
-    /// Specifies the row count. If set to 0, row count will be calculated automatically.
-    /// </summary>
-    [ImplementProperty("UniformGrid.RowsProperty")]
+    /// <param name="rows">
+    /// The number of rows in the grid. If set to 0, the row count is calculated automatically.
+    /// </param>
+    [ImplementProperty("UniformGrid.RowsProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<int> _rows;
 
-    /// <summary>
-    /// Specifies, for the first row, the column where the items should start.
-    /// </summary>
+    /// <param name="columns">
+    /// The number of columns in the grid. If set to 0, the column count is calculated automatically.
+    /// </param>
+    [ImplementProperty("UniformGrid.ColumnsProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<int> _columns;
+
+    /// <param name="firstColumn">
+    /// The starting column for the first row of items. Default is 0.
+    /// </param>
     [ImplementProperty("UniformGrid.FirstColumnProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<int> _firstColumn;
 
@@ -50,11 +50,15 @@ public partial class UniformGridSpectralWrapper : ControlWrapperBase<UniformGrid
     [ImplementProperty("UniformGrid.ColumnSpacingProperty")]
     protected Optional<float> _columnSpacing;
     */
+
+    #endregion
 }
 
 [ProcessNode(Name = "UniformGrid")]
 public partial class UniformGridWrapper : UniformGridSpectralWrapper
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control?> _children;
+    /// <inheritdoc cref="SetChildren(Spread{Control})"/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }

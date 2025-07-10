@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="385, 365, 616, 439" IsHidden="true" />
+            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="-1042, 359, 616, 439" IsHidden="true" />
             <Pin Id="OhUk0lcXRfZPS1pGZZQXFi" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="Crih6r1mjYkP4zxje5Ginm" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="EMAaVQMVNf2MIIhNQanTL4" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -82,11 +82,17 @@
             <Pin Id="Rt7EgnJjwUVMcfb4l3wYdX" Name="Children" Kind="InputPin" />
             <Pin Id="T0ONOXEnYsfLIqcsa61xMm" Name="Style" Kind="InputPin" />
             <Pin Id="Kq7fxspVUX9NaiecCNq9mq" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KSzAITZe7IsO1PDhLvC0av" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AhcvKnZmQbBMP6nZGhlDFz" Name="Focusable" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GYVOLKOUoxHO9d5AwGuaEQ" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="HnKevmXjUbZQDdHjJsVwDx" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="TCCMY6OiBLHPEY07CvobZk" Name="Output" Kind="OutputPin" />
             <Pin Id="IeXTnNY8DlBLAK6nmMUQTk" Name="Row Definitions" Kind="InputPin" />
-            <Pin Id="KSzAITZe7IsO1PDhLvC0av" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="S8zTx8IgWE8QWKJsjlS5ii" Name="Show Grid Lines" Kind="InputPin" />
+            <Pin Id="UTftfcMBNbQOyW1eLes2XA" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KEVG3OsddD7NKxKx78teni" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JOM1psXUmnoLlbS24PAoyv" Name="Z Index" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QOcLk6ClJURP4bK4KVaWGd" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="102,450,45,19" Id="SQcNJD8ohYTLZL7Z2hDTYR">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
@@ -123,10 +129,20 @@
             <Pin Id="DgnJU1hWWK8Nm0HjlFkPlG" Name="Content" Kind="InputPin" />
             <Pin Id="E3oFHeQMbsYQBjWoRqlq84" Name="Style" Kind="InputPin" />
             <Pin Id="PlTZab5NOulNXKrc3N08FE" Name="Output" Kind="OutputPin" />
-            <Pin Id="O4Krdp8Rg1hOMwnAmY7pmY" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="Dz2BGSXcNDJO9rxVAh6iWu" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="O4Krdp8Rg1hOMwnAmY7pmY" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GVDGuadaPgPLqMChbBDeaP" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="A4AX3xXEwt5NrRccCQx0GC" Name="Focusable" Kind="InputPin" IsHidden="true" />
+            <Pin Id="JQEy3EaElYhLkHxGQ6rKdm" Name="Content Template" Kind="InputPin" IsHidden="true" />
+            <Pin Id="OYzjrMxWNpCPVLAuZR83ow" Name="Horizontal Content Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Psppa5RJGOqPSVv2MG16sK" Name="Vertical Content Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="VsXaBNBKtyaOSuKciPgSjc" Name="Click Mode" Kind="InputPin" />
-            <Pin Id="QLUkiNqXDjBQGhlyUV3uZs" Name="Enabled" Kind="InputPin" />
+            <Pin Id="VBUli1LwTF6LqZMjKPqlsh" Name="Flyout" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Aw2B1bePv84OkT8OGlny27" Name="Hot Key" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QbKzcgcF3NtPFllWilVCuh" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MVNucEam6iuOEhNwlEa1Zd" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TVDaJp3ri74LbQ68Rir59C" Name="Z Index" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DLn2XvoJ664QOTOaSBtcCQ" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="N2QQr01rkasPuLgAl2mCPk" Comment="Content" Bounds="-43,200,35,15" ShowValueBox="true" isIOBox="true" Value="sup">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -156,11 +172,17 @@
             <Pin Id="Qz32dnkDO3zMa6Kw9EjEuK" Name="Children" Kind="InputPin" />
             <Pin Id="Moj9htRllCpONO9p2NWapc" Name="Style" Kind="InputPin" />
             <Pin Id="VDmzArhEYkaOo9bFLoneKl" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AFkhKaObfIQQY9q2bSamHs" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Js1BaPsUYwDPvl0LrqF15j" Name="Focusable" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RkHXqfXUNyJNqLjukm3fBY" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="RGVXv7YkOLqMIfPR3EpTUq" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="LmO5HyrKG5GPPdSHBaVtnL" Name="Row Definitions" Kind="InputPin" />
             <Pin Id="NkSN7HwKJAaPo7oXWm94iX" Name="Output" Kind="OutputPin" />
-            <Pin Id="AFkhKaObfIQQY9q2bSamHs" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="CGthjIPDhfqO39iJJPQ8o2" Name="Show Grid Lines" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IXLW1PliC0IL5XtYU3WflW" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QEibJgx3X9GNzUiLJNZsB4" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PKpN4IwpXPLPCoZ12yae1a" Name="Z Index" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UFZqjzZKFv2OoKhUOC8b0K" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="321,101,84,19" Id="TakzoHrpdgQL1yZXUXgZ6u">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
@@ -192,11 +214,17 @@
             <Pin Id="FqB9IMnuLZSLzMG5sfDue2" Name="Children" Kind="InputPin" />
             <Pin Id="SbiwTICYUDZOH7cHxMviXd" Name="Style" Kind="InputPin" />
             <Pin Id="Jp5RMayIO9tMJ90glpA0NP" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="F8ucyhVhPmyQLj7LmOXAvM" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BY7etXRaeNDPAA4p1lfN9w" Name="Focusable" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NIGo6YyLfnRNPr5YxEZPwJ" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="APZYJIvgnzgNEoSruSkyWo" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="HlwAZ4P3lucQANCeT33cli" Name="Row Definitions" Kind="InputPin" />
             <Pin Id="HBBWvdeGQAwPCsLV1jjLxW" Name="Output" Kind="OutputPin" />
-            <Pin Id="F8ucyhVhPmyQLj7LmOXAvM" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="Sh4DFfa2RdyNFIFLijaXCM" Name="Show Grid Lines" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LqV53ts5QBxQW8nYMj7BOc" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QYNoqMqUW1gN6IiJKZ8CuB" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MlLNt5dMOAGOnfKpXVbK5H" Name="Z Index" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UGYHX1T2y3TQbGvp3tbxPe" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="158,70,84,19" Id="PdKp9A9VrbkNw6FX3mLkfp">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">

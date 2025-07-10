@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
@@ -20,7 +21,7 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     public T Output => _output;
 
     protected Optional<IAvaloniaStyle> _style;
-    [Fragment(Order = -4)]
+    [Fragment(Order = -9)]
     /// <param name="style">
     /// Style Setters
     /// </param>
@@ -57,6 +58,28 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
 
     #endregion
 
+    #region Focus Context Properties
+
+    /// <param name="focusAdorner">
+    /// Template for a visual adorner shown when the control is focused.
+    /// </param>
+    [ImplementProperty("Control.FocusAdornerProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<ITemplate<Control>> _focusAdorner;
+
+    /// <param name="contextMenu">
+    /// The context menu shown for this control (ContextMenu).
+    /// </param>
+    [ImplementProperty("Control.ContextMenuProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<ContextMenu> _contextMenu;
+
+    /// <param name="contextFlyout">
+    /// The context flyout shown for this control (FlyoutBase).
+    /// </param>
+    [ImplementProperty("Control.ContextFlyoutProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<FlyoutBase> _contextFlyout;
+
+    #endregion
+
     #region Layoutable Properties
 
     /// <param name="horizontalAlignment">
@@ -84,6 +107,12 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     #endregion
 
     #region InputElement Properties
+
+    /// <param name="focusable">
+    /// Whether the control can receive keyboard focus
+    /// </param>
+    [ImplementProperty("Control.FocusableProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _focusable;
 
     /// <param name="isEnabled">
     /// Whether the control responds to user interaction

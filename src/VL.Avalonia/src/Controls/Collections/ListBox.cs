@@ -37,7 +37,7 @@ public partial class ListBoxSpectralWrapper<T> : SelectingItemsControlWrapperBas
 
     #endregion
 }
-/// <inheritdoc path="ListBoxSpectralWrapper"/>
+/// <inheritdoc cref="ListBoxSpectralWrapper{T}"/>
 [ProcessNode(Name = "ListBox")]
 public partial class ListBoxWrapper<T> : ListBoxSpectralWrapper<T>
 {
