@@ -9,7 +9,6 @@ class ImplementProperty : Attribute
 {
     public string PropertyPath { get; }
     public int Order { get; set; }
-
     public Model.PinVisibility PinVisibility { get; set; }
 
     public ImplementProperty(string propertyPath)

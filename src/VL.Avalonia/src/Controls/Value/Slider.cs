@@ -56,8 +56,6 @@ public partial class SliderWrapper : RangeBaseWrapper<Slider>
     [ImplementProperty("Slider.TickPlacementProperty", PinVisibility = Model.PinVisibility.Optional)]
     private Optional<TickPlacement> _tickPlacement;
 
-
-
     private Optional<Spread<float>> _ticks;
     /// <param name="ticks">
     /// Defines the ticks to be drawn on the tick bar.
