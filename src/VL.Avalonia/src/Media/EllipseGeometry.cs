@@ -46,6 +46,7 @@ public partial class EllipseGeometryWrapper : GeometryWrapperBase<EllipseGeometr
             {
                 _output.ClearValue(EllipseGeometry.CenterProperty);
             }
+
             _center = center;
         }
     }
@@ -58,6 +59,9 @@ public partial class EllipseGeometryWrapper : GeometryWrapperBase<EllipseGeometr
         {
             if (rect.HasValue)
             {
+                // TODO: 
+                // _output = new EllipseGeometry(Rect)
+
                 _output.SetValue(EllipseGeometry.RectProperty, rect.Value.ToRect());
             }
             else

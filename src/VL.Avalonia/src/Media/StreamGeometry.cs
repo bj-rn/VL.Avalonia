@@ -16,9 +16,9 @@ public partial class StreamGeometryWrapper : GeometryWrapperBase<StreamGeometry>
     {
         if (_data != data)
         {
-            if (_data.HasValue)
+            if (data.HasValue)
             {
-                _output = StreamGeometry.Parse(_data.Value);
+                _output = StreamGeometry.Parse(data.Value);
             }
 
             _data = data;

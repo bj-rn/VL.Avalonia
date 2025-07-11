@@ -11,27 +11,6 @@ namespace VL.Avalonia.Media;
 [ProcessNode(Name = "RectangleGeometry")]
 public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeometry>
 {
-    protected Optional<Vector2> _radius;
-    /// <param name="radius">Sets a Vector2 that defines the radius in the XY-axis of the box.</param>
-    public void SetRadius(Optional<Vector2> radius)
-    {
-        if (_radius != radius)
-        {
-            if (radius.HasValue)
-            {
-                _output.SetValue(EllipseGeometry.RadiusXProperty, radius.Value.X);
-                _output.SetValue(EllipseGeometry.RadiusYProperty, radius.Value.Y);
-            }
-            else
-            {
-                _output.ClearValue(EllipseGeometry.RadiusXProperty);
-                _output.ClearValue(EllipseGeometry.RadiusYProperty);
-            }
-
-            _radius = radius;
-        }
-    }
-
     protected Optional<RectangleF> _rect;
     /// <param name="rect">Sets a rect that defines the bounds</param>
     public void SetRect(Optional<RectangleF> rect)
@@ -40,14 +19,35 @@ public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeo
         {
             if (rect.HasValue)
             {
-                _output.SetValue(EllipseGeometry.RectProperty, rect.Value.ToRect());
+                _output.SetValue(RectangleGeometry.RectProperty, rect.Value.ToRect());
             }
             else
             {
-                _output.ClearValue(EllipseGeometry.RectProperty);
+                _output.ClearValue(RectangleGeometry.RectProperty);
             }
 
             _rect = rect;
+        }
+    }
+
+    protected Optional<Vector2> _radius;
+    /// <param name="radius">Sets a rounded corners that defines the radius in the XY-axis of the box.</param>
+    public void SetRadius(Optional<Vector2> radius)
+    {
+        if (_radius != radius)
+        {
+            if (radius.HasValue)
+            {
+                _output.SetValue(RectangleGeometry.RadiusXProperty, radius.Value.X);
+                _output.SetValue(RectangleGeometry.RadiusYProperty, radius.Value.Y);
+            }
+            else
+            {
+                _output.ClearValue(RectangleGeometry.RadiusXProperty);
+                _output.ClearValue(RectangleGeometry.RadiusYProperty);
+            }
+
+            _radius = radius;
         }
     }
 }
