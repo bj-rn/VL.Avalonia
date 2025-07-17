@@ -3,6 +3,7 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Helpers
 {
+    [Obsolete]
     public class ChannelBinding<T> : INotifyPropertyChanged
     {
         private T _value;

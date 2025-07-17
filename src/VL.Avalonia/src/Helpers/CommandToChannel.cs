@@ -4,6 +4,7 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Helpers;
 
+[Obsolete]
 public class ChannelCommand<T> : ICommand
 {
     public IChannel<T>? Channel { get; set; }

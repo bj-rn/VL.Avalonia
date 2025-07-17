@@ -21,7 +21,7 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     public T Output => _output;
 
     protected Optional<IAvaloniaStyle> _style;
-    [Fragment(Order = -9)]
+    [Fragment(Order = PinOrder.Style)]
     /// <param name="style">
     /// Style Setters
     /// </param>
@@ -40,7 +40,7 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     /// <param name="classes">
     /// Collection of CSS-like class names for styling purposes
     /// </param>
-    [Fragment(Order = -3)]
+    [Fragment(Order = PinOrder.Style)]
     public void SetClasses([Pin(Visibility = Model.PinVisibility.Optional)] Optional<string> classes)
     {
         if (_classes != classes)
@@ -53,7 +53,7 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     /// <param traget="name">
     /// Sets name of control
     /// </param>
-    [ImplementProperty("Control.NameProperty", Order = -2, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty("Control.NameProperty", Order = PinOrder.Style, PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<string> _name;
 
     #endregion
