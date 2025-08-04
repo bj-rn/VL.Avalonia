@@ -136,6 +136,51 @@ namespace VL.Skia.Avalonia
         }
 
 
+        internal bool SendNotification(INotification notification, Point position)
+        {
+
+            if (InputRoot is null || Input is not { } input)
+            {
+                return false;
+            }
+
+            var e = default(RawInputEventArgs);
+
+            if (notification is KeyCodeNotification keyCode)
+            {
+                _inputModifiers = keyCode.KeyData.ToModifier();
+            }
+            if (notification is MouseButtonNotification m)
+            {
+                if (m.Kind == MouseNotificationKind.MouseDown)
+                    _inputModifiers |= m.Buttons.ToModifier();
+                else if (m.Kind == MouseNotificationKind.MouseUp)
+                    _inputModifiers ^= m.Buttons.ToModifier();
+            }
+
+
+            if (notification is KeyDownNotification keyDown)
+                input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyDown, keyDown.KeyData.ToKey(), _inputModifiers, keyDown.KeyData.ToPhysicalKey(), keyDown.KeyData.ToKeySymbol()));
+            else if (notification is KeyUpNotification keyUp)
+                input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyUp, keyUp.KeyData.ToKey(), _inputModifiers, keyUp.KeyData.ToPhysicalKey(), keyUp.KeyData.ToKeySymbol()));
+            else if (notification is KeyPressNotification keyPress && !char.IsControl(keyPress.KeyChar))
+                input(e = new RawTextInputEventArgs(KeyboardDevice, Timestamp, InputRoot, keyPress.KeyChar.ToString()));
+            else if (notification is MouseDownNotification mouseDown)
+                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), position, _inputModifiers));
+            else if (notification is MouseUpNotification mouseUp)
+                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseUp.Buttons.ToEventType(true), position, _inputModifiers));
+            else if (notification is MouseMoveNotification mouseMove)
+                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position, _inputModifiers));
+            else if (notification is MouseWheelNotification mouseWheel)
+                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position, new Vector(mouseWheel.WheelDelta, 0), _inputModifiers));
+
+            if (e != null)
+                return e.Handled;
+
+            return false;
+
+        }
+
         public Action<Rect>? Paint { get; set; }
 
         public Action<Size, WindowResizeReason>? Resized { get; set; }
@@ -225,6 +270,11 @@ namespace VL.Skia.Avalonia
         {
             // throws 
             return null;
+        }
+
+        internal bool SendNotification(INotification notification, bool v1, bool v2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
