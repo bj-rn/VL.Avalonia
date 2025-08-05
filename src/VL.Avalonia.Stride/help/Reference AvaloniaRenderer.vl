@@ -401,7 +401,7 @@
               <Choice Kind="ProcessAppFlag" Name="SceneWindow" />
             </p:NodeReference>
             <Pin Id="H1qLI6bWxJTQT9vmuQudn4" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="ApSYzibvKF3PmeNGOauYJr" Name="Bounds" Kind="InputPin" DefaultValue="854.2222, 28.88889, 851.55554, 890.2222" IsHidden="true" />
+            <Pin Id="ApSYzibvKF3PmeNGOauYJr" Name="Bounds" Kind="InputPin" DefaultValue="1332.6666, 332, 851.3333, 890" IsHidden="true" />
             <Pin Id="V7TyfKLBGUwOItpz1E0Vxo" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="DGqvAtKjr6tMPDsXejbJFZ" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
             <Pin Id="QwFBXkbMfPeLv5qr9U0Ca3" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
@@ -599,15 +599,6 @@
             <Pin Id="Rqhf8FtMy2hOTLTwpIp8rE" Name="State Output" Kind="OutputPin" IsHidden="true" />
             <Pin Id="VYl4Rm0xx7DPTOyc59nxW2" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="RAosrgfCGvpLnIXzlNOom9" Bounds="1179,1230,331,252" ShowValueBox="true" isIOBox="true" Value="Click in the Window and:&#xD;&#xA;- Click and Drag the mouse to change the view&#xD;&#xA;&#xD;&#xA;Keyboard Shortcuts:&#xD;&#xA;- F2 for PerfMeter&#xD;&#xA;- F3 for Profiler&#xD;&#xA;- F4 for debug view&#xD;&#xA;- Press F11 or ALT + Enter to toggle fullscreen&#xD;&#xA;&#xD;&#xA;When Profiler enabled:&#xD;&#xA;- F5 Cycle through: FPS only, CPU, or GPU&#xD;&#xA;- F6 Toggle sort by name or time&#xD;&#xA;- F7/F8 Increase/decrease results page">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="CoreLibBasics.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">9</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
           <Pad Id="GqPEkQjNyG8LSq2wEAWOMX" Comment="Color" Bounds="424,1292,136,15" ShowValueBox="true" isIOBox="true" Value="0.55000025, 0.55000025, 0.55000025, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="RGBA" />
