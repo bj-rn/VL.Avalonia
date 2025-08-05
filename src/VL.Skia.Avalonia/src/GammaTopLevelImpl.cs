@@ -90,6 +90,8 @@ namespace VL.Skia.Avalonia
         public IKeyboardDevice KeyboardDevice { get; } = GammaDevices.KeyboardDevice;
         public IMouseDevice MouseDevice { get; }
 
+        // not sure about it being private. did it this way becaus that's how it is handled in Estragonia
+        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L24
         private readonly TouchDevice _touchDevice;
 
         public IInputRoot InputRoot { get; set; }
@@ -99,50 +101,29 @@ namespace VL.Skia.Avalonia
         public void SetInputRoot(IInputRoot inputRoot)
            => InputRoot = inputRoot;
 
+
         internal bool Notify(INotification notification, CallerInfo caller)
         {
-            if (InputRoot is null || Input is not { } input)
-            {
-                return false;
-            }
+            var position = new Point(0, 0);
 
-            var e = default(RawInputEventArgs);
+            if (notification is NotificationWithPosition n)
+                position = n.Position.ToPoint();
 
-            if (notification is KeyCodeNotification keyCode)
-            {
-                _inputModifiers = keyCode.KeyData.ToModifier();
-            }
-            if (notification is MouseButtonNotification m)
-            {
-                if (m.Kind == MouseNotificationKind.MouseDown)
-                    _inputModifiers |= m.Buttons.ToModifier();
-                else if (m.Kind == MouseNotificationKind.MouseUp)
-                    _inputModifiers ^= m.Buttons.ToModifier();
-            }
-
-            if (notification is KeyDownNotification keyDown)
-                input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyDown, keyDown.KeyData.ToKey(), _inputModifiers, keyDown.KeyData.ToPhysicalKey(), keyDown.KeyData.ToKeySymbol()));
-            else if (notification is KeyUpNotification keyUp)
-                input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyUp, keyUp.KeyData.ToKey(), _inputModifiers, keyUp.KeyData.ToPhysicalKey(), keyUp.KeyData.ToKeySymbol()));
-            else if (notification is KeyPressNotification keyPress && !char.IsControl(keyPress.KeyChar))
-                input(e = new RawTextInputEventArgs(KeyboardDevice, Timestamp, InputRoot, keyPress.KeyChar.ToString()));
-            else if (notification is MouseDownNotification mouseDown)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), mouseDown.Position.ToPoint(), _inputModifiers));
-            else if (notification is MouseUpNotification mouseUp)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseUp.Buttons.ToEventType(true), mouseUp.Position.ToPoint(), _inputModifiers));
-            else if (notification is MouseMoveNotification mouseMove)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, mouseMove.Position.ToPoint(), _inputModifiers));
-            else if (notification is MouseWheelNotification mouseWheel)
-                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, mouseWheel.Position.ToPoint(), new Vector(mouseWheel.WheelDelta, 0), _inputModifiers));
-
-            if (e != null)
-                return e.Handled;
-
-            return false;
+            return HandleNotification(notification, position);
         }
 
-
         internal bool SendNotification(INotification notification, Func<NotificationWithPosition, Vector2> getPosition)
+        {
+
+            var position = new Point(0, 0);
+
+            if (notification is NotificationWithPosition n)
+                position = getPosition(n).ToPoint();
+
+            return HandleNotification(notification, position);
+        }
+
+        internal bool HandleNotification(INotification notification, Point position)
         {
             if (InputRoot is null || Input is not { } input)
             {
@@ -150,18 +131,18 @@ namespace VL.Skia.Avalonia
             }
 
             if (notification is MouseNotification mouseNotification)
-                return HandleMouseNotification(mouseNotification, input, getPosition);
+                return HandleMouseNotification(mouseNotification, input, position);
             if (notification is KeyNotification keyNotification)
                 return HandleKeyNotification(keyNotification, input);
             if (notification is TouchNotification touchNotification)
-                return HandleTouchNotification(touchNotification, input, getPosition);
+                return HandleTouchNotification(touchNotification, input, position);
             return false;
+
         }
 
 
-        private bool HandleMouseNotification(MouseNotification notification, Action<RawInputEventArgs> input, Func<NotificationWithPosition, Vector2> getPosition)
+        private bool HandleMouseNotification(MouseNotification notification, Action<RawInputEventArgs> input, Point position)
         {
-
             var e = default(RawInputEventArgs);
 
             if (notification is MouseButtonNotification m)
@@ -171,8 +152,6 @@ namespace VL.Skia.Avalonia
                 else if (m.Kind == MouseNotificationKind.MouseUp)
                     _inputModifiers ^= m.Buttons.ToModifier();
             }
-
-            var position = getPosition(notification).ToPoint();
 
             if (notification is MouseDownNotification mouseDown)
                 input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), position, _inputModifiers));
@@ -182,8 +161,7 @@ namespace VL.Skia.Avalonia
                 input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position, _inputModifiers));
             else if (notification is MouseWheelNotification mouseWheel)
                 input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position, new Vector(mouseWheel.WheelDelta, 0), _inputModifiers));
-           
-
+         
             if (e != null)
                 return e.Handled;
 
@@ -207,20 +185,15 @@ namespace VL.Skia.Avalonia
             else if (notification is KeyPressNotification keyPress && !char.IsControl(keyPress.KeyChar))
                 input(e = new RawTextInputEventArgs(KeyboardDevice, Timestamp, InputRoot, keyPress.KeyChar.ToString()));
 
-
             if (e != null)
                 return e.Handled;
 
             return false;
         }
 
-        private bool HandleTouchNotification(TouchNotification notification, Action<RawInputEventArgs> input, Func<NotificationWithPosition, Vector2> getPosition)
+        private bool HandleTouchNotification(TouchNotification notification, Action<RawInputEventArgs> input, Point position)
         {
-
             var e = default(RawInputEventArgs);
-
-            var position = getPosition(notification).ToPoint();
-
 
             if (notification.Kind == TouchNotificationKind.TouchDown)
                 input(e = new RawPointerEventArgs(_touchDevice, Timestamp, InputRoot, RawPointerEventType.TouchBegin, position, _inputModifiers));
