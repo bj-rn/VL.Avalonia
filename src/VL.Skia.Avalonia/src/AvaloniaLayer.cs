@@ -90,17 +90,9 @@ namespace VL.Skia.Avalonia
 
         public bool SendNotification(INotification notification, Func<NotificationWithPosition, Vector2> getPosition)
         {
-            Point position = new Point(0, 0);
 
-            if (notification is NotificationWithPosition n)
-            {
-                position = getPosition(n).ToPoint();
-            }
-
-
-            return topLevelImpl.SendNotification(notification, position);
+            return topLevelImpl.SendNotification(notification, getPosition);
         }
-
 
         public void Render(CallerInfo caller)
         {
