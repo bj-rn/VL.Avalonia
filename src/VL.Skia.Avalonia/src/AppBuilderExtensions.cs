@@ -58,7 +58,7 @@ public static class AppBuilderExtensions
         {
             appBuilder?.Instance?.Resources.MergedDictionaries.Add(new ResourceInclude(new Uri("resm:Styles?assembly=Vl.Avalonia.Custom"))
             {
-                Source = new Uri("avares://VL.Avalonia.Custom/Styles/EditableSliderStyles.axaml")
+                Source = new Uri("avares://VL.Avalonia.Custom/Styles/Styles.axaml")
             });
         });
 }
