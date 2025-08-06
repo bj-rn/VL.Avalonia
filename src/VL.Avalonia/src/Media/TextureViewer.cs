@@ -1,4 +1,5 @@
-﻿using Avalonia.Media;
+﻿using Avalonia;
+using Avalonia.Media;
 using SkiaSharp;
 using VL.Avalonia.Attributes;
 using VL.Core;
@@ -7,10 +8,8 @@ using VL.Core.Import;
 
 namespace VL.Avalonia.Controls.Media
 {
-    //[ProcessNode(HasStateOutput = true, Name = "TextureViewer", FragmentSelection = FragmentSelection.Explicit)]
-
     /// <summary>
-    /// The <c>SkiaTextureViewer</c> control to see display an SKImage
+    /// The <c>TextureViewer</c> Display an SKImage
     /// </summary>
     [ProcessNode(Name = "TextureViewer")]
 

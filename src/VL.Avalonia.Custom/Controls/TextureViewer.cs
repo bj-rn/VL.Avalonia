@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using SkiaSharp;
 using VL.Avalonia.Rendering;
@@ -24,6 +25,7 @@ namespace VL.Avalonia.Controls
             BoundsProperty.Changed.Subscribe(BoundsChanged);
             SourceProperty.Changed.Subscribe(SourceChanged);
         }
+
 
         private void SourceChanged(AvaloniaPropertyChangedEventArgs<SKImage> args)
         {
@@ -84,7 +86,6 @@ namespace VL.Avalonia.Controls
 
             return new Size();
         }
-
 
 
         public readonly static StyledProperty<SKImage> SourceProperty =

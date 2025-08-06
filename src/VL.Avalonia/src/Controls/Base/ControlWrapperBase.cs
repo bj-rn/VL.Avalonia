@@ -1,6 +1,8 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
+using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -20,6 +22,9 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     protected readonly T _output = new();
     public T Output => _output;
 
+    public Vector2 Bounds => new Vector2((float)_output.Bounds.Size.Width, (float)_output.Bounds.Size.Height);
+
+
     protected Optional<IAvaloniaStyle> _style;
     [Fragment(Order = PinOrder.Style)]
     /// <param name="style">
@@ -33,6 +38,9 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
             _output.TryUpdateStyles(style.Value);
         }
     }
+
+
+
 
     #region StyledElement Properties
 

@@ -15,12 +15,12 @@
       </p:NodeReference>
       <Patch Id="Cy1oXODJXg8PGXszlF4ybn">
         <Canvas Id="Eot7mkqid0qOb5xMkgaEHF" CanvasType="Group">
-          <Node Bounds="395,1532,165,19" Id="OWakTky1M7bOvqq5FIb9Mz">
+          <Node Bounds="395,1671,165,19" Id="OWakTky1M7bOvqq5FIb9Mz">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="Tm6S3xdi7MTL3QnB1IJ4iX" Name="Bounds" Kind="InputPin" DefaultValue="-703, 424, 603, 672" IsHidden="true" />
+            <Pin Id="Tm6S3xdi7MTL3QnB1IJ4iX" Name="Bounds" Kind="InputPin" DefaultValue="-1084, 430, 1047, 869" IsHidden="true" />
             <Pin Id="LWpad0IR1sTLNn6CDwdcj2" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="UalAAbZuONxQT1LrGhKsCw" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="FCf5qQu2kvfLYc02HoWcmf" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -40,7 +40,7 @@
             <Pin Id="OcfgBISSIWCQLpWmfHtajE" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="ICtEcPl5cRXPUmgRGeojjQ" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Node Bounds="395,1491,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
+          <Node Bounds="395,1630,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
             <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="AvaloniaLayer" />
@@ -50,14 +50,14 @@
             <Pin Id="QjtQxuKLqoqNGEZoZ6V0cH" Name="Requested Theme Variant" Kind="InputPin" />
             <Pin Id="AMW710yJpKcOa26nPDla80" Name="Output" Kind="StateOutputPin" />
           </Node>
-          <Node Bounds="469,1451,70,19" Id="NEuQSC3rqVwP7jZ5VFAzgH">
+          <Node Bounds="469,1590,70,19" Id="NEuQSC3rqVwP7jZ5VFAzgH">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="LightTheme" />
             </p:NodeReference>
             <Pin Id="MTITDBhVAPaNTol6oihL8F" Name="Light Theme" Kind="OutputPin" />
           </Node>
-          <Node Bounds="555,1462,69,19" Id="A1eHl89XSbZLSEWaDEVnhZ">
+          <Node Bounds="555,1589,69,19" Id="A1eHl89XSbZLSEWaDEVnhZ">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="DarkTheme" />
@@ -80,7 +80,7 @@
             <Pin Id="Rc5JPhEQvC0LZilNfemtfb" Name="Output" Kind="OutputPin" />
             <Pin Id="BXATc3e6aduOhU7LKuyzwS" Name="Actual Bounds" Kind="OutputPin" />
           </Node>
-          <Node Bounds="395,1382,82,19" Id="LYNi75j2cDENXBlLZORMUk">
+          <Node Bounds="395,1382,85,19" Id="LYNi75j2cDENXBlLZORMUk">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls.Media" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextureViewer" />
@@ -100,6 +100,7 @@
             <Pin Id="N1MUE7U9UlLPriJH9SqFM8" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="M01yex94oqPLmGgPYemPfK" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="N2UWhqTy0kiLAKqbkBvidn" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MZJtNmXLb0xO6rYFzOfeII" Name="Bounds" Kind="OutputPin" />
           </Node>
           <Node Bounds="395,1242,165,19" Id="UTbDlmlVltoMkOosgOA2yg">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
@@ -178,7 +179,7 @@
             <Pin Id="Mk3ODGPDzfeQPxpaGXd8QM" Name="Subsurface Scattering Blur Settings" Kind="InputPin" IsHidden="true" />
             <Pin Id="Diu15BAozppM7vGiXH2199" Name="Bind Depth As Resource During Transparent Rendering" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Pad Id="T4YTvNvMiKkPcYbDAiImZa" Comment="Width" Bounds="497,1212,35,15" ShowValueBox="true" isIOBox="true" Value="500">
+          <Pad Id="T4YTvNvMiKkPcYbDAiImZa" Comment="Width" Bounds="557,1228,35,15" ShowValueBox="true" isIOBox="true" Value="500">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
@@ -254,22 +255,22 @@
               <Choice Kind="TypeFlag" Name="Vector2" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="QnajBJVihMDLosGkVYXBbb" Comment="Initial Pitch" Bounds="609,772,35,15" ShowValueBox="true" isIOBox="true" Value="-0.07">
+          <Pad Id="QnajBJVihMDLosGkVYXBbb" Comment="Initial Pitch" Bounds="517,800,35,15" ShowValueBox="true" isIOBox="true" Value="-0.07">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="TjclzsgH5krLe9mXOES6m7" Comment="Stretch Direction" Bounds="448,1332,70,15" ShowValueBox="true" isIOBox="true" Value="Both">
+          <Pad Id="TjclzsgH5krLe9mXOES6m7" Comment="Stretch Direction" Bounds="450,1350,70,15" ShowValueBox="true" isIOBox="true" Value="UpOnly">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Media" LastDependency="VL.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="StretchDirection" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="QH3S4aWaRfyLTSYE2FrUwz" Comment="Stretch" Bounds="423,1302,85,15" ShowValueBox="true" isIOBox="true" Value="UniformToFill">
+          <Pad Id="QH3S4aWaRfyLTSYE2FrUwz" Comment="Stretch" Bounds="424,1320,85,15" ShowValueBox="true" isIOBox="true" Value="UniformToFill">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Media" LastDependency="VL.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="Stretch" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="D5ahOHPPplVPrPUXejfqWw" Comment="Initial Yaw" Bounds="648,722,35,15" ShowValueBox="true" isIOBox="true" Value="0.43">
+          <Pad Id="D5ahOHPPplVPrPUXejfqWw" Comment="Initial Yaw" Bounds="497,770,35,15" ShowValueBox="true" isIOBox="true">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -407,6 +408,36 @@
             <Pin Id="KpAKoS858XTM1PCl9UwD9D" Name="State Output" Kind="OutputPin" IsHidden="true" />
             <Pin Id="JfVCRCQYxiIPVKCEz1W0eh" Name="Output" Kind="OutputPin" />
           </Node>
+          <Pad Id="PFqAt75ntFfQVy9N4khrc9" SlotId="LjNoDZ9geSFNgoYQboPXfd" Bounds="477,1440" Value="0, 0" />
+          <Pad Id="Mw2d5T72JLTPmMwOwFq1a7" SlotId="LjNoDZ9geSFNgoYQboPXfd" Bounds="789,750" Value="0, 0" />
+          <Node Bounds="787,791,34,26" Id="HlEVeNmZO6TL4udJ5Nmmzv">
+            <p:NodeReference LastCategoryFullName="Primitive.Int2" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Int2 (Create Vector2)" />
+            </p:NodeReference>
+            <Pin Id="Ety8igRkiRrOetWoJqbtL6" Name="Value" Kind="InputPin" />
+            <Pin Id="Iw3nyB3l52kLvcRfgA8e5H" Name="Output" Kind="StateOutputPin" />
+          </Node>
+          <Node Bounds="495,720,45,19" Id="UTJ6guY0C2FLQlv4awljYZ">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LFO" />
+            </p:NodeReference>
+            <Pin Id="B6RrSFACnmoLoCz5xopO5V" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PIPUA6jOlRdM2f8iGzTo4w" Name="Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Hhh3ITiDkS1NUSb52fxBB9" Name="New Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="T4UKq3X5IHwOb6ZCkldEyk" Name="Period" Kind="InputPin" />
+            <Pin Id="CZpnzJbZ4N2Mytk4foQbge" Name="Pause" Kind="InputPin" />
+            <Pin Id="SDzFaXORWvXPMgMfhRmjUd" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="LZSZ7pF5AfkPHeXWQYsPib" Name="Phase" Kind="OutputPin" />
+            <Pin Id="NlEaDIHIgLwL37vZOVCj0x" Name="On New Cycle" Kind="OutputPin" />
+            <Pin Id="DpXXnEC0l7rOEMJi3KNjSu" Name="Cycles" Kind="OutputPin" />
+          </Node>
+          <Pad Id="RgFWOYUsbrMMdZLfhqY0Vf" Comment="Period" Bounds="497,669,35,15" ShowValueBox="true" isIOBox="true" Value="50">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="H4LLKQetYKJPteQer7IZo4" Name="Create" />
         <Patch Id="G0hsID6mOUpP3xBmynQFFI" Name="Update" />
@@ -420,12 +451,9 @@
         <Link Id="GTZF1v9HwMgMN3VCq4rEAe" Ids="FDaEbOO8HuNOD3Fyi1MmX9,RIJ9DRCOngVPdSJQtLkhNc" />
         <Link Id="UhZl8VWtFBhNfuEHrDYjEZ" Ids="ADGvUlITEWVNXwN7Y7bCSl,MxSmcj9vEucMEyw1kAOcV0" />
         <Link Id="U6TYlhIt9EqPXv9uKBnGQQ" Ids="PxcW49THPLLLPQpFU0w8az,N5PJ8W7bJGePquqB5Y1IM6" />
-        <Link Id="BAMqBDWpH2aMuDAOznhf5F" Ids="UpBbqSD1AIVLsLutlCxzWh,GrBfLN3cCx5QDpyoSVUecT" />
         <Link Id="BcbgxLsK8dBNJGNLHQFvq4" Ids="TWKQ7DyXEaiOHA3valBGKP,B4SzBbkYeQXMLlk6o8K7oJ" />
         <Link Id="UBQ66NniWn8QRw65PJ4nvo" Ids="BqpcWlfAvHPMIP181Ubqjw,MeIPOIgRoEwMFEq1n36R52" />
         <Link Id="AaoUBIsjUhUQVY1ARQm48Q" Ids="Q8YroZlHfFdNXPjfwMvdYC,LghkAn7qe7FLxfFGbZF3Cf" />
-        <Link Id="CPU7dkCiXwBMjGwrjdr5fC" Ids="UpBbqSD1AIVLsLutlCxzWh,PifkdlQ4Bq6PegRr7BRQmY" />
-        <Link Id="S2o0bh27SPzN9cNMIGqlC1" Ids="UpBbqSD1AIVLsLutlCxzWh,EzvX4SdtDrjPAHrdXVyXhT" />
         <Link Id="R8RGwVWx5JDN0oHmEbwGtS" Ids="OVlPaw02bJfPfWaZgqeczM,Viy56h9IPrzLq417hxDbcz" />
         <Link Id="MHoQxUGhYT1LkXXl4YS2JQ" Ids="TQWDNTCWRZrNX3rkWXKtSY,BSEuBrrPERJPqtKU2LtLzg" />
         <Link Id="J6OcR2DXyGZOAOQYh1mWYU" Ids="HEG1dspgjMIPg1vtHUEx0f,K3FFj4eqBB0P9RafyIssKP" />
@@ -446,6 +474,14 @@
         <Link Id="PVeJWxBjFu0LPESLFyxNZb" Ids="PBVuL4Cp603PooYi3fzZQE,G5KNjOhOG15MPLLYes8MdZ" />
         <Link Id="G7kN2yw6q4kN1uLXyT234t" Ids="JfVCRCQYxiIPVKCEz1W0eh,HWQFQ6Mv0tLMpXlr7AwOoq" />
         <Link Id="KejxFawC99bNamOvgVFxrO" Ids="U1qn8s8Y6q7N9jjaA0xROO,HNv4zCYX66POmX4rqbEY8g" />
+        <Slot Id="LjNoDZ9geSFNgoYQboPXfd" Name="Resolution" />
+        <Link Id="Qcpel3mdNBFPzD8xx1Ketk" Ids="MZJtNmXLb0xO6rYFzOfeII,PFqAt75ntFfQVy9N4khrc9" />
+        <Link Id="CKXO6y8uqMpMGwC1MkTvLd" Ids="Mw2d5T72JLTPmMwOwFq1a7,Ety8igRkiRrOetWoJqbtL6" />
+        <Link Id="RvitKW1UL2aLcjnPVTmXBj" Ids="Iw3nyB3l52kLvcRfgA8e5H,GrBfLN3cCx5QDpyoSVUecT" />
+        <Link Id="TFMlFr148SRMMlIo2cfBs9" Ids="Iw3nyB3l52kLvcRfgA8e5H,PifkdlQ4Bq6PegRr7BRQmY" />
+        <Link Id="BMI14qUpqvIMSejOppqCTB" Ids="Iw3nyB3l52kLvcRfgA8e5H,EzvX4SdtDrjPAHrdXVyXhT" />
+        <Link Id="S0RRvI0IT0gL8JHmtGEnIz" Ids="LZSZ7pF5AfkPHeXWQYsPib,D5ahOHPPplVPrPUXejfqWw" />
+        <Link Id="DsJuDIHlXP6PUJOzbeqnWq" Ids="RgFWOYUsbrMMdZLfhqY0Vf,T4UKq3X5IHwOb6ZCkldEyk" />
       </Patch>
     </Node>
   </Patch>
