@@ -56,9 +56,9 @@ public static class AppBuilderExtensions
         .AfterSetup((_) => appBuilder?.Instance?.Styles.Add(new FluentTheme()))
         .AfterSetup((_) =>
         {
-            appBuilder?.Instance?.Resources.MergedDictionaries.Add(new ResourceInclude(new Uri("resm:Styles?assembly=ClassLibrary1"))
+            appBuilder?.Instance?.Resources.MergedDictionaries.Add(new ResourceInclude(new Uri("resm:Styles?assembly=Vl.Avalonia.Custom"))
             {
-                Source = new Uri("avares://ClassLibrary1/Styles/CustomSliderStyles.axaml")
+                Source = new Uri("avares://VL.Avalonia.Custom/Styles/EditableSliderStyles.axaml")
             });
         });
 }

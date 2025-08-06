@@ -42,7 +42,7 @@
               
               <Grid Margin="{TemplateBinding Padding}"
                     Background="{DynamicResource SliderContainerBackground}">
-                  <Border x:Name="borderMask"
+                <Border x:Name="borderMask"
                           Background="Black"
                           CornerRadius="{TemplateBinding CornerRadius}"/>
 
@@ -63,17 +63,16 @@
                           Name="PART_DecreaseButton"
                           VerticalAlignment="Stretch"
                           Theme="{StaticResource EditableSliderHorizontalRepeatButtonDecrease}"
-                          Background="{TemplateBinding Foreground}"
+                          Background="{DynamicResource SystemControlForegroundAccentBrush}"
                           HorizontalAlignment="Stretch"
-                          Focusable="False">
-                      </RepeatButton>
+                          Focusable="False"/>
                     </Track.DecreaseButton>
                     
                     <Track.IncreaseButton>
                       <RepeatButton
                           Name="PART_IncreaseButton"
                           Theme="{StaticResource EditableSliderHorizontalRepeatButtonIncrease}"
-                          Background="{TemplateBinding Background}"
+                          Background="{DynamicResource SliderTrackFill}"
                           HorizontalAlignment="Stretch"
                           Focusable="False"/>
                     </Track.IncreaseButton>
@@ -90,25 +89,31 @@
                     IsVisible="{Binding $parent[local:EditableSlider].IsEditing}">
                   
                   <TextBox.Styles>
+                    
                     <Style Selector="TextBox">
                       <Setter Property="ContextFlyout" Value="{x:Null}" />
                     </Style>
+
+                    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+                      <Setter Property="CornerRadius" Value="{Binding $parent[local:EditableSlider].CornerRadius}"/>
+                    </Style>
+                    
                   </TextBox.Styles>
-                  
+
                 </TextBox>
 
                 <TextBlock
                    Padding="8,0"
-                   Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                   Foreground="{DynamicResource SystemChromeWhiteColor}"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    IsHitTestVisible="False"
                    IsVisible="{Binding !$parent[local:EditableSlider].IsEditing}"
-                   Text="{Binding $parent[local:EditableSlider].Value, StringFormat='{}{0:F3}'}"  />
+                   Text="{Binding $parent[local:EditableSlider].Value, StringFormat='{}{0:F3}'}" />
                 
                 <TextBlock
                   Padding="8,0"
-                  Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                  Foreground="{DynamicResource SystemChromeWhiteColor}"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
                   IsHitTestVisible="False"

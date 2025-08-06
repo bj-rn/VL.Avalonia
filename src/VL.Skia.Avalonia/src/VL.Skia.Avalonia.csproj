@@ -18,6 +18,10 @@
     <PackageReference Include="VL.Core.Skia" Version="2024.6.7" />
     <PackageReference Include="VL.CoreLib" Version="2024.6.7" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\VL.Avalonia.Custom\VL.Avalonia.Custom.csproj" />
+  </ItemGroup>
   <!--
 		Reference the Avalonia runtime assemblies (lib/) instead of the reference assemblies (ref/) from nuget packages.
 		The reference assemblies have patches to prevent using some platform interfaces we need :(
