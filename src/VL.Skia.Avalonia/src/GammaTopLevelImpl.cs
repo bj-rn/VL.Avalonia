@@ -140,7 +140,6 @@ namespace VL.Skia.Avalonia
 
         }
 
-
         private bool HandleMouseNotification(MouseNotification notification, Action<RawInputEventArgs> input, Point position)
         {
             var e = default(RawInputEventArgs);
@@ -161,13 +160,12 @@ namespace VL.Skia.Avalonia
                 input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position, _inputModifiers));
             else if (notification is MouseWheelNotification mouseWheel)
                 input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position, new Vector(mouseWheel.WheelDelta, 0), _inputModifiers));
-         
+
             if (e != null)
                 return e.Handled;
 
             return false;
         }
-
 
         private bool HandleKeyNotification(KeyNotification notification, Action<RawInputEventArgs> input)
         {
@@ -195,12 +193,9 @@ namespace VL.Skia.Avalonia
         {
             var e = default(RawInputEventArgs);
 
-            if (notification.Kind == TouchNotificationKind.TouchDown)
-                input(e = new RawPointerEventArgs(_touchDevice, Timestamp, InputRoot, RawPointerEventType.TouchBegin, position, _inputModifiers));
-            else if (notification.Kind == TouchNotificationKind.TouchUp)
-                input(e = new RawPointerEventArgs(_touchDevice, Timestamp, InputRoot, RawPointerEventType.TouchEnd, position, _inputModifiers));
-            else if (notification.Kind == TouchNotificationKind.TouchMove)
-                input(e = new RawPointerEventArgs(_touchDevice, Timestamp, InputRoot, RawPointerEventType.TouchUpdate, position, _inputModifiers));
+            var eventType = notification.Kind.GetTouchPointerEventType();
+
+            input(e = new RawPointerEventArgs(_touchDevice, Timestamp, InputRoot, eventType, position, _inputModifiers));
 
             if (e != null)
                 return e.Handled;

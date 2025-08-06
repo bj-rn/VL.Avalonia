@@ -1,5 +1,6 @@
 ﻿using Avalonia.Input;
 using Avalonia.Input.Raw;
+using VL.Lib.IO.Notifications;
 using Keys = VL.Lib.IO.Keys;
 using MouseButtons = VL.Lib.IO.MouseButtons;
 
@@ -53,6 +54,22 @@ static class KeyUtils
                 return RawPointerEventType.Move;
         }
     }
+
+    public static RawPointerEventType GetTouchPointerEventType(this TouchNotificationKind kind)
+    {
+        switch (kind)
+        {
+            case TouchNotificationKind.TouchDown:
+                return RawPointerEventType.TouchBegin;
+            case TouchNotificationKind.TouchUp:
+                return RawPointerEventType.TouchEnd;
+            case TouchNotificationKind.TouchMove:
+                return RawPointerEventType.TouchUpdate;
+            default:
+                return RawPointerEventType.TouchCancel;
+        }
+    }
+
     public static Key ToKey(this Keys key)
     {
         switch (key & ~Keys.Modifiers)
