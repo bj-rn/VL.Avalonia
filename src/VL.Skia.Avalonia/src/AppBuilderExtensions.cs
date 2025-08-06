@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Input;
 using Avalonia.Input.Platform;
+using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Platform;
 using Avalonia.Rendering;
 using Avalonia.Rendering.Composition;
@@ -32,8 +33,7 @@ public static class AppBuilderExtensions
                 .Bind<IKeyboardDevice>().ToConstant(GammaDevices.KeyboardDevice)
                 .Bind<IPlatformSettings>().ToConstant(new GammaPlatformSettings())
                 .Bind<PlatformHotkeyConfiguration>().ToConstant(CreatePlatformHotKeyConfiguration())
-                .Bind<IDispatcherImpl>().ToConstant(
-                        new GammaDispatcherImpl(Thread.CurrentThread, AppHost.Current.Services.GetService(typeof(IClock)) as IClock, AppHost.Current?.SynchronizationContext))
+                .Bind<IDispatcherImpl>().ToConstant(new GammaDispatcherImpl(Thread.CurrentThread, AppHost.Current.Services.GetService(typeof(IClock)) as IClock, AppHost.Current?.SynchronizationContext))
                 .Bind<IPlatformGraphics>().ToConstant(platformGraphics)
                 .Bind<IRenderTimer>().ToConstant(GammaRenderTimer.Instance)
                 .Bind<Compositor>().ToConstant(new Compositor(platformGraphics, useUiThreadForSynchronousCommits: true));
@@ -53,5 +53,12 @@ public static class AppBuilderExtensions
     public static AppBuilder UseGammaSkiaDefaults(this AppBuilder appBuilder) =>
         appBuilder
         .WithInterFont()
-        .AfterSetup((_) => appBuilder?.Instance?.Styles.Add(new FluentTheme()));
+        .AfterSetup((_) => appBuilder?.Instance?.Styles.Add(new FluentTheme()))
+        .AfterSetup((_) =>
+        {
+            appBuilder?.Instance?.Resources.MergedDictionaries.Add(new ResourceInclude(new Uri("resm:Styles?assembly=ClassLibrary1"))
+            {
+                Source = new Uri("avares://ClassLibrary1/Styles/CustomSliderStyles.axaml")
+            });
+        });
 }
