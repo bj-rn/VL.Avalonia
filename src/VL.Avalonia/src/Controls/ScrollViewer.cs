@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Stride.Core.Mathematics;
+using System.Diagnostics;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -23,6 +24,7 @@ public partial class ScrollViewerWrapper : ContentControlWrapperBase<ScrollViewe
     public ScrollViewerWrapper()
     {
         _offsetBinding = new ChannelTwoWayBinding<Vector2, Vector>(_output, ScrollViewer.OffsetProperty, x => x.ToVector(), x => x.FromVector());
+
     }
 
     /// <param name="offsetChannel">

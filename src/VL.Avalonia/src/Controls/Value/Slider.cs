@@ -17,6 +17,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "Slider")]
 public partial class SliderWrapper : RangeBaseWrapper<Slider>
 {
+
     #region Orientation
 
     /// <param name="orientation">
