@@ -1,13 +1,18 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Layout;
 using Stride.Core.Mathematics;
+using System.Reactive.Subjects;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
+
+
 using static VL.Avalonia.Styles;
+using VL.Lib.Mathematics;
 
 namespace VL.Avalonia.Controls;
 
@@ -22,7 +27,33 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     protected readonly T _output = new();
     public T Output => _output;
 
-    public Vector2 Bounds => new Vector2((float)_output.Bounds.Size.Width, (float)_output.Bounds.Size.Height);
+  
+    public RectangleF Bounds => new RectangleF((int)_output.Bounds.Position.X, (int)_output.Bounds.Position.Y,  (int)_output.Bounds.Size.Width, (int)_output.Bounds.Size.Height);
+
+    protected ControlWrapperBase()
+    {
+        _output.PointerEntered += _output_PointerEntered;
+        _output.PointerExited += _output_PointerExited;
+    }
+
+    [Fragment(Order = 10)]
+    public IObservable<PointerEventArgs> PointerEntered => _pointerEntered;
+
+    private Subject<PointerEventArgs> _pointerEntered = new Subject<PointerEventArgs>();
+    private void _output_PointerEntered(object? sender, PointerEventArgs e)
+    {
+        _pointerEntered.OnNext(e);
+    }
+
+
+    [Fragment(Order = 10)]
+    public IObservable<PointerEventArgs> PointerExited => _pointerExited;
+
+    private Subject<PointerEventArgs> _pointerExited = new Subject<PointerEventArgs>();
+    private void _output_PointerExited(object? sender, PointerEventArgs e)
+    {
+        _pointerExited.OnNext(e);
+    }
 
 
     protected Optional<IAvaloniaStyle> _style;

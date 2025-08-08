@@ -15,12 +15,12 @@
       </p:NodeReference>
       <Patch Id="Cy1oXODJXg8PGXszlF4ybn">
         <Canvas Id="Eot7mkqid0qOb5xMkgaEHF" CanvasType="Group">
-          <Node Bounds="606,1461,165,19" Id="OWakTky1M7bOvqq5FIb9Mz">
+          <Node Bounds="606,1450,165,19" Id="OWakTky1M7bOvqq5FIb9Mz">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="Tm6S3xdi7MTL3QnB1IJ4iX" Name="Bounds" Kind="InputPin" DefaultValue="-438, 424, 338, 852" IsHidden="true" />
+            <Pin Id="Tm6S3xdi7MTL3QnB1IJ4iX" Name="Bounds" Kind="InputPin" DefaultValue="470, 428, 338, 852" IsHidden="true" />
             <Pin Id="LWpad0IR1sTLNn6CDwdcj2" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="UalAAbZuONxQT1LrGhKsCw" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="FCf5qQu2kvfLYc02HoWcmf" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -40,7 +40,7 @@
             <Pin Id="OcfgBISSIWCQLpWmfHtajE" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="ICtEcPl5cRXPUmgRGeojjQ" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Node Bounds="606,1420,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
+          <Node Bounds="606,1400,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
             <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="AvaloniaLayer" />
@@ -50,14 +50,14 @@
             <Pin Id="QjtQxuKLqoqNGEZoZ6V0cH" Name="Requested Theme Variant" Kind="InputPin" />
             <Pin Id="AMW710yJpKcOa26nPDla80" Name="Output" Kind="StateOutputPin" />
           </Node>
-          <Node Bounds="680,1380,70,19" Id="NEuQSC3rqVwP7jZ5VFAzgH">
+          <Node Bounds="680,1360,70,19" Id="NEuQSC3rqVwP7jZ5VFAzgH">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="LightTheme" />
             </p:NodeReference>
             <Pin Id="MTITDBhVAPaNTol6oihL8F" Name="Light Theme" Kind="OutputPin" />
           </Node>
-          <Node Bounds="295,1160,85,19" Id="EwF7L7tpCLtO9ILdA3YQbh">
+          <Node Bounds="606,837,105,19" Id="EwF7L7tpCLtO9ILdA3YQbh">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls.Value.EditableSliderWrapper" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="EditableSlider" />
@@ -79,18 +79,21 @@
             <Pin Id="EMqT2psqMX8OnxdOQODJDy" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="IO08kWsRSCHPZYirDZvkc9" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="QgBNXbmJGJIL1x7CiBc56t" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VKzc1I1BE4YMlrOMNR5aAO" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="J0FnSUlGJrfOAQaX2LIPcb" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="LIPWTpFqodAPj9NEJpM0EX" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Pad Id="V8mASTD5pyGOyCQbwgv8hY" Comment="Value Channel" Bounds="297,861,35,15" ShowValueBox="true" isIOBox="true" Value="0.99">
+          <Pad Id="V8mASTD5pyGOyCQbwgv8hY" Comment="Value Channel" Bounds="608,538,35,15" ShowValueBox="true" isIOBox="true" Value="0.99">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="OT05etlQm3xQJYoY6oUHJn" Comment="Maximum" Bounds="377,1131,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+          <Pad Id="OT05etlQm3xQJYoY6oUHJn" Comment="Maximum" Bounds="708,810,35,15" ShowValueBox="true" isIOBox="true" Value="1">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="606,1340,145,19" Id="Nfa1zc5GYDOOM5XzS59ySh">
+          <Node Bounds="606,1310,145,19" Id="Nfa1zc5GYDOOM5XzS59ySh">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="StackPanel" />
@@ -114,8 +117,11 @@
             <Pin Id="UMrtwE2lL1OMODPUvhHXJR" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="D7VOJudTVBDMuVWymq3RF8" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="MLjIQHIOe0DOs2xCpMZ6SI" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PWiZPCA1zRHMwj33u5KHfn" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="CqC4QglnWP4QD4R0MM1CG5" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="Ns9AeRtAMo1Orxd8sMBSqe" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Node Bounds="315,1050,60,19" Id="CRXYPYtR7BRLrRSJQ8G4VO">
+          <Node Bounds="631,730,60,19" Id="CRXYPYtR7BRLrRSJQ8G4VO">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -127,12 +133,12 @@
             <Pin Id="Mee0oQCN8r1PCGnoaWYfJM" Name="Height" Kind="InputPin" />
             <Pin Id="Br2NzjRcOIQLlRSNbLD7Cn" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="DWqefAcRPx9Mq6DnEcsLmR" Comment="Height" Bounds="372,1030,35,15" ShowValueBox="true" isIOBox="true" Value="30">
+          <Pad Id="DWqefAcRPx9Mq6DnEcsLmR" Comment="Height" Bounds="688,710,35,15" ShowValueBox="true" isIOBox="true" Value="30">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="315,980,91,19" Id="JjfS8BApCbgNqCPY96KuZT">
+          <Node Bounds="631,660,91,19" Id="JjfS8BApCbgNqCPY96KuZT">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -149,12 +155,12 @@
             <Pin Id="F28l5KS477rMR3oDvArdGM" Name="Corner Radius" Kind="InputPin" />
             <Pin Id="JU34cF04BOHLRRX2M93F7Q" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Q7TFvi1v9B9MCOcQAjx0w3" Comment="Corner Radius" Bounds="403,950,35,15" ShowValueBox="true" isIOBox="true" Value="4">
+          <Pad Id="Q7TFvi1v9B9MCOcQAjx0w3" Comment="Corner Radius" Bounds="719,630,35,15" ShowValueBox="true" isIOBox="true" Value="4">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="315,920,62,19" Id="SrCiW0PPVauOnVVkAiJTH7">
+          <Node Bounds="631,600,62,19" Id="SrCiW0PPVauOnVVkAiJTH7">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -171,24 +177,24 @@
             <Pin Id="IPRPALjwGFnPopgsusgXbu" Name="Margin" Kind="InputPin" />
             <Pin Id="NPDcKMbyurJLTRxt09je6B" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Vafe65U4HBJN9FUcFApSt3" Comment="Margin" Bounds="374,899,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="Vafe65U4HBJN9FUcFApSt3" Comment="Margin" Bounds="690,579,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="BioITqSkQStPfBUeyhv2yX" Comment="Name" Bounds="337,1100,125,15" ShowValueBox="true" isIOBox="true" Value="Editable Names">
+          <Pad Id="BioITqSkQStPfBUeyhv2yX" Comment="Name" Bounds="658,780,125,15" ShowValueBox="true" isIOBox="true" Value="Editable Names">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="766,1391,69,19" Id="A1eHl89XSbZLSEWaDEVnhZ">
+          <Node Bounds="763,1360,69,19" Id="A1eHl89XSbZLSEWaDEVnhZ">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="DarkTheme" />
             </p:NodeReference>
             <Pin Id="KLtSy3Ry37ANM2NhGit3GK" Name="Dark Theme" Kind="OutputPin" />
           </Node>
-          <Node Bounds="943,1280,65,19" Id="AHsp3nWGdiGLqaAQrZGgIy">
+          <Node Bounds="1240,1080,65,19" Id="AHsp3nWGdiGLqaAQrZGgIy">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Avalonia" />
@@ -217,8 +223,11 @@
             <Pin Id="PUZ04qlxSKHMESn1bVOOuc" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="E4bHwZ2FW7RPWXO5ZxfLG3" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="PKTI0KplsewLp36wxiVci8" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UYbJ9trFSN0NrERvbLYoY3" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="NBo4Fkc0EJqPJQ6kVzm9BU" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="GOPwAgZvaPkOgMkLuIsCqA" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Node Bounds="629,1170,98,19" Id="USo8Gcq5AvIMXhJbkKTpd0">
+          <Node Bounds="1007,930,98,19" Id="USo8Gcq5AvIMXhJbkKTpd0">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls.Value" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TemplatableSlider" />
@@ -241,8 +250,11 @@
             <Pin Id="PCWLRAKZyUTLarSraTuhom" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="TOsC94sJPeXMPj4ifaKVDr" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="BQR1YAqolP1MAIi5ukm055" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RGVM7uaQyWPLyU7LyFDnzR" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="E8KeQiOOVPpPSAJykUNGdt" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="V4UTVRKWqx1L8QoyHRaJ6e" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Pad Id="BG8Gp4Vj9YNOn34gFfPquM" Bounds="35,1168,245,19" ShowValueBox="true" isIOBox="true" Value="middle click to enter edit mode on slider">
+          <Pad Id="BG8Gp4Vj9YNOn34gFfPquM" Bounds="58,1161,389,19" ShowValueBox="true" isIOBox="true" Value="middle click to enter edit mode on slider">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -251,7 +263,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="652,940,60,19" Id="FpWoJl3p8W4NYGosMMiFGD">
+          <Node Bounds="1030,700,60,19" Id="FpWoJl3p8W4NYGosMMiFGD">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -263,12 +275,12 @@
             <Pin Id="HC7oBIt5OkLMTY5keZFqnf" Name="Height" Kind="InputPin" />
             <Pin Id="RSksuCVpNkNNg93ihzO7AW" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="DBgkS4EnmyRQKdclhjod7a" Comment="Height" Bounds="709,920,35,15" ShowValueBox="true" isIOBox="true" Value="30">
+          <Pad Id="DBgkS4EnmyRQKdclhjod7a" Comment="Height" Bounds="1087,680,35,15" ShowValueBox="true" isIOBox="true" Value="30">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="652,870,91,19" Id="SyVNOfyWW7aO9yrsagDokY">
+          <Node Bounds="1030,630,91,19" Id="SyVNOfyWW7aO9yrsagDokY">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -285,12 +297,12 @@
             <Pin Id="H7bTqhQWI5wLqAc893OCn9" Name="Corner Radius" Kind="InputPin" />
             <Pin Id="LYe2qqS1YmDPUYHwurt5CG" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="K1dE8Uxf94nNuQo50syrOQ" Comment="Corner Radius" Bounds="740,840,35,15" ShowValueBox="true" isIOBox="true" Value="4">
+          <Pad Id="K1dE8Uxf94nNuQo50syrOQ" Comment="Corner Radius" Bounds="1118,600,35,15" ShowValueBox="true" isIOBox="true" Value="4">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="652,810,62,19" Id="TipBtOJwyzTM1S2NbozBa3">
+          <Node Bounds="1030,570,62,19" Id="TipBtOJwyzTM1S2NbozBa3">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -307,12 +319,12 @@
             <Pin Id="Pb5ehs8NRYiODR4zfTdPUf" Name="Margin" Kind="InputPin" />
             <Pin Id="MEce3N68dQVOqeWqYyEedx" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="PVxb4R3mi2FPWzlJnOvTpj" Comment="Margin" Bounds="711,789,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="PVxb4R3mi2FPWzlJnOvTpj" Comment="Margin" Bounds="1089,549,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="955,1060,63,19" Id="DdZHhm5m2U7P1wcpfAT9Cz">
+          <Node Bounds="1333,820,65,19" Id="DdZHhm5m2U7P1wcpfAT9Cz">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="DockPanel" />
@@ -333,8 +345,11 @@
             <Pin Id="L2DRd28G4cKLOuIphIlX6v" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="Exi5L80G7fONDCBIdGRHyv" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="JUhswLwzFuMLMDLBgwclp0" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TYudE5R1ImqNeZBNqO9kYq" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="Berhmmf9O0tNLJNuEfthhR" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="PpIPDf0CvlFQBcAunGMDuW" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Node Bounds="846,970,61,19" Id="QAHjFKrx3XyNkfoezNJ6cO">
+          <Node Bounds="1224,730,65,19" Id="QAHjFKrx3XyNkfoezNJ6cO">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextBlock" />
@@ -364,8 +379,11 @@
             <Pin Id="FeQflikiQqkQYNxF0eelLw" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="QFfFrRNopg6MbpjnUjLk9k" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="OpAWWJtBmnOLkou2TstWma" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QrI7tL7RtQuO2PJp4lJrzI" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="JjxPns71IzFLg3Laecnv8h" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="EHQo8mnwtrBMmy6QxORtyh" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1147,980,61,19" Id="I4yi3L70IC2LM7NVRNhmNJ">
+          <Node Bounds="1525,740,65,19" Id="I4yi3L70IC2LM7NVRNhmNJ">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TextBlock" />
@@ -395,8 +413,11 @@
             <Pin Id="BtHhcqxHdbuL2JLjWG8M7k" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="MzcuRZ2vWpAMfr9dwSQCHt" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="UDlxP0vUPABLGNfR3YkBT6" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TANajkkvOZAOaRHzDE2CSn" Name="Bounds" Kind="OutputPin" />
+            <Pin Id="Uy0btaEkDCgMMUCsIyng8h" Name="Pointer Entered" Kind="OutputPin" />
+            <Pin Id="IHkdroiKpXHPxPZmPaOHAf" Name="Pointer Exited" Kind="OutputPin" />
           </Node>
-          <Node Bounds="529,570,53,19" Id="Jw2dT2Xo7wFOo7K51JwaDV">
+          <Node Bounds="1007,390,53,19" Id="Jw2dT2Xo7wFOo7K51JwaDV">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Reactive" NeedsToBeDirectParent="true" />
@@ -408,7 +429,7 @@
             <Pin Id="L3oKznXVw9XLzgluCiJOap" Name="Output" Kind="OutputPin" />
             <Pin Id="Kv632vWeMCKMEpbcSpGhZE" Name="Value" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1107,730,45,26" Id="JT1pUbcKohePirZxZ7Odp2">
+          <Node Bounds="1485,490,45,26" Id="JT1pUbcKohePirZxZ7Odp2">
             <p:NodeReference LastCategoryFullName="Reactive.Channel" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="MutableInterfaceType" Name="Channel" />
@@ -418,7 +439,7 @@
             <Pin Id="OuCuVzPkBjgLuOLOOHeova" Name="Output" Kind="StateOutputPin" />
             <Pin Id="C1EnHGFI6T4NGlQT9tHrHD" Name="Value" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1147,910,55,19" Id="CRL2cn3oL9DM6lhiUSKdnN">
+          <Node Bounds="1525,670,55,19" Id="CRL2cn3oL9DM6lhiUSKdnN">
             <p:NodeReference LastCategoryFullName="System.Conversion" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="ToString (Format)" />
@@ -427,12 +448,12 @@
             <Pin Id="NMtMYyMjDHbNLqyV7YytlO" Name="Format" Kind="InputPin" />
             <Pin Id="DTkkQRwgOh1NfI8szLjf62" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="IyI3adjcIWrPnXDkG4mfM1" Comment="Format" Bounds="1199,880,35,15" ShowValueBox="true" isIOBox="true" Value="0.00">
+          <Pad Id="IyI3adjcIWrPnXDkG4mfM1" Comment="Format" Bounds="1577,640,35,15" ShowValueBox="true" isIOBox="true" Value="0.00">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="906,569,83,19" Id="LzGMJpcZDVUMUmVdlusDvM">
+          <Node Bounds="1284,329,83,19" Id="LzGMJpcZDVUMUmVdlusDvM">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="SetForeground" />
@@ -441,7 +462,7 @@
             <Pin Id="MQjzkRJDdpKOmXYDVgdou6" Name="Brush" Kind="InputPin" />
             <Pin Id="KAW2OVZcMrWMBj4FnRbM7p" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="984,520,42,19" Id="DIlEJD4nLUfL37GNYmhdmg">
+          <Node Bounds="1362,280,42,19" Id="DIlEJD4nLUfL37GNYmhdmg">
             <p:NodeReference LastCategoryFullName="Avalonia.Media.Brushes" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Avalonia" />
@@ -450,7 +471,7 @@
             </p:NodeReference>
             <Pin Id="UwQwBun5s3fLoKpIrbVwc9" Name="White" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1203,731,124,19" Id="GaZ5X28RBKcQM43pt0vQ3L">
+          <Node Bounds="1581,491,124,19" Id="GaZ5X28RBKcQM43pt0vQ3L">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -462,12 +483,12 @@
             <Pin Id="F44u4lyvH6eLR7DJtnEQS2" Name="Alignment" Kind="InputPin" />
             <Pin Id="BNvWDV1tXHzQBZd0iE0uqp" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Eki1kOwF0YIL97JBLce8EE" Comment="Alignment" Bounds="1324,700,55,15" ShowValueBox="true" isIOBox="true" Value="Right">
+          <Pad Id="Eki1kOwF0YIL97JBLce8EE" Comment="Alignment" Bounds="1702,460,55,15" ShowValueBox="true" isIOBox="true" Value="Right">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Layout" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="HorizontalAlignment" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="906,620,111,19" Id="EJ0ZIiig8YkMWvFOl9FX3q">
+          <Node Bounds="1284,380,111,19" Id="EJ0ZIiig8YkMWvFOl9FX3q">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -479,12 +500,12 @@
             <Pin Id="OXbz2N6N7oRNMmrJHb5tQd" Name="Alignment" Kind="InputPin" />
             <Pin Id="SlbPUsOEFnENFCjY0mHYwc" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="T5zxkjsriJGPt3OXNaqsoE" Comment="Alignment" Bounds="1014,590,56,15" ShowValueBox="true" isIOBox="true" Value="Center">
+          <Pad Id="T5zxkjsriJGPt3OXNaqsoE" Comment="Alignment" Bounds="1392,350,56,15" ShowValueBox="true" isIOBox="true" Value="Center">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Layout" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="VerticalAlignment" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="1203,821,85,19" Id="IeqALYlKlUfMbvrpDkxSKv">
+          <Node Bounds="1581,581,85,19" Id="IeqALYlKlUfMbvrpDkxSKv">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -503,22 +524,22 @@
             <Pin Id="VqYPW8jJUGXLWL1audKEh1" Name="Bottom" Kind="InputPin" />
             <Pin Id="Rc6k9mw8mETLEHhM2rEoQk" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="B1tPzxFw6evQZf8RpaVrD1" Comment="Right" Bounds="1265,782,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="B1tPzxFw6evQZf8RpaVrD1" Comment="Right" Bounds="1643,542,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Lk2wf2a1WEBN6N3cPl9Fdl" Comment="Maximum" Bounds="709,1011,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+          <Pad Id="Lk2wf2a1WEBN6N3cPl9Fdl" Comment="Maximum" Bounds="1079,860,35,15" ShowValueBox="true" isIOBox="true" Value="1">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="BPj71SF2pnYOjgUKHXbKaD" Comment="Text" Bounds="848,940,114,15" ShowValueBox="true" isIOBox="true" Value="Templated Slider">
+          <Pad Id="BPj71SF2pnYOjgUKHXbKaD" Comment="Text" Bounds="1226,700,114,15" ShowValueBox="true" isIOBox="true" Value="Templated Slider">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="902,831,124,19" Id="U6cgiXVImUiQT845FAAq3B">
+          <Node Bounds="1280,591,124,19" Id="U6cgiXVImUiQT845FAAq3B">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -530,12 +551,12 @@
             <Pin Id="Bo2ik44QUUkPto67n0tH57" Name="Alignment" Kind="InputPin" />
             <Pin Id="JHukroEbLD5P69WIKxXcIG" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="VjhGGCqWT0vMRJRNZLMMQP" Comment="Alignment" Bounds="1023,791,55,15" ShowValueBox="true" isIOBox="true" Value="Left">
+          <Pad Id="VjhGGCqWT0vMRJRNZLMMQP" Comment="Alignment" Bounds="1401,551,55,15" ShowValueBox="true" isIOBox="true" Value="Left">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Layout" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="HorizontalAlignment" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="902,900,85,19" Id="S88mOQDbM2mMYR0fyMi992">
+          <Node Bounds="1280,660,85,19" Id="S88mOQDbM2mMYR0fyMi992">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -554,12 +575,12 @@
             <Pin Id="LyjQMsoRJfjMSymeygOAIQ" Name="Bottom" Kind="InputPin" />
             <Pin Id="COaP2n19xc7NOVg51GJNoP" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Da2IfCbxzwwOxndNxrP6ec" Comment="Left" Bounds="924,871,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="Da2IfCbxzwwOxndNxrP6ec" Comment="Left" Bounds="1302,631,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="ODova1HxlWePFDoIQIPuDd" Bounds="184,1241,330,46" ShowValueBox="true" isIOBox="true" Value="error when change name, (element already styled..)">
+          <Pad Id="ODova1HxlWePFDoIQIPuDd" Bounds="58,1183,330,46" ShowValueBox="true" isIOBox="true" Value="error when change name, (element already styled..)">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -568,7 +589,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="963,1231,62,19" Id="J9G4qsk4y95PXYCrKMZw6s">
+          <Node Bounds="1260,1031,62,19" Id="J9G4qsk4y95PXYCrKMZw6s">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
@@ -585,11 +606,55 @@
             <Pin Id="OmanCBzXkijPTfPtNEEkqr" Name="Margin" Kind="InputPin" />
             <Pin Id="Ft8zfHgtKhvPh7cdTZF7Hf" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Tv9CtsYBoi0LAbm5VbZvkD" Comment="Margin" Bounds="1022,1210,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="Tv9CtsYBoi0LAbm5VbZvkD" Comment="Margin" Bounds="1319,1010,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="764,890,65,19" Id="AFGOV3UIyhiNNY9MfAbqWO">
+            <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="HoldLatest" />
+            </p:NodeReference>
+            <Pin Id="Cd2mEQp3fk7NcwgweKVYMx" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RaKFiOu6xdnLcfHxSUndpj" Name="Initial Result" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UMaIF4GQvSLMwSF9o02COD" Name="Async Notifications" Kind="InputPin" />
+            <Pin Id="SKMmaYx9Su5QTxFQwzogVd" Name="Reset" Kind="InputPin" />
+            <Pin Id="SFYVeD5XI0SMMMO1iA6ozR" Name="Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="JZ6kqry6JHDONj5dFIEMSc" Name="Value" Kind="OutputPin" />
+            <Pin Id="HW7hiNyVn09PVM4F9FPH88" Name="On Data" Kind="OutputPin" />
+          </Node>
+          <Pad Id="NFuMCY5ANlRQTmKEBHLsMo" Comment="Pointer Entered" Bounds="826,932,35,35" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="639,950,35,19" Id="SZN5JiwpEQaLR3wGvPCof4">
+            <p:NodeReference LastCategoryFullName="2D.Rectangle" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="4026531840" Name="Rectangle" />
+              <Choice Kind="OperationCallFlag" Name="Size" />
+            </p:NodeReference>
+            <Pin Id="S3QI6sxOj6PNpGg1qrFJ7o" Name="Input" Kind="StateInputPin" />
+            <Pin Id="S9EGuCR7L8bQRxIaHkkMyN" Name="Size" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="445,930,61,19" Id="RDbZbH8UiNUNZyJc8bpXW0">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia.Layers" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Rectangle (Bounds)" />
+            </p:NodeReference>
+            <Pin Id="FsXQ6yHblgVLHUsTs9RCct" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GquLbeGdK2ZNgfgbp2qhAf" Name="Bounds" Kind="InputPin" />
+            <Pin Id="L6E2jWrd0PMMGiVTgkL5uR" Name="Paint" Kind="InputPin" />
+            <Pin Id="HuDWM6AoXepMGNFnc3M23M" Name="Enabled" Kind="InputPin" />
+            <Pin Id="FSpTxI6m0NeO5SoJyPZm2X" Name="State Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="HOJkZq5Fb7nMUnXGuvizlz" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="473,890,72,19" Id="IQU3Myt69Q0N2mzoVwVPva">
+            <p:NodeReference LastCategoryFullName="2D" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="ToRectangle (SKRect)" />
+            </p:NodeReference>
+            <Pin Id="Rx5rExtjMpYNS4hfXdbyYg" Name="Input" Kind="InputPin" />
+            <Pin Id="UiVGKaiTvseQamgElIkh5H" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Gd4Hca3iA8gLZVZPlPHaf0" Comment="Size" Bounds="641,990,85,64" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="H4LLKQetYKJPteQer7IZo4" Name="Create" />
         <Patch Id="G0hsID6mOUpP3xBmynQFFI" Name="Update" />
@@ -643,6 +708,10 @@
         <Link Id="Fern98Yu7xpPms4hiiCkY5" Ids="IdFlQ52daQhL1sHsRWsx5m,JpqspfoqXBfNNMdKki8vYP" />
         <Link Id="La2MHWZfx5fMKBaSUknvIl" Ids="Tv9CtsYBoi0LAbm5VbZvkD,OmanCBzXkijPTfPtNEEkqr" />
         <Link Id="LLHLsXRMOkFLLThf8M2mHf" Ids="Ft8zfHgtKhvPh7cdTZF7Hf,DOCastPKeX7NhbqHXLXHDr" />
+        <Link Id="VqJa7bboEzLLcS3dpOmTzI" Ids="J0FnSUlGJrfOAQaX2LIPcb,UMaIF4GQvSLMwSF9o02COD" />
+        <Link Id="RXT2fNsNwhLOfkC1T6pZt9" Ids="HW7hiNyVn09PVM4F9FPH88,NFuMCY5ANlRQTmKEBHLsMo" />
+        <Link Id="GrX0ictXJ59OxeGm3BmxcS" Ids="VKzc1I1BE4YMlrOMNR5aAO,S3QI6sxOj6PNpGg1qrFJ7o" />
+        <Link Id="PkvaYu9ukZNNQWlFbMolxb" Ids="S9EGuCR7L8bQRxIaHkkMyN,Gd4Hca3iA8gLZVZPlPHaf0" />
       </Patch>
     </Node>
   </Patch>
