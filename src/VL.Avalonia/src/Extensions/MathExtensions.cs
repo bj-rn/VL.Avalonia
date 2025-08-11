@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Stride.Core.Mathematics;
+using AMatrix = Avalonia.Matrix;
 using Point = Avalonia.Point;
+using SMatrix = Stride.Core.Mathematics.Matrix;
 
 namespace VL.Avalonia;
 
@@ -65,4 +67,19 @@ public static partial class Extensions
     /// <inheritdoc cref="ToVector(Vector2)"/>
     public static Vector? ToVector(Vector2? vector) =>
     vector.HasValue ? vector.Value.ToVector() : null;
+
+    public static AMatrix ToAvaloniaMatrix(this SMatrix matrix) =>
+      new AMatrix(
+          matrix.M11, matrix.M12,
+          matrix.M21, matrix.M22,
+          matrix.M41, matrix.M42
+      );
+
+    public static SMatrix FromAvaloniaMatrix(this AMatrix matrix) =>
+    new SMatrix(
+        (float)matrix.M11, (float)matrix.M12, 0, 0,
+        (float)matrix.M21, (float)matrix.M22, 0, 0,
+        0, 0, 1, 0,
+        (float)matrix.M31, (float)matrix.M32, 0, 1
+    );
 }

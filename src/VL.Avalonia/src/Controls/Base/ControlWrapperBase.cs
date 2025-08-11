@@ -1,6 +1,8 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
+using Avalonia.Media;
+using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -97,6 +99,30 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     #endregion
 
     #region Visual Properties
+
+
+    /// <param name="renderTransform">
+    /// The transform applied to the control's rendering (scaling, rotation, translation, skew)
+    /// </param>
+    protected Optional<Matrix> _renderTransform;
+    public void SetRenderTransform([Pin(Visibility = Model.PinVisibility.Optional)] Optional<Matrix> renderTransform)
+    {
+        if (_renderTransform != renderTransform)
+        {
+            if (renderTransform.HasValue)
+            {
+                var t = new MatrixTransform(renderTransform.Value.ToAvaloniaMatrix());
+                _output.SetValue(Control.RenderTransformProperty, t);
+            }
+            else
+            {
+                _output.ClearValue(Control.RenderTransformProperty);
+            }
+
+            _renderTransform = renderTransform;
+        }
+    }
+
 
     /// <param name="zIndex">
     /// The z-order (layering) of the control relative to its siblings
