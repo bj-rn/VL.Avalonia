@@ -118,7 +118,7 @@
               <Choice Kind="OperationCallFlag" Name="SetWidth" />
             </p:NodeReference>
             <Pin Id="LN7GnEItCckPhtf59jRo3r" Name="Style" Kind="InputPin" />
-            <Pin Id="BKx9UtTpSmEMzhzqwtPOAL" Name="Width" Kind="InputPin" />
+            <Pin Id="BKx9UtTpSmEMzhzqwtPOAL" Name="Width" Kind="InputPin" DefaultValue="100" />
             <Pin Id="KJ6QJhcDh1fMchuAww7TQl" Name="Result" Kind="OutputPin" />
           </Node>
           <Node Bounds="158,1051,60,19" Id="V2l2oZmSm1iQA2YQb4Gkhi">
@@ -130,7 +130,7 @@
               <Choice Kind="OperationCallFlag" Name="SetHeight" />
             </p:NodeReference>
             <Pin Id="O27idR859uYP6YqoDDGw6J" Name="Style" Kind="InputPin" />
-            <Pin Id="S6NPJtwvCKvLmQni6sXL8D" Name="Height" Kind="InputPin" />
+            <Pin Id="S6NPJtwvCKvLmQni6sXL8D" Name="Height" Kind="InputPin" DefaultValue="100" />
             <Pin Id="SKViiK1xdLgPO5qWEr35OY" Name="Result" Kind="OutputPin" />
           </Node>
           <Node Bounds="158,990,84,19" Id="VD3DFYFyJGsNPhxyT8uDCD">
@@ -154,14 +154,9 @@
             <Pin Id="NvSLF7zgdmJNAEoHVaRgLC" Name="Color" Kind="InputPin" />
             <Pin Id="DcA9vb7xsCPNwWdBfx3mD8" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="T8vivromFe6PRNobGSxOCY" Comment="Opacity" Bounds="239,910">
-            <p:TypeAnnotation LastCategoryFullName="Avalonia.Data" LastDependency="VL.Skia.Avalonia.vl">
-              <Choice Kind="TypeFlag" Name="Optional`1" />
-              <p:TypeArguments>
-                <TypeReference LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-                  <Choice Kind="TypeFlag" Name="Float32" />
-                </TypeReference>
-              </p:TypeArguments>
+          <Pad Id="BXw3hxSZEyqNMyfrfomLj9" Comment="Color" Bounds="323,900,136,15" ShowValueBox="true" isIOBox="true" Value="0.38000032, 0.38000032, 0.38000032, 0.57000023">
+            <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
         </Canvas>
@@ -179,7 +174,7 @@
         <Link Id="Le3qJAaOlJbLWecGKUTiqK" Ids="SKViiK1xdLgPO5qWEr35OY,LN7GnEItCckPhtf59jRo3r" />
         <Link Id="Q7tiXMNZim8NSqaIplIAqq" Ids="Pq2ICWEzDLmL5J1zL31bZU,O27idR859uYP6YqoDDGw6J" />
         <Link Id="V05DSD1IcVOOEen3zfKik2" Ids="DcA9vb7xsCPNwWdBfx3mD8,UxB5KyX2Xi1QaoivS6riVE" />
-        <Link Id="Jsd00gx3MXtPuCxiIghSzp" Ids="T8vivromFe6PRNobGSxOCY,VEaMfiA1pb8QIWE6KsufD5" />
+        <Link Id="Cyi7jL5BxEnM9aywCImGZF" Ids="BXw3hxSZEyqNMyfrfomLj9,NvSLF7zgdmJNAEoHVaRgLC" />
       </Patch>
     </Node>
   </Patch>
