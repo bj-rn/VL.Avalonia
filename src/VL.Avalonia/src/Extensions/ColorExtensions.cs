@@ -1,28 +1,34 @@
-﻿using Stride.Core.Mathematics;
-using AvaloniaColort = Avalonia.Media.Color;
+﻿using Avalonia.Media;
+using Avalonia.Media.Immutable;
+using Stride.Core.Mathematics;
+
+using Color = Avalonia.Media.Color;
 
 namespace VL.Avalonia;
 
-/*
- * TODO
- */
-
-public static class ColorExtensions
+public static partial class Extensions
 {
-    public static Color4 FromColor(this AvaloniaColort color) =>
-    new Color4(
-        color.A,
-        color.R,
-        color.G,
-        color.B
-    );
+    public static Color ToColor(this Color4 color) =>
+         new Color(
+            (byte)(color.A * 255),
+            (byte)(color.R * 255),
+            (byte)(color.G * 255),
+            (byte)(color.B * 255)
+        );
 
-    // TODO: FIX
-    // public static AvaloniaColort ToColor(this Color4 color)
-    // {
-    //     var bytecolor = color.ToColor();
-    //     return new AvaloniaColort(bytecolor.R, bytecolor.G, bytecolor.B, bytecolor.A);
-    // }
+    public static Color ToColor(Color4? color) =>
+        color.HasValue ? color.Value.ToColor() : Colors.White;
 
-    // public static SolidColorBrush ToBrush(this Color4 color) => new SolidColorBrush(color.ToColor(), color.A);
+    public static IBrush ToSolidColorBrush(this Color4 color) =>
+        new ImmutableSolidColorBrush(color.ToColor());
+
+    public static IBrush ToSolidColorBrush(Color4? color) =>
+        color.HasValue ? color.Value.ToSolidColorBrush() : Brushes.White;
+
+    public static Color4 FromColor(this Color color) =>
+        new Color4(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
+
+    public static Color4 FromColor(this Color? color) =>
+        color.HasValue ? color.FromColor() : Color4.White;
+
 }
