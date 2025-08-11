@@ -2,7 +2,6 @@
 using Stride.Core.Mathematics;
 using Point = Avalonia.Point;
 
-
 namespace VL.Avalonia;
 
 public static class MathExtensions
@@ -29,10 +28,10 @@ public static class MathExtensions
 
     public static Rect ToRect(this RectangleF rect) =>
         new Rect(
-            rect.X,
-            rect.Y,
-            rect.Width,
-            rect.Height
+            (double)rect.X,
+            (double)rect.Y,
+            (double)rect.Width,
+            (double)rect.Height
         );
 
     public static Vector2 FromVector(this Vector vector) =>
