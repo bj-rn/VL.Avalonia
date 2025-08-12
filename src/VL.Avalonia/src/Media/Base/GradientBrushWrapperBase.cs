@@ -12,9 +12,9 @@ public abstract partial class GradientBrushWrapperBase<T> : BrushWrapperBase<T> 
     [ImplementProperty("GradientBrush.SpreadMethodProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<GradientSpreadMethod> _spreadMethod;
 
-    protected Spread<global::Avalonia.Media.GradientStop> _gradientStops;
+    protected Spread<GradientStop> _gradientStops;
     [Fragment(Order = PinOrder.Secondary)]
-    public void SetGradientStops(Spread<global::Avalonia.Media.GradientStop> gradientStops)
+    public void SetGradientStops(Spread<GradientStop> gradientStops)
     {
         if (_gradientStops != gradientStops)
         {
