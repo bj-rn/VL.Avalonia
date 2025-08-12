@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia.Animation;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -7,6 +8,7 @@ using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
+using VL.Lib.Collections;
 using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
@@ -145,5 +147,33 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     /// </param>
     [ImplementProperty("Control.IsEnabledProperty", Order = 1000, PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _isEnabled;
+    #endregion
+
+    #region Animatable
+    private Spread<ITransition> _transitions;
+    public void SetTransition([Pin(Visibility = Model.PinVisibility.Optional)] Spread<ITransition> transitions)
+    {
+        if (_transitions != transitions)
+        {
+            if (transitions != null)
+            {
+                var t = new Transitions();
+                foreach (TransitionBase transition in transitions)
+                    if (transition != null && transition.Property != null)
+                    {
+                        t.Add(transition);
+                    }
+
+
+                _output.SetValue(Control.TransitionsProperty, t);
+            }
+            else
+            {
+                _output.ClearValue(Control.TransitionsProperty);
+            }
+
+            _transitions = transitions;
+        }
+    }
     #endregion
 }
