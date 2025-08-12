@@ -127,7 +127,7 @@ namespace VL.Skia.Avalonia
             else if (notification is MouseMoveNotification mouseMove)
                 input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, mouseMove.Position.ToPoint(), _inputModifiers));
             else if (notification is MouseWheelNotification mouseWheel)
-                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, mouseWheel.Position.ToPoint(), new Vector(mouseWheel.WheelDelta, 0), _inputModifiers));
+                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, mouseWheel.Position.ToPoint(), new Vector(0, mouseWheel.WheelDelta * 0.01 /*DPI ISSUE ??*/), _inputModifiers));
 
             if (e != null)
                 return e.Handled;
