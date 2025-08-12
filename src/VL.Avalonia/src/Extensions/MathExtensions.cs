@@ -29,6 +29,26 @@ public static partial class Extensions
     point.HasValue ? point.Value.ToPoint() : null;
 
     /// <summary>
+    /// Converts Avalonia.RelativePoint to Vector2
+    /// </summary>
+    public static Vector2 FromRelativePoint(this RelativePoint relativePoint) =>
+        relativePoint.Point.FromPoint();
+
+    /// <inheritdoc cref="FromRelativePoint(RelativePoint)"/>
+    public static Vector2? FromRelativePoint(RelativePoint? relativePoint) =>
+        relativePoint.HasValue ? relativePoint.Value.FromRelativePoint() : null;
+
+    /// <summary>
+    /// Converts Vector2 to Avalonia.RelativePoint
+    /// </summary>
+    public static RelativePoint ToRelativePoint(this Vector2 vector, RelativeUnit relativeUnit = RelativeUnit.Relative) =>
+        new RelativePoint(vector.ToPoint(), relativeUnit);
+
+    /// <inheritdoc cref="ToRelativePoint(Vector2, RelativeUnit)"/>
+    public static RelativePoint? ToRelativePoint(Vector2? vector, RelativeUnit relativeUnit = RelativeUnit.Relative) =>
+        vector.HasValue ? vector.Value.ToRelativePoint(relativeUnit) : null;
+
+    /// <summary>
     /// Converts Avalonia.Rect to RectangleF
     /// </summary>
     public static RectangleF FromRect(this Rect rect) =>
