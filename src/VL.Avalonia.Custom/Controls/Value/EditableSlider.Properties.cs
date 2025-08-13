@@ -1,6 +1,6 @@
 ﻿using Avalonia;
 
-namespace VL.Avalonia.Custom.Controls
+namespace VL.Avalonia.Custom.Controls.Value
 {
     public partial class EditableSlider
     {

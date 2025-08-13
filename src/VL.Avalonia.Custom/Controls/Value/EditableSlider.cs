@@ -2,16 +2,11 @@
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using VL.Avalonia.Custom.Resources;
 
-namespace VL.Avalonia.Custom.Controls
+namespace VL.Avalonia.Custom.Controls.Value
 {
     public partial class EditableSlider : Slider
     {
-        public EditableSlider()
-        {
-           // ResourceLoader.Instance.LoadStyleForControl(this, "avares://VL.Avalonia.Custom/Resources/EditableSliderResources.axaml");
-        }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
@@ -29,7 +24,6 @@ namespace VL.Avalonia.Custom.Controls
 
             Focusable = true;
             IsEditing = false;
-
         }
 
 

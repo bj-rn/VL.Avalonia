@@ -1,7 +1,8 @@
-﻿using VL.Avalonia.Custom.Controls;
+﻿using VL.Avalonia.Controls;
+using VL.Avalonia.Custom.Controls;
 using VL.Core.Import;
 
-namespace VL.Avalonia.Controls.Value
+namespace VL.Avalonia.Custom.Controls.Value
 {
     /// <summary>
     /// A slider with editable value with middle click to edit value
@@ -10,9 +11,5 @@ namespace VL.Avalonia.Controls.Value
     [ProcessNode(Name = "EditableSlider")]
     public partial class EditableSliderWrapper : RangeBaseWrapper<EditableSlider>
     {
-        public EditableSliderWrapper() : base()
-        {
-
-        }
     }
 }

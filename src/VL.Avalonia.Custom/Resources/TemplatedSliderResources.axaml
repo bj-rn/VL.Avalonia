@@ -1,14 +1,10 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:local="clr-namespace:VL.Avalonia.Custom.Controls.Value">
-
-  <Design.PreviewWith>
-    <local:EditableSlider Width="300" Height="50"/>
-  </Design.PreviewWith>
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VL.Avalonia.Custom.Controls.Value">
 
   <x:Double x:Key="SliderHorizontalHeight">32</x:Double>
-  
-  <ControlTheme x:Key="EditableSliderHorizontalRepeatButtonDecrease" TargetType="RepeatButton">
+
+  <ControlTheme x:Key="TemplatedSliderHorizontalRepeatButtonDecrease" TargetType="RepeatButton">
     <Setter Property="Template">
       <ControlTemplate>
         <Border x:Name="borderDecrease" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
@@ -18,17 +14,16 @@
     </Setter>
   </ControlTheme>
 
-  <ControlTheme x:Key="EditableSliderHorizontalRepeatButtonIncrease" TargetType="RepeatButton">
+  <ControlTheme x:Key="TemplatedSliderHorizontalRepeatButtonIncrease" TargetType="RepeatButton">
     <Setter Property="Template">
       <ControlTemplate>
         <Border x:Name="borderIncrease" Background="{TemplateBinding Background}" CornerRadius="0"/>
       </ControlTemplate>
     </Setter>
   </ControlTheme>
-  
-  <ControlTheme x:Key="{x:Type local:EditableSlider}" TargetType="Slider">
-    <Setter Property="Background" Value="{DynamicResource SliderTrackFill}" />
 
+  <ControlTheme x:Key="{x:Type local:TemplatedSlider}" TargetType="Slider">
+    <Setter Property="Background" Value="{DynamicResource SliderTrackFill}" />
     <Setter Property="BorderThickness" Value="{DynamicResource SliderBorderThemeThickness}" />
     <Setter Property="Foreground" Value="{DynamicResource SliderTrackValueFill}" />
     <Style Selector="^:horizontal">
@@ -40,7 +35,7 @@
               Background="Transparent"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}">
-              
+
               <Grid Margin="{TemplateBinding Padding}"
                     Background="{DynamicResource SliderContainerBackground}">
                 <Border x:Name="borderMask"
@@ -63,16 +58,16 @@
                       <RepeatButton
                           Name="PART_DecreaseButton"
                           VerticalAlignment="Stretch"
-                          Theme="{StaticResource EditableSliderHorizontalRepeatButtonDecrease}"
+                          Theme="{StaticResource TemplatedSliderHorizontalRepeatButtonDecrease}"
                           Background="{DynamicResource SystemControlForegroundAccentBrush}"
                           HorizontalAlignment="Stretch"
                           Focusable="False"/>
                     </Track.DecreaseButton>
-                    
+
                     <Track.IncreaseButton>
                       <RepeatButton
                           Name="PART_IncreaseButton"
-                          Theme="{StaticResource EditableSliderHorizontalRepeatButtonIncrease}"
+                          Theme="{StaticResource TemplatedSliderHorizontalRepeatButtonIncrease}"
                           Background="{DynamicResource SliderTrackFill}"
                           HorizontalAlignment="Stretch"
                           Focusable="False"/>
@@ -81,45 +76,7 @@
                   </Track>
                 </Border>
 
-                <TextBox
-                    x:Name="textInput"
-                    Height="{Binding $parent[local:EditableSlider].ActualHeight}"
-                    VerticalContentAlignment="Center"
-                    Padding="8, 0, 0, 0"
-                    Text="{Binding $parent[local:EditableSlider].Value, StringFormat='{}{0:F3}'}" 
-                    IsVisible="{Binding $parent[local:EditableSlider].IsEditing}">
-                  
-                  <TextBox.Styles>
-                    
-                    <Style Selector="TextBox">
-                      <Setter Property="ContextFlyout" Value="{x:Null}" />
-                    </Style>
-
-                    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
-                      <Setter Property="CornerRadius" Value="{Binding $parent[local:EditableSlider].CornerRadius}"/>
-                    </Style>
-                    
-                  </TextBox.Styles>
-
-                </TextBox>
-
-                <TextBlock
-                   Padding="8,0"
-                   Foreground="{DynamicResource SystemChromeWhiteColor}"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   IsHitTestVisible="False"
-                   IsVisible="{Binding !$parent[local:EditableSlider].IsEditing}"
-                   Text="{Binding $parent[local:EditableSlider].Value, StringFormat='{}{0:F3}'}" />
-                
-                <TextBlock
-                  Padding="8,0"
-                  Foreground="{DynamicResource SystemChromeWhiteColor}"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Center"
-                  IsHitTestVisible="False"
-                  IsVisible="{Binding !$parent[local:EditableSlider].IsEditing}"
-                  Text="{Binding $parent[local:EditableSlider].Name}" />
+                <ContentPresenter Content="{Binding $parent[local:TemplatedSlider].Content}"/>
 
               </Grid>
             </Border>
@@ -129,31 +86,31 @@
     </Style>
 
     <Style Selector="^:pointerover">
-      
+
       <Style Selector="^ /template/ RepeatButton#PART_DecreaseButton">
         <Setter Property="Background" Value="{DynamicResource SliderThumbBackgroundPointerOver}"/>
       </Style>
-      
+
       <Style Selector="^ /template/ RepeatButton#PART_IncreaseButton">
         <Setter Property="Background" Value="{DynamicResource SliderTrackFillPointerOver}"/>
       </Style>
-      
+
     </Style>
 
     <Style Selector="^:pressed">
-      
+
       <Style Selector="^ /template/ RepeatButton#PART_DecreaseButton">
         <Setter Property="Background" Value="{DynamicResource SliderThumbBackgroundPressed}"/>
       </Style>
-      
+
       <Style Selector="^ /template/ RepeatButton#PART_IncreaseButton">
         <Setter Property="Background" Value="{DynamicResource SliderTrackFillPressed}"/>
       </Style>
-      
+
     </Style>
 
     <Style Selector="^:disabled">
-      
+
       <Style Selector="^ /template/ RepeatButton#PART_DecreaseButton">
         <Setter Property="Background" Value="{DynamicResource SliderTrackValueFillDisabled}" />
       </Style>
@@ -165,9 +122,8 @@
       <Style Selector="^:error">
         <Setter Property="Foreground" Value="{DynamicResource SystemControlErrorTextForegroundBrush}" />
       </Style>
-      
+
     </Style>
   </ControlTheme>
+  
 </ResourceDictionary>
-
-
