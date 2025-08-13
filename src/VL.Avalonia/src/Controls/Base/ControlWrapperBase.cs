@@ -99,7 +99,11 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     #endregion
 
     #region Visual Properties
-
+    /// <param name="isVisible">
+    /// Whether the control is visible in the user interface
+    /// </param>
+    [ImplementProperty("Control.IsVisibleProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _isVisible;
 
     /// <param name="renderTransform">
     /// The transform applied to the control's rendering (scaling, rotation, translation, skew)
@@ -122,6 +126,8 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
             _renderTransform = renderTransform;
         }
     }
+
+
 
 
     /// <param name="zIndex">
