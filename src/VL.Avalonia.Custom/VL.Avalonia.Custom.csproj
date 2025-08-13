@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Remove="Resources\EditableSliderResources.axaml" />
+    <AvaloniaXaml Remove="Resources\Resources.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Resources\EditableSliderResources.axaml" />
+    <AvaloniaResource Include="Resources\Resources.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.1" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.1" />
   </ItemGroup>
 
   <ItemGroup>

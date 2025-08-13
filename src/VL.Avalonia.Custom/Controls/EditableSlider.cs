@@ -1,17 +1,16 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
+using VL.Avalonia.Custom.Resources;
 
 namespace VL.Avalonia.Custom.Controls
 {
     public partial class EditableSlider : Slider
     {
-        static EditableSlider()
+        public EditableSlider()
         {
-            LoadStyles();
+           // ResourceLoader.Instance.LoadStyleForControl(this, "avares://VL.Avalonia.Custom/Resources/EditableSliderResources.axaml");
         }
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
@@ -31,20 +30,6 @@ namespace VL.Avalonia.Custom.Controls
             Focusable = true;
             IsEditing = false;
 
-        }
-
-        private static void LoadStyles()
-        {
-            try
-            {
-                var uri = new Uri("avares://VL.Avalonia.Custom/Styles/EditableSliderStyles.axaml");
-                var resourceDictionary = (ResourceDictionary)AvaloniaXamlLoader.Load(uri);
-                Application.Current?.Resources.MergedDictionaries.Add(resourceDictionary);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to load EditableSlider styles: {ex.Message}");
-            }
         }
 
 
