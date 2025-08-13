@@ -5,7 +5,7 @@
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-class ImplementProperty : Attribute
+public class ImplementProperty : Attribute
 {
     public string PropertyPath { get; }
     public int Order { get; set; }
@@ -22,7 +22,7 @@ class ImplementProperty : Attribute
 /// </summary>
 /// <typeparam name="TProperty"></typeparam>
 /// <typeparam name="TValue"></typeparam>
-class ImplementProperty<TValue, TProperty> : ImplementProperty
+public class ImplementProperty<TValue, TProperty> : ImplementProperty
 {
     public ImplementProperty(string propertyPath) : base(propertyPath) { }
 }
