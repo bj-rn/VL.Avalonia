@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="UdZsKoLghO3Oihrrgteb4W" LanguageVersion="2025.7.0-0369-g117540fa59" Version="0.128">
-  <NugetDependency Id="Fz1g9SnC5AAO0Sv79s4c5b" Location="VL.CoreLib" Version="2025.7.0-0369-g117540fa59" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="UdZsKoLghO3Oihrrgteb4W" LanguageVersion="2025.7.0-0486-g4e38aa55c7" Version="0.128">
+  <NugetDependency Id="Fz1g9SnC5AAO0Sv79s4c5b" Location="VL.CoreLib" Version="2025.7.0-0486-g4e38aa55c7" />
   <Patch Id="CsQ26EoGhvMOM4U1aQide6">
     <Canvas Id="IhgCT0sDhkhMddI2tTRHCe" DefaultCategory="Avalonia" CanvasType="FullCategory">
       <Canvas Id="EdSDaNRGmemQWQjC87hvqy" Name="Controls" Position="604,230">
@@ -671,7 +671,7 @@
     ************************ SolidColorBrush ************************
 
 -->
-        <Node Name="SolidColorBrush" Bounds="208,290" Id="B1KoMsk1mOvMt7y0iq1bX2">
+        <Node Name="SolidColorBrush" Bounds="316,230" Id="B1KoMsk1mOvMt7y0iq1bX2">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <CategoryReference Kind="Category" Name="Primitive" />
@@ -691,7 +691,7 @@
     ************************ Color ************************
 
 -->
-        <Node Name="Color" Bounds="208,200" Id="BZA3DpdVuiLN5OI7dq0YLP">
+        <Node Name="Color" Bounds="168,80" Id="BZA3DpdVuiLN5OI7dq0YLP">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <CategoryReference Kind="Category" Name="Primitive" />
@@ -711,7 +711,7 @@
     ************************ Colors ************************
 
 -->
-        <Node Name="Colors" Bounds="208,240" Id="KMLpjWSuz7FOLxkcMQCdzw">
+        <Node Name="Colors" Bounds="168,120" Id="KMLpjWSuz7FOLxkcMQCdzw">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <CategoryReference Kind="Category" Name="Primitive" />
@@ -731,7 +731,7 @@
     ************************ Brushes ************************
 
 -->
-        <Node Name="Brushes" Bounds="313,240" Id="MHSdbEbIwNqNIgrixYzMZ8">
+        <Node Name="Brushes" Bounds="316,290" Id="MHSdbEbIwNqNIgrixYzMZ8">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <CategoryReference Kind="Category" Name="Primitive" />
@@ -2003,6 +2003,26 @@
               <Fragment Id="Fl8FRXQgwTLL9yhj0lz7fI" Patch="KYM0ENAKENAOAdng1xnvbO" />
               <Fragment Id="CjWePWgXiOVLrFNPdHRn2y" Patch="JGvJ6FbUMTVMWx360DDyBT" />
             </ProcessDefinition>
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ IBrush ************************
+
+-->
+        <Node Name="IBrush" Bounds="167,230" Id="RTj1Y6cQ9w4ObSEzeTe0Gd">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Media" LastDependency="Avalonia.Base.dll">
+            <Choice Kind="TypeFlag" Name="IBrush" />
+            <FullNameCategoryReference ID="Avalonia.Media" />
+            <AssemblyReference ID="Avalonia.Base.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="LhNQwuyliOjONPSzK12rOv">
+            <Canvas Id="HSWVMPVoktcM3VQtk89sj0" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="H0DMi5zCDb2Okq3N9vgKle" IsHidden="true" />
           </Patch>
         </Node>
       </Canvas>

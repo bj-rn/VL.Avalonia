@@ -33,8 +33,7 @@ namespace VL.Avalonia.Animation.Transitions
     [ProcessNode(Name = "RelativePointTransition", HasStateOutput = true)]
     public class RelativePointTransitionWrapper : TransitionBaseWrapper<RelativePointTransition> { }
 
-    [ProcessNode(Name = "Rotate3DTransition")]
-    public class Rotate3DTransitionWrapper : PageSlideBaseWrapper<Rotate3DTransition> { }
+
 
     [ProcessNode(Name = "SizeTransition", HasStateOutput = true)]
     public class SizeTransitionWrapper : TransitionBaseWrapper<SizeTransition> { }

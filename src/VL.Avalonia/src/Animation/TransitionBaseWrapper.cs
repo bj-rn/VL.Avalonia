@@ -5,7 +5,7 @@ using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 
-namespace VL.Avalonia.Animation
+namespace VL.Avalonia.Animation.Transitions
 {
     /// <summary>
     /// Workaround interface to support transition building at runtime

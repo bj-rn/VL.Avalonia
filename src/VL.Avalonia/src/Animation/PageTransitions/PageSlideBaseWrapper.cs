@@ -4,7 +4,7 @@ using VL.Core;
 using VL.Core.Import;
 using static Avalonia.Animation.PageSlide;
 
-namespace VL.Avalonia.Animation;
+namespace VL.Avalonia.Animation.PageTransitions;
 
 [ProcessNode]
 public abstract partial class PageSlideBaseWrapper<T> where T : PageSlide, new()
