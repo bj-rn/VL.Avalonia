@@ -20,8 +20,8 @@ namespace VL.Avalonia.Media.Effects
     [ProcessNode]
     public abstract partial class DropShadowEffectBaseWrapper<T> : EffectWrapperBase<T> where T : DropShadowEffectBase, new()
     {
-        [ImplementProperty<float, double>("DropShadowEffectBase.RadiusProperty")]
-        protected Optional<float> _radius;
+        [ImplementProperty<float, double>("DropShadowEffectBase.BlurRadiusProperty")]
+        protected Optional<float> _blurRadius;
 
         protected Optional<Color4> _color;
         public void SetColor(Optional<Color4> color)
