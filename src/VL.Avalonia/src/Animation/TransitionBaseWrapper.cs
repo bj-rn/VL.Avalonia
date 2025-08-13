@@ -1,18 +1,31 @@
 ﻿using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
-using Avalonia.Controls;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
 
 namespace VL.Avalonia.Animation
 {
-    [ProcessNode]
-    public abstract partial class TransitionBaseWrapper<T> where T : TransitionBase, new()
+    /// <summary>
+    /// Workaround interface to support transition building at runtime
+    /// </summary>
+    public interface IAvaloniaTransition
+    {
+        /// <summary>
+        /// Function we gonna call in ControlWrapperBase to get AvaloniaProperty by name from registry
+        /// </summary>
+        /// <param name="owner">Instance of Control</param>
+        /// <param name="transition">Transition</param>
+        public bool TryBuildTransition(AvaloniaObject owner, out TransitionBase transition);
+    }
+
+    [ProcessNode(HasStateOutput = true)]
+    public abstract partial class TransitionBaseWrapper<T> : IAvaloniaTransition where T : TransitionBase, new()
     {
         protected readonly T _output = new();
-        public T Output => _output;
+
+        public Optional<string> Property { internal get; set; }
 
         [ImplementProperty("TransitionBase.DurationProperty")]
         protected Optional<TimeSpan> _duration;
@@ -20,30 +33,42 @@ namespace VL.Avalonia.Animation
         [ImplementProperty("TransitionBase.DelayProperty")]
         protected Optional<TimeSpan> _delay;
 
-        [ImplementProperty("TransitionBase.EasingProperty")]
         protected Optional<Easing> _easing;
-
-        protected Optional<string> _property;
-        /// <param name="property">Name of property. Should be set in advance</param>
-        [Fragment(Order = PinOrder.Main)]
-        public void SetProperty(Optional<string> property)
+        public void SetEasing([Pin(Visibility = Model.PinVisibility.Visible)] Optional<Easing> easing)
         {
-            if (_property != property)
+            if (_easing != easing)
             {
-                if (property.HasValue)
+                _easing = easing;
+
+                if (easing.HasValue)
                 {
-                    var prop = AvaloniaPropertyRegistry.Instance.FindRegistered(typeof(Control), property.Value);
-
-                    _output.SetValue(TransitionBase.PropertyProperty, prop);
-
+                    _output.SetValue(TransitionBase.EasingProperty, easing.Value);
                 }
                 else
                 {
-                    _output.ClearValue(TransitionBase.PropertyProperty);
+                    _output.SetValue(TransitionBase.EasingProperty, new LinearEasing());
                 }
-
-                _property = property;
             }
+        }
+
+        [Fragment(IsHidden = true)]
+        public bool TryBuildTransition(AvaloniaObject owner, out TransitionBase transition)
+        {
+            if (Property.HasValue && owner != null)
+            {
+                var property = AvaloniaPropertyRegistry.Instance.FindRegistered(owner.GetType(), Property.Value);
+
+                if (property != null)
+                {
+                    _output.SetValue(TransitionBase.PropertyProperty, property);
+                    transition = _output;
+
+                    return true;
+                }
+            }
+
+            transition = null;
+            return false;
         }
     }
 }
