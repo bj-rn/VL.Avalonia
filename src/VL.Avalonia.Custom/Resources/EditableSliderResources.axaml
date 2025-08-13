@@ -6,6 +6,8 @@
     <local:EditableSlider Width="300" Height="50"/>
   </Design.PreviewWith>
 
+  <x:Double x:Key="SliderHorizontalHeight">32</x:Double>
+  
   <ControlTheme x:Key="EditableSliderHorizontalRepeatButtonDecrease" TargetType="RepeatButton">
     <Setter Property="Template">
       <ControlTemplate>
@@ -26,6 +28,7 @@
   
   <ControlTheme x:Key="{x:Type local:EditableSlider}" TargetType="Slider">
     <Setter Property="Background" Value="{DynamicResource SliderTrackFill}" />
+
     <Setter Property="BorderThickness" Value="{DynamicResource SliderBorderThemeThickness}" />
     <Setter Property="Foreground" Value="{DynamicResource SliderTrackValueFill}" />
     <Style Selector="^:horizontal">
@@ -44,7 +47,7 @@
                           Background="Black"
                           CornerRadius="{TemplateBinding CornerRadius}"/>
 
-                <Border>
+                <Border MinHeight="{DynamicResource SliderHorizontalHeight}">
                   <Border.OpacityMask>
                     <VisualBrush Stretch="Fill" Opacity="1" Visual="{Binding ElementName=borderMask}"/>
                   </Border.OpacityMask>
