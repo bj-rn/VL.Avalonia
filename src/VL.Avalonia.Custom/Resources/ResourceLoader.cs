@@ -7,12 +7,11 @@ namespace VL.Avalonia.Custom.Resources
     public sealed class ResourceLoader
     {
         private static bool _isLoaded;
-        public static void LoadGlobalResources(Application app)
+        public static void IncludeCustomResources(Application app)
         {
             if (_isLoaded)
                 return;
 
-            
             if (app == null)
                 throw new ArgumentNullException(nameof(app), "You must provide a valid Avalonia Application instance.");
 
