@@ -5,7 +5,7 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Controls.Value;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// The TimePicker has two or three 'spinner' controls to allow the user to pick a time value. The time picker can work in 24 or 12 hour formats. The picker controls display when the control is clicked.

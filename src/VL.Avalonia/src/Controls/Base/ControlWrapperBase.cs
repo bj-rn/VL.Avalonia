@@ -1,12 +1,15 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia.Animation;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
-using Avalonia.Media;
+using Avalonia.Media.Transformation;
 using Stride.Core.Mathematics;
+using VL.Avalonia.Animation.Transitions;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
+using VL.Lib.Collections;
 using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
@@ -111,8 +114,24 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
         {
             if (renderTransform.HasValue)
             {
-                var t = new MatrixTransform(renderTransform.Value.ToAvaloniaMatrix());
-                _output.SetValue(Control.RenderTransformProperty, t);
+                // WORKAROUND: https://github.com/AvaloniaUI/Avalonia/discussions/13960
+                // Gets RenderTransform work with Transition unoptimized manner
+
+                // var transform = new MatrixTransform(renderTransform.Value.ToAvaloniaMatrix());
+                // _output.SetValue(Control.RenderTransformProperty, transform);
+
+                renderTransform.Value.Decompose(out Vector3 scale, out Matrix rotation, out Vector3 translation);
+                rotation.Decompose(out float yaw, out float pitch, out float roll);
+
+                var builder = TransformOperations.CreateBuilder(3);
+
+                builder.AppendScale(scale.X, scale.Y);
+                builder.AppendRotate(roll);
+                builder.AppendTranslate(translation.X, translation.Y);
+
+                var transform = builder.Build();
+
+                _output.SetValue(Control.RenderTransformProperty, transform);
             }
             else
             {
@@ -145,5 +164,37 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     /// </param>
     [ImplementProperty("Control.IsEnabledProperty", Order = 1000, PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _isEnabled;
+    #endregion
+
+    #region Animatable
+    private Spread<IAvaloniaTransition> _transitions;
+    public void SetTransition([Pin(Visibility = Model.PinVisibility.Optional)] Spread<IAvaloniaTransition> transitions)
+    {
+        if (_transitions != transitions)
+        {
+            if (transitions != null)
+            {
+                var t = new Transitions();
+                foreach (IAvaloniaTransition builder in transitions)
+                    if (builder != null)
+                    {
+                        var success = builder.TryBuildTransition(_output, out var transition);
+                        if (success)
+                        {
+                            t.Add(transition);
+                        }
+                    }
+
+
+                _output.SetValue(Control.TransitionsProperty, t);
+            }
+            else
+            {
+                _output.ClearValue(Control.TransitionsProperty);
+            }
+
+            _transitions = transitions;
+        }
+    }
     #endregion
 }
