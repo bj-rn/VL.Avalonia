@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="FeQc8WTI8RLLngjTv5t5Xc" Name="Bounds" Kind="InputPin" DefaultValue="-1050, 440, 566, 840" IsHidden="true" />
+            <Pin Id="FeQc8WTI8RLLngjTv5t5Xc" Name="Bounds" Kind="InputPin" DefaultValue="1086, 550, 494, 522" IsHidden="true" />
             <Pin Id="JC9bx6KYWbBLuzCx0DNFyQ" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="HRMy2eBspdnOHvyOfBxfzH" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="VsGJuHkiOXyOGzHn1WepmN" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -255,7 +255,7 @@
             </Patch>
             <ControlPoint Id="MVLlFxmt1UFMhCcHy0X2YX" Bounds="441,570" Alignment="Bottom" />
           </Node>
-          <Pad Id="Udd7Gh8jgiLOZdqCHiIFPq" Comment="Iteration Count" Bounds="351,100,35,15" ShowValueBox="true" isIOBox="true" Value="5">
+          <Pad Id="Udd7Gh8jgiLOZdqCHiIFPq" Comment="Iteration Count" Bounds="435,41,35,15" ShowValueBox="true" isIOBox="true" Value="5">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
@@ -306,12 +306,12 @@
             <Pin Id="I43on5I6uVvQJ5F0LxcmCj" Name="Margin" Kind="InputPin" />
             <Pin Id="FWzPKJPf6CRMiiiLnjff79" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="MT3ZAQCNA10OCNTEh2hwp2" Comment="Margin" Bounds="518,609,35,15" ShowValueBox="true" isIOBox="true" Value="4">
+          <Pad Id="MT3ZAQCNA10OCNTEh2hwp2" Comment="Margin" Bounds="518,609,35,15" ShowValueBox="true" isIOBox="true" Value="32">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="558,828,70,19" Id="DJ5jzKgJdImOtVS9EULV7f">
+          <Node Bounds="564,840,70,19" Id="DJ5jzKgJdImOtVS9EULV7f">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="LightTheme" />
@@ -337,7 +337,7 @@
             <Pin Id="RDigehxPi40NJfVlN1oWer" Name="Bottom Left" Kind="InputPin" />
             <Pin Id="B4j5g7EW44sOCOB39Cloqz" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="V2imNMLE9Y1MQW8SNVFA2h" Comment="Top " Bounds="578,61,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="V2imNMLE9Y1MQW8SNVFA2h" Comment="Top " Bounds="578,70,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
@@ -361,11 +361,26 @@
             <Pin Id="Qh8zHSNFLzdPBqG8Ujysj8" Name="Bottom Left" Kind="InputPin" />
             <Pin Id="NCKX9KjsODGON4ylcp4Y19" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="E9GI7cpiJqzQHQitXfuDH4" Comment="Bottom" Bounds="738,59,35,15" ShowValueBox="true" isIOBox="true" Value="8">
+          <Pad Id="E9GI7cpiJqzQHQitXfuDH4" Comment="Bottom" Bounds="738,70,35,15" ShowValueBox="true" isIOBox="true" Value="8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="882,491,42,19" Id="R7CCDl1Y4sVNvja7YHQQDB">
+            <p:NodeReference LastCategoryFullName="Avalonia.Media.Brushes" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Avalonia" />
+              <CategoryReference Kind="ClassType" Name="Brushes" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Media" NeedsToBeDirectParent="true">
+                  <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true">
+                    <p:OuterCategoryReference Kind="Category" NeedsToBeDirectParent="true" />
+                  </p:OuterCategoryReference>
+                </p:OuterCategoryReference>
+              </CategoryReference>
+              <Choice Kind="OperationCallFlag" Name="White" />
+            </p:NodeReference>
+            <Pin Id="Imwex0anKMUPrpLk48qmBB" Name="White" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -408,8 +423,8 @@
         <Link Id="AJ551ShzUxoQa704T3SMfa" Ids="Cd5US9ON5IjPKIwk9iFmyN,InpqSObRe5hMjQfe9K94nz" />
         <Link Id="VH5Qme78OvWP5HjdinFgpN" Ids="VX1LsCoS5RQNKyhclYaf7K,MVLlFxmt1UFMhCcHy0X2YX" />
         <Link Id="MKtm3Gn3f17OpZYZOiDN55" Ids="PRpNdyfnR46OaEhPUe5pkY,MeYKhwcGUuDPnf3Xiurbuh" />
-        <Link Id="QAdrOyNDpZbPbVsDaEPxmP" Ids="HsYao0rISUxPZ11Q8AnSSO,JGSDpcmLuiLLvacSn2n6R4" />
         <Link Id="Czze4ZWrGJXPUonKirRtcx" Ids="LbxHWt1FH0ONn2htameCjD,Fy4a3bGhS25L5EFCzbQnrQ" />
+        <Link Id="UWMnOHWQLZQOc21u6HL7zV" Ids="HsYao0rISUxPZ11Q8AnSSO,JGSDpcmLuiLLvacSn2n6R4" />
       </Patch>
     </Node>
   </Patch>

@@ -104,7 +104,6 @@
       </Setter>
     </Style>
     
-    
     <Setter Property="Template">
       <ControlTemplate>
         <DataValidationErrors>
@@ -141,13 +140,13 @@
                          MinWidth="0"
                          Foreground="{TemplateBinding Foreground}"
                          Watermark="{TemplateBinding Watermark}"
-
                          VerticalContentAlignment="Center"
                          HorizontalContentAlignment="Center"
                          Text="{TemplateBinding Text}"
                          AcceptsReturn="False"
                          IsVisible="{Binding $parent[local:NumberField].IsEditing}"
                          TextWrapping="NoWrap">
+                  
                   <TextBox.Styles>
 
                     <Style Selector="TextBox">
