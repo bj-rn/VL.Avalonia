@@ -1,29 +1,27 @@
-﻿using Avalonia.Animation;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
+using Avalonia.Media;
 using Avalonia.Media.Transformation;
 using Stride.Core.Mathematics;
-using VL.Avalonia.Animation.Transitions;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Controls.Base.Primitives;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
-using VL.Lib.Collections;
 using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// Base class for all controls, seems more flexible then using CodeGen for each prop.
+/// Inherits: <c>AnimatableBaseWrapper</c>
 /// Implements: <c>Output</c>, <c>Style</c>, <c>Classes</c>, <c>Name</c>.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class ControlWrapperBase<T> where T : Control, new()
+public abstract partial class ControlWrapperBase<T> : AnimatableWrapperBase<T> where T : Control, new()
 {
-    protected readonly T _output = new();
-    public T Output => _output;
 
     protected Optional<IAvaloniaStyle> _style;
     [Fragment(Order = PinOrder.Style)]
@@ -103,6 +101,12 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
 
     #region Visual Properties
 
+    /// <param name="effect">
+    /// Sets effect of the control
+    /// </param>
+    [ImplementProperty("Control.EffectProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<IEffect> _effect;
+
 
     /// <param name="renderTransform">
     /// The transform applied to the control's rendering (scaling, rotation, translation, skew)
@@ -164,37 +168,5 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     /// </param>
     [ImplementProperty("Control.IsEnabledProperty", Order = 1000, PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<bool> _isEnabled;
-    #endregion
-
-    #region Animatable
-    private Spread<IAvaloniaTransition> _transitions;
-    public void SetTransition([Pin(Visibility = Model.PinVisibility.Optional)] Spread<IAvaloniaTransition> transitions)
-    {
-        if (_transitions != transitions)
-        {
-            if (transitions != null)
-            {
-                var t = new Transitions();
-                foreach (IAvaloniaTransition builder in transitions)
-                    if (builder != null)
-                    {
-                        var success = builder.TryBuildTransition(_output, out var transition);
-                        if (success)
-                        {
-                            t.Add(transition);
-                        }
-                    }
-
-
-                _output.SetValue(Control.TransitionsProperty, t);
-            }
-            else
-            {
-                _output.ClearValue(Control.TransitionsProperty);
-            }
-
-            _transitions = transitions;
-        }
-    }
     #endregion
 }
