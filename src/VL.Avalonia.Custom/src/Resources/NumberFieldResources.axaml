@@ -5,7 +5,7 @@
   <ControlTheme x:Key="{x:Type local:NumberField}" TargetType="local:NumberField">
     <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
     <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
-    <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThickness}" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
     <Setter Property="MinHeight" Value="{DynamicResource TextControlThemeMinHeight}" />
     <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
@@ -20,7 +20,7 @@
         <ControlTemplate>
           <DataValidationErrors>
             <Border Name="PART_MainBorder"
-                    Background="{TemplateBinding Background}"
+                    Background="Transparent"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{TemplateBinding CornerRadius}"
@@ -28,6 +28,9 @@
                     Height="{TemplateBinding Height}"
                     MinHeight="{TemplateBinding MinHeight}">
               <Border.Styles>
+                <Style Selector="Border:pressed">
+                  <Setter Property="IsVisible" Value="False"/>
+                </Style>
                 <Style Selector="Border Border#PART_ButtonBorder">
                   <Setter Property="IsVisible" Value="False"/>
                 </Style>
@@ -65,6 +68,7 @@
                             Foreground="{TemplateBinding Foreground}"
                             BorderThickness="0"
                             Margin="0"
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightCornerRadiusFilterConverter}}"
                             Background="Transparent"
                             FontSize="{TemplateBinding FontSize}">
 
@@ -83,6 +87,7 @@
                             Background="Transparent"
                             BorderThickness="0"
                             Margin="0"
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}"
                             VerticalContentAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             FontSize="{TemplateBinding FontSize}">
@@ -107,7 +112,7 @@
     <Setter Property="Template">
       <ControlTemplate>
         <DataValidationErrors>
-          <ButtonSpinner Name="PART_Spinner"
+            <ButtonSpinner Name="PART_Spinner"
                          Background="{TemplateBinding Background}"
                          BorderThickness="{TemplateBinding BorderThickness}"
                          BorderBrush="{TemplateBinding BorderBrush}"
@@ -121,44 +126,62 @@
                          AllowSpin="{TemplateBinding AllowSpin}"
                          ShowButtonSpinner="{Binding !$parent[local:NumberField].IsEditing}"
                          ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}">
-
-            <Border Name="PART_MainBorder">
-              <Grid>
-                <TextBlock Name="PART_TextBlock"
-                           Background="Transparent"
-                           Padding="{TemplateBinding Padding}"
-                           Foreground="{TemplateBinding Foreground}"
-                           Text="{TemplateBinding Text}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           IsVisible="{Binding !$parent[local:NumberField].IsEditing}"/>
-
-                <TextBox Name="PART_TextBox"
-                         Background="Transparent"
-                         BorderBrush="Transparent"
-                         Padding="{TemplateBinding Padding}"
-                         MinWidth="0"
-                         Foreground="{TemplateBinding Foreground}"
-                         Watermark="{TemplateBinding Watermark}"
-                         VerticalContentAlignment="Center"
-                         HorizontalContentAlignment="Center"
-                         Text="{TemplateBinding Text}"
-                         AcceptsReturn="False"
-                         IsVisible="{Binding $parent[local:NumberField].IsEditing}"
-                         TextWrapping="NoWrap">
-                  
-                  <TextBox.Styles>
-
-                    <Style Selector="TextBox">
-                      <Setter Property="ContextFlyout" Value="{x:Null}" />
+              
+              <Border Name="PART_MainBorder" 
+                      Background="Transparent"
+                      CornerRadius="{TemplateBinding CornerRadius}">
+                
+                <Button Name="PART_ValueButton"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Padding="0"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                  <Button.Styles>
+                    <Style Selector="Button:pressed">
+                      <Setter Property="RenderTransform" Value="scale(1.0)" />
                     </Style>
+                    
+                  </Button.Styles>
+                  <Grid>
+                    <TextBlock Name="PART_TextBlock"
+                               Background="Transparent"
+                               Padding="{TemplateBinding Padding}"
+                               Foreground="{TemplateBinding Foreground}"
+                               Text="{TemplateBinding Text}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               IsHitTestVisible="False"
+                               IsVisible="{Binding !$parent[local:NumberField].IsEditing}"/>
 
-                  </TextBox.Styles>
-                </TextBox>
-              </Grid>
-            </Border>
-          </ButtonSpinner>
-        </DataValidationErrors>
+                    <TextBox Name="PART_TextBox"
+                             Background="Transparent"
+                             BorderBrush="Transparent"
+                             Padding="{TemplateBinding Padding}"
+                             CornerRadius="{TemplateBinding CornerRadius}"
+                             MinWidth="0"
+                             Foreground="{TemplateBinding Foreground}"
+                             Watermark="{TemplateBinding Watermark}"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             Text="{TemplateBinding Text}"
+                             AcceptsReturn="False"
+                             IsVisible="{Binding $parent[local:NumberField].IsEditing}"
+                             TextWrapping="NoWrap">
+
+                      <TextBox.Styles>
+
+                        <Style Selector="TextBox">
+                          <Setter Property="ContextFlyout" Value="{x:Null}" />
+                        </Style>
+
+                      </TextBox.Styles>
+                    </TextBox>
+                  </Grid>
+                </Button>
+
+              </Border>
+            </ButtonSpinner>
+          </DataValidationErrors>
       </ControlTemplate>
 
     </Setter>

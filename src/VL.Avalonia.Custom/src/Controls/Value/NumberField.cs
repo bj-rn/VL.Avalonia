@@ -11,6 +11,7 @@ namespace VL.Avalonia.Custom.Controls.Value
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
+            ValueButton = e.NameScope.Find<Button>("PART_ValueButton");
 
             Border mainBorder = e.NameScope.Find<Border>("PART_MainBorder");
             mainBorder.AddHandler(PointerReleasedEvent, Button_OnPointerReleased, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
@@ -25,12 +26,13 @@ namespace VL.Avalonia.Custom.Controls.Value
                 InputValue.PointerEntered += InputValue_PointerEntered;
                 InputValue.KeyDown += InputValue_KeyDown;
             }
-
             IsEditing = false;
         }
 
+        private TextBox InputValue { get; set; }
+        private Button ValueButton { get; set; }
+        private decimal? oldValue;
         Point pressedPosition;
-        private bool pressed = false;
 
         private void MainBorder_PointerPressed(object? sender, PointerPressedEventArgs e)
         {
@@ -41,13 +43,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             {
                 oldValue = this.Value;
                 pressedPosition = e.GetPosition(this);
-                pressed = true;
             }
         }
 
         private void MainBorder_PointerMoved(object? sender, PointerEventArgs e)
         {
-            if (pressed)
+            if (ValueButton.IsPressed)
             {
                 var position = e.GetPosition(this);
                 var offset = position - pressedPosition;
@@ -60,7 +61,6 @@ namespace VL.Avalonia.Custom.Controls.Value
 
         private void MainBorder_PointerReleased(object? sender, PointerReleasedEventArgs e)
         {
-            pressed = false;
             pressedPosition = e.GetPosition(this);
         }
 
@@ -147,7 +147,6 @@ namespace VL.Avalonia.Custom.Controls.Value
         }
 
 
-        private decimal? oldValue;
-        private TextBox InputValue { get; set; }
+
     }
 }
