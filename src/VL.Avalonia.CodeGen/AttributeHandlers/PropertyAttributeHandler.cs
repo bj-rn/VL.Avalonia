@@ -11,16 +11,16 @@ using System.Linq;
     {
         if (_background != background)
         {
-            _background = background;
-
             if (background.HasValue)
             {
-                _output.SetValue(Border.BackgroundProperty, background.Value);
+                _output.SetValue(Border.BackgroundProperty, (cast)background.Value);
             }
             else
             {
                 _output.ClearValue(Border.BackgroundProperty);
             }
+
+            _background = background;
         }
     }
 */
@@ -69,8 +69,6 @@ $@"
     {{
         if ({fieldName} != {paramBase})
         {{
-            {fieldName} = {paramBase};
-
             if ({paramBase}.HasValue)
             {{
                 _output.SetValue({propertyPath}, {typeCast} {paramBase}.Value);
@@ -79,6 +77,8 @@ $@"
             {{
                 _output.ClearValue({propertyPath});
             }}
+
+            {fieldName} = {paramBase};
         }}
     }}
 ";

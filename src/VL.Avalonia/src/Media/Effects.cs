@@ -8,7 +8,9 @@ using VL.Core.Import;
 namespace VL.Avalonia.Media.Effects
 {
     [ProcessNode]
-    public abstract partial class EffectWrapperBase<T> : AnimatableWrapperBase<T> where T : Effect, new() { }
+    public abstract partial class EffectWrapperBase<T> : AnimatableWrapperBase<T> where T : Effect, new()
+    {
+    }
 
     [ProcessNode(Name = "BlurEffect")]
     public partial class BlurEffectWrapper : EffectWrapperBase<BlurEffect>
@@ -36,6 +38,8 @@ namespace VL.Avalonia.Media.Effects
                 {
                     _output.ClearValue(DropShadowEffectBase.ColorProperty);
                 }
+
+                _color = color;
             }
         }
     }
@@ -77,7 +81,7 @@ namespace VL.Avalonia.Media.Effects
             {
                 if (_direction.HasValue)
                 {
-                    _output.SetValue(DropShadowDirectionEffect.DirectionProperty, direction.Value * 360);
+                    _output.SetValue(DropShadowDirectionEffect.DirectionProperty, (double)(direction.Value * 360.0f));
                 }
                 else
                 {
