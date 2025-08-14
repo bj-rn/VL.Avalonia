@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:local="clr-namespace:VL.Avalonia.Custom.Controls">
+
+  <ControlTheme x:Key="{x:Type local:NumberField}" TargetType="NumericUpDown">
+    <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
+    <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
+    <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThickness}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
+    <Setter Property="MinHeight" Value="{DynamicResource TextControlThemeMinHeight}" />
+    <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
+    <Setter Property="Padding" Value="{DynamicResource TextControlThemePadding}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+    <Setter Property="Value" Value="0.000"/>
+    <Setter Property="Increment" Value="0.01"/>
+    <Setter Property="FormatString" Value="F3"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <DataValidationErrors>
+          <ButtonSpinner Name="PART_Spinner"
+                         Background="{TemplateBinding Background}"
+                         BorderThickness="{TemplateBinding BorderThickness}"
+                         BorderBrush="{TemplateBinding BorderBrush}"
+                         CornerRadius="{TemplateBinding CornerRadius}"
+                         Height="{TemplateBinding Height}"
+                         IsTabStop="False"
+                         Padding="0"
+                         MinWidth="0"
+                         HorizontalContentAlignment="Stretch"
+                         VerticalContentAlignment="Stretch"
+                         AllowSpin="{TemplateBinding AllowSpin}"
+                         ShowButtonSpinner="{Binding !$parent[local:NumberField].IsEditing}"
+                         ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}">
+
+            <Border Name="PART_MainBorder">
+              <Grid>
+                <TextBlock Name="PART_TextBlock"
+                           Background="Transparent"
+                           Padding="{TemplateBinding Padding}"
+                           Foreground="{TemplateBinding Foreground}"
+                           Text="{TemplateBinding Text}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           IsVisible="{Binding !$parent[local:NumberField].IsEditing}"/>
+
+                <TextBox Name="PART_TextBox"
+                         Background="Transparent"
+                         BorderBrush="Transparent"
+                         Padding="{TemplateBinding Padding}"
+                         MinWidth="0"
+                         Foreground="{TemplateBinding Foreground}"
+                         Watermark="{TemplateBinding Watermark}"
+
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Center"
+                         Text="{TemplateBinding Text}"
+                         AcceptsReturn="False"
+                         IsVisible="{Binding $parent[local:NumberField].IsEditing}"
+                         TextWrapping="NoWrap">
+                  <TextBox.Styles>
+
+                    <Style Selector="TextBox">
+                      <Setter Property="ContextFlyout" Value="{x:Null}" />
+                    </Style>
+
+                  </TextBox.Styles>
+                </TextBox>
+              </Grid>
+            </Border>
+          </ButtonSpinner>
+        </DataValidationErrors>
+      </ControlTemplate>
+
+    </Setter>
+  </ControlTheme>
+
+</ResourceDictionary>
