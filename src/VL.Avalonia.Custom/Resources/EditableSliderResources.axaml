@@ -27,9 +27,9 @@
   </ControlTheme>
   
   <ControlTheme x:Key="{x:Type local:EditableSlider}" TargetType="Slider">
-    <Setter Property="Background" Value="{DynamicResource SliderTrackFill}" />
-    <Setter Property="BorderThickness" Value="{DynamicResource SliderBorderThemeThickness}" />
-    <Setter Property="Foreground" Value="{DynamicResource SliderTrackValueFill}" />
+    <Setter Property="Background" Value="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAccentBrush}" />
     <Setter Property="Minimum" Value="0"/>
     <Setter Property="Maximum" Value="1.00"/>
     
@@ -44,7 +44,7 @@
               BorderThickness="{TemplateBinding BorderThickness}">
               
               <Grid Margin="{TemplateBinding Padding}"
-                    Background="{DynamicResource SliderContainerBackground}">
+                    Background="{DynamicResource SystemControlTransparentBrush}">
                 <Border x:Name="borderMask"
                           Background="Black"
                           CornerRadius="{TemplateBinding CornerRadius}"/>
@@ -89,6 +89,7 @@
                     VerticalContentAlignment="Center"
                     HorizontalContentAlignment="Left"
                     Padding="8, 0, 0, 0"
+                    Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
                     Text="{Binding $parent[local:EditableSlider].Value, StringFormat='{}{0:F3}'}" 
                     IsVisible="{Binding $parent[local:EditableSlider].IsEditing}">
                   
@@ -108,7 +109,7 @@
 
                 <TextBlock
                    Padding="8,0"
-                   Foreground="{DynamicResource SystemChromeWhiteColor}"
+                   Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
                    IsHitTestVisible="False"
@@ -117,7 +118,7 @@
                 
                 <TextBlock
                   Padding="8,0"
-                  Foreground="{DynamicResource SystemChromeWhiteColor}"
+                  Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
                   IsHitTestVisible="False"
@@ -135,6 +136,7 @@
       <Setter Property="Template">
         <ControlTemplate>
           <DataValidationErrors>
+            
             <Border
               x:Name="PART_MainBorder"
               Background="Transparent"
@@ -151,6 +153,7 @@
                   <Border.OpacityMask>
                     <VisualBrush Stretch="Fill" Opacity="1" Visual="{Binding ElementName=borderMask}"/>
                   </Border.OpacityMask>
+                  
                   <Track
                       Name="PART_Track"
                       Minimum="{TemplateBinding Minimum}"
@@ -188,7 +191,8 @@
                     HorizontalContentAlignment="Center"
                     Padding="0, 0, 0, 8"
                     Text="{Binding $parent[local:EditableSlider].Value, StringFormat='{}{0:F3}'}"
-                    IsVisible="{Binding $parent[local:EditableSlider].IsEditing}">
+                    IsVisible="{Binding $parent[local:EditableSlider].IsEditing}"
+                    Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}">
 
                   <TextBox.Styles>
 
@@ -206,7 +210,7 @@
 
                 <TextBlock
                    Padding="0,8"
-                   Foreground="{DynamicResource SystemChromeWhiteColor}"
+                   Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
                    IsHitTestVisible="False"
@@ -215,15 +219,15 @@
 
                 <TextBlock
                   Padding="0,8"
-                  Foreground="{DynamicResource SystemChromeWhiteColor}"
+                  Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Bottom"
                   IsHitTestVisible="False"
                   IsVisible="{Binding !$parent[local:EditableSlider].IsEditing}"
                   Text="{Binding $parent[local:EditableSlider].Name}" />
 
-
               </Grid>
+              
             </Border>
           </DataValidationErrors>
         </ControlTemplate>

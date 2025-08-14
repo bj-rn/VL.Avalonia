@@ -39,11 +39,11 @@
   
   
   <ControlTheme x:Key="{x:Type local:TemplatedSlider}" TargetType="Slider">
+    <Setter Property="Background" Value="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAccentBrush}" />
     <Setter Property="Minimum" Value="0"/>
-    <Setter Property="Maximum" Value="1"/>
-    <Setter Property="Background" Value="{DynamicResource SliderTrackFill}" />
-    <Setter Property="BorderThickness" Value="{DynamicResource SliderBorderThemeThickness}" />
-    <Setter Property="Foreground" Value="{DynamicResource SliderTrackValueFill}" />
+    <Setter Property="Maximum" Value="1.00"/>
     
     <Style Selector="^:horizontal">
       <Setter Property="Template">
@@ -56,7 +56,7 @@
               BorderThickness="{TemplateBinding BorderThickness}">
 
               <Grid Margin="{TemplateBinding Padding}"
-                    Background="{DynamicResource SliderContainerBackground}">
+                    Background="{DynamicResource SystemControlTransparentBrush}">
                 <Border x:Name="borderMask"
                           Background="Black"
                           CornerRadius="{TemplateBinding CornerRadius}"/>
@@ -99,6 +99,7 @@
 
               </Grid>
             </Border>
+            
           </DataValidationErrors>
         </ControlTemplate>
       </Setter>
@@ -116,7 +117,7 @@
               BorderThickness="{TemplateBinding BorderThickness}">
 
               <Grid Margin="{TemplateBinding Padding}"
-                    Background="{DynamicResource SliderContainerBackground}">
+                    Background="{DynamicResource SystemControlTransparentBrush}">
                 <Border x:Name="borderMask"
                           Background="Black"
                           CornerRadius="{TemplateBinding CornerRadius}"/>
