@@ -2,7 +2,7 @@
 using VL.Avalonia.Custom.Controls;
 using VL.Core.Import;
 
-namespace VL.Avalonia.Controls.Value
+namespace VL.Avalonia.Custom.Controls.Value
 {
     /// <summary>
     /// A control that lets the user change value.

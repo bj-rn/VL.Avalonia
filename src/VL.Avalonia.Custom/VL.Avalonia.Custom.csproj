@@ -9,12 +9,16 @@
 
   <ItemGroup>
     <AvaloniaXaml Remove="Resources\EditableSliderResources.axaml" />
+    <AvaloniaXaml Remove="Resources\NumberFieldButtonSpinnerResources.axaml" />
+    <AvaloniaXaml Remove="Resources\NumberFieldResources.axaml" />
     <AvaloniaXaml Remove="Resources\Resources.axaml" />
     <AvaloniaXaml Remove="Resources\TemplatedSliderResources.axaml" />
   </ItemGroup>
 
   <ItemGroup>
     <AvaloniaResource Include="Resources\EditableSliderResources.axaml" />
+    <AvaloniaResource Include="Resources\NumberFieldButtonSpinnerResources.axaml" />
+    <AvaloniaResource Include="Resources\NumberFieldResources.axaml" />
     <AvaloniaResource Include="Resources\Resources.axaml" />
     <AvaloniaResource Include="Resources\TemplatedSliderResources.axaml" />
   </ItemGroup>
@@ -26,9 +30,7 @@
 
   <ItemGroup>
 
-    <ProjectReference Include="..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj" ReferenceOutputAssembly="true"
-                      OutputItemType="Analyzer"
-                      SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj" ReferenceOutputAssembly="true" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
     <ProjectReference Include="..\VL.Avalonia\src\VL.Avalonia.csproj" />
     
   </ItemGroup>
