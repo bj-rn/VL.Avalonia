@@ -12,10 +12,10 @@ namespace VL.Avalonia.Custom.Controls.Value
         {
             base.OnApplyTemplate(e);
             ValueButton = e.NameScope.Find<Button>("PART_ValueButton");
+            ValueButton.AddHandler(PointerPressedEvent, Button_PointerPressed, RoutingStrategies.Bubble, true);
 
             Border mainBorder = e.NameScope.Find<Border>("PART_MainBorder");
             mainBorder.AddHandler(PointerReleasedEvent, Button_OnPointerReleased, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
-            mainBorder.PointerPressed += MainBorder_PointerPressed;
             mainBorder.PointerMoved += MainBorder_PointerMoved;
             mainBorder.PointerReleased += MainBorder_PointerReleased;
 
@@ -29,12 +29,7 @@ namespace VL.Avalonia.Custom.Controls.Value
             IsEditing = false;
         }
 
-        private TextBox InputValue { get; set; }
-        private Button ValueButton { get; set; }
-        private decimal? oldValue;
-        Point pressedPosition;
-
-        private void MainBorder_PointerPressed(object? sender, PointerPressedEventArgs e)
+        private void Button_PointerPressed(object? sender, PointerPressedEventArgs e)
         {
             if (IsEditing == true)
                 return;
@@ -46,15 +41,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
+        private TextBox InputValue { get; set; }
+        private Button ValueButton { get; set; }
+        private decimal? oldValue;
+        Point pressedPosition;
+
+
+
         private void MainBorder_PointerMoved(object? sender, PointerEventArgs e)
         {
             if (ValueButton.IsPressed)
             {
                 var position = e.GetPosition(this);
                 var offset = position - pressedPosition;
-                var newValue = Convert.ToDecimal(this.Value) + (decimal)(offset.X * 0.01);
-                this.Value = newValue;
-                oldValue = newValue;
+                this.Value = Convert.ToDecimal(this.Value) + (decimal)(offset.X * 0.01);
+
                 pressedPosition = position;
             }
         }
@@ -62,6 +63,7 @@ namespace VL.Avalonia.Custom.Controls.Value
         private void MainBorder_PointerReleased(object? sender, PointerReleasedEventArgs e)
         {
             pressedPosition = e.GetPosition(this);
+            oldValue = this.Value;
         }
 
         private void AddParentWindowHandlers()
