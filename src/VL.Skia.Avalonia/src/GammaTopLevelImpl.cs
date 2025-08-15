@@ -159,7 +159,7 @@ namespace VL.Skia.Avalonia
             else if (notification is MouseMoveNotification mouseMove)
                 input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position, _inputModifiers));
             else if (notification is MouseWheelNotification mouseWheel)
-                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position, new Vector(mouseWheel.WheelDelta, 0), _inputModifiers));
+                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position, new Vector(0, mouseWheel.WheelDelta * 0.01 /*DPI ISSUE ??*/), _inputModifiers));
 
             if (e != null)
                 return e.Handled;
@@ -182,15 +182,6 @@ namespace VL.Skia.Avalonia
                 input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyUp, keyUp.KeyData.ToKey(), _inputModifiers, keyUp.KeyData.ToPhysicalKey(), keyUp.KeyData.ToKeySymbol()));
             else if (notification is KeyPressNotification keyPress && !char.IsControl(keyPress.KeyChar))
                 input(e = new RawTextInputEventArgs(KeyboardDevice, Timestamp, InputRoot, keyPress.KeyChar.ToString()));
-            else if (notification is MouseDownNotification mouseDown)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), mouseDown.Position.ToPoint(), _inputModifiers));
-            else if (notification is MouseUpNotification mouseUp)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseUp.Buttons.ToEventType(true), mouseUp.Position.ToPoint(), _inputModifiers));
-            else if (notification is MouseMoveNotification mouseMove)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, mouseMove.Position.ToPoint(), _inputModifiers));
-            else if (notification is MouseWheelNotification mouseWheel)
-                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, mouseWheel.Position.ToPoint(), new Vector(0, mouseWheel.WheelDelta * 0.01 /*DPI ISSUE ??*/), _inputModifiers));
-
 
             if (e != null)
                 return e.Handled;
