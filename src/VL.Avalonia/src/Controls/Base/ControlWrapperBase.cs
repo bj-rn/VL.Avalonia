@@ -100,12 +100,20 @@ public abstract partial class ControlWrapperBase<T> : AnimatableWrapperBase<T> w
     #endregion
 
     #region Visual Properties
+      
+    /// <param name="isVisible">
+    /// Whether the control is visible in the user interface
+    /// </param>
+    [ImplementProperty("Control.IsVisibleProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<bool> _isVisible;
+
 
     /// <param name="effect">
     /// Sets effect of the control
     /// </param>
     [ImplementProperty("Control.EffectProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<IEffect> _effect;
+
 
 
     /// <param name="renderTransform">
@@ -145,6 +153,8 @@ public abstract partial class ControlWrapperBase<T> : AnimatableWrapperBase<T> w
             _renderTransform = renderTransform;
         }
     }
+
+
 
 
     /// <param name="zIndex">

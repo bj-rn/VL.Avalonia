@@ -1,0 +1,190 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:local="clr-namespace:VL.Avalonia.Custom.Controls.Value">
+
+  <ControlTheme x:Key="{x:Type local:NumberField}" TargetType="local:NumberField">
+    <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
+    <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
+    <Setter Property="MinHeight" Value="34" />
+    <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
+    <Setter Property="Padding" Value="{DynamicResource TextControlThemePadding}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+    <Setter Property="Value" Value="0.000"/>
+    <Setter Property="Increment" Value="0.01"/>
+    <Setter Property="FormatString" Value="F3"/>
+
+    <Style Selector="^ /template/ ButtonSpinner">
+      <Setter Property="Template">
+        <ControlTemplate>
+          <DataValidationErrors>
+            <Border Name="PART_MainBorder"
+                    Background="Transparent"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    VerticalAlignment="Stretch"
+                    Height="{TemplateBinding Height}"
+                    MinHeight="{TemplateBinding MinHeight}">
+              <Border.Styles>
+                <Style Selector="Border:pressed">
+                  <Setter Property="IsVisible" Value="False"/>
+                </Style>
+                <Style Selector="Border Border#PART_ButtonBorder">
+                  <Setter Property="IsVisible" Value="False"/>
+                </Style>
+                <Style Selector="Border:pointerover Border#PART_ButtonBorder">
+                  <Setter Property="IsVisible" Value="True"/>
+                </Style>
+              </Border.Styles>
+              <Grid >
+
+                <ContentPresenter Name="PART_ContentPresenter"
+                                  Grid.Column="1"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Padding="{TemplateBinding Padding}">
+
+                  <ContentPresenter.Styles>
+                    <Style Selector="ContentPresenter:pointerover">
+                      <Setter Property="Cursor" Value="SizeWestEast" />
+                    </Style>
+                  </ContentPresenter.Styles>
+                </ContentPresenter>
+
+                <Border Name="PART_ButtonBorder"
+                        Height="{Binding $parent[Border].Height}">
+
+                  <DockPanel IsVisible="{TemplateBinding ShowButtonSpinner}">
+
+                    <Button Name="PART_IncreaseButton"
+                            DockPanel.Dock="Right"
+                            Classes="ButtonSpinnerRepeatButton"
+                            VerticalContentAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Foreground="{TemplateBinding Foreground}"
+                            BorderThickness="0"
+                            Margin="0"
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RightCornerRadiusFilterConverter}}"
+                            Background="Transparent"
+                            FontSize="{TemplateBinding FontSize}">
+
+                      <Path Data="M 106.601 490 412.15 245.004 106.601 0 77.85 35.856 338.702 245.004 77.85 454.159 Z"
+                            Fill="{TemplateBinding Foreground}"
+                            Stretch="Fill"
+                            Height="20"
+                            Width="10"/>
+
+                    </Button>
+
+                    <Button Name="PART_DecreaseButton"
+                            DockPanel.Dock="Left"
+                            Classes="ButtonSpinnerRepeatButton"
+                            Foreground="{TemplateBinding Foreground}"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Margin="0"
+                            CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}"
+                            VerticalContentAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            FontSize="{TemplateBinding FontSize}">
+
+                      <Path Data="M 410.312 454.729 151.767 244.996 410.312 35.271 381.693 0 79.688 244.996 381.693 490 Z"
+                            Fill="{TemplateBinding Foreground}"
+                            Stretch="Fill"
+                            Height="20"
+                            Width="10"/>
+
+                    </Button>
+
+                  </DockPanel>
+                </Border>
+              </Grid>
+            </Border>
+          </DataValidationErrors>
+        </ControlTemplate>
+      </Setter>
+    </Style>
+    
+    <Setter Property="Template">
+      <ControlTemplate>
+        <DataValidationErrors>
+         <ButtonSpinner Background="{TemplateBinding Background}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Height="{TemplateBinding Height}"
+                        IsTabStop="False"
+                        Padding="0"
+                        MinWidth="0"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        AllowSpin="{TemplateBinding AllowSpin}"
+                        ShowButtonSpinner="{Binding !$parent[local:NumberField].IsEditing}"
+                        ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}">
+              
+              <Border Name="PART_MainBorder" 
+                      Background="Transparent"
+                      CornerRadius="{TemplateBinding CornerRadius}">
+                
+                <Button Name="PART_ValueButton"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        ClickMode="Press"
+                        Padding="0"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                  <Button.Styles>
+                    <Style Selector="Button:pressed">
+                      <Setter Property="RenderTransform" Value="scale(1.0)" />
+                    </Style>
+                    
+                  </Button.Styles>
+                  <Grid>
+                    <TextBlock Name="PART_TextBlock"
+                               Background="Transparent"
+                               Padding="{TemplateBinding Padding}"
+                               Foreground="{TemplateBinding Foreground}"
+                               Text="{TemplateBinding Text}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               IsHitTestVisible="False"
+                               IsVisible="{Binding !$parent[local:NumberField].IsEditing}"/>
+
+                    <TextBox Name="PART_TextBox"
+
+                             Background="Transparent"
+                             BorderBrush="Transparent"
+                             Padding="{TemplateBinding Padding}"
+                             CornerRadius="{TemplateBinding CornerRadius}"
+                             Foreground="{TemplateBinding Foreground}"
+                             Watermark="{TemplateBinding Watermark}"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             Text="{TemplateBinding Text}"
+                             AcceptsReturn="False"
+                             IsVisible="{Binding $parent[local:NumberField].IsEditing}"
+                             TextWrapping="NoWrap">
+
+                      <TextBox.Styles>
+
+                        <Style Selector="TextBox">
+                          <Setter Property="ContextFlyout" Value="{x:Null}" />
+                        </Style>
+
+                      </TextBox.Styles>
+                    </TextBox>
+                  </Grid>
+                </Button>
+
+              </Border>
+            </ButtonSpinner>
+        </DataValidationErrors>
+      </ControlTemplate>
+
+    </Setter>
+  </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,210 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VL.Avalonia.Custom.Controls.Value">
+
+  <x:Double x:Key="SliderHorizontalHeight">32</x:Double>
+  <x:Double x:Key="SliderVerticalWidth">32</x:Double>
+  
+  <ControlTheme x:Key="TemplatedSliderHorizontalRepeatButtonDecrease" TargetType="RepeatButton">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="borderDecrease" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"/>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <ControlTheme x:Key="TemplatedSliderHorizontalRepeatButtonIncrease" TargetType="RepeatButton">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="borderIncrease" Background="{TemplateBinding Background}" CornerRadius="0"/>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <ControlTheme x:Key="TemplatedSliderVerticalRepeatButtonDecrease" TargetType="RepeatButton">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="borderDecrease" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"/>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <ControlTheme x:Key="TemplatedSliderVerticalRepeatButtonIncrease" TargetType="RepeatButton">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="borderIncrease" Background="{TemplateBinding Background}" CornerRadius="0"/>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+  
+  
+  <ControlTheme x:Key="{x:Type local:TemplatedSlider}" TargetType="Slider">
+    <Setter Property="Background" Value="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAccentBrush}" />
+    <Setter Property="Minimum" Value="0"/>
+    <Setter Property="Maximum" Value="1.00"/>
+    
+    <Style Selector="^:horizontal">
+      <Setter Property="Template">
+        <ControlTemplate>
+          <DataValidationErrors>
+            <Border
+              x:Name="PART_MainBorder"
+              Background="Transparent"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}">
+
+              <Grid Margin="{TemplateBinding Padding}"
+                    Background="{DynamicResource SystemControlTransparentBrush}">
+                <Border x:Name="borderMask"
+                          Background="Black"
+                          CornerRadius="{TemplateBinding CornerRadius}"/>
+
+                <Border MinHeight="{DynamicResource SliderHorizontalHeight}" MinWidth="">
+                  <Border.OpacityMask>
+                    <VisualBrush Stretch="Fill" Opacity="1" Visual="{Binding ElementName=borderMask}"/>
+                  </Border.OpacityMask>
+                  <Track
+                      Name="PART_Track"
+                      Minimum="{TemplateBinding Minimum}"
+                      Maximum="{TemplateBinding Maximum}"
+                      Value="{TemplateBinding Value, Mode=TwoWay}"
+                      IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                      Orientation="Horizontal">
+
+                    <Track.DecreaseButton>
+                      <RepeatButton
+                          Name="PART_DecreaseButton"
+                          VerticalAlignment="Stretch"
+                          Theme="{StaticResource TemplatedSliderHorizontalRepeatButtonDecrease}"
+                          Background="{DynamicResource SystemControlForegroundAccentBrush}"
+                          HorizontalAlignment="Stretch"
+                          Focusable="False"/>
+                    </Track.DecreaseButton>
+
+                    <Track.IncreaseButton>
+                      <RepeatButton
+                          Name="PART_IncreaseButton"
+                          Theme="{StaticResource TemplatedSliderHorizontalRepeatButtonIncrease}"
+                          Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                          HorizontalAlignment="Stretch"
+                          Focusable="False"/>
+                    </Track.IncreaseButton>
+
+                  </Track>
+                </Border>
+
+                <ContentPresenter Content="{Binding $parent[local:TemplatedSlider].Content}"/>
+
+              </Grid>
+            </Border>
+            
+          </DataValidationErrors>
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+    <Style Selector="^:vertical">
+      <Setter Property="Template">
+        <ControlTemplate>
+          <DataValidationErrors>
+            <Border
+              x:Name="PART_MainBorder"
+              Background="Transparent"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}">
+
+              <Grid Margin="{TemplateBinding Padding}"
+                    Background="{DynamicResource SystemControlTransparentBrush}">
+                <Border x:Name="borderMask"
+                          Background="Black"
+                          CornerRadius="{TemplateBinding CornerRadius}"/>
+
+                <Border MinWidth="{DynamicResource SliderVerticalWidth}">
+                  <Border.OpacityMask>
+                    <VisualBrush Stretch="Fill" Opacity="1" Visual="{Binding ElementName=borderMask}"/>
+                  </Border.OpacityMask>
+                  <Track
+                      Name="PART_Track"
+                      Minimum="{TemplateBinding Minimum}"
+                      Maximum="{TemplateBinding Maximum}"
+                      Value="{TemplateBinding Value, Mode=TwoWay}"
+                      IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                      Orientation="Vertical">
+
+                    <Track.DecreaseButton>
+                      <RepeatButton
+                          Name="PART_DecreaseButton"
+                          VerticalAlignment="Stretch"
+                          Theme="{StaticResource TemplatedSliderVerticalRepeatButtonDecrease}"
+                          Background="{DynamicResource SystemControlForegroundAccentBrush}"
+                          HorizontalAlignment="Stretch"
+                          Focusable="False"/>
+                    </Track.DecreaseButton>
+
+                    <Track.IncreaseButton>
+                      <RepeatButton
+                          Name="PART_IncreaseButton"
+                          Theme="{StaticResource TemplatedSliderVerticalRepeatButtonIncrease}"
+                          Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                          HorizontalAlignment="Stretch"
+                          Focusable="False"/>
+                    </Track.IncreaseButton>
+
+                  </Track>
+                </Border>
+
+                <ContentPresenter Content="{Binding $parent[local:TemplatedSlider].Content}"/>
+
+              </Grid>
+            </Border>
+          </DataValidationErrors>
+        </ControlTemplate>
+      </Setter>
+    </Style>
+
+    
+    <Style Selector="^:pointerover">
+
+      <Style Selector="^ /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}"/>
+      </Style>
+
+      <Style Selector="^ /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Background" Value="{DynamicResource SystemChromeLowColor}"/>
+      </Style>
+
+    </Style>
+
+    <Style Selector="^:pressed">
+
+      <Style Selector="^ /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}"/>
+      </Style>
+
+      <Style Selector="^ /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Background" Value="{DynamicResource SystemChromeMediumColor}"/>
+      </Style>
+
+    </Style>
+
+    <Style Selector="^:disabled">
+
+      <Style Selector="^ /template/ RepeatButton#PART_DecreaseButton">
+        <Setter Property="Background" Value="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}" />
+      </Style>
+
+      <Style Selector="^ /template/ RepeatButton#PART_IncreaseButton">
+        <Setter Property="Background" Value="{DynamicResource SystemControlDisabledChromeDisabledHighBrush}" />
+      </Style>
+
+      <Style Selector="^:error">
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlErrorTextForegroundBrush}" />
+      </Style>
+
+    </Style>
+    
+  </ControlTheme>
+  
+</ResourceDictionary>
