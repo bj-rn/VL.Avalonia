@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="AlJU5DMQsSdNzqVgbkEKow" LanguageVersion="2025.7.0-0349-g7f1d700e80" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.0-0349-g7f1d700e80" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="AlJU5DMQsSdNzqVgbkEKow" LanguageVersion="2025.7.0-0449-gd8ccccbee2" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.0-0449-gd8ccccbee2" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="FeQc8WTI8RLLngjTv5t5Xc" Name="Bounds" Kind="InputPin" DefaultValue="1870, 425, 566, 840" IsHidden="true" />
+            <Pin Id="FeQc8WTI8RLLngjTv5t5Xc" Name="Bounds" Kind="InputPin" DefaultValue="1870, 424, 566, 840" IsHidden="true" />
             <Pin Id="JC9bx6KYWbBLuzCx0DNFyQ" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="HRMy2eBspdnOHvyOfBxfzH" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="VsGJuHkiOXyOGzHn1WepmN" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -132,6 +132,7 @@
                 <Pin Id="Usos3r2XckQLhWx382SUww" Name="Value" Kind="InputPin" />
                 <Pin Id="IgqZ8PVybnNMTCasiZ5kBz" Name="Output" Kind="OutputPin" />
                 <Pin Id="ESxnBC1sGoQLa8aucI225G" Name="Value" Kind="OutputPin" />
+                <Pin Id="Ke3XdcRWSikMjsz41FwFIr" Name="Author" Kind="InputPin" IsHidden="true" />
               </Node>
               <Node Bounds="814,719,81,19" Id="LfRCteMb9tJNlXafkdKvjE">
                 <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
@@ -349,6 +350,7 @@
                 <Pin Id="U5iOIfayqrCPfXmUnRxNxw" Name="Value" Kind="InputPin" />
                 <Pin Id="BFdIscnS5Y1LbkGGQWRIAl" Name="Output" Kind="OutputPin" />
                 <Pin Id="CY1klxqf8KnNUimvJA80s3" Name="Value" Kind="OutputPin" />
+                <Pin Id="UEE6UOwYJ0PPGEw4R9SvVi" Name="Author" Kind="InputPin" IsHidden="true" />
               </Node>
               <Node Bounds="287,728,85,19" Id="CuhAV0SdvOuLJXm3IEc2Fi">
                 <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
@@ -822,8 +824,9 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="K4zkoqpX8wdMMxxmzuITi1" Location="VL.Skia" Version="2025.7.0-0349-g7f1d700e80" />
+  <NugetDependency Id="K4zkoqpX8wdMMxxmzuITi1" Location="VL.Skia" Version="2025.7.0-0449-gd8ccccbee2" />
   <DocumentDependency Id="TkYTb5d9lTYQUcqupX1sVz" Location="../../VL.Avalonia/VL.Avalonia.vl" />
   <DocumentDependency Id="HdmtlGqwsjELhwVu261rLU" Location="../../VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
   <PlatformDependency Id="U3pLaNjXKNgPCv3DKujCM3" Location="../lib/Debug/net8.0/VL.Avalonia.Custom.dll" />
+  <DocumentDependency Id="OLp4ISUnLeRMDZLBwTdYWu" Location="../VL.Avalonia.Custom.vl" />
 </Document>

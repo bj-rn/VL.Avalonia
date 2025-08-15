@@ -141,11 +141,11 @@
                 <Pin Id="Drz0oplzYFTLKEOPkWjFN7" Name="Output" Kind="OutputPin" />
                 <Pin Id="KM7pqGllXvfPfuANxkG19t" Name="Small Change" Kind="InputPin" IsHidden="true" />
                 <Pin Id="ASJMe94qcLXNZJpWuhRXfj" Name="Large Change" Kind="InputPin" IsHidden="true" />
-                <Pin Id="EeX6tUivfqzLbLYLC7jhpO" Name="Content" Kind="InputPin" />
                 <Pin Id="Uo7wIBsCotxLMbrKwZs1Cj" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
                 <Pin Id="Lk68UV57m8IQSTeH54iReB" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
                 <Pin Id="RnabMkmlb4WOduc6YB0ZQb" Name="Z Index" Kind="InputPin" IsHidden="true" />
                 <Pin Id="FKYfKiFb3h2PK5kYBftkcV" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+                <Pin Id="EeX6tUivfqzLbLYLC7jhpO" Name="Content" Kind="InputPin" />
               </Node>
               <Pad Id="CcsFxDMnWhQNVnDHMvcgMp" Comment="Maximum" Bounds="1193,881,35,15" ShowValueBox="true" isIOBox="true" Value="1">
                 <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -554,11 +554,11 @@
                 <Pin Id="LK7te8b6MXeQJXGf9plXoJ" Name="Output" Kind="OutputPin" />
                 <Pin Id="MlEnXF9XZyMNnWm8AGpSlB" Name="Small Change" Kind="InputPin" IsHidden="true" />
                 <Pin Id="QNf9uqU7XX4O9xXUBc24Oo" Name="Large Change" Kind="InputPin" IsHidden="true" />
-                <Pin Id="P8ObUW8PXYbNOG5b6yweRR" Name="Content" Kind="InputPin" />
                 <Pin Id="HAj9gB4aeDEMeDDduqBjNL" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
                 <Pin Id="DlIR3YHYHZsMggxfJtmSX7" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
                 <Pin Id="GMxbENl0BC5PvpZNURlrrz" Name="Z Index" Kind="InputPin" IsHidden="true" />
                 <Pin Id="PlUcduh69GmOSpp6rmXxT6" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
+                <Pin Id="P8ObUW8PXYbNOG5b6yweRR" Name="Content" Kind="InputPin" />
               </Node>
               <Pad Id="D98vJ9gj8qcM6l6E0QcLS6" Comment="Maximum" Bounds="484,851,35,15" ShowValueBox="true" isIOBox="true" Value="1">
                 <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -1244,8 +1244,8 @@
       </Patch>
     </Node>
   </Patch>
-  <DocumentDependency Id="Fh1j8VdlALUMY5MK3d0ALL" Location="./VL.Avalonia/VL.Avalonia.vl" />
-  <DocumentDependency Id="NUfDrozBb7kM5fsqv20MvE" Location="./VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
   <NugetDependency Id="K4zkoqpX8wdMMxxmzuITi1" Location="VL.Skia" Version="2025.7.0-0449-gd8ccccbee2" />
-  <PlatformDependency Id="Buhu2DJeWAuLyLaiYQC5bi" Location="./VL.Avalonia.Custom/bin/Debug/net8.0/VL.Avalonia.Custom.dll" />
+  <DocumentDependency Id="BrjEFTE0XOGMrzO2V6PcXE" Location="../../VL.Avalonia/VL.Avalonia.vl" />
+  <PlatformDependency Id="I1RsOwmWZf5Nnlmi07hT8C" Location="../lib/Debug/net8.0/VL.Avalonia.Custom.dll" />
+  <DocumentDependency Id="Hy2B90DPjToMZait2O2oTh" Location="../../VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
 </Document>

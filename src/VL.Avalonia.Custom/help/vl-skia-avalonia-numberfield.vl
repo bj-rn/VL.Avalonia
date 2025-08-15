@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="JTZ9jxgE9BXMrjZwB8K9pT" LanguageVersion="2025.7.0-0349-g7f1d700e80" Version="0.128">
-  <NugetDependency Id="Bmg2uWT8To4PcCuYk2qN5Y" Location="VL.CoreLib" Version="2025.7.0-0349-g7f1d700e80" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="JTZ9jxgE9BXMrjZwB8K9pT" LanguageVersion="2025.7.0-0449-gd8ccccbee2" Version="0.128">
+  <NugetDependency Id="Bmg2uWT8To4PcCuYk2qN5Y" Location="VL.CoreLib" Version="2025.7.0-0449-gd8ccccbee2" />
   <Patch Id="Ud1b0z7MOTNN5d1DPIBMIF">
     <Canvas Id="K3IA4p2fzVaObo4p7esx6j" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -20,7 +20,7 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
-            <Pin Id="VtxNWfBk67LMTulQNCorVa" Name="Bounds" Kind="InputPin" DefaultValue="770, 394, 436, 884" IsHidden="true" />
+            <Pin Id="VtxNWfBk67LMTulQNCorVa" Name="Bounds" Kind="InputPin" DefaultValue="1080, 410, 436, 884" IsHidden="true" />
             <Pin Id="EG7sdIMsfJEO0aspQW3Bx9" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="MKHneJ1zQnFPj5m0hz39rb" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="E0BKaJ8cxmULpwGR1fO6D8" Name="Node Context" Kind="InputPin" IsHidden="true" />
@@ -100,6 +100,7 @@
             <Pin Id="TQx9ttxSVieQDOMQuGu92R" Name="Value" Kind="InputPin" />
             <Pin Id="O7vcBS0fED3LWy3R2d2UEI" Name="Output" Kind="OutputPin" />
             <Pin Id="OYjdpK69lnQN9NzsjexXow" Name="Value" Kind="OutputPin" />
+            <Pin Id="UkM9IIadiKiPceEOV8nER3" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="696,312,85,19" Id="AlIYMk9okK0LywQJ1VieOh">
             <p:NodeReference LastCategoryFullName="Main" LastDependency="VL.Avalonia.Custom.vl">
@@ -174,6 +175,7 @@
             <Pin Id="SpHBoiCdLCmN0M4JyA9rDq" Name="Value" Kind="InputPin" />
             <Pin Id="LKQKnlYggl1LJK8pzwJGtW" Name="Output" Kind="OutputPin" />
             <Pin Id="VvojMuAzrGBLDV3WFVo4lO" Name="Value" Kind="OutputPin" />
+            <Pin Id="VqTxO3WJRskP3dWaB7etLZ" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="543,139,53,19" Id="TAgcfkMPPa5ONhJsK0VENB">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
@@ -186,6 +188,7 @@
             <Pin Id="RUbW1QABXPUQVj2YDFNq6x" Name="Value" Kind="InputPin" />
             <Pin Id="OrZODK1FykgOW9I2HqLSYS" Name="Output" Kind="OutputPin" />
             <Pin Id="G8M1OrPBB4yN5FEdWbN4ev" Name="Value" Kind="OutputPin" />
+            <Pin Id="D0jxdyMcxRCQZ6idKBGVq8" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="LtcPRlUkjOWLdNf3CX0oQW" Comment="Scale" Bounds="341,80,35,43" ShowValueBox="true" isIOBox="true" Value="1, 1, 1">
             <p:TypeAnnotation LastCategoryFullName="3D" LastDependency="VL.CoreLib.vl">
@@ -235,6 +238,7 @@
             <Pin Id="Q273ordeyvgNU18vFB0iJ2" Name="Value" Kind="InputPin" />
             <Pin Id="N2nmq5owDHsPCSQW2SQr8v" Name="Output" Kind="OutputPin" />
             <Pin Id="QnMSl6my4XAN3bXGAPhs7v" Name="Value" Kind="OutputPin" />
+            <Pin Id="IOfi53BG8ZINZGv8NrC9dM" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="827,139,53,19" Id="Ho3x0tdCNONO6KXJePLc0J">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
@@ -247,6 +251,7 @@
             <Pin Id="KWGTL7ilZU6MZQiwKBCJtB" Name="Value" Kind="InputPin" />
             <Pin Id="FMwFJmyzj2gL0IdYsw0h0u" Name="Output" Kind="OutputPin" />
             <Pin Id="J3pexuWQKLVOZGvzPZjS2v" Name="Value" Kind="OutputPin" />
+            <Pin Id="E1c8xcnNf11MQpHubfnZnH" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="927,139,53,19" Id="VnNbKOppB84MpoqkjqseSS">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
@@ -259,6 +264,7 @@
             <Pin Id="LHRX6ijz26RLAlUNCukixg" Name="Value" Kind="InputPin" />
             <Pin Id="JMRMbFyZtVEOFTGKDbtxDm" Name="Output" Kind="OutputPin" />
             <Pin Id="U5gd4nmrhAgORkBw4cxoWg" Name="Value" Kind="OutputPin" />
+            <Pin Id="BulO4CKXx1GP7ryyXDvz77" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="TjWMAKdgkp1NC9krEaSJgg" Comment="Scale" Bounds="725,80,35,28" ShowValueBox="true" isIOBox="true" Value="0, 0">
             <p:TypeAnnotation LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
@@ -386,6 +392,7 @@
             <Pin Id="Qpac4FxwY5kLS9uRCZZFoS" Name="Value" Kind="InputPin" />
             <Pin Id="BQjHUPVcXw1N7bi3wCkAzH" Name="Output" Kind="OutputPin" />
             <Pin Id="Q4oCopZIe8fLheUA08pMpy" Name="Value" Kind="OutputPin" />
+            <Pin Id="L5EOXgJlOkvO1F113V02t3" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="AtkRA8hoXZGO0058QKt9Gp" Comment="Value" Bounds="1080,80,35,15" ShowValueBox="true" isIOBox="true" Value="0">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -403,6 +410,7 @@
             <Pin Id="FcZcwW6rfuiQczTEAm5VPz" Name="Value" Kind="InputPin" />
             <Pin Id="IShMe3lsceLOkZtahErAfo" Name="Output" Kind="OutputPin" />
             <Pin Id="VR7zXquXU5BQBv7QinVEkH" Name="Value" Kind="OutputPin" />
+            <Pin Id="AuQlExxuFqBPGWetpV5FYg" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="CT56RozN4BjLm08QATUe3C" Comment="Value" Bounds="1278,80,35,15" ShowValueBox="true" isIOBox="true" Value="0">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -457,8 +465,7 @@
   <DocumentDependency Id="HeSkfHgNyUsQFeXK41HlNk" Location="../VL.Avalonia.Custom.vl" />
   <PlatformDependency Id="Ikid1KdNLl5N497Y49rKec" Location="../lib/Debug/net8.0/VL.Avalonia.Custom.dll" />
   <DocumentDependency Id="SELfD9j3y3SM4loF9oTy0e" Location="../../VL.Avalonia/VL.Avalonia.vl" />
-  <NugetDependency Id="H7IWmdHUHvbLXzHvUMpLvr" Location="VL.Skia" Version="2025.7.0-0349-g7f1d700e80" />
-  <PlatformDependency Id="DMAq1YdLGGKM2RpbyMZiKm" Location="D:/GitHub/VL.Avalonia/src/VL.Avalonia.Custom/bin/Debug/net8.0/VL.Avalonia.Custom.dll" />
+  <NugetDependency Id="H7IWmdHUHvbLXzHvUMpLvr" Location="VL.Skia" Version="2025.7.0-0449-gd8ccccbee2" />
   <DocumentDependency Id="CvldfR9CdcnPpM5MY2p0Fh" Location="../../VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
-  <NugetDependency Id="TeT8PG4T4OhPA0yTXyFPsi" Location="VL.Stride" Version="2025.7.0-0349-g7f1d700e80" />
+  <NugetDependency Id="TeT8PG4T4OhPA0yTXyFPsi" Location="VL.Stride" Version="2025.7.0-0449-gd8ccccbee2" />
 </Document>
