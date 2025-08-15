@@ -9,7 +9,7 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Controls.Text;
+namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// The <c>NumericUpDown</c> is an editable numeric input with up and down spinner buttons attached. Non-numeric characters are ignored in the input. The value can also be changed by clicking the buttons, or by using the keyboard arrow keys. The mouse wheel (if present) will also change the value.

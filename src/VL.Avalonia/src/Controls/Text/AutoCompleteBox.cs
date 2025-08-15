@@ -7,7 +7,7 @@ using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Controls.Text;
+namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "AutoCompleteBox (Spectral)")]
 public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<AutoCompleteBox>
