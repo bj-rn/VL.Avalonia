@@ -2,7 +2,6 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives.PopupPositioning;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls.Menus;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;

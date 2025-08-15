@@ -1,7 +1,11 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
+using Avalonia.Media;
+using Avalonia.Media.Transformation;
+using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Controls.Base.Primitives;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
@@ -11,14 +15,13 @@ namespace VL.Avalonia.Controls;
 
 /// <summary>
 /// Base class for all controls, seems more flexible then using CodeGen for each prop.
+/// Inherits: <c>AnimatableBaseWrapper</c>
 /// Implements: <c>Output</c>, <c>Style</c>, <c>Classes</c>, <c>Name</c>.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class ControlWrapperBase<T> where T : Control, new()
+public abstract partial class ControlWrapperBase<T> : AnimatableWrapperBase<T> where T : Control, new()
 {
-    protected readonly T _output = new();
-    public T Output => _output;
 
     protected Optional<IAvaloniaStyle> _style;
     [Fragment(Order = PinOrder.Style)]
@@ -97,6 +100,52 @@ public abstract partial class ControlWrapperBase<T> where T : Control, new()
     #endregion
 
     #region Visual Properties
+
+    /// <param name="effect">
+    /// Sets effect of the control
+    /// </param>
+    [ImplementProperty("Control.EffectProperty", PinVisibility = Model.PinVisibility.Optional)]
+    protected Optional<IEffect> _effect;
+
+
+    /// <param name="renderTransform">
+    /// The transform applied to the control's rendering (scaling, rotation, translation, skew)
+    /// </param>
+    protected Optional<Matrix> _renderTransform;
+    public void SetRenderTransform([Pin(Visibility = Model.PinVisibility.Optional)] Optional<Matrix> renderTransform)
+    {
+        if (_renderTransform != renderTransform)
+        {
+            if (renderTransform.HasValue)
+            {
+                // WORKAROUND: https://github.com/AvaloniaUI/Avalonia/discussions/13960
+                // Gets RenderTransform work with Transition unoptimized manner
+
+                // var transform = new MatrixTransform(renderTransform.Value.ToAvaloniaMatrix());
+                // _output.SetValue(Control.RenderTransformProperty, transform);
+
+                renderTransform.Value.Decompose(out Vector3 scale, out Matrix rotation, out Vector3 translation);
+                rotation.Decompose(out float yaw, out float pitch, out float roll);
+
+                var builder = TransformOperations.CreateBuilder(3);
+
+                builder.AppendScale(scale.X, scale.Y);
+                builder.AppendRotate(roll);
+                builder.AppendTranslate(translation.X, translation.Y);
+
+                var transform = builder.Build();
+
+                _output.SetValue(Control.RenderTransformProperty, transform);
+            }
+            else
+            {
+                _output.ClearValue(Control.RenderTransformProperty);
+            }
+
+            _renderTransform = renderTransform;
+        }
+    }
+
 
     /// <param name="zIndex">
     /// The z-order (layering) of the control relative to its siblings

@@ -13,7 +13,24 @@ public abstract partial class GeometryWrapperBase<T> where T : Geometry, new()
     protected T _output = new();
     public T Output => _output;
 
-    // TODO:
-    //[ImplementProperty("Geometry.TransformProperty", PinVisibility = Model.PinVisibility.Optional)]
-    //protected Optional<Transform> _transform;
+    /* TODO: SEEMS TO NOT WORK CORRECTLY
+    protected Optional<Matrix> _transform;
+    public void SetTransform([Pin(Visibility = Model.PinVisibility.Optional)] Optional<Matrix> transform)
+    {
+        if (_transform != transform)
+        {
+            if (transform.HasValue)
+            {
+                var t = new MatrixTransform(transform.Value.ToAvaloniaMatrix());
+                _output.SetValue(Geometry.TransformProperty, t);
+            }
+            else
+            {
+                _output.ClearValue(Geometry.TransformProperty);
+            }
+
+            _transform = transform;
+        }
+    }
+    */
 }

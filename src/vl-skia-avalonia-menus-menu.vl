@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="TmnV2KPGuxrMGfdOkTl8PK" LanguageVersion="2025.7.0-0369-g117540fa59" Version="0.128">
-  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0369-g117540fa59" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="TmnV2KPGuxrMGfdOkTl8PK" LanguageVersion="2025.7.0-0486-g4e38aa55c7" Version="0.128">
+  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0486-g4e38aa55c7" />
   <Patch Id="ByJYRoNuXytMKx0VmtiA8Z">
     <Canvas Id="OSq9MxHF0ssO5kOcXxGsU2" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
     <!--
@@ -71,6 +71,9 @@
             <Pin Id="CYe6WZNRj6NLlY3oXpIFBO" Name="Style" Kind="InputPin" />
             <Pin Id="CCqAuvP3vCyQC7hHnOSbho" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="GM3775q253ILnLNJbLAe5V" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="SIf8ar0XfpzLyRn4WLF26b" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UAFErsKlaArQI2SGUJiAVl" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="E2kHXJYsqmqPQ3iLo1ZGPr" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="JmOXMYS87CeLTBMclRohpH" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="Lpgcd6HxAWLNE8IFyX2elR" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="SD4eAEBQSQWQN1lyFyJnKs" Name="Column Definitions" Kind="InputPin" />
@@ -102,6 +105,9 @@
             <Pin Id="BwPomoA0Rp9LFUN8YXYuQq" Name="Output" Kind="OutputPin" />
             <Pin Id="DZ5Zro6ykKDPSywBWWDa6O" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="HWbiIm3zB6YL7teJcEOYnQ" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RdmSU44zZQVMSW1diOxtjg" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EkFrxwjPyETNo8sZnCr2pD" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="K2enGehPgYmQFPlm7B05NH" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="Bmdr9XDNMi3PUoFwGgfug6" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="PO55AsL3PtzOb6fbPc3Qox" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="SMU7tDpExboPPv8sE2fhmL" Name="Last Child Fill" Kind="InputPin" IsHidden="true" />
@@ -140,13 +146,16 @@
             <Pin Id="MvpE2BiVokbNKgKXkK4BTy" Name="Items 3" Kind="InputPin" />
             <Pin Id="F9O8fbe0EvwLQgEQheMj07" Name="Items 4" Kind="InputPin" />
             <Pin Id="Ig667dNocuHOLkNLUeIMjF" Name="Items 5" Kind="InputPin" />
-            <Pin Id="R5u5sfdQggUPsWtgftVgOm" Name="Style" Kind="InputPin" />
             <Pin Id="HX7jsl1ZG0qQOhSjf8wjyE" Name="Header" Kind="InputPin" />
             <Pin Id="Q4kg3PcoPbfQK3h3yVp2Ni" Name="Output" Kind="OutputPin" />
             <Pin Id="PiQzoNm7iFjLq9Pbrs8kST" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="R9Kpc3BSePNNyII5EDYFOf" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="R5u5sfdQggUPsWtgftVgOm" Name="Style" Kind="InputPin" />
             <Pin Id="G4knLmfoML2PCGUkFIqHU7" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="NO5BSOA6bBvPOZXE08GWIc" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="R9Kpc3BSePNNyII5EDYFOf" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="QgQvas7Dw3fNeU8o1ry5yU" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AoBooMOyn1FPniqcMOZAUk" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AK683V8O1pWMDCkImy9m2F" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="Dw6O3C8L4rZPJgAmThbpHJ" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="JokyLJwdBrjPQXefxK3kM2" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="VyXFxjeHDE4PQhbB1ty6c7" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -200,13 +209,16 @@
               </PinReference>
             </p:NodeReference>
             <Pin Id="OTJV56zBr5lLoJw0urkzeV" Name="Items" Kind="InputPin" />
-            <Pin Id="KjmfudyvL6BPToZ3WGRki4" Name="Style" Kind="InputPin" />
             <Pin Id="K2iLbeuUZZQL0eV9n70BAr" Name="Header" Kind="InputPin" />
             <Pin Id="GNBhbyvlZtzLehEAPhgj3a" Name="Output" Kind="OutputPin" />
             <Pin Id="RSoCXE7NdFSP3hVhgurZzd" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="IIbxXCXZUqrLXtpPODxl3T" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="KjmfudyvL6BPToZ3WGRki4" Name="Style" Kind="InputPin" />
             <Pin Id="ATq5I78fCqmPn35KyPcUyu" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="IjQcVkOl0QYOf8OXPrNQ1F" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IIbxXCXZUqrLXtpPODxl3T" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="LnOPGXSLjsqMc6H3W01Moe" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RyMDG3IC9HZMr2lQSdhBDi" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Sa26mWsAvlRP2cb6Pu3A5X" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="SlGjDUlpGecOYnl0LzC1V8" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="QoV6pqL6XdLMDTa0K6nl3w" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="He64Yc6Ib1fNG8m9kGmhhx" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -260,13 +272,16 @@
               </PinReference>
             </p:NodeReference>
             <Pin Id="ONWMvsvTFfXOPstBtusPHn" Name="Items" Kind="InputPin" />
-            <Pin Id="OSVGqOrPPpeP1eKgt4hu4N" Name="Style" Kind="InputPin" />
             <Pin Id="PsTZNvEMtsqPRzFEymFfp2" Name="Header" Kind="InputPin" />
             <Pin Id="O3mx0rNMQKGNdcWFK4w3S2" Name="Output" Kind="OutputPin" />
             <Pin Id="A1snEnujVvwNleyIkwkVHM" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NXBM1YcYOLtNQhyYzgzy8H" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="OSVGqOrPPpeP1eKgt4hu4N" Name="Style" Kind="InputPin" />
             <Pin Id="EAYIjEy3RSBNMR94K7gUdd" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="TXjf1gT5mOjLZNhrHqB1hi" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NXBM1YcYOLtNQhyYzgzy8H" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="VehOdOKtU6uN3To865z6h9" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ix6WwPF27rrLiSd1mNPcfO" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DMxsbNw1u2AQDFEQnPgkB6" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="IHU8IZeb5SdL60iVEEsJ1D" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="VJOBgAtTap8MolCPPFcl2x" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="VtMGpw8nSNPOOFGn3aOqFf" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -321,13 +336,16 @@
             </p:NodeReference>
             <Pin Id="AOVfYsFwiIEMGWa9iIFibG" Name="Items" Kind="InputPin" />
             <Pin Id="DoZoxuiJ0puLlAHilbMVg1" Name="Items 2" Kind="InputPin" />
-            <Pin Id="IceBZLkJDs5OTpbyPTqEYj" Name="Style" Kind="InputPin" />
             <Pin Id="FutpcNmTXiDLYuB1pokdQJ" Name="Header" Kind="InputPin" />
             <Pin Id="EiYcXokdJhGMi6D89fuw9L" Name="Output" Kind="OutputPin" />
             <Pin Id="CmZdCecnXhiQHN9ktn3FU2" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="M3CCOARmADmLOhFcgbOcvI" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="IceBZLkJDs5OTpbyPTqEYj" Name="Style" Kind="InputPin" />
             <Pin Id="R0kUuxqMIKVQB4N1Sm1T5T" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="CJ2Z05UZn9GNFk6NmG2rum" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="M3CCOARmADmLOhFcgbOcvI" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="AUJePIITTiQMoRsgS4zztY" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="KklLDqYphSvPdbUPNCSYfT" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GZTFh3oruOoOFAcxrdhIh0" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="IX4d9cld8C3N7JfLdJ1myN" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="SnH2rLEqlioMemlySzhRoF" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="GZvCCQ4xgNjMEbCYvGkWGY" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -381,13 +399,16 @@
               </PinReference>
             </p:NodeReference>
             <Pin Id="P9W3cmS9KVXOwqCY6NUqcW" Name="Items" Kind="InputPin" />
-            <Pin Id="O1y467PemGeNtHmxZgKAzX" Name="Style" Kind="InputPin" />
             <Pin Id="MCt2dQiDQoRPd7Oi5bRKFR" Name="Header" Kind="InputPin" />
             <Pin Id="SUNULX2H8FhPqLVALqxPEK" Name="Output" Kind="OutputPin" />
             <Pin Id="Ew204rdGpqyPl7s2WoTWpM" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NC0VEDSov4COH4ftqO32eY" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="O1y467PemGeNtHmxZgKAzX" Name="Style" Kind="InputPin" />
             <Pin Id="D5ATrMwJxMkMxV2W4JaLGj" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="VT76SCyMENPLEGcQXzaQms" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NC0VEDSov4COH4ftqO32eY" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="KzPk9GBgvpONbVZvzXkJPK" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ft4mFDmTN7bNby7VSS3m3m" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BkuK0yCULHuOC5JOZVBZ6s" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="EXZhi6bYYuRMOg5K7oyQBY" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="GyNaBOU137GQWdygd02mVj" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="ED9tRuE6udcP1HDQTshNtz" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -441,13 +462,16 @@
               </PinReference>
             </p:NodeReference>
             <Pin Id="ScsMpJruI01NCr8WcPO1E4" Name="Items" Kind="InputPin" />
-            <Pin Id="NYif3UhPN4yMhskzYRGiKR" Name="Style" Kind="InputPin" />
             <Pin Id="ExvkdtD4CqDLyV2tbh01Bh" Name="Header" Kind="InputPin" />
             <Pin Id="BNfrauGUy3uPHEqKEzRVW3" Name="Output" Kind="OutputPin" />
             <Pin Id="RDujxptwZ9oNniK8TGIN3y" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NFk9QHgrxVqP2SxVXcLTZp" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="NYif3UhPN4yMhskzYRGiKR" Name="Style" Kind="InputPin" />
             <Pin Id="HM0JHkBHr94LKbRCvIfUs5" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="U8OM3qxDrEmLZBjsMmpvhM" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NFk9QHgrxVqP2SxVXcLTZp" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="JogNRkdkM6ULqZwuIf7dVl" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VkyT3Se1GECNUKOWNkjeRB" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UznYFFPFZnHNHjhbPcnB3t" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="IDrH6wcudrXOT6741EvPeZ" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="REgQf2gDOM7PzvTxQe91Un" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="AcalwOzOH8mN9pM22DOTVe" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -484,6 +508,9 @@
             <Pin Id="By3GpamKO1qP6bzwE2uwH0" Name="Output" Kind="OutputPin" />
             <Pin Id="PNQ4YXaaMZeNgXX7ZArBLn" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="ONUp75kCRTfPJK72i4X4Bs" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LQzdRUDqTHtPzYrGGCD0xE" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="B3qB7ds5hAqNN9yBYs16Vj" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GIfMxiJDYrBQMKViPGoxux" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="P7iIcV5rDGpPYylIJQdAK7" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="CbzJrsk9oGbNNm7ap96n8b" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="HDpckPtGYM8NH7rSU3NSXL" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
@@ -516,13 +543,16 @@
               </PinReference>
             </p:NodeReference>
             <Pin Id="EOhC4MNZpRCMGsLslz1wI4" Name="Items" Kind="InputPin" />
-            <Pin Id="E1IE05fxietMIXEQ3FrBVZ" Name="Style" Kind="InputPin" />
             <Pin Id="F7XnR32EnvmNZaRjvYEmWB" Name="Header" Kind="InputPin" />
             <Pin Id="CqXL6t11NIeOagJK4YFl7s" Name="Output" Kind="OutputPin" />
             <Pin Id="AdLsaTtoq5bO0eTkMnrJ2P" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NFMMNs8BsAZNKp5pRQweVc" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="E1IE05fxietMIXEQ3FrBVZ" Name="Style" Kind="InputPin" />
             <Pin Id="KwnCkwfdCqJN5AIN3KgHrT" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="KpYX2R7GsNQMNFhiV3mtu9" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NFMMNs8BsAZNKp5pRQweVc" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="SdmLhe0RcpwQZKH0gS1pi4" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TZu8HeKqCtFPSO0yF55Mz7" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="G5lA1cG8NDWLEQ3LCgeYcP" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="QVNi4G30c0zPII5hNRFHaL" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="MKQRTJIPePMO17mA7memDW" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="D6q6lYLurhXLE6D1P8qu7T" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -561,6 +591,7 @@
             <Pin Id="Ufu0LirFvKZNN2DSzqBAUu" Name="Value" Kind="InputPin" />
             <Pin Id="EzTIu1uJnycLzf2qNRWROC" Name="Output" Kind="OutputPin" />
             <Pin Id="MsraST6jBvyNm05oHOhHOd" Name="Value" Kind="OutputPin" />
+            <Pin Id="NDwVz13R0gzNsHfWnDZavG" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="337,453,65,19" Id="DzfM1jDnxPGPCWv971bPxr">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
@@ -591,6 +622,7 @@
             <Pin Id="C3q50CF5v0pOS1GKmyO1e8" Name="Value" Kind="InputPin" />
             <Pin Id="GZVAUdbgmCkLZQv9c8YyWs" Name="Output" Kind="OutputPin" />
             <Pin Id="IX48RyA3qSAL7NtXXJ3Lpm" Name="Value" Kind="OutputPin" />
+            <Pin Id="DBO75URw1XKMtFg64M5U3B" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="378,720,55,26" Id="ATOjlmOA87tNosgYorx3xy">
             <p:NodeReference LastCategoryFullName="Reactive.Channel" LastDependency="VL.CoreLib.vl">
@@ -652,6 +684,9 @@
             <Pin Id="RCALCIl5OfDOftwJbnYKB1" Name="Output" Kind="OutputPin" />
             <Pin Id="PMp3NPg17RILgDWdNh3p9z" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="JTzAjfZhhJrLGYqNrjd49k" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CUXluZwJ6TwPyvsWY850vo" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CEUNbgVGuuSNx6RrwYgqsF" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="B1CDkxFOW0bLVipSgsXdui" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="AbQpWvZxzidPqrmisyVdxi" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="J0h5IlWLwr5PX9Qi2Zc2FH" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="QksE25U2ZUZLLsx5QqMt89" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -691,13 +726,16 @@
               </PinReference>
             </p:NodeReference>
             <Pin Id="OIoqM2k1H3EOKaW5C5vS14" Name="Items" Kind="InputPin" />
-            <Pin Id="V7lfF0hy34bOsyEHpcLvCL" Name="Style" Kind="InputPin" />
             <Pin Id="FmCAeHxGwxkPn1CmhmTVdx" Name="Header" Kind="InputPin" />
             <Pin Id="Dy3GnP7XKRqNWB01ADQADH" Name="Output" Kind="OutputPin" />
             <Pin Id="DndTV6kLKoDMgR8v0YR0iJ" Name="Icon" Kind="InputPin" IsHidden="true" />
-            <Pin Id="RqcosWvacCCN2SchPE4vX2" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="V7lfF0hy34bOsyEHpcLvCL" Name="Style" Kind="InputPin" />
             <Pin Id="UL4zhZTbp8pNRn0pllPrsx" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="D2Ls5trutLEO6A3jVwe3wy" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RqcosWvacCCN2SchPE4vX2" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="USzoBOXaBZTO3NxBzEQd5s" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NeTYbOycJH0OlCwkakHuio" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="T3puzxOPEZgMPp4MK11Jn9" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="SjSrWGCbC0nQSFZJVXBZ7m" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="RKrY0whv6PjMOjvXd3noyt" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="QqFySsbLWvyOwfnfDcI54l" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -733,12 +771,12 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="B2woI6qVFeyMbiIR9Aw4vo" Comment="Horizontal Alignment" Bounds="907,971,55,15" ShowValueBox="true" isIOBox="true" Value="Center">
+          <Pad Id="B2woI6qVFeyMbiIR9Aw4vo" Comment="Horizontal Alignment" Bounds="907,971,61,15" ShowValueBox="true" isIOBox="true" Value="Center">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Layout" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="HorizontalAlignment" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Uqm2FtPhIO6PhRynqb5Ndj" Comment="Vertical Alignment" Bounds="927,1000,56,15" ShowValueBox="true" isIOBox="true" Value="Center">
+          <Pad Id="Uqm2FtPhIO6PhRynqb5Ndj" Comment="Vertical Alignment" Bounds="927,1000,62,15" ShowValueBox="true" isIOBox="true" Value="Center">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Layout" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="VerticalAlignment" />
             </p:TypeAnnotation>
@@ -796,13 +834,16 @@
                   </PinReference>
                 </p:NodeReference>
                 <Pin Id="IQX4bCqaEHxQQQjpQukoh0" Name="Items" Kind="InputPin" />
-                <Pin Id="Vbgkh120oJfL9wuyxyDzmr" Name="Style" Kind="InputPin" />
                 <Pin Id="PJsExOvB9k6QR3RWUaYJPp" Name="Header" Kind="InputPin" />
                 <Pin Id="COpmF3noBjyMnk8aSydLpa" Name="Icon" Kind="InputPin" IsHidden="true" />
-                <Pin Id="Ao9uBoq3zeLMdqfoWm6Jym" Name="Command Channel" Kind="InputPin" />
-                <Pin Id="VxAfgAQ7BO9LmX7QFhZ6zn" Name="Output" Kind="OutputPin" />
+                <Pin Id="Vbgkh120oJfL9wuyxyDzmr" Name="Style" Kind="InputPin" />
                 <Pin Id="O7wWRl6BAMmObeJNbUz1Nt" Name="Classes" Kind="InputPin" IsHidden="true" />
                 <Pin Id="AHRBMP2KMzPLD7oi5eaG88" Name="Name" Kind="InputPin" IsHidden="true" />
+                <Pin Id="Ao9uBoq3zeLMdqfoWm6Jym" Name="Command Channel" Kind="InputPin" />
+                <Pin Id="VxAfgAQ7BO9LmX7QFhZ6zn" Name="Output" Kind="OutputPin" />
+                <Pin Id="UwWYPzSkPCyLbnBeC2vKEP" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+                <Pin Id="OdVqtNf5NaFLnU8z4Tn6vj" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+                <Pin Id="BqcdPYKAeciOAdwyWgv8hf" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
                 <Pin Id="GXw6LtXvD6XMGK2iDDCq0e" Name="Focusable" Kind="InputPin" IsHidden="true" />
                 <Pin Id="H4FxUIXsMfEPjrUuN7JnYV" Name="Item Template" Kind="InputPin" IsHidden="true" />
                 <Pin Id="TIMSfxiqcJ3NPmtXhG3Yrc" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -836,6 +877,7 @@
                 <Pin Id="H22EjkX1GEtPpfw4gzvZBf" Name="Value" Kind="InputPin" />
                 <Pin Id="JYhvLHesw4fNE2yzwYtSBy" Name="Output" Kind="OutputPin" />
                 <Pin Id="TXf5VRjbPEVMc9xb7lydxE" Name="Value" Kind="OutputPin" />
+                <Pin Id="EahfzasoTWvN9RHbovZIsW" Name="Author" Kind="InputPin" IsHidden="true" />
               </Node>
               <Node Bounds="696,690,74,19" Id="OcVEHS0D9bfQT98djOKjSE">
                 <p:NodeReference LastCategoryFullName="Avalonia.Avalonia" LastDependency="VL.Avalonia.vl">
@@ -907,6 +949,9 @@
             <Pin Id="B2kht4Z3s1sLUsn7gic3w1" Name="Output" Kind="OutputPin" />
             <Pin Id="IaMrkZ4Qc3mPOlfE21hXKB" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="CJ74C2J3dBAMQUFdylBDp8" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IEec9I5nmx1OjIj1YfWlY8" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
+            <Pin Id="N322taLCfZiOV6rvXZymrj" Name="Context Menu" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EF3MCqRL3SRLuvix1TTlaY" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
             <Pin Id="Arlfqv6X4aNPd994R9KMeI" Name="Focusable" Kind="InputPin" IsHidden="true" />
             <Pin Id="NrqtTVCzu7eQV27NjBERvx" Name="Item Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="DovuwZo1xgTN81VlCieHof" Name="Items Panel" Kind="InputPin" IsHidden="true" />
@@ -921,7 +966,7 @@
             <Pin Id="QhfYF7wMQGSN2HhWFdnB7s" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="HRILbX3fZttPcZ1Iyums4f" Comment="" Bounds="955,841,35,80" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="OYCrhCgmlOBL439QvWlNCX" Comment="Toggle Type" Bounds="924,531,68,15" ShowValueBox="true" isIOBox="true" Value="CheckBox">
+          <Pad Id="OYCrhCgmlOBL439QvWlNCX" Comment="Toggle Type" Bounds="924,531,74,15" ShowValueBox="true" isIOBox="true" Value="CheckBox">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="MenuItemToggleType" />
             </p:TypeAnnotation>
@@ -985,5 +1030,5 @@
   </Patch>
   <DocumentDependency Id="UYtwosupZDPPxvnpQY9JAV" Location="./VL.Skia.Avalonia/VL.Skia.Avalonia.vl" />
   <DocumentDependency Id="Aou9ZwDalv1Opm4a5F4O1G" Location="./VL.Avalonia/VL.Avalonia.vl" />
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0369-g117540fa59" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0486-g4e38aa55c7" />
 </Document>

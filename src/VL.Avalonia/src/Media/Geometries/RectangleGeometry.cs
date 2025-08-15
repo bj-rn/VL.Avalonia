@@ -38,8 +38,8 @@ public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeo
         {
             if (radius.HasValue)
             {
-                _output.SetValue(RectangleGeometry.RadiusXProperty, radius.Value.X);
-                _output.SetValue(RectangleGeometry.RadiusYProperty, radius.Value.Y);
+                _output.SetValue(RectangleGeometry.RadiusXProperty, (double)radius.Value.X);
+                _output.SetValue(RectangleGeometry.RadiusYProperty, (double)radius.Value.Y);
             }
             else
             {
@@ -50,4 +50,7 @@ public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeo
             _radius = radius;
         }
     }
+
+
+
 }
