@@ -1,5 +1,4 @@
-﻿using VL.Avalonia.Controls.Text;
-using VL.Avalonia.Custom.Controls;
+﻿using VL.Avalonia.Controls;
 using VL.Core.Import;
 
 namespace VL.Avalonia.Custom.Controls.Value
