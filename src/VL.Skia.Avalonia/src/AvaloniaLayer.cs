@@ -3,13 +3,11 @@ using Avalonia.Controls.Embedding;
 using Avalonia.Rendering.Composition;
 using Avalonia.Skia;
 using Avalonia.Styling;
-using System;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.IO.Notifications;
 using VL.Model;
 using Application = Avalonia.Application;
-using Point = Avalonia.Point;
 using RectangleF = Stride.Core.Mathematics.RectangleF;
 using Vector2 = Stride.Core.Mathematics.Vector2;
 
@@ -58,21 +56,25 @@ namespace VL.Skia.Avalonia
             }
         }
 
-        private ThemeVariant _requestedThemeVariant = ThemeVariant.Default;
-        /// <summary>
-        /// Requested Theme Variant
-        /// </summary>
-        [Fragment]
-        public ThemeVariant RequestedThemeVariant
+        private Optional<ThemeVariant> _requestedThemeVariant;
+        /// <param name="requestedThemeVariant">Requested Theme Variant</param>
+        [Fragment(Order = -10)]
+        public void SetRequestedThemeVariant(Optional<ThemeVariant> requestedThemeVariant)
         {
-            private get => _requestedThemeVariant;
-            set
+            if (_requestedThemeVariant != requestedThemeVariant)
             {
-                if (_requestedThemeVariant != value)
+                if (requestedThemeVariant.HasValue)
                 {
-                    _requestedThemeVariant = value;
-                    controlRoot.RequestedThemeVariant = value;
+                    var theme = requestedThemeVariant.Value;
+
+                    controlRoot.SetValue(EmbeddableControlRoot.RequestedThemeVariantProperty, requestedThemeVariant.Value);
                 }
+                else
+                {
+                    controlRoot.ClearValue(EmbeddableControlRoot.RequestedThemeVariantProperty);
+                }
+
+                _requestedThemeVariant = requestedThemeVariant;
             }
         }
 
