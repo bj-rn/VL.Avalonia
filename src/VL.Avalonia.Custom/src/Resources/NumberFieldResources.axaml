@@ -7,7 +7,7 @@
     <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
-    <Setter Property="MinHeight" Value="{DynamicResource TextControlThemeMinHeight}" />
+    <Setter Property="MinHeight" Value="34" />
     <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
     <Setter Property="Padding" Value="{DynamicResource TextControlThemePadding}" />
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
@@ -154,11 +154,11 @@
                                IsVisible="{Binding !$parent[local:NumberField].IsEditing}"/>
 
                     <TextBox Name="PART_TextBox"
+
                              Background="Transparent"
                              BorderBrush="Transparent"
                              Padding="{TemplateBinding Padding}"
                              CornerRadius="{TemplateBinding CornerRadius}"
-                             MinWidth="0"
                              Foreground="{TemplateBinding Foreground}"
                              Watermark="{TemplateBinding Watermark}"
                              VerticalContentAlignment="Center"
