@@ -3,12 +3,15 @@ using Avalonia.Controls.Embedding;
 using Avalonia.Rendering.Composition;
 using Avalonia.Skia;
 using Avalonia.Styling;
+using System;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.IO.Notifications;
 using VL.Model;
 using Application = Avalonia.Application;
+using Point = Avalonia.Point;
 using RectangleF = Stride.Core.Mathematics.RectangleF;
+using Vector2 = Stride.Core.Mathematics.Vector2;
 
 namespace VL.Skia.Avalonia
 {
@@ -84,6 +87,13 @@ namespace VL.Skia.Avalonia
         {
             return topLevelImpl.Notify(notification, caller);
         }
+
+        public bool SendNotification(INotification notification, Func<NotificationWithPosition, Vector2> getPosition)
+        {
+
+            return topLevelImpl.SendNotification(notification, getPosition);
+        }
+
         public void Render(CallerInfo caller)
         {
             if (!controlRoot.IsInitialized)

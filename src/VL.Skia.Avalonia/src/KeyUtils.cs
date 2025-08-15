@@ -1,5 +1,6 @@
 ﻿using Avalonia.Input;
 using Avalonia.Input.Raw;
+using VL.Lib.IO.Notifications;
 using Keys = VL.Lib.IO.Keys;
 using MouseButtons = VL.Lib.IO.MouseButtons;
 
@@ -9,30 +10,30 @@ static class KeyUtils
 {
     public static RawInputModifiers ToModifier(this Keys key)
     {
-        var modifers = RawInputModifiers.None;
+        var modifiers = RawInputModifiers.None;
         if (key.HasFlag(Keys.Shift))
-            modifers |= RawInputModifiers.Shift;
+            modifiers |= RawInputModifiers.Shift;
         if (key.HasFlag(Keys.Control))
-            modifers |= RawInputModifiers.Control;
+            modifiers |= RawInputModifiers.Control;
         if (key.HasFlag(Keys.Alt))
-            modifers |= RawInputModifiers.Alt;
-        return modifers;
+            modifiers |= RawInputModifiers.Alt;
+        return modifiers;
     }
 
     public static RawInputModifiers ToModifier(this MouseButtons button)
     {
-        var modifers = RawInputModifiers.None;
+        var modifiers = RawInputModifiers.None;
         if (button.HasFlag(MouseButtons.Left))
-            modifers |= RawInputModifiers.LeftMouseButton;
+            modifiers |= RawInputModifiers.LeftMouseButton;
         if (button.HasFlag(MouseButtons.Middle))
-            modifers |= RawInputModifiers.MiddleMouseButton;
+            modifiers |= RawInputModifiers.MiddleMouseButton;
         if (button.HasFlag(MouseButtons.Right))
-            modifers |= RawInputModifiers.RightMouseButton;
+            modifiers |= RawInputModifiers.RightMouseButton;
         if (button.HasFlag(MouseButtons.XButton1))
-            modifers |= RawInputModifiers.XButton1MouseButton;
+            modifiers |= RawInputModifiers.XButton1MouseButton;
         if (button.HasFlag(MouseButtons.XButton2))
-            modifers |= RawInputModifiers.XButton2MouseButton;
-        return modifers;
+            modifiers |= RawInputModifiers.XButton2MouseButton;
+        return modifiers;
     }
 
     public static RawPointerEventType ToEventType(this MouseButtons button, bool isUp)
@@ -53,6 +54,22 @@ static class KeyUtils
                 return RawPointerEventType.Move;
         }
     }
+
+    public static RawPointerEventType GetTouchPointerEventType(this TouchNotificationKind kind)
+    {
+        switch (kind)
+        {
+            case TouchNotificationKind.TouchDown:
+                return RawPointerEventType.TouchBegin;
+            case TouchNotificationKind.TouchUp:
+                return RawPointerEventType.TouchEnd;
+            case TouchNotificationKind.TouchMove:
+                return RawPointerEventType.TouchUpdate;
+            default:
+                return RawPointerEventType.TouchCancel;
+        }
+    }
+
     public static Key ToKey(this Keys key)
     {
         switch (key & ~Keys.Modifiers)
