@@ -1,3 +1,3 @@
 using VL.Core.Import;
 
-[assembly: ImportAsIs(Category = "Avalonia", Namespace = "VL")]
+[assembly: ImportAsIs(Category = "Avalonia", Namespace = "VL.Avalonia.Custom")]

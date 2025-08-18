@@ -44,9 +44,7 @@ namespace VL.Avalonia.Skia
         {
             if (_content != content)
             {
-                _content = content;
-
-                if (_content.HasValue)
+                if (content.HasValue)
                 {
                     controlRoot.SetValue(EmbeddableControlRoot.ContentProperty, content.Value);
                 }
@@ -54,6 +52,8 @@ namespace VL.Avalonia.Skia
                 {
                     controlRoot.ClearValue(EmbeddableControlRoot.ContentProperty);
                 }
+
+                _content = content;
             }
         }
 

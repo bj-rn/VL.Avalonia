@@ -1,3 +1,3 @@
 using VL.Core.Import;
 
-[assembly: ImportAsIs(Namespace = "VL.Skia")]
+[assembly: ImportAsIs(Category = "Avalonia", Namespace = "VL")]
