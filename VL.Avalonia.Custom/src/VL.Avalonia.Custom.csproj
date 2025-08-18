@@ -28,8 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj" />
-    <ProjectReference Include="..\..\VL.Avalonia\src\VL.Avalonia.csproj" />
+    <ProjectReference Include="..\..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VL.Avalonia\src\VL.Avalonia.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>
