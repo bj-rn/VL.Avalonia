@@ -70,9 +70,6 @@ namespace VL.Avalonia.Skia
         }
 
         private readonly List<CallerInfo> _callerInfos = new List<CallerInfo>();
-        /// <summary>
-        /// Caller Info's
-        /// </summary>
         public IEnumerable<object> Surfaces => _callerInfos;
 
         // TODO: Implement
@@ -193,13 +190,8 @@ namespace VL.Avalonia.Skia
         public Action<Rect>? Paint { get; set; }
 
         public Action<Size, WindowResizeReason>? Resized { get; set; }
-
-        // Wonder is it DesktopScaling or RenderScaling
         public Action<double>? ScalingChanged { get; set; }
-
-
         public Action<WindowTransparencyLevel>? TransparencyLevelChanged { get; set; }
-
 
         public Action? Closed { get; set; }
         public Action? LostFocus { get; set; }
@@ -243,17 +235,13 @@ namespace VL.Avalonia.Skia
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L364
         public void SetCursor(ICursorImpl? cursor)
         {
-            //
+            // TODO:
         }
 
         public void SetFrameThemeVariant(PlatformThemeVariant themeVariant)
         {
-            // throw new NotImplementedException();
+            // TODO:
         }
-
-
-
-
 
         // copy paste from here
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L376
