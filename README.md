@@ -45,6 +45,7 @@ Demos are available via the Help Browser!
 
 - [antokhio](https://github.com/antokhio)
 - [woeishi](https://github.com/woeishi)
+- [azneo](https://github.com/azeno)
 - [bj-rn](https://github.com/bj-rn)
 - [cloneproduction](https://github.com/cloneproduction)
 
