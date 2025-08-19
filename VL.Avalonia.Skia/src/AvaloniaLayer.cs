@@ -22,10 +22,7 @@ namespace VL.Avalonia.Skia
         private readonly EmbeddableControlRoot controlRoot;
 
         [Fragment]
-        public AvaloniaLayer(
-            [Pin(Visibility = PinVisibility.Optional)]
-            Action<Application>? onSetupApplication = null
-            )
+        public AvaloniaLayer([Pin(Visibility = PinVisibility.Optional)] Action<Application>? onSetupApplication = null)
         {
             AvaloniaInitializer.Init();
 
