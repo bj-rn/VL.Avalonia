@@ -8,3 +8,6 @@ dotnet build .\VL.Avalonia.Custom\src\VL.Avalonia.Custom.csproj --configuration 
 nuget pack .nuget\VL.Avalonia.Custom.nuspec -Version 0.0.1-pre -OutputDirectory .\packages
 
 nuget pack .nuget\VL.Avalonia.Stride.nuspec -Version 0.0.1-pre -OutputDirectory .\packages
+
+
+https://stackoverflow.com/questions/34442421/nuget-pack-how-to-set-change-dependency-version-via-command-line
