@@ -79,6 +79,28 @@ namespace VL.Avalonia.Skia
             }
         }
 
+        private Optional<float> _scalingFactor;
+        [Fragment(Order = -10)]
+        public void SetScalingFactor([Pin(Visibility = PinVisibility.Optional)] Optional<float> scalingFactor)
+        {
+            if (_scalingFactor != scalingFactor)
+            {
+                if (scalingFactor.HasValue)
+                {
+                    if (scalingFactor.Value == 0.0f)
+                        throw new ArgumentOutOfRangeException("Scaling factor can't be 0");
+
+                    topLevelImpl.SetScaling(scalingFactor.Value);
+                }
+                else
+                {
+                    topLevelImpl.SetScaling(1.0f);
+                }
+
+                _scalingFactor = scalingFactor;
+            }
+        }
+
         public void Dispose()
         {
             controlRoot.StopRendering();
@@ -101,7 +123,7 @@ namespace VL.Avalonia.Skia
         {
             if (!controlRoot.IsInitialized)
             {
-                topLevelImpl.ClientSize = caller.ViewportBounds.ToAvaloniaRect().Size;
+                topLevelImpl.SetClientSize(caller.ViewportBounds.ToAvaloniaRect().Size);
                 controlRoot.Prepare();
                 controlRoot.StartRendering();
             }

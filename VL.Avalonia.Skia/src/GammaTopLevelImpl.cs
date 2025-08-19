@@ -10,73 +10,64 @@ using VL.Lib.IO.Notifications;
 using VL.Skia;
 using Point = Avalonia.Point;
 using Size = Avalonia.Size;
+using TouchDevice = Avalonia.Input.TouchDevice;
 using Vector2 = Stride.Core.Mathematics.Vector2;
 
 namespace VL.Avalonia.Skia
 {
-    // source
-    // https://github.com/vvvv/VL.StandardLibs/blob/dev/azeno/avalonia/VL.AvaloniaUI/src/RootElementImpl.cs
+    /// <summary>
+    /// vvvv gamma ITopLevelImpl implementation for Avalonia.
+    /// </summary>
     sealed class GammaTopLevelImpl : ITopLevelImpl
     {
-        public static IKeyboardDevice Keyboard { get; } = new KeyboardDevice();
+        public IKeyboardDevice KeyboardDevice { get; }
+        public IMouseDevice MouseDevice { get; }
+        public IPointerDevice TouchDevice { get; }
+        public Compositor Compositor { get; }
+
 
         private readonly Stopwatch _stopwatch = Stopwatch.StartNew();
-
-
         public GammaTopLevelImpl(Compositor compositor)
         {
+            KeyboardDevice = GammaDevices.KeyboardDevice;
             MouseDevice = new MouseDevice();
-            //https://github.com/AvaloniaUI/Avalonia/blob/master/src/Windows/Avalonia.Win32/Input/WindowsKeyboardDevice.cs#L7
-            //KeyboardDevice = WindowsKeyboardDevice.Instance
-
-            _touchDevice = new TouchDevice();
+            TouchDevice = new TouchDevice();
 
             Compositor = compositor;
         }
 
+        private float _scaling = 1.0f;
+        public double RenderScaling => _scaling;
+        public double DesktopScaling => _scaling;
 
-        // That's something important throws without it
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/AvaloniaControl.cs#L130
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotPlatform.cs#L48
-        public Compositor Compositor { get; set; }
-
-        // TODO: DPI
-        public double DesktopScaling => 1.0;
-
-        private double _renderScaling = 1;
-        /// <summary>
-        /// Render Scaling
-        /// </summary>
-        public double RenderScaling
+        public void SetScaling(float scaling)
         {
-            get => _renderScaling;
-            set
+            if (_scaling != scaling)
             {
-                if (_renderScaling != value)
-                {
-                    _renderScaling = value;
-                    ScalingChanged?.Invoke(value);
-                }
+                if (scaling == 0.0f)
+                    throw new ArgumentOutOfRangeException("Scaling can't be 0!");
+
+                _scaling = scaling;
+
+                ScalingChanged?.Invoke(scaling);
+
+                SetClientSize(_requestedSize, true);
             }
         }
 
         private Size _clientSize;
-        /// <summary>
-        /// Client Size
-        /// </summary>
-        public Size ClientSize
+        private Size _requestedSize;
+        public Size ClientSize => _clientSize;
+        public void SetClientSize(Size clientSize, bool force = false)
         {
-            get => _clientSize;
-            set
+            if (_requestedSize != clientSize || force)
             {
-                if (_clientSize != value)
-                {
-                    _clientSize = value;
-                    Resized?.Invoke(value, WindowResizeReason.Unspecified);
-                }
+                _requestedSize = clientSize;
+                _clientSize = _requestedSize / _scaling;
+
+                Resized?.Invoke(_clientSize, WindowResizeReason.Unspecified);
             }
         }
-
 
         private readonly List<CallerInfo> _callerInfos = new List<CallerInfo>();
         /// <summary>
@@ -88,12 +79,7 @@ namespace VL.Avalonia.Skia
         // NEEDS WINDO HANDLE HERE
         public IPlatformHandle? Handle => new PlatformHandle(IntPtr.Zero, "STUB");
 
-        public IKeyboardDevice KeyboardDevice { get; } = GammaDevices.KeyboardDevice;
-        public IMouseDevice MouseDevice { get; }
 
-        // not sure about it being private. did it this way becaus that's how it is handled in Estragonia
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L24
-        private readonly TouchDevice _touchDevice;
 
         public IInputRoot InputRoot { get; set; }
 
@@ -154,13 +140,13 @@ namespace VL.Avalonia.Skia
             }
 
             if (notification is MouseDownNotification mouseDown)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), position, _inputModifiers));
+                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), position / _scaling, _inputModifiers));
             else if (notification is MouseUpNotification mouseUp)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseUp.Buttons.ToEventType(true), position, _inputModifiers));
+                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseUp.Buttons.ToEventType(true), position / _scaling, _inputModifiers));
             else if (notification is MouseMoveNotification mouseMove)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position, _inputModifiers));
+                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position / _scaling, _inputModifiers));
             else if (notification is MouseWheelNotification mouseWheel)
-                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position, new Vector(0, mouseWheel.WheelDelta * 0.01 /*DPI ISSUE ??*/), _inputModifiers));
+                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position / _scaling, new Vector(0, mouseWheel.WheelDelta / _scaling * 0.01), _inputModifiers));
 
             if (e != null)
                 return e.Handled;
@@ -196,7 +182,7 @@ namespace VL.Avalonia.Skia
 
             var eventType = notification.Kind.GetTouchPointerEventType();
 
-            input(e = new RawPointerEventArgs(_touchDevice, Timestamp, InputRoot, eventType, position, _inputModifiers));
+            input(e = new RawPointerEventArgs(TouchDevice, Timestamp, InputRoot, eventType, position / _scaling, _inputModifiers));
 
             if (e != null)
                 return e.Handled;
@@ -224,16 +210,12 @@ namespace VL.Avalonia.Skia
         public AcrylicPlatformCompensationLevels AcrylicCompensationLevels { get; } = new(1.0, 1.0, 1.0);
 
         private ulong Timestamp => (ulong)_stopwatch.ElapsedMilliseconds;
-
-        public IPopupImpl? CreatePopup()
-        {
-            return null;
-        }
+        public IPopupImpl? CreatePopup() => null;
 
         internal void Render(CallerInfo caller)
         {
             var bounds = caller.ViewportBounds.ToAvaloniaRect();
-            ClientSize = bounds.Size;
+            SetClientSize(bounds.Size);
 
             _callerInfos.Clear();
             _callerInfos.Add(caller);
@@ -254,8 +236,8 @@ namespace VL.Avalonia.Skia
             // TODO
         }
 
-        public Point PointToClient(PixelPoint point) => point.ToPoint(RenderScaling);
-        public PixelPoint PointToScreen(Point point) => PixelPoint.FromPoint(point, RenderScaling);
+        public Point PointToClient(PixelPoint point) => point.ToPoint(_scaling);
+        public PixelPoint PointToScreen(Point point) => PixelPoint.FromPoint(point, _scaling);
 
         // example from Godot
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L364
