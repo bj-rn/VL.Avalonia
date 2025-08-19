@@ -69,5 +69,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: packages/**
+          generateReleaseNotes: true
           allowUpdates: true
           prerelease: ${{ env.IS_PRERELEASE == 'True' }}
