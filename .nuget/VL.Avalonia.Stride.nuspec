@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>VL.Avalonia.Stride</id>
+    <title>VL.Avalonia.Stride</title>
+    <version>0.0.0</version>
+    <authors>antokhio, bj-rn, lecloneur, azneo, woei</authors>
+    <owners>bj-rn</owners>
+    <projectUrl>https://github.com/bj-rn/VL.Avalonia</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Avalonia UI framework for vvvv live programming environment</summary>
+    <description>VL.Avalonia bridges the gap between the visual programming environment VL and the Avalonia UI framework, enabling developers to create rich, interactive desktop applications with visual programming capabilities.</description>
+    <tags>vl, vvvv, gamma, avalonia, skia</tags>
+    <readme>README.md</readme>
+	  <license type="file">LICENSE</license>
+	  <icon>icon\icon.png</icon>
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="VL.Avalonia.Skia" version="$version$" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\VL.Avalonia.Stride\help\**" target="help\" exclude="" />
+    <file src="..\VL.Avalonia.Stride\*.vl" target="" exclude="" />
+    <file src="..\README.md" />
+    <file src="..\LICENSE" />
+    <file src="..\icon.png" target="icon\" />
+  </files>
+</package>

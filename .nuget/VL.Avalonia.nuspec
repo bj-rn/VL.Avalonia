@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>VL.Avalonia</id>
+    <title>VL.Avalonia</title>
+    <version>0.0.0</version>
+    <authors>antokhio, bj-rn, lecloneur, azneo, woei</authors>
+    <owners>bj-rn</owners>
+    <projectUrl>https://github.com/bj-rn/VL.Avalonia</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Avalonia UI framework for vvvv live programming environment</summary>
+    <description>VL.Avalonia bridges the gap between the visual programming environment VL and the Avalonia UI framework, enabling developers to create rich, interactive desktop applications with visual programming capabilities.</description>
+    <tags>vl, vvvv, gamma, avalonia, skia</tags>
+    <readme>README.md</readme>
+	  <license type="file">LICENSE</license>
+	  <icon>icon\icon.png</icon>
+    <dependencies>
+      <group targetFramework=".net8.0">
+        <dependency id="Avalonia" version="11.2.1" />
+        <dependency id="Avalonia.Desktop" version="11.2.1" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\VL.Avalonia\lib\net8.0\**" target="lib\net8.0\" exclude="" />
+    <file src="..\VL.Avalonia\*.vl" target="" exclude="" />
+    <file src="..\VL.Avalonia\help\**" target="help\" exclude="" />
+    <file src="..\VL.Avalonia\assets\**" target="assets\" exclude="" />
+    <file src="..\icon.png" target="icon\" />
+    <file src="..\README.md" />
+    <file src="..\LICENSE" />
+  </files>
+</package>
