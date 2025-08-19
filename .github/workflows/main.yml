@@ -29,13 +29,23 @@ jobs:
           dotnet build .\VL.Avalonia.Skia\src\VL.Avalonia.Skia.csproj --configuration Release --output .\VL.Avalonia.Skia\lib\net8.0\
           dotnet build .\VL.Avalonia.Custom\src\VL.Avalonia.Custom.csproj --configuration Release --output .\VL.Avalonia.Custom\lib\net8.0\
 
-      - name: Extract version
+      - name: Extract version and detect pre-release
         id: version
         run: |
           $version = "${{ github.ref_name }}"
           $cleanVersion = $version.Substring(1)
-          Write-Host "Clean version: $cleanVersion"
+
+          $isPrerelease = $cleanVersion -match "[\-+]"
+
+          $prerelease = ""
+
+          if ($isPrerelease -eq "True"){
+              $prerelease = "--prerelease"
+          }
+
           echo "VERSION=$cleanVersion" >> $env:GITHUB_ENV
+          echo "IS_PRERELEASE=$isPrerelease" >> $env:GITHUB_ENV
+          echo "PRERELEASE_STRING=$prerelease" >> $env:GITHUB_ENV
 
       - name: Pack packages
         run: |
@@ -51,7 +61,8 @@ jobs:
             dotnet nuget push $package `
               --api-key ${{ secrets.NUGET_KEY }} `
               --source https://api.nuget.org/v3/index.json `
-              --skip-duplicate
+              --skip-duplicate `
+              ${{ env.PRERELEASE_STRING}}
           }
 
       - name: Upload artifacts
@@ -59,3 +70,4 @@ jobs:
         with:
           artifacts: packages/**
           allowUpdates: true
+          prerelease: ${{ env.IS_PRERELEASE == 'True' }}
