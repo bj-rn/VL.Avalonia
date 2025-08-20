@@ -1,8 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Templates;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Core;
+using VL.Core.Import;
 
 namespace VL.Avalonia.Controls;
 
@@ -10,17 +12,13 @@ namespace VL.Avalonia.Controls;
 /// The <c>TemplatedControl</c> is a lookless control whose visual appearance is completely defined by its control template. It serves as the base class for most complex controls in Avalonia, providing a clean separation between control logic and visual presentation. The template system allows for complete customization of appearance while maintaining the control's behavior and functionality.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/templatedcontrol">TemplatedControl</see>
 /// </summary>
-public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> where T : TemplatedControl, new()
+[ProcessNode]
+public abstract partial class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> where T : TemplatedControl, new()
 {
     #region Template Properties
 
-    /*
-    /// <param name="template">
-    /// The control template that defines the visual structure and appearance of the control
-    /// </param>
     [ImplementProperty("TemplatedControl.TemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<IControlTemplate> _template;
-    */
 
     #endregion
 

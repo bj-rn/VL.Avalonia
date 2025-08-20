@@ -12,7 +12,12 @@ namespace VL.Avalonia.Dock.Controls
     {
         public DockControlWrapper()
         {
+            _output = new DockControl();
+
             _output.Factory = new Factory();
+
+            _output.InitializeLayout = true;
+            _output.InitializeFactory = true;
         }
 
         private Optional<IDock> _layout;
