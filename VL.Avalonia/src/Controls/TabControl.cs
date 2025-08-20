@@ -8,12 +8,8 @@ using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
-/// <summary>
-/// The <c>TabControl</c> displays a tab strip and the content of the selected tab. It supports setting the tab strip's position, custom content templates, and alignment for content. TabControl automatically manages selection and container generation for tab items.
-/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/tabcontrol">TabControl</see>
-/// </summary>
-[ProcessNode(Name = "TabControl (Spectral)")]
-public partial class TabControlSpectralWrapper<T> : SelectingItemsControlWrapperBase<TabControl, T>
+[ProcessNode]
+public abstract partial class TabControlWrapperBase<T, U> : SelectingItemsControlWrapperBase<T, U> where T : TabControl, new()
 {
     #region TabControl Properties
 
@@ -42,12 +38,22 @@ public partial class TabControlSpectralWrapper<T> : SelectingItemsControlWrapper
     protected Optional<IDataTemplate> _contentTemplate;
 
     #endregion
+
+}
+
+/// <summary>
+/// The <c>TabControl</c> displays a tab strip and the content of the selected tab. It supports setting the tab strip's position, custom content templates, and alignment for content. TabControl automatically manages selection and container generation for tab items.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/tabcontrol">TabControl</see>
+/// </summary>
+[ProcessNode(Name = "TabControl (Spectral)")]
+public partial class TabControlSpectralWrapper<T> : TabControlWrapperBase<TabControl, T>
+{
 }
 
 
 /// <inheritdoc cref="TabControlSpectralWrapper{T}"/>
 [ProcessNode(Name = "TabControl")]
-public partial class TabControlWrapper<T> : TabControlSpectralWrapper<T>
+public partial class TabControlWrapper<T> : TabControlWrapperBase<TabControl, T>
 {
 
     /// <param name="items">

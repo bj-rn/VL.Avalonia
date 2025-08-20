@@ -6,12 +6,8 @@ using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls;
 
-/// <summary>
-/// The <c>DockPanel</c> arranges its children at the top, bottom, left, right, or center of the panel. Each child can be docked to a specified edge using the Dock attached property. Optionally, the last child can fill the remaining space, and spacing between child elements can be set horizontally and vertically.
-/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/dockpanel">DockPanel</see>
-/// </summary>
-[ProcessNode(Name = "DockPanel (Spectral)")]
-public partial class DockPanelSpectralWrapper : PanelWrapperBase<DockPanel>
+
+public abstract partial class DockPanelWrapperBase<T> : PanelWrapperBase<T> where T : Panel, new()
 {
     #region Layout Properties
 
@@ -37,6 +33,16 @@ public partial class DockPanelSpectralWrapper : PanelWrapperBase<DockPanel>
     protected Optional<float> _verticalSpacing;
     */
     #endregion
+}
+
+/// <summary>
+/// The <c>DockPanel</c> arranges its children at the top, bottom, left, right, or center of the panel. Each child can be docked to a specified edge using the Dock attached property. Optionally, the last child can fill the remaining space, and spacing between child elements can be set horizontally and vertically.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/dockpanel">DockPanel</see>
+/// </summary>
+[ProcessNode(Name = "DockPanel (Spectral)")]
+public partial class DockPanelSpectralWrapper : DockPanelWrapperBase<DockPanel>
+{
+
 }
 
 

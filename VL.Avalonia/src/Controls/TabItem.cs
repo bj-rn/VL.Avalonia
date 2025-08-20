@@ -7,18 +7,14 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
-/// <summary>
-/// The <c>TabItem</c> represents a selectable item in a <see cref="TabControl"/>. Each TabItem can display a header and content, and can be selected via UI or code. TabItem supports custom header, selection state, and participates in keyboard navigation and automation.
-/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/tabitem">TabItem</see>
-/// </summary>
-[ProcessNode(Name = "TabItem")]
-public partial class TabItemWrapper : HeaderedControlWrapperBase<TabItem>
+[ProcessNode]
+public abstract partial class TabItemWrapperBase<T> : HeaderedControlWrapperBase<T> where T : TabItem, new()
 {
     #region TabItem Properties
 
     protected ChannelTwoWayBinding<bool> _isSelectedBinding;
 
-    public TabItemWrapper() : base()
+    public TabItemWrapperBase() : base()
     {
         _isSelectedBinding = new ChannelTwoWayBinding<bool>(_output, TabItem.IsSelectedProperty);
     }
@@ -33,4 +29,14 @@ public partial class TabItemWrapper : HeaderedControlWrapperBase<TabItem>
     protected Optional<Dock> _tabStripPlacement;
 
     #endregion
+}
+
+/// <summary>
+/// The <c>TabItem</c> represents a selectable item in a <see cref="TabControl"/>. Each TabItem can display a header and content, and can be selected via UI or code. TabItem supports custom header, selection state, and participates in keyboard navigation and automation.
+/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/tabitem">TabItem</see>
+/// </summary>
+[ProcessNode(Name = "TabItem")]
+public partial class TabItemWrapper : TabItemWrapperBase<TabItem>
+{
+
 }
