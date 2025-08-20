@@ -10,7 +10,6 @@ namespace VL.Avalonia.Controls;
 /// The <c>TemplatedControl</c> is a lookless control whose visual appearance is completely defined by its control template. It serves as the base class for most complex controls in Avalonia, providing a clean separation between control logic and visual presentation. The template system allows for complete customization of appearance while maintaining the control's behavior and functionality.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/templatedcontrol">TemplatedControl</see>
 /// </summary>
-[Obsolete]
 public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> where T : TemplatedControl, new()
 {
     #region Template Properties
