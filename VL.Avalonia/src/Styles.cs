@@ -4,21 +4,16 @@ using Avalonia.Media;
 using Avalonia.Styling;
 using Stride.Core.Mathematics;
 using VL.Avalonia.Helpers;
+using VL.Avalonia.Styles;
 using VL.Lib.Collections;
 
 using Color = Avalonia.Media.Color;
 
 namespace VL.Avalonia
 {
-    public partial class Styles
+    public partial class StylesOld
     {
-        #region Style Factory Base
-        public interface IAvaloniaStyle
-        {
-            public Style BuildStyle(StyledElement owner, Style style);
-        }
 
-        #endregion
 
         #region Style Implementations
 

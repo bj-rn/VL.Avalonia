@@ -1,6 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
-using static VL.Avalonia.Styles;
+using VL.Avalonia.Styles;
+using VL.Core;
+using VL.Core.Import;
+using VL.Lib.Collections;
 
 namespace VL.Avalonia.Helpers;
 
@@ -29,6 +32,33 @@ public static class PropertyRegistryHelper
     }
 }
 
+[ProcessNode]
+public class PropertyInspector<T>
+{
+    protected Optional<T> _input;
+    protected string _output;
+    public void SetInput(Optional<T> input, out string output)
+    {
+        if (_input != input)
+        {
+            if (input.HasValue)
+            {
+                var type = input.Value.GetType();
+
+                var properties = AvaloniaPropertyRegistry.Instance.GetRegistered(type);
+                var inheritedProperties = AvaloniaPropertyRegistry.Instance.GetRegistered(type);
+
+                _output = string.Join("\n", properties.Select(x => x.Name).OrderBy(x => x));
+            }
+
+            _input = input;
+
+        }
+
+        output = _output;
+    }
+}
+
 public static class StyleExtensions
 {
     /// <summary>
@@ -45,7 +75,9 @@ public static class StyleExtensions
     {
         if (PropertyRegistryHelper.TryGetProperty(owner, propertyName, out var property))
         {
-            style.Add(new Setter(property, value));
+            // Avoids duplicate setter encountered for property 'Background' in 'Style'.
+            if (!style.Setters.Any((s) => (s as Setter)?.Property == property))
+                style.Add(new Setter(property, value));
         }
 
         return style;

@@ -7,9 +7,9 @@ using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Controls.Base.Primitives;
 using VL.Avalonia.Helpers;
+using VL.Avalonia.Styles;
 using VL.Core;
 using VL.Core.Import;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
@@ -32,8 +32,16 @@ public abstract partial class ControlWrapperBase<T> : AnimatableWrapperBase<T> w
     {
         if (_style != style)
         {
+            if (style.HasValue)
+            {
+                _output.TryUpdateStyles(style.Value);
+            }
+            else
+            {
+                _output.Styles.Clear();
+            }
+
             _style = style;
-            _output.TryUpdateStyles(style.Value);
         }
     }
 
@@ -100,7 +108,7 @@ public abstract partial class ControlWrapperBase<T> : AnimatableWrapperBase<T> w
     #endregion
 
     #region Visual Properties
-      
+
     /// <param name="isVisible">
     /// Whether the control is visible in the user interface
     /// </param>

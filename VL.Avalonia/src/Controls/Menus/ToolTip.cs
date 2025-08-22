@@ -1,8 +1,8 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Helpers;
+using VL.Avalonia.Styles;
 using VL.Core;
 using VL.Core.Import;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 

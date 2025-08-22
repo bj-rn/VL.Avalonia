@@ -1,7 +1,8 @@
 ﻿using Avalonia.Styling;
 using VL.Avalonia.Helpers;
+using VL.Avalonia.Styles;
 using VL.Core.Import;
-using static VL.Avalonia.Styles;
+using static VL.Avalonia.StylesOld;
 
 namespace VL.Avalonia;
 
