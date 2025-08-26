@@ -42,23 +42,6 @@
             <Pin Id="GGPyHfg3lGRMR0KapPMCWx" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="UnswsbPtT09PjpwZR3X0rA" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="268,839,62,19" Id="C5fEEgk355LO8OOakSPX5m">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="ClassType" Name="Styles" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true" />
-              </CategoryReference>
-              <Choice Kind="OperationCallFlag" Name="SetMargin" />
-              <PinReference Kind="InputPin" Name="Margin">
-                <p:DataTypeReference p:Type="TypeReference" LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-                  <Choice Kind="TypeFlag" Name="Float32" />
-                </p:DataTypeReference>
-              </PinReference>
-            </p:NodeReference>
-            <Pin Id="DmN60FgWIvSPm4m93eUHh2" Name="Style" Kind="InputPin" />
-            <Pin Id="LbjG0i4PJaPMuuaNY0y8RA" Name="Margin" Kind="InputPin" DefaultValue="20" />
-            <Pin Id="UrXWZB3jWi1Mz40nxVi8gp" Name="Result" Kind="OutputPin" />
-          </Node>
           <Node Bounds="228,230,125,19" Id="GlruvyzwcK1LPzXWkQ231L">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -707,6 +690,26 @@
               <Choice Kind="TypeFlag" Name="RectangleAnchor" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="268,830,62,19" Id="NcJuA0Phb7lMwWXi5eqoXm">
+            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Styles" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="SetMargin" />
+              <PinReference Kind="InputPin" Name="Value">
+                <p:DataTypeReference p:Type="TypeReference" LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="TypeFlag" Name="Optional" />
+                  <p:TypeArguments>
+                    <TypeReference LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="TypeFlag" Name="Float32" />
+                    </TypeReference>
+                  </p:TypeArguments>
+                </p:DataTypeReference>
+              </PinReference>
+            </p:NodeReference>
+            <Pin Id="LEtsNT2c1U7NshKyhJTI0d" Name="Input" Kind="InputPin" />
+            <Pin Id="CwiU9gABhfLPvVppaQtC6A" Name="Value" Kind="InputPin" DefaultValue="20" />
+            <Pin Id="EKXkImLyDYSPCKofnwks8e" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="QsEfWr91IigPniNxDo3azG" Name="Create" />
         <Patch Id="SM0yC0p1CFmO4PHdBdoGwG" Name="Update" />
@@ -714,7 +717,6 @@
           <Fragment Id="TdJoQGFxdb9O24fyHc1sy9" Patch="QsEfWr91IigPniNxDo3azG" Enabled="true" />
           <Fragment Id="CW3maearxnFNBlqDwSfyyy" Patch="SM0yC0p1CFmO4PHdBdoGwG" Enabled="true" />
         </ProcessDefinition>
-        <Link Id="T1IGiQICv8VPstrIzi99kV" Ids="UrXWZB3jWi1Mz40nxVi8gp,Ef1G6WwLqyaQBe9L4msmGB" />
         <Link Id="N1KTUcg2gauLwrpF1YHrnH" Ids="BXB43eRcBx3MOf8hNgcSDh,Ar0mlYQ9jSCMSYYOW3HC6T" />
         <Link Id="Rryld7OHvfBNErAhEYVPYY" Ids="RG2RVuYkUrzOoDO19HS1gY,SD2XRJpmRUqNRgtF58svhg" />
         <Link Id="UmI4mml01EKQD1KYDgNh5y" Ids="HaJpLc8moy0MIF62Tqcx5z,R4xXDTGP3joQbbkBAf8ihu" />
@@ -764,6 +766,7 @@
         <Link Id="QGgTW6Bl2oWOeKCCB6Iwjt" Ids="ETwZO4beOaFNoWK1XKiQ4y,LMXO1f760uRLvnAjHCJl6c" />
         <Link Id="JmX9ViB909KNjJ2b8A29q7" Ids="TePaBhU7oMzPSzrj99apzZ,NwJJ6NPXOvRNJicmflN4Nu" />
         <Link Id="PgnLaxdgaJINogFS7tBXNW" Ids="LDEPKT5uhhEMeG0h0omYpu,CnKbGKahkvFQDeDg6GghEx" />
+        <Link Id="L2e2Lw0YXCrNxia1UPXH1o" Ids="EKXkImLyDYSPCKofnwks8e,Ef1G6WwLqyaQBe9L4msmGB" />
       </Patch>
     </Node>
   </Patch>

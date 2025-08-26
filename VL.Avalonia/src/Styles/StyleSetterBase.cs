@@ -34,15 +34,15 @@ namespace VL.Avalonia.Styles
 
         protected ImmutableSetter<T> _output;
 
-        private Optional<IAvaloniaStyle> _input;
+        private IAvaloniaStyle _input;
         [Fragment(Order = PinOrder.Main)]
-        public void SetInput(Optional<IAvaloniaStyle> input)
+        public void SetInput(IAvaloniaStyle input)
         {
             if (_input != input)
             {
-                if (input.HasValue)
+                if (input != null)
                 {
-                    _output = _output with { Input = input.Value };
+                    _output = _output with { Input = input };
                 }
                 else
                 {
@@ -151,15 +151,103 @@ namespace VL.Avalonia.Styles
     }
 
     [ProcessNode]
-    public abstract class StyleSetterThicknessHV : StyleSetter<Vector2, Thickness>
+    public abstract class StyleSetterThicknessHV : StyleSetterBase<Thickness>
     {
-        public StyleSetterThicknessHV(string styleName) : base(styleName, (x) => new Thickness(x.X, x.Y)) { }
+        public StyleSetterThicknessHV(string styleName) : base(styleName) { }
+
+        protected Optional<float> _horizontal;
+        protected Optional<float> _vertical;
+
+        public void SetValue(Optional<float> horizontal, Optional<float> vertical)
+        {
+            if (_horizontal != horizontal || _vertical != vertical)
+            {
+                _output = _output with
+                {
+                    StyleValue = new Thickness(horizontal.HasValue ? horizontal.Value : 0, vertical.HasValue ? vertical.Value : 0)
+                };
+
+                _horizontal = horizontal;
+                _vertical = vertical;
+            }
+        }
     }
 
     [ProcessNode]
-    public abstract class StyleSetterThicknessLTRB : StyleSetter<Vector4, Thickness>
+    public abstract class StyleSetterThicknessLTRB : StyleSetterBase<Thickness>
     {
-        public StyleSetterThicknessLTRB(string styleName) : base(styleName, (x) => new Thickness(x.X, x.Y, x.Z, x.W)) { }
+        public StyleSetterThicknessLTRB(string styleName) : base(styleName) { }
+
+        protected Optional<float> _left;
+        protected Optional<float> _top;
+        protected Optional<float> _right;
+        protected Optional<float> _bottom;
+
+        public void SetValue(Optional<float> left, Optional<float> top, Optional<float> right, Optional<float> bottom)
+        {
+            if (_left != left || _top != top || _right != right || _bottom != bottom)
+            {
+                _output = _output with
+                {
+                    StyleValue = new Thickness(left.HasValue ? left.Value : 0, top.HasValue ? top.Value : 0, right.HasValue ? right.Value : 0, bottom.HasValue ? bottom.Value : 0)
+                };
+
+                _left = left;
+                _top = top;
+                _right = right;
+                _bottom = bottom;
+            }
+        }
+    }
+
+    [ProcessNode]
+    public abstract class StyleSetterCornerRadiusTB : StyleSetterBase<CornerRadius>
+    {
+        public StyleSetterCornerRadiusTB(string styleName) : base(styleName) { }
+
+        protected Optional<float> _top;
+        protected Optional<float> _bottom;
+
+        public void SetValue(Optional<float> top, Optional<float> bottom)
+        {
+            if (_top != top || _bottom != bottom)
+            {
+                _output = _output with
+                {
+                    StyleValue = new CornerRadius(top.HasValue ? top.Value : 0, bottom.HasValue ? bottom.Value : 0)
+                };
+
+                _top = top;
+                _bottom = bottom;
+            }
+        }
+    }
+
+    [ProcessNode]
+    public abstract class StyleSetterCornerRadiusTLTRBRBL : StyleSetterBase<CornerRadius>
+    {
+        public StyleSetterCornerRadiusTLTRBRBL(string styleName) : base(styleName) { }
+
+        protected Optional<float> _topLeft;
+        protected Optional<float> _topRight;
+        protected Optional<float> _bottomRight;
+        protected Optional<float> _bottomLeft;
+
+        public void SetValue(Optional<float> topLeft, Optional<float> topRight, Optional<float> bottomRight, Optional<float> bottomLeft)
+        {
+            if (_topLeft != topLeft || _topRight != topRight || _bottomRight != bottomRight || _bottomLeft != bottomLeft)
+            {
+                _output = _output with
+                {
+                    StyleValue = new CornerRadius(topLeft.HasValue ? topLeft.Value : 0, topRight.HasValue ? topRight.Value : 0, bottomRight.HasValue ? bottomRight.Value : 0, bottomLeft.HasValue ? bottomLeft.Value : 0)
+                };
+
+                _topLeft = topLeft;
+                _topRight = topRight;
+                _bottomRight = bottomRight;
+                _bottomLeft = bottomLeft;
+            }
+        }
     }
 
     [ProcessNode]

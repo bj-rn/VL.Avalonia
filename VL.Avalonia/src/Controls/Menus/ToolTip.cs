@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls;
 /// Implements styling, classes, name
 /// PseudoClasses :open
 /// </summary>
-[ProcessNode]
+[ProcessNode()]
 public abstract class ToolTipWrapperBase<T> where T : Control
 {
     protected readonly ToolTip _output = new ToolTip();

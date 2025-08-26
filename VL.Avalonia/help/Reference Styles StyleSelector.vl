@@ -401,16 +401,6 @@
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="663,280,74,19" Id="Uen8t2bMkk0Mc4VnggsgsF">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="StyleSelector (String)" />
-            </p:NodeReference>
-            <Pin Id="T8lZ4pfDt7KPVB6gelghYQ" Name="Input" Kind="InputPin" />
-            <Pin Id="NBSSIp7diM1LECwc34vNNy" Name="Selector Style" Kind="InputPin" />
-            <Pin Id="SjNvG9mZtGoL5L60ReDyU8" Name="Selector String" Kind="InputPin" DefaultValue="TextBlock.header" />
-            <Pin Id="MkZimVCd8NhPkdp4wwZa9G" Name="Output" Kind="OutputPin" />
-          </Node>
           <Pad Id="GzrUmJIjqHfMU0dPFG0z5r" Comment="Selector String" Bounds="734,260,202,19" ShowValueBox="true" isIOBox="true" Value=".header">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
@@ -471,16 +461,6 @@
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="663,171,74,19" Id="BteYEA8lPOVNMKp4TPaAav">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="StyleSelector (String)" />
-            </p:NodeReference>
-            <Pin Id="MOWDduyPCXJQEliL9iFVmq" Name="Input" Kind="InputPin" />
-            <Pin Id="PTzarIKGSYDMD0s3Oz2K32" Name="Selector Style" Kind="InputPin" />
-            <Pin Id="LzuAuHqQhIXQAIbJPbk0pI" Name="Selector String" Kind="InputPin" DefaultValue="TextBlock.header" />
-            <Pin Id="QRoBTtybkHlQHHtoG9lJTa" Name="Output" Kind="OutputPin" />
-          </Node>
           <Pad Id="BqT697P7hX8NbQNYAhZ4q1" Comment="Selector String" Bounds="734,151,35,15" ShowValueBox="true" isIOBox="true" Value=".red">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
@@ -832,6 +812,26 @@
             </Patch>
             <Pin Id="E6Ix2SrlaKpODLYsaryMvJ" Name="Node Context" Kind="InputPin" IsHidden="true" />
           </Node>
+          <Node Bounds="663,170,74,19" Id="QuKBxjv8qI8L48vxdseLPG">
+            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="StyleSelector" />
+            </p:NodeReference>
+            <Pin Id="CFhsw7298iHOY1I3SuKFC6" Name="Input" Kind="InputPin" />
+            <Pin Id="LT0L7pwsYNDLTs6jeceUhb" Name="Selector Style" Kind="InputPin" />
+            <Pin Id="KHx5tcXjSF1M0CfSQuvmJx" Name="Selector String" Kind="InputPin" />
+            <Pin Id="SSJWSARsUseOzxy7qBtB4s" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="659,300,74,19" Id="REEgbwzJ1HSLuPxxhBo5mW">
+            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="StyleSelector" />
+            </p:NodeReference>
+            <Pin Id="Hg9HzhPlZIOLXTTHC7zv9u" Name="Input" Kind="InputPin" />
+            <Pin Id="F7rt0RLZBxbLrCndXSro4Y" Name="Selector Style" Kind="InputPin" />
+            <Pin Id="MyVfux82kkLPnuzkmCuxMg" Name="Selector String" Kind="InputPin" />
+            <Pin Id="RALhqgjPGavLzez4G1S0sh" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="H4LLKQetYKJPteQer7IZo4" Name="Create" />
         <Patch Id="G0hsID6mOUpP3xBmynQFFI" Name="Update" />
@@ -855,19 +855,12 @@
         <Link Id="HTR4id8az4jLYK99uHgDTY" Ids="N14zBC61CkWLBqhz10nXTu,AeaI9ts7GbfO2uSSTZMpw6" />
         <Link Id="CVeQBDVyLCDPn64SupwM57" Ids="RwJnIpUvc0cLdashpxJaUy,OHiz5aqHxS7OTrWF97ce9d" />
         <Link Id="GOQBovLqCmOLrxgZNGhM07" Ids="Gs0SeThL04KNZF1oVrVJRK,Cp3hHS0CbPKQYSPUXRIcTr" />
-        <Link Id="RtVO5rg9UUiPJnw894nnt2" Ids="GzrUmJIjqHfMU0dPFG0z5r,SjNvG9mZtGoL5L60ReDyU8" />
-        <Link Id="QkQsYu3ED4YNIS7NOgXcyQ" Ids="KROcBGMdwyWNeKzEF3bcyN,NBSSIp7diM1LECwc34vNNy" />
         <Link Id="P3LA5GtcEsbOuQPaCiJ1vi" Ids="Asj5NtRdNb8QY8lyTyMPuv,QjtQxuKLqoqNGEZoZ6V0cH" />
         <Link Id="F39RINUhI6HLSmPlNYVp6c" Ids="L9ttHl4WT8LN0RrCEgCE2y,NJGmFWXM4UEQVkXRtqqKHn" />
         <Link Id="RwmDp43Ht8aLCYGZR3sZfW" Ids="TLqJ9TSalIbNRZWvXJY3YC,OQBBVz27PyGQLzAY1WFtqb" />
         <Link Id="ECWAEfTbQbCNHeGyAcknIM" Ids="Tvcoc9aILaKMx2uQ3SLBRV,FA114tTYEDrQFKqjUUSmIn" />
-        <Link Id="Odtta44dkhdMLep47wCVZY" Ids="MkZimVCd8NhPkdp4wwZa9G,GaX6xkNHZ31MBTtqRA6Jkp" />
-        <Link Id="TB3qEl2bNEwP414u1pxc0D" Ids="MkZimVCd8NhPkdp4wwZa9G,UB7yVeGiPVfLPVtDQeZ2XK" />
         <Link Id="TouuDPnovarPyuFTY07m3Y" Ids="GuBqF9Z8eazOj94BWBykJO,EMfu3ZTN5QYNBurKHNKBMZ" />
         <Link Id="LImi07Ib1VQO68XJFcxgd0" Ids="VL0tist7lVrO3VyRgR17Xw,FlmAIO3wwN4Lzr9rV3X1SW" />
-        <Link Id="GxribVMsJfkMZcGQ7S2spm" Ids="QRoBTtybkHlQHHtoG9lJTa,T8lZ4pfDt7KPVB6gelghYQ" />
-        <Link Id="Kx5Qidd1goXPMyXBGKBtH6" Ids="BqT697P7hX8NbQNYAhZ4q1,LzuAuHqQhIXQAIbJPbk0pI" />
-        <Link Id="KfCcLOP00p3NZxvvgfYwcH" Ids="I33aZfcJGR9MZRHAxlABXv,PTzarIKGSYDMD0s3Oz2K32" />
         <Link Id="MHF0fADQa7oMue92Bzcg6S" Ids="Jw52PXiPw5xPbgF0fOskSJ,Kswn7lJLpHcQQKoOPcGaTs" />
         <Link Id="OYe4mAzrim3QITOdd4aphG" Ids="QSpVhnXBvykPFzxPUPaIto,NHyTvIdOhI3NLTgLKY0r0h" />
         <Link Id="HIZOb2T7udsNJFRN3RU1KL" Ids="Cy8Fpf5IgfWOxeB7wqC6DE,E4Vd15haeQXOuxhoqybWDi" />
@@ -886,6 +879,13 @@
         <Link Id="L9stn6pJL1DLv3lmacouZp" Ids="EZ9vB4nLRAzO39Jwy1KUA7,VMNkfkx1RJ1OIfAJmu1DHH" />
         <Link Id="EJo9tQ1VWOoQZ2v6gAHnMh" Ids="DZWIpfkpRwSOeBxN2fYyin,NiiTxcvQoxZQOsoYxsgFCP" />
         <Link Id="SKcMntCspXtMHhwnnmtmNh" Ids="VZD3yIDEFyFP7f5xbVSEiq,SVXmYrEvhqwMwidCVFtve2" />
+        <Link Id="OJ5eR4OqsoSMCXaDndAVJR" Ids="I33aZfcJGR9MZRHAxlABXv,LT0L7pwsYNDLTs6jeceUhb" />
+        <Link Id="LYUcy8xmzfSMwvdNiVzlDu" Ids="BqT697P7hX8NbQNYAhZ4q1,KHx5tcXjSF1M0CfSQuvmJx" />
+        <Link Id="JQoOzriUnTtOpT152xTenm" Ids="GzrUmJIjqHfMU0dPFG0z5r,MyVfux82kkLPnuzkmCuxMg" />
+        <Link Id="Fg9AXrMvCCUNUFhkLEN8Dl" Ids="SSJWSARsUseOzxy7qBtB4s,Hg9HzhPlZIOLXTTHC7zv9u" />
+        <Link Id="S75TD1tm3ExLv4JE84vI8Z" Ids="KROcBGMdwyWNeKzEF3bcyN,F7rt0RLZBxbLrCndXSro4Y" />
+        <Link Id="BrUoxCTOwPeLQQjD3RmuJT" Ids="RALhqgjPGavLzez4G1S0sh,GaX6xkNHZ31MBTtqRA6Jkp" />
+        <Link Id="B9W2ziQHvueMq19CXfBBxw" Ids="RALhqgjPGavLzez4G1S0sh,UB7yVeGiPVfLPVtDQeZ2XK" />
       </Patch>
     </Node>
   </Patch>

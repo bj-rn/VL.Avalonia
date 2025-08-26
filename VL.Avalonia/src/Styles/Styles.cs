@@ -366,22 +366,22 @@ namespace VL.Avalonia.Styles
     }
 
     [ProcessNode(Name = "SetCornerRadius")]
-    public class SetCornerRadiusHV : StyleSetter<Vector2, CornerRadius>
+    public class SetCornerRadiusHV : StyleSetterCornerRadiusTB
     {
-        public SetCornerRadiusHV() : base("CornerRadius", (x) => new CornerRadius(x.X, x.Y)) { }
+        public SetCornerRadiusHV() : base("CornerRadius") { }
     }
 
     [ProcessNode(Name = "SetCornerRadius")]
-    public class SetCornerRadiusLTRB : StyleSetter<Vector4, CornerRadius>
+    public class SetCornerRadiusLTRB : StyleSetterCornerRadiusTLTRBRBL
     {
-        public SetCornerRadiusLTRB() : base("CornerRadius", (x) => new CornerRadius(x.X, x.Y, x.Z, x.W)) { }
+        public SetCornerRadiusLTRB() : base("CornerRadius") { }
     }
 
-    [ProcessNode(Name = "SetFontFamily")]
-    public class SetFontFamilyAdv : StyleSetterBase<FontFamily>
-    {
-        public SetFontFamilyAdv() : base("FontFamily") { }
-    }
+    //[ProcessNode(Name = "SetFontFamily")]
+    //public class SetFontFamilyAdv : StyleSetterBase<FontFamily>
+    //{
+    //    public SetFontFamilyAdv() : base("FontFamily") { }
+    //}
 
     [ProcessNode(Name = "SetFontFamily")]
     public class SetFontFamily : StyleSetter<string, FontFamily>
@@ -1329,15 +1329,15 @@ namespace VL.Avalonia.Styles
     }
 
     [ProcessNode(Name = "SetLineHeight")]
-    public class SetLineHeight : StyleSetter<double>
+    public class SetLineHeight : StyleSetter<float, double>
     {
-        public SetLineHeight() : base("LineHeight") { }
+        public SetLineHeight() : base("LineHeight", (x) => (double)x) { }
     }
 
     [ProcessNode(Name = "SetLetterSpacing")]
-    public class SetLetterSpacing : StyleSetter<double>
+    public class SetLetterSpacing : StyleSetter<float, double>
     {
-        public SetLetterSpacing() : base("LetterSpacing") { }
+        public SetLetterSpacing() : base("LetterSpacing", (x) => (double)x) { }
     }
 
     #endregion
