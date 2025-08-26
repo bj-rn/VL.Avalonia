@@ -14,7 +14,7 @@ using AvaloniaPoint = Avalonia.Point;
 namespace VL.Avalonia.Styles
 {
     /// <summary>
-    /// Base class for chaining styles via ImmutableStyle abstraction
+    /// Base class for chaining styles via ImmutableSetter abstraction
     /// Does not implements styling logic, if you need this class use one of
     /// the subclasses
     /// </summary>
@@ -28,11 +28,11 @@ namespace VL.Avalonia.Styles
         {
             _styleName = styleName;
 
-            _output = new ImmutableStyle<T>() with { StyleName = styleName };
+            _output = new ImmutableSetter<T>() with { StyleName = styleName };
         }
 
 
-        protected ImmutableStyle<T> _output;
+        protected ImmutableSetter<T> _output;
 
         private Optional<IAvaloniaStyle> _input;
         [Fragment(Order = PinOrder.Main)]

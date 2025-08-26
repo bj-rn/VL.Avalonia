@@ -1,8 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
 using VL.Avalonia.Styles;
-using VL.Core;
-using VL.Core.Import;
 using VL.Lib.Collections;
 
 namespace VL.Avalonia.Helpers;
@@ -29,33 +27,6 @@ public static class PropertyRegistryHelper
     {
         property = AvaloniaPropertyRegistry.Instance.GetRegistered(owner.GetType()).FirstOrDefault(p => p.Name == propertyName);
         return property != null;
-    }
-}
-
-[ProcessNode]
-public class PropertyInspector<T>
-{
-    protected Optional<T> _input;
-    protected string _output;
-    public void SetInput(Optional<T> input, out string output)
-    {
-        if (_input != input)
-        {
-            if (input.HasValue)
-            {
-                var type = input.Value.GetType();
-
-                var properties = AvaloniaPropertyRegistry.Instance.GetRegistered(type);
-                var inheritedProperties = AvaloniaPropertyRegistry.Instance.GetRegistered(type);
-
-                _output = string.Join("\n", properties.Select(x => x.Name).OrderBy(x => x));
-            }
-
-            _input = input;
-
-        }
-
-        output = _output;
     }
 }
 

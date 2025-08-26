@@ -76,6 +76,6 @@ public class SelectorWrapper
 
     protected void UpdateOutput()
     {
-        _output = new StyleSelector(_input, _selector, _selectorStyle);
+        _output = new StyleSelectorOld(_input, _selector, _selectorStyle);
     }
 }

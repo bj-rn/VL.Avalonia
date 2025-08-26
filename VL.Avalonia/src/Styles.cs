@@ -18,7 +18,7 @@ namespace VL.Avalonia
         #region Style Implementations
 
 
-        public record struct StyleSelector(IAvaloniaStyle? Style, Selector? Selector, IAvaloniaStyle? SelectorStyle) : IAvaloniaStyle
+        public record struct StyleSelectorOld(IAvaloniaStyle? Style, Selector? Selector, IAvaloniaStyle? SelectorStyle) : IAvaloniaStyle
         {
             public Style BuildStyle(StyledElement owner, Style style)
             {

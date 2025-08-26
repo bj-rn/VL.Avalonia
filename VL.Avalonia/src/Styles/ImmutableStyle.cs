@@ -10,11 +10,11 @@ namespace VL.Avalonia.Styles
     /// <summary>
     /// Helper abstraction to manage style chain update using immutability.
     /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="Input">Next style in chain</param>
-    /// <param name="StyleValue">Value of style</param>
-    /// <param name="StyleName">Name of property</param>
-    public record struct ImmutableStyle<T>(IAvaloniaStyle? Input, T? StyleValue, string StyleName) : IAvaloniaStyle
+    /// <typeparam name="T">Type of property</typeparam>
+    /// <param name="Input">Upstream style setters</param>
+    /// <param name="StyleValue">Setter property value</param>
+    /// <param name="StyleName">Setter property name</param>
+    public record struct ImmutableSetter<T>(IAvaloniaStyle? Input, T? StyleValue, string StyleName) : IAvaloniaStyle
     {
         public Style BuildStyle(StyledElement owner, Style style)
         {
@@ -48,6 +48,29 @@ namespace VL.Avalonia.Styles
             }
 
             Input?.BuildStyle(owner, style);
+            return style;
+        }
+    }
+
+    /// <summary>
+    /// Helper abstraction to generate Style with Selector using immutability.
+    /// </summary>
+    /// <param name="Input">Upstream style setters</param>
+    /// <param name="Selector">Style selector</param>
+    /// <param name="SelectorStyle"></param>
+    public record struct ImmutableSelector(IAvaloniaStyle? Input, Selector? Selector, IAvaloniaStyle? SelectorStyle) : IAvaloniaStyle
+    {
+        public Style BuildStyle(StyledElement owner, Style style)
+        {
+            if (SelectorStyle != null)
+            {
+                var selectorStyle = SelectorStyle.BuildStyle(owner, new Style() { Selector = Selector });
+
+                style.Add(selectorStyle);
+            }
+
+            Input?.BuildStyle(owner, style);
+
             return style;
         }
     }

@@ -33,7 +33,14 @@ public static class SelectorHelper
         var qualifiedNames = new[]
         {
         $"Avalonia.Controls.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Presenters.{name}, Avalonia.Controls"
+        $"Avalonia.Controls.Chrome.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Documents.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Mixins.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Notifications.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Primitives.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Selection.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Shapes.{name}, Avalonia.Controls",
+        $"Avalonia.Controls.Templates.{name}, Avalonia.Controls",
     };
 
         foreach (var qn in qualifiedNames)
