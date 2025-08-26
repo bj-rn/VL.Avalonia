@@ -1,8 +1,8 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Helpers;
+using VL.Avalonia.Styles;
 using VL.Core;
 using VL.Core.Import;
-using static VL.Avalonia.Styles;
 
 namespace VL.Avalonia.Controls;
 
@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls;
 /// Implements styling, classes, name
 /// PseudoClasses :open
 /// </summary>
-[ProcessNode]
+[ProcessNode()]
 public abstract class ToolTipWrapperBase<T> where T : Control
 {
     protected readonly ToolTip _output = new ToolTip();

@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
-using static VL.Avalonia.Styles;
+using VL.Avalonia.Styles;
+using VL.Lib.Collections;
 
 namespace VL.Avalonia.Helpers;
 
@@ -45,7 +46,9 @@ public static class StyleExtensions
     {
         if (PropertyRegistryHelper.TryGetProperty(owner, propertyName, out var property))
         {
-            style.Add(new Setter(property, value));
+            // Avoids duplicate setter encountered for property 'Background' in 'Style'.
+            if (!style.Setters.Any((s) => (s as Setter)?.Property == property))
+                style.Add(new Setter(property, value));
         }
 
         return style;

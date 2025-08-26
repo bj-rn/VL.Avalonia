@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="LygtROgOmIwMfqR3EGNYxa" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="PpuTsaIzn33MLaYMCDRvwJ" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
   <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0517-ge070c1d18e" />
   <Patch Id="ByJYRoNuXytMKx0VmtiA8Z">
     <Canvas Id="OSq9MxHF0ssO5kOcXxGsU2" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
@@ -15,7 +15,7 @@
       </p:NodeReference>
       <Patch Id="Cy1oXODJXg8PGXszlF4ybn">
         <Canvas Id="Eot7mkqid0qOb5xMkgaEHF" CanvasType="Group">
-          <Node Bounds="545,1121,165,19" Id="OWakTky1M7bOvqq5FIb9Mz">
+          <Node Bounds="196,641,165,19" Id="OWakTky1M7bOvqq5FIb9Mz">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
@@ -40,7 +40,7 @@
             <Pin Id="OcfgBISSIWCQLpWmfHtajE" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="ICtEcPl5cRXPUmgRGeojjQ" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Node Bounds="545,1070,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
+          <Node Bounds="196,590,79,19" Id="PSp6hoDO03gQLt97D6UGH3">
             <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Skia.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="AvaloniaLayer" />
@@ -49,15 +49,16 @@
             <Pin Id="Ik1nsbnoRj2LSClzzeQFeq" Name="Content" Kind="InputPin" />
             <Pin Id="QjtQxuKLqoqNGEZoZ6V0cH" Name="Requested Theme Variant" Kind="InputPin" />
             <Pin Id="AMW710yJpKcOa26nPDla80" Name="Output" Kind="StateOutputPin" />
+            <Pin Id="FZPUNyw4LsvO3I03OSAVEE" Name="Scaling Factor" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="619,1030,69,19" Id="QztrJfQuE49LWL5AShwfHU">
+          <Node Bounds="270,550,69,19" Id="QztrJfQuE49LWL5AShwfHU">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="DarkTheme" />
             </p:NodeReference>
             <Pin Id="Asj5NtRdNb8QY8lyTyMPuv" Name="Dark Theme" Kind="OutputPin" />
           </Node>
-          <Node Bounds="545,910,65,19" Id="E8Rl0fZxfAqQIMqHlYNEXs">
+          <Node Bounds="196,430,65,19" Id="E8Rl0fZxfAqQIMqHlYNEXs">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Controls" NeedsToBeDirectParent="true">
@@ -88,7 +89,7 @@
             <Pin Id="DejYYHWrFQuP4TRd9RFRCN" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="Ra4VwVVJBaRPeWtHd7fvER" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="545,989,105,19" Id="ATvQtUL8EXYLdFUkbHwj7j">
+          <Node Bounds="196,509,105,19" Id="ATvQtUL8EXYLdFUkbHwj7j">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="StackPanel" />
@@ -114,7 +115,7 @@
             <Pin Id="I8U4jk6nYRbLowaK0tBmZQ" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="EBZgWZRceFCPgEXKDiNbbs" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Pad Id="HFbUVWgsQkoLLvThy7RqQ6" Bounds="473,590,489,19" ShowValueBox="true" isIOBox="true" Value="https://docs.avaloniaui.net/docs/reference/controls/path-icon">
+          <Pad Id="HFbUVWgsQkoLLvThy7RqQ6" Bounds="124,110,489,19" ShowValueBox="true" isIOBox="true" Value="https://docs.avaloniaui.net/docs/reference/controls/path-icon">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -123,22 +124,22 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Link</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="C0U0zDh96cXMRwmKtJ120N" Comment="Width" Bounds="587,860,35,15" ShowValueBox="true" isIOBox="true" Value="200">
+          <Pad Id="C0U0zDh96cXMRwmKtJ120N" Comment="Width" Bounds="238,380,35,15" ShowValueBox="true" isIOBox="true" Value="200">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="MXspf47UyAoPZLZQI4pZlL" Comment="Height" Bounds="607,900,35,15" ShowValueBox="true" isIOBox="true" Value="200">
+          <Pad Id="MXspf47UyAoPZLZQI4pZlL" Comment="Height" Bounds="258,420,35,15" ShowValueBox="true" isIOBox="true" Value="200">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="JkfA00YI20fN4V7I8xht8a" Bounds="544,769,136,15" ShowValueBox="true" isIOBox="true" Value="0.3227452, 0.3227452, 0.3227452, 1">
+          <Pad Id="JkfA00YI20fN4V7I8xht8a" Bounds="195,289,136,15" ShowValueBox="true" isIOBox="true" Value="0.3227452, 0.3227452, 0.3227452, 1">
             <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="542,800,100,26" Id="Phn1gqzvqnzQGrcFqha4Ua">
+          <Node Bounds="193,320,100,26" Id="Phn1gqzvqnzQGrcFqha4Ua">
             <p:NodeReference LastCategoryFullName="Color.RGBA" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <FullNameCategoryReference ID="Color.RGBA" />
