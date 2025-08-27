@@ -13,6 +13,7 @@ using Avalonia.Media.Transformation;
 using Avalonia.Styling;
 using Stride.Core.Mathematics;
 using System.Globalization;
+using VL.Avalonia.Extensions;
 using VL.Core.Import;
 using VL.Lib.Animation;
 using AvaloniaMatrix = Avalonia.Matrix;

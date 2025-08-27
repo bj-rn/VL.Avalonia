@@ -4,9 +4,9 @@ using AMatrix = Avalonia.Matrix;
 using Point = Avalonia.Point;
 using SMatrix = Stride.Core.Mathematics.Matrix;
 
-namespace VL.Avalonia;
+namespace VL.Avalonia.Extensions;
 
-public static partial class Extensions
+public static partial class MathExtensions
 {
     /// <summary>
     /// Converts Avalonia Point to Vector2

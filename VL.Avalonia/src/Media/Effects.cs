@@ -2,6 +2,7 @@
 using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Controls.Base.Primitives;
+using VL.Avalonia.Extensions;
 using VL.Core;
 using VL.Core.Import;
 

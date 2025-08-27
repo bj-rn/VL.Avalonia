@@ -1,4 +1,5 @@
 ﻿using Stride.Core.Mathematics;
+using VL.Avalonia.Extensions;
 using VL.Avalonia.Media.Base;
 using VL.Core;
 using VL.Core.Import;
