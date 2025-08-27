@@ -5,6 +5,7 @@ using Avalonia.Media.Transformation;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
 using VL.Avalonia.Animation.Transitions;
+using VL.Avalonia.Extensions;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;

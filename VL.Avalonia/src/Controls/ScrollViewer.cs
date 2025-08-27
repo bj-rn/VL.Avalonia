@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Extensions;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
