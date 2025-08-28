@@ -1,6 +1,8 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Xml;
 
 // TEMPLATE
 /*
@@ -51,6 +53,23 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
             var order = int.Parse(attr.NamedArguments.Where(x => x.Key == "Order").FirstOrDefault().Value.Value?.ToString() ?? "0");
             var pinVisibility = PinVisibilities[attr.NamedArguments.Where(x => x.Key == "PinVisibility").FirstOrDefault().Value.Value?.ToString() ?? "0"];
 
+            var xmlDoc = fieldSymbol.GetDocumentationCommentXml();
+            var paramDoc = "";
+
+            if (!string.IsNullOrEmpty(xmlDoc))
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlDoc);
+
+                var param = doc.SelectSingleNode("//param");
+
+                if (param != null)
+                {
+                    paramDoc = $"/// {param.OuterXml}";
+                    paramDoc = Regex.Replace(paramDoc, @"[\r\n]+", " ");
+                }
+            }
+
             var fieldType = fieldSymbol.Type as INamedTypeSymbol;
             var typeArg = fieldType?.TypeArguments.FirstOrDefault()?.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat) ?? "object";
 
@@ -63,7 +82,7 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
 
             var template =
 $@"
-    /// <inheritdoc cref=""{fieldName}""/>
+    {paramDoc}
     [Fragment(Order = {order})]
     public void {methodName}([Pin(Visibility = {pinVisibility})] Optional<{typeArg}> {paramBase})
     {{

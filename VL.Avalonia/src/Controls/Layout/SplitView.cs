@@ -1,5 +1,8 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Controls.Templates;
+using Avalonia.Media;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
@@ -7,82 +10,49 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "SplitView")]
-public partial class SplitViewWrapper : ControlWrapperBase<SplitView>
+public partial class SplitViewWrapper : ContentControlWrapperBase<SplitView>
 {
-    [ImplementContent]
-    private Optional<object?> _content;
-
-    private Optional<object?> _pane;
-    /// <summary>
-    /// Sets the content of the pane in the SplitView.
-    /// </summary>
     /// <param name="pane">An optional object representing the new content for the pane. Can be <see langword="null"/> to clear the pane.</param>
-    public void SetPane(Optional<object?> pane)
+    [ImplementProperty("SplitView.PaneProperty", Order = PinOrder.Exclusive)]
+    private Optional<object> _pane;
+
+    protected ChannelTwoWayBinding<bool> _isPaneOpenBinding;
+    public SplitViewWrapper() : base()
     {
-        if (_pane != pane)
-        {
-            _pane = pane;
-            _output.SetValue(SplitView.PaneProperty, pane.Value);
-        }
+        _isPaneOpenBinding = new ChannelTwoWayBinding<bool>(_output, SplitView.IsPaneOpenProperty);
     }
 
-    private Optional<SplitViewPanePlacement> _panePlacement;
-    public void SetPanePlacement(Optional<SplitViewPanePlacement> panePlacement)
-    {
-        if (_panePlacement != panePlacement)
-        {
-            _panePlacement = panePlacement;
-            _output.SetValue(SplitView.PanePlacementProperty, panePlacement.Value);
-        }
-    }
+    /// <param name="isPaneOpenChannel">Gets or sets whether the pane is open or closed</param>
+    public void SetIsPaneOpenChannel(IChannel<bool> isPaneOpenChannel) =>
+        _isPaneOpenBinding.SetChannel(isPaneOpenChannel);
 
-
-    private IChannel<bool>? _isPaneOpen;
-    public void SetIsPaneOpen(IChannel<bool>? isPaneOpen)
-    {
-        if (_isPaneOpen != isPaneOpen)
-        {
-            _isPaneOpen = isPaneOpen;
-
-            if (_isPaneOpen != null)
-            {
-                _output.Bind(SplitView.IsPaneOpenProperty, _isPaneOpen);
-            }
-            else
-            {
-                _output.ClearValue(SplitView.IsPaneOpenProperty);
-            }
-        }
-    }
-
-    private Optional<SplitViewDisplayMode> _displayMode;
-    public void SetDisplayMode(Optional<SplitViewDisplayMode> displayMode)
-    {
-        if (_displayMode != displayMode)
-        {
-            _displayMode = displayMode;
-            _output.SetValue(SplitView.DisplayModeProperty, displayMode.Value);
-        }
-    }
-
-    private Optional<float> _openPaneLength;
-    public void SetOpenPaneLength(Optional<float> openPaneLength)
-    {
-        if (_openPaneLength != openPaneLength)
-        {
-            _openPaneLength = openPaneLength;
-            _output.SetValue(SplitView.OpenPaneLengthProperty, openPaneLength.Value);
-        }
-    }
-
+    /// <param name="compactPaneLength">sets the length of the pane when in <see cref="SplitViewDisplayMode.CompactOverlay"/> or <see cref="SplitViewDisplayMode.CompactInline"/> mode</param>
+    [ImplementProperty<float, double>("SplitView.CompactPaneLengthProperty", PinVisibility = Model.PinVisibility.Optional)]
     private Optional<float> _compactPaneLength;
-    public void SetCompactPanelLength(Optional<float> compactPanelLength)
-    {
-        if (_compactPaneLength != compactPanelLength)
-        {
-            _compactPaneLength = compactPanelLength;
-            _output.SetValue(SplitView.CompactPaneLengthProperty, compactPanelLength.Value);
-        }
-    }
+
+    /// <param name="displayMode">Sets the <see cref="SplitViewDisplayMode"/> for the SplitView</param>
+    [ImplementProperty("SplitView.DisplayModeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<SplitViewDisplayMode> _displayMode;
+
+    /// <summary><param name="openPaneLength">Sets the length of the pane when open</param></summary>
+    [ImplementProperty<float, double>("SplitView.OpenPaneLengthProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<float> _openPaneLength;
+
+    /// <param name="paneBackground">Sets the <see cref="SplitView.PaneBackground"/> for the SplitView</param>
+    [ImplementProperty("SplitView.PaneBackgroundProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<IBrush> _paneBackground;
+
+    /// <param name="panePlacement">Sets the <see cref="SplitViewPanePlacement"/> for the SplitView</param>
+    [ImplementProperty("SplitView.PanePlacementProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<SplitViewPanePlacement> _panePlacement;
+
+    /// <param name="paneTemplate">Sets the <see cref="SplitView.PaneTemplate"/> for the SplitView</param>
+    [ImplementProperty("SplitView.PaneTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<IDataTemplate> _paneTemplate;
+
+    /// <param name="useLightDismissOverlayMode">Sets the <see cref="SplitView.UseLightDismissOverlayMode"/> for the SplitView</param>
+    [ImplementProperty("SplitView.UseLightDismissOverlayModeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    private Optional<bool> _useLightDismissOverlayMode;
+
 }
 

@@ -7,6 +7,8 @@ internal struct PinOrder
 {
     public const int None = 0;
 
+    public const int Exclusive = -20;
+
     public const int Main = -10;
 
     public const int Secondary = -9;
