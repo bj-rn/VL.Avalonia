@@ -19,25 +19,20 @@ public abstract partial class ButtonWrapperBase<T> : ContentControlWrapperBase<T
 {
     #region Command Properties
 
-    protected ChannelCommand<Unit> _command = new((s, a) => new Unit());
-    protected Optional<IChannel<Unit>> _commandChannel;
+    protected ChannelCommandBindingUnit _commandBinding;
+    public ButtonWrapperBase()
+    {
+        _commandBinding = new ChannelCommandBindingUnit();
+
+        _output.SetValue(Button.CommandProperty, _commandBinding);
+    }
+
     /// <param name="commandChannel">
     /// Unit command, fired on click
     /// </param>
-    [Fragment(Order = -7)]
-    public void SetCommandChannel(Optional<IChannel<Unit>> commandChannel)
-    {
-        if (_commandChannel != commandChannel)
-        {
-            _commandChannel = commandChannel;
-            _output.Command = _command;
-
-            if (_commandChannel.HasValue)
-            {
-                _command.Channel = commandChannel.Value;
-            }
-        }
-    }
+    [Fragment(Order = PinOrder.Action)]
+    public void SetCommandChannel(IChannel<Unit>? commandChannel) =>
+        _commandBinding.SetCommandChannel(commandChannel);
 
     ///// <param name="commandParameter">
     ///// Parameter to pass to the command when the primary button is clicked

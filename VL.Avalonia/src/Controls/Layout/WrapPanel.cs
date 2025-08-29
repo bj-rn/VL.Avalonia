@@ -62,8 +62,10 @@ public partial class WrapPanelSpectralWrapper : PanelWrapperBase<WrapPanel>
 [ProcessNode(Name = "WrapPanel")]
 public partial class WrapPanelWrapper : WrapPanelSpectralWrapper
 {
-    [ImplementChildren(IsPinGroup = true)]
-    protected Spread<Control?> _children;
+    /// <inheritdoc cref="SetChildren(Spread{Control})"/>
+    [Fragment(Order = -10)]
+    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
+        base.SetChildren(children);
 }
 
 
