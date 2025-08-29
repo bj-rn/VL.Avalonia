@@ -6,6 +6,7 @@ using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
 using VL.Avalonia.Animation.Transitions;
 using VL.Avalonia.Extensions;
+using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
@@ -119,16 +120,7 @@ namespace VL.Avalonia.Styles
         {
             if (_scale != scale || _rotation != rotation || _translation != translation)
             {
-                var builder = TransformOperations.CreateBuilder(3);
-
-                if (scale.HasValue)
-                    builder.AppendScale(scale.Value.X, scale.Value.Y);
-                if (rotation.HasValue)
-                    builder.AppendRotate(rotation.Value);
-                if (translation.HasValue)
-                    builder.AppendTranslate(translation.Value.X, translation.Value.Y);
-
-                var value = builder.Build();
+                var value = TransformOperationsHelper.TransformSRT(scale, rotation, translation);
 
                 _output = _output with { StyleValue = value };
 

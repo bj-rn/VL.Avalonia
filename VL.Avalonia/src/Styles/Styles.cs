@@ -95,11 +95,17 @@ namespace VL.Avalonia.Styles
         public SetEffect() : base("Effect") { }
     }
 
-    /// <summary>Warning: Not animatable</summary>
-    [ProcessNode(Name = "SetRenderTransform (Optimized)")]
-    public class SetRenderTransform : StyleSetter<Matrix, AvaloniaMatrix>
+    [ProcessNode(Name = "SetRenderTransform")]
+    public class SetRenderTransform : StyleSetter<ITransform>
     {
-        public SetRenderTransform() : base("RenderTransform", (x) => x.ToAvaloniaMatrix()) { }
+        public SetRenderTransform() : base("RenderTransform") { }
+    }
+
+    /// <summary>Warning: Not animatable</summary>
+    [ProcessNode(Name = "SetRenderTransform (Matrix)")]
+    public class SetRenderTransformMatrix : StyleSetter<Matrix, AvaloniaMatrix>
+    {
+        public SetRenderTransformMatrix() : base("RenderTransform", (x) => x.ToAvaloniaMatrix()) { }
     }
 
     [ProcessNode(Name = "SetRenderTransform (Transitionable)")]
@@ -121,7 +127,7 @@ namespace VL.Avalonia.Styles
         { }
     }
 
-    [ProcessNode(Name = "SetRenderTransformSRT")]
+    [ProcessNode(Name = "SetRenderTransform (SRT)")]
     public class SetRenderTransformSRT : StyleSetterSRT
     {
         public SetRenderTransformSRT() : base("RenderTransform")
