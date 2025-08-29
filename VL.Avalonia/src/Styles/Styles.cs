@@ -121,6 +121,7 @@ namespace VL.Avalonia.Styles
         { }
     }
 
+    [ProcessNode(Name = "SetRenderTransformSRT")]
     public class SetRenderTransformSRT : StyleSetterSRT
     {
         public SetRenderTransformSRT() : base("RenderTransform")
