@@ -132,4 +132,7 @@ public static partial class MathExtensions
         0, 0, 1, 0,
         (float)matrix.M31, (float)matrix.M32, 0, 1
     );
+
+    public static Vector2 ToVector(this Size size) =>
+        new Vector2((float)size.Width, (float)size.Height);
 }

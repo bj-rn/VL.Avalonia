@@ -8,7 +8,6 @@ namespace VL.Avalonia.Controls;
 /// The <c>ItemsControl</c> is a base control for displaying collections of data items. It provides the foundation for controls like ListBox, ComboBox, Menu, and TreeView by managing item templates, containers, and data binding. The control can display items from any IEnumerable source and provides extensive customization through templates and styling.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/itemscontrol">ItemsControl</see>
 /// </summary>
-/// <summary>
 [ProcessNode(Name = "ItemsControl (Spectral)")]
 public partial class ItemsControlSpectralWrapper<T> : ItemsControlWrapperBase<ItemsControl, T>
 {

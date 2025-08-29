@@ -11,7 +11,6 @@ namespace VL.Avalonia.Controls;
 /// The <c>SelectingItemsControl</c> is a base class for ItemsControls that maintain a selection state. It provides the foundation for controls like ListBox, ComboBox, and TabControl by managing single or multiple item selection. The control handles selection logic, keyboard navigation, and automatically updates visual states of selected items.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/selecting-items-control">SelectingItemsControl</see>
 /// </summary>
-/// <summary>
 [ProcessNode]
 public abstract partial class SelectingItemsControlWrapperBase<TControl, TValue> : ItemsControlWrapperBase<TControl, TValue> where TControl : SelectingItemsControl, new()
 {
