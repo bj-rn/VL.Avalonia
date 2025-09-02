@@ -39,7 +39,7 @@ public class ProcessNodeHandler : IClassHandler
 
         // 3. Modifiers (ensure partial)
         var modifiers = string.Join(" ", classDecl.Modifiers
-            .Where(m => m.Text == "public" || m.Text == "internal" || m.Text == "partial"));
+            .Where(m => m.Text == "public" || m.Text == "internal" || m.Text == "partial" || m.Text == "abstract"));
         if (!modifiers.Contains("partial"))
             modifiers += " partial";
         modifiers = modifiers.Trim();
