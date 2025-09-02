@@ -13,23 +13,22 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Mathematics;
 using Point = Avalonia.Point;
+using SkiaExtensions = VL.Avalonia.Extensions.SkiaExtensions;
 
 namespace VL.Avalonia.Skia
 {
-    public class SKImageDrawOP : ICustomDrawOperation
+    public class SKPictureDrawOP : ICustomDrawOperation
     {
         public Rect Bounds { get; }
         public bool Equals(ICustomDrawOperation? other) => false;
         public bool HitTest(Point p) => false;
-
-        public SKImage? Image { get; }
+        public SKPicture? Picture { get; }
         public SizeMode Mode { get; }
         public RectangleAnchor Anchor { get; }
-
-        public SKImageDrawOP(Rect bounds, SKImage? image, SizeMode mode, RectangleAnchor anchor)
+        public SKPictureDrawOP(Rect bounds, SKPicture? picture, SizeMode mode, RectangleAnchor anchor)
         {
             Bounds = bounds;
-            Image = image;
+            Picture = picture;
             Mode = mode;
             Anchor = anchor;
         }
@@ -44,14 +43,18 @@ namespace VL.Avalonia.Skia
 
                 canvas.Save();
 
-                if (Image != null)
+                if (Picture != null)
                 {
                     var boundsRectangle = Bounds.FromRect();
-                    var imageResolution = new Vector2(Image.Width, Image.Height);
+                    var pictureResolution = new Vector2(Picture.CullRect.Width, Picture.CullRect.Height);
 
-                    AspectRatioUtils.FixAspectRatio(ref boundsRectangle, ref imageResolution, Mode, Anchor, out RectangleF bounds);
+                    AspectRatioUtils.FixAspectRatio(ref boundsRectangle, ref pictureResolution, Mode, Anchor, out RectangleF bounds);
 
-                    canvas.DrawImage(Image, bounds.ToRect().ToSKRect());
+                    // TODO: 
+                    // Less hardcore way of doing this:
+                    var matrix = SkiaExtensions.CreateMatrixFromPoints(bounds.TopLeft, bounds.TopRight, bounds.BottomRight, bounds.BottomLeft, pictureResolution.X, pictureResolution.Y);
+
+                    canvas.DrawPicture(Picture, ref matrix);
                 }
 
                 canvas.Restore();
@@ -65,15 +68,15 @@ namespace VL.Avalonia.Skia
         }
     }
 
-    public class SKImageControl : Control
+    public class SKPictureControl : Control
     {
-        public SKImage? Image { get; set; } = null;
+        public SKPicture? Picture { get; set; } = null;
         public SizeMode? Mode { get; set; } = null;
         public RectangleAnchor? Anchor { get; set; } = null;
 
         public override void Render(DrawingContext context)
         {
-            context.Custom(new SKImageDrawOP(this.Bounds, Image, Mode ?? SizeMode.AutoWidth, Anchor ?? RectangleAnchor.Center));
+            context.Custom(new SKPictureDrawOP(this.Bounds, Picture, Mode ?? SizeMode.AutoWidth, Anchor ?? RectangleAnchor.Center));
             Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
         }
     }
@@ -81,25 +84,25 @@ namespace VL.Avalonia.Skia
 
 namespace VL.Avalonia.Controls
 {
-    [ProcessNode(Name = "SKImageControl")]
-    public partial class SKImageControlWrapper : ControlWrapperBase<SKImageControl>
+    [ProcessNode(Name = "SKPictureControl")]
+    public partial class SKPictureControlWrapper : ControlWrapperBase<SKPictureControl>
     {
-        protected Optional<SKImage> _image;
+        protected Optional<SKPicture> _picture;
         [Fragment(Order = PinOrder.Main)]
-        public void SetImage(Optional<SKImage> image)
+        public void SetPicture(Optional<SKPicture> picture)
         {
-            if (_image != image)
+            if (_picture != picture)
             {
-                if (image.HasValue)
+                if (picture.HasValue)
                 {
-                    _output.Image = image.Value;
+                    _output.Picture = picture.Value;
                 }
                 else
                 {
-                    _output.Image = null;
+                    _output.Picture = null;
                 }
 
-                _image = image;
+                _picture = picture;
             }
         }
 
@@ -142,3 +145,4 @@ namespace VL.Avalonia.Controls
         }
     }
 }
+
