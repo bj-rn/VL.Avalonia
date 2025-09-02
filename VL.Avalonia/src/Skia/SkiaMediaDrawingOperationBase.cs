@@ -1,0 +1,120 @@
+﻿using Avalonia;
+using Avalonia.Media;
+using Avalonia.Platform;
+using Avalonia.Rendering.SceneGraph;
+using Avalonia.Skia;
+using SkiaSharp;
+using Stride.Core.Mathematics;
+using VL.Avalonia.Extensions;
+using VL.Lib.Mathematics;
+using Point = Avalonia.Point;
+using SkiaExtensions = VL.Avalonia.Extensions.SkiaExtensions;
+
+namespace VL.Avalonia.Skia
+{
+    public abstract class SkiaMediaDrawingOperationBase : ICustomDrawOperation
+    {
+        public Rect Bounds { get; }
+        public bool Equals(ICustomDrawOperation? other) => false;
+        public bool HitTest(Point p) => false;
+        public SizeMode Mode { get; }
+        public RectangleAnchor Anchor { get; }
+
+        public SkiaMediaDrawingOperationBase(Rect bounds, SizeMode mode, RectangleAnchor anchor)
+        {
+            Bounds = bounds;
+            Mode = mode;
+            Anchor = anchor;
+        }
+
+        public abstract void Render(ImmediateDrawingContext context);
+        public abstract void Dispose();
+    }
+
+    public class SkiaImageDrawingOperation : SkiaMediaDrawingOperationBase
+    {
+        public SKImage? Image { get; }
+
+        public SkiaImageDrawingOperation(SKImage? image, Rect bounds, SizeMode mode, RectangleAnchor anchor) : base(bounds, mode, anchor)
+        {
+            Image = image;
+        }
+
+        public override void Render(ImmediateDrawingContext context)
+        {
+            var leaseFeature = context.TryGetFeature<ISkiaSharpApiLeaseFeature>();
+            if (leaseFeature != null)
+            {
+                using var lease = leaseFeature.Lease();
+                var canvas = lease.SkCanvas;
+
+                canvas.Save();
+
+                if (Image != null)
+                {
+                    var boundsRectangle = Bounds.FromRect();
+                    var imageResolution = new Vector2(Image.Width, Image.Height);
+
+                    AspectRatioUtils.FixAspectRatio(ref boundsRectangle, ref imageResolution, Mode, Anchor, out RectangleF bounds);
+
+                    canvas.DrawImage(Image, bounds.ToRect().ToSKRect());
+                }
+
+                canvas.Restore();
+
+            }
+        }
+
+        public override void Dispose()
+        {
+            // no op;
+        }
+    }
+
+    public class SkiaPictureDrawingOperation : SkiaMediaDrawingOperationBase
+    {
+        public SKPicture? Picture { get; }
+
+        public SkiaPictureDrawingOperation(SKPicture? picture, Rect bounds, SizeMode mode, RectangleAnchor anchor) : base(bounds, mode, anchor)
+        {
+            Picture = picture;
+        }
+
+        public override void Render(ImmediateDrawingContext context)
+        {
+            var leaseFeature = context.TryGetFeature<ISkiaSharpApiLeaseFeature>();
+            if (leaseFeature != null)
+            {
+                using (var lease = leaseFeature.Lease())
+                {
+                    var canvas = lease.SkCanvas;
+
+                    canvas.Save();
+
+                    if (Picture != null)
+                    {
+                        var boundsRectangle = Bounds.FromRect();
+                        var pictureResolution = new Vector2(Picture.CullRect.Width, Picture.CullRect.Height);
+
+                        AspectRatioUtils.FixAspectRatio(ref boundsRectangle, ref pictureResolution, Mode, Anchor, out RectangleF bounds);
+
+                        // TODO: 
+                        // Less hardcore way of doing this:
+                        var matrix = SkiaExtensions.CreateMatrixFromPoints(bounds.TopLeft, bounds.TopRight, bounds.BottomRight, bounds.BottomLeft, pictureResolution.X, pictureResolution.Y);
+
+                        canvas.DrawPicture(Picture, ref matrix);
+                    }
+
+                    canvas.Restore();
+                }
+            }
+        }
+
+        public override void Dispose()
+        {
+            // no op;
+        }
+
+
+    }
+}

@@ -86,7 +86,14 @@ public static partial class MathExtensions
 
     /// <inheritdoc cref="FromRect(Rect)"/>
     public static RectangleF? FromRect(Rect? rect) =>
-    rect.HasValue ? rect.Value.FromRect() : null;
+        rect.HasValue ? rect.Value.FromRect() : null;
+
+    public static RectangleF FromRectDIP(this Rect rect, float dip = 0.01f) =>
+        new RectangleF((float)rect.X * dip, (float)rect.Y * dip, (float)rect.Width * dip, (float)rect.Height * dip);
+
+    public static RectangleF? FromRectDIP(Rect? rect, float dip = 0.01f) =>
+        rect.HasValue ? rect.Value.FromRectDIP(dip) : null;
+
 
     /// <summary>
     /// Converts RectangleF to Avalonia.Rect
