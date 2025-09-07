@@ -20,7 +20,7 @@ namespace VL.Avalonia.Custom.Controls.Value
         protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvColorBinding;
         public ColorSliderWrapper()
         {
-            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorPreviewer.HsvColorProperty, (x) => x, (x) => x);
+            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorSlider.HsvColorProperty, (x) => x, (x) => x);
         }
 
         /// <param name="hsvColorChannel">
@@ -34,12 +34,12 @@ namespace VL.Avalonia.Custom.Controls.Value
         /// Defines the <see cref="ColorComponent"/> property.
         /// </summary>
         [ImplementProperty("ColorSlider.ColorComponentProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<ColorComponent> _colorComponent;
+        protected Optional<object> _colorComponent;
 
         /// <param name="colorModel">
         /// Defines the <see cref="ColorModel"/> property.
         /// </param>
         [ImplementProperty("ColorSlider.ColorModelProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<ColorModel> _colorModel;
+        protected Optional<object> _colorModel;
     }
 }
