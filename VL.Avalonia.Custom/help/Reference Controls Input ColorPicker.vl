@@ -291,7 +291,7 @@
             <Pin Id="CvqvmkviYfDOtP2kMJPZez" Name="Is Visible" Kind="InputPin" IsHidden="true" />
             <Pin Id="PYvx4j9LHvqPI3gV18bNDj" Name="Effect" Kind="InputPin" IsHidden="true" />
             <Pin Id="DNHbOcdrLuBN4ItXzOXNXW" Name="Focusable" Kind="InputPin" IsHidden="true" />
-            <Pin Id="EFBTfRTC6heL1tr0VAcMFu" Name="Color Channel" Kind="InputPin" />
+            <Pin Id="REAllyL0yQNLWVHTWTOHlT" Name="Hsv Color Channel" Kind="InputPin" />
             <Pin Id="ULuWCFP1YXpO6yTp8S6Piy" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="UazjXtOO4V7MjNqcifnmGo" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="SQpVNklg2P6Qal5W9v6GcT" Name="Z Index" Kind="InputPin" IsHidden="true" />
@@ -345,6 +345,20 @@
             <Pin Id="O2QJHL0PI73PLZ6CBPtHZ2" Name="Author" Kind="InputPin" IsHidden="true" />
           </Node>
           <Pad Id="UervF62moUfNaWARDZdosM" Comment="" Bounds="462,200,190,132" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="303,150,53,19" Id="OBvyQe3ifNIOfTvBvLReuk">
+            <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Reactive" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="Channel" />
+            </p:NodeReference>
+            <Pin Id="PJAbf3ARzjuOhIIxOdYYeW" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="J13g39RVtlSMAKlfxEWCFD" Name="Initial Value" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ek6nIjI0oPNO3DxFoI2mrG" Name="Value" Kind="InputPin" />
+            <Pin Id="Tb6EL2JEILOLEaJF1Eseu3" Name="Output" Kind="OutputPin" />
+            <Pin Id="L4RyjkAHIEsL7LoMYGZTj2" Name="Value" Kind="OutputPin" />
+            <Pin Id="BhEfg8tcqsBLSERzLVI28a" Name="Author" Kind="InputPin" IsHidden="true" />
+          </Node>
+          <Pad Id="LryGD04kMrOPAc4pHRD32T" Comment="" Bounds="454,400,416,129" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -374,9 +388,10 @@
         <Link Id="DnYLUZIWQHrO9GmM9X92DJ" Ids="NL91nE6Kt3rN8ekh2r5mPo,EF1ESaUxvOpL8OpZXqih09" />
         <Link Id="VRnsbiJ4qVyLXkHsDEVuW5" Ids="NDp9g6vBPH2QS5Ws4BG5q6,LufrZg4y4HFOhvEygvA8Dc" />
         <Link Id="Cg597viwYMCLAtCxVC7H87" Ids="AM5AMIlhY8QNRqWIrSKMO6,FGPEiQ6tEGHMhWYjEw3z3O" />
-        <Link Id="AjXiawCY2zwOB3uKtHMMcN" Ids="GVFdkGYhDxgNytjJHvRX0g,EFBTfRTC6heL1tr0VAcMFu" />
         <Link Id="LYckeFOTZXxLCiz94m18EE" Ids="GVFdkGYhDxgNytjJHvRX0g,UervF62moUfNaWARDZdosM" />
         <Link Id="O85ZaEK0Q37LunGBCzXFbc" Ids="Bz5YGvI9hKkMBAbWvNOqAh,RDrZLkE8qSfQYXiSpsaYGR" />
+        <Link Id="Fe9VnQZnHnkLLlXpM8xfot" Ids="Tb6EL2JEILOLEaJF1Eseu3,REAllyL0yQNLWVHTWTOHlT" />
+        <Link Id="SKYEtEC1xeHQPxkxzlvrd4" Ids="Tb6EL2JEILOLEaJF1Eseu3,LryGD04kMrOPAc4pHRD32T" />
       </Patch>
     </Node>
   </Patch>

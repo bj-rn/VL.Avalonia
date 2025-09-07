@@ -17,18 +17,30 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorSpectrum")]
     public partial class ColorSpectrumWrapper : ControlWrapperBase<ColorSpectrum>
     {
-        protected ChannelTwoWayBinding<Color, Color> _valueBinding;
+        protected ChannelTwoWayBinding<Color, Color> _colorBinding;
+        protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvColorBinding;
+
         public ColorSpectrumWrapper()
         {
-            _valueBinding = new ChannelTwoWayBinding<Color, Color>(_output, ColorSpectrum.ColorProperty, (x) => x, (x) => x);
+            _colorBinding = new ChannelTwoWayBinding<Color, Color>(_output, ColorSpectrum.ColorProperty, (x) => x, (x) => x);
+            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorSpectrum.HsvColorProperty, (x) => x, (x) => x);
         }
+
 
         /// <param name="colorChannel">
         /// Gets or sets the current value
         /// </param>
-        [Fragment(Order = 0 /*PinOrder.Main*/)]
+        [Fragment(Order = PinOrder.Main)]
         public void SetValueChannel(IChannel<Color> colorChannel) =>
-            _valueBinding.SetChannel(colorChannel);
+            _colorBinding.SetChannel(colorChannel);
+
+
+        /// <param name="hsvColorChannel">
+        /// Gets or sets the current value
+        /// </param>
+        [Fragment(Order = PinOrder.Main)]
+        public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
+            _hsvColorBinding.SetChannel(hsvColorChannel);
 
 
         /// <summary>
