@@ -17,51 +17,35 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorSpectrum")]
     public partial class ColorSpectrumWrapper : ControlWrapperBase<ColorSpectrum>
     {
-        protected ChannelTwoWayBinding<Color, Color> _colorBinding;
-        protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvColorBinding;
+        protected ChannelTwoWayBinding<Color> _colorBinding;
+        protected ChannelTwoWayBinding<HsvColor> _hsvColorBinding;
 
         public ColorSpectrumWrapper()
         {
-            _colorBinding = new ChannelTwoWayBinding<Color, Color>(_output, ColorSpectrum.ColorProperty, (x) => x, (x) => x);
-            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorSpectrum.HsvColorProperty, (x) => x, (x) => x);
-            //_output.Shape = ColorSpectrumShape.Ring;
+            _colorBinding = new ChannelTwoWayBinding<Color>(_output, ColorSpectrum.ColorProperty);
+            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorSpectrum.HsvColorProperty);
         }
 
 
         /// <param name="colorChannel">
-        /// Gets or sets the current value
+        /// Gets or sets the colorChannel
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetValueChannel(IChannel<Color> colorChannel) =>
+        public void SetColorChannel(IChannel<Color>? colorChannel) =>
             _colorBinding.SetChannel(colorChannel);
 
-
         /// <param name="hsvColorChannel">
-        /// Gets or sets the current value
+        /// Gets or sets the hsvColorChannel
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
+        public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
 
-
-        /// <summary>
+        /// <param name="shape">
         /// Defines the <see cref="Shape"/> property.
-        /// </summary>
+        /// </param>
         [ImplementProperty("ColorSpectrum.ShapeProperty", PinVisibility = Model.PinVisibility.Visible)]
         protected Optional<ColorSpectrumShape> _shape;
-
-
-        /// <summary>
-        /// Defines the <see cref="Components"/> property.
-        /// </summary>
-        [ImplementProperty("ColorSpectrum.ComponentsProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<object> _components;
-
-        /// <summary>
-        /// Defines the <see cref="ColorSpectrumShape"/> property.
-        /// </summary>
-        [ImplementProperty("ColorSpectrum.ColorSpectrumShapeProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<object> _colorSpectrumShape;
     }
 }

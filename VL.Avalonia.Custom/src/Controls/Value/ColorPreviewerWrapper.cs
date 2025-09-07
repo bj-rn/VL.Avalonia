@@ -25,7 +25,7 @@ namespace VL.Avalonia.Custom.Controls.Value
         /// Gets or sets the current value
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
+        public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvBinding.SetChannel(hsvColorChannel);
     }
 }

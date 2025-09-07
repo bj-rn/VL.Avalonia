@@ -15,17 +15,17 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorView")]
     public partial class ColorViewWrapper<T> : ControlWrapperBase<T> where T : ColorView, new()
     {
-        protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvBinding;
+        protected ChannelTwoWayBinding<HsvColor> _hsvBinding;
         public ColorViewWrapper()
         {
-            _hsvBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorPreviewer.HsvColorProperty, (x) => x, (x) => x);
+            _hsvBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorPreviewer.HsvColorProperty);
         }
 
         /// <param name="hsvColorChannel">
         /// Gets or sets the current value
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
+        public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvBinding.SetChannel(hsvColorChannel);
     }
 }

@@ -17,17 +17,17 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorSlider")]
     public partial class ColorSliderWrapper : RangeBaseWrapper<ColorSlider>
     {
-        protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvColorBinding;
+        protected ChannelTwoWayBinding<HsvColor> _hsvColorBinding;
         public ColorSliderWrapper()
         {
-            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorSlider.HsvColorProperty, (x) => x, (x) => x);
+            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorSlider.HsvColorProperty);
         }
 
         /// <param name="hsvColorChannel">
         /// Gets or sets the current value
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
+        public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
         /// <summary>
