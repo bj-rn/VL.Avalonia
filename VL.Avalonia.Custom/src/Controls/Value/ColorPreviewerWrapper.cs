@@ -15,18 +15,17 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorPreviewer")]
     public partial class ColorPreviewerWrapper : ControlWrapperBase<ColorPreviewer>
     {
-        protected ChannelTwoWayBinding<HsvColor, HsvColor> _valueBinding;
+        protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvBinding;
         public ColorPreviewerWrapper()
         {
-            _valueBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorPreviewer.HsvColorProperty, (x) => x, (x) => x);
+            _hsvBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorPreviewer.HsvColorProperty, (x) => x, (x) => x);
         }
 
         /// <param name="hsvColorChannel">
         /// Gets or sets the current value
         /// </param>
-        [Fragment(Order = 0 /*PinOrder.Main*/)]
+        [Fragment(Order = PinOrder.Main)]
         public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
-            _valueBinding.SetChannel(hsvColorChannel);
-
+            _hsvBinding.SetChannel(hsvColorChannel);
     }
 }

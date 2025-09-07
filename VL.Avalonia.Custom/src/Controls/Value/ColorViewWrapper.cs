@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using VL.Avalonia.Controls;
 using VL.Avalonia.Helpers;
@@ -14,17 +15,17 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorView")]
     public partial class ColorViewWrapper<T> : ControlWrapperBase<T> where T : ColorView, new()
     {
-        protected ChannelTwoWayBinding<Color, Color> _valueBinding;
+        protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvBinding;
         public ColorViewWrapper()
         {
-            _valueBinding = new ChannelTwoWayBinding<Color, Color>(_output, ColorView.ColorProperty, (x) => x, (x) => x);
+            _hsvBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorPreviewer.HsvColorProperty, (x) => x, (x) => x);
         }
 
-        /// <param name="colorChannel">
+        /// <param name="hsvColorChannel">
         /// Gets or sets the current value
         /// </param>
-        [Fragment(Order = 0 /*PinOrder.Main*/)]
-        public void SetValueChannel(IChannel<Color> colorChannel) =>
-            _valueBinding.SetChannel(colorChannel);
+        [Fragment(Order = PinOrder.Main)]
+        public void SetValueChannel(IChannel<HsvColor> hsvColorChannel) =>
+            _hsvBinding.SetChannel(hsvColorChannel);
     }
 }
