@@ -1,10 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RspY4BQohlsMfVBdmZlhW7" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
-  <NugetDependency Id="EFgtvrZpl34PhwPz0AhuQN" Location="VL.CoreLib" Version="2025.7.0-0517-ge070c1d18e" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="RspY4BQohlsMfVBdmZlhW7" LanguageVersion="2025.7.1-0010-g7bfcbe76db" Version="0.128">
+  <NugetDependency Id="EFgtvrZpl34PhwPz0AhuQN" Location="VL.CoreLib" Version="2025.7.1-0010-g7bfcbe76db" />
   <Patch Id="PlBSwLKdyuJLM7DrGG5KyO">
     <Canvas Id="RDz03YtXwLBMPIL5H6Pnu0" DefaultCategory="Avalonia" CanvasType="FullCategory">
       <Canvas Id="U0RxkNoUSynLwjHEvvnnFc" Name="Controls" Position="267,350">
-        <Canvas Id="IPuHbNc3p51N8zUItSXvTS" Name="Value" Position="342,240" />
+        <Canvas Id="IPuHbNc3p51N8zUItSXvTS" Name="Value" Position="326,290" />
+        <!--
+
+    ************************ ColorSpectrumShape ************************
+
+-->
+        <Node Name="ColorSpectrumShape" Bounds="335,403" Id="RU6GUuG81DALouQnELY6I7">
+          <p:NodeReference>
+            <Choice Kind="ForwardRecordDefinition" Name="Immutable Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="ColorSpectrumShape" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="U63MfaE16NcLDAYmoIr2Sh">
+            <Canvas Id="UfwYjdxExexNFkC4QWB2GP" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="NkR6drUXdm3LqyE9XnUjaF" IsHidden="true" />
+          </Patch>
+        </Node>
       </Canvas>
       <!--
 
@@ -2992,4 +3012,5 @@
   </Patch>
   <PlatformDependency Id="CGs06kJM5yQPN0UDUYO2t5" Location="./lib/Debug/net8.0/VL.Avalonia.Custom.dll" IsForward="true" />
   <NugetDependency Id="M7R698eld7QQVv7lIuESrI" Location="VL.Avalonia" Version="0.0.0" />
+  <NugetDependency Id="OU9KwlVAPJtMTHF8M72FDO" Location="Avalonia.Controls.ColorPicker" Version="11.2.1" />
 </Document>
