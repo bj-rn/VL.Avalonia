@@ -30,16 +30,44 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
-        /// <summary>
-        /// Defines the <see cref="ColorComponent"/> property.
-        /// </summary>
-        [ImplementProperty("ColorSlider.ColorComponentProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<object> _colorComponent;
 
-        /// <param name="colorModel">
-        /// Defines the <see cref="ColorModel"/> property.
-        /// </param>
-        [ImplementProperty("ColorSlider.ColorModelProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<object> _colorModel;
+
+        protected Optional<ColorComponent> _colorComponent;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetColorComponent([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorComponent> colorComponent)
+        {
+            if (_colorComponent != colorComponent)
+            {
+                if (colorComponent.HasValue)
+                {
+                    _output.SetValue(ColorSlider.ColorComponentProperty, colorComponent.Value);
+                }
+                else
+                {
+                    _output.ClearValue(ColorSlider.ColorComponentProperty);
+                }
+
+                _colorComponent = colorComponent;
+            }
+        }
+
+        protected Optional<ColorModel> _colorModel;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetColorModel([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel)
+        {
+            if (_colorModel != colorModel)
+            {
+                if (colorModel.HasValue)
+                {
+                    _output.SetValue(ColorSlider.ColorModelProperty, colorModel.Value);
+                }
+                else
+                {
+                    _output.ClearValue(ColorSlider.ColorModelProperty);
+                }
+
+                _colorModel = colorModel;
+            }
+        }
     }
 }

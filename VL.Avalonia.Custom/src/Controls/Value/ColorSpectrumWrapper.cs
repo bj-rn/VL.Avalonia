@@ -40,7 +40,6 @@ namespace VL.Avalonia.Custom.Controls.Value
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
 
-
         protected Optional<ColorSpectrumShape> _shape;
         [Fragment(Order = PinOrder.Main)]
         public void SetInterval([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> shape)
