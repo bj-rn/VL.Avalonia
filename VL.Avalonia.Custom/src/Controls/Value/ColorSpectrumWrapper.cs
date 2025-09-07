@@ -24,6 +24,7 @@ namespace VL.Avalonia.Custom.Controls.Value
         {
             _colorBinding = new ChannelTwoWayBinding<Color, Color>(_output, ColorSpectrum.ColorProperty, (x) => x, (x) => x);
             _hsvColorBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorSpectrum.HsvColorProperty, (x) => x, (x) => x);
+            //_output.Shape = ColorSpectrumShape.Ring;
         }
 
 
@@ -43,10 +44,24 @@ namespace VL.Avalonia.Custom.Controls.Value
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
 
+
+        /// <summary>
+        /// Defines the <see cref="Shape"/> property.
+        /// </summary>
+        [ImplementProperty("ColorSpectrum.ShapeProperty", PinVisibility = Model.PinVisibility.Visible)]
+        protected Optional<ColorSpectrumShape> _shape;
+
+
         /// <summary>
         /// Defines the <see cref="Components"/> property.
         /// </summary>
         [ImplementProperty("ColorSpectrum.ComponentsProperty", PinVisibility = Model.PinVisibility.Visible)]
-        protected Optional<ColorSpectrumComponents> _components;
+        protected Optional<object> _components;
+
+        /// <summary>
+        /// Defines the <see cref="ColorSpectrumShape"/> property.
+        /// </summary>
+        [ImplementProperty("ColorSpectrum.ColorSpectrumShapeProperty", PinVisibility = Model.PinVisibility.Visible)]
+        protected Optional<object> _colorSpectrumShape;
     }
 }
