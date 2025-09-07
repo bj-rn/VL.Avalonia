@@ -1,8 +1,7 @@
 ﻿using VL.Avalonia.Attributes;
-using VL.Avalonia.Custom.Controls;
+using VL.Avalonia.Custom.Controls.Value;
 using VL.Core;
 using VL.Core.Import;
-using VL.Avalonia.Custom.Controls.Value;
 
 namespace VL.Avalonia.Controls.Value
 {

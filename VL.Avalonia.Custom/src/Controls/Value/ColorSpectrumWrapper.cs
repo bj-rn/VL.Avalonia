@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
-using VL.Avalonia.Attributes;
 using VL.Avalonia.Controls;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -26,7 +25,6 @@ namespace VL.Avalonia.Custom.Controls.Value
             _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorSpectrum.HsvColorProperty);
         }
 
-
         /// <param name="colorChannel">
         /// Gets or sets the colorChannel
         /// </param>
@@ -42,10 +40,24 @@ namespace VL.Avalonia.Custom.Controls.Value
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
 
-        /// <param name="shape">
-        /// Defines the <see cref="Shape"/> property.
-        /// </param>
-        [ImplementProperty("ColorSpectrum.ShapeProperty", PinVisibility = Model.PinVisibility.Visible)]
+
         protected Optional<ColorSpectrumShape> _shape;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetInterval([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> shape)
+        {
+            if (_shape != shape)
+            {
+                if (shape.HasValue)
+                {
+                    _output.SetValue(ColorSpectrum.ShapeProperty, shape.Value);
+                }
+                else
+                {
+                    _output.ClearValue(ColorSpectrum.ShapeProperty);
+                }
+
+                _shape = shape;
+            }
+        }
     }
 }
