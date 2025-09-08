@@ -32,6 +32,7 @@ namespace VL.Avalonia.Custom.Controls.Value
 
 
 
+
         protected Optional<ColorComponent> _colorComponent;
         [Fragment(Order = PinOrder.Main)]
         public void SetColorComponent([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorComponent> colorComponent)

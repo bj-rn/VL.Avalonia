@@ -42,7 +42,7 @@ namespace VL.Avalonia.Custom.Controls.Value
 
         protected Optional<ColorSpectrumShape> _shape;
         [Fragment(Order = PinOrder.Main)]
-        public void SetInterval([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> shape)
+        public void SetColorSpectrumShape([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> shape)
         {
             if (_shape != shape)
             {
