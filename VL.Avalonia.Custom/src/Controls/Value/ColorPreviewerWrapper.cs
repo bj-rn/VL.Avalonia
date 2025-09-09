@@ -2,6 +2,7 @@
 using Avalonia.Media;
 using VL.Avalonia.Controls;
 using VL.Avalonia.Helpers;
+using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
@@ -27,5 +28,21 @@ namespace VL.Avalonia.Custom.Controls.Value
         [Fragment(Order = PinOrder.Main)]
         public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvBinding.SetChannel(hsvColorChannel);
+
+
+        protected Optional<bool> _isAccentColorsVisible;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetIsComponentSliderVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAccentColorsVisible)
+        {
+            if (_isAccentColorsVisible != isAccentColorsVisible)
+            {
+                if (isAccentColorsVisible.HasValue)
+                    _output.SetValue(ColorPreviewer.IsAccentColorsVisibleProperty, isAccentColorsVisible.Value);
+                else
+                    _output.ClearValue(ColorPreviewer.IsAccentColorsVisibleProperty);
+
+                _isAccentColorsVisible = isAccentColorsVisible;
+            }
+        }
     }
 }

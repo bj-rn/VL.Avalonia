@@ -17,12 +17,14 @@ namespace VL.Avalonia.Custom.Controls.Value
     [ProcessNode(Name = "ColorSlider")]
     public partial class ColorSliderWrapper : RangeBaseWrapper<ColorSlider>
     {
-        protected ChannelTwoWayBinding<HsvColor> _hsvColorBinding;
         public ColorSliderWrapper()
         {
             _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorSlider.HsvColorProperty);
+            _colorChannel = new ChannelTwoWayBinding<Color>(_output, ColorSlider.ColorProperty);
         }
 
+
+        protected ChannelTwoWayBinding<HsvColor> _hsvColorBinding;
         /// <param name="hsvColorChannel">
         /// Gets or sets the current value
         /// </param>
@@ -31,6 +33,13 @@ namespace VL.Avalonia.Custom.Controls.Value
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
 
+        protected ChannelTwoWayBinding<Color> _colorChannel;
+        /// <param name="colorChannel">
+        /// Gets or sets the current value
+        /// </param>
+        [Fragment(Order = PinOrder.Main)]
+        public void SetColorChannel(IChannel<Color> colorChannel) =>
+            _colorChannel.SetChannel(colorChannel);
 
 
         protected Optional<ColorComponent> _colorComponent;
@@ -52,6 +61,8 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
+
+
         protected Optional<ColorModel> _colorModel;
         [Fragment(Order = PinOrder.Main)]
         public void SetColorModel([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel)
@@ -68,6 +79,66 @@ namespace VL.Avalonia.Custom.Controls.Value
                 }
 
                 _colorModel = colorModel;
+            }
+        }
+
+
+        protected Optional<bool> _isAlphaVisible;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetIsAlphaVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAlphaVisible)
+        {
+            if (_isAlphaVisible != isAlphaVisible)
+            {
+                if (isAlphaVisible.HasValue)
+                {
+                    _output.SetValue(ColorSlider.IsAlphaVisibleProperty, isAlphaVisible.Value);
+                }
+                else
+                {
+                    _output.ClearValue(ColorSlider.IsAlphaVisibleProperty);
+                }
+
+                _isAlphaVisible = isAlphaVisible;
+            }
+        }
+
+
+        protected Optional<bool> _isPerspective;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetIsPerspective([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isPerspective)
+        {
+            if (_isPerspective != isPerspective)
+            {
+                if (isPerspective.HasValue)
+                {
+                    _output.SetValue(ColorSlider.IsPerceptiveProperty, isPerspective.Value);
+                }
+                else
+                {
+                    _output.ClearValue(ColorSlider.IsPerceptiveProperty);
+                }
+
+                _isPerspective = isPerspective;
+            }
+        }
+
+
+        protected Optional<bool> _isRoundingEnable;
+        [Fragment(Order = PinOrder.Main)]
+        public void SetIsRoundingEnable([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isRoundingEnable)
+        {
+            if (_isRoundingEnable != isRoundingEnable)
+            {
+                if (isRoundingEnable.HasValue)
+                {
+                    _output.SetValue(ColorSlider.IsRoundingEnabledProperty, isRoundingEnable.Value);
+                }
+                else
+                {
+                    _output.ClearValue(ColorSlider.IsRoundingEnabledProperty);
+                }
+
+                _isRoundingEnable = isRoundingEnable;
             }
         }
     }
