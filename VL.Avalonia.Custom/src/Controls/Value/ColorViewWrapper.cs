@@ -60,24 +60,6 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetColorModel(IChannel<ColorModel> colorModel) =>
             _colorModel.SetChannel(colorModel);
 
-        //protected Optional<ColorModel> _colorModel;
-        //[Fragment(Order = PinOrder.Main)]
-        //public void SetColorModel([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel)
-        //{
-        //    if (_colorModel != colorModel)
-        //    {
-        //        if (colorModel.HasValue)
-        //        {
-        //            _output.SetValue(ColorView.ColorModelProperty, colorModel.Value);
-        //        }
-        //        else
-        //        {
-        //            _output.ClearValue(ColorView.ColorModelProperty);
-        //        }
-
-        //        _colorModel = colorModel;
-        //    }
-        //}
 
 
         protected Optional<ColorSpectrumComponents> _colorSpectrumComponents;
