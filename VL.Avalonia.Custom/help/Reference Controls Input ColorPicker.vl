@@ -981,7 +981,7 @@
             <Pin Id="QkrvKQtJuQsN1mNNyyqDSp" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="HwzOdIyKaX9Lj3nkcPDUFG" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="803,660,64,26" Id="GfyqEOmKPwhMnUTJXKGjEf">
+          <Node Bounds="698,330,64,26" Id="GfyqEOmKPwhMnUTJXKGjEf">
             <p:NodeReference LastCategoryFullName="Avalonia.Media.Color" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Avalonia" />
@@ -990,8 +990,7 @@
             <Pin Id="QKUtUKw121DPh3HAOgHYHz" Name="Input" Kind="StateInputPin" />
             <Pin Id="Np72M8PYDnSPHNq5PBMOwE" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="OsvPH7DiOlbM8wgqLbv8R7" Comment="" Bounds="805,710,136,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="505,350,53,19" Id="Cujlh2DjByQO1kLF2OGvv8">
+          <Node Bounds="449,340,53,19" Id="Cujlh2DjByQO1kLF2OGvv8">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Reactive" NeedsToBeDirectParent="true" />
@@ -1023,6 +1022,24 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="698,250,69,26" Id="TM2xGSztm6dNdrQNf2loEL">
+            <p:NodeReference LastCategoryFullName="Avalonia.Media.Color" LastDependency="VL.Avalonia.Custom.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="ToHsvColor" />
+            </p:NodeReference>
+            <Pin Id="A1DFKcE1tawOqVXY7aL6mj" Name="Input" Kind="StateInputPin" />
+            <Pin Id="CWx1Xl6w04sMW3LgAvavNW" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="698,290,81,26" Id="JNBZy05B8iPN9mp2pEOGE4">
+            <p:NodeReference LastCategoryFullName="Avalonia.Media.HsvColor" LastDependency="VL.Avalonia.Custom.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="FromHsvColor" />
+            </p:NodeReference>
+            <Pin Id="SRtnNK3t0MKPGfMiJZ8114" Name="Input" Kind="StateInputPin" />
+            <Pin Id="O3B4iSBUfdQNVrFWyhAJFB" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="CyZm77zTdcTMfsSbYpz7Fc" Comment="" Bounds="794,460,190,132" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="IkiS0HU7QOfNneTu9vY9Bq" Comment="" Bounds="720,600,130,75" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -1101,13 +1118,17 @@
         <Link Id="BK7f6OoiLanLFNoEzjcot4" Ids="Vxasxm1gP2vNTOHt74wulQ,ABQ6tQ1Y1flPvmaIXgaO6g" />
         <Link Id="NtflV8U0TyFPABChZe3q3x" Ids="UAMeO8WxD3MLDfBM96Dqmx,VXHeXXMxcTnMDIhqkv0RXD" />
         <Link Id="Pw4XZNKmv91LCSwfWBtTBf" Ids="Ophgc2KRmmmOceOTHJqwWx,HAT5ey8ZqxELtyFAClLjlf" />
-        <Link Id="ME1mcltyInUL7pxq6cZLje" Ids="Np72M8PYDnSPHNq5PBMOwE,OsvPH7DiOlbM8wgqLbv8R7" />
         <Link Id="LSL7qrigcU8L5pEe9dzTdA" Ids="RFzCczVU4t2QCGCfht1H6i,OagrVww557lPRAoPaPi11v" />
         <Link Id="FzPlZFRf6VYMei9B8thDql" Ids="Hp8vPksSFJdP4Uj1sQZFD0,U1D9FuxYA1lMC5PDAz4RZ8" />
         <Link Id="FY3Z6fF7ideL32UBdxnyRs" Ids="R3CuxnhNNpaPggGMpPXuC6,LlpQuL1lnaXNh7dB9zsyhE" />
         <Link Id="LE255lXExdRLHIGiuV0Zty" Ids="RzqvhsTNGAkQPGefugtwuY,NwZ9oqzHBc9OvLOvthbmyT" />
         <Link Id="CgNQZaD7V8ONBDDOdJUo3O" Ids="GVFdkGYhDxgNytjJHvRX0g,RYfnOk3hK2fQXvBHoetfNJ" />
         <Link Id="Bf0FlV0qKZHLJ8EaNAfogc" Ids="Ophgc2KRmmmOceOTHJqwWx,LfO07u8yTYAMjHvcNw6omT" />
+        <Link Id="LXXyAfdmUA1MRYjZGGlHM0" Ids="CWx1Xl6w04sMW3LgAvavNW,SRtnNK3t0MKPGfMiJZ8114" />
+        <Link Id="UzTn7oEjavVNxteYHYFpeN" Ids="RFzCczVU4t2QCGCfht1H6i,A1DFKcE1tawOqVXY7aL6mj" />
+        <Link Id="QW07HcgjtMJPgBYmQ33yF5" Ids="O3B4iSBUfdQNVrFWyhAJFB,CyZm77zTdcTMfsSbYpz7Fc" />
+        <Link Id="UcT4qQFmt1gNi5GZkFm1e2" Ids="O3B4iSBUfdQNVrFWyhAJFB,QKUtUKw121DPh3HAOgHYHz" />
+        <Link Id="GyhK1U3Pt1CL55tBPk9rri" Ids="Np72M8PYDnSPHNq5PBMOwE,IkiS0HU7QOfNneTu9vY9Bq" />
       </Patch>
     </Node>
   </Patch>
