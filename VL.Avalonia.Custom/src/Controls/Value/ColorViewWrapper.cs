@@ -20,11 +20,13 @@ namespace VL.Avalonia.Custom.Controls.Value
         protected ChannelTwoWayBinding<HsvColor> _hsvBinding;
         protected ChannelTwoWayBinding<Color> _color;
         protected ChannelTwoWayBinding<int> _selectedIndex;
+        protected ChannelTwoWayBinding<ColorModel> _colorModel;
         public ColorViewWrapper()
         {
             _hsvBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorView.HsvColorProperty);
             _selectedIndex = new ChannelTwoWayBinding<int>(_output, ColorView.SelectedIndexProperty);
             _color = new ChannelTwoWayBinding<Color>(_output, ColorView.ColorProperty);
+            _colorModel = new ChannelTwoWayBinding<ColorModel>(_output, ColorView.ColorModelProperty);
         }
 
         /// <param name="hsvColorChannel">
@@ -51,25 +53,31 @@ namespace VL.Avalonia.Custom.Controls.Value
             _color.SetChannel(color);
 
 
-
-        protected Optional<ColorModel> _colorModel;
+        /// <param name="colorModel">
+        /// Gets or sets the current value
+        /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetColorModel([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel)
-        {
-            if (_colorModel != colorModel)
-            {
-                if (colorModel.HasValue)
-                {
-                    _output.SetValue(ColorView.ColorModelProperty, colorModel.Value);
-                }
-                else
-                {
-                    _output.ClearValue(ColorView.ColorModelProperty);
-                }
+        public void SetColorModel(IChannel<ColorModel> colorModel) =>
+            _colorModel.SetChannel(colorModel);
 
-                _colorModel = colorModel;
-            }
-        }
+        //protected Optional<ColorModel> _colorModel;
+        //[Fragment(Order = PinOrder.Main)]
+        //public void SetColorModel([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel)
+        //{
+        //    if (_colorModel != colorModel)
+        //    {
+        //        if (colorModel.HasValue)
+        //        {
+        //            _output.SetValue(ColorView.ColorModelProperty, colorModel.Value);
+        //        }
+        //        else
+        //        {
+        //            _output.ClearValue(ColorView.ColorModelProperty);
+        //        }
+
+        //        _colorModel = colorModel;
+        //    }
+        //}
 
 
         protected Optional<ColorSpectrumComponents> _colorSpectrumComponents;
