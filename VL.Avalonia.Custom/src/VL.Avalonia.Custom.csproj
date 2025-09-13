@@ -13,6 +13,7 @@
     <AvaloniaXaml Remove="Resources\NumberFieldResources.axaml" />
     <AvaloniaXaml Remove="Resources\Resources.axaml" />
     <AvaloniaXaml Remove="Resources\TemplatedSliderResources.axaml" />
+    <AvaloniaXaml Remove="Styles\Styles.axaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +21,12 @@
     <AvaloniaResource Include="Resources\NumberFieldResources.axaml" />
     <AvaloniaResource Include="Resources\Resources.axaml" />
     <AvaloniaResource Include="Resources\TemplatedSliderResources.axaml" />
+    <AvaloniaResource Include="Styles\Styles.axaml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.1" />
+    <PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.2.1" />
     <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.1" />
   </ItemGroup>
 

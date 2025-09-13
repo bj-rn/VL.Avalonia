@@ -3,7 +3,7 @@
 /// <summary>
 /// Internal constant to control order of pins
 /// </summary>
-internal struct PinOrder
+public struct PinOrder
 {
     public const int None = 0;
 

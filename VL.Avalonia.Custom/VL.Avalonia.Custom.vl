@@ -1,10 +1,150 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RspY4BQohlsMfVBdmZlhW7" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
-  <NugetDependency Id="EFgtvrZpl34PhwPz0AhuQN" Location="VL.CoreLib" Version="2025.7.0-0517-ge070c1d18e" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="RspY4BQohlsMfVBdmZlhW7" LanguageVersion="2025.7.1-0010-g7bfcbe76db" Version="0.128">
+  <NugetDependency Id="EFgtvrZpl34PhwPz0AhuQN" Location="VL.CoreLib" Version="2025.7.1-0010-g7bfcbe76db" />
   <Patch Id="PlBSwLKdyuJLM7DrGG5KyO">
     <Canvas Id="RDz03YtXwLBMPIL5H6Pnu0" DefaultCategory="Avalonia" CanvasType="FullCategory">
       <Canvas Id="U0RxkNoUSynLwjHEvvnnFc" Name="Controls" Position="267,350">
-        <Canvas Id="IPuHbNc3p51N8zUItSXvTS" Name="Value" Position="342,240" />
+        <Canvas Id="IPuHbNc3p51N8zUItSXvTS" Name="Value" Position="299,290" />
+        <!--
+
+    ************************ ColorSpectrumShape ************************
+
+-->
+        <Node Name="ColorSpectrumShape" Bounds="349,340" Id="RU6GUuG81DALouQnELY6I7">
+          <p:NodeReference>
+            <Choice Kind="ForwardRecordDefinition" Name="Immutable Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="ColorSpectrumShape" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="U63MfaE16NcLDAYmoIr2Sh">
+            <Canvas Id="UfwYjdxExexNFkC4QWB2GP" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="NkR6drUXdm3LqyE9XnUjaF" IsHidden="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ FlatColorPalette ************************
+
+-->
+        <Node Name="FlatColorPalette" Bounds="351,380" Id="KKhuWwdI5eUPbpShIcapRJ">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="FlatColorPalette" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="FQ3oFTxI9nvOmObtFrCZ8R">
+            <Canvas Id="RSry1Y6FdEgLsPcCepkNEY" CanvasType="Group" />
+            <ProcessDefinition Id="DPAAuvYJWdTNnynyHPOe9j" HasStateOut="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ FlatHalfColorPalette ************************
+
+-->
+        <Node Name="FlatHalfColorPalette" Bounds="351,420" Id="Iw8CqUcTdjtN02abgToneb">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="FlatHalfColorPalette" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="H7oXy8JKZZYN80PXcM7uhi">
+            <Canvas Id="N9lWf7LgrvjOGj6jY2pe92" CanvasType="Group" />
+            <ProcessDefinition Id="NQOUdh9016VNvAsh3wGMYg" HasStateOut="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ FluentColorPalette ************************
+
+-->
+        <Node Name="FluentColorPalette" Bounds="351,462" Id="JAswhCsH1IAOWWHBk0CxHK">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="FluentColorPalette" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="FF8vPyq1OhdOvVhMADLkvC">
+            <Canvas Id="Sa3byZ7UUtcNObQ9212vqQ" CanvasType="Group" />
+            <ProcessDefinition Id="RJ2TNSADxIrLk5rX0Edx2a" HasStateOut="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ MaterialColorPalette ************************
+
+-->
+        <Node Name="MaterialColorPalette" Bounds="351,500" Id="IfCpPwWUIM9N9kXzuociGS">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="MaterialColorPalette" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="NjKavvfjSNdMjZm6MfELrs">
+            <Canvas Id="EpR6MzujoRjNBdxRgeSZS3" CanvasType="Group" />
+            <ProcessDefinition Id="VLkhOBE0lVhLuy19pPwm25" HasStateOut="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ MaterialHalfColorPalette ************************
+
+-->
+        <Node Name="MaterialHalfColorPalette" Bounds="351,540" Id="ME75oYdDbjrO3UDuwF0MND">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="MaterialHalfColorPalette" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="JnN4pxXFr2mOafL8XWIaJn">
+            <Canvas Id="BKa5LrvoMSrNdYgyeW8WtF" CanvasType="Group" />
+            <ProcessDefinition Id="DT9RkgzimdPQFcnv6STJRv" HasStateOut="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ SixteenColorPalette ************************
+
+-->
+        <Node Name="SixteenColorPalette" Bounds="351,580" Id="RcOaNszDUyFLGntYJMPh9T">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.ColorPicker.dll">
+            <Choice Kind="TypeFlag" Name="SixteenColorPalette" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.ColorPicker.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="GdBAvfWaXa0PDegWAu3F8G">
+            <Canvas Id="Od3BXzduFIBMCCT0hMHiiZ" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="PRLjX2RG2pdQCYxUcaHmYJ" IsHidden="true" />
+          </Patch>
+        </Node>
       </Canvas>
       <!--
 
@@ -2992,4 +3132,5 @@
   </Patch>
   <PlatformDependency Id="CGs06kJM5yQPN0UDUYO2t5" Location="./lib/Debug/net8.0/VL.Avalonia.Custom.dll" IsForward="true" />
   <NugetDependency Id="M7R698eld7QQVv7lIuESrI" Location="VL.Avalonia" Version="0.0.0" />
+  <NugetDependency Id="OU9KwlVAPJtMTHF8M72FDO" Location="Avalonia.Controls.ColorPicker" Version="11.2.1" />
 </Document>
