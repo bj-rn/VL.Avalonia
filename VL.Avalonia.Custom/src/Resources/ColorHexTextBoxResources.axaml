@@ -1,0 +1,52 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:VL.Avalonia.Custom.Controls.Value">
+  
+  
+  <ControlTheme x:Key="{x:Type local:ColorHexTextBox}" TargetType="{x:Type local:ColorHexTextBox}">
+    <Setter Property="Background" Value="{DynamicResource SystemControlForegroundBaseMediumLowBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAccentBrush}" />
+
+
+    <Setter Property="Template">
+      <ControlTemplate TargetType="{x:Type local:ColorHexTextBox}">
+        <DataValidationErrors>
+          <Grid x:Name="HexInputGrid"
+                Grid.Column="2"
+                IsVisible="{TemplateBinding IsHexInputVisible}">
+              
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="30" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+              
+            <Border Grid.Column="0"
+                    Height="32"
+                    Background="{DynamicResource TextControlBackgroundDisabled}"
+                    BorderBrush="{DynamicResource TextControlBorderBrush}"
+                    BorderThickness="1,1,0,1"
+                    CornerRadius="4,0,0,4">
+                
+              <TextBlock Foreground="{DynamicResource TextControlForegroundDisabled}"
+                          FontWeight="SemiBold"
+                          Text="#"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center" />
+            </Border>
+              <!--Color updated in code-behind 
+              Max length must include an optional '#' prefix (#FFFFFFFF)--> 
+            <TextBox x:Name="PART_HexTextBox"
+                      Grid.Column="1"
+                      AutomationProperties.Name="Hexadecimal Color"
+                      Height="32"
+                      MaxLength="9"
+                      HorizontalAlignment="Stretch"
+                      CornerRadius="0,4,4,0" />
+          </Grid>
+        </DataValidationErrors>
+      </ControlTemplate>
+    </Setter>
+
+  </ControlTheme>
+</ResourceDictionary>
