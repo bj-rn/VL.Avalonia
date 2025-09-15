@@ -1,12 +1,12 @@
 # VL.Avalonia
 
-[Avalonia](https://avaloniaui.net/) UI framework for [vvvv](https://vvvv.org/) live programming environment.
+[Avalonia](https://avaloniaui.net/) UI framework for the visual live programming environment [vvvv](https://vvvv.org/). 
 
 `VL.Avalonia` bridges the gap between the visual programming environment VL and the Avalonia UI framework, enabling developers to create rich, interactive desktop applications using visual programming capabilities.
 
 ## Development notice
 
-The Avalonia is big, this project aims to align Avalonia to vvvv/vl workflows. That may lead to breaking changes, deprecations etc. The project is in development stage, so be advised.
+The Avalonia framework is extensive, this project aims to align Avalonia to vvvv/vl workflows. That may lead to breaking changes, deprecations etc. The project is in development stage, so be advised.
 
 Getting in touch: [VL Avalonia Room on Matrix.org](https://matrix.to/#/!OcgAznOYIIpPAkwOhi:matrix.org?via=matrix.org)
 
@@ -45,7 +45,7 @@ Demos are available via the Help Browser!
 
 - [antokhio](https://github.com/antokhio)
 - [woeishi](https://github.com/woeishi)
-- [azneo](https://github.com/azeno)
+- [azeno](https://github.com/azeno)
 - [bj-rn](https://github.com/bj-rn)
 - [cloneproduction](https://github.com/cloneproduction)
 
