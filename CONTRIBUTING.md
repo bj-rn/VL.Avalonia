@@ -42,3 +42,13 @@ Workflows triggered with `draft new release` action, create tag:
 - `vX.X.X-(pre|rc|etc.)`: prerelease
 
 Appearence of tag `v*` should trigger action.
+
+## FAQ
+
+If you start from solution, make sure you have installed avalonia nugets for your vvvv-gamma:
+```sh
+nuget install Avalonia -version 11.2.1
+nuget install Avalonia.Desktop -version 11.2.1
+nuget install Avalonia.Themes.Fluent -version 11.2.1
+nuget install Avalonia.Fonts.Inter -version 11.2.1
+```
