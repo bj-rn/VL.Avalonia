@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="INGLwDoV4iuLGdG1guKakD" LanguageVersion="2025.7.0" Version="0.128">
+  <NugetDependency Id="V3UQLvDiVxTQCesb33qbmf" Location="VL.CoreLib" Version="2025.7.0" />
+  <Patch Id="GCnwHQPU8RiLaWxXVPyp1d">
+    <Canvas Id="BVvsBHjeEruPvjZG6fxtmk" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="BBc7n1t1KuvOUivZkH2jXn">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="OZDy9O31ZXIMAymafEK9Jz">
+        <Canvas Id="Iw4IBSQ0HwtLRh3g1dolYk" CanvasType="Group" />
+        <Patch Id="URZijliNlHpOf87L1FIbYZ" Name="Create" />
+        <Patch Id="ASW6RulQ56BNnIRMr2nNco" Name="Update" />
+        <ProcessDefinition Id="DT6wo1jvBuPMyVfiO3pGQl">
+          <Fragment Id="Ip5g9jVp2KbQJtJqY6CsgS" Patch="URZijliNlHpOf87L1FIbYZ" Enabled="true" />
+          <Fragment Id="A0ykLr9ZYGKM5WV8xlBgHL" Patch="ASW6RulQ56BNnIRMr2nNco" Enabled="true" />
+        </ProcessDefinition>
+      </Patch>
+    </Node>
+  </Patch>
+  <PlatformDependency Id="Hd1xYH0O2hHMBo17VWSIaZ" Location="./lib/Debug/net8.0-windows/VL.Avalonia.Windows.dll" IsForward="true" />
+</Document>
