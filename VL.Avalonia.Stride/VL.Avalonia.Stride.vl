@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="DPsiAOcr487LxQzjLeo0yb" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
-  <NugetDependency Id="CeGppc1IeKNMgJL3lOWzs0" Location="VL.CoreLib" Version="2025.7.0-0517-ge070c1d18e" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="DPsiAOcr487LxQzjLeo0yb" LanguageVersion="2025.7.0" Version="0.128">
+  <NugetDependency Id="CeGppc1IeKNMgJL3lOWzs0" Location="VL.CoreLib" Version="2025.7.0" />
   <Patch Id="CZcWbOyvtccOKTi6uTq8hB">
     <Canvas Id="SeLNc679dcLMrZKbavDP88" DefaultCategory="VL.Avalonia.Stride" CanvasType="FullCategory">
       <!--
@@ -23,6 +23,7 @@
               <Pin Id="LhTww4yTkuNP7w17oOGzIT" Name="Content" Kind="InputPin" />
               <Pin Id="FdpqhuUELWgMn31CVg2Vws" Name="Requested Theme Variant" Kind="InputPin" />
               <Pin Id="NwqNuMly92BNdnLqkmGvrT" Name="Output" Kind="StateOutputPin" />
+              <Pin Id="Ehy1wXqDXb8LYOI8QgEeH5" Name="Scaling Factor" Kind="InputPin" IsHidden="true" />
             </Node>
             <Node Bounds="213,190,76,19" Id="GiBFMA0SoGDM15A78Q8kgw">
               <p:NodeReference LastCategoryFullName="Stride.Rendering" LastDependency="VL.Stride.vl">
@@ -671,9 +672,10 @@
     </Node>
   </Patch>
   <NugetDependency Id="Ng5k41hHbwCLLdBgVTzgMn" Location="VL.Avalonia" Version="0.0.0" />
-  <NugetDependency Id="IOC7oj7JgNWLKfkGKetAdA" Location="VL.Skia" Version="2025.7.0-0517-ge070c1d18e" />
-  <NugetDependency Id="UPysX2IJXXiMgi1fm71GA1" Location="VL.Stride" Version="2025.7.0-0517-ge070c1d18e" />
+  <NugetDependency Id="IOC7oj7JgNWLKfkGKetAdA" Location="VL.Skia" Version="2025.7.0" />
+  <NugetDependency Id="UPysX2IJXXiMgi1fm71GA1" Location="VL.Stride" Version="2025.7.0" />
   <NugetDependency Id="OfXKWquIABiLc2Za9o6FYL" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="OslxSaBW1JpQLOLHmNDcYK" Location="Stride.Core" Version="4.2.0.2293" />
   <PlatformDependency Id="CXEsBdlF0jyQYOlcOUZ2Z6" Location="C:/Program Files/vvvv/vvvv_gamma_7.0-0517-ge070c1d18e-win-x64/packs/VL.Stride.Runtime/lib/net8.0/VL.Stride.Runtime.dll" />
+  <PlatformDependency Id="U7MF8iPr3SyNGt2ydusxYa" Location="./lib/Debug/net8.0/VL.Avalonia.Stride.dll" IsForward="true" />
 </Document>
