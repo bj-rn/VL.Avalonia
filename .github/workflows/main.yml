@@ -27,6 +27,7 @@ jobs:
         run: |
           dotnet build .\VL.Avalonia\src\VL.Avalonia.csproj --configuration Release --output .\VL.Avalonia\lib\net8.0\
           dotnet build .\VL.Avalonia.Skia\src\VL.Avalonia.Skia.csproj --configuration Release --output .\VL.Avalonia.Skia\lib\net8.0\
+          dotnet build .\VL.Avalonia.Skia\src\VL.Avalonia.Stride.csproj --configuration Release --output .\VL.Avalonia.Stride\lib\net8.0\
           dotnet build .\VL.Avalonia.Custom\src\VL.Avalonia.Custom.csproj --configuration Release --output .\VL.Avalonia.Custom\lib\net8.0\
 
       - name: Extract version and detect pre-release
