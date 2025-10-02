@@ -68,7 +68,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    [ProcessNode(Name = "SkiaPictireControl")]
+    [ProcessNode(Name = "SkiaPictureControl")]
     public partial class SkiaPictureControlWrapper : SkiaMediaControlWrapperBase<SkiaPictureControl>
     {
         protected Optional<SKPicture> _picture;
