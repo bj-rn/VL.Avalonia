@@ -16,7 +16,7 @@ namespace VL.Avalonia.Skia
     {
         public Rect Bounds { get; }
         public bool Equals(ICustomDrawOperation? other) => false;
-        public bool HitTest(Point p) => false;
+        public bool HitTest(Point p) => Bounds.Contains(p);
         public SizeMode Mode { get; }
         public RectangleAnchor Anchor { get; }
 
