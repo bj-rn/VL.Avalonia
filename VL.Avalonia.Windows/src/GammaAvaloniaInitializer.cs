@@ -11,7 +11,7 @@ namespace VL.Avalonia.Windows
     public sealed class GammaAvaloniaInitializer : AssemblyInitializer<GammaAvaloniaInitializer>
     {
         public static Application Instance;
-        public static void Init() => Instance ??=
+        public static void Initialize() => Instance ??=
             AppBuilder
             .Configure<GammaAvaloniaApplication>()
             .UseWin32()

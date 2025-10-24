@@ -15,13 +15,6 @@
       </p:NodeReference>
       <Patch Id="Bs5NTo596KKNxIBOCt6z4s">
         <Canvas Id="A72fYc8EfuLLX4YzQS7rM1" CanvasType="Group">
-          <Node Bounds="481,300,52,19" Id="Hzsrn70ItLDMtG0JbT2Hm9">
-            <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Avalonia.Windows.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="Window" />
-            </p:NodeReference>
-            <Pin Id="S9ZJflQCRKPMNOo8CPHs3s" Name="Content" Kind="InputPin" />
-          </Node>
           <Node Bounds="467,191,46,19" Id="CVhslbY7gqXPHaTIGoqbkI">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -57,6 +50,14 @@
               <Choice Kind="ImmutableTypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="495,301,73,19" Id="IUfpBwyxFw5NsFtvvmrChn">
+            <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Avalonia.Windows.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="MainWindow" />
+            </p:NodeReference>
+            <Pin Id="I4k4KXAsnzNNUaHEhQYAKs" Name="Content" Kind="InputPin" />
+            <Pin Id="FP0c8WsT4pRPejn4KNRp3a" Name="Output" Kind="OutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="Vf8CzOx8fXRPQQOV09xRnD" Name="Create" />
         <Patch Id="QvrpnjdOQkPOG1GhMq7J1g" Name="Update" />
@@ -64,7 +65,6 @@
           <Fragment Id="L7Z8oG0HCg6M8zMfQFKCdn" Patch="Vf8CzOx8fXRPQQOV09xRnD" Enabled="true" />
           <Fragment Id="D9iGYAGEqSJNAbeOE0oHir" Patch="QvrpnjdOQkPOG1GhMq7J1g" Enabled="true" />
         </ProcessDefinition>
-        <Link Id="SjsDvQkzssIM1H4Ppaj5p1" Ids="CrTWWV1LYMhMCeQln62GF5,S9ZJflQCRKPMNOo8CPHs3s" />
         <Link Id="KxPSxpiqWlMOksgWvf6Zrz" Ids="Kcw0umUT9QHLobNKDtn7sM,KxVvJucMiFnPhYk46JlTQ4" />
       </Patch>
     </Node>
