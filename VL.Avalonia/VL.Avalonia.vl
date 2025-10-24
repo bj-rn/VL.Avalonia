@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="UdZsKoLghO3Oihrrgteb4W" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
-  <NugetDependency Id="Fz1g9SnC5AAO0Sv79s4c5b" Location="VL.CoreLib" Version="2025.7.0-0517-ge070c1d18e" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="UdZsKoLghO3Oihrrgteb4W" LanguageVersion="2025.7.0" Version="0.128">
+  <NugetDependency Id="Fz1g9SnC5AAO0Sv79s4c5b" Location="VL.CoreLib" Version="2025.7.0" />
   <Patch Id="CsQ26EoGhvMOM4U1aQide6">
     <Canvas Id="IhgCT0sDhkhMddI2tTRHCe" DefaultCategory="Avalonia" CanvasType="FullCategory">
       <Canvas Id="EdSDaNRGmemQWQjC87hvqy" Name="Controls" Position="604,230">
@@ -958,6 +958,26 @@
             <Link Id="QjaLd78t1LOLxQhTHWHBQH" Ids="SXL36WJ8m4zMtMYCh2K31z,SqC0CIbH5iyOqcTiCNbOww" />
           </Patch>
         </Node>
+        <!--
+
+    ************************ Control ************************
+
+-->
+        <Node Name="Control" Bounds="284,337" Id="OCYu79hDM5xPdtYp9cSLqW">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls" LastDependency="Avalonia.Controls.dll">
+            <Choice Kind="TypeFlag" Name="Control" />
+            <FullNameCategoryReference ID="Avalonia.Controls" />
+            <AssemblyReference ID="Avalonia.Controls.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="NjAZFpvk3YmMTspbNGqr4l">
+            <Canvas Id="VJO9A4dF5A7O6whL6ZCWey" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="UGVwmTZldNoPYq5xnjiDFs" IsHidden="true" />
+          </Patch>
+        </Node>
       </Canvas>
       <Canvas Id="CVjowx6tSguPby3ZNI2eIW" Name="Media" Position="419,240">
         <!--
@@ -1352,7 +1372,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadows" />
                     </p:NodeReference>
                     <Pin Id="GOXNqTDcfkpPVODiNFAdhf" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="BrvHLIfwJ7rPHfXaxk7eak" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="DpzAyFPjWl8OEiOdA1G6YL" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="Pc633JBf3ybMjcSoVMIETI" Name="Count" Kind="OutputPin" />
                   </Node>
                   <Pin Id="Oo8tHP8gwBjPKfPTzWNyoZ" Name="Input" Kind="InputPin" />
@@ -1377,7 +1397,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadows" />
                     </p:NodeReference>
                     <Pin Id="TAyItQjBXSvMc9HFdavKpz" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="GSuxYm1sng4MBvRWO3478A" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="OdAJHPa48EfQWpZudpkbCj" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="DxhqBnz6B33NSDUQsTKOTp" Name="Has Inset Shadows" Kind="OutputPin" />
                   </Node>
                   <Pin Id="GTTElHGuILzQMONmb70oAt" Name="Input" Kind="InputPin" />
@@ -1403,7 +1423,7 @@
                     </p:NodeReference>
                     <Pin Id="PMtlTZvoEm5Nq88K4Luvjo" Name="Input" Kind="StateInputPin" />
                     <Pin Id="Q6cKOwzDYR4LQWdnOU1Ib3" Name="C" Kind="InputPin" />
-                    <Pin Id="ISYXu7eGhvKPDUgeDWGfCj" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="UKBhehsyQg3PIyAlELyCol" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="Vv2u0tKnMJbNag7dn09t10" Name="Item" Kind="OutputPin" />
                   </Node>
                   <Pin Id="RtoVAX96tpJQMaQIaYJlVp" Name="Input" Kind="InputPin" />
@@ -1733,7 +1753,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadow" />
                     </p:NodeReference>
                     <Pin Id="EJHL86RguqMMQI3Wj6VK26" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="QYLKyEIWuDMM1vwXIq3rwp" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="PhPZGOMJmxfQKj3pQ9ScpK" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="FEhkBLos7eXLyD7kVjuyC7" Name="Blur" Kind="OutputPin" />
                   </Node>
                   <Pin Id="Mn918nU0HUaN1D9XgztNmp" Name="Input" Kind="InputPin" />
@@ -1855,7 +1875,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadow" />
                     </p:NodeReference>
                     <Pin Id="CIIxBBgSBFDN6xu4QtN4hN" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="VrBzy4m9JLCL9SvMZ2RgwI" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="BgBJFsgbLHDLS9SGRoheYt" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="JywjR7nzD1zQKqYAB8FxUV" Name="Is Inset" Kind="OutputPin" />
                   </Node>
                   <Pin Id="QukfoRzaQRuN5VY7opt0ev" Name="Input" Kind="InputPin" />
@@ -1906,7 +1926,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadow" />
                     </p:NodeReference>
                     <Pin Id="VdiuYnrHf2YLemLfpZoDjr" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="JNhHdGoJLs2MuVqTSEQ7Qw" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="V21kPAD2CECPicZx0SyqS4" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="TbdDeeg3vUkQXoEgIUDuiB" Name="Offset X" Kind="OutputPin" />
                   </Node>
                   <Pin Id="SiMDYIZBt37OqUaEmumaca" Name="Input" Kind="InputPin" />
@@ -1957,7 +1977,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadow" />
                     </p:NodeReference>
                     <Pin Id="O78Q9Y3gjUzQYPl4A7AejD" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="OrYdFOVpnTEOzdeucmnMv8" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="Q6ymUXJzPQMPDhVi9lWnQg" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="HUleVmzHLTQLxmneAy1ceZ" Name="Offset Y" Kind="OutputPin" />
                   </Node>
                   <Pin Id="IXGgmCCalNFLs1hAHvdrm0" Name="Input" Kind="InputPin" />
@@ -2008,7 +2028,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadow" />
                     </p:NodeReference>
                     <Pin Id="UhpamNrmu2fPRVU0oG55TU" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="BVzNj7fGA0MN9u8ajqfFld" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="PLmdVO54AvTMooCaoPblGG" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="S3VptmkkfnyPKYyUfCnhoy" Name="Spread" Kind="OutputPin" />
                   </Node>
                   <Pin Id="USybQ1AdVtSMHcURlDkNDx" Name="Input" Kind="InputPin" />
@@ -2062,7 +2082,7 @@
                     </p:NodeReference>
                     <Pin Id="PonxH91Mo2KOIvokDBLfKg" Name="Input" Kind="StateInputPin" />
                     <Pin Id="HJKxRZFSYreOjohR85OPGZ" Name="Other" Kind="InputPin" />
-                    <Pin Id="LuuI1WYDb5nPVzWNVlW8dl" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="BtGwFKRIeQdMfMDCchpjvY" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="AesI4udPFwAN6DEbRflwYq" Name="Result" Kind="OutputPin" />
                   </Node>
                   <Pin Id="FqS1vL8YTtxMKs82YgL8QE" Name="Input" Kind="InputPin" />
@@ -2091,7 +2111,7 @@
                     </p:NodeReference>
                     <Pin Id="O2WZtaIRWCCP5Y6La3tSQo" Name="Input" Kind="StateInputPin" />
                     <Pin Id="BvchhKMpLRGO6bcik3cxqG" Name="Obj" Kind="InputPin" />
-                    <Pin Id="Ope6KBCPYYMM2bMrjXq2Fp" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="JFLiIUy8rP3PKuVnhOXUj8" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="PQB5yI95oXLOITPtF8AJp2" Name="Result" Kind="OutputPin" />
                   </Node>
                   <Pin Id="OMHgwgPuTe3OSoMgMJhe7R" Name="Input" Kind="InputPin" />
@@ -2117,7 +2137,7 @@
                       <FullNameCategoryReference ID="Avalonia.Media.BoxShadow" />
                     </p:NodeReference>
                     <Pin Id="HxzznFDWxWRPOTCAMQ5AfE" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="VIbOdcVgMlXMywXzPcjl1I" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="OGuj8FTQRKBOdcxFxSz39z" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="AzAwn0dvbykLWdvKsZ4Xjf" Name="Result" Kind="OutputPin" />
                   </Node>
                   <Pin Id="DfP1zakqunpNgKHf5TG87U" Name="Input" Kind="InputPin" />
@@ -2143,7 +2163,7 @@
                     </p:NodeReference>
                     <Pin Id="DBkOCxL2RbhOJ34IRkNnET" Name="Input" Kind="StateInputPin" />
                     <Pin Id="PitfOuLAXlFPsmfSGCEP90" Name="Rect" Kind="InputPin" />
-                    <Pin Id="BhjT8VZi3IZNCSs4WvRInL" Name="Output" Kind="OutputPin" IsHidden="true" />
+                    <Pin Id="LQv3jfKJMBgN2chdW14wgY" Name="Output" Kind="OutputPin" IsHidden="true" />
                     <Pin Id="AEhtmtp5L1ZN2tnxOPiV6t" Name="Result" Kind="OutputPin" />
                   </Node>
                   <Pin Id="PuhpRn4c5HtOF4QY6rTdni" Name="Input" Kind="InputPin" />
@@ -2590,7 +2610,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="NHSdecTz2BhMpwh25fWkkk" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="RixY7bAtmwTLEVmXGBJ5ew" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="JwWGxEFNWd8OcUuKRIjhnD" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="Ia32yvAeldELKBwNRyOLrY" Name="Bottom" Kind="OutputPin" />
                 </Node>
                 <Pin Id="CZ9M7eFiHgxPGzDxDRxfYv" Name="Input" Kind="InputPin" />
@@ -2615,7 +2635,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="GNtIzo6hwVcOhSMwJ0a4BS" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="VtKX71EURHUOqEeVu7iR8T" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="Ib90wppc7wrK9dEKi7eD1a" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="ItrKNaWbcFSM9kHiRA2rMh" Name="Is Uniform" Kind="OutputPin" />
                 </Node>
                 <Pin Id="AcbVaeXoPCdOKYAUXu1JvR" Name="Input" Kind="InputPin" />
@@ -2640,7 +2660,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="BWa4YrLRB3sNuFBX0OSI2m" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="KOOIxwBoYxAN6fXU7tCkTm" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="UIQhbBn28B5Pkk4oK0Lmki" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="FIfrfeXXR9FLZbwLKAQ42p" Name="Left" Kind="OutputPin" />
                 </Node>
                 <Pin Id="SnIo2qFAlIsQAAXJS6SUmt" Name="Input" Kind="InputPin" />
@@ -2665,7 +2685,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="CAxU9gJB9z3Ny2fLATVqR5" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="Hk0GZnUyYorMCFG1mxd4re" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="PLxPdUoQebEMUBbJ9O91uf" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="JAFKSZeuI7ILiN7ywnuMWR" Name="Right" Kind="OutputPin" />
                 </Node>
                 <Pin Id="DkHrGvUwBaRPqE6PRx4dr5" Name="Input" Kind="InputPin" />
@@ -2690,7 +2710,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="CrAHg7YYLVeLnDYapVVqjW" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="KaoU3cmP76hL3jfOoYx3fE" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="IV6Wd31a4CNLrzloeIGJ2Z" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="PEcrfrUbtqnNPAWBLgQNSv" Name="Top" Kind="OutputPin" />
                 </Node>
                 <Pin Id="O5m7KivixUQQK7KkH9yN2g" Name="Input" Kind="InputPin" />
@@ -2715,7 +2735,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="Bz7qzNHuA2QM5a8tg9LtEw" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="JHE8Gi0eycjQTHPicTuguD" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="ULb8tGerSlAM8xHMnbSdAU" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="MWSFz4GOJtNQQqrae1GmJ3" Name="Left" Kind="OutputPin" />
                   <Pin Id="IYFJ0joFol5QJNWtfKLT3Y" Name="Top" Kind="OutputPin" />
                   <Pin Id="DYFYohD0bOJPbAOcrdrbuk" Name="Right" Kind="OutputPin" />
@@ -2749,7 +2769,7 @@
                   </p:NodeReference>
                   <Pin Id="IJjbWci5n5IMi2H5Zk4zih" Name="Input" Kind="StateInputPin" />
                   <Pin Id="AK2w6JadPtLQAFNppk89Zi" Name="Other" Kind="InputPin" />
-                  <Pin Id="CsYDDMVYL04Oy3ZGtaj3kF" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="KMdJuSWJX2CNHdOSfkGGnq" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="A1udFr75FUQPTf6Gn9bl8H" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="CC6FA8CWrhoQJ7ve7iZew5" Name="Input" Kind="InputPin" />
@@ -2778,7 +2798,7 @@
                   </p:NodeReference>
                   <Pin Id="Cc9M6P7vJyqQW3u6X8jbbZ" Name="Input" Kind="StateInputPin" />
                   <Pin Id="FTvcTNCcW8PPUroSAYg1Uw" Name="Obj" Kind="InputPin" />
-                  <Pin Id="Mn1wECad49lNaSX8OaL9fb" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="VZO1AAxlmRiNDLpqRuNcAV" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="DWQhuOTCfOBLbvuviRrgBj" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="RhAsPOP2FYeLZFysl2mwK2" Name="Input" Kind="InputPin" />
@@ -2804,7 +2824,7 @@
                     <FullNameCategoryReference ID="Avalonia.Thickness" />
                   </p:NodeReference>
                   <Pin Id="Jawu5jaGTTUN3ntm7y4YFN" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="Fe4Rr0W4YSsM3qesHtIpni" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="VAZxZR1izr0N2yD6Iq4X5q" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="FyKp7xoFGLLQEWZ6MO75lN" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="Iovxq3bNRO2Mi81r2Zy5ft" Name="Input" Kind="InputPin" />
@@ -3010,7 +3030,7 @@
               </p:NodeReference>
               <p:HideCategory p:Type="Boolean">false</p:HideCategory>
               <Patch Id="Ny2jhdeQJK6OJOyHmJLvEh">
-                <Node Bounds="1412,161,25,19" AutoConnect="true" Id="B7cKh0P2dw6MvppQZsdNyl">
+                <Node Bounds="1412,161,64,19" AutoConnect="true" Id="B7cKh0P2dw6MvppQZsdNyl">
                   <p:NodeReference LastCategoryFullName="Avalonia.CornerRadius" LastDependency="Avalonia.Base.dll">
                     <Choice Kind="OperationNode" Name="=" />
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
@@ -3036,7 +3056,7 @@
               </p:NodeReference>
               <p:HideCategory p:Type="Boolean">false</p:HideCategory>
               <Patch Id="Sfn7QlusS8WPyZzhPxy6K8">
-                <Node Bounds="1412,311,27,19" AutoConnect="true" Id="Fr0TgZZMX7ROHqXLIV98Mu">
+                <Node Bounds="1412,311,64,19" AutoConnect="true" Id="Fr0TgZZMX7ROHqXLIV98Mu">
                   <p:NodeReference LastCategoryFullName="Avalonia.CornerRadius" LastDependency="Avalonia.Base.dll">
                     <Choice Kind="OperationNode" Name="!=" />
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
@@ -3062,7 +3082,7 @@
               </p:NodeReference>
               <p:HideCategory p:Type="Boolean">false</p:HideCategory>
               <Patch Id="DoAY2icJtHkNRWtB3OUUts">
-                <Node Bounds="1412,461,41,19" AutoConnect="true" Id="GEqs2uCzSDCOo37YKfgY48">
+                <Node Bounds="1412,461,64,19" AutoConnect="true" Id="GEqs2uCzSDCOo37YKfgY48">
                   <p:NodeReference LastCategoryFullName="Avalonia.CornerRadius" LastDependency="Avalonia.Base.dll">
                     <Choice Kind="OperationNode" Name="Parse" />
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
@@ -3092,7 +3112,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="Th7G9dq4UnKMiWBosagoQP" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="OIjlWw2330zQQTk3uBOchy" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="RzdwJYKix0UM77Xhrkkeam" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="FcnBhUDpV0xPcmdjUlpvvl" Name="Bottom Left" Kind="OutputPin" />
                 </Node>
                 <Pin Id="Sb7kW8QlgxSQZLJjqzEyoo" Name="Input" Kind="InputPin" />
@@ -3117,7 +3137,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="UU1kSRcwEv5QDXtDo7vJLh" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="MNdt6skL3EGLWdmL9rWVjt" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="EMZKEu75K5uQbUJdT8cN0c" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="Q37bVkzYjlaLGhPI7Q7U9q" Name="Bottom Right" Kind="OutputPin" />
                 </Node>
                 <Pin Id="K69TQqDvvKiOHRFQ9Etznp" Name="Input" Kind="InputPin" />
@@ -3142,7 +3162,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="DGB1xCes0vaPrF959tTUQv" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="LitUZUJ9UfROwZONvpAHjO" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="PX1uRIAu58FMrTh7EgssJc" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="IwYwJlLkvu5OQ5Wq2It16W" Name="Is Uniform" Kind="OutputPin" />
                 </Node>
                 <Pin Id="FxxmE9jcTNrMK5QePOEDcE" Name="Input" Kind="InputPin" />
@@ -3167,7 +3187,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="MX2tsIx6YRRMOKhVUSjgKp" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="Otr2dn0gLasQQQX4Rm1BDY" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="VVRcX8cbODvL8kTXXr6wAB" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="NTR4pYSAUnsOOo9UkqnueZ" Name="Top Left" Kind="OutputPin" />
                 </Node>
                 <Pin Id="NPPSLhEoiVMLhnPRYFV4zV" Name="Input" Kind="InputPin" />
@@ -3192,7 +3212,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="TNZzdGIVf91NM4koFPRiUZ" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="NVSgKGZRdAMQRvdVDtab1v" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="PmoDfhyAgOmPNELiyvQbEC" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="THqWS9tvJcnNdX5I4yloIg" Name="Top Right" Kind="OutputPin" />
                 </Node>
                 <Pin Id="JfEbGudD7m2O2a8JUYTJxa" Name="Input" Kind="InputPin" />
@@ -3220,7 +3240,7 @@
                   </p:NodeReference>
                   <Pin Id="BJVNqGfNLuoNEV0dLN4Pm0" Name="Input" Kind="StateInputPin" />
                   <Pin Id="J5VoUV1l4UNOZQvLVmVqJL" Name="Other" Kind="InputPin" />
-                  <Pin Id="BPX5lnjXEgkNBp4EHB3nNb" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="FehEkg0VcBFMEqrqG3X7Za" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="VsUagwOnUiZLVn9Hi9A6gM" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="N6gLODvvcPbPNQ9Jyg68sn" Name="Input" Kind="InputPin" />
@@ -3249,7 +3269,7 @@
                   </p:NodeReference>
                   <Pin Id="IUsAM2RKPAIP6jRiU9iNBH" Name="Input" Kind="StateInputPin" />
                   <Pin Id="RqcKzuAGYM1MbPBE2vCErn" Name="Obj" Kind="InputPin" />
-                  <Pin Id="SZeLllT9imcMjyZYugUR6t" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="NAzhfZb9n9CQPMEwMjXSjm" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="H8JNQz6i68iNIb5cOyzhAx" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="Q72bDw5sqZiPsjz8IqqAKS" Name="Input" Kind="InputPin" />
@@ -3275,7 +3295,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="PCYoM6qrfsWNy7Z1lKAiRv" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="L3RQqH2k08IM9qf9xXQZhl" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="BoMtYSgUyktNIfeLFLFj2p" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="H5B69UK1jYyO1yp3VwOoP8" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="FncWkWnJO0WQU6QnW6OvLB" Name="Input" Kind="InputPin" />
@@ -3300,7 +3320,7 @@
                     <FullNameCategoryReference ID="Avalonia.CornerRadius" />
                   </p:NodeReference>
                   <Pin Id="BZqpNSI0vRKOltIkWJAuIa" Name="Input" Kind="StateInputPin" />
-                  <Pin Id="JeaBrxsatvkQbte9PQLy65" Name="Output" Kind="OutputPin" IsHidden="true" />
+                  <Pin Id="L2ExtuCLxTfP6BExngiVno" Name="Output" Kind="OutputPin" IsHidden="true" />
                   <Pin Id="Ahz5eTw3btMPFpSDc9UirZ" Name="Result" Kind="OutputPin" />
                 </Node>
                 <Pin Id="B9Vi1xP5UsHL59S4LfzxMC" Name="Input" Kind="InputPin" />
@@ -3472,6 +3492,28 @@
           </ProcessDefinition>
         </Patch>
       </Node>
+      <Canvas Id="DZUUqUdVw3NP5FZnKqdX48" Name="Input" Position="461,530">
+        <!--
+
+    ************************ KeyGesture ************************
+
+-->
+        <Node Name="KeyGesture" Bounds="304,270" Id="N0vxbrocdBOLd2w8SRoxPt">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="Avalonia.Base.dll">
+            <Choice Kind="TypeFlag" Name="KeyGesture" />
+            <FullNameCategoryReference ID="Avalonia.Input" />
+            <AssemblyReference ID="Avalonia.Base.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="R7OHUzXFJLPNSGzaqaNiIC">
+            <Canvas Id="AxDQ1YLDbhIN97eGZ5K3Gj" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="LCEBEOBkZE5LrW4H6ZQlo7" IsHidden="true" />
+          </Patch>
+        </Node>
+      </Canvas>
     </Canvas>
     <!--
 
