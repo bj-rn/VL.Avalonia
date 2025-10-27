@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)generated</CompilerGeneratedFilesOutputPath>
     <BaseOutputPath>..\lib</BaseOutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <AvaloniaXaml Remove="Resources\EditableSliderResources.axaml" />
     <AvaloniaXaml Remove="Resources\NumberFieldResources.axaml" />
@@ -15,7 +15,6 @@
     <AvaloniaXaml Remove="Resources\TemplatedSliderResources.axaml" />
     <AvaloniaXaml Remove="Styles\Styles.axaml" />
   </ItemGroup>
-
   <ItemGroup>
     <AvaloniaResource Include="Resources\EditableSliderResources.axaml" />
     <AvaloniaResource Include="Resources\NumberFieldResources.axaml" />
@@ -23,15 +22,18 @@
     <AvaloniaResource Include="Resources\TemplatedSliderResources.axaml" />
     <AvaloniaResource Include="Styles\Styles.axaml" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.1" />
     <PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.2.1" />
     <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.1" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj">
+    <ProjectReference
+      Include="..\..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj"
+      ReferenceOutputAssembly="true"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0"
+    >
       <Private>False</Private>
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
@@ -40,5 +42,4 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
   </ItemGroup>
-
 </Project>
