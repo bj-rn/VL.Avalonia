@@ -1,11 +1,11 @@
 ﻿using Avalonia.Controls.Primitives;
 using Avalonia.Media;
+using VL.Avalonia.Attributes;
 using VL.Avalonia.Controls;
 using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
-
 
 namespace VL.Avalonia.Custom.Controls.Value
 {
@@ -17,9 +17,15 @@ namespace VL.Avalonia.Custom.Controls.Value
     public partial class ColorPreviewerWrapper : ControlWrapperBase<ColorPreviewer>
     {
         protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvBinding;
+
         public ColorPreviewerWrapper()
         {
-            _hsvBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(_output, ColorPreviewer.HsvColorProperty, (x) => x, (x) => x);
+            _hsvBinding = new ChannelTwoWayBinding<HsvColor, HsvColor>(
+                _output,
+                ColorPreviewer.HsvColorProperty,
+                (x) => x,
+                (x) => x
+            );
         }
 
         /// <param name="hsvColorChannel">
@@ -29,20 +35,7 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvBinding.SetChannel(hsvColorChannel);
 
-
+        [ImplementProperty("ColorPreviewer.IsAccentColorsVisibleProperty", Order = PinOrder.Main)]
         protected Optional<bool> _isAccentColorsVisible;
-        [Fragment(Order = PinOrder.Main)]
-        public void SetIsComponentSliderVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAccentColorsVisible)
-        {
-            if (_isAccentColorsVisible != isAccentColorsVisible)
-            {
-                if (isAccentColorsVisible.HasValue)
-                    _output.SetValue(ColorPreviewer.IsAccentColorsVisibleProperty, isAccentColorsVisible.Value);
-                else
-                    _output.ClearValue(ColorPreviewer.IsAccentColorsVisibleProperty);
-
-                _isAccentColorsVisible = isAccentColorsVisible;
-            }
-        }
     }
 }
