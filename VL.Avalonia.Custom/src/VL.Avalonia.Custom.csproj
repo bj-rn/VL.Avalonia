@@ -33,7 +33,10 @@
       ReferenceOutputAssembly="true"
       OutputItemType="Analyzer"
       SetTargetFramework="TargetFramework=netstandard2.0"
-    />
+    >
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
     <ProjectReference Include="..\..\VL.Avalonia\src\VL.Avalonia.csproj">
       <Private>False</Private>
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
