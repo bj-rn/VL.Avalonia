@@ -3498,7 +3498,7 @@
     ************************ KeyGesture ************************
 
 -->
-        <Node Name="KeyGesture" Bounds="304,270" Id="N0vxbrocdBOLd2w8SRoxPt">
+        <Node Name="KeyGesture" Bounds="301,230" Id="N0vxbrocdBOLd2w8SRoxPt">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <CategoryReference Kind="Category" Name="Primitive" />
@@ -3511,6 +3511,86 @@
           <Patch Id="R7OHUzXFJLPNSGzaqaNiIC">
             <Canvas Id="AxDQ1YLDbhIN97eGZ5K3Gj" BordersChecked="false" CanvasType="Group" />
             <ProcessDefinition Id="LCEBEOBkZE5LrW4H6ZQlo7" IsHidden="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ Key ************************
+
+-->
+        <Node Name="Key" Bounds="310,320" Id="I6S05mGJWeMPVtEtYSuFQM">
+          <p:NodeReference>
+            <Choice Kind="ForwardRecordDefinition" Name="Immutable Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="Avalonia.Base.dll">
+            <Choice Kind="TypeFlag" Name="Key" />
+            <FullNameCategoryReference ID="Avalonia.Input" />
+            <AssemblyReference ID="Avalonia.Base.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="KJdwz5obJHxNIEL2q7KGHP">
+            <Canvas Id="KdoV93RojdEL9fblLA8ufK" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="K3ZkRAccSHtL3ibyGsdeMI" IsHidden="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ KeyModifiers ************************
+
+-->
+        <Node Name="KeyModifiers" Bounds="456,320" Id="DnLtQBrCe03MnxFXGyrh2j">
+          <p:NodeReference>
+            <Choice Kind="ForwardRecordDefinition" Name="Immutable Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="Avalonia.Base.dll">
+            <Choice Kind="TypeFlag" Name="KeyModifiers" />
+            <FullNameCategoryReference ID="Avalonia.Input" />
+            <AssemblyReference ID="Avalonia.Base.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="PgbT2g2rk0eM1k3OsiZoTg">
+            <Canvas Id="U5oVlhuWoLqQdr0HcvMre0" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="VY9Uumd87PJLnieRLIkEkT" IsHidden="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ MouseButton ************************
+
+-->
+        <Node Name="MouseButton" Bounds="321,434" Id="PQW9bCsUjGuLSUPyGvAPww">
+          <p:NodeReference>
+            <Choice Kind="ForwardRecordDefinition" Name="Immutable Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="Avalonia.Base.dll">
+            <Choice Kind="TypeFlag" Name="MouseButton" />
+            <FullNameCategoryReference ID="Avalonia.Input" />
+            <AssemblyReference ID="Avalonia.Base.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="EOIarA7D4AULh72jkRN5XT">
+            <Canvas Id="JIduwYYUZMfNWlKSLnOd9N" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="ACneyzwJSyEOsMk50vhz6i" IsHidden="true" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ KeyStates ************************
+
+-->
+        <Node Name="KeyStates" Bounds="657,320" Id="U4NNwmmdqvNNCzLcw6ingz">
+          <p:NodeReference>
+            <Choice Kind="ForwardRecordDefinition" Name="Immutable Forward" />
+            <CategoryReference Kind="Category" Name="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="Avalonia.Base.dll">
+            <Choice Kind="TypeFlag" Name="KeyStates" />
+            <FullNameCategoryReference ID="Avalonia.Input" />
+            <AssemblyReference ID="Avalonia.Base.dll" />
+          </p:TypeAnnotation>
+          <Patch Id="AsuNWpDy7s6P25wlYGKUKH">
+            <Canvas Id="CE7PEJoUgCEO2Z0MVQL704" BordersChecked="false" CanvasType="Group" />
+            <ProcessDefinition Id="FX7ukQG2I3pMliRL3tdrAZ" IsHidden="true" />
           </Patch>
         </Node>
       </Canvas>

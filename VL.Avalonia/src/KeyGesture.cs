@@ -20,20 +20,22 @@ namespace VL.Avalonia
     [ProcessNode(Name = "KeyGesture (String)")]
     public partial class KeyGestureStringWrapper : KeyGestureWrapperBase
     {
-        private Optional<string> _gesture;
+        private Optional<string> _input;
 
-        /// <param name="gesture">The key gesture string to parse. See <see cref="KeyGesture.Parse(string)"/> for format details.
+        /// <param name="input">The key gesture string to parse. See <see cref="KeyGesture.Parse(string)"/> for format details.
         /// <remarks>Ctrl + X</remarks>
         /// </param>
-        public void SetGesture(Optional<string> gesture)
+        public void SetGesture(Optional<string> input)
         {
-            if (_gesture != gesture)
+            if (_input != input)
             {
-                if (gesture.HasValue)
+                if (input.HasValue)
                 {
                     try
                     {
-                        _output = KeyGesture.Parse(gesture.Value);
+                        var gesture = KeyGesture.Parse(input.Value);
+
+                        _output = gesture;
                     }
                     catch (Exception ex)
                     {
@@ -46,7 +48,7 @@ namespace VL.Avalonia
                     _output = KeyGestureExtensions.Default();
                 }
 
-                _gesture = gesture;
+                _input = input;
             }
         }
     }
