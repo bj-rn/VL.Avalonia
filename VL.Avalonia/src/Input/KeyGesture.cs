@@ -3,7 +3,7 @@ using VL.Avalonia.Extensions;
 using VL.Core;
 using VL.Core.Import;
 
-namespace VL.Avalonia
+namespace VL.Avalonia.Input
 {
     /// <summary>
     /// Provides functionality for configuring key gesture input, including support for specifying
@@ -60,8 +60,8 @@ namespace VL.Avalonia
         private Key _key = Key.None;
         private KeyModifiers _modifiers = KeyModifiers.None;
 
-        /// <param name="key">The keyboard key to use. See <see cref="Avalonia.Input.Key"/> for possible values</param>
-        /// <param name="modifiers">The keyboard modifiers to use. See <see cref="Avalonia.Input.Key"/> for possible values</param>
+        /// <param name="key">The keyboard key to use. See <see cref="Input.Key"/> for possible values</param>
+        /// <param name="modifiers">The keyboard modifiers to use. See <see cref="Input.Key"/> for possible values</param>
         public void SetValue(Key key = Key.None, KeyModifiers modifiers = KeyModifiers.None)
         {
             if (_key != key || _modifiers != modifiers)
