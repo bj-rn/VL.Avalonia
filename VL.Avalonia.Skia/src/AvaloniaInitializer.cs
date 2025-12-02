@@ -12,13 +12,17 @@ namespace VL.Avalonia.Skia
         // There is already static Application.Current.Instance
         // in Avalonia, might it's better to use it?
         public static Application Instance;
-        public static void Init() => Instance ??=
-            AppBuilder.Configure<App>()
-            .UseGammaSkia()
-            .UseGammaSkiaDefaults()
-            .LogToTrace(LogEventLevel.Verbose)
-            .SetupWithLifetime(new GammaSkiaWinFormsLifetime())
-            .Instance;
+
+        public static void Init() =>
+            Instance ??= AppBuilder
+                .Configure<App>()
+                .UseGammaSkia()
+                .UseGammaSkiaDefaults()
+#if DEBUG
+                .LogToTrace(LogEventLevel.Verbose)
+#endif
+                .SetupWithLifetime(new GammaSkiaWinFormsLifetime())
+                .Instance;
 
         sealed class App : Application
         {
