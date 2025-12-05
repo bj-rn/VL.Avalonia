@@ -3,6 +3,7 @@ using Stride.Core.Mathematics;
 using VL.Avalonia.Skia;
 using VL.Core;
 using VL.Core.Import;
+using VL.Lib.IO.Notifications;
 using VL.Lib.Mathematics;
 using VL.Skia;
 
@@ -102,8 +103,61 @@ namespace VL.Avalonia.Controls
     }
 
     [ProcessNode(Name = "SkiaLayerControl")]
-    public partial class SkiaLayerControlWrapper : SkiaMediaControlWrapperBase<SkiaLayerControl>
+    public partial class SkiaLayerControlWrapper
+        : SkiaMediaControlWrapperBase<SkiaLayerControl>,
+            IDisposable
     {
+        private IDisposable? _notificationsSubscriptions;
+        private Optional<IObservable<INotification>> _notificationsSource;
+
+        [Fragment(Order = PinOrder.Main)]
+        public void SetNotificationsSource(
+            [Pin(Visibility = Model.PinVisibility.Optional)]
+                Optional<IObservable<INotification>> notificationsSource
+        )
+        {
+            if (notificationsSource.HasValue)
+            {
+                if (notificationsSource.Value.Equals(_notificationsSource.Value))
+                    return;
+
+                _notificationsSubscriptions?.Dispose();
+
+                _notificationsSource = notificationsSource;
+
+                _notificationsSubscriptions = _notificationsSource.Value.Subscribe(notification =>
+                    _layer.Value?.Notify(notification, _callerInfo.Value ?? CallerInfo.Default)
+                );
+            }
+            else
+            {
+                _notificationsSubscriptions?.Dispose();
+
+                _notificationsSource = default;
+            }
+        }
+
+        private Optional<CallerInfo> _callerInfo;
+
+        [Fragment(Order = PinOrder.Main)]
+        public void SetCallerInfo(
+            [Pin(Visibility = Model.PinVisibility.Optional)] Optional<CallerInfo> callerInfo
+        )
+        {
+            if (callerInfo != _callerInfo)
+            {
+                if (callerInfo.HasValue)
+                {
+                    _callerInfo = callerInfo.Value;
+                }
+                else
+                {
+                    _callerInfo = default;
+                }
+                _callerInfo = callerInfo;
+            }
+        }
+
         protected Optional<ILayer> _layer;
 
         [Fragment(Order = PinOrder.Main)]
@@ -126,7 +180,10 @@ namespace VL.Avalonia.Controls
 
         protected Optional<RectangleF> _layerBounds;
 
-        public void SetLayerBounds(Optional<RectangleF> layerBounds)
+        [Fragment(Order = PinOrder.Action)]
+        public void SetLayerBounds(
+            [Pin(Visibility = Model.PinVisibility.Optional)] Optional<RectangleF> layerBounds
+        )
         {
             if (_layerBounds != layerBounds)
             {
@@ -138,8 +195,14 @@ namespace VL.Avalonia.Controls
                 {
                     _output.LayerBounds = null;
                 }
+
                 _layerBounds = layerBounds;
             }
+        }
+
+        public void Dispose()
+        {
+            _notificationsSubscriptions?.Dispose();
         }
     }
 }

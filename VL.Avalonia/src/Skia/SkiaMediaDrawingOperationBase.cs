@@ -156,8 +156,8 @@ namespace VL.Avalonia.Skia
     public class SkiaLayerDrawingOperation : SkiaMediaDrawingOperationBase
     {
         public ILayer? Layer { get; }
-        public float Scaling { get; }
         public RectangleF? LayerBounds { get; }
+        public float Scaling { get; }
 
         public SkiaLayerDrawingOperation(
             ILayer? layer,
@@ -170,8 +170,8 @@ namespace VL.Avalonia.Skia
             : base(bounds, mode, anchor)
         {
             Layer = layer;
-            Scaling = scaling;
             LayerBounds = layerBounds;
+            Scaling = scaling;
         }
 
         public override void Render(ImmediateDrawingContext context)
@@ -207,8 +207,6 @@ namespace VL.Avalonia.Skia
                             );
 
                             // Setup Matrix to map LayerBounds to TargetBounds
-                            // T = Translate(Target.TopLeft) * Scale(Target.Size / Layer.Size) * Translate(-Layer.TopLeft)
-
                             var scaleX = targetBounds.Width / layerSize.X;
                             var scaleY = targetBounds.Height / layerSize.Y;
 
@@ -219,27 +217,36 @@ namespace VL.Avalonia.Skia
                         else
                         {
                             canvas.ClipRect(targetBounds.ToRect().ToSKRect());
+                            // Assume generic layer draws at 0,0, so we move to target bounds
+                            canvas.Translate(targetBounds.X, targetBounds.Y);
                         }
 
-                        var callerInfo = CallerInfo.InRenderer(
-                            targetBounds.Width,
-                            targetBounds.Height,
-                            canvas,
-                            lease.GrContext
-                        );
+                        // IMPORTANT: VL.Skia layers (specifically TransformUpstream) rely on CallerInfo.Transformation
+                        // to be the *current total* transformation (including Window/Avalonia transforms).
+                        var totalMatrix = canvas.TotalMatrix;
+
+                        var viewportW = layerBounds.HasValue
+                            ? layerBounds.Value.Width
+                            : targetBounds.Width;
+                        var viewportH = layerBounds.HasValue
+                            ? layerBounds.Value.Height
+                            : targetBounds.Height;
+
+                        var callerInfo = CallerInfo
+                            .InRenderer(
+                                viewportW,
+                                viewportH,
+                                canvas,
+                                lease.GrContext
+                            // TODO:  Scaling
+                            )
+                            .WithTransformation(totalMatrix);
 
                         if (layerBounds.HasValue)
                         {
                             callerInfo = callerInfo with
                             {
                                 ViewportBounds = layerBounds.Value.ToRect().ToSKRect(),
-                            };
-                        }
-                        else
-                        {
-                            callerInfo = callerInfo with
-                            {
-                                ViewportBounds = targetBounds.ToRect().ToSKRect(),
                             };
                         }
 
