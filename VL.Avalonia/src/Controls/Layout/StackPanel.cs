@@ -28,13 +28,14 @@ public partial class StackPanelSpectralWrapper : PanelWrapperBase<StackPanel>
     protected Optional<float> _spacing;
 }
 
-
 /// <inheritdoc cref="StackPanelSpectralWrapper"/>
 [ProcessNode(Name = "StackPanel")]
 public partial class StackPanelWrapper : StackPanelSpectralWrapper
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }

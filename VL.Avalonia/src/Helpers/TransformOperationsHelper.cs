@@ -6,7 +6,11 @@ namespace VL.Avalonia.Helpers
 {
     public static class TransformOperationsHelper
     {
-        public static TransformOperations TransformSRT(Optional<Vector2> scale, Optional<float> rotation, Optional<Vector2> translation)
+        public static TransformOperations TransformSRT(
+            Optional<Vector2> scale,
+            Optional<float> rotation,
+            Optional<Vector2> translation
+        )
         {
             var builder = TransformOperations.CreateBuilder(3);
 

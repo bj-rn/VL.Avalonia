@@ -13,14 +13,19 @@ public partial class ConicGradientBrushWrapper : GradientBrushWrapperBase<ConicG
 {
     protected Optional<Vector2> _center;
     protected Optional<RelativeUnit> _relativeUnit;
+
     public void SetCenter(Optional<Vector2> center, Optional<RelativeUnit> relativeUnit)
     {
         if (_center != center || _relativeUnit != relativeUnit)
         {
             if (center.HasValue)
             {
-                _output.SetValue(ConicGradientBrush.CenterProperty,
-                    center.Value.ToRelativePoint(relativeUnit.HasValue ? relativeUnit.Value : RelativeUnit.Relative));
+                _output.SetValue(
+                    ConicGradientBrush.CenterProperty,
+                    center.Value.ToRelativePoint(
+                        relativeUnit.HasValue ? relativeUnit.Value : RelativeUnit.Relative
+                    )
+                );
             }
             else
             {
@@ -33,6 +38,7 @@ public partial class ConicGradientBrushWrapper : GradientBrushWrapperBase<ConicG
     }
 
     protected Optional<float> _angle;
+
     public void SetAngle(Optional<float> angle)
     {
         if (_angle != angle)

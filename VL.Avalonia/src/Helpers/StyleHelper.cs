@@ -23,9 +23,15 @@ public static class PropertyRegistryHelper
     /// <param name="property">When the method returns, contains the matching <see cref="AvaloniaProperty"/> if found; otherwise, <see
     /// langword="null"/>.</param>
     /// <returns><see langword="true"/> if a property with the specified name is found; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetProperty(StyledElement owner, string propertyName, out AvaloniaProperty? property)
+    public static bool TryGetProperty(
+        StyledElement owner,
+        string propertyName,
+        out AvaloniaProperty? property
+    )
     {
-        property = AvaloniaPropertyRegistry.Instance.GetRegistered(owner.GetType()).FirstOrDefault(p => p.Name == propertyName);
+        property = AvaloniaPropertyRegistry
+            .Instance.GetRegistered(owner.GetType())
+            .FirstOrDefault(p => p.Name == propertyName);
         return property != null;
     }
 }
@@ -42,7 +48,12 @@ public static class StyleExtensions
     /// <param name="propertyName">The name of the property for which the <see cref="Setter"/> is being added.</param>
     /// <param name="value">The value to set for the specified property. Can be <see langword="null"/>.</param>
     /// <returns>The original <see cref="Style"/> instance, with the <see cref="Setter"/> added if the property was found.</returns>
-    public static Style TryAddSetter(this Style style, StyledElement owner, string propertyName, object? value)
+    public static Style TryAddSetter(
+        this Style style,
+        StyledElement owner,
+        string propertyName,
+        object? value
+    )
     {
         if (PropertyRegistryHelper.TryGetProperty(owner, propertyName, out var property))
         {
@@ -59,7 +70,10 @@ public static class StyledElementExtensions
 {
     public static bool TryParseClasses(string? input, out IEnumerable<string>? classes)
     {
-        classes = input?.Split(" ", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        classes = input?.Split(
+            " ",
+            StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries
+        );
 
         return classes != null && classes.Any();
     }
@@ -103,4 +117,3 @@ public static class StyledElementExtensions
         }
     }
 }
-

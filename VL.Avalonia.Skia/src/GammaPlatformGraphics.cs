@@ -23,9 +23,7 @@ namespace VL.Avalonia.Skia
         {
             public bool IsLost => false;
 
-            public void Dispose()
-            {
-            }
+            public void Dispose() { }
 
             public IDisposable EnsureCurrent()
             {

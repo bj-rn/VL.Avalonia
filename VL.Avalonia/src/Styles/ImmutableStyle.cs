@@ -14,7 +14,8 @@ namespace VL.Avalonia.Styles
     /// <param name="Input">Upstream style setters</param>
     /// <param name="StyleValue">Setter property value</param>
     /// <param name="StyleName">Setter property name</param>
-    public record struct ImmutableSetter<T>(IAvaloniaStyle? Input, T? StyleValue, string StyleName) : IAvaloniaStyle
+    public record struct ImmutableSetter<T>(IAvaloniaStyle? Input, T? StyleValue, string StyleName)
+        : IAvaloniaStyle
     {
         public Style BuildStyle(StyledElement owner, Style style)
         {

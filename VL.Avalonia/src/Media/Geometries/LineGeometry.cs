@@ -13,6 +13,7 @@ namespace VL.Avalonia.Media;
 public partial class LineGeometryWrapper : GeometryWrapperBase<LineGeometry>
 {
     private Optional<Vector2> _startPoint;
+
     /// <param name="startPoint">Sets the start point of the line.</param>
     public void SetStartPoint(Optional<Vector2> startPoint)
     {
@@ -31,6 +32,7 @@ public partial class LineGeometryWrapper : GeometryWrapperBase<LineGeometry>
     }
 
     private Optional<Vector2> _endPoint;
+
     /// <param name="endPoint">Sets the end point of the line.</param>
     public void SetEndPoint(Optional<Vector2> endPoint)
     {
@@ -48,4 +50,3 @@ public partial class LineGeometryWrapper : GeometryWrapperBase<LineGeometry>
         }
     }
 }
-

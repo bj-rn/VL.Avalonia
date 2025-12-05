@@ -11,14 +11,19 @@ namespace VL.Avalonia.Controls.Primitives;
 /// Gonna comment few props for convenience, use Style Setters instead.
 /// </summary>
 [Obsolete("Overcomplicated")]
-public abstract partial class StyledElementWrapperBase<T> where T : StyledElement
+public abstract partial class StyledElementWrapperBase<T>
+    where T : StyledElement
 {
     #region Styling Properties (from StyledElement)
 
     /// <param name="name">
     /// The name identifier of the control for styling and finding purposes
     /// </param>
-    [ImplementProperty("StyledElement.NameProperty", Order = -1, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "StyledElement.NameProperty",
+        Order = -1,
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<string> _name;
 
     /*
@@ -32,7 +37,11 @@ public abstract partial class StyledElementWrapperBase<T> where T : StyledElemen
     /// <param name="classes">
     /// Collection of CSS-like class names for styling purposes
     /// </param>
-    [ImplementProperty("StyledElement.ClassesProperty", Order = -3, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "StyledElement.ClassesProperty",
+        Order = -3,
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<Classes> _classes;
 
     #endregion

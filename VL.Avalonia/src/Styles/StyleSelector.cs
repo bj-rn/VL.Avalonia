@@ -11,6 +11,7 @@ namespace VL.Avalonia.Styles
         public IAvaloniaStyle Output => _output;
 
         protected Optional<IAvaloniaStyle> _input;
+
         public void SetInput(Optional<IAvaloniaStyle> input)
         {
             if (_input != input)
@@ -29,6 +30,7 @@ namespace VL.Avalonia.Styles
         }
 
         protected Optional<IAvaloniaStyle> _selectorStyle;
+
         public void SetSelectorStyle(Optional<IAvaloniaStyle> selectorStyle)
         {
             if (_selectorStyle != selectorStyle)
@@ -47,6 +49,7 @@ namespace VL.Avalonia.Styles
         }
 
         protected Optional<string> _selectorString;
+
         public void SetSelector(Optional<string> selectorString)
         {
             if (_selectorString != selectorString)
@@ -56,7 +59,6 @@ namespace VL.Avalonia.Styles
                     var selector = SelectorHelper.ParseSelector(selectorString.Value);
 
                     _output = _output with { Selector = selector };
-
                 }
                 else
                 {

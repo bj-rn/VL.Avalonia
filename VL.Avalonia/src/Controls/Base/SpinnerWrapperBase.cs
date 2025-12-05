@@ -1,5 +1,5 @@
-﻿using Avalonia.Controls;
-using System.Reactive;
+﻿using System.Reactive;
+using Avalonia.Controls;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
@@ -12,11 +12,13 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/spinner">Spinner</see>
 /// </summary>
 [ProcessNode]
-public abstract partial class SpinnerWrapperBase<T> : ContentControlWrapperBase<T> where T : Spinner, new()
+public abstract partial class SpinnerWrapperBase<T> : ContentControlWrapperBase<T>
+    where T : Spinner, new()
 {
     #region Spin Behavior Properties
 
     protected IChannel<Unit>? _onSpinIncrease;
+
     /// <param name="onSpinIncrease">
     /// Triggered on spin increase
     /// </param>
@@ -29,6 +31,7 @@ public abstract partial class SpinnerWrapperBase<T> : ContentControlWrapperBase<
     }
 
     protected IChannel<Unit>? _onSpinDecrease;
+
     /// <param name="onSpinDecrease">
     /// Triggered on spin decrease
     /// </param>
@@ -55,7 +58,10 @@ public abstract partial class SpinnerWrapperBase<T> : ContentControlWrapperBase<
         };
     }
 
-    [ImplementProperty("Spinner.ValidSpinDirectionProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "Spinner.ValidSpinDirectionProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<ValidSpinDirections> _validSpinDirection;
 
     #endregion

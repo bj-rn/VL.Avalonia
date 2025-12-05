@@ -13,6 +13,7 @@ namespace VL.Avalonia.Media;
 public partial class EllipseGeometryWrapper : GeometryWrapperBase<EllipseGeometry>
 {
     protected Optional<Vector2> _radius;
+
     /// <param name="radius">Sets a Vector2 that defines the radius in the XY-axis of the ellipse.</param>
     public void SetRadius(Optional<Vector2> radius)
     {
@@ -34,6 +35,7 @@ public partial class EllipseGeometryWrapper : GeometryWrapperBase<EllipseGeometr
     }
 
     protected Optional<Vector2> _center;
+
     /// <param name="center">Sets a point that defines the center of the ellipse</param>
     public void SetCenter(Optional<Vector2> center)
     {
@@ -53,6 +55,7 @@ public partial class EllipseGeometryWrapper : GeometryWrapperBase<EllipseGeometr
     }
 
     protected Optional<RectangleF> _rect;
+
     /// <param name="rect">Sets a rect that defines the bounds</param>
     public void SetRect(Optional<RectangleF> rect)
     {
@@ -60,7 +63,7 @@ public partial class EllipseGeometryWrapper : GeometryWrapperBase<EllipseGeometr
         {
             if (rect.HasValue)
             {
-                // TODO: 
+                // TODO:
                 // _output = new EllipseGeometry(Rect)
 
                 _output.SetValue(EllipseGeometry.RectProperty, rect.Value.ToRect());

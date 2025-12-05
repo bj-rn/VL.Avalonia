@@ -12,8 +12,11 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "MenuFlyout (Spectral)")]
 public partial class MenuFlyoutSpectralWrapper : FlyoutWrapperBase<MenuFlyout>
 {
-    protected IChannel<Spread<object?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<Spread<object?>>();
+    protected IChannel<Spread<object?>> _itemsChannel = ChannelHelpers.CreateChannelOfType<
+        Spread<object?>
+    >();
     protected Spread<object?> _items;
+
     [Fragment(Order = -10)]
     public virtual void SetItems(Spread<object?> items)
     {
@@ -34,9 +37,12 @@ public partial class MenuFlyoutSpectralWrapper : FlyoutWrapperBase<MenuFlyout>
 [ProcessNode(Name = "MenuFlyout")]
 public partial class MenuFlyoutWrapper : MenuFlyoutSpectralWrapper
 {
-    public MenuFlyoutWrapper() : base() { }
+    public MenuFlyoutWrapper()
+        : base() { }
 
     [Fragment(Order = -5)]
-    public override void SetItems([Pin(PinGroupKind = VL.Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<object?> items)
-        => base.SetItems(items);
+    public override void SetItems(
+        [Pin(PinGroupKind = VL.Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<object?> items
+    ) => base.SetItems(items);
 }

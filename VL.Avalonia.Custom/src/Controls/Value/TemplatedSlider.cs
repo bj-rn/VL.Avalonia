@@ -2,8 +2,5 @@
 
 namespace VL.Avalonia.Custom.Controls.Value
 {
-    public partial class TemplatedSlider : Slider
-    {
-
-    }
+    public partial class TemplatedSlider : Slider { }
 }

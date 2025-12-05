@@ -10,9 +10,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/canvas">Canvas</see>
 /// </summary>
 [ProcessNode(Name = "Canvas (Spectral)")]
-public partial class CanvasSpectralWrapper : PanelWrapperBase<Canvas>
-{
-}
+public partial class CanvasSpectralWrapper : PanelWrapperBase<Canvas> { }
 
 /// <inheritdoc cref="CanvasSpectralWrapper"/>
 [ProcessNode(Name = "Canvas")]
@@ -20,8 +18,10 @@ public partial class CanvasWrapper : CanvasSpectralWrapper
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }
 
 /// <summary>
@@ -32,6 +32,7 @@ public partial class CanvasWrapper : CanvasSpectralWrapper
 public partial class CanvasLeftProperty : AttachedPropertyBase
 {
     private Optional<float> _left;
+
     /// <param name="left">
     /// (Attached) The distance from the left edge of the Canvas to the child's left edge (NaN for unset).
     /// </param>
@@ -70,6 +71,7 @@ public partial class CanvasLeftProperty : AttachedPropertyBase
 public partial class CanvasRightProperty : AttachedPropertyBase
 {
     private Optional<float> _right;
+
     /// <param name="right">
     /// (Attached) The distance from the right edge of the Canvas to the child's right edge (NaN for unset).
     /// </param>
@@ -108,6 +110,7 @@ public partial class CanvasRightProperty : AttachedPropertyBase
 public partial class CanvasTopProperty : AttachedPropertyBase
 {
     private Optional<float> _top;
+
     /// <param name="top">
     /// (Attached) The distance from the top edge of the Canvas to the child's top edge (NaN for unset).
     /// </param>
@@ -146,6 +149,7 @@ public partial class CanvasTopProperty : AttachedPropertyBase
 public partial class CanvasBottomProperty : AttachedPropertyBase
 {
     private Optional<float> _bottom;
+
     /// <param name="bottom">
     /// (Attached) The distance from the bottom edge of the Canvas to the child's bottom edge (NaN for unset).
     /// </param>

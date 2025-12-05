@@ -11,6 +11,7 @@ namespace VL.Avalonia.Media.Brushes;
 public partial class ImageBrushWrapper : TileBrushWrapperBase<ImageBrush>
 {
     protected Optional<Path> _source;
+
     /// <param name="source">
     /// Sets image source path, and loads it as Avalonia bitmap
     /// </param>

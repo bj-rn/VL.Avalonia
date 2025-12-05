@@ -4,7 +4,5 @@
     /// Used in CodeGen to auto Output
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
-    internal sealed class ImplementOutput : Attribute
-    {
-    }
+    internal sealed class ImplementOutput : Attribute { }
 }

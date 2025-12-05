@@ -10,7 +10,9 @@ namespace VL.Avalonia.Custom.Controls.Value
             set => SetValue(ContentProperty, value);
         }
 
-        public static readonly StyledProperty<object?> ContentProperty =
-            AvaloniaProperty.Register<TemplatedSlider, object?>(nameof(Content));
+        public static readonly StyledProperty<object?> ContentProperty = AvaloniaProperty.Register<
+            TemplatedSlider,
+            object?
+        >(nameof(Content));
     }
 }

@@ -7,7 +7,8 @@ using VL.Core.Import;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "TransitioningContentControl")]
-public partial class TransitioningContentControlWrapper : ContentControlWrapperBase<TransitioningContentControl>
+public partial class TransitioningContentControlWrapper
+    : ContentControlWrapperBase<TransitioningContentControl>
 {
     [ImplementProperty("TransitioningContentControl.PageTransitionProperty")]
     protected Optional<IPageTransition> _pageTransition;

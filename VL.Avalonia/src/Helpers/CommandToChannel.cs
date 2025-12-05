@@ -11,7 +11,10 @@ public class ChannelCommand<T> : ICommand
     public Func<ChannelCommand<T>, object?, T> OnExecute { get; set; }
     public Func<ChannelCommand<T>, object?, bool>? OnCanExecute { get; set; }
 
-    public ChannelCommand(Func<ChannelCommand<T>, object?, T> onExecute, Func<ChannelCommand<T>, object?, bool>? onCanExecute = null)
+    public ChannelCommand(
+        Func<ChannelCommand<T>, object?, T> onExecute,
+        Func<ChannelCommand<T>, object?, bool>? onCanExecute = null
+    )
     {
         OnExecute = onExecute;
         OnCanExecute = onCanExecute;
@@ -21,8 +24,7 @@ public class ChannelCommand<T> : ICommand
 
     public bool CanExecute(object? parameter) => OnCanExecute?.Invoke(this, parameter) ?? true;
 
-    public void Execute(object? parameter) =>
-        Channel?.OnNext(OnExecute.Invoke(this, parameter));
+    public void Execute(object? parameter) => Channel?.OnNext(OnExecute.Invoke(this, parameter));
 }
 
 public class UnitChannelCommand : ICommand

@@ -12,17 +12,25 @@ namespace VL.Avalonia.Skia
                 if (s is CallerInfo c)
                     return new GammaSkiaRenderTarget(c);
 
-            throw new NotSupportedException("Don't know how to create a Skia render target from any of provided surfaces");
+            throw new NotSupportedException(
+                "Don't know how to create a Skia render target from any of provided surfaces"
+            );
         }
 
-        public IDrawingContextLayerImpl CreateOffscreenRenderTarget(PixelSize pixelSize, double scaling)
+        public IDrawingContextLayerImpl CreateOffscreenRenderTarget(
+            PixelSize pixelSize,
+            double scaling
+        )
         {
             throw new NotImplementedException();
         }
 
         public bool IsLost => false;
-        public IReadOnlyDictionary<Type, object> PublicFeatures { get; } = new Dictionary<Type, object>();
+        public IReadOnlyDictionary<Type, object> PublicFeatures { get; } =
+            new Dictionary<Type, object>();
+
         public object? TryGetFeature(Type featureType) => null;
+
         public void Dispose() { }
     }
 }

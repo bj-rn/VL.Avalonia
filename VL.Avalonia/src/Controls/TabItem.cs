@@ -18,7 +18,8 @@ public partial class TabItemWrapper : HeaderedControlWrapperBase<TabItem>
 
     protected ChannelTwoWayBinding<bool> _isSelectedBinding;
 
-    public TabItemWrapper() : base()
+    public TabItemWrapper()
+        : base()
     {
         _isSelectedBinding = new ChannelTwoWayBinding<bool>(_output, TabItem.IsSelectedProperty);
     }
@@ -26,10 +27,14 @@ public partial class TabItemWrapper : HeaderedControlWrapperBase<TabItem>
     /// <param name="isSelectedChannel">
     /// Whether this list item is currently selected
     /// </param>
-    public void SetIsSelectedChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool> isSelectedChannel) =>
-        _isSelectedBinding.SetChannel(isSelectedChannel);
+    public void SetIsSelectedChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool> isSelectedChannel
+    ) => _isSelectedBinding.SetChannel(isSelectedChannel);
 
-    [ImplementProperty("TabItem.TabStripPlacementProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TabItem.TabStripPlacementProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<Dock> _tabStripPlacement;
 
     #endregion

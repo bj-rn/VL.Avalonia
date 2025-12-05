@@ -6,12 +6,14 @@ using VL.Core.Import;
 namespace VL.Avalonia.Animation.PageTransitions;
 
 [ProcessNode(Name = "CrossFade")]
-public partial class CrossFadeWrapper<T> where T : CrossFade, new()
+public partial class CrossFadeWrapper<T>
+    where T : CrossFade, new()
 {
     protected readonly T _output = new();
     public T Output => _output;
 
     protected Optional<TimeSpan> _duration;
+
     public void SetDuration(Optional<TimeSpan> duration)
     {
         if (_duration != duration)
@@ -30,6 +32,7 @@ public partial class CrossFadeWrapper<T> where T : CrossFade, new()
     }
 
     protected Optional<Easing> _fadeInEasing;
+
     public void SetFadeInEasing(Optional<Easing> fadeInEasing)
     {
         if (_fadeInEasing != fadeInEasing)
@@ -48,6 +51,7 @@ public partial class CrossFadeWrapper<T> where T : CrossFade, new()
     }
 
     protected Optional<Easing> _fadeOutEasing;
+
     public void SetFadeOutEasing(Optional<Easing> fadeOutEasing)
     {
         if (_fadeOutEasing != fadeOutEasing)

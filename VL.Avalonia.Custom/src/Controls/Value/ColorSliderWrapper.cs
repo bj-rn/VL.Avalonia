@@ -19,12 +19,15 @@ namespace VL.Avalonia.Custom.Controls.Value
     {
         public ColorSliderWrapper()
         {
-            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorSlider.HsvColorProperty);
+            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(
+                _output,
+                ColorSlider.HsvColorProperty
+            );
             _colorChannel = new ChannelTwoWayBinding<Color>(_output, ColorSlider.ColorProperty);
         }
 
-
         protected ChannelTwoWayBinding<HsvColor> _hsvColorBinding;
+
         /// <param name="hsvColorChannel">
         /// Gets or sets the current value
         /// </param>
@@ -32,8 +35,8 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
-
         protected ChannelTwoWayBinding<Color> _colorChannel;
+
         /// <param name="colorChannel">
         /// Gets or sets the current value
         /// </param>
@@ -41,10 +44,12 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetColorChannel(IChannel<Color> colorChannel) =>
             _colorChannel.SetChannel(colorChannel);
 
-
         protected Optional<ColorComponent> _colorComponent;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetColorComponent([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorComponent> colorComponent)
+        public void SetColorComponent(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorComponent> colorComponent
+        )
         {
             if (_colorComponent != colorComponent)
             {
@@ -61,11 +66,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
-
         protected Optional<ColorModel> _colorModel;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetColorModel([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel)
+        public void SetColorModel(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorModel> colorModel
+        )
         {
             if (_colorModel != colorModel)
             {
@@ -82,10 +88,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isAlphaVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsAlphaVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAlphaVisible)
+        public void SetIsAlphaVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAlphaVisible
+        )
         {
             if (_isAlphaVisible != isAlphaVisible)
             {
@@ -102,10 +110,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isPerspective;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsPerspective([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isPerspective)
+        public void SetIsPerspective(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isPerspective
+        )
         {
             if (_isPerspective != isPerspective)
             {
@@ -122,10 +132,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isRoundingEnable;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsRoundingEnable([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isRoundingEnable)
+        public void SetIsRoundingEnable(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isRoundingEnable
+        )
         {
             if (_isRoundingEnable != isRoundingEnable)
             {

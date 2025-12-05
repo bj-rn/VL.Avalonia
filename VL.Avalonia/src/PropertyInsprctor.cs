@@ -25,15 +25,14 @@ namespace VL.Avalonia
                     if (type != null)
                     {
                         var properties = AvaloniaPropertyRegistry.Instance.GetRegistered(type);
-                        _output = string.Join("\n", properties
-                            .Where(x => !x.IsReadOnly)
-                            .Select(x => x.Name)
-                            .OrderBy(x => x));
+                        _output = string.Join(
+                            "\n",
+                            properties.Where(x => !x.IsReadOnly).Select(x => x.Name).OrderBy(x => x)
+                        );
                     }
                 }
 
                 _input = input;
-
             }
 
             output = _output;

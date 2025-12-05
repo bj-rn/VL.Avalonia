@@ -8,6 +8,7 @@ namespace VL.Avalonia.Controls;
 public abstract class AttachedPropertyBase
 {
     internal Optional<Control> _input;
+
     public void SetInput(Optional<Control> input)
     {
         if (_input != input)
@@ -17,6 +18,7 @@ public abstract class AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     public Control? Output => _input.Value;
 
     protected abstract void UpdateSetters();

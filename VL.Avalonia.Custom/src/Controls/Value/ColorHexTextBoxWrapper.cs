@@ -5,7 +5,6 @@ using VL.Avalonia.Helpers;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
-
 namespace VL.Avalonia.Custom.Controls.Value
 {
     /// <summary>
@@ -35,9 +34,6 @@ namespace VL.Avalonia.Custom.Controls.Value
         /// Gets or sets the current value
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetColor(IChannel<Color> color) =>
-            _color.SetChannel(color);
-
-
+        public void SetColor(IChannel<Color> color) => _color.SetChannel(color);
     }
 }

@@ -15,6 +15,7 @@ namespace VL.Avalonia.Media;
 public partial class PolyLineGeometrySpectralWrapper : GeometryWrapperBase<PolylineGeometry>
 {
     protected Spread<Vector2> _points;
+
     /// <param name="points">The points.</param>
     public void SetPoints(Spread<Vector2> points)
     {

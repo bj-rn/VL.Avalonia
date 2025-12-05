@@ -7,7 +7,7 @@ namespace VL.Avalonia.Themes
     {
         Default,
         Light,
-        Dark
+        Dark,
     }
 
     public class Variants
@@ -16,13 +16,17 @@ namespace VL.Avalonia.Themes
         public static ThemeVariant LightTheme => ThemeVariant.Light;
         public static ThemeVariant DarkTheme => ThemeVariant.Dark;
 
-        public static ThemeVariant DefaultThemeVariant(Optional<AvaloniaDefaultThemeVariant> variant) =>
-            variant.HasValue ? variant.Value switch
-            {
-                AvaloniaDefaultThemeVariant.Default => ThemeVariant.Default,
-                AvaloniaDefaultThemeVariant.Light => ThemeVariant.Light,
-                AvaloniaDefaultThemeVariant.Dark => ThemeVariant.Dark,
-                _ => ThemeVariant.Default,
-            } : ThemeVariant.Default;
+        public static ThemeVariant DefaultThemeVariant(
+            Optional<AvaloniaDefaultThemeVariant> variant
+        ) =>
+            variant.HasValue
+                ? variant.Value switch
+                {
+                    AvaloniaDefaultThemeVariant.Default => ThemeVariant.Default,
+                    AvaloniaDefaultThemeVariant.Light => ThemeVariant.Light,
+                    AvaloniaDefaultThemeVariant.Dark => ThemeVariant.Dark,
+                    _ => ThemeVariant.Default,
+                }
+                : ThemeVariant.Default;
     }
 }

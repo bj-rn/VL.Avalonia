@@ -1,7 +1,7 @@
-﻿using Avalonia.Controls;
+﻿using System.Reactive;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
-using System.Reactive;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -15,12 +15,14 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class SplitButtonWrapperBase<T> : ContentControlWrapperBase<T> where T : SplitButton, new()
+public abstract partial class SplitButtonWrapperBase<T> : ContentControlWrapperBase<T>
+    where T : SplitButton, new()
 {
     #region Command Properties
 
     protected ChannelCommand<Unit> _command = new((s, a) => new Unit());
     protected Optional<IChannel<Unit>> _commandChannel;
+
     /// <param name="commandChannel">
     /// Unit command, fired on click
     /// </param>
@@ -38,7 +40,6 @@ public abstract partial class SplitButtonWrapperBase<T> : ContentControlWrapperB
             }
         }
     }
-
 
     ///// <param name="commandParameter">
     ///// Parameter to pass to the command when the primary button is clicked
@@ -68,4 +69,3 @@ public abstract partial class SplitButtonWrapperBase<T> : ContentControlWrapperB
 
     #endregion
 }
-

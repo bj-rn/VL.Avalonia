@@ -1,7 +1,7 @@
-﻿using Avalonia.Controls;
+﻿using System.Reactive;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
-using System.Reactive;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -15,11 +15,13 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class ButtonWrapperBase<T> : ContentControlWrapperBase<T> where T : Button, new()
+public abstract partial class ButtonWrapperBase<T> : ContentControlWrapperBase<T>
+    where T : Button, new()
 {
     #region Command Properties
 
     protected ChannelCommandBindingUnit _commandBinding;
+
     public ButtonWrapperBase()
     {
         _commandBinding = new ChannelCommandBindingUnit();

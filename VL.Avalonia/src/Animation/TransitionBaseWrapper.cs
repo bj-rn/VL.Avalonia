@@ -21,7 +21,8 @@ namespace VL.Avalonia.Animation.Transitions
     }
 
     [ProcessNode(HasStateOutput = true)]
-    public abstract partial class TransitionBaseWrapper<T> : IAvaloniaTransition where T : TransitionBase, new()
+    public abstract partial class TransitionBaseWrapper<T> : IAvaloniaTransition
+        where T : TransitionBase, new()
     {
         protected readonly T _output = new();
 
@@ -34,7 +35,10 @@ namespace VL.Avalonia.Animation.Transitions
         protected Optional<TimeSpan> _delay;
 
         protected Optional<Easing> _easing;
-        public void SetEasing([Pin(Visibility = Model.PinVisibility.Visible)] Optional<Easing> easing)
+
+        public void SetEasing(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<Easing> easing
+        )
         {
             if (_easing != easing)
             {
@@ -56,7 +60,10 @@ namespace VL.Avalonia.Animation.Transitions
         {
             if (Property.HasValue && owner != null)
             {
-                var property = AvaloniaPropertyRegistry.Instance.FindRegistered(owner.GetType(), Property.Value);
+                var property = AvaloniaPropertyRegistry.Instance.FindRegistered(
+                    owner.GetType(),
+                    Property.Value
+                );
 
                 if (property != null)
                 {

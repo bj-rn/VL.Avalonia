@@ -10,9 +10,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/button">Button</see>
 /// </summary>
 [ProcessNode(Name = "Button")]
-public partial class ButtonWrapper : ButtonWrapperBase<Button>
-{
-}
+public partial class ButtonWrapper : ButtonWrapperBase<Button> { }
 
 /// <summary>
 /// Untested

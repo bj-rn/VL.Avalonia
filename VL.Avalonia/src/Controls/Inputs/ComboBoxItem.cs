@@ -8,7 +8,4 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/comboboxitem">ComboBoxItem</see>
 /// </summary>
 [ProcessNode(Name = "ComboBoxItem")]
-public partial class ComboBoxItemWrapper : ListBoxItemWrapperBase<ComboBoxItem>
-{
-
-}
+public partial class ComboBoxItemWrapper : ListBoxItemWrapperBase<ComboBoxItem> { }

@@ -8,14 +8,21 @@ namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref="LayoutTransformControl"/>
     [ProcessNode(Name = "LayoutTransformControl")]
-    public partial class LayoutTransformControlWrapper : DecoratorBaseWrapper<LayoutTransformControl>
+    public partial class LayoutTransformControlWrapper
+        : DecoratorBaseWrapper<LayoutTransformControl>
     {
         /// <param name="layoutTransform">Sets the <see cref="LayoutTransformControl.LayoutTransform"/> for the LayoutTransformControl</param>
-        [ImplementProperty("LayoutTransformControl.LayoutTransformProperty", Order = PinOrder.Action)]
+        [ImplementProperty(
+            "LayoutTransformControl.LayoutTransformProperty",
+            Order = PinOrder.Action
+        )]
         private Optional<ITransform> _layoutTransform;
 
         /// <param name="useRenderTransform">Sets the <see cref="LayoutTransformControl.UseRenderTransform"/> for the LayoutTransformControl</param>
-        [ImplementProperty("LayoutTransformControl.UseRenderTransformProperty", PinVisibility = Model.PinVisibility.Optional)]
+        [ImplementProperty(
+            "LayoutTransformControl.UseRenderTransformProperty",
+            PinVisibility = Model.PinVisibility.Optional
+        )]
         private Optional<bool> _useRenderTransform;
     }
 }

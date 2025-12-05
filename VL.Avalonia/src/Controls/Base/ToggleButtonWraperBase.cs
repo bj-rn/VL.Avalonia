@@ -11,12 +11,20 @@ namespace VL.Avalonia.Controls;
 /// Base class for <c>ToggleButton</c> inheriting controls
 /// </summary>
 [ProcessNode]
-public abstract partial class ToggleButtonWrapperBase<T> : ButtonWrapperBase<T> where T : ToggleButton, new()
+public abstract partial class ToggleButtonWrapperBase<T> : ButtonWrapperBase<T>
+    where T : ToggleButton, new()
 {
     protected ChannelTwoWayBinding<bool, bool?> _isCheckedBinding;
-    protected ToggleButtonWrapperBase() : base()
+
+    protected ToggleButtonWrapperBase()
+        : base()
     {
-        _isCheckedBinding = new ChannelTwoWayBinding<bool, bool?>(_output, ToggleButton.IsCheckedProperty, (x) => x, (y) => y ?? false);
+        _isCheckedBinding = new ChannelTwoWayBinding<bool, bool?>(
+            _output,
+            ToggleButton.IsCheckedProperty,
+            (x) => x,
+            (y) => y ?? false
+        );
     }
 
     /// <param name="isCheckedChannel">
@@ -29,6 +37,9 @@ public abstract partial class ToggleButtonWrapperBase<T> : ButtonWrapperBase<T> 
     /// <param name="isThreeState">
     /// Whether the control supports three states (checked, unchecked, and indeterminate)
     /// </param>
-    [ImplementProperty("ToggleButton.IsThreeStateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ToggleButton.IsThreeStateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _isThreeState;
 }

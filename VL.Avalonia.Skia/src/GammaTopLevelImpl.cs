@@ -1,11 +1,11 @@
-﻿using Avalonia;
+﻿using System.Diagnostics;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Input.Raw;
 using Avalonia.Platform;
 using Avalonia.Rendering.Composition;
 using Avalonia.Skia;
-using System.Diagnostics;
 using VL.Lib.IO.Notifications;
 using VL.Skia;
 using Point = Avalonia.Point;
@@ -25,8 +25,8 @@ namespace VL.Avalonia.Skia
         public IPointerDevice TouchDevice { get; }
         public Compositor Compositor { get; }
 
-
         private readonly Stopwatch _stopwatch = Stopwatch.StartNew();
+
         public GammaTopLevelImpl(Compositor compositor)
         {
             KeyboardDevice = GammaDevices.KeyboardDevice;
@@ -58,6 +58,7 @@ namespace VL.Avalonia.Skia
         private Size _clientSize;
         private Size _requestedSize;
         public Size ClientSize => _clientSize;
+
         public void SetClientSize(Size clientSize, bool force = false)
         {
             if (_requestedSize != clientSize || force)
@@ -76,15 +77,12 @@ namespace VL.Avalonia.Skia
         // NEEDS WINDO HANDLE HERE
         public IPlatformHandle? Handle => new PlatformHandle(IntPtr.Zero, "STUB");
 
-
-
         public IInputRoot InputRoot { get; set; }
 
         private RawInputModifiers _inputModifiers;
         public Action<RawInputEventArgs>? Input { get; set; }
-        public void SetInputRoot(IInputRoot inputRoot)
-           => InputRoot = inputRoot;
 
+        public void SetInputRoot(IInputRoot inputRoot) => InputRoot = inputRoot;
 
         internal bool Notify(INotification notification, CallerInfo caller)
         {
@@ -96,9 +94,11 @@ namespace VL.Avalonia.Skia
             return HandleNotification(notification, position);
         }
 
-        internal bool SendNotification(INotification notification, Func<NotificationWithPosition, Vector2> getPosition)
+        internal bool SendNotification(
+            INotification notification,
+            Func<NotificationWithPosition, Vector2> getPosition
+        )
         {
-
             var position = new Point(0, 0);
 
             if (notification is NotificationWithPosition n)
@@ -121,10 +121,13 @@ namespace VL.Avalonia.Skia
             if (notification is TouchNotification touchNotification)
                 return HandleTouchNotification(touchNotification, input, position);
             return false;
-
         }
 
-        private bool HandleMouseNotification(MouseNotification notification, Action<RawInputEventArgs> input, Point position)
+        private bool HandleMouseNotification(
+            MouseNotification notification,
+            Action<RawInputEventArgs> input,
+            Point position
+        )
         {
             var e = default(RawInputEventArgs);
 
@@ -137,13 +140,49 @@ namespace VL.Avalonia.Skia
             }
 
             if (notification is MouseDownNotification mouseDown)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseDown.Buttons.ToEventType(false), position / _scaling, _inputModifiers));
+                input(
+                    e = new RawPointerEventArgs(
+                        MouseDevice,
+                        Timestamp,
+                        InputRoot,
+                        mouseDown.Buttons.ToEventType(false),
+                        position / _scaling,
+                        _inputModifiers
+                    )
+                );
             else if (notification is MouseUpNotification mouseUp)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, mouseUp.Buttons.ToEventType(true), position / _scaling, _inputModifiers));
+                input(
+                    e = new RawPointerEventArgs(
+                        MouseDevice,
+                        Timestamp,
+                        InputRoot,
+                        mouseUp.Buttons.ToEventType(true),
+                        position / _scaling,
+                        _inputModifiers
+                    )
+                );
             else if (notification is MouseMoveNotification mouseMove)
-                input(e = new RawPointerEventArgs(MouseDevice, Timestamp, InputRoot, RawPointerEventType.Move, position / _scaling, _inputModifiers));
+                input(
+                    e = new RawPointerEventArgs(
+                        MouseDevice,
+                        Timestamp,
+                        InputRoot,
+                        RawPointerEventType.Move,
+                        position / _scaling,
+                        _inputModifiers
+                    )
+                );
             else if (notification is MouseWheelNotification mouseWheel)
-                input(e = new RawMouseWheelEventArgs(MouseDevice, Timestamp, InputRoot, position / _scaling, new Vector(0, mouseWheel.WheelDelta / _scaling * 0.01), _inputModifiers));
+                input(
+                    e = new RawMouseWheelEventArgs(
+                        MouseDevice,
+                        Timestamp,
+                        InputRoot,
+                        position / _scaling,
+                        new Vector(0, mouseWheel.WheelDelta / _scaling * 0.01),
+                        _inputModifiers
+                    )
+                );
 
             if (e != null)
                 return e.Handled;
@@ -151,7 +190,10 @@ namespace VL.Avalonia.Skia
             return false;
         }
 
-        private bool HandleKeyNotification(KeyNotification notification, Action<RawInputEventArgs> input)
+        private bool HandleKeyNotification(
+            KeyNotification notification,
+            Action<RawInputEventArgs> input
+        )
         {
             var e = default(RawInputEventArgs);
 
@@ -161,11 +203,43 @@ namespace VL.Avalonia.Skia
             }
 
             if (notification is KeyDownNotification keyDown)
-                input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyDown, keyDown.KeyData.ToKey(), _inputModifiers, keyDown.KeyData.ToPhysicalKey(), keyDown.KeyData.ToKeySymbol()));
+                input(
+                    e = new RawKeyEventArgs(
+                        KeyboardDevice,
+                        Timestamp,
+                        InputRoot,
+                        RawKeyEventType.KeyDown,
+                        keyDown.KeyData.ToKey(),
+                        _inputModifiers,
+                        keyDown.KeyData.ToPhysicalKey(),
+                        keyDown.KeyData.ToKeySymbol()
+                    )
+                );
             else if (notification is KeyUpNotification keyUp)
-                input(e = new RawKeyEventArgs(KeyboardDevice, Timestamp, InputRoot, RawKeyEventType.KeyUp, keyUp.KeyData.ToKey(), _inputModifiers, keyUp.KeyData.ToPhysicalKey(), keyUp.KeyData.ToKeySymbol()));
-            else if (notification is KeyPressNotification keyPress && !char.IsControl(keyPress.KeyChar))
-                input(e = new RawTextInputEventArgs(KeyboardDevice, Timestamp, InputRoot, keyPress.KeyChar.ToString()));
+                input(
+                    e = new RawKeyEventArgs(
+                        KeyboardDevice,
+                        Timestamp,
+                        InputRoot,
+                        RawKeyEventType.KeyUp,
+                        keyUp.KeyData.ToKey(),
+                        _inputModifiers,
+                        keyUp.KeyData.ToPhysicalKey(),
+                        keyUp.KeyData.ToKeySymbol()
+                    )
+                );
+            else if (
+                notification is KeyPressNotification keyPress
+                && !char.IsControl(keyPress.KeyChar)
+            )
+                input(
+                    e = new RawTextInputEventArgs(
+                        KeyboardDevice,
+                        Timestamp,
+                        InputRoot,
+                        keyPress.KeyChar.ToString()
+                    )
+                );
 
             if (e != null)
                 return e.Handled;
@@ -173,13 +247,26 @@ namespace VL.Avalonia.Skia
             return false;
         }
 
-        private bool HandleTouchNotification(TouchNotification notification, Action<RawInputEventArgs> input, Point position)
+        private bool HandleTouchNotification(
+            TouchNotification notification,
+            Action<RawInputEventArgs> input,
+            Point position
+        )
         {
             var e = default(RawInputEventArgs);
 
             var eventType = notification.Kind.GetTouchPointerEventType();
 
-            input(e = new RawPointerEventArgs(TouchDevice, Timestamp, InputRoot, eventType, position / _scaling, _inputModifiers));
+            input(
+                e = new RawPointerEventArgs(
+                    TouchDevice,
+                    Timestamp,
+                    InputRoot,
+                    eventType,
+                    position / _scaling,
+                    _inputModifiers
+                )
+            );
 
             if (e != null)
                 return e.Handled;
@@ -196,12 +283,15 @@ namespace VL.Avalonia.Skia
         public Action? Closed { get; set; }
         public Action? LostFocus { get; set; }
 
-        public WindowTransparencyLevel TransparencyLevel { get; set; } = WindowTransparencyLevel.None;
+        public WindowTransparencyLevel TransparencyLevel { get; set; } =
+            WindowTransparencyLevel.None;
 
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L76
-        public AcrylicPlatformCompensationLevels AcrylicCompensationLevels { get; } = new(1.0, 1.0, 1.0);
+        public AcrylicPlatformCompensationLevels AcrylicCompensationLevels { get; } =
+            new(1.0, 1.0, 1.0);
 
         private ulong Timestamp => (ulong)_stopwatch.ElapsedMilliseconds;
+
         public IPopupImpl? CreatePopup() => null;
 
         internal void Render(CallerInfo caller)
@@ -229,6 +319,7 @@ namespace VL.Avalonia.Skia
         }
 
         public Point PointToClient(PixelPoint point) => point.ToPoint(_scaling);
+
         public PixelPoint PointToScreen(Point point) => PixelPoint.FromPoint(point, _scaling);
 
         // example from Godot
@@ -245,11 +336,16 @@ namespace VL.Avalonia.Skia
 
         // copy paste from here
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L376
-        public void SetTransparencyLevelHint(IReadOnlyList<WindowTransparencyLevel> transparencyLevels)
+        public void SetTransparencyLevelHint(
+            IReadOnlyList<WindowTransparencyLevel> transparencyLevels
+        )
         {
             foreach (var transparencyLevel in transparencyLevels)
             {
-                if (transparencyLevel == WindowTransparencyLevel.Transparent || transparencyLevel == WindowTransparencyLevel.None)
+                if (
+                    transparencyLevel == WindowTransparencyLevel.Transparent
+                    || transparencyLevel == WindowTransparencyLevel.None
+                )
                 {
                     TransparencyLevel = transparencyLevel;
                     return;
@@ -261,7 +357,7 @@ namespace VL.Avalonia.Skia
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L388
         public object? TryGetFeature(Type featureType)
         {
-            // throws 
+            // throws
             return null;
         }
 

@@ -13,7 +13,8 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class FlyoutWrapperBase<T> where T : PopupFlyoutBase, new()
+public abstract partial class FlyoutWrapperBase<T>
+    where T : PopupFlyoutBase, new()
 {
     protected readonly T _output = new();
     public T Output => _output;
@@ -43,21 +44,39 @@ public abstract partial class FlyoutWrapperBase<T> where T : PopupFlyoutBase, ne
     [ImplementProperty("PopupFlyoutBase.PlacementProperty")]
     protected Optional<PlacementMode> _placement;
 
-    [ImplementProperty("PopupFlyoutBase.PlacementGravityProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "PopupFlyoutBase.PlacementGravityProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<PopupGravity> _placementGravity;
 
-    [ImplementProperty("PopupFlyoutBase.PlacementAnchorProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "PopupFlyoutBase.PlacementAnchorProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<PopupAnchor> _pacementAnchor;
 
-    [ImplementProperty("PopupFlyoutBase.HorizontalOffsetProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "PopupFlyoutBase.HorizontalOffsetProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _horizontalOffset;
 
-    [ImplementProperty("PopupFlyoutBase.VerticalOffsetProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "PopupFlyoutBase.VerticalOffsetProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _verticalOffset;
 
-    [ImplementProperty("PopupFlyoutBase.ShowModeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "PopupFlyoutBase.ShowModeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FlyoutShowMode> _showMode;
 
-    [ImplementProperty("PopupFlyoutBase.OverlayDismissEventPassThroughProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "PopupFlyoutBase.OverlayDismissEventPassThroughProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _overlayDismissEventPassThroughProperty;
 }

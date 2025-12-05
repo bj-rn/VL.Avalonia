@@ -15,18 +15,26 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// https://github.com/AvaloniaUI/Avalonia/blob/56dd94c0b9dd8aeacb907676764872705b1986e5/src/Avalonia.Controls.ColorPicker/ColorSlider/ColorSlider.Properties.cs
     /// </summary>
     [ProcessNode(Name = "ColorView")]
-    public partial class ColorViewWrapper<T> : ControlWrapperBase<T> where T : ColorView, new()
+    public partial class ColorViewWrapper<T> : ControlWrapperBase<T>
+        where T : ColorView, new()
     {
         protected ChannelTwoWayBinding<HsvColor> _hsvBinding;
         protected ChannelTwoWayBinding<Color> _color;
         protected ChannelTwoWayBinding<int> _selectedIndex;
         protected ChannelTwoWayBinding<ColorModel> _colorModel;
+
         public ColorViewWrapper()
         {
             _hsvBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorView.HsvColorProperty);
-            _selectedIndex = new ChannelTwoWayBinding<int>(_output, ColorView.SelectedIndexProperty);
+            _selectedIndex = new ChannelTwoWayBinding<int>(
+                _output,
+                ColorView.SelectedIndexProperty
+            );
             _color = new ChannelTwoWayBinding<Color>(_output, ColorView.ColorProperty);
-            _colorModel = new ChannelTwoWayBinding<ColorModel>(_output, ColorView.ColorModelProperty);
+            _colorModel = new ChannelTwoWayBinding<ColorModel>(
+                _output,
+                ColorView.ColorModelProperty
+            );
         }
 
         /// <param name="hsvColorChannel">
@@ -36,7 +44,6 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvBinding.SetChannel(hsvColorChannel);
 
-
         /// <param name="selectedIndex">
         /// Gets or sets the current value
         /// </param>
@@ -44,14 +51,11 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetSelectedIndex(IChannel<int> selectedIndex) =>
             _selectedIndex.SetChannel(selectedIndex);
 
-
         /// <param name="color">
         /// Gets or sets the current value
         /// </param>
         [Fragment(Order = PinOrder.Main)]
-        public void SetColor(IChannel<Color> color) =>
-            _color.SetChannel(color);
-
+        public void SetColor(IChannel<Color> color) => _color.SetChannel(color);
 
         /// <param name="colorModel">
         /// Gets or sets the current value
@@ -60,17 +64,22 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetColorModel(IChannel<ColorModel> colorModel) =>
             _colorModel.SetChannel(colorModel);
 
-
-
         protected Optional<ColorSpectrumComponents> _colorSpectrumComponents;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetColorSpectrumComponent([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumComponents> colorSpectrumComponents)
+        public void SetColorSpectrumComponent(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<ColorSpectrumComponents> colorSpectrumComponents
+        )
         {
             if (_colorSpectrumComponents != colorSpectrumComponents)
             {
                 if (colorSpectrumComponents.HasValue)
                 {
-                    _output.SetValue(ColorView.ColorSpectrumComponentsProperty, colorSpectrumComponents.Value);
+                    _output.SetValue(
+                        ColorView.ColorSpectrumComponentsProperty,
+                        colorSpectrumComponents.Value
+                    );
                 }
                 else
                 {
@@ -81,16 +90,22 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<ColorSpectrumShape> _alphaComponentPosition;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetAlphaComponentPosition([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> alphaComponentPosition)
+        public void SetAlphaComponentPosition(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<ColorSpectrumShape> alphaComponentPosition
+        )
         {
             if (_alphaComponentPosition != alphaComponentPosition)
             {
                 if (alphaComponentPosition.HasValue)
                 {
-                    _output.SetValue(ColorView.ColorSpectrumShapeProperty, alphaComponentPosition.Value);
+                    _output.SetValue(
+                        ColorView.ColorSpectrumShapeProperty,
+                        alphaComponentPosition.Value
+                    );
                 }
                 else
                 {
@@ -101,16 +116,22 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<AlphaComponentPosition> _hexInputAlphaPosition;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetHexInputAlphaPosition([Pin(Visibility = Model.PinVisibility.Visible)] Optional<AlphaComponentPosition> hexInputAlphaPosition)
+        public void SetHexInputAlphaPosition(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<AlphaComponentPosition> hexInputAlphaPosition
+        )
         {
             if (_hexInputAlphaPosition != hexInputAlphaPosition)
             {
                 if (hexInputAlphaPosition.HasValue)
                 {
-                    _output.SetValue(ColorView.HexInputAlphaPositionProperty, hexInputAlphaPosition.Value);
+                    _output.SetValue(
+                        ColorView.HexInputAlphaPositionProperty,
+                        hexInputAlphaPosition.Value
+                    );
                 }
                 else
                 {
@@ -121,16 +142,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isAccentColorsVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsAccentColorsVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAccentColorVisible)
+        public void SetIsAccentColorsVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAccentColorVisible
+        )
         {
             if (_isAccentColorsVisible != isAccentColorVisible)
             {
                 if (isAccentColorVisible.HasValue)
                 {
-                    _output.SetValue(ColorView.IsAccentColorsVisibleProperty, isAccentColorVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsAccentColorsVisibleProperty,
+                        isAccentColorVisible.Value
+                    );
                 }
                 else
                 {
@@ -141,10 +167,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isAlphaVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsAlphaVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAlphaVisible)
+        public void SetIsAlphaVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isAlphaVisible
+        )
         {
             if (_isAlphaVisible != isAlphaVisible)
             {
@@ -161,16 +189,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isColorComponentsVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsColorComponentVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorComponentVisible)
+        public void SetIsColorComponentVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorComponentVisible
+        )
         {
             if (_isColorComponentsVisible != isColorComponentVisible)
             {
                 if (isColorComponentVisible.HasValue)
                 {
-                    _output.SetValue(ColorView.IsColorComponentsVisibleProperty, isColorComponentVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsColorComponentsVisibleProperty,
+                        isColorComponentVisible.Value
+                    );
                 }
                 else
                 {
@@ -181,16 +214,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isColorModelVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsColorModelVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorPreviewVisible)
+        public void SetIsColorModelVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorPreviewVisible
+        )
         {
             if (_isColorModelVisible != isColorPreviewVisible)
             {
                 if (isColorPreviewVisible.HasValue)
                 {
-                    _output.SetValue(ColorView.IsColorModelVisibleProperty, isColorPreviewVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsColorModelVisibleProperty,
+                        isColorPreviewVisible.Value
+                    );
                 }
                 else
                 {
@@ -201,16 +239,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isColorPreviewVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsColorPreviewVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorPreviewVisible)
+        public void SetIsColorPreviewVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorPreviewVisible
+        )
         {
             if (_isColorPreviewVisible != isColorPreviewVisible)
             {
                 if (isColorPreviewVisible.HasValue)
                 {
-                    _output.SetValue(ColorView.IsColorPreviewVisibleProperty, isColorPreviewVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsColorPreviewVisibleProperty,
+                        isColorPreviewVisible.Value
+                    );
                 }
                 else
                 {
@@ -221,16 +264,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isColorSpectrumVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsColorSpectrumVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorSpectrumVisible)
+        public void SetIsColorSpectrumVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorSpectrumVisible
+        )
         {
             if (_isColorSpectrumVisible != isColorSpectrumVisible)
             {
                 if (isColorSpectrumVisible.HasValue)
                 {
-                    _output.SetValue(ColorView.IsColorSpectrumVisibleProperty, isColorSpectrumVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsColorSpectrumVisibleProperty,
+                        isColorSpectrumVisible.Value
+                    );
                 }
                 else
                 {
@@ -241,15 +289,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isColorSpectrumSliderVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsColorSpectrumSliderVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isColorSpectrumSliderVisible)
+        public void SetIsColorSpectrumSliderVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<bool> isColorSpectrumSliderVisible
+        )
         {
             if (_isColorSpectrumSliderVisible != isColorSpectrumSliderVisible)
             {
                 if (isColorSpectrumSliderVisible.HasValue)
-                    _output.SetValue(ColorView.IsColorSpectrumSliderVisibleProperty, isColorSpectrumSliderVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsColorSpectrumSliderVisibleProperty,
+                        isColorSpectrumSliderVisible.Value
+                    );
                 else
                     _output.ClearValue(ColorView.IsColorSpectrumSliderVisibleProperty);
 
@@ -257,15 +311,20 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isComponentSliderVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsComponentSliderVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isComponentSliderVisible)
+        public void SetIsComponentSliderVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isComponentSliderVisible
+        )
         {
             if (_isComponentSliderVisible != isComponentSliderVisible)
             {
                 if (isComponentSliderVisible.HasValue)
-                    _output.SetValue(ColorView.IsComponentSliderVisibleProperty, isComponentSliderVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsComponentSliderVisibleProperty,
+                        isComponentSliderVisible.Value
+                    );
                 else
                     _output.ClearValue(ColorView.IsComponentSliderVisibleProperty);
 
@@ -273,15 +332,21 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isComponentTextInputVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsComponentTextInputVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isComponentTextInputVisible)
+        public void SetIsComponentTextInputVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<bool> isComponentTextInputVisible
+        )
         {
             if (_isComponentTextInputVisible != isComponentTextInputVisible)
             {
                 if (isComponentTextInputVisible.HasValue)
-                    _output.SetValue(ColorView.IsComponentTextInputVisibleProperty, isComponentTextInputVisible.Value);
+                    _output.SetValue(
+                        ColorView.IsComponentTextInputVisibleProperty,
+                        isComponentTextInputVisible.Value
+                    );
                 else
                     _output.ClearValue(ColorView.IsComponentTextInputVisibleProperty);
 
@@ -289,10 +354,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<bool> _isHexInputVisible;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetIsHexInputVisible([Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isHexInputVisible)
+        public void SetIsHexInputVisible(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<bool> isHexInputVisible
+        )
         {
             if (_isHexInputVisible != isHexInputVisible)
             {
@@ -305,8 +372,8 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _maxHue;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetMaxHue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxHue)
         {
@@ -321,10 +388,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _maxSaturation;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMaxSaturation([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxSaturation)
+        public void SetMaxSaturation(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxSaturation
+        )
         {
             if (_maxSaturation != maxSaturation)
             {
@@ -337,10 +406,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _maxValue;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMaxValue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxValue)
+        public void SetMaxValue(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxValue
+        )
         {
             if (_maxValue != maxValue)
             {
@@ -353,8 +424,8 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _minHue;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetMinHue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minHue)
         {
@@ -369,10 +440,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _minSaturation;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMinSaturation([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minSaturation)
+        public void SetMinSaturation(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minSaturation
+        )
         {
             if (_minSaturation != minSaturation)
             {
@@ -385,10 +458,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _minValue;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMinValue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minValue)
+        public void SetMinValue(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minValue
+        )
         {
             if (_minValue != minValue)
             {
@@ -401,10 +476,13 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<IEnumerable<Color>?> _palleteColors;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetPaletteColors([Pin(Visibility = Model.PinVisibility.Visible)] Optional<IEnumerable<Color>?> paletteColors)
+        public void SetPaletteColors(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<IEnumerable<Color>?> paletteColors
+        )
         {
             if (_palleteColors != paletteColors)
             {
@@ -417,10 +495,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _paletteColumnCount;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetPaletteColumnCount([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> paletteColumnCount)
+        public void SetPaletteColumnCount(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> paletteColumnCount
+        )
         {
             if (_paletteColumnCount != paletteColumnCount)
             {
@@ -433,10 +513,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<IColorPalette> _pallette;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetPalette([Pin(Visibility = Model.PinVisibility.Visible)] Optional<IColorPalette> palette)
+        public void SetPalette(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<IColorPalette> palette
+        )
         {
             if (_pallette != palette)
             {

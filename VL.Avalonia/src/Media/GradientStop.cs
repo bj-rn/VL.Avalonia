@@ -17,6 +17,7 @@ public partial class GradientStopWrapper
     protected Optional<float> _offset;
 
     private Optional<Color4> _color;
+
     public void SetColor(Optional<Color4> color)
     {
         if (_color != color)

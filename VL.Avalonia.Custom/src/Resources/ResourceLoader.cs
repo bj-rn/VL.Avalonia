@@ -9,13 +9,17 @@ namespace VL.Avalonia.Custom.Resources
     public sealed class ResourceLoader
     {
         private static bool _isLoaded;
+
         public static void IncludeCustomResources(Application app)
         {
             if (_isLoaded)
                 return;
 
             if (app == null)
-                throw new ArgumentNullException(nameof(app), "You must provide a valid Avalonia Application instance.");
+                throw new ArgumentNullException(
+                    nameof(app),
+                    "You must provide a valid Avalonia Application instance."
+                );
 
             // Load resources
             var uri = new Uri("avares://VL.Avalonia.Custom/Resources/Resources.axaml");
@@ -24,7 +28,6 @@ namespace VL.Avalonia.Custom.Resources
             if (resource == null)
                 throw new Exception($"Failed to load resource dictionary from: {uri}");
 
-
             // Load styles
             var styles = CreateStyle("avares://VL.Avalonia.Custom/Styles/Styles.axaml");
             //var stylesUri = new Uri("avares://VL.Avalonia.Custom/Styles/Styles.axaml");
@@ -32,7 +35,6 @@ namespace VL.Avalonia.Custom.Resources
             //var styles = AvaloniaXamlLoader.Load(styleUri) as Styles;
             if (styles == null)
                 throw new Exception($"Failed to load styles dictionary from: {styles}");
-
 
             app.Resources ??= new ResourceDictionary();
             app.Resources.MergedDictionaries.Add(resource);
@@ -45,10 +47,7 @@ namespace VL.Avalonia.Custom.Resources
         private static StyleInclude CreateStyle(string url)
         {
             var self = new Uri("resm:Styles?assembly=YourAssembly");
-            return new StyleInclude(self)
-            {
-                Source = new Uri(url)
-            };
+            return new StyleInclude(self) { Source = new Uri(url) };
         }
     }
 }

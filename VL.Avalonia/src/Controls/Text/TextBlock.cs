@@ -13,7 +13,8 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode()]
-public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> where T : TextBlock, new()
+public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T>
+    where T : TextBlock, new()
 {
     /// <param name="text">
     /// The text content displayed by the TextBlock
@@ -26,7 +27,10 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> wh
     /// <param name="fontFamily">
     /// The font family used to draw the text
     /// </param>
-    [ImplementProperty("TextBlock.FontFamilyProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.FontFamilyProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontFamily> _fontFamily;
 
     /// <param name="fontSize">
@@ -38,7 +42,10 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> wh
     /// <param name="fontWeight">
     /// The font weight (normal, bold, etc.)
     /// </param>
-    [ImplementProperty("TextBlock.FontWeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.FontWeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontWeight> _fontWeight;
 
     /// <param name="fontStyle">
@@ -50,7 +57,10 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> wh
     /// <param name="fontStretch">
     /// The font stretch (normal, condensed, expanded, etc.)
     /// </param>
-    [ImplementProperty("TextBlock.FontStretchProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.FontStretchProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontStretch> _fontStretch;
 
     /* TODO:
@@ -67,13 +77,19 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> wh
     /// <param name="textAlignment">
     /// How text is aligned horizontally (Left, Center, Right, Justify, Start, End)
     /// </param>
-    [ImplementProperty("TextBlock.TextAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.TextAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<TextAlignment> _textAlignment;
 
     /// <param name="textWrapping">
     /// How text wraps when it exceeds the available width
     /// </param>
-    [ImplementProperty("TextBlock.TextWrappingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.TextWrappingProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<TextWrapping> _textWrapping;
 
     /* TODO:
@@ -96,19 +112,28 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> wh
     /// <param name="lineHeight">
     /// Height of each line of text (NaN for automatic)
     /// </param>
-    [ImplementProperty("TextBlock.LineHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.LineHeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _lineHeight;
 
     /// <param name="lineSpacing">
     /// Extra vertical spacing between lines
     /// </param>
-    [ImplementProperty("TextBlock.LineSpacingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.LineSpacingProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _lineSpacing;
 
     /// <param name="letterSpacing">
     /// Spacing between individual characters
     /// </param>
-    [ImplementProperty("TextBlock.LetterSpacingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.LetterSpacingProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _letterSpacing;
 
     #endregion
@@ -125,7 +150,10 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T> wh
     /// <param name="baselineOffset">
     /// Baseline offset adjustment for vertical text positioning
     /// </param>
-    [ImplementProperty("TextBlock.BaselineOffsetProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TextBlock.BaselineOffsetProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _baselineOffset;
 
     #endregion

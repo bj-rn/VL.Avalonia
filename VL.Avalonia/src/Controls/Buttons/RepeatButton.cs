@@ -17,7 +17,10 @@ public partial class RepeatButtonWrapper : ButtonWrapperBase<RepeatButton>
     /// <param name="interval">
     /// Time interval in milliseconds between repeated Click events after initial delay (default: 100ms)
     /// </param>
-    [ImplementProperty("RepeatButton.IntervalProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "RepeatButton.IntervalProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<int> _interval;
 
     /// <param name="delay">

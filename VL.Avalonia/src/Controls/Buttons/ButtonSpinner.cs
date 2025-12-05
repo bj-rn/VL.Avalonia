@@ -17,19 +17,28 @@ public partial class ButtonSpinnerWrapper : SpinnerWrapperBase<ButtonSpinner>
     /// <param name="allowSpin">
     /// Whether spinning is enabled (affects button states and keyboard/mouse wheel interaction)
     /// </param>
-    [ImplementProperty("ButtonSpinner.AllowSpinProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ButtonSpinner.AllowSpinProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _allowSpin;
 
     /// <param name="showButtonSpinner">
     /// Whether the spin buttons are visible in the control template
     /// </param>
-    [ImplementProperty("ButtonSpinner.ShowButtonSpinnerProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ButtonSpinner.ShowButtonSpinnerProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _showButtonSpinner;
 
     /// <param name="buttonSpinnerLocation">
     /// Position of the spin buttons relative to the content (Left or Right)
     /// </param>
-    [ImplementProperty("ButtonSpinner.ButtonSpinnerLocationProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ButtonSpinner.ButtonSpinnerLocationProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<Location> _buttonSpinnerLocation;
 
     #endregion

@@ -31,12 +31,15 @@ public partial class UniformGridSpectralWrapper : PanelWrapperBase<UniformGrid>
     /// <param name="firstColumn">
     /// The starting column for the first row of items. Default is 0.
     /// </param>
-    [ImplementProperty("UniformGrid.FirstColumnProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "UniformGrid.FirstColumnProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<int> _firstColumn;
 
     /*
      * NOT IMPLEMENTED ON 11.2.1
-     * 
+     *
     /// <summary>
     /// Specifies the spacing between rows.
     /// </summary>
@@ -59,6 +62,8 @@ public partial class UniformGridWrapper : UniformGridSpectralWrapper
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }

@@ -11,10 +11,12 @@ namespace VL.Avalonia.Controls;
 /// PseudoClasses :open
 /// </summary>
 [ProcessNode()]
-public abstract class ToolTipWrapperBase<T> where T : Control
+public abstract class ToolTipWrapperBase<T>
+    where T : Control
 {
     protected readonly ToolTip _output = new ToolTip();
     protected T _input;
+
     [Fragment(Order = -10)]
     public void SetInput(T? input)
     {
@@ -32,10 +34,12 @@ public abstract class ToolTipWrapperBase<T> where T : Control
             }
         }
     }
+
     public T? Output => _input;
     protected abstract void UpdateSetters();
 
     protected Optional<IAvaloniaStyle> _style;
+
     [Fragment(Order = -3)]
     public void SetStyle(Optional<IAvaloniaStyle> style)
     {
@@ -47,8 +51,11 @@ public abstract class ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<string> _classes;
+
     [Fragment(Order = -2)]
-    public void SetClasses([Pin(Visibility = Model.PinVisibility.Optional)] Optional<string> classes)
+    public void SetClasses(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<string> classes
+    )
     {
         if (_classes != classes)
         {
@@ -58,6 +65,7 @@ public abstract class ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<string> _name;
+
     [Fragment(Order = -1)]
     public void SetName([Pin(Visibility = Model.PinVisibility.Optional)] Optional<string> name)
     {
@@ -77,8 +85,11 @@ public abstract class ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<bool> _isEnabled;
+
     [Fragment(Order = 9999)]
-    public void SetEnabled([Pin(Visibility = Model.PinVisibility.Optional)] Optional<bool> isEnabled)
+    public void SetEnabled(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<bool> isEnabled
+    )
     {
         if (_isEnabled != isEnabled)
         {
@@ -96,9 +107,11 @@ public abstract class ToolTipWrapperBase<T> where T : Control
 }
 
 [ProcessNode(Name = "ToolTip")]
-public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
+public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T>
+    where T : Control
 {
     protected Optional<object> _content;
+
     [Fragment(Order = -5)]
     public void SetContent(Optional<object> content)
     {
@@ -118,6 +131,7 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<PlacementMode> _placement;
+
     public void SetPlacement(Optional<PlacementMode> placement)
     {
         if (_placement != placement)
@@ -129,7 +143,10 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<float> _horizontalOffset;
-    public void SetHorizontalOffset([Pin(Visibility = Model.PinVisibility.Optional)] Optional<float> horizontalOffset)
+
+    public void SetHorizontalOffset(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<float> horizontalOffset
+    )
     {
         if (_horizontalOffset != horizontalOffset)
         {
@@ -140,7 +157,10 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<float> _verticalOffset;
-    public void SetVerticalOffset([Pin(Visibility = Model.PinVisibility.Optional)] Optional<float> verticalOffset)
+
+    public void SetVerticalOffset(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<float> verticalOffset
+    )
     {
         if (_verticalOffset != verticalOffset)
         {
@@ -151,7 +171,10 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<int> _showDelay;
-    public void SetShowDelay([Pin(Visibility = Model.PinVisibility.Optional)] Optional<int> showDelay)
+
+    public void SetShowDelay(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<int> showDelay
+    )
     {
         if (_showDelay != showDelay)
         {
@@ -162,7 +185,10 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<int> _betweenShowDelay;
-    public void SetBetweenShowDelay([Pin(Visibility = Model.PinVisibility.Optional)] Optional<int> betweenShowDelay)
+
+    public void SetBetweenShowDelay(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<int> betweenShowDelay
+    )
     {
         if (_betweenShowDelay != betweenShowDelay)
         {
@@ -173,7 +199,10 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
     }
 
     protected Optional<bool> _showOnDisabled;
-    public void SetShowDisabled([Pin(Visibility = Model.PinVisibility.Optional)] Optional<bool> showOnDisabled)
+
+    public void SetShowDisabled(
+        [Pin(Visibility = Model.PinVisibility.Optional)] Optional<bool> showOnDisabled
+    )
     {
         if (_showOnDisabled != showOnDisabled)
         {
@@ -272,7 +301,6 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T> where T : Control
             }
         }
     }
-
 
     protected override void UpdateSetters()
     {

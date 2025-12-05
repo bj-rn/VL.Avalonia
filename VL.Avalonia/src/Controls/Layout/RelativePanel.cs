@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
@@ -11,10 +10,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/relativepanel">RelativePanel</see>
 /// </summary>
 [ProcessNode(Name = "RelativePanel (Spectral)")]
-public partial class RelativePanelWrapperSpectral : PanelWrapperBase<RelativePanel>
-{
-
-}
+public partial class RelativePanelWrapperSpectral : PanelWrapperBase<RelativePanel> { }
 
 /// <summary>
 /// <inheritdoc cref="RelativePanelWrapperSpectral"/>
@@ -24,8 +20,10 @@ public partial class RelativePanelWrapper : RelativePanelWrapperSpectral
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }
 
 /// <summary>
@@ -36,6 +34,7 @@ public partial class RelativePanelWrapper : RelativePanelWrapperSpectral
 public partial class RelativePanelRightOfProperty : AttachedPropertyBase
 {
     private Optional<object> _rightOf;
+
     public void SetRightOf(Optional<object> rightOf)
     {
         if (_rightOf != rightOf)
@@ -71,6 +70,7 @@ public partial class RelativePanelRightOfProperty : AttachedPropertyBase
 public partial class RelativePanelLeftOfProperty : AttachedPropertyBase
 {
     private Optional<object> _leftOf;
+
     public void SetLeftOf(Optional<object> leftOf)
     {
         if (_leftOf != leftOf)
@@ -79,6 +79,7 @@ public partial class RelativePanelLeftOfProperty : AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -105,6 +106,7 @@ public partial class RelativePanelLeftOfProperty : AttachedPropertyBase
 public partial class RelativePanelAboveProperty : AttachedPropertyBase
 {
     private Optional<object> _above;
+
     public void SetAbove(Optional<object> above)
     {
         if (_above != above)
@@ -140,6 +142,7 @@ public partial class RelativePanelAboveProperty : AttachedPropertyBase
 public partial class RelativePanelBelowProperty : AttachedPropertyBase
 {
     private Optional<object> _below;
+
     public void SetBelow(Optional<object> below)
     {
         if (_below != below)
@@ -175,6 +178,7 @@ public partial class RelativePanelBelowProperty : AttachedPropertyBase
 public partial class RelativePanelAlignLeftWithProperty : AttachedPropertyBase
 {
     private Optional<object> _alignLeftWith;
+
     public void SetAlignLeftWith(Optional<object> alignLeftWith)
     {
         if (_alignLeftWith != alignLeftWith)
@@ -183,6 +187,7 @@ public partial class RelativePanelAlignLeftWithProperty : AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -209,6 +214,7 @@ public partial class RelativePanelAlignLeftWithProperty : AttachedPropertyBase
 public partial class RelativePanelAlignRightWithProperty : AttachedPropertyBase
 {
     private Optional<object> _alignRightWith;
+
     public void SetAlignRightWith(Optional<object> alignRightWith)
     {
         if (_alignRightWith != alignRightWith)
@@ -217,6 +223,7 @@ public partial class RelativePanelAlignRightWithProperty : AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -243,6 +250,7 @@ public partial class RelativePanelAlignRightWithProperty : AttachedPropertyBase
 public partial class RelativePanelAlignTopWith : AttachedPropertyBase
 {
     private Optional<object> _alignTopWith;
+
     public void SetAlignTopWith(Optional<object> alignTopWith)
     {
         if (_alignTopWith != alignTopWith)
@@ -251,6 +259,7 @@ public partial class RelativePanelAlignTopWith : AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -277,6 +286,7 @@ public partial class RelativePanelAlignTopWith : AttachedPropertyBase
 public partial class RelativePanelAlignBottomWith : AttachedPropertyBase
 {
     private Optional<object> _alignBottomWith;
+
     public void SetAlignBottomWith(Optional<object> alignBottomWith)
     {
         if (_alignBottomWith != alignBottomWith)
@@ -285,6 +295,7 @@ public partial class RelativePanelAlignBottomWith : AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -311,6 +322,7 @@ public partial class RelativePanelAlignBottomWith : AttachedPropertyBase
 public partial class RelativePanelAlignHorizontalCenterWith : AttachedPropertyBase
 {
     private Optional<object> _alignHorizontalCenterWith;
+
     public void SetAlignHorizontalCenterWith(Optional<object> alignHorizontalCenterWith)
     {
         if (_alignHorizontalCenterWith != alignHorizontalCenterWith)
@@ -319,6 +331,7 @@ public partial class RelativePanelAlignHorizontalCenterWith : AttachedPropertyBa
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -328,7 +341,10 @@ public partial class RelativePanelAlignHorizontalCenterWith : AttachedPropertyBa
 
         if (_alignHorizontalCenterWith.HasValue)
         {
-            RelativePanel.SetAlignHorizontalCenterWith(_input.Value, _alignHorizontalCenterWith.Value);
+            RelativePanel.SetAlignHorizontalCenterWith(
+                _input.Value,
+                _alignHorizontalCenterWith.Value
+            );
         }
         else
         {
@@ -345,6 +361,7 @@ public partial class RelativePanelAlignHorizontalCenterWith : AttachedPropertyBa
 public partial class RelativePanelAlignVerticalCenterWith : AttachedPropertyBase
 {
     private Optional<object> _alignVerticalCenterWith;
+
     public void SetAlignVerticalCenterWith(Optional<object> alignVerticalCenterWith)
     {
         if (_alignVerticalCenterWith != alignVerticalCenterWith)
@@ -353,6 +370,7 @@ public partial class RelativePanelAlignVerticalCenterWith : AttachedPropertyBase
             UpdateSetters();
         }
     }
+
     protected override void UpdateSetters()
     {
         if (_input.HasNoValue)
@@ -379,6 +397,7 @@ public partial class RelativePanelAlignVerticalCenterWith : AttachedPropertyBase
 public partial class RelativePanelAlignTopWithPanel : AttachedPropertyBase
 {
     private Optional<bool> _alignTopWithPanel;
+
     public void SetAlignTopWithPanel(Optional<bool> alignTopWithPanel)
     {
         if (_alignTopWithPanel != alignTopWithPanel)
@@ -414,6 +433,7 @@ public partial class RelativePanelAlignTopWithPanel : AttachedPropertyBase
 public partial class RelativePanelAlignBottomWithPanel : AttachedPropertyBase
 {
     private Optional<bool> _alignBottomWithPanel;
+
     public void SetAlignBottomWithPanel(Optional<bool> alignBottomWithPanel)
     {
         if (_alignBottomWithPanel != alignBottomWithPanel)
@@ -449,6 +469,7 @@ public partial class RelativePanelAlignBottomWithPanel : AttachedPropertyBase
 public partial class RelativePanelAlignLeftWithPanel : AttachedPropertyBase
 {
     private Optional<bool> _alignLeftWithPanel;
+
     public void SetAlignLeftWithPanel(Optional<bool> alignLeftWithPanel)
     {
         if (_alignLeftWithPanel != alignLeftWithPanel)
@@ -484,6 +505,7 @@ public partial class RelativePanelAlignLeftWithPanel : AttachedPropertyBase
 public partial class RelativePanelAlignRightWithPanel : AttachedPropertyBase
 {
     private Optional<bool> _alignRightWithPanel;
+
     public void SetAlignRightWithPanel(Optional<bool> alignRightWithPanel)
     {
         if (_alignRightWithPanel != alignRightWithPanel)
@@ -519,6 +541,7 @@ public partial class RelativePanelAlignRightWithPanel : AttachedPropertyBase
 public partial class RelativePanelAlignHorizontalCenterWithPanel : AttachedPropertyBase
 {
     private Optional<bool> _alignHorizontalCenterWithPanel;
+
     public void SetAlignHorizontalCenterWithPanel(Optional<bool> alignHorizontalCenterWithPanel)
     {
         if (_alignHorizontalCenterWithPanel != alignHorizontalCenterWithPanel)
@@ -537,7 +560,10 @@ public partial class RelativePanelAlignHorizontalCenterWithPanel : AttachedPrope
 
         if (_alignHorizontalCenterWithPanel.HasValue)
         {
-            RelativePanel.SetAlignHorizontalCenterWithPanel(_input.Value, _alignHorizontalCenterWithPanel.Value);
+            RelativePanel.SetAlignHorizontalCenterWithPanel(
+                _input.Value,
+                _alignHorizontalCenterWithPanel.Value
+            );
         }
         else
         {
@@ -554,6 +580,7 @@ public partial class RelativePanelAlignHorizontalCenterWithPanel : AttachedPrope
 public partial class RelativePanelAlignVerticalCenterWithPanel : AttachedPropertyBase
 {
     private Optional<bool> _alignVerticalCenterWithPanel;
+
     public void SetAlignVerticalCenterWithPanel(Optional<bool> alignVerticalCenterWithPanel)
     {
         if (_alignVerticalCenterWithPanel != alignVerticalCenterWithPanel)
@@ -572,7 +599,10 @@ public partial class RelativePanelAlignVerticalCenterWithPanel : AttachedPropert
 
         if (_alignVerticalCenterWithPanel.HasValue)
         {
-            RelativePanel.SetAlignVerticalCenterWithPanel(_input.Value, _alignVerticalCenterWithPanel.Value);
+            RelativePanel.SetAlignVerticalCenterWithPanel(
+                _input.Value,
+                _alignVerticalCenterWithPanel.Value
+            );
         }
         else
         {

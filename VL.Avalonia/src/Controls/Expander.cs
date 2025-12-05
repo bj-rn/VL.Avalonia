@@ -12,7 +12,9 @@ namespace VL.Avalonia.Controls;
 public partial class ExpanderWrapper : HeaderedControlWrapperBase<Expander>
 {
     private ChannelTwoWayBinding<bool> _isExpandedBinding;
-    public ExpanderWrapper() : base()
+
+    public ExpanderWrapper()
+        : base()
     {
         _isExpandedBinding = new ChannelTwoWayBinding<bool>(_output, Expander.IsExpandedProperty);
     }
@@ -27,6 +29,9 @@ public partial class ExpanderWrapper : HeaderedControlWrapperBase<Expander>
     [ImplementProperty("Expander.ExpandDirectionProperty")]
     protected Optional<ExpandDirection> _expandDirection;
 
-    [ImplementProperty("Expander.ContentTransitionProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "Expander.ContentTransitionProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IPageTransition> _contentTransition;
 }

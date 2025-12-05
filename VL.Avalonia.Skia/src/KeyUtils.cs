@@ -43,9 +43,13 @@ static class KeyUtils
             case MouseButtons.Left:
                 return isUp ? RawPointerEventType.LeftButtonUp : RawPointerEventType.LeftButtonDown;
             case MouseButtons.Right:
-                return isUp ? RawPointerEventType.RightButtonUp : RawPointerEventType.RightButtonDown;
+                return isUp
+                    ? RawPointerEventType.RightButtonUp
+                    : RawPointerEventType.RightButtonDown;
             case MouseButtons.Middle:
-                return isUp ? RawPointerEventType.MiddleButtonUp : RawPointerEventType.MiddleButtonDown;
+                return isUp
+                    ? RawPointerEventType.MiddleButtonUp
+                    : RawPointerEventType.MiddleButtonDown;
             case MouseButtons.XButton1:
                 return isUp ? RawPointerEventType.XButton1Up : RawPointerEventType.XButton1Down;
             case MouseButtons.XButton2:
@@ -399,214 +403,212 @@ static class KeyUtils
             default:
                 return Key.None;
         }
-
-
     }
 
     public static PhysicalKey ToPhysicalKey(this Keys key) =>
-         (key & Keys.KeyCode) switch
-         {
-             // No key
-             Keys.None => PhysicalKey.None,
+        (key & Keys.KeyCode) switch
+        {
+            // No key
+            Keys.None => PhysicalKey.None,
 
-             // Writing System Keys - Digits
-             Keys.D0 => PhysicalKey.Digit0,
-             Keys.D1 => PhysicalKey.Digit1,
-             Keys.D2 => PhysicalKey.Digit2,
-             Keys.D3 => PhysicalKey.Digit3,
-             Keys.D4 => PhysicalKey.Digit4,
-             Keys.D5 => PhysicalKey.Digit5,
-             Keys.D6 => PhysicalKey.Digit6,
-             Keys.D7 => PhysicalKey.Digit7,
-             Keys.D8 => PhysicalKey.Digit8,
-             Keys.D9 => PhysicalKey.Digit9,
+            // Writing System Keys - Digits
+            Keys.D0 => PhysicalKey.Digit0,
+            Keys.D1 => PhysicalKey.Digit1,
+            Keys.D2 => PhysicalKey.Digit2,
+            Keys.D3 => PhysicalKey.Digit3,
+            Keys.D4 => PhysicalKey.Digit4,
+            Keys.D5 => PhysicalKey.Digit5,
+            Keys.D6 => PhysicalKey.Digit6,
+            Keys.D7 => PhysicalKey.Digit7,
+            Keys.D8 => PhysicalKey.Digit8,
+            Keys.D9 => PhysicalKey.Digit9,
 
-             // Writing System Keys - Letters
-             Keys.A => PhysicalKey.A,
-             Keys.B => PhysicalKey.B,
-             Keys.C => PhysicalKey.C,
-             Keys.D => PhysicalKey.D,
-             Keys.E => PhysicalKey.E,
-             Keys.F => PhysicalKey.F,
-             Keys.G => PhysicalKey.G,
-             Keys.H => PhysicalKey.H,
-             Keys.I => PhysicalKey.I,
-             Keys.J => PhysicalKey.J,
-             Keys.K => PhysicalKey.K,
-             Keys.L => PhysicalKey.L,
-             Keys.M => PhysicalKey.M,
-             Keys.N => PhysicalKey.N,
-             Keys.O => PhysicalKey.O,
-             Keys.P => PhysicalKey.P,
-             Keys.Q => PhysicalKey.Q,
-             Keys.R => PhysicalKey.R,
-             Keys.S => PhysicalKey.S,
-             Keys.T => PhysicalKey.T,
-             Keys.U => PhysicalKey.U,
-             Keys.V => PhysicalKey.V,
-             Keys.W => PhysicalKey.W,
-             Keys.X => PhysicalKey.X,
-             Keys.Y => PhysicalKey.Y,
-             Keys.Z => PhysicalKey.Z,
+            // Writing System Keys - Letters
+            Keys.A => PhysicalKey.A,
+            Keys.B => PhysicalKey.B,
+            Keys.C => PhysicalKey.C,
+            Keys.D => PhysicalKey.D,
+            Keys.E => PhysicalKey.E,
+            Keys.F => PhysicalKey.F,
+            Keys.G => PhysicalKey.G,
+            Keys.H => PhysicalKey.H,
+            Keys.I => PhysicalKey.I,
+            Keys.J => PhysicalKey.J,
+            Keys.K => PhysicalKey.K,
+            Keys.L => PhysicalKey.L,
+            Keys.M => PhysicalKey.M,
+            Keys.N => PhysicalKey.N,
+            Keys.O => PhysicalKey.O,
+            Keys.P => PhysicalKey.P,
+            Keys.Q => PhysicalKey.Q,
+            Keys.R => PhysicalKey.R,
+            Keys.S => PhysicalKey.S,
+            Keys.T => PhysicalKey.T,
+            Keys.U => PhysicalKey.U,
+            Keys.V => PhysicalKey.V,
+            Keys.W => PhysicalKey.W,
+            Keys.X => PhysicalKey.X,
+            Keys.Y => PhysicalKey.Y,
+            Keys.Z => PhysicalKey.Z,
 
-             // Writing System Keys - Punctuation
-             Keys.OemSemicolon or Keys.Oem1 => PhysicalKey.Semicolon,
-             Keys.Oemplus => PhysicalKey.Equal,
-             Keys.Oemcomma => PhysicalKey.Comma,
-             Keys.OemMinus => PhysicalKey.Minus,
-             Keys.OemPeriod => PhysicalKey.Period,
-             Keys.OemQuestion or Keys.Oem2 => PhysicalKey.Slash,
-             Keys.Oemtilde or Keys.Oem3 => PhysicalKey.Backquote,
-             Keys.OemOpenBrackets or Keys.Oem4 => PhysicalKey.BracketLeft,
-             Keys.OemPipe or Keys.Oem5 => PhysicalKey.Backslash,
-             Keys.OemCloseBrackets or Keys.Oem6 => PhysicalKey.BracketRight,
-             Keys.OemQuotes or Keys.Oem7 => PhysicalKey.Quote,
-             Keys.OemBackslash or Keys.Oem102 => PhysicalKey.IntlBackslash,
+            // Writing System Keys - Punctuation
+            Keys.OemSemicolon or Keys.Oem1 => PhysicalKey.Semicolon,
+            Keys.Oemplus => PhysicalKey.Equal,
+            Keys.Oemcomma => PhysicalKey.Comma,
+            Keys.OemMinus => PhysicalKey.Minus,
+            Keys.OemPeriod => PhysicalKey.Period,
+            Keys.OemQuestion or Keys.Oem2 => PhysicalKey.Slash,
+            Keys.Oemtilde or Keys.Oem3 => PhysicalKey.Backquote,
+            Keys.OemOpenBrackets or Keys.Oem4 => PhysicalKey.BracketLeft,
+            Keys.OemPipe or Keys.Oem5 => PhysicalKey.Backslash,
+            Keys.OemCloseBrackets or Keys.Oem6 => PhysicalKey.BracketRight,
+            Keys.OemQuotes or Keys.Oem7 => PhysicalKey.Quote,
+            Keys.OemBackslash or Keys.Oem102 => PhysicalKey.IntlBackslash,
 
-             // Functional Keys
-             Keys.Menu => PhysicalKey.AltLeft,
-             Keys.LMenu => PhysicalKey.AltLeft,
-             Keys.RMenu => PhysicalKey.AltRight,
-             Keys.Back => PhysicalKey.Backspace,
-             Keys.Capital or Keys.CapsLock => PhysicalKey.CapsLock,
-             Keys.Apps => PhysicalKey.ContextMenu,
-             Keys.ControlKey => PhysicalKey.ControlLeft,
-             Keys.LControlKey => PhysicalKey.ControlLeft,
-             Keys.RControlKey => PhysicalKey.ControlRight,
-             Keys.Enter or Keys.Return => PhysicalKey.Enter,
-             Keys.LWin => PhysicalKey.MetaLeft,
-             Keys.RWin => PhysicalKey.MetaRight,
-             Keys.ShiftKey => PhysicalKey.ShiftLeft,
-             Keys.LShiftKey => PhysicalKey.ShiftLeft,
-             Keys.RShiftKey => PhysicalKey.ShiftRight,
-             Keys.Space => PhysicalKey.Space,
-             Keys.Tab => PhysicalKey.Tab,
+            // Functional Keys
+            Keys.Menu => PhysicalKey.AltLeft,
+            Keys.LMenu => PhysicalKey.AltLeft,
+            Keys.RMenu => PhysicalKey.AltRight,
+            Keys.Back => PhysicalKey.Backspace,
+            Keys.Capital or Keys.CapsLock => PhysicalKey.CapsLock,
+            Keys.Apps => PhysicalKey.ContextMenu,
+            Keys.ControlKey => PhysicalKey.ControlLeft,
+            Keys.LControlKey => PhysicalKey.ControlLeft,
+            Keys.RControlKey => PhysicalKey.ControlRight,
+            Keys.Enter or Keys.Return => PhysicalKey.Enter,
+            Keys.LWin => PhysicalKey.MetaLeft,
+            Keys.RWin => PhysicalKey.MetaRight,
+            Keys.ShiftKey => PhysicalKey.ShiftLeft,
+            Keys.LShiftKey => PhysicalKey.ShiftLeft,
+            Keys.RShiftKey => PhysicalKey.ShiftRight,
+            Keys.Space => PhysicalKey.Space,
+            Keys.Tab => PhysicalKey.Tab,
 
-             // Language/IME Keys
-             Keys.IMEConvert => PhysicalKey.Convert,
-             Keys.KanaMode => PhysicalKey.KanaMode,
-             Keys.HanjaMode or Keys.KanjiMode => PhysicalKey.Lang2,
-             Keys.JunjaMode => PhysicalKey.Lang3,
-             Keys.FinalMode => PhysicalKey.Lang4,
-             Keys.IMENonconvert => PhysicalKey.NonConvert,
+            // Language/IME Keys
+            Keys.IMEConvert => PhysicalKey.Convert,
+            Keys.KanaMode => PhysicalKey.KanaMode,
+            Keys.HanjaMode or Keys.KanjiMode => PhysicalKey.Lang2,
+            Keys.JunjaMode => PhysicalKey.Lang3,
+            Keys.FinalMode => PhysicalKey.Lang4,
+            Keys.IMENonconvert => PhysicalKey.NonConvert,
 
-             // Control Pad Section
-             Keys.Delete => PhysicalKey.Delete,
-             Keys.End => PhysicalKey.End,
-             Keys.Help => PhysicalKey.Help,
-             Keys.Home => PhysicalKey.Home,
-             Keys.Insert => PhysicalKey.Insert,
-             Keys.PageDown or Keys.Next => PhysicalKey.PageDown,
-             Keys.PageUp or Keys.Prior => PhysicalKey.PageUp,
+            // Control Pad Section
+            Keys.Delete => PhysicalKey.Delete,
+            Keys.End => PhysicalKey.End,
+            Keys.Help => PhysicalKey.Help,
+            Keys.Home => PhysicalKey.Home,
+            Keys.Insert => PhysicalKey.Insert,
+            Keys.PageDown or Keys.Next => PhysicalKey.PageDown,
+            Keys.PageUp or Keys.Prior => PhysicalKey.PageUp,
 
-             // Arrow Pad Section
-             Keys.Down => PhysicalKey.ArrowDown,
-             Keys.Left => PhysicalKey.ArrowLeft,
-             Keys.Right => PhysicalKey.ArrowRight,
-             Keys.Up => PhysicalKey.ArrowUp,
+            // Arrow Pad Section
+            Keys.Down => PhysicalKey.ArrowDown,
+            Keys.Left => PhysicalKey.ArrowLeft,
+            Keys.Right => PhysicalKey.ArrowRight,
+            Keys.Up => PhysicalKey.ArrowUp,
 
-             // Numeric Keypad Section
-             Keys.NumLock => PhysicalKey.NumLock,
-             Keys.NumPad0 => PhysicalKey.NumPad0,
-             Keys.NumPad1 => PhysicalKey.NumPad1,
-             Keys.NumPad2 => PhysicalKey.NumPad2,
-             Keys.NumPad3 => PhysicalKey.NumPad3,
-             Keys.NumPad4 => PhysicalKey.NumPad4,
-             Keys.NumPad5 => PhysicalKey.NumPad5,
-             Keys.NumPad6 => PhysicalKey.NumPad6,
-             Keys.NumPad7 => PhysicalKey.NumPad7,
-             Keys.NumPad8 => PhysicalKey.NumPad8,
-             Keys.NumPad9 => PhysicalKey.NumPad9,
-             Keys.Add => PhysicalKey.NumPadAdd,
-             Keys.Clear => PhysicalKey.NumPadClear,
-             Keys.Separator => PhysicalKey.NumPadComma,
-             Keys.Decimal => PhysicalKey.NumPadDecimal,
-             Keys.Divide => PhysicalKey.NumPadDivide,
-             Keys.Multiply => PhysicalKey.NumPadMultiply,
-             Keys.Subtract => PhysicalKey.NumPadSubtract,
+            // Numeric Keypad Section
+            Keys.NumLock => PhysicalKey.NumLock,
+            Keys.NumPad0 => PhysicalKey.NumPad0,
+            Keys.NumPad1 => PhysicalKey.NumPad1,
+            Keys.NumPad2 => PhysicalKey.NumPad2,
+            Keys.NumPad3 => PhysicalKey.NumPad3,
+            Keys.NumPad4 => PhysicalKey.NumPad4,
+            Keys.NumPad5 => PhysicalKey.NumPad5,
+            Keys.NumPad6 => PhysicalKey.NumPad6,
+            Keys.NumPad7 => PhysicalKey.NumPad7,
+            Keys.NumPad8 => PhysicalKey.NumPad8,
+            Keys.NumPad9 => PhysicalKey.NumPad9,
+            Keys.Add => PhysicalKey.NumPadAdd,
+            Keys.Clear => PhysicalKey.NumPadClear,
+            Keys.Separator => PhysicalKey.NumPadComma,
+            Keys.Decimal => PhysicalKey.NumPadDecimal,
+            Keys.Divide => PhysicalKey.NumPadDivide,
+            Keys.Multiply => PhysicalKey.NumPadMultiply,
+            Keys.Subtract => PhysicalKey.NumPadSubtract,
 
-             // Function Section
-             Keys.Escape => PhysicalKey.Escape,
-             Keys.F1 => PhysicalKey.F1,
-             Keys.F2 => PhysicalKey.F2,
-             Keys.F3 => PhysicalKey.F3,
-             Keys.F4 => PhysicalKey.F4,
-             Keys.F5 => PhysicalKey.F5,
-             Keys.F6 => PhysicalKey.F6,
-             Keys.F7 => PhysicalKey.F7,
-             Keys.F8 => PhysicalKey.F8,
-             Keys.F9 => PhysicalKey.F9,
-             Keys.F10 => PhysicalKey.F10,
-             Keys.F11 => PhysicalKey.F11,
-             Keys.F12 => PhysicalKey.F12,
-             Keys.F13 => PhysicalKey.F13,
-             Keys.F14 => PhysicalKey.F14,
-             Keys.F15 => PhysicalKey.F15,
-             Keys.F16 => PhysicalKey.F16,
-             Keys.F17 => PhysicalKey.F17,
-             Keys.F18 => PhysicalKey.F18,
-             Keys.F19 => PhysicalKey.F19,
-             Keys.F20 => PhysicalKey.F20,
-             Keys.F21 => PhysicalKey.F21,
-             Keys.F22 => PhysicalKey.F22,
-             Keys.F23 => PhysicalKey.F23,
-             Keys.F24 => PhysicalKey.F24,
-             Keys.PrintScreen or Keys.Snapshot => PhysicalKey.PrintScreen,
-             Keys.Scroll => PhysicalKey.ScrollLock,
-             Keys.Pause => PhysicalKey.Pause,
+            // Function Section
+            Keys.Escape => PhysicalKey.Escape,
+            Keys.F1 => PhysicalKey.F1,
+            Keys.F2 => PhysicalKey.F2,
+            Keys.F3 => PhysicalKey.F3,
+            Keys.F4 => PhysicalKey.F4,
+            Keys.F5 => PhysicalKey.F5,
+            Keys.F6 => PhysicalKey.F6,
+            Keys.F7 => PhysicalKey.F7,
+            Keys.F8 => PhysicalKey.F8,
+            Keys.F9 => PhysicalKey.F9,
+            Keys.F10 => PhysicalKey.F10,
+            Keys.F11 => PhysicalKey.F11,
+            Keys.F12 => PhysicalKey.F12,
+            Keys.F13 => PhysicalKey.F13,
+            Keys.F14 => PhysicalKey.F14,
+            Keys.F15 => PhysicalKey.F15,
+            Keys.F16 => PhysicalKey.F16,
+            Keys.F17 => PhysicalKey.F17,
+            Keys.F18 => PhysicalKey.F18,
+            Keys.F19 => PhysicalKey.F19,
+            Keys.F20 => PhysicalKey.F20,
+            Keys.F21 => PhysicalKey.F21,
+            Keys.F22 => PhysicalKey.F22,
+            Keys.F23 => PhysicalKey.F23,
+            Keys.F24 => PhysicalKey.F24,
+            Keys.PrintScreen or Keys.Snapshot => PhysicalKey.PrintScreen,
+            Keys.Scroll => PhysicalKey.ScrollLock,
+            Keys.Pause => PhysicalKey.Pause,
 
-             // Media Keys
-             Keys.BrowserBack => PhysicalKey.BrowserBack,
-             Keys.BrowserFavorites => PhysicalKey.BrowserFavorites,
-             Keys.BrowserForward => PhysicalKey.BrowserForward,
-             Keys.BrowserHome => PhysicalKey.BrowserHome,
-             Keys.BrowserRefresh => PhysicalKey.BrowserRefresh,
-             Keys.BrowserSearch => PhysicalKey.BrowserSearch,
-             Keys.BrowserStop => PhysicalKey.BrowserStop,
-             Keys.LaunchApplication1 => PhysicalKey.LaunchApp1,
-             Keys.LaunchApplication2 => PhysicalKey.LaunchApp2,
-             Keys.LaunchMail => PhysicalKey.LaunchMail,
-             Keys.MediaPlayPause => PhysicalKey.MediaPlayPause,
-             Keys.SelectMedia => PhysicalKey.MediaSelect,
-             Keys.MediaStop => PhysicalKey.MediaStop,
-             Keys.MediaNextTrack => PhysicalKey.MediaTrackNext,
-             Keys.MediaPreviousTrack => PhysicalKey.MediaTrackPrevious,
-             Keys.Sleep => PhysicalKey.Sleep,
-             Keys.VolumeMute => PhysicalKey.AudioVolumeMute,
-             Keys.VolumeDown => PhysicalKey.AudioVolumeDown,
-             Keys.VolumeUp => PhysicalKey.AudioVolumeUp,
+            // Media Keys
+            Keys.BrowserBack => PhysicalKey.BrowserBack,
+            Keys.BrowserFavorites => PhysicalKey.BrowserFavorites,
+            Keys.BrowserForward => PhysicalKey.BrowserForward,
+            Keys.BrowserHome => PhysicalKey.BrowserHome,
+            Keys.BrowserRefresh => PhysicalKey.BrowserRefresh,
+            Keys.BrowserSearch => PhysicalKey.BrowserSearch,
+            Keys.BrowserStop => PhysicalKey.BrowserStop,
+            Keys.LaunchApplication1 => PhysicalKey.LaunchApp1,
+            Keys.LaunchApplication2 => PhysicalKey.LaunchApp2,
+            Keys.LaunchMail => PhysicalKey.LaunchMail,
+            Keys.MediaPlayPause => PhysicalKey.MediaPlayPause,
+            Keys.SelectMedia => PhysicalKey.MediaSelect,
+            Keys.MediaStop => PhysicalKey.MediaStop,
+            Keys.MediaNextTrack => PhysicalKey.MediaTrackNext,
+            Keys.MediaPreviousTrack => PhysicalKey.MediaTrackPrevious,
+            Keys.Sleep => PhysicalKey.Sleep,
+            Keys.VolumeMute => PhysicalKey.AudioVolumeMute,
+            Keys.VolumeDown => PhysicalKey.AudioVolumeDown,
+            Keys.VolumeUp => PhysicalKey.AudioVolumeUp,
 
-             // Legacy Keys - mapped to available equivalents
-             Keys.Select => PhysicalKey.Select,
-             Keys.Print => PhysicalKey.PrintScreen, // Best approximation
-             Keys.Execute => PhysicalKey.None, // No equivalent
-             Keys.LineFeed => PhysicalKey.Enter, // Best approximation
+            // Legacy Keys - mapped to available equivalents
+            Keys.Select => PhysicalKey.Select,
+            Keys.Print => PhysicalKey.PrintScreen, // Best approximation
+            Keys.Execute => PhysicalKey.None, // No equivalent
+            Keys.LineFeed => PhysicalKey.Enter, // Best approximation
 
-             // Keys with no direct PhysicalKey equivalent
-             Keys.Cancel => PhysicalKey.None,
-             Keys.LButton => PhysicalKey.None, // Mouse button
-             Keys.RButton => PhysicalKey.None, // Mouse button
-             Keys.MButton => PhysicalKey.None, // Mouse button
-             Keys.XButton1 => PhysicalKey.None, // Mouse button
-             Keys.XButton2 => PhysicalKey.None, // Mouse button
-             Keys.IMEAccept or Keys.IMEAceept => PhysicalKey.None, // IMEAceept is obsolete version of IMEAccept
-             Keys.IMEModeChange => PhysicalKey.None,
-             Keys.ProcessKey => PhysicalKey.None,
-             Keys.Packet => PhysicalKey.None,
-             Keys.Attn => PhysicalKey.None,
-             Keys.Crsel => PhysicalKey.None,
-             Keys.Exsel => PhysicalKey.None,
-             Keys.EraseEof => PhysicalKey.None,
-             Keys.Play => PhysicalKey.None,
-             Keys.Zoom => PhysicalKey.None,
-             Keys.NoName => PhysicalKey.None,
-             Keys.Pa1 => PhysicalKey.None,
-             Keys.OemClear => PhysicalKey.None,
-             Keys.Oem8 => PhysicalKey.None,
+            // Keys with no direct PhysicalKey equivalent
+            Keys.Cancel => PhysicalKey.None,
+            Keys.LButton => PhysicalKey.None, // Mouse button
+            Keys.RButton => PhysicalKey.None, // Mouse button
+            Keys.MButton => PhysicalKey.None, // Mouse button
+            Keys.XButton1 => PhysicalKey.None, // Mouse button
+            Keys.XButton2 => PhysicalKey.None, // Mouse button
+            Keys.IMEAccept or Keys.IMEAceept => PhysicalKey.None, // IMEAceept is obsolete version of IMEAccept
+            Keys.IMEModeChange => PhysicalKey.None,
+            Keys.ProcessKey => PhysicalKey.None,
+            Keys.Packet => PhysicalKey.None,
+            Keys.Attn => PhysicalKey.None,
+            Keys.Crsel => PhysicalKey.None,
+            Keys.Exsel => PhysicalKey.None,
+            Keys.EraseEof => PhysicalKey.None,
+            Keys.Play => PhysicalKey.None,
+            Keys.Zoom => PhysicalKey.None,
+            Keys.NoName => PhysicalKey.None,
+            Keys.Pa1 => PhysicalKey.None,
+            Keys.OemClear => PhysicalKey.None,
+            Keys.Oem8 => PhysicalKey.None,
 
-             // Default case
-             _ => PhysicalKey.None
-         };
+            // Default case
+            _ => PhysicalKey.None,
+        };
 
     public static string? ToKeySymbol(this Keys key)
     {
@@ -694,25 +696,64 @@ static class KeyUtils
             Keys.Separator => ",",
 
             // Function keys and special keys return null as they don't have printable symbols
-            Keys.F1 or Keys.F2 or Keys.F3 or Keys.F4 or Keys.F5 or Keys.F6 or
-            Keys.F7 or Keys.F8 or Keys.F9 or Keys.F10 or Keys.F11 or Keys.F12 or
-            Keys.F13 or Keys.F14 or Keys.F15 or Keys.F16 or Keys.F17 or Keys.F18 or
-            Keys.F19 or Keys.F20 or Keys.F21 or Keys.F22 or Keys.F23 or Keys.F24 => null,
+            Keys.F1
+            or Keys.F2
+            or Keys.F3
+            or Keys.F4
+            or Keys.F5
+            or Keys.F6
+            or Keys.F7
+            or Keys.F8
+            or Keys.F9
+            or Keys.F10
+            or Keys.F11
+            or Keys.F12
+            or Keys.F13
+            or Keys.F14
+            or Keys.F15
+            or Keys.F16
+            or Keys.F17
+            or Keys.F18
+            or Keys.F19
+            or Keys.F20
+            or Keys.F21
+            or Keys.F22
+            or Keys.F23
+            or Keys.F24 => null,
 
             // Modifier keys
-            Keys.ShiftKey or Keys.LShiftKey or Keys.RShiftKey or
-            Keys.ControlKey or Keys.LControlKey or Keys.RControlKey or
-            Keys.Menu or Keys.LMenu or Keys.RMenu or
-            Keys.LWin or Keys.RWin => null,
+            Keys.ShiftKey
+            or Keys.LShiftKey
+            or Keys.RShiftKey
+            or Keys.ControlKey
+            or Keys.LControlKey
+            or Keys.RControlKey
+            or Keys.Menu
+            or Keys.LMenu
+            or Keys.RMenu
+            or Keys.LWin
+            or Keys.RWin => null,
 
             // Navigation and control keys
-            Keys.Left or Keys.Right or Keys.Up or Keys.Down or
-            Keys.Home or Keys.End or Keys.PageUp or Keys.PageDown or
-            Keys.Insert or Keys.Delete or Keys.Escape or Keys.CapsLock or
-            Keys.NumLock or Keys.Scroll or Keys.Pause or Keys.PrintScreen => null,
+            Keys.Left
+            or Keys.Right
+            or Keys.Up
+            or Keys.Down
+            or Keys.Home
+            or Keys.End
+            or Keys.PageUp
+            or Keys.PageDown
+            or Keys.Insert
+            or Keys.Delete
+            or Keys.Escape
+            or Keys.CapsLock
+            or Keys.NumLock
+            or Keys.Scroll
+            or Keys.Pause
+            or Keys.PrintScreen => null,
 
             // Everything else
-            _ => null
+            _ => null,
         };
     }
 }

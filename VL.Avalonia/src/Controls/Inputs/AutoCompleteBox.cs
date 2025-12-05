@@ -17,11 +17,18 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     protected ChannelTwoWayBinding<string> _textBinding;
     protected ChannelTwoWayBinding<object?> _selectedItemBinding;
     protected ChannelSpreadToItemsSourceBinding<T> _itemsSourceBinding;
+
     public AutoCompleteBoxSpectralWrapper()
     {
         _textBinding = new ChannelTwoWayBinding<string>(_output, AutoCompleteBox.TextProperty);
-        _selectedItemBinding = new ChannelTwoWayBinding<object?>(_output, AutoCompleteBox.SelectedItemProperty);
-        _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<T>(_output, AutoCompleteBox.ItemsSourceProperty);
+        _selectedItemBinding = new ChannelTwoWayBinding<object?>(
+            _output,
+            AutoCompleteBox.SelectedItemProperty
+        );
+        _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<T>(
+            _output,
+            AutoCompleteBox.ItemsSourceProperty
+        );
     }
 
     /// <param name="textChannel">
@@ -35,16 +42,15 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// The collection of items that provides the data for the dropdown suggestions
     /// </param>
     protected Spread<T?> _items;
+
     [Fragment(Order = -5)]
-    public void SetItems(Spread<T?> items) =>
-         _itemsSourceBinding.SetItems(items);
+    public void SetItems(Spread<T?> items) => _itemsSourceBinding.SetItems(items);
 
     /// <param name="selectedItem">
     /// The currently selected item from the dropdown
     /// </param>
     public void SetSelectedItemChannel(IChannel<T?>? itemChannel) =>
         _selectedItemBinding.SetChannel(itemChannel as IChannel<object?>);
-
 
     #endregion
 
@@ -53,31 +59,46 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// <param name="filterMode">
     /// The filtering mode used to determine which items match the typed text
     /// </param>
-    [ImplementProperty("AutoCompleteBox.FilterModeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.FilterModeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<AutoCompleteFilterMode> _filterMode;
 
     /// <param name="minimumPrefixLength">
     /// Minimum number of characters that must be typed before suggestions appear
     /// </param>
-    [ImplementProperty("AutoCompleteBox.MinimumPrefixLengthProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.MinimumPrefixLengthProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<int> _minimumPrefixLength;
 
     /// <param name="minimumPopulateDelay">
     /// Delay before showing suggestions after typing stops
     /// </param>
-    [ImplementProperty("AutoCompleteBox.MinimumPopulateDelayProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.MinimumPopulateDelayProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<TimeSpan> _minimumPopulateDelay;
 
     /// <param name="itemFilter">
     /// Custom filter function for advanced filtering scenarios
     /// </param>
-    [ImplementProperty("AutoCompleteBox.ItemFilterProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.ItemFilterProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<AutoCompleteFilterPredicate<object>> _itemFilter;
 
     /// <param name="textFilter">
     /// String-based filter function for text filtering
     /// </param>
-    [ImplementProperty("AutoCompleteBox.TextFilterProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.TextFilterProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<AutoCompleteFilterPredicate<string>> _textFilter;
 
     #endregion
@@ -87,19 +108,28 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// <param name="isDropDownOpen">
     /// Whether the dropdown is currently open
     /// </param>
-    [ImplementProperty("AutoCompleteBox.IsDropDownOpenProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.IsDropDownOpenProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _isDropDownOpen;
 
     /// <param name="maxDropDownHeight">
     /// Maximum height of the dropdown when open
     /// </param>
-    [ImplementProperty("AutoCompleteBox.MaxDropDownHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.MaxDropDownHeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _maxDropDownHeight;
 
     /// <param name="isTextCompletionEnabled">
     /// Whether text completion is enabled (auto-completes text as you type)
     /// </param>
-    [ImplementProperty("AutoCompleteBox.IsTextCompletionEnabledProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.IsTextCompletionEnabledProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _isTextCompletionEnabled;
 
     #endregion
@@ -131,13 +161,19 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// <param name="itemSelector">
     /// Custom selector for how selected items modify the text
     /// </param>
-    [ImplementProperty("AutoCompleteBox.ItemSelectorProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.ItemSelectorProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<AutoCompleteSelector<object>> _itemSelector;
 
     /// <param name="textSelector">
     /// String-based selector for text modification
     /// </param>
-    [ImplementProperty("AutoCompleteBox.TextSelectorProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.TextSelectorProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<AutoCompleteSelector<string>> _textSelector;
 
     #endregion
@@ -147,7 +183,10 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
     /// <param name="asyncPopulator">
     /// Async function for populating suggestions from external sources
     /// </param>
-    [ImplementProperty("AutoCompleteBox.AsyncPopulatorProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "AutoCompleteBox.AsyncPopulatorProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<Func<string, CancellationToken, Task<IEnumerable<object>>>> _asyncPopulator;
 
     #endregion

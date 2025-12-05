@@ -22,9 +22,11 @@ namespace VL.Avalonia.Custom.Controls.Value
         public ColorSpectrumWrapper()
         {
             _colorBinding = new ChannelTwoWayBinding<Color>(_output, ColorSpectrum.ColorProperty);
-            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(_output, ColorSpectrum.HsvColorProperty);
+            _hsvColorBinding = new ChannelTwoWayBinding<HsvColor>(
+                _output,
+                ColorSpectrum.HsvColorProperty
+            );
         }
-
 
         /// <param name="colorChannel">
         /// Gets or sets the colorChannel
@@ -40,11 +42,13 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetHsvColorChannel(IChannel<HsvColor> hsvColorChannel) =>
             _hsvColorBinding.SetChannel(hsvColorChannel);
 
-
-
         protected Optional<ColorSpectrumComponents> _components;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetComponents([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumComponents> components)
+        public void SetComponents(
+            [Pin(Visibility = Model.PinVisibility.Visible)]
+                Optional<ColorSpectrumComponents> components
+        )
         {
             if (_components != components)
             {
@@ -61,8 +65,8 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _maxHue;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetMaxHue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxHue)
         {
@@ -77,10 +81,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _maxSaturation;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMaxSaturation([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxSaturation)
+        public void SetMaxSaturation(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxSaturation
+        )
         {
             if (_maxSaturation != maxSaturation)
             {
@@ -93,10 +99,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _maxValue;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMaxValue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxValue)
+        public void SetMaxValue(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> maxValue
+        )
         {
             if (_maxValue != maxValue)
             {
@@ -109,8 +117,8 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _minHue;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetMinHue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minHue)
         {
@@ -125,10 +133,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _minSaturation;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMinSaturation([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minSaturation)
+        public void SetMinSaturation(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minSaturation
+        )
         {
             if (_minSaturation != minSaturation)
             {
@@ -141,10 +151,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<int> _minValue;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetMinValue([Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minValue)
+        public void SetMinValue(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<int> minValue
+        )
         {
             if (_minValue != minValue)
             {
@@ -157,10 +169,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<ColorSpectrumShape> _shape;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetColorSpectrumShape([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> shape)
+        public void SetColorSpectrumShape(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorSpectrumShape> shape
+        )
         {
             if (_shape != shape)
             {
@@ -177,10 +191,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
         }
 
-
         protected Optional<ColorComponent> _thirdComponent;
+
         [Fragment(Order = PinOrder.Main)]
-        public void SetThirdComponent([Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorComponent> thirdComponent)
+        public void SetThirdComponent(
+            [Pin(Visibility = Model.PinVisibility.Visible)] Optional<ColorComponent> thirdComponent
+        )
         {
             if (_thirdComponent != thirdComponent)
             {

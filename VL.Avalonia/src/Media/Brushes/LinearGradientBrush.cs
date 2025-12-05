@@ -16,14 +16,23 @@ public partial class LinearGradientBrushWrapper : GradientBrushWrapperBase<Linea
     protected Optional<Vector2> _endPoint;
     protected Optional<RelativeUnit> _endPointRelativeUnit;
 
-    public void SetStartPoint(Optional<Vector2> startPoint, Optional<RelativeUnit> startPointRelativeUnit)
+    public void SetStartPoint(
+        Optional<Vector2> startPoint,
+        Optional<RelativeUnit> startPointRelativeUnit
+    )
     {
         if (_startPoint != startPoint || _startPointRelativeUnit != startPointRelativeUnit)
         {
             if (startPoint.HasValue)
             {
-                _output.SetValue(LinearGradientBrush.StartPointProperty,
-                    startPoint.Value.ToRelativePoint(startPointRelativeUnit.HasValue ? startPointRelativeUnit.Value : RelativeUnit.Relative));
+                _output.SetValue(
+                    LinearGradientBrush.StartPointProperty,
+                    startPoint.Value.ToRelativePoint(
+                        startPointRelativeUnit.HasValue
+                            ? startPointRelativeUnit.Value
+                            : RelativeUnit.Relative
+                    )
+                );
             }
             else
             {
@@ -41,8 +50,14 @@ public partial class LinearGradientBrushWrapper : GradientBrushWrapperBase<Linea
         {
             if (endPoint.HasValue)
             {
-                _output.SetValue(LinearGradientBrush.EndPointProperty,
-                    endPoint.Value.ToRelativePoint(endPointRelativeUnit.HasValue ? endPointRelativeUnit.Value : RelativeUnit.Relative));
+                _output.SetValue(
+                    LinearGradientBrush.EndPointProperty,
+                    endPoint.Value.ToRelativePoint(
+                        endPointRelativeUnit.HasValue
+                            ? endPointRelativeUnit.Value
+                            : RelativeUnit.Relative
+                    )
+                );
             }
             else
             {

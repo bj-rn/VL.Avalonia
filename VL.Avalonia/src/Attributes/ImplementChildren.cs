@@ -8,7 +8,6 @@
 internal sealed class ImplementChildren : Attribute
 {
     public bool IsPinGroup { get; set; }
-    public ImplementChildren()
-    {
-    }
+
+    public ImplementChildren() { }
 }
