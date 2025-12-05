@@ -5,12 +5,13 @@ using VL.Core;
 namespace VL.Avalonia.Controls.Primitives;
 
 /// <summary>
-/// Visual base wrapper, based on https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Base/Visual.cs 
+/// Visual base wrapper, based on https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Base/Visual.cs
 /// Gonna comment few props for convenience, use Style Setters instead.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [Obsolete("Overcomplicated")]
-public abstract partial class VisualWrapperBase<T> : StyledElementWrapperBase<T> where T : Visual
+public abstract partial class VisualWrapperBase<T> : StyledElementWrapperBase<T>
+    where T : Visual
 {
     #region Visual Properties (from Visual)
 

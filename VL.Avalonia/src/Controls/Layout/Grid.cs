@@ -14,6 +14,7 @@ namespace VL.Avalonia.Controls;
 public partial class GridSpectralWrapper : PanelWrapperBase<Grid>
 {
     protected Spread<ColumnDefinition?> _columnDefinitions = Spread<ColumnDefinition?>.Empty;
+
     /// <param name="columnDefinitions">
     /// Sets Grid Column Definitions
     /// </param>
@@ -34,10 +35,12 @@ public partial class GridSpectralWrapper : PanelWrapperBase<Grid>
             _output.ColumnDefinitions = cd;
         }
     }
+
     /// <summary>
     /// Sets Grid Row Definitions
     /// </summary>
     protected Spread<RowDefinition?> _rowDefinitions = Spread<RowDefinition?>.Empty;
+
     public void SetRowDefinitions(Spread<RowDefinition?> rowDefinitions)
     {
         if (_rowDefinitions != rowDefinitions)
@@ -63,7 +66,7 @@ public partial class GridSpectralWrapper : PanelWrapperBase<Grid>
 
     /*
     * NOT IMPLEMENTED ON 11.2.1
-    * 
+    *
     /// <param name="rowSpacing">
     /// The amount of space in device-independent pixels between grid rows
     /// </param>
@@ -83,8 +86,10 @@ public partial class GridWrapper : GridSpectralWrapper
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }
 
 [ProcessNode(Name = "ColumnDefinition")]
@@ -94,29 +99,43 @@ public partial class ColumnDefinitionWrapper
     private readonly ColumnDefinition _output = new ColumnDefinition();
 
     private float _gridUnitWidth = 1.0f;
+
     public void SetValue(float value = 1.0f)
     {
         if (_gridUnitWidth != value)
         {
             _gridUnitWidth = value;
-            _output.SetValue(ColumnDefinition.WidthProperty, new GridLength(_gridUnitWidth, _gridUnitType));
+            _output.SetValue(
+                ColumnDefinition.WidthProperty,
+                new GridLength(_gridUnitWidth, _gridUnitType)
+            );
         }
     }
 
     private GridUnitType _gridUnitType = GridUnitType.Star;
+
     public void SetGridUnitType(GridUnitType gridUnitType = GridUnitType.Star)
     {
         if (_gridUnitType != gridUnitType)
         {
             _gridUnitType = gridUnitType;
-            _output.SetValue(ColumnDefinition.WidthProperty, new GridLength(_gridUnitWidth, _gridUnitType));
+            _output.SetValue(
+                ColumnDefinition.WidthProperty,
+                new GridLength(_gridUnitWidth, _gridUnitType)
+            );
         }
     }
 
-    [ImplementProperty("ColumnDefinition.MaxWidthProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ColumnDefinition.MaxWidthProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     private Optional<float> _maxWidth;
 
-    [ImplementProperty("ColumnDefinition.MinWidthProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ColumnDefinition.MinWidthProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     private Optional<float> _minWidth;
 }
 
@@ -127,33 +146,48 @@ public partial class RowDefinitionWrapper
     private readonly RowDefinition _output = new RowDefinition();
 
     private float _gridUnitHeight = 1.0f;
+
     public void SetValue(float value = 1.0f)
     {
         if (_gridUnitHeight != value)
         {
             _gridUnitHeight = value;
-            _output.SetValue(RowDefinition.HeightProperty, new GridLength(_gridUnitHeight, _gridUnitType));
+            _output.SetValue(
+                RowDefinition.HeightProperty,
+                new GridLength(_gridUnitHeight, _gridUnitType)
+            );
         }
     }
+
     private GridUnitType _gridUnitType = GridUnitType.Star;
+
     public void SetGridUnitType(GridUnitType gridUnitType = GridUnitType.Star)
     {
         if (_gridUnitType != gridUnitType)
         {
             _gridUnitType = gridUnitType;
-            _output.SetValue(RowDefinition.HeightProperty, new GridLength(_gridUnitHeight, _gridUnitType));
+            _output.SetValue(
+                RowDefinition.HeightProperty,
+                new GridLength(_gridUnitHeight, _gridUnitType)
+            );
         }
     }
 
-    [ImplementProperty("RowDefinition.MaxHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "RowDefinition.MaxHeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     private Optional<float> _maxHeight;
 
-    [ImplementProperty("RowDefinition.MinHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "RowDefinition.MinHeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     private Optional<float> _minHeight;
 }
 
 /// <summary>
-/// Row property. 
+/// Row property.
 /// Grid defines Row, so that it can be set on any element treated as a cell. Row property specifies child's position with respect to rows. Rows are 0 - based. In order to appear in first row, element should have Row property set to 0. Default value for the property is 0
 /// Grid Attached Property.
 /// </summary>
@@ -161,6 +195,7 @@ public partial class RowDefinitionWrapper
 public partial class GridRowProperty : AttachedPropertyBase
 {
     private Optional<int> _row;
+
     public void SetRow(Optional<int> row)
     {
         if (_row != row)
@@ -196,6 +231,7 @@ public partial class GridRowProperty : AttachedPropertyBase
 public partial class GridRowSpanProperty : AttachedPropertyBase
 {
     private Optional<int> _rowSpan;
+
     public void SetRowSpan(Optional<int> rowSpan)
     {
         if (_rowSpan != rowSpan)
@@ -224,7 +260,7 @@ public partial class GridRowSpanProperty : AttachedPropertyBase
 }
 
 /// <summary>
-/// Column property. 
+/// Column property.
 /// Grid defines Column, so that it can be set on any element treated as a cell. Column property specifies child's position with respect to columns. Columns are 0 - based. In order to appear in first column, element should have Column property set to 0. Default value for the property is 0
 /// Grid Attached Property.
 /// </summary>
@@ -232,6 +268,7 @@ public partial class GridRowSpanProperty : AttachedPropertyBase
 public partial class GridColumnProperty : AttachedPropertyBase
 {
     private Optional<int> _column;
+
     public void SetColumn(Optional<int> column)
     {
         if (_column != column)
@@ -267,6 +304,7 @@ public partial class GridColumnProperty : AttachedPropertyBase
 public partial class GridColumnSpanProperty : AttachedPropertyBase
 {
     private Optional<int> _columnSpan;
+
     public void SetColumnSpan(Optional<int> columnSpan)
     {
         if (_columnSpan != columnSpan)
@@ -302,6 +340,7 @@ public partial class GridColumnSpanProperty : AttachedPropertyBase
 public partial class GridIsSharedSizeScopeProperty : AttachedPropertyBase
 {
     protected Optional<bool> _isSharedSizeScope;
+
     /// <param name="isSharedSizeScope">
     /// (Attached) Whether this element is the root of a shared size scope for column/row sizing
     /// </param>

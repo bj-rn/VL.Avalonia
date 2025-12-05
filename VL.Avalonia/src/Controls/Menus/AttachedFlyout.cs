@@ -1,6 +1,6 @@
-﻿using Avalonia.Controls;
+﻿using System.Reactive;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
-using System.Reactive;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
@@ -8,9 +8,11 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "AttachedFlyout")]
-public partial class AttachedFlyoutWrapper<T> where T : Control
+public partial class AttachedFlyoutWrapper<T>
+    where T : Control
 {
     private T? _input;
+
     [Fragment(Order = -10)]
     public void SetInput(T? input)
     {
@@ -25,6 +27,7 @@ public partial class AttachedFlyoutWrapper<T> where T : Control
     public T? Output => _input;
 
     private Optional<FlyoutBase> _flyout;
+
     [Fragment(Order = -5)]
     public void SetFlyout(Optional<FlyoutBase> flyout)
     {
@@ -37,6 +40,7 @@ public partial class AttachedFlyoutWrapper<T> where T : Control
     }
 
     private IChannel<Unit>? _showAttachedFlyoutChannel;
+
     public void SetShowAttachedFlyoutChannel(IChannel<Unit>? showAttachedFlyoutChannel)
     {
         if (_showAttachedFlyoutChannel != showAttachedFlyoutChannel)

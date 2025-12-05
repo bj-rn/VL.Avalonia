@@ -9,9 +9,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/itemscontrol">ItemsControl</see>
 /// </summary>
 [ProcessNode(Name = "ItemsControl (Spectral)")]
-public partial class ItemsControlSpectralWrapper<T> : ItemsControlWrapperBase<ItemsControl, T>
-{
-}
+public partial class ItemsControlSpectralWrapper<T> : ItemsControlWrapperBase<ItemsControl, T> { }
 
 /// <inheritdoc cref="ItemsControlSpectralWrapper{T}"/>
 [ProcessNode(Name = "ItemsControl")]
@@ -21,6 +19,8 @@ public partial class ItemsControlWrapper<T> : ItemsControlSpectralWrapper<T>
     /// The collection of items
     /// </param>
     [Fragment(Order = -10)]
-    public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items) =>
-         _itemsSourceBinding.SetItems(items);
+    public override void SetItems(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<T> items
+    ) => _itemsSourceBinding.SetItems(items);
 }

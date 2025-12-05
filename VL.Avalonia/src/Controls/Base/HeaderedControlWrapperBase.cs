@@ -11,7 +11,8 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/headeredcontentcontrol">HeaderedContentControl</see>
 /// </summary>
 [ProcessNode]
-public abstract partial class HeaderedControlWrapperBase<T> : ContentControlWrapperBase<T> where T : HeaderedContentControl, new()
+public abstract partial class HeaderedControlWrapperBase<T> : ContentControlWrapperBase<T>
+    where T : HeaderedContentControl, new()
 {
     /// <param name="header">
     /// The header content (can be a string, UI element, or any object).
@@ -22,6 +23,9 @@ public abstract partial class HeaderedControlWrapperBase<T> : ContentControlWrap
     /// <param name="headerTemplate">
     /// The data template used to display the header content.
     /// </param>
-    [ImplementProperty("HeaderedContentControl.HeaderTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "HeaderedContentControl.HeaderTemplateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IDataTemplate> _headerTemplate;
 }

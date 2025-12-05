@@ -7,6 +7,7 @@
     internal sealed class ImplementChannel<T> : Attribute
     {
         public string PropertyPath { get; }
+
         public ImplementChannel(string propertyPath)
         {
             PropertyPath = propertyPath;

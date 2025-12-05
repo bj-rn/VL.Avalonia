@@ -12,10 +12,19 @@ namespace VL.Avalonia.Custom.Controls.Value
         {
             base.OnApplyTemplate(e);
             ValueButton = e.NameScope.Find<Button>("PART_ValueButton");
-            ValueButton.AddHandler(PointerPressedEvent, Button_PointerPressed, RoutingStrategies.Bubble, true);
+            ValueButton.AddHandler(
+                PointerPressedEvent,
+                Button_PointerPressed,
+                RoutingStrategies.Bubble,
+                true
+            );
 
             Border mainBorder = e.NameScope.Find<Border>("PART_MainBorder");
-            mainBorder.AddHandler(PointerReleasedEvent, Button_OnPointerReleased, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
+            mainBorder.AddHandler(
+                PointerReleasedEvent,
+                Button_OnPointerReleased,
+                RoutingStrategies.Tunnel | RoutingStrategies.Bubble
+            );
             mainBorder.PointerMoved += MainBorder_PointerMoved;
             mainBorder.PointerReleased += MainBorder_PointerReleased;
 
@@ -34,7 +43,10 @@ namespace VL.Avalonia.Custom.Controls.Value
             if (IsEditing == true)
                 return;
 
-            if (e.GetCurrentPoint(this).Properties.PointerUpdateKind == PointerUpdateKind.LeftButtonPressed)
+            if (
+                e.GetCurrentPoint(this).Properties.PointerUpdateKind
+                == PointerUpdateKind.LeftButtonPressed
+            )
             {
                 oldValue = this.Value;
                 pressedPosition = e.GetPosition(this);
@@ -45,8 +57,6 @@ namespace VL.Avalonia.Custom.Controls.Value
         private Button ValueButton { get; set; }
         private decimal? oldValue;
         Point pressedPosition;
-
-
 
         private void MainBorder_PointerMoved(object? sender, PointerEventArgs e)
         {
@@ -69,8 +79,16 @@ namespace VL.Avalonia.Custom.Controls.Value
         private void AddParentWindowHandlers()
         {
             var topLevel = TopLevel.GetTopLevel(this);
-            topLevel?.AddHandler(PointerReleasedEvent, TopLevel_OnPointerReleased, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
-            topLevel?.AddHandler(PointerPressedEvent, TopLevel_OnPointerPressed, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
+            topLevel?.AddHandler(
+                PointerReleasedEvent,
+                TopLevel_OnPointerReleased,
+                RoutingStrategies.Tunnel | RoutingStrategies.Bubble
+            );
+            topLevel?.AddHandler(
+                PointerPressedEvent,
+                TopLevel_OnPointerPressed,
+                RoutingStrategies.Tunnel | RoutingStrategies.Bubble
+            );
         }
 
         private void RemoveParentWindowHandlers()
@@ -136,7 +154,10 @@ namespace VL.Avalonia.Custom.Controls.Value
 
         private void Button_OnPointerReleased(object? sender, PointerReleasedEventArgs e)
         {
-            if (e.GetCurrentPoint(this).Properties.PointerUpdateKind == PointerUpdateKind.MiddleButtonReleased)
+            if (
+                e.GetCurrentPoint(this).Properties.PointerUpdateKind
+                == PointerUpdateKind.MiddleButtonReleased
+            )
             {
                 this.oldValue = this.Value;
                 IsEditing = true;
@@ -147,8 +168,5 @@ namespace VL.Avalonia.Custom.Controls.Value
             }
             e.Handled = false;
         }
-
-
-
     }
 }

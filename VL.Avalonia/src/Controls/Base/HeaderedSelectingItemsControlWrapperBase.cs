@@ -11,7 +11,9 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/headeredselectingitemscontrol">HeaderedSelectingItemsControl</see>
 /// </summary>
 [ProcessNode]
-public abstract partial class HeaderedSelectingItemsControlWrapperBase<TControl, TValue> : SelectingItemsControlWrapperBase<TControl, TValue> where TControl : SelectingItemsControl, new()
+public abstract partial class HeaderedSelectingItemsControlWrapperBase<TControl, TValue>
+    : SelectingItemsControlWrapperBase<TControl, TValue>
+    where TControl : SelectingItemsControl, new()
 {
     #region Header Properties
 
@@ -24,9 +26,11 @@ public abstract partial class HeaderedSelectingItemsControlWrapperBase<TControl,
     /// <param name="headerTemplate">
     /// The data template used to display the header content.
     /// </param>
-    [ImplementProperty("HeaderedSelectingItemsControl.HeaderTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "HeaderedSelectingItemsControl.HeaderTemplateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IDataTemplate> _headerTemplate;
 
     #endregion
 }
-

@@ -26,35 +26,45 @@ public partial class TabControlSpectralWrapper<T> : SelectingItemsControlWrapper
     /// <param name="horizontalContentAlignment">
     /// Horizontal alignment of the content within the tab (default: Stretch).
     /// </param>
-    [ImplementProperty("TabControl.HorizontalContentAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TabControl.HorizontalContentAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<HorizontalAlignment> _horizontalContentAlignment;
 
     /// <param name="verticalContentAlignment">
     /// Vertical alignment of the content within the tab (default: Stretch).
     /// </param>
-    [ImplementProperty("TabControl.VerticalContentAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TabControl.VerticalContentAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<VerticalAlignment> _verticalContentAlignment;
 
     /// <param name="contentTemplate">
     /// The default data template used to display the content of the selected tab. (Can be overridden per TabItem)
     /// </param>
-    [ImplementProperty("TabControl.ContentTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TabControl.ContentTemplateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IDataTemplate> _contentTemplate;
 
     #endregion
 }
 
-
 /// <inheritdoc cref="TabControlSpectralWrapper{T}"/>
 [ProcessNode(Name = "TabControl")]
 public partial class TabControlWrapper<T> : TabControlSpectralWrapper<T>
 {
-
     /// <param name="items">
     /// The collection of items
     /// </param>
     [Fragment(Order = -10)]
-    public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items)
+    public override void SetItems(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<T> items
+    )
     {
         base.SetItems(items);
     }

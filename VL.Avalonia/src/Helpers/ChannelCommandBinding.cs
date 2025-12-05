@@ -8,7 +8,8 @@ namespace VL.Avalonia.Helpers;
 /// Base command binding to channel, TODO...
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class ChannelCommandBindingBase<T> : ICommand, IDisposable where T : new()
+public abstract class ChannelCommandBindingBase<T> : ICommand, IDisposable
+    where T : new()
 {
     internal IChannel<T>? _commandChannel = ChannelHelpers.CreateChannelOfType<T>();
 
@@ -24,9 +25,8 @@ public abstract class ChannelCommandBindingBase<T> : ICommand, IDisposable where
             _commandChannel = commandChannel;
         }
     }
-    public bool CanExecute(object? parameter) =>
-        true;
 
+    public bool CanExecute(object? parameter) => true;
 
     public virtual void Execute(object? parameter)
     {
@@ -39,13 +39,11 @@ public abstract class ChannelCommandBindingBase<T> : ICommand, IDisposable where
     }
 }
 
-
 /// <summary>
 /// Channel command binding with generic payload. TODO
 /// </summary>
-public class ChannelCommandBinding<T> : ChannelCommandBindingBase<T> where T : new()
-{
-}
+public class ChannelCommandBinding<T> : ChannelCommandBindingBase<T>
+    where T : new() { }
 
 /// <summary>
 /// Channel command binding to Unit.

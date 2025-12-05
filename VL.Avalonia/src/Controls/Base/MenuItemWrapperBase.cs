@@ -1,6 +1,6 @@
-﻿using Avalonia.Controls;
+﻿using System.Reactive;
+using Avalonia.Controls;
 using Avalonia.Input;
-using System.Reactive;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -14,7 +14,8 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class MenuItemWrapperBase<T> : HeaderedSelectingItemsControlWrapperBase<MenuItem, T>
+public abstract partial class MenuItemWrapperBase<T>
+    : HeaderedSelectingItemsControlWrapperBase<MenuItem, T>
 {
     #region Command & Gesture Properties
 
@@ -22,12 +23,16 @@ public abstract partial class MenuItemWrapperBase<T> : HeaderedSelectingItemsCon
     protected ChannelTwoWayBinding<bool> _isSelectedBinding;
     protected ChannelTwoWayBinding<bool> _isSubMenuOpenBinding;
     protected ChannelTwoWayBinding<bool> _isCheckedBinding;
+
     public MenuItemWrapperBase()
     {
         _commandBinding = new ChannelCommandBindingUnit();
 
         _isSelectedBinding = new ChannelTwoWayBinding<bool>(_output, MenuItem.IsSelectedProperty);
-        _isSubMenuOpenBinding = new ChannelTwoWayBinding<bool>(_output, MenuItem.IsSubMenuOpenProperty);
+        _isSubMenuOpenBinding = new ChannelTwoWayBinding<bool>(
+            _output,
+            MenuItem.IsSubMenuOpenProperty
+        );
         _isCheckedBinding = new ChannelTwoWayBinding<bool>(_output, MenuItem.IsCheckedProperty);
 
         _output.SetValue(MenuItem.CommandProperty, _commandBinding);
@@ -57,7 +62,10 @@ public abstract partial class MenuItemWrapperBase<T> : HeaderedSelectingItemsCon
     /// <param name="inputGesture">
     /// The input gesture displayed in the menu (not actual hotkey binding).
     /// </param>
-    [ImplementProperty("MenuItem.InputGestureProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MenuItem.InputGestureProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<KeyGesture> _inputGesture;
 
     #endregion
@@ -67,7 +75,11 @@ public abstract partial class MenuItemWrapperBase<T> : HeaderedSelectingItemsCon
     /// <param name="icon">
     /// The icon to show in the menu item (object or UI).
     /// </param>
-    [ImplementProperty("MenuItem.IconProperty", Order = PinOrder.Secondary, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MenuItem.IconProperty",
+        Order = PinOrder.Secondary,
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<object> _icon;
 
     #endregion
@@ -77,19 +89,24 @@ public abstract partial class MenuItemWrapperBase<T> : HeaderedSelectingItemsCon
     /// <param name="isSelectedChannel">
     /// Whether this menu item is currently selected.
     /// </param>
-    public void SetIsSelectedChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isSelectedChannel) =>
-        _isSelectedBinding.SetChannel(isSelectedChannel);
+    public void SetIsSelectedChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isSelectedChannel
+    ) => _isSelectedBinding.SetChannel(isSelectedChannel);
 
     /// <param name="isSubMenuOpenChannel">
     /// Whether this menu item's submenu is currently open.
     /// </param>
-    public void SetIsSubmenuOpenChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isSubMenuOpenChannel) =>
-        _isSubMenuOpenBinding.SetChannel(isSubMenuOpenChannel);
+    public void SetIsSubmenuOpenChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isSubMenuOpenChannel
+    ) => _isSubMenuOpenBinding.SetChannel(isSubMenuOpenChannel);
 
     /// <param name="staysOpenOnClick">
     /// Whether clicking this item keeps the parent menu open.
     /// </param>
-    [ImplementProperty("MenuItem.StaysOpenOnClickProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MenuItem.StaysOpenOnClickProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _staysOpenOnClick;
 
     #endregion
@@ -105,8 +122,9 @@ public abstract partial class MenuItemWrapperBase<T> : HeaderedSelectingItemsCon
     /// <param name="isChecked">
     /// Whether the menu item is checked (for check/radio types).
     /// </param>
-    public void SetIsCheckedChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isCheckedChannel) =>
-        _isCheckedBinding.SetChannel(isCheckedChannel);
+    public void SetIsCheckedChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isCheckedChannel
+    ) => _isCheckedBinding.SetChannel(isCheckedChannel);
 
     /// <param name="groupName">
     /// The group name for radio button grouping.

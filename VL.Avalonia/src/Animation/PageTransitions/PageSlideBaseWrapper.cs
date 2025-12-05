@@ -7,12 +7,14 @@ using static Avalonia.Animation.PageSlide;
 namespace VL.Avalonia.Animation.PageTransitions;
 
 [ProcessNode]
-public abstract partial class PageSlideBaseWrapper<T> where T : PageSlide, new()
+public abstract partial class PageSlideBaseWrapper<T>
+    where T : PageSlide, new()
 {
     protected readonly T _output = new();
     public T Output => _output;
 
     protected Optional<TimeSpan> _duration;
+
     public void SetDuration(Optional<TimeSpan> duration)
     {
         if (_duration != duration)
@@ -31,6 +33,7 @@ public abstract partial class PageSlideBaseWrapper<T> where T : PageSlide, new()
     }
 
     protected Optional<SlideAxis> _orientation;
+
     public void SetOrientation(Optional<SlideAxis> orientation)
     {
         if (_orientation != orientation)
@@ -49,6 +52,7 @@ public abstract partial class PageSlideBaseWrapper<T> where T : PageSlide, new()
     }
 
     protected Optional<Easing> _slideInEasing;
+
     public void SetSlideInEasing(Optional<Easing> slideInEasing)
     {
         if (_slideInEasing != slideInEasing)
@@ -67,6 +71,7 @@ public abstract partial class PageSlideBaseWrapper<T> where T : PageSlide, new()
     }
 
     protected Optional<Easing> _slideOutEasing;
+
     public void SetSlideOutEasing(Optional<Easing> slideOutEasing)
     {
         if (_slideOutEasing != slideOutEasing)

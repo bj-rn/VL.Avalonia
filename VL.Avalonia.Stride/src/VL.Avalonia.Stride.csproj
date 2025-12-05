@@ -1,17 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <BaseOutputPath>..\lib</BaseOutputPath>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <BaseOutputPath>..\lib</BaseOutputPath>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Stride.Graphics" Version="4.2.0.2293" />
-    <PackageReference Include="VL.Core" Version="2025.7.0" />
-  </ItemGroup>
-
+    <ItemGroup>
+        <PackageReference Include="Stride.Graphics" Version="4.2.0.2293" />
+        <PackageReference Include="VL.Core" Version="2025.7.0" />
+    </ItemGroup>
 </Project>

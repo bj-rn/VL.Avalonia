@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls;
 using VL.Core.Import;
 
-
 namespace VL.Avalonia.Custom.Controls.Value
 {
     /// <summary>
@@ -9,7 +8,5 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/colorpicker/">Custom Color Picker</see>
     /// </summary>
     [ProcessNode(Name = "ColorPicker")]
-    public partial class ColorPickerWrapper : ColorViewWrapper<ColorPicker>
-    {
-    }
+    public partial class ColorPickerWrapper : ColorViewWrapper<ColorPicker> { }
 }

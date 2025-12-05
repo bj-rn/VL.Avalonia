@@ -21,22 +21,30 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
     #region Dropdown Behavior Properties
 
     protected ChannelTwoWayBinding<bool> _isDropDownOpenBinding;
-    public ComboBoxSpectralWrapper() : base()
+
+    public ComboBoxSpectralWrapper()
+        : base()
     {
-        _isDropDownOpenBinding = new ChannelTwoWayBinding<bool>(_output, ComboBox.IsDropDownOpenProperty);
+        _isDropDownOpenBinding = new ChannelTwoWayBinding<bool>(
+            _output,
+            ComboBox.IsDropDownOpenProperty
+        );
     }
 
     /// <param name="isDropDownOpenChannel">
     /// Whether the dropdown list is currently open and visible
     /// </param>
-    public virtual void SetIsDropDownOpenChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool> isDropDownOpenChannel) =>
-        _isDropDownOpenBinding.SetChannel(isDropDownOpenChannel);
-
+    public virtual void SetIsDropDownOpenChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool> isDropDownOpenChannel
+    ) => _isDropDownOpenBinding.SetChannel(isDropDownOpenChannel);
 
     /// <param name="maxDropDownHeight">
     /// Maximum height of the dropdown list when opened
     /// </param>
-    [ImplementProperty("ComboBox.MaxDropDownHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ComboBox.MaxDropDownHeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _maxDropDownHeight;
 
     #endregion
@@ -46,7 +54,10 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
     /// <param name="selectionBoxItemTemplate">
     /// Template used to display the selected item in the closed ComboBox
     /// </param>
-    [ImplementProperty("ComboBox.SelectionBoxItemTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ComboBox.SelectionBoxItemTemplateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IDataTemplate> _selectionBoxItemTemplate;
 
     #endregion
@@ -56,13 +67,19 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
     /// <param name="placeholderText">
     /// Text displayed when no item is selected
     /// </param>
-    [ImplementProperty("ComboBox.PlaceholderTextProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ComboBox.PlaceholderTextProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<string> _placeholderText;
 
     /// <param name="placeholderForeground">
     /// Brush used to render the placeholder text
     /// </param>
-    [ImplementProperty("ComboBox.PlaceholderForegroundProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ComboBox.PlaceholderForegroundProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IBrush> _placeholderForeground;
 
     #endregion
@@ -72,13 +89,19 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
     /// <param name="horizontalContentAlignment">
     /// Horizontal alignment of the selected item content within the ComboBox
     /// </param>
-    [ImplementProperty("ComboBox.HorizontalContentAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ComboBox.HorizontalContentAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<HorizontalAlignment> _horizontalContentAlignment;
 
     /// <param name="verticalContentAlignment">
     /// Vertical alignment of the selected item content within the ComboBox
     /// </param>
-    [ImplementProperty("ComboBox.VerticalContentAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ComboBox.VerticalContentAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<VerticalAlignment> _verticalContentAlignment;
 
     #endregion
@@ -115,6 +138,8 @@ public partial class ComboBoxSpectralWrapper<T> : SelectingItemsControlWrapperBa
 public partial class ComboBoxWrapper<T> : ComboBoxSpectralWrapper<T>
 {
     [Fragment(Order = -10)]
-    public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items)
-        => base.SetItems(items);
+    public override void SetItems(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<T> items
+    ) => base.SetItems(items);
 }

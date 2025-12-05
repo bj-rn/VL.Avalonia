@@ -10,7 +10,8 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class ListBoxItemWrapperBase<T> : ContentControlWrapperBase<T> where T : ListBoxItem, new()
+public abstract partial class ListBoxItemWrapperBase<T> : ContentControlWrapperBase<T>
+    where T : ListBoxItem, new()
 {
     #region Selection Properties
     protected ChannelTwoWayBinding<bool> _isSelectedBinding;
@@ -23,8 +24,9 @@ public abstract partial class ListBoxItemWrapperBase<T> : ContentControlWrapperB
     /// <param name="isSelectedChannel">
     /// Whether this list item is currently selected
     /// </param>
-    public void SetIsSelectedChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool> isSelectedChannel) =>
-        _isSelectedBinding.SetChannel(isSelectedChannel);
+    public void SetIsSelectedChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool> isSelectedChannel
+    ) => _isSelectedBinding.SetChannel(isSelectedChannel);
 
     #endregion
 }
@@ -34,7 +36,4 @@ public abstract partial class ListBoxItemWrapperBase<T> : ContentControlWrapperB
 /// The <c>ListBoxItem</c> represents a selectable item within a ListBox control. It extends ContentControl to display content while adding selection functionality and appropriate visual states. Each ListBoxItem can hold any type of content and provides visual feedback when selected, pressed, or focused, making it the building block for list-based user interfaces.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/listboxitem">ListBoxItem</see>
 /// </summary>
-public partial class ListBoxItemWrapper : ListBoxItemWrapperBase<ListBoxItem>
-{
-
-}
+public partial class ListBoxItemWrapper : ListBoxItemWrapperBase<ListBoxItem> { }

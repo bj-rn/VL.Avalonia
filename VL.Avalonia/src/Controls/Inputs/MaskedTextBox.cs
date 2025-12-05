@@ -1,5 +1,5 @@
-﻿using Avalonia.Controls;
-using System.Globalization;
+﻿using System.Globalization;
+using Avalonia.Controls;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
@@ -29,19 +29,28 @@ public partial class MaskedTextBoxWrapper : TextBoxWrapperBase<MaskedTextBox>
     /// <param name="hidePromptOnLeave">
     /// Whether prompt characters are hidden when the control loses focus
     /// </param>
-    [ImplementProperty("MaskedTextBox.HidePromptOnLeaveProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MaskedTextBox.HidePromptOnLeaveProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _hidePromptOnLeave;
 
     /// <param name="resetOnPrompt">
     /// Whether selected characters should be reset when the prompt character is pressed
     /// </param>
-    [ImplementProperty("MaskedTextBox.ResetOnPromptProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MaskedTextBox.ResetOnPromptProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _resetOnPrompt;
 
     /// <param name="resetOnSpace">
     /// Whether selected characters should be reset when the space character is pressed
     /// </param>
-    [ImplementProperty("MaskedTextBox.ResetOnSpaceProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MaskedTextBox.ResetOnSpaceProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _resetOnSpace;
 
     #endregion
@@ -50,13 +59,19 @@ public partial class MaskedTextBoxWrapper : TextBoxWrapperBase<MaskedTextBox>
     /// <param name="asciiOnly">
     /// Whether the masked text box is restricted to accept only ASCII characters
     /// </param>
-    [ImplementProperty("MaskedTextBox.AsciiOnlyProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MaskedTextBox.AsciiOnlyProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _asciiOnly;
 
     /// <param name="culture">
     /// Culture information used for character validation and formatting
     /// </param>
-    [ImplementProperty("MaskedTextBox.CultureProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "MaskedTextBox.CultureProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<CultureInfo> _culture;
     #endregion
 }

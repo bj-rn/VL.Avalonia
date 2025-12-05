@@ -8,6 +8,4 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/splitbutton">SplitButton</see>
 /// </summary>
 [ProcessNode(Name = "SplitButton")]
-public partial class SplitButtonWrapper : SplitButtonWrapperBase<SplitButton>
-{
-}
+public partial class SplitButtonWrapper : SplitButtonWrapperBase<SplitButton> { }

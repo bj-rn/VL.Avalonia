@@ -10,7 +10,6 @@ using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
-
 using AvaloniaPoint = Avalonia.Point;
 
 namespace VL.Avalonia.Styles
@@ -33,10 +32,10 @@ namespace VL.Avalonia.Styles
             _output = new ImmutableSetter<T>() with { StyleName = styleName };
         }
 
-
         protected ImmutableSetter<T> _output;
 
         private IAvaloniaStyle _input;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetInput(IAvaloniaStyle input)
         {
@@ -61,9 +60,11 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetter<TProperty> : StyleSetterBase<TProperty>
     {
-        public StyleSetter(string styleName) : base(styleName) { }
+        public StyleSetter(string styleName)
+            : base(styleName) { }
 
         protected Optional<TProperty> _value;
+
         public void SetValue(Optional<TProperty> value)
         {
             if (_value != value)
@@ -85,12 +86,15 @@ namespace VL.Avalonia.Styles
     public abstract class StyleSetter<TValue, TProperty> : StyleSetterBase<TProperty>
     {
         protected Func<TValue, TProperty> _converter;
-        public StyleSetter(string styleName, Func<TValue, TProperty> converter) : base(styleName)
+
+        public StyleSetter(string styleName, Func<TValue, TProperty> converter)
+            : base(styleName)
         {
             _converter = converter;
         }
 
         protected Optional<TValue> _value;
+
         public void SetValue(Optional<TValue> value)
         {
             if (_value != value)
@@ -111,12 +115,18 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterSRT : StyleSetterBase<TransformOperations>
     {
-        public StyleSetterSRT(string styleName) : base(styleName) { }
+        public StyleSetterSRT(string styleName)
+            : base(styleName) { }
 
         protected Optional<Vector2> _scale;
         protected Optional<float> _rotation;
         protected Optional<Vector2> _translation;
-        public void SetValue(Optional<Vector2> scale, Optional<float> rotation, Optional<Vector2> translation)
+
+        public void SetValue(
+            Optional<Vector2> scale,
+            Optional<float> rotation,
+            Optional<Vector2> translation
+        )
         {
             if (_scale != scale || _rotation != rotation || _translation != translation)
             {
@@ -134,19 +144,22 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterBrushColor : StyleSetter<Color4, IBrush>
     {
-        public StyleSetterBrushColor(string styleName) : base(styleName, (x) => x.ToSolidColorBrush()) { }
+        public StyleSetterBrushColor(string styleName)
+            : base(styleName, (x) => x.ToSolidColorBrush()) { }
     }
 
     [ProcessNode]
     public abstract class StyleSetterThicknessAll : StyleSetter<float, Thickness>
     {
-        public StyleSetterThicknessAll(string styleName) : base(styleName, (x) => new Thickness(x)) { }
+        public StyleSetterThicknessAll(string styleName)
+            : base(styleName, (x) => new Thickness(x)) { }
     }
 
     [ProcessNode]
     public abstract class StyleSetterThicknessHV : StyleSetterBase<Thickness>
     {
-        public StyleSetterThicknessHV(string styleName) : base(styleName) { }
+        public StyleSetterThicknessHV(string styleName)
+            : base(styleName) { }
 
         protected Optional<float> _horizontal;
         protected Optional<float> _vertical;
@@ -157,7 +170,10 @@ namespace VL.Avalonia.Styles
             {
                 _output = _output with
                 {
-                    StyleValue = new Thickness(horizontal.HasValue ? horizontal.Value : 0, vertical.HasValue ? vertical.Value : 0)
+                    StyleValue = new Thickness(
+                        horizontal.HasValue ? horizontal.Value : 0,
+                        vertical.HasValue ? vertical.Value : 0
+                    ),
                 };
 
                 _horizontal = horizontal;
@@ -169,20 +185,31 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterThicknessLTRB : StyleSetterBase<Thickness>
     {
-        public StyleSetterThicknessLTRB(string styleName) : base(styleName) { }
+        public StyleSetterThicknessLTRB(string styleName)
+            : base(styleName) { }
 
         protected Optional<float> _left;
         protected Optional<float> _top;
         protected Optional<float> _right;
         protected Optional<float> _bottom;
 
-        public void SetValue(Optional<float> left, Optional<float> top, Optional<float> right, Optional<float> bottom)
+        public void SetValue(
+            Optional<float> left,
+            Optional<float> top,
+            Optional<float> right,
+            Optional<float> bottom
+        )
         {
             if (_left != left || _top != top || _right != right || _bottom != bottom)
             {
                 _output = _output with
                 {
-                    StyleValue = new Thickness(left.HasValue ? left.Value : 0, top.HasValue ? top.Value : 0, right.HasValue ? right.Value : 0, bottom.HasValue ? bottom.Value : 0)
+                    StyleValue = new Thickness(
+                        left.HasValue ? left.Value : 0,
+                        top.HasValue ? top.Value : 0,
+                        right.HasValue ? right.Value : 0,
+                        bottom.HasValue ? bottom.Value : 0
+                    ),
                 };
 
                 _left = left;
@@ -196,7 +223,8 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterCornerRadiusTB : StyleSetterBase<CornerRadius>
     {
-        public StyleSetterCornerRadiusTB(string styleName) : base(styleName) { }
+        public StyleSetterCornerRadiusTB(string styleName)
+            : base(styleName) { }
 
         protected Optional<float> _top;
         protected Optional<float> _bottom;
@@ -207,7 +235,10 @@ namespace VL.Avalonia.Styles
             {
                 _output = _output with
                 {
-                    StyleValue = new CornerRadius(top.HasValue ? top.Value : 0, bottom.HasValue ? bottom.Value : 0)
+                    StyleValue = new CornerRadius(
+                        top.HasValue ? top.Value : 0,
+                        bottom.HasValue ? bottom.Value : 0
+                    ),
                 };
 
                 _top = top;
@@ -219,20 +250,36 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterCornerRadiusTLTRBRBL : StyleSetterBase<CornerRadius>
     {
-        public StyleSetterCornerRadiusTLTRBRBL(string styleName) : base(styleName) { }
+        public StyleSetterCornerRadiusTLTRBRBL(string styleName)
+            : base(styleName) { }
 
         protected Optional<float> _topLeft;
         protected Optional<float> _topRight;
         protected Optional<float> _bottomRight;
         protected Optional<float> _bottomLeft;
 
-        public void SetValue(Optional<float> topLeft, Optional<float> topRight, Optional<float> bottomRight, Optional<float> bottomLeft)
+        public void SetValue(
+            Optional<float> topLeft,
+            Optional<float> topRight,
+            Optional<float> bottomRight,
+            Optional<float> bottomLeft
+        )
         {
-            if (_topLeft != topLeft || _topRight != topRight || _bottomRight != bottomRight || _bottomLeft != bottomLeft)
+            if (
+                _topLeft != topLeft
+                || _topRight != topRight
+                || _bottomRight != bottomRight
+                || _bottomLeft != bottomLeft
+            )
             {
                 _output = _output with
                 {
-                    StyleValue = new CornerRadius(topLeft.HasValue ? topLeft.Value : 0, topRight.HasValue ? topRight.Value : 0, bottomRight.HasValue ? bottomRight.Value : 0, bottomLeft.HasValue ? bottomLeft.Value : 0)
+                    StyleValue = new CornerRadius(
+                        topLeft.HasValue ? topLeft.Value : 0,
+                        topRight.HasValue ? topRight.Value : 0,
+                        bottomRight.HasValue ? bottomRight.Value : 0,
+                        bottomLeft.HasValue ? bottomLeft.Value : 0
+                    ),
                 };
 
                 _topLeft = topLeft;
@@ -246,32 +293,33 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterFontFeatureCollection : StyleSetterBase<FontFeatureCollection>
     {
-        public StyleSetterFontFeatureCollection(string styleName) : base(styleName) { }
+        public StyleSetterFontFeatureCollection(string styleName)
+            : base(styleName) { }
 
         protected Spread<string> _features;
 
         /// <param name="features">
         /// Parses a string to return a <see cref="FontFeature"/>.
         /// Syntax is the following:
-        ///  
-        ///     Syntax 	        Value 	Start 	End 	 
-        ///     Setting value: 	  	  	  	 
+        ///
+        ///     Syntax 	        Value 	Start 	End
+        ///     Setting value:
         ///     kern 	        1 	    0 	    ∞ 	    Turn feature on
         ///     +kern 	        1 	    0 	    ∞ 	    Turn feature on
         ///     -kern 	        0 	    0 	    ∞ 	    Turn feature off
         ///     kern=0 	        0 	    0 	    ∞ 	    Turn feature off
         ///     kern=1 	        1 	    0 	    ∞ 	    Turn feature on
         ///     aalt=2 	        2 	    0 	    ∞ 	    Choose 2nd alternate
-        ///     Setting index: 	  	  	  	 
+        ///     Setting index:
         ///     kern[] 	        1 	    0 	    ∞ 	    Turn feature on
         ///     kern[:] 	    1 	    0 	    ∞ 	    Turn feature on
         ///     kern[5:] 	    1 	    5 	    ∞ 	    Turn feature on, partial
         ///     kern[:5] 	    1 	    0 	    5 	    Turn feature on, partial
         ///     kern[3:5] 	    1 	    3 	    5 	    Turn feature on, range
         ///     kern[3] 	    1 	    3 	    3+1 	Turn feature on, single char
-        ///     Mixing it all: 	  	  	  	 
+        ///     Mixing it all:
         ///     aalt[3:5]=2 	2 	    3 	    5 	    Turn 2nd alternate on for range
-        /// 
+        ///
         /// </param>
         public void SetValue(Spread<string> features)
         {
@@ -298,9 +346,11 @@ namespace VL.Avalonia.Styles
     }
 
     [ProcessNode]
-    public abstract class StyleSetterTextDecorationCollection : StyleSetterBase<TextDecorationCollection>
+    public abstract class StyleSetterTextDecorationCollection
+        : StyleSetterBase<TextDecorationCollection>
     {
-        public StyleSetterTextDecorationCollection() : base("TextDecorations") { }
+        public StyleSetterTextDecorationCollection()
+            : base("TextDecorations") { }
 
         protected Spread<TextDecoration> _decorations;
 
@@ -329,9 +379,11 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterTransitions : StyleSetterBase<Spread<IAvaloniaTransition>>
     {
-        public StyleSetterTransitions(string styleName) : base(styleName) { }
+        public StyleSetterTransitions(string styleName)
+            : base(styleName) { }
 
         protected Spread<IAvaloniaTransition> _transitions;
+
         public void SetValue(Spread<IAvaloniaTransition> transitions)
         {
             if (_transitions != transitions)
@@ -346,9 +398,11 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StyleSetterPoints : StyleSetterBase<IList<AvaloniaPoint>>
     {
-        public StyleSetterPoints(string styleName) : base(styleName) { }
+        public StyleSetterPoints(string styleName)
+            : base(styleName) { }
 
         protected Spread<Vector2> _points;
+
         public void SetValue(Spread<Vector2> points)
         {
             if (_points != points)
@@ -373,9 +427,11 @@ namespace VL.Avalonia.Styles
     [ProcessNode]
     public abstract class StlyeSetterTicks : StyleSetterBase<AvaloniaList<double>>
     {
-        public StlyeSetterTicks(string styleName) : base(styleName) { }
+        public StlyeSetterTicks(string styleName)
+            : base(styleName) { }
 
         protected Spread<float> _ticks;
+
         public void SetValue(Spread<float> ticks)
         {
             if (_ticks != ticks)
@@ -394,7 +450,6 @@ namespace VL.Avalonia.Styles
 
                 _ticks = ticks;
             }
-
         }
     }
 }

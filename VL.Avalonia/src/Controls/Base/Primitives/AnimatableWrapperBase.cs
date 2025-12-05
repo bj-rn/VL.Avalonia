@@ -7,7 +7,8 @@ using VL.Lib.Collections;
 namespace VL.Avalonia.Controls.Base.Primitives
 {
     [ProcessNode]
-    public abstract class AnimatableWrapperBase<T> where T : Animatable, new()
+    public abstract class AnimatableWrapperBase<T>
+        where T : Animatable, new()
     {
         protected readonly T _output = new();
         public T Output => _output;
@@ -15,7 +16,10 @@ namespace VL.Avalonia.Controls.Base.Primitives
         #region Animatable
 
         private Spread<IAvaloniaTransition> _transitions;
-        public void SetTransition([Pin(Visibility = Model.PinVisibility.Optional)] Spread<IAvaloniaTransition> transitions)
+
+        public void SetTransition(
+            [Pin(Visibility = Model.PinVisibility.Optional)] Spread<IAvaloniaTransition> transitions
+        )
         {
             if (_transitions != transitions)
             {
@@ -31,7 +35,6 @@ namespace VL.Avalonia.Controls.Base.Primitives
                                 t.Add(transition);
                             }
                         }
-
 
                     _output.SetValue(Control.TransitionsProperty, t);
                 }

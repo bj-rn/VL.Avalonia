@@ -13,6 +13,7 @@ namespace VL.Avalonia.Media;
 public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeometry>
 {
     protected Optional<RectangleF> _rect;
+
     /// <param name="rect">Sets a rect that defines the bounds</param>
     public void SetRect(Optional<RectangleF> rect)
     {
@@ -32,6 +33,7 @@ public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeo
     }
 
     protected Optional<Vector2> _radius;
+
     /// <param name="radius">Sets a rounded corners that defines the radius in the XY-axis of the box.</param>
     public void SetRadius(Optional<Vector2> radius)
     {
@@ -51,7 +53,4 @@ public partial class RectangleGeometryWrapper : GeometryWrapperBase<RectangleGeo
             _radius = radius;
         }
     }
-
-
-
 }

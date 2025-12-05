@@ -18,12 +18,15 @@ public partial class DockPanelSpectralWrapper : PanelWrapperBase<DockPanel>
     /// <param name="lastChildFill">
     /// Whether the last child fills the remaining space (default: true).
     /// </param>
-    [ImplementProperty("DockPanel.LastChildFillProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "DockPanel.LastChildFillProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _lastChildFill;
 
     /*
      * NOT IMPLEMENTED ON 11.2.1
-     * 
+     *
     /// <param name="horizontalSpacing">
     /// The horizontal spacing (in device-independent pixels) between children.
     /// </param>
@@ -39,15 +42,16 @@ public partial class DockPanelSpectralWrapper : PanelWrapperBase<DockPanel>
     #endregion
 }
 
-
 /// <inheritdoc cref="DockPanelSpectralWrapper"/>
 [ProcessNode(Name = "DockPanel")]
 public partial class DockPanelWrapper : DockPanelSpectralWrapper
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }
 
 /// <summary>
@@ -58,6 +62,7 @@ public partial class DockPanelWrapper : DockPanelSpectralWrapper
 public partial class DockPanelDock : AttachedPropertyBase
 {
     private Optional<Dock> _dock;
+
     /// <param name="dock">
     /// (Attached) The edge (Left, Right, Top, Bottom) to which the child is docked.
     /// </param>

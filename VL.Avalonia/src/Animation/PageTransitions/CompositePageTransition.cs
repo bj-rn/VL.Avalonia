@@ -5,13 +5,18 @@ using VL.Lib.Collections;
 namespace VL.Avalonia.Animation.PageTransitions
 {
     [ProcessNode(Name = "CompositePageTransition")]
-    public class CompositePageTransitionWrapper<T> where T : CompositePageTransition, new()
+    public class CompositePageTransitionWrapper<T>
+        where T : CompositePageTransition, new()
     {
         protected readonly T _output = new();
         public T Output => _output;
 
         protected Spread<IPageTransition> _pageTransitions;
-        public void SetPageTransitions([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<IPageTransition> pageTransitions)
+
+        public void SetPageTransitions(
+            [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+                Spread<IPageTransition> pageTransitions
+        )
         {
             if (_pageTransitions != pageTransitions)
             {

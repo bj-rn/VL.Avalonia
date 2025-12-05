@@ -17,6 +17,7 @@ namespace VL.Avalonia.Controls;
 public partial class ImageWrapper : ControlWrapperBase<Image>
 {
     protected Optional<Path> _source;
+
     /// <param name="source">
     /// Sets image source path, and loads it as Avalonia bitmap
     /// </param>
@@ -54,6 +55,9 @@ public partial class ImageWrapper : ControlWrapperBase<Image>
     /// <param name="stretch">
     /// Sets a value controlling in what direction the image will be stretched.
     /// </param>
-    [ImplementProperty("Image.StretchDirectionProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "Image.StretchDirectionProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<StretchDirection> _stretchDirection;
 }

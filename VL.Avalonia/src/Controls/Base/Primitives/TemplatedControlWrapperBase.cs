@@ -11,7 +11,8 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/templatedcontrol">TemplatedControl</see>
 /// </summary>
 [Obsolete]
-public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> where T : TemplatedControl, new()
+public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T>
+    where T : TemplatedControl, new()
 {
     #region Template Properties
 
@@ -30,31 +31,46 @@ public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> whe
     /// <param name="background">
     /// The brush used to fill the control's background
     /// </param>
-    [ImplementProperty("TemplatedControl.BackgroundProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.BackgroundProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IBrush> _background;
 
     /// <param name="backgroundSizing">
     /// How the background is drawn relative to the control's border (InnerBorderEdge, OuterBorderEdge, CenterBorder)
     /// </param>
-    [ImplementProperty("TemplatedControl.BackgroundSizingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.BackgroundSizingProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<BackgroundSizing> _backgroundSizing;
 
     /// <param name="borderBrush">
     /// The brush used to draw the control's border
     /// </param>
-    [ImplementProperty("TemplatedControl.BorderBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.BorderBrushProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IBrush> _borderBrush;
 
     /// <param name="borderThickness">
     /// The thickness of the control's border on all sides
     /// </param>
-    [ImplementProperty("TemplatedControl.BorderThicknessProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.BorderThicknessProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<Thickness> _borderThickness;
 
     /// <param name="cornerRadius">
     /// The radius of the control's rounded corners
     /// </param>
-    [ImplementProperty("TemplatedControl.CornerRadiusProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.CornerRadiusProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<CornerRadius> _cornerRadius;
 
     #endregion
@@ -64,43 +80,64 @@ public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> whe
     /// <param name="fontFamily">
     /// The font family used for text within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.FontFamilyProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.FontFamilyProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontFamily> _fontFamily;
 
     /// <param name="fontSize">
     /// The size of the font used for text within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.FontSizeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.FontSizeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _fontSize;
 
     /// <param name="fontWeight">
     /// The weight (boldness) of the font used for text within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.FontWeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.FontWeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontWeight> _fontWeight;
 
     /// <param name="fontStyle">
     /// The style (normal, italic, oblique) of the font used for text within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.FontStyleProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.FontStyleProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontStyle> _fontStyle;
 
     /// <param name="fontStretch">
     /// The stretch (condensed, normal, expanded) of the font used for text within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.FontStretchProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.FontStretchProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontStretch> _fontStretch;
 
     /// <param name="fontFeatures">
     /// Advanced font features (ligatures, stylistic sets, etc.) applied to text within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.FontFeaturesProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.FontFeaturesProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<FontFeatureCollection> _fontFeatures;
 
     /// <param name="foreground">
     /// The brush used to draw text and other foreground elements within the control
     /// </param>
-    [ImplementProperty("TemplatedControl.ForegroundProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.ForegroundProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IBrush> _foreground;
 
     #endregion
@@ -110,7 +147,10 @@ public abstract class TemplatedControlWrapperBase<T> : ControlWrapperBase<T> whe
     /// <param name="padding">
     /// The space between the control's border and its content
     /// </param>
-    [ImplementProperty("TemplatedControl.PaddingProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "TemplatedControl.PaddingProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<Thickness> _padding;
 
     #endregion

@@ -24,5 +24,6 @@ public class ImplementProperty : Attribute
 /// <typeparam name="TValue"></typeparam>
 public class ImplementProperty<TValue, TProperty> : ImplementProperty
 {
-    public ImplementProperty(string propertyPath) : base(propertyPath) { }
+    public ImplementProperty(string propertyPath)
+        : base(propertyPath) { }
 }

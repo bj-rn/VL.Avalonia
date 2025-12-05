@@ -11,7 +11,8 @@ namespace VL.Avalonia.Controls;
 /// Base class for controls that display a value within a range.
 /// </summary>
 [ProcessNode]
-public abstract partial class RangeBaseWrapper<T> : ControlWrapperBase<T> where T : RangeBase, new()
+public abstract partial class RangeBaseWrapper<T> : ControlWrapperBase<T>
+    where T : RangeBase, new()
 {
     #region Core Properties
 
@@ -19,7 +20,12 @@ public abstract partial class RangeBaseWrapper<T> : ControlWrapperBase<T> where 
 
     protected RangeBaseWrapper()
     {
-        _valueBinding = new ChannelTwoWayBinding<float, double>(_output, RangeBase.ValueProperty, (x) => (double)x, (x) => (float)x);
+        _valueBinding = new ChannelTwoWayBinding<float, double>(
+            _output,
+            RangeBase.ValueProperty,
+            (x) => (double)x,
+            (x) => (float)x
+        );
     }
 
     /// <param name="valueChannel">
@@ -48,13 +54,19 @@ public abstract partial class RangeBaseWrapper<T> : ControlWrapperBase<T> where 
     /// <param name="smallChange">
     /// Sets the small increment value added or subtracted from
     /// </param>
-    [ImplementProperty("RangeBase.SmallChangeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "RangeBase.SmallChangeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _smallChange;
 
     /// <param name="smallChange">
     /// Sets the large increment value added or subtracted from
     /// </param>
-    [ImplementProperty("RangeBase.LargeChangeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "RangeBase.LargeChangeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _largeChange;
 
     #endregion

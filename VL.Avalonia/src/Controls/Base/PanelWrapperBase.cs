@@ -12,9 +12,11 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class PanelWrapperBase<T> : ControlWrapperBase<T> where T : Panel, new()
+public abstract partial class PanelWrapperBase<T> : ControlWrapperBase<T>
+    where T : Panel, new()
 {
     private Spread<Control> _children;
+
     /// <param name="children">
     /// Children collection (of type Controls) which holds its child controls.
     /// </param>

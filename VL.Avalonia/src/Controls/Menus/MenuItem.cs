@@ -9,9 +9,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/menuitem">MenuItem</see>
 /// </summary>
 [ProcessNode(Name = "MenuItem (Spectral)")]
-public partial class MenuItemSpectralWrapper : MenuItemSpectralWrapper<object?>
-{
-}
+public partial class MenuItemSpectralWrapper : MenuItemSpectralWrapper<object?> { }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
 [ProcessNode(Name = "MenuItem")]
@@ -21,15 +19,15 @@ public partial class MenuItemWrapper : MenuItemSpectralWrapper
     /// The collection of items
     /// </param>
     [Fragment(Order = PinOrder.Main)]
-    public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<object?> items)
-       => base.SetItems(items);
+    public override void SetItems(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<object?> items
+    ) => base.SetItems(items);
 }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
 [ProcessNode(Name = "MenuItem (Spectral Advanced Experimental)")]
-public partial class MenuItemSpectralWrapper<T> : MenuItemWrapperBase<T>
-{
-}
+public partial class MenuItemSpectralWrapper<T> : MenuItemWrapperBase<T> { }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
 [ProcessNode(Name = "MenuItem (Advanced Experimental)")]
@@ -39,14 +37,8 @@ public partial class MenuItemWrapper<T> : MenuItemSpectralWrapper<T>
     /// The collection of items
     /// </param>
     [Fragment(Order = PinOrder.Main)]
-    public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items)
-       => base.SetItems(items);
+    public override void SetItems(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<T> items
+    ) => base.SetItems(items);
 }
-
-
-
-
-
-
-
-

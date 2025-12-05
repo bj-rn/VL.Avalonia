@@ -14,15 +14,21 @@ using Vector2 = Stride.Core.Mathematics.Vector2;
 
 namespace VL.Avalonia.Skia
 {
-
-    [ProcessNode(HasStateOutput = true, Name = "AvaloniaLayer", FragmentSelection = FragmentSelection.Explicit)]
+    [ProcessNode(
+        HasStateOutput = true,
+        Name = "AvaloniaLayer",
+        FragmentSelection = FragmentSelection.Explicit
+    )]
     public sealed class AvaloniaLayer : ILayer, IDisposable
     {
         private readonly GammaTopLevelImpl topLevelImpl;
         private readonly EmbeddableControlRoot controlRoot;
 
         [Fragment]
-        public AvaloniaLayer([Pin(Visibility = PinVisibility.Optional)] Action<Application>? onSetupApplication = null)
+        public AvaloniaLayer(
+            [Pin(Visibility = PinVisibility.Optional)]
+                Action<Application>? onSetupApplication = null
+        )
         {
             AvaloniaInitializer.Init();
 
@@ -32,7 +38,6 @@ namespace VL.Avalonia.Skia
 
             onSetupApplication?.Invoke(AvaloniaInitializer.Instance);
         }
-
 
         private Optional<object> _content;
 
@@ -55,6 +60,7 @@ namespace VL.Avalonia.Skia
         }
 
         private Optional<ThemeVariant> _requestedThemeVariant;
+
         /// <param name="requestedThemeVariant">Requested Theme Variant</param>
         [Fragment(Order = -10)]
         public void SetRequestedThemeVariant(Optional<ThemeVariant> requestedThemeVariant)
@@ -65,7 +71,10 @@ namespace VL.Avalonia.Skia
                 {
                     var theme = requestedThemeVariant.Value;
 
-                    controlRoot.SetValue(EmbeddableControlRoot.RequestedThemeVariantProperty, requestedThemeVariant.Value);
+                    controlRoot.SetValue(
+                        EmbeddableControlRoot.RequestedThemeVariantProperty,
+                        requestedThemeVariant.Value
+                    );
                 }
                 else
                 {
@@ -77,8 +86,11 @@ namespace VL.Avalonia.Skia
         }
 
         private Optional<float> _scalingFactor;
+
         [Fragment(Order = -10)]
-        public void SetScalingFactor([Pin(Visibility = PinVisibility.Optional)] Optional<float> scalingFactor)
+        public void SetScalingFactor(
+            [Pin(Visibility = PinVisibility.Optional)] Optional<float> scalingFactor
+        )
         {
             if (_scalingFactor != scalingFactor)
             {
@@ -105,14 +117,17 @@ namespace VL.Avalonia.Skia
         }
 
         public RectangleF? Bounds => default;
+
         public bool Notify(INotification notification, CallerInfo caller)
         {
             return topLevelImpl.Notify(notification, caller);
         }
 
-        public bool SendNotification(INotification notification, Func<NotificationWithPosition, Vector2> getPosition)
+        public bool SendNotification(
+            INotification notification,
+            Func<NotificationWithPosition, Vector2> getPosition
+        )
         {
-
             return topLevelImpl.SendNotification(notification, getPosition);
         }
 

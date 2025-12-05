@@ -1,5 +1,5 @@
-﻿using Avalonia.Styling;
-using System.Reflection;
+﻿using System.Reflection;
+using Avalonia.Styling;
 
 namespace VL.Avalonia.Helpers;
 
@@ -8,7 +8,7 @@ namespace VL.Avalonia.Helpers;
 /// Mostly done by Claude Sonnet 4 so i do not expect it not going to
 /// break.
 /// <remarks>
-/// To parse types effectively, we need typeResolver, and it should know 
+/// To parse types effectively, we need typeResolver, and it should know
 /// available types in advance, making it hard to use with let's say additional
 /// packages.
 /// </remarks>
@@ -32,16 +32,16 @@ public static class SelectorHelper
         // Try common Avalonia namespaces
         var qualifiedNames = new[]
         {
-        $"Avalonia.Controls.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Chrome.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Documents.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Mixins.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Notifications.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Primitives.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Selection.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Shapes.{name}, Avalonia.Controls",
-        $"Avalonia.Controls.Templates.{name}, Avalonia.Controls",
-    };
+            $"Avalonia.Controls.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Chrome.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Documents.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Mixins.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Notifications.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Primitives.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Selection.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Shapes.{name}, Avalonia.Controls",
+            $"Avalonia.Controls.Templates.{name}, Avalonia.Controls",
+        };
 
         foreach (var qn in qualifiedNames)
         {
@@ -51,15 +51,20 @@ public static class SelectorHelper
         }
 
         // As fallback, scan loaded assemblies for the type name
-        var found = AppDomain.CurrentDomain.GetAssemblies()
-            .Select(a => a.GetType($"Avalonia.Controls.{name}")
-                      ?? a.GetType($"Avalonia.Controls.Presenters.{name}"))
+        var found = AppDomain
+            .CurrentDomain.GetAssemblies()
+            .Select(a =>
+                a.GetType($"Avalonia.Controls.{name}")
+                ?? a.GetType($"Avalonia.Controls.Presenters.{name}")
+            )
             .FirstOrDefault(t => t != null);
 
         if (found != null)
             return found;
 
-        throw new InvalidOperationException($"Type {name} not found in Avalonia.Controls or Avalonia.Controls.Presenters.");
+        throw new InvalidOperationException(
+            $"Type {name} not found in Avalonia.Controls or Avalonia.Controls.Presenters."
+        );
     };
 
     // Parser instance (created with the active resolver)
@@ -68,13 +73,15 @@ public static class SelectorHelper
 
     private static void EnsureReflectionInitialized()
     {
-        if (_reflectionInitialized) return;
+        if (_reflectionInitialized)
+            return;
         lock (_initLock)
         {
-            if (_reflectionInitialized) return;
+            if (_reflectionInitialized)
+                return;
 
-            var markupAssembly = AppDomain.CurrentDomain
-                .GetAssemblies()
+            var markupAssembly = AppDomain
+                .CurrentDomain.GetAssemblies()
                 .First(a => a.GetName().Name == "Avalonia.Markup");
 
             _parserType = markupAssembly.GetType("Avalonia.Markup.Parsers.SelectorParser");
@@ -99,8 +106,9 @@ public static class SelectorHelper
     }
 
     // Gets the current resolver (registered or default)
-    private static Func<string, string, Type> GetCurrentResolver(Func<string, string, Type> overrideResolver)
-        => overrideResolver ?? _registeredTypeResolver ?? _defaultTypeResolver;
+    private static Func<string, string, Type> GetCurrentResolver(
+        Func<string, string, Type> overrideResolver
+    ) => overrideResolver ?? _registeredTypeResolver ?? _defaultTypeResolver;
 
     // Gets or creates the parser instance for the current resolver
     private static object GetParserInstance(Func<string, string, Type> resolver)
@@ -128,7 +136,10 @@ public static class SelectorHelper
     /// <param name="selectorString">Selector string, e.g. "TextBlock.h1"</param>
     /// <param name="typeResolver">Optional per-call resolver; otherwise uses registered or default resolver.</param>
     /// <returns>Avalonia.Styling.Selector instance</returns>
-    public static Selector? ParseSelector(string? selectorString, Func<string, string, Type> typeResolver = null)
+    public static Selector? ParseSelector(
+        string? selectorString,
+        Func<string, string, Type> typeResolver = null
+    )
     {
         if (selectorString == null)
         {

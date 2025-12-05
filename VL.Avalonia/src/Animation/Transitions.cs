@@ -33,8 +33,6 @@ namespace VL.Avalonia.Animation.Transitions
     [ProcessNode(Name = "RelativePointTransition", HasStateOutput = true)]
     public class RelativePointTransitionWrapper : TransitionBaseWrapper<RelativePointTransition> { }
 
-
-
     [ProcessNode(Name = "SizeTransition", HasStateOutput = true)]
     public class SizeTransitionWrapper : TransitionBaseWrapper<SizeTransition> { }
 
@@ -42,11 +40,9 @@ namespace VL.Avalonia.Animation.Transitions
     public class ThicknessTransitionWrapper : TransitionBaseWrapper<ThicknessTransition> { }
 
     [ProcessNode(Name = "TransformOperationsTransition", HasStateOutput = true)]
-    public class TransformOperationsTransitionWrapper : TransitionBaseWrapper<TransformOperationsTransition> { }
+    public class TransformOperationsTransitionWrapper
+        : TransitionBaseWrapper<TransformOperationsTransition> { }
 
     [ProcessNode(Name = "VectorTransition", HasStateOutput = true)]
     public class VectorTransitionWrapper : TransitionBaseWrapper<VectorTransition> { }
-
-
-
 }

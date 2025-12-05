@@ -19,4 +19,3 @@ public partial class PathIconWrapper : ControlWrapperBase<PathIcon>
     [ImplementProperty("PathIcon.DataProperty", Order = PinOrder.Main)]
     protected Optional<Geometry> _data;
 }
-

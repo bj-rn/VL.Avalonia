@@ -9,7 +9,8 @@ namespace VL.Avalonia.Controls.Primitives;
 /// Gonna comment few props for convenience, use Style Setters instead.
 /// </summary>
 [Obsolete("Overcomplicated")]
-public abstract partial class LayoutableWrapperBase<T> : VisualWrapperBase<T> where T : Layoutable
+public abstract partial class LayoutableWrapperBase<T> : VisualWrapperBase<T>
+    where T : Layoutable
 {
     #region Layout Properties (from Layoutable)
 
@@ -72,13 +73,21 @@ public abstract partial class LayoutableWrapperBase<T> : VisualWrapperBase<T> wh
     /// <param name="horizontalAlignment">
     /// How the control is positioned horizontally within its parent
     /// </param>
-    [ImplementProperty("Layoutable.HorizontalAlignmentProperty", Order = 100, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "Layoutable.HorizontalAlignmentProperty",
+        Order = 100,
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<HorizontalAlignment> _horizontalAlignment;
 
     /// <param name="verticalAlignment">
     /// How the control is positioned vertically within its parent
     /// </param>
-    [ImplementProperty("Layoutable.VerticalAlignmentProperty", Order = 100, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "Layoutable.VerticalAlignmentProperty",
+        Order = 100,
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<VerticalAlignment> _verticalAlignment;
 
     #endregion

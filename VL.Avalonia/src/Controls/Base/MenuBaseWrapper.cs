@@ -8,6 +8,6 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/menu">MenuBase</see>
 /// </summary>
 [ProcessNode]
-public abstract partial class MenuBaseWrapper<TControl, TValue> : SelectingItemsControlWrapperBase<TControl, TValue> where TControl : MenuBase, new()
-{
-}
+public abstract partial class MenuBaseWrapper<TControl, TValue>
+    : SelectingItemsControlWrapperBase<TControl, TValue>
+    where TControl : MenuBase, new() { }

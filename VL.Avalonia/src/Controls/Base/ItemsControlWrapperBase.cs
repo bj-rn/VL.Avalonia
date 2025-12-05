@@ -14,28 +14,37 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/itemscontrol">ItemsControl</see>
 /// </summary>
 [ProcessNode]
-public abstract partial class ItemsControlWrapperBase<TControl, TValue> : ControlWrapperBase<TControl> where TControl : ItemsControl, new()
+public abstract partial class ItemsControlWrapperBase<TControl, TValue>
+    : ControlWrapperBase<TControl>
+    where TControl : ItemsControl, new()
 {
     #region Core Data Properties
 
     protected ChannelSpreadToItemsSourceBinding<TValue> _itemsSourceBinding;
+
     protected ItemsControlWrapperBase()
     {
-        _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<TValue>(_output, ItemsControl.ItemsSourceProperty);
+        _itemsSourceBinding = new ChannelSpreadToItemsSourceBinding<TValue>(
+            _output,
+            ItemsControl.ItemsSourceProperty
+        );
     }
 
     protected Spread<TValue> _items;
+
     /// <param name="items">
     /// The collection of items
     /// </param>
     [Fragment(Order = PinOrder.Main)]
-    public virtual void SetItems(Spread<TValue> items) =>
-         _itemsSourceBinding.SetItems(items);
+    public virtual void SetItems(Spread<TValue> items) => _itemsSourceBinding.SetItems(items);
 
     /// <param name="itemTemplate">
     /// The template used to display each item in the collection
     /// </param>
-    [ImplementProperty("ItemsControl.ItemTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ItemsControl.ItemTemplateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IDataTemplate> _itemTemplate;
 
     /*  TODO: BREAKS CODEGEN
@@ -53,13 +62,19 @@ public abstract partial class ItemsControlWrapperBase<TControl, TValue> : Contro
     /// <param name="itemsPanel">
     /// The panel template used to arrange the items (e.g., StackPanel, WrapPanel, Grid)
     /// </param>
-    [ImplementProperty("ItemsControl.ItemsPanelProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ItemsControl.ItemsPanelProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<ITemplate<Panel>> _itemsPanel;
 
     /// <param name="itemContainerTheme">
     /// The theme applied to the container element generated for each item
     /// </param>
-    [ImplementProperty("ItemsControl.ItemContainerThemeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ItemsControl.ItemContainerThemeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<ControlTheme> _itemContainerTheme;
 
     #endregion

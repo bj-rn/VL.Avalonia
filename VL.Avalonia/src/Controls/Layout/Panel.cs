@@ -9,9 +9,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/panel">Panel</see>
 /// </summary>
 [ProcessNode(Name = "Panel (Spectral)")]
-public partial class PanelSpectralWrapper : PanelWrapperBase<Panel>
-{
-}
+public partial class PanelSpectralWrapper : PanelWrapperBase<Panel> { }
 
 /// <inheritdoc cref="PanelSpectralWrapper"/>
 [ProcessNode(Name = "Panel")]
@@ -19,6 +17,8 @@ public partial class PanelWrapper : PanelSpectralWrapper
 {
     /// <inheritdoc/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }

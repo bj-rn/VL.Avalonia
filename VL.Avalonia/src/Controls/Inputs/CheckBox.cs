@@ -8,6 +8,4 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/checkbox">CheckBox</see>
 /// </summary>
 [ProcessNode(Name = "CheckBox")]
-public partial class CheckBoxWrapper : ToggleButtonWrapperBase<CheckBox>
-{
-}
+public partial class CheckBoxWrapper : ToggleButtonWrapperBase<CheckBox> { }

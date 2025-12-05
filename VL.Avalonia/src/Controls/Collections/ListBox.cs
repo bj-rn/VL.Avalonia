@@ -13,14 +13,17 @@ namespace VL.Avalonia.Controls;
 [ProcessNode(Name = "ListBox (Spectral)")]
 public partial class ListBoxSpectralWrapper<T> : SelectingItemsControlWrapperBase<ListBox, T>
 {
-    [ImplementProperty("ListBox.SelectionModeProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ListBox.SelectionModeProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<SelectionMode> _selectionMode;
 
     #region Read-Only Properties Note
 
     // ListBox exposes several read-only DirectProperties:
     // - Scroll (DirectProperty) - Access to the internal scroll viewer
-    // - SelectedItems (DirectProperty) - Collection of currently selected 
+    // - SelectedItems (DirectProperty) - Collection of currently selected
     // - Selection (DirectProperty) - The underlying selection model
 
     // These are not included as StyledProperties since they represent state
@@ -37,18 +40,22 @@ public partial class ListBoxSpectralWrapper<T> : SelectingItemsControlWrapperBas
 
     #endregion
 }
+
 /// <inheritdoc cref="ListBoxSpectralWrapper{T}"/>
 [ProcessNode(Name = "ListBox")]
 public partial class ListBoxWrapper<T> : ListBoxSpectralWrapper<T>
 {
     [Fragment(Order = -10)]
-    public override void SetItems([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items)
+    public override void SetItems(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<T> items
+    )
     {
         base.SetItems(items);
     }
 
     /// <summary>
-    ///  SelectedItems (DirectProperty) - Collection of currently selected 
+    ///  SelectedItems (DirectProperty) - Collection of currently selected
     /// </summary>
     public static Spread<T> SelectedItems<T>(ListBox input)
     {

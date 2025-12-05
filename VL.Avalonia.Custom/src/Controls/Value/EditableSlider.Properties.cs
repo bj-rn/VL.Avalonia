@@ -10,7 +10,9 @@ namespace VL.Avalonia.Custom.Controls.Value
             set => SetValue(IsEditingProperty, value);
         }
 
-        public static readonly StyledProperty<bool?> IsEditingProperty =
-            AvaloniaProperty.Register<EditableSlider, bool?>(nameof(IsEditing));
+        public static readonly StyledProperty<bool?> IsEditingProperty = AvaloniaProperty.Register<
+            EditableSlider,
+            bool?
+        >(nameof(IsEditing));
     }
 }

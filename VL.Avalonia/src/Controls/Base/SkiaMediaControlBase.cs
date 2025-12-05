@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace VL.Avalonia.Controls.Base
 {
-    internal class SkiaMediaControlBase
-    {
-    }
+    internal class SkiaMediaControlBase { }
 }

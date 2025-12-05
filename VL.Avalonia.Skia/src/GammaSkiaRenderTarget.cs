@@ -1,8 +1,8 @@
-﻿using Avalonia;
+﻿using System.Runtime.CompilerServices;
+using Avalonia;
 using Avalonia.Platform;
 using Avalonia.Skia.Helpers;
 using SkiaSharp;
-using System.Runtime.CompilerServices;
 using VL.Skia;
 
 namespace VL.Avalonia.Skia
@@ -34,8 +34,6 @@ namespace VL.Avalonia.Skia
             return DrawingContextHelper.WrapSkiaCanvas(callerInfo.Canvas, new Vector(96, 96));
         }
 
-        public void Dispose()
-        {
-        }
+        public void Dispose() { }
     }
 }

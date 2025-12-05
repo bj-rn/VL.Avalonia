@@ -1,11 +1,12 @@
-﻿using Avalonia;
-using System.Reactive.Disposables;
+﻿using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using Avalonia;
 using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Helpers;
 
-public abstract class ChannelTwoWayBindingBase<TControl, TValue, TProperty> : IDisposable where TControl : AvaloniaObject
+public abstract class ChannelTwoWayBindingBase<TControl, TValue, TProperty> : IDisposable
+    where TControl : AvaloniaObject
 {
     protected TControl _control;
     protected AvaloniaProperty<TProperty> _property;
@@ -16,23 +17,32 @@ public abstract class ChannelTwoWayBindingBase<TControl, TValue, TProperty> : ID
     protected Func<TValue, TProperty>? _convertToProperty;
     protected Func<TProperty, TValue>? _convertToValue;
 
-    protected ChannelTwoWayBindingBase(TControl control, AvaloniaProperty<TProperty> property, Func<TValue, TProperty>? convertToProperty = null, Func<TProperty, TValue>? convertToValue = null)
+    protected ChannelTwoWayBindingBase(
+        TControl control,
+        AvaloniaProperty<TProperty> property,
+        Func<TValue, TProperty>? convertToProperty = null,
+        Func<TProperty, TValue>? convertToValue = null
+    )
     {
         _control = control;
         _property = property;
         _convertToProperty = convertToProperty;
         _convertToValue = convertToValue;
     }
+
     public abstract void SetChannel(IChannel<TValue> channel);
+
     public void Dispose()
     {
         _subscriptions.Dispose();
     }
 }
 
-public class ChannelTwoWayBinding<TProperty> : ChannelTwoWayBindingBase<AvaloniaObject, TProperty, TProperty>
+public class ChannelTwoWayBinding<TProperty>
+    : ChannelTwoWayBindingBase<AvaloniaObject, TProperty, TProperty>
 {
-    public ChannelTwoWayBinding(AvaloniaObject control, AvaloniaProperty<TProperty> property) : base(control, property) { }
+    public ChannelTwoWayBinding(AvaloniaObject control, AvaloniaProperty<TProperty> property)
+        : base(control, property) { }
 
     public override void SetChannel(IChannel<TProperty> channel)
     {
@@ -64,9 +74,16 @@ public class ChannelTwoWayBinding<TProperty> : ChannelTwoWayBindingBase<Avalonia
     }
 }
 
-public class ChannelTwoWayBinding<TValue, TProperty> : ChannelTwoWayBindingBase<AvaloniaObject, TValue, TProperty>
+public class ChannelTwoWayBinding<TValue, TProperty>
+    : ChannelTwoWayBindingBase<AvaloniaObject, TValue, TProperty>
 {
-    public ChannelTwoWayBinding(AvaloniaObject control, AvaloniaProperty<TProperty> property, Func<TValue, TProperty> convertToProperty, Func<TProperty, TValue> convertToValue) : base(control, property, convertToProperty, convertToValue) { }
+    public ChannelTwoWayBinding(
+        AvaloniaObject control,
+        AvaloniaProperty<TProperty> property,
+        Func<TValue, TProperty> convertToProperty,
+        Func<TProperty, TValue> convertToValue
+    )
+        : base(control, property, convertToProperty, convertToValue) { }
 
     public override void SetChannel(IChannel<TValue> channel)
     {
@@ -105,10 +122,22 @@ public class ChannelTwoWayBinding<TValue, TProperty> : ChannelTwoWayBindingBase<
 /// <typeparam name="TValue"></typeparam>
 /// <typeparam name="TProperty"></typeparam>
 [Obsolete]
-public class ChannelTwoWayBinding<TControl, TValue, TProperty> : ChannelTwoWayBindingBase<TControl, TProperty, TProperty> where TControl : AvaloniaObject
+public class ChannelTwoWayBinding<TControl, TValue, TProperty>
+    : ChannelTwoWayBindingBase<TControl, TProperty, TProperty>
+    where TControl : AvaloniaObject
 {
-    protected Action<TControl, AvaloniaProperty<TProperty>, TProperty?> _propertySetter = (control, property, value) => control.SetValue(property, value);
-    public ChannelTwoWayBinding(TControl control, AvaloniaProperty<TProperty> property, Action<TControl, AvaloniaProperty<TProperty>, TProperty?> propertySetter = null) : base(control, property)
+    protected Action<TControl, AvaloniaProperty<TProperty>, TProperty?> _propertySetter = (
+        control,
+        property,
+        value
+    ) => control.SetValue(property, value);
+
+    public ChannelTwoWayBinding(
+        TControl control,
+        AvaloniaProperty<TProperty> property,
+        Action<TControl, AvaloniaProperty<TProperty>, TProperty?> propertySetter = null
+    )
+        : base(control, property)
     {
         _propertySetter = propertySetter ?? _propertySetter;
     }
@@ -142,4 +171,3 @@ public class ChannelTwoWayBinding<TControl, TValue, TProperty> : ChannelTwoWayBi
         }
     }
 }
-

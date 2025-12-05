@@ -12,21 +12,30 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/selecting-items-control">SelectingItemsControl</see>
 /// </summary>
 [ProcessNode]
-public abstract partial class SelectingItemsControlWrapperBase<TControl, TValue> : ItemsControlWrapperBase<TControl, TValue> where TControl : SelectingItemsControl, new()
+public abstract partial class SelectingItemsControlWrapperBase<TControl, TValue>
+    : ItemsControlWrapperBase<TControl, TValue>
+    where TControl : SelectingItemsControl, new()
 {
     #region Core Selection Properties
 
     protected ChannelTwoWayBinding<TValue, object?> _selectedValueBinding;
+
     public SelectingItemsControlWrapperBase()
     {
-        _selectedValueBinding = new ChannelTwoWayBinding<TValue, object?>(_output, SelectingItemsControl.SelectedItemProperty, (x) => (object?)x, (x) => (TValue?)x);
+        _selectedValueBinding = new ChannelTwoWayBinding<TValue, object?>(
+            _output,
+            SelectingItemsControl.SelectedItemProperty,
+            (x) => (object?)x,
+            (x) => (TValue?)x
+        );
     }
 
     /// <param name="selectedValue">
     /// The value of the selected item, obtained using SelectedValueBinding
     /// </param>
-    public virtual void SetSelectedValueChannel([Pin(Visibility = Model.PinVisibility.Optional)] IChannel<TValue> selectedValueChannel) =>
-        _selectedValueBinding.SetChannel(selectedValueChannel);
+    public virtual void SetSelectedValueChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<TValue> selectedValueChannel
+    ) => _selectedValueBinding.SetChannel(selectedValueChannel);
 
     #endregion
 
@@ -35,19 +44,28 @@ public abstract partial class SelectingItemsControlWrapperBase<TControl, TValue>
     /// <param name="autoScrollToSelectedItem">
     /// Whether to automatically scroll to newly selected items
     /// </param>
-    [ImplementProperty("SelectingItemsControl.AutoScrollToSelectedItemProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "SelectingItemsControl.AutoScrollToSelectedItemProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _autoScrollToSelectedItem;
 
     /// <param name="wrapSelection">
     /// Whether to wrap around when the first or last item is reached during navigation
     /// </param>
-    [ImplementProperty("SelectingItemsControl.WrapSelectionProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "SelectingItemsControl.WrapSelectionProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _wrapSelection;
 
     /// <param name="isTextSearchEnabled">
     /// Whether users can jump to items by typing the first few characters
     /// </param>
-    [ImplementProperty("SelectingItemsControl.IsTextSearchEnabledProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "SelectingItemsControl.IsTextSearchEnabledProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _isTextSearchEnabled;
 
     #endregion

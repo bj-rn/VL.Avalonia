@@ -8,7 +8,8 @@ using VL.Core.Import;
 namespace VL.Avalonia.Media
 {
     [ProcessNode]
-    public abstract class TransformWrapperBase<T> where T : ITransform
+    public abstract class TransformWrapperBase<T>
+        where T : ITransform
     {
         protected T _output;
         public T Output => _output;
@@ -28,7 +29,11 @@ namespace VL.Avalonia.Media
             _output = builder.Build();
         }
 
-        public void SetValue(Optional<Vector2> scale, Optional<float> rotation, Optional<Vector2> translation)
+        public void SetValue(
+            Optional<Vector2> scale,
+            Optional<float> rotation,
+            Optional<Vector2> translation
+        )
         {
             if (_scale != scale || _rotation != rotation || _translation != translation)
             {

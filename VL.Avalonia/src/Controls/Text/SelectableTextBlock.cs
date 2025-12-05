@@ -33,13 +33,19 @@ public partial class SelectableTextBlockWrapper : TextBlockWrapperBase<Selectabl
     /// <param name="selectionBrush">
     /// Brush that highlights selected text background
     /// </param>
-    [ImplementProperty("SelectableTextBlock.SelectionBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "SelectableTextBlock.SelectionBrushProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IBrush> _selectionBrush;
 
     /// <param name="selectionForegroundBrush">
     /// Brush used for the foreground color of selected text
     /// </param>
-    [ImplementProperty("SelectableTextBlock.SelectionForegroundBrushProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "SelectableTextBlock.SelectionForegroundBrushProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IBrush> _selectionForegroundBrush;
 
     #endregion

@@ -2,8 +2,5 @@
 
 namespace VL.Avalonia.Skia
 {
-    internal sealed class GammaPlatformSettings : DefaultPlatformSettings
-    {
-
-    }
+    internal sealed class GammaPlatformSettings : DefaultPlatformSettings { }
 }

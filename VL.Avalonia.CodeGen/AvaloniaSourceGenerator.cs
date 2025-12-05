@@ -1,10 +1,10 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using VL.Avalonia.CodeGen.AttributeHandlers;
 using VL.Avalonia.CodeGen.ClassHandlers;
 
@@ -33,10 +33,7 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
     /// <summary>
     /// Class handlers should be registered here
     /// </summary>
-    private static readonly List<IClassHandler> ClassHandlers = new()
-    {
-        new ProcessNodeHandler(),
-    };
+    private static readonly List<IClassHandler> ClassHandlers = new() { new ProcessNodeHandler() };
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -45,25 +42,34 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
         {
             // Debugger.Launch();
         }
-#endif 
+#endif
         var attributesSyntaxProvider = context.SyntaxProvider.CreateSyntaxProvider(
-                predicate: static (node, _) => node is ClassDeclarationSyntax syntax,
-                transform: static (ctx, _) =>
-                {
-                    var classDecl = (ClassDeclarationSyntax)ctx.Node;
-                    var semanticModel = ctx.SemanticModel;
-                    var classSymbol = semanticModel.GetDeclaredSymbol(classDecl);
+            predicate: static (node, _) => node is ClassDeclarationSyntax syntax,
+            transform: static (ctx, _) =>
+            {
+                var classDecl = (ClassDeclarationSyntax)ctx.Node;
+                var semanticModel = ctx.SemanticModel;
+                var classSymbol = semanticModel.GetDeclaredSymbol(classDecl);
 
-                    // We are going to execute generator against each class in target package
-                    return (classDecl, semanticModel, classSymbol);
-                });
+                // We are going to execute generator against each class in target package
+                return (classDecl, semanticModel, classSymbol);
+            }
+        );
 
-        context.RegisterSourceOutput(attributesSyntaxProvider, (context, result) => Execute(context, result.classDecl, result.semanticModel, result.classSymbol));
+        context.RegisterSourceOutput(
+            attributesSyntaxProvider,
+            (context, result) =>
+                Execute(context, result.classDecl, result.semanticModel, result.classSymbol)
+        );
     }
 
-    private void Execute(SourceProductionContext context, ClassDeclarationSyntax classDecl, SemanticModel semanticModel, ISymbol classSymbol)
+    private void Execute(
+        SourceProductionContext context,
+        ClassDeclarationSyntax classDecl,
+        SemanticModel semanticModel,
+        ISymbol classSymbol
+    )
     {
-
         var generatedMethods = new List<string>();
 
         foreach (var member in classDecl.Members.OfType<FieldDeclarationSyntax>())
@@ -80,7 +86,11 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
                     {
                         if (handler.CanHandle(attr))
                         {
-                            var generatedMethod = handler.GenerateMethod(attr, fieldSymbol, variable.Identifier.Text);
+                            var generatedMethod = handler.GenerateMethod(
+                                attr,
+                                fieldSymbol,
+                                variable.Identifier.Text
+                            );
 
                             if (generatedMethod != null)
                             {
@@ -89,7 +99,6 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
                         }
                     }
                 }
-
             }
         }
 
@@ -100,14 +109,20 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
         {
             if (handler.CanHandle(classDecl))
             {
-                var generatedClass = handler.GenerateClass(classDecl, classSymbol, generatedMethods);
+                var generatedClass = handler.GenerateClass(
+                    classDecl,
+                    classSymbol,
+                    generatedMethods
+                );
 
                 if (generatedClass != null)
                 {
-                    context.AddSource($"{classSymbol.Name}.g.cs", SourceText.From(generatedClass, System.Text.Encoding.UTF8));
+                    context.AddSource(
+                        $"{classSymbol.Name}.g.cs",
+                        SourceText.From(generatedClass, System.Text.Encoding.UTF8)
+                    );
                 }
             }
         }
     }
 }
-

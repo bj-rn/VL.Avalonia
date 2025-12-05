@@ -53,7 +53,10 @@ public partial class WrapPanelSpectralWrapper : PanelWrapperBase<WrapPanel>
     /// <param name="itemHeight">
     /// Fixed height for all items in the panel (NaN for automatic sizing).
     /// </param>
-    [ImplementProperty("WrapPanel.ItemHeightProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "WrapPanel.ItemHeightProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<float> _itemHeight;
 
     #endregion
@@ -64,8 +67,8 @@ public partial class WrapPanelWrapper : WrapPanelSpectralWrapper
 {
     /// <inheritdoc cref="SetChildren(Spread{Control})"/>
     [Fragment(Order = -10)]
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Control> children) =>
-        base.SetChildren(children);
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Control> children
+    ) => base.SetChildren(children);
 }
-
-

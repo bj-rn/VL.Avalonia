@@ -9,9 +9,8 @@ using VL.Core.Import;
 namespace VL.Avalonia.Media.Effects
 {
     [ProcessNode]
-    public abstract partial class EffectWrapperBase<T> : AnimatableWrapperBase<T> where T : Effect, new()
-    {
-    }
+    public abstract partial class EffectWrapperBase<T> : AnimatableWrapperBase<T>
+        where T : Effect, new() { }
 
     [ProcessNode(Name = "BlurEffect")]
     public partial class BlurEffectWrapper : EffectWrapperBase<BlurEffect>
@@ -21,12 +20,14 @@ namespace VL.Avalonia.Media.Effects
     }
 
     [ProcessNode]
-    public abstract partial class DropShadowEffectBaseWrapper<T> : EffectWrapperBase<T> where T : DropShadowEffectBase, new()
+    public abstract partial class DropShadowEffectBaseWrapper<T> : EffectWrapperBase<T>
+        where T : DropShadowEffectBase, new()
     {
         [ImplementProperty<float, double>("DropShadowEffectBase.BlurRadiusProperty")]
         protected Optional<float> _blurRadius;
 
         protected Optional<Color4> _color;
+
         public void SetColor(Optional<Color4> color)
         {
             if (_color != color)
@@ -49,6 +50,7 @@ namespace VL.Avalonia.Media.Effects
     public partial class DropShadowEffectWrapper : DropShadowEffectBaseWrapper<DropShadowEffect>
     {
         protected Optional<Vector2> _offset;
+
         public void SetOffset(Optional<Vector2> offset)
         {
             if (_offset != offset)
@@ -70,19 +72,24 @@ namespace VL.Avalonia.Media.Effects
     }
 
     [ProcessNode(Name = "DropShadowDirectionEffect")]
-    public partial class DropShadowDirectionEffectWrapper : DropShadowEffectBaseWrapper<DropShadowDirectionEffect>
+    public partial class DropShadowDirectionEffectWrapper
+        : DropShadowEffectBaseWrapper<DropShadowDirectionEffect>
     {
         [ImplementProperty<float, double>("DropShadowDirectionEffect.ShadowDepthProperty")]
         protected Optional<float> _shadowDepth;
 
         protected Optional<float> _direction;
+
         public void SetDirection(Optional<float> direction)
         {
             if (_direction != direction)
             {
                 if (_direction.HasValue)
                 {
-                    _output.SetValue(DropShadowDirectionEffect.DirectionProperty, (double)(direction.Value * 360.0f));
+                    _output.SetValue(
+                        DropShadowDirectionEffect.DirectionProperty,
+                        (double)(direction.Value * 360.0f)
+                    );
                 }
                 else
                 {
@@ -94,4 +101,3 @@ namespace VL.Avalonia.Media.Effects
         }
     }
 }
-

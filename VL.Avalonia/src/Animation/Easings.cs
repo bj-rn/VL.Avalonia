@@ -4,7 +4,8 @@ using VL.Core.Import;
 namespace VL.Avalonia.Animation.Easings;
 
 [ProcessNode]
-public abstract class EasingWrapperBase<T> where T : Easing, new()
+public abstract class EasingWrapperBase<T>
+    where T : Easing, new()
 {
     protected readonly T _output = new();
     public T Output => _output;

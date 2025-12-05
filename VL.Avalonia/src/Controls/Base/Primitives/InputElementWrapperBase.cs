@@ -10,7 +10,8 @@ namespace VL.Avalonia.Controls.Primitives;
 /// Gonna comment few props for convenience, use Style Setters instead.
 /// </summary>
 [Obsolete("Overcomplicated")]
-public abstract partial class InputElementWrapperBase<T> : LayoutableWrapperBase<T> where T : InputElement
+public abstract partial class InputElementWrapperBase<T> : LayoutableWrapperBase<T>
+    where T : InputElement
 {
     #region Input Properties (from InputElement)
 
@@ -25,7 +26,11 @@ public abstract partial class InputElementWrapperBase<T> : LayoutableWrapperBase
     /// <param name="isEnabled">
     /// Whether the control responds to user interaction
     /// </param>
-    [ImplementProperty("InputElement.IsEnabledProperty", Order = 1000, PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "InputElement.IsEnabledProperty",
+        Order = 1000,
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<bool> _isEnabled;
 
     /*

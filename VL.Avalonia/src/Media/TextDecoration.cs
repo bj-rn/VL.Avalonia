@@ -23,6 +23,7 @@ namespace VL.Avalonia.Media
         protected Optional<TextDecorationUnit> _strokeThicknessUnit;
 
         protected Spread<float> _strokeDashArray;
+
         public void SetStrokeDashArray(Spread<float> strokeDashArray)
         {
             if (_strokeDashArray != strokeDashArray)
@@ -61,6 +62,5 @@ namespace VL.Avalonia.Media
 
         [ImplementProperty("TextDecoration.StrokeOffsetUnitProperty")]
         protected Optional<TextDecorationUnit> _strokeOffsetUnit;
-
     }
 }

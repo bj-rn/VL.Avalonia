@@ -15,6 +15,7 @@ public partial class GeometryGroupSpectralWrapper : GeometryWrapperBase<Geometry
     #region Core Properties
 
     protected Spread<Geometry> _children;
+
     /// <param name="children">
     /// Geometry instances
     /// </param>
@@ -50,7 +51,10 @@ public partial class GeometryGroupWrapper : GeometryGroupSpectralWrapper
     /// <param name="children">
     /// Geometry instances
     /// </param>
-    public override void SetChildren([Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<Geometry> children)
+    public override void SetChildren(
+        [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+            Spread<Geometry> children
+    )
     {
         base.SetChildren(children);
     }

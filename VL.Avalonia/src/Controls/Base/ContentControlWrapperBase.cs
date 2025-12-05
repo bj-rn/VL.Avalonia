@@ -12,7 +12,8 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class ContentControlWrapperBase<T> : ControlWrapperBase<T> where T : ContentControl, new()
+public abstract partial class ContentControlWrapperBase<T> : ControlWrapperBase<T>
+    where T : ContentControl, new()
 {
     #region Core Content Properties
 
@@ -25,7 +26,10 @@ public abstract partial class ContentControlWrapperBase<T> : ControlWrapperBase<
     /// <param name="contentTemplate">
     /// The data template used to display the content when it's not a visual element
     /// </param>
-    [ImplementProperty("ContentControl.ContentTemplateProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ContentControl.ContentTemplateProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<IDataTemplate> _contentTemplate;
 
     #endregion
@@ -35,13 +39,19 @@ public abstract partial class ContentControlWrapperBase<T> : ControlWrapperBase<
     /// <param name="horizontalContentAlignment">
     /// Horizontal alignment of the content within the control bounds
     /// </param>
-    [ImplementProperty("ContentControl.HorizontalContentAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ContentControl.HorizontalContentAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<HorizontalAlignment> _horizontalContentAlignment;
 
     /// <param name="verticalContentAlignment">
     /// Vertical alignment of the content within the control bounds
     /// </param>
-    [ImplementProperty("ContentControl.VerticalContentAlignmentProperty", PinVisibility = Model.PinVisibility.Optional)]
+    [ImplementProperty(
+        "ContentControl.VerticalContentAlignmentProperty",
+        PinVisibility = Model.PinVisibility.Optional
+    )]
     protected Optional<VerticalAlignment> _verticalContentAlignment;
 
     #endregion

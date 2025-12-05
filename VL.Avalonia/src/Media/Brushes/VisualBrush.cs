@@ -10,6 +10,7 @@ namespace VL.Avalonia.Media.Brushes;
 public partial class VisualBrushWrapper : TileBrushWrapperBase<VisualBrush>
 {
     protected Optional<Visual> _visual;
+
     [Fragment(Order = PinOrder.Main)]
     public void SetVisual(Optional<Visual> visual)
     {

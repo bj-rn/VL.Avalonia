@@ -10,6 +10,7 @@ namespace VL.Avalonia.Media.Brushes;
 public class SolidColorBrush : BrushWrapperBase<global::Avalonia.Media.SolidColorBrush>
 {
     protected Optional<Color4> _color;
+
     [Fragment(Order = PinOrder.Main)]
     public void SetColor(Optional<Color4> color)
     {
@@ -17,7 +18,10 @@ public class SolidColorBrush : BrushWrapperBase<global::Avalonia.Media.SolidColo
         {
             if (color.HasValue)
             {
-                _output.SetValue(global::Avalonia.Media.SolidColorBrush.ColorProperty, color.Value.ToColor());
+                _output.SetValue(
+                    global::Avalonia.Media.SolidColorBrush.ColorProperty,
+                    color.Value.ToColor()
+                );
             }
             else
             {

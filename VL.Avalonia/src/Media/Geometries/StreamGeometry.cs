@@ -11,6 +11,7 @@ namespace VL.Avalonia.Media;
 public partial class StreamGeometryWrapper : GeometryWrapperBase<StreamGeometry>
 {
     private Optional<string> _data;
+
     /// <param name="data">The string.</param>
     public void SetData(Optional<string> data)
     {

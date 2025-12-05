@@ -22,6 +22,7 @@ namespace VL.Avalonia.Controls
             return selectedItems.Cast<T>().ToSpread();
         }
     }
+
     public static class TreeViewItemExtensions
     {
         public static int Level(TreeViewItem? input) => input?.Level ?? -1;

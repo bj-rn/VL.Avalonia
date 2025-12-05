@@ -12,7 +12,11 @@ namespace VL.Avalonia.Custom.Controls.Value
             base.OnApplyTemplate(e);
 
             Border SliderBorder = e.NameScope.Find<Border>("PART_MainBorder");
-            SliderBorder.AddHandler(PointerReleasedEvent, Button_OnPointerReleased, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
+            SliderBorder.AddHandler(
+                PointerReleasedEvent,
+                Button_OnPointerReleased,
+                RoutingStrategies.Tunnel | RoutingStrategies.Bubble
+            );
 
             InputValue = e.NameScope.Find<TextBox>("textInput");
             if (InputValue != null)
@@ -26,15 +30,22 @@ namespace VL.Avalonia.Custom.Controls.Value
             IsEditing = false;
         }
 
-
         private double oldValue;
         private TextBox InputValue { get; set; }
 
         private void AddParentWindowHandlers()
         {
             var topLevel = TopLevel.GetTopLevel(this);
-            topLevel?.AddHandler(PointerReleasedEvent, TopLevel_OnPointerReleased, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
-            topLevel?.AddHandler(PointerPressedEvent, TopLevel_OnPointerPressed, RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
+            topLevel?.AddHandler(
+                PointerReleasedEvent,
+                TopLevel_OnPointerReleased,
+                RoutingStrategies.Tunnel | RoutingStrategies.Bubble
+            );
+            topLevel?.AddHandler(
+                PointerPressedEvent,
+                TopLevel_OnPointerPressed,
+                RoutingStrategies.Tunnel | RoutingStrategies.Bubble
+            );
         }
 
         private void RemoveParentWindowHandlers()
@@ -43,7 +54,6 @@ namespace VL.Avalonia.Custom.Controls.Value
             topLevel?.RemoveHandler(PointerReleasedEvent, TopLevel_OnPointerReleased);
             topLevel?.RemoveHandler(PointerPressedEvent, TopLevel_OnPointerPressed);
         }
-
 
         private void OnSwitchToNormalMode()
         {
@@ -54,7 +64,6 @@ namespace VL.Avalonia.Custom.Controls.Value
 
             RemoveParentWindowHandlers();
         }
-
 
         private void InputValue_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -85,10 +94,12 @@ namespace VL.Avalonia.Custom.Controls.Value
             e.Handled = false;
         }
 
-
         private void Button_OnPointerReleased(object? sender, PointerReleasedEventArgs e)
         {
-            if (e.GetCurrentPoint(this).Properties.PointerUpdateKind == PointerUpdateKind.MiddleButtonReleased)
+            if (
+                e.GetCurrentPoint(this).Properties.PointerUpdateKind
+                == PointerUpdateKind.MiddleButtonReleased
+            )
             {
                 IsEditing = true;
                 InputValue.Focus();
