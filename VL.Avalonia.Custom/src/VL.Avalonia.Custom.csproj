@@ -7,6 +7,7 @@
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)generated</CompilerGeneratedFilesOutputPath>
         <BaseOutputPath>..\lib</BaseOutputPath>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <AvaloniaXaml Remove="Resources\EditableSliderResources.axaml" />
