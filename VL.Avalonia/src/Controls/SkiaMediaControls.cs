@@ -3,12 +3,16 @@ using VL.Avalonia.Skia;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Mathematics;
+using VL.Skia;
+
 namespace VL.Avalonia.Controls
 {
     [ProcessNode]
-    public abstract class SkiaMediaControlWrapperBase<T> : ControlWrapperBase<T> where T : SkiaMediaControlBase, new()
+    public abstract class SkiaMediaControlWrapperBase<T> : ControlWrapperBase<T>
+        where T : SkiaMediaControlBase, new()
     {
         protected Optional<SizeMode> _mode;
+
         public void SetSizeMode(Optional<SizeMode> mode)
         {
             if (_mode != mode)
@@ -27,7 +31,10 @@ namespace VL.Avalonia.Controls
         }
 
         protected Optional<RectangleAnchor> _anchor;
-        public void SetAnchor([Pin(Visibility = Model.PinVisibility.Optional)] Optional<RectangleAnchor> anchor)
+
+        public void SetAnchor(
+            [Pin(Visibility = Model.PinVisibility.Optional)] Optional<RectangleAnchor> anchor
+        )
         {
             if (_anchor != anchor)
             {
@@ -49,6 +56,7 @@ namespace VL.Avalonia.Controls
     public partial class SkiaImageControlWrapper : SkiaMediaControlWrapperBase<SkiaImageControl>
     {
         protected Optional<SKImage> _image;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetImage(Optional<SKImage> image)
         {
@@ -72,6 +80,7 @@ namespace VL.Avalonia.Controls
     public partial class SkiaPictureControlWrapper : SkiaMediaControlWrapperBase<SkiaPictureControl>
     {
         protected Optional<SKPicture> _picture;
+
         [Fragment(Order = PinOrder.Main)]
         public void SetPicture(Optional<SKPicture> picture)
         {
@@ -87,6 +96,30 @@ namespace VL.Avalonia.Controls
                 }
 
                 _picture = picture;
+            }
+        }
+    }
+
+    [ProcessNode(Name = "SkiaLayerControl")]
+    public partial class SkiaLayerControlWrapper : SkiaMediaControlWrapperBase<SkiaLayerControl>
+    {
+        protected Optional<ILayer> _layer;
+
+        [Fragment(Order = PinOrder.Main)]
+        public void SetLayer(Optional<ILayer> layer)
+        {
+            if (_layer != layer)
+            {
+                if (layer.HasValue)
+                {
+                    _output.Layer = layer.Value;
+                }
+                else
+                {
+                    _output.Layer = null;
+                }
+
+                _layer = layer;
             }
         }
     }
