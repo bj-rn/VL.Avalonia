@@ -55,11 +55,11 @@ namespace VL.Avalonia.Skia
     public class SkiaLayerControl : SkiaMediaControlBase
     {
         public ILayer? Layer { get; set; }
-
-        public new RectangleF? LayerBounds { get; set; }
+        public RectangleF? LayerBounds { get; set; }
 
         public override void Render(DrawingContext context)
         {
+            // Get scaling factor for correct text/line rendering
             var scaling = (VisualRoot as IRenderRoot)?.RenderScaling ?? 1.0;
             context.Custom(
                 new SkiaLayerDrawingOperation(
@@ -71,6 +71,7 @@ namespace VL.Avalonia.Skia
                     (float)scaling
                 )
             );
+
             Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
         }
     }
