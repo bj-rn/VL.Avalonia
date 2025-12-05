@@ -157,9 +157,11 @@ namespace VL.Avalonia.Skia
     {
         public ILayer? Layer { get; }
         public float Scaling { get; }
+        public RectangleF? LayerBounds { get; }
 
         public SkiaLayerDrawingOperation(
             ILayer? layer,
+            RectangleF? layerBounds,
             Rect bounds,
             SizeMode mode,
             RectangleAnchor anchor,
@@ -169,6 +171,7 @@ namespace VL.Avalonia.Skia
         {
             Layer = layer;
             Scaling = scaling;
+            LayerBounds = layerBounds;
         }
 
         public override void Render(ImmediateDrawingContext context)
@@ -187,7 +190,7 @@ namespace VL.Avalonia.Skia
                         var boundsRectangle = Bounds.FromRect();
                         RectangleF targetBounds = boundsRectangle;
 
-                        var layerBounds = Layer.Bounds;
+                        var layerBounds = LayerBounds ?? Layer.Bounds;
 
                         if (layerBounds.HasValue)
                         {

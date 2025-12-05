@@ -3,6 +3,7 @@ using Avalonia.Media;
 using Avalonia.Rendering;
 using Avalonia.Threading;
 using SkiaSharp;
+using Stride.Core.Mathematics;
 using VL.Lib.Mathematics;
 using VL.Skia;
 
@@ -55,12 +56,15 @@ namespace VL.Avalonia.Skia
     {
         public ILayer? Layer { get; set; }
 
+        public new RectangleF? LayerBounds { get; set; }
+
         public override void Render(DrawingContext context)
         {
             var scaling = (VisualRoot as IRenderRoot)?.RenderScaling ?? 1.0;
             context.Custom(
                 new SkiaLayerDrawingOperation(
                     Layer,
+                    LayerBounds,
                     Bounds,
                     Mode ?? SizeMode.AutoWidth,
                     Anchor ?? RectangleAnchor.Center,

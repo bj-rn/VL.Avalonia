@@ -1,4 +1,5 @@
 ﻿using SkiaSharp;
+using Stride.Core.Mathematics;
 using VL.Avalonia.Skia;
 using VL.Core;
 using VL.Core.Import;
@@ -120,6 +121,24 @@ namespace VL.Avalonia.Controls
                 }
 
                 _layer = layer;
+            }
+        }
+
+        protected Optional<RectangleF> _layerBounds;
+
+        public void SetLayerBounds(Optional<RectangleF> layerBounds)
+        {
+            if (_layerBounds != layerBounds)
+            {
+                if (layerBounds.HasValue)
+                {
+                    _output.LayerBounds = layerBounds.Value;
+                }
+                else
+                {
+                    _output.LayerBounds = null;
+                }
+                _layerBounds = layerBounds;
             }
         }
     }

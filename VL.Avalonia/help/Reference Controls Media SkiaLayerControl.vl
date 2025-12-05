@@ -21,7 +21,7 @@
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="EMAaVQMVNf2MIIhNQanTL4" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="1100, 142, 977, 907" IsHidden="true" />
+            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="1099, 166, 977, 907" IsHidden="true" />
             <Pin Id="OhUk0lcXRfZPS1pGZZQXFi" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="Crih6r1mjYkP4zxje5Ginm" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="EyUbJWQNM3mPPTWltTE2st" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
@@ -189,6 +189,7 @@
             <Pin Id="CaoOBRLCgAIL440AwdTcHD" Name="Mode" Kind="InputPin" />
             <Pin Id="FWztmLGSBonPO2tov0Rng1" Name="Output" Kind="OutputPin" />
             <Pin Id="DDtPwgUNZKnO8VkiVyAYrO" Name="Anchor" Kind="InputPin" IsHidden="true" />
+            <Pin Id="R3BEFiuXLlBOvtgqZ1cyE0" Name="Layer Bounds" Kind="InputPin" />
             <Pin Id="KN2N35YsKDiOlmC4AP8VKu" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="SKUy9PbsP3NNfPbGbmiUAs" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="Nds3RY8SnC8M2nUQMVuKRi" Name="Z Index" Kind="InputPin" IsHidden="true" />
@@ -223,6 +224,9 @@
               <Choice Kind="TypeFlag" Name="VerticalAlignment" />
             </p:TypeAnnotation>
           </Pad>
+          <Pad Id="Nlw344xsu7dOlzQEJ9WfuI" SlotId="DhI9R2imHykQIx2x6wEuDi" Bounds="404,750" Value="-0.5, -0.5, 1, 1" />
+          <Pad Id="CZ2jH0PezwbPYGulpUCsTA" SlotId="DhI9R2imHykQIx2x6wEuDi" Bounds="422,300" Value="-0.5, -0.5, 1, 1" />
+          <Pad Id="OpUE4TRvXkDPzfS9zqCaG0" Comment="ClientBounds" Bounds="445,750,336,138" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -245,6 +249,10 @@
         <Link Id="BMIRYu9YP6xOm6nT8ygLAz" Ids="SJW7VKGVm7sPB3OMEX8UfJ,V6PBYJ53xV1Lk1NFPZYUuq" />
         <Link Id="QbJpBN3vyFxO3IwelV6KdT" Ids="My3U8oSAu3YPNuNZ61N9Cv,Teg1LMz25yDNk82xAPEcLq" />
         <Link Id="EJ3ytaUP2TKOvAsAs64soS" Ids="NJ4EbITAC28MBhSfY6U4iz,NtPPqaB4IInMjnvReNY7PR" />
+        <Slot Id="DhI9R2imHykQIx2x6wEuDi" Name="ClientBounds" />
+        <Link Id="VCGhSxE4eB4NrZWMuSwqTV" Ids="LVCVyIOVar8Nmdj6RdgUeq,Nlw344xsu7dOlzQEJ9WfuI" />
+        <Link Id="BRgwbbAE7dPQQZVs6S9JMk" Ids="CZ2jH0PezwbPYGulpUCsTA,R3BEFiuXLlBOvtgqZ1cyE0" />
+        <Link Id="SFwIyVq7QaNLSJVzmtwrMl" Ids="LVCVyIOVar8Nmdj6RdgUeq,OpUE4TRvXkDPzfS9zqCaG0" />
       </Patch>
     </Node>
   </Patch>
