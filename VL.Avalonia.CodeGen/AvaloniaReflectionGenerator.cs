@@ -23,7 +23,6 @@ namespace VL.Avalonia.CodeGen
 
                     try
                     {
-                        // TODO: Phase 1
                         RoutedEventArgsGenerator.Generate(spc, compilation);
                     }
                     catch (Exception ex) { }

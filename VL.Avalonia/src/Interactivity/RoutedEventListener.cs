@@ -1,65 +1,54 @@
 ﻿using System.Reactive.Disposables;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
-using VL.Core;
 using VL.Core.Import;
 using VL.Model;
 
 namespace VL.Avalonia.Interactivity
 {
     /// <summary>
-    /// Base class for listening to RoutedEvents and executing a user-provided callback.
+    /// Abstract base class for routed event listeners.
+    /// Needed to conceal SetRoutedEvent in derived classes.
     /// </summary>
-    /// <typeparam name="TArgs">The specific type of RoutedEvent arguments.</typeparam>
-    [ProcessNode(Name = "RoutedEventListener")]
-    public class RoutedEventListener<TArgs> : IDisposable
+    /// <typeparam name="TControl"></typeparam>
+    /// <typeparam name="TArgs"></typeparam>
+    [ProcessNode]
+    public abstract class RoutedEventListener<TControl, TArgs> : IDisposable
+        where TControl : Interactive
         where TArgs : RoutedEventArgs
     {
-        protected Optional<Interactive> _interactive;
-        protected RoutedEvent? _routedEvent;
-        protected RoutingStrategies _routingStrategies =
+        protected TControl? Input;
+        protected RoutedEvent? Event;
+        protected RoutingStrategies Strategies =
             RoutingStrategies.Direct | RoutingStrategies.Bubble;
-        protected bool _handledEventsToo = false;
+        protected bool HandledEveventsToo = false;
 
-        protected Func<Interactive, TArgs, bool>? _handler;
+        protected Func<TControl, TArgs, bool>? Handler;
 
-        private readonly SerialDisposable _subscription = new SerialDisposable();
+        private readonly SerialDisposable _subscription = new();
 
         /// <summary>
         /// Sets the Interactive element to listen to.
         /// </summary>
-        ///
         [Fragment(Order = PinOrder.Main)]
-        public void SetInteractive(Optional<Interactive> interactive)
+        public void SetInput(TControl? input)
         {
-            if (interactive != _interactive)
+            if (input != Input)
             {
-                _interactive = interactive;
-                Resubscribe();
-            }
-        }
-
-        /// <summary>
-        /// Sets the RoutedEvent to listen for.
-        /// </summary>
-        [Fragment(Order = PinOrder.Action)]
-        public void SetRoutedEvent(RoutedEvent? routedEvent)
-        {
-            if (routedEvent != _routedEvent)
-            {
-                _routedEvent = routedEvent;
+                Input = input;
                 Resubscribe();
             }
         }
 
         /// <summary>
         /// Sets the callback to execute when the event occurs.
-        /// The callback receives the sender (Interactive) and the event args.
+        /// The callback receives the sender (TControl) and the event args.
         /// Return true to mark the event as Handled.
         /// </summary>
-        [Fragment]
-        public void SetHandler(Func<Interactive, TArgs, bool>? handler)
+        [Fragment(Order = PinOrder.Action)]
+        public void SetHandler(Func<TControl, TArgs, bool>? handler)
         {
-            _handler = handler;
+            Handler = handler;
         }
 
         /// <summary>
@@ -68,13 +57,12 @@ namespace VL.Avalonia.Interactivity
         [Fragment]
         public void SetRoutingStrategies(
             [Pin(Visibility = PinVisibility.Optional)]
-                RoutingStrategies routingStrategies =
-                RoutingStrategies.Direct | RoutingStrategies.Bubble
+                RoutingStrategies strategies = RoutingStrategies.Direct | RoutingStrategies.Bubble
         )
         {
-            if (routingStrategies != _routingStrategies)
+            if (strategies != Strategies)
             {
-                _routingStrategies = routingStrategies;
+                Strategies = strategies;
                 Resubscribe();
             }
         }
@@ -87,9 +75,9 @@ namespace VL.Avalonia.Interactivity
             [Pin(Visibility = PinVisibility.Optional)] bool handledEventsToo = false
         )
         {
-            if (handledEventsToo != _handledEventsToo)
+            if (handledEventsToo != HandledEveventsToo)
             {
-                _handledEventsToo = handledEventsToo;
+                HandledEveventsToo = handledEventsToo;
                 Resubscribe();
             }
         }
@@ -99,26 +87,25 @@ namespace VL.Avalonia.Interactivity
             // Clear existing subscription
             _subscription.Disposable = Disposable.Empty;
 
-            if (!_interactive.HasValue || _interactive.Value == null || _routedEvent == null)
+            if (Input == null || Event == null)
             {
                 return;
             }
 
-            var target = _interactive.Value;
+            var target = Input;
 
             void HandlerAdapter(object? sender, RoutedEventArgs args)
             {
-                var currentHandler = _handler;
+                var currentHandler = Handler;
 
                 // Check if we have a handler and the args are of the expected type
                 if (currentHandler != null && args is TArgs typedArgs)
                 {
-                    // Try to cast sender to Interactive.
-                    // In Avalonia, the sender of a RoutedEvent is almost always an Interactive (Control, etc.)
-                    if (sender is Interactive interactiveSender)
+                    // Check if sender matches TControl
+                    if (sender is TControl typedSender)
                     {
                         // Invoke the user callback
-                        var handled = currentHandler(interactiveSender, typedArgs);
+                        var handled = currentHandler(typedSender, typedArgs);
 
                         // If user returned true, mark event as handled
                         if (handled)
@@ -131,22 +118,105 @@ namespace VL.Avalonia.Interactivity
 
             // Subscribe using the untyped AddHandler which supports all routing strategies
             target.AddHandler(
-                _routedEvent,
+                Event,
                 (EventHandler<RoutedEventArgs>)HandlerAdapter,
-                _routingStrategies,
-                _handledEventsToo
+                Strategies,
+                HandledEveventsToo
             );
 
             // Cleanup
             _subscription.Disposable = Disposable.Create(() =>
             {
-                target.RemoveHandler(_routedEvent, (EventHandler<RoutedEventArgs>)HandlerAdapter);
+                target.RemoveHandler(Event, (EventHandler<RoutedEventArgs>)HandlerAdapter);
             });
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             _subscription.Dispose();
+        }
+    }
+
+    /// <summary>
+    /// Generic routed event listener. Allows to setup for specific event.
+    /// </summary>
+    /// <typeparam name="TArgs">RoutedEventArgs</typeparam>
+    [ProcessNode]
+    public class RoutedEventListener<TArgs> : RoutedEventListener<Interactive, TArgs>, IDisposable
+        where TArgs : RoutedEventArgs
+    {
+        /// <summary>
+        /// Sets the RoutedEvent to listen for.
+        /// </summary>
+        [Fragment(Order = PinOrder.Action)]
+        public virtual void SetRoutedEvent(RoutedEvent? routedEvent)
+        {
+            if (routedEvent != Event)
+            {
+                Event = routedEvent;
+                Resubscribe();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Generic routed event listener. Allows to setup for specific event by event name.
+    /// </summary>
+    /// <typeparam name="TArgs">RoutedEventArgs</typeparam>
+    [ProcessNode]
+    public class RoutedEventListenerName<TArgs> : RoutedEventListener<Interactive, TArgs>
+        where TArgs : RoutedEventArgs
+    {
+        private string? _eventName;
+
+        [Fragment(Order = PinOrder.Action)]
+        public void SetRoutedEvent(string? eventName)
+        {
+            if (eventName != _eventName)
+            {
+                _eventName = eventName;
+                var resolvedEvent = ResolveEvent(eventName);
+
+                // Update base class state
+                if (resolvedEvent != Event)
+                {
+                    Event = resolvedEvent;
+                    Resubscribe();
+                }
+            }
+        }
+
+        private static RoutedEvent? ResolveEvent(string? name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return null;
+
+            // Simple parsing logic: Expects "Owner.Name"
+            var parts = name!.Split('.');
+            if (parts.Length < 2)
+                return null;
+
+            // The last part is the event name, the rest is the owner
+            var evtName = parts[parts.Length - 1];
+            var ownerName = parts[parts.Length - 2];
+
+            // Scan registry
+            // This could be optimized with a static dictionary cache if performance becomes an issue
+            return RoutedEventRegistry
+                .Instance.GetAllRegistered()
+                .FirstOrDefault(e => e.Name == evtName && e.OwnerType.Name == ownerName);
+        }
+    }
+
+    /// <summary>
+    /// Specific listener for Button Click events.
+    /// </summary>
+    [ProcessNode()]
+    public class ButtonClickRoutedEventListener : RoutedEventListener<Button, RoutedEventArgs>
+    {
+        public ButtonClickRoutedEventListener()
+        {
+            Event = Button.ClickEvent;
         }
     }
 }

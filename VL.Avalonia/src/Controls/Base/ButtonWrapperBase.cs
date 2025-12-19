@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -71,6 +72,12 @@ public abstract partial class ButtonWrapperBase<T> : ContentControlWrapperBase<T
     /// </param>
     [ImplementProperty("Button.HotKeyProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<KeyGesture> _hotKey;
+
+    #endregion
+
+    #region Events
+
+    public static readonly RoutedEvent<RoutedEventArgs> ClickEvent = Button.ClickEvent;
 
     #endregion
 }
