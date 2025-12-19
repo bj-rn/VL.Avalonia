@@ -24,6 +24,7 @@ namespace VL.Avalonia.CodeGen
                     try
                     {
                         RoutedEventArgsGenerator.Generate(spc, compilation);
+                        RoutedEventGenerator.Generate(spc, compilation);
                     }
                     catch (Exception ex) { }
                 }

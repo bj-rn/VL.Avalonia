@@ -1,5 +1,4 @@
 ﻿using System.Reactive.Disposables;
-using Avalonia.Controls;
 using Avalonia.Interactivity;
 using VL.Core.Import;
 using VL.Model;
@@ -140,10 +139,10 @@ namespace VL.Avalonia.Interactivity
     /// <summary>
     /// Generic routed event listener. Allows to setup for specific event.
     /// </summary>
-    /// <typeparam name="TArgs">RoutedEventArgs</typeparam>
+    /// <typeparam name="T">RoutedEventArgs</typeparam>
     [ProcessNode]
-    public class RoutedEventListener<TArgs> : RoutedEventListener<Interactive, TArgs>, IDisposable
-        where TArgs : RoutedEventArgs
+    public class CustomRoutedEventListener<T> : RoutedEventListener<Interactive, T>, IDisposable
+        where T : RoutedEventArgs
     {
         /// <summary>
         /// Sets the RoutedEvent to listen for.
@@ -205,18 +204,6 @@ namespace VL.Avalonia.Interactivity
             return RoutedEventRegistry
                 .Instance.GetAllRegistered()
                 .FirstOrDefault(e => e.Name == evtName && e.OwnerType.Name == ownerName);
-        }
-    }
-
-    /// <summary>
-    /// Specific listener for Button Click events.
-    /// </summary>
-    [ProcessNode()]
-    public class ButtonClickRoutedEventListener : RoutedEventListener<Button, RoutedEventArgs>
-    {
-        public ButtonClickRoutedEventListener()
-        {
-            Event = Button.ClickEvent;
         }
     }
 }
