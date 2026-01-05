@@ -414,6 +414,27 @@
             </p:NodeReference>
             <Pin Id="Op6WdzYWucSOCO1U7vT2aM" Name="Pointer Moved Event" Kind="OutputPin" />
           </Node>
+          <Node Bounds="704,121,77,26" Id="O3bwTmV3SixQBfOmtZwg9o">
+            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity.RoutedEventArgs" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="ClassType" Name="RoutedEventArgs" />
+              <Choice Kind="OperationCallFlag" Name="Create" />
+            </p:NodeReference>
+            <Pin Id="Hoo8x5nZNiLNARRZ1iAK5w" Name="Output" Kind="StateOutputPin" />
+          </Node>
+          <Node Bounds="640,201,85,26" Id="VDlY48mkwX9LgGC5CDoaSw">
+            <p:NodeReference LastCategoryFullName="Avalonia.Input.DragEventArgs" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="ClassType" Name="DragEventArgs" />
+              <Choice Kind="OperationCallFlag" Name="Create" />
+            </p:NodeReference>
+            <Pin Id="OhICjqYaY0iOTazj9lYsSb" Name="Routed Event" Kind="InputPin" />
+            <Pin Id="Gox9LDHDWLHMQDDusvk7c3" Name="Data" Kind="InputPin" />
+            <Pin Id="Lhz8MIGyHu8OziO7DGgqkm" Name="Target" Kind="InputPin" />
+            <Pin Id="SCJa56bxIIPPD3pmX2nU6m" Name="Target Location" Kind="InputPin" />
+            <Pin Id="FwL2NszBt8oOWrwvbRnRY3" Name="Key Modifiers" Kind="InputPin" />
+            <Pin Id="RnZhhWmONuCOQBzOf4oCcd" Name="Output" Kind="StateOutputPin" />
+          </Node>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />

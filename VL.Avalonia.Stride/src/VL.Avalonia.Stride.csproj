@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Stride.Graphics" Version="4.2.0.2293" />
-        <PackageReference Include="VL.Core" Version="2025.7.0" />
+        <PackageReference Include="Stride.Graphics" Version="$(StrideVersion)" />
+        <PackageReference Include="VL.Core" Version="$(VLVersion)" />
     </ItemGroup>
 </Project>

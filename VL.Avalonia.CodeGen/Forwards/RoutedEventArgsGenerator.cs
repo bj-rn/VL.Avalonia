@@ -51,13 +51,13 @@ namespace VL.Avalonia.CodeGen.Forwards
             }
             sb.AppendLine();
 
+            var typeFormat = SymbolDisplayFormat.MinimallyQualifiedFormat;
+
             foreach (var type in foundTypes)
             {
-                // We use the fully qualified name in typeof() to prevent any potential name collisions,
-                // even though we added the usings.
                 sb.AppendLine(
                     // csharpier-ignore
-                    $@"[assembly: ImportType(typeof({type.ToDisplayString()}), Category = ""{type.ContainingNamespace.ToDisplayString()}"")]"
+                    $@"[assembly: ImportType(typeof({type.ToDisplayString(typeFormat)}), Category = ""{type.ContainingNamespace.ToDisplayString()}"")]"
                 );
             }
 
