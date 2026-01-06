@@ -140,8 +140,8 @@ namespace VL.Avalonia.Interactivity
     /// Generic routed event listener. Allows to setup for specific event.
     /// </summary>
     /// <typeparam name="T">RoutedEventArgs</typeparam>
-    [ProcessNode]
-    public class CustomRoutedEventListener<T> : RoutedEventListener<Interactive, T>, IDisposable
+    [ProcessNode(Name = "RoutedEventListener")]
+    public class RoutedEventListener<T> : RoutedEventListener<Interactive, T>, IDisposable
         where T : RoutedEventArgs
     {
         /// <summary>
@@ -162,7 +162,7 @@ namespace VL.Avalonia.Interactivity
     /// Generic routed event listener. Allows to setup for specific event by event name.
     /// </summary>
     /// <typeparam name="TArgs">RoutedEventArgs</typeparam>
-    [ProcessNode]
+    [ProcessNode(Name = "RoutedEventListener (Name)")]
     public class RoutedEventListenerName<TArgs> : RoutedEventListener<Interactive, TArgs>
         where TArgs : RoutedEventArgs
     {

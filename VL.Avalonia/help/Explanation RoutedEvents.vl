@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="MDQW7uY4Y6VLiH0boZXzpE" LanguageVersion="2025.7.0" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.0" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="MDQW7uY4Y6VLiH0boZXzpE" LanguageVersion="2025.7.1-0137-g9913e5c752" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0137-g9913e5c752" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -33,7 +33,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="RErUp1kqkdkPMlsnOYFbZK" Bounds="14,120,437,76" ShowValueBox="true" isIOBox="true" Value="There is a special category of events in Avalonia used for low-level interactions. Generally, developers should avoid these in favor of **Commands** and **Properties**; however, for low-level customizations and UI flow control, manual event handling is necessary.">
+          <Pad Id="RErUp1kqkdkPMlsnOYFbZK" Bounds="14,120,437,76" ShowValueBox="true" isIOBox="true" Value="There is a special category of events in Avalonia used for low-level interactions. Generally, developers should avoid these in favor of &quot;Commands&quot; and &quot;Properties&quot;. However, for low-level customizations and UI flow control, manual event handling is necessary.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -42,7 +42,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="KiNapHx5rpINNuhm0xr2Ax" Bounds="14,214,437,76" ShowValueBox="true" isIOBox="true" Value="A common example is using a `SkiaLayerControl` where you need to stop a `KeyPress` from bubbling to the focus adorner. Pressing the **&quot;Up&quot;** arrow key woud trigger a focus move rather then handled by control.">
+          <Pad Id="KiNapHx5rpINNuhm0xr2Ax" Bounds="14,214,437,76" ShowValueBox="true" isIOBox="true" Value="A common example is using a `SkiaLayerControl` where you need to stop a `KeyPress` from bubbling to the focus navigation. Pressing the &quot;Up&quot; arrow key woud trigger a focus move rather then handled by control.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -51,7 +51,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="F95sTmtd8rMMoTkIedju9I" Bounds="14,310,666,65" ShowValueBox="true" isIOBox="true" Value="To handle these scenarios, the following nodes are available:&#xD;&#xA;* **`RoutedEventListener`**: A customizable node for general event handling.&#xD;&#xA;* **Specialized Listeners**: Pre-configured listeners for specific actions (e.g., `ClickRoutedEventListener`).">
+          <Pad Id="F95sTmtd8rMMoTkIedju9I" Bounds="14,310,666,65" ShowValueBox="true" isIOBox="true" Value="To handle these scenarios, the following nodes are available:&#xD;&#xA;* RoutedEventListener - A customizable node for general event handling.&#xD;&#xA;* Specialized Listeners - Pre-configured listeners for specific actions (e.g., `ClickRoutedEventListener`).">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -60,7 +60,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="E0H1NJqGurTLexQipqOvDR" Bounds="14,412,783,67" ShowValueBox="true" isIOBox="true" Value="The `RoutedEventListener` comes in two variants depending on how you wish to target the event:&#xD;&#xA;1. **`RoutedEventListener`**: Provide the event as a direct reference.&#xD;&#xA;2. **`RoutedEventListenerName`**: Provide the event by its string name.">
+          <Pad Id="E0H1NJqGurTLexQipqOvDR" Bounds="14,412,783,67" ShowValueBox="true" isIOBox="true" Value="The `RoutedEventListener` comes in two variants depending on how you wish to target the event:&#xD;&#xA;1. `RoutedEventListener`- Provide the event as a direct reference.&#xD;&#xA;2. `RoutedEventListener (Name)` - Provide the event by its string name.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -69,7 +69,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="132,510,120,95" Id="QqA2X8HfReAO1uBtdukK1t">
+          <Node Bounds="132,510,120,107" Id="QqA2X8HfReAO1uBtdukK1t">
             <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
               <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="RoutedEventListener" />
@@ -82,15 +82,16 @@
               <Pin Id="K7fBtJNRbD1NERhIJkHYOx" Name="Result" Kind="OutputPin" />
               <ControlPoint Id="En54cZUszbvMRChcznmsYE" Bounds="136,518" />
               <ControlPoint Id="Pw4H4rBdPwdMpVBEDO4v0l" Bounds="196,518" />
-              <ControlPoint Id="OiDpj4XNrJlOXkzSyXAMWE" Bounds="136,598" />
+              <ControlPoint Id="OiDpj4XNrJlOXkzSyXAMWE" Bounds="136,610" />
+              <Pad Id="VyS8eLoGwAVMvRb5n7M0XV" Comment="" Bounds="196,560" isIOBox="true" />
             </Patch>
             <Pin Id="P7qkZ1890IIP08xOjo9saF" Name="Strategies" Kind="InputPin" IsHidden="true" />
             <Pin Id="J1bD7syitLWNmmFi1tQ8Nv" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="393,510,120,95" Id="V3Vg0B9YmkDLFroH6Dsn6P">
+          <Node Bounds="393,510,120,107" Id="V3Vg0B9YmkDLFroH6Dsn6P">
             <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
               <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="RoutedEventListenerName" />
+              <Choice Kind="ProcessAppFlag" Name="RoutedEventListener (Name)" />
             </p:NodeReference>
             <Pin Id="NKxbb4Yv6dXQItfGm7Kui1" Name="Input" Kind="InputPin" />
             <Pin Id="G7okcIozk08MfE46QMcwQU" Name="Event Name" Kind="InputPin" />
@@ -99,8 +100,8 @@
               <Pin Id="Mgm3Hf8FXQUNbgIzw0Y3Rd" Name="Input 2" Kind="InputPin" />
               <Pin Id="KnM1yGoGHfVNOqW9ya4FiM" Name="Result" Kind="OutputPin" />
               <ControlPoint Id="OL8x6MSGSbIPfI96AHi1JW" Bounds="397,518" />
-              <ControlPoint Id="QZFnz3nEts8Nv4OTDHVVbZ" Bounds="457,518" />
-              <ControlPoint Id="IsjCGyOhyOHLGcUThqFaNS" Bounds="397,598" />
+              <ControlPoint Id="QZFnz3nEts8Nv4OTDHVVbZ" Bounds="467,520" />
+              <ControlPoint Id="IsjCGyOhyOHLGcUThqFaNS" Bounds="397,610" />
             </Patch>
             <Pin Id="U4kXNgyzFguLtIkYJKJsxE" Name="Strategies" Kind="InputPin" IsHidden="true" />
             <Pin Id="CwXfThBAnOXODMsKfwk9Zy" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
@@ -110,7 +111,7 @@
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="H3qWZ7xRITeNgj3VRcaDnV" Bounds="22,673,780,22" ShowValueBox="true" isIOBox="true" Value="**`RoutedEventInspector`**: Use this tool to check available event names and types within the system.">
+          <Pad Id="H3qWZ7xRITeNgj3VRcaDnV" Bounds="9,771,780,22" ShowValueBox="true" isIOBox="true" Value="RoutedEventInspector - Use this tool to check available event names and types within the system.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -119,7 +120,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="66,720,46,19" Id="BoGmKP3Hg9lLFhfqqSukku">
+          <Node Bounds="65,810,46,19" Id="BoGmKP3Hg9lLFhfqqSukku">
             <p:NodeReference LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Controls" NeedsToBeDirectParent="true">
@@ -152,7 +153,7 @@
             <Pin Id="F4dAtfakrbyMPsmYqu5pjK" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="OCDVDtHwDwILf33XHtWV1t" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="66,761,115,19" Id="DrAtq8l6zrLLxxypQkktre">
+          <Node Bounds="65,851,115,19" Id="DrAtq8l6zrLLxxypQkktre">
             <p:NodeReference LastCategoryFullName="Avalonia" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="RoutedEventInspector" />
@@ -160,8 +161,8 @@
             <Pin Id="JAKslP83fJvQSo4xBQGjaI" Name="Input" Kind="InputPin" />
             <Pin Id="NIWanVJAYuRMjATqv4j1DQ" Name="Output" Kind="OutputPin" />
           </Node>
-          <Pad Id="Vt5vcL5ESesL814MrtiTIJ" Comment="" Bounds="68,810,429,340" ShowValueBox="true" isIOBox="true" Value="Button.Click [Bubble] (RoutedEventArgs)&#xD;&#xA;InputElement.GotFocus [Bubble] (GotFocusEventArgs)&#xD;&#xA;InputElement.KeyDown [Tunnel, Bubble] (KeyEventArgs)&#xD;&#xA;InputElement.KeyUp [Tunnel, Bubble] (KeyEventArgs)&#xD;&#xA;InputElement.LostFocus [Bubble] (RoutedEventArgs)&#xD;&#xA;InputElement.PointerCaptureLost [Direct] (PointerCaptureLostEventArgs)&#xD;&#xA;InputElement.PointerEntered [Direct] (PointerEventArgs)&#xD;&#xA;InputElement.PointerExited [Direct] (PointerEventArgs)&#xD;&#xA;InputElement.PointerMoved [Tunnel, Bubble] (PointerEventArgs)&#xD;&#xA;InputElement.PointerPressed [Tunnel, Bubble] (PointerPressedEventArgs)&#xD;&#xA;InputElement.PointerReleased [Tunnel, Bubble] (PointerReleasedEventArgs)&#xD;&#xA;InputElement.PointerWheelChanged [Tunnel, Bubble] (PointerWheelEventArgs)&#xD;&#xA;InputElement.TextInput [Tunnel, Bubble] (TextInputEventArgs)&#xD;&#xA;InputElement.TextInputMethodClientRequeryRequested [Bubble] (TextInputMethodClientRequeryRequestedEventArgs)&#xD;&#xA;InputElement.TextInputMethodClientRequested [Tunnel, Bubble] (TextInputMethodClientRequestedEventArgs)&#xD;&#xA;TemplatedControl.TemplateApplied [Direct] (TemplateAppliedEventArgs)" />
-          <Node Bounds="927,470,46,19" Id="BsCkUTJpYdBMadQDxwWAsP">
+          <Pad Id="Vt5vcL5ESesL814MrtiTIJ" Comment="" Bounds="67,900,429,340" ShowValueBox="true" isIOBox="true" Value="Button.Click [Bubble] (RoutedEventArgs)&#xD;&#xA;InputElement.GotFocus [Bubble] (GotFocusEventArgs)&#xD;&#xA;InputElement.KeyDown [Tunnel, Bubble] (KeyEventArgs)&#xD;&#xA;InputElement.KeyUp [Tunnel, Bubble] (KeyEventArgs)&#xD;&#xA;InputElement.LostFocus [Bubble] (RoutedEventArgs)&#xD;&#xA;InputElement.PointerCaptureLost [Direct] (PointerCaptureLostEventArgs)&#xD;&#xA;InputElement.PointerEntered [Direct] (PointerEventArgs)&#xD;&#xA;InputElement.PointerExited [Direct] (PointerEventArgs)&#xD;&#xA;InputElement.PointerMoved [Tunnel, Bubble] (PointerEventArgs)&#xD;&#xA;InputElement.PointerPressed [Tunnel, Bubble] (PointerPressedEventArgs)&#xD;&#xA;InputElement.PointerReleased [Tunnel, Bubble] (PointerReleasedEventArgs)&#xD;&#xA;InputElement.PointerWheelChanged [Tunnel, Bubble] (PointerWheelEventArgs)&#xD;&#xA;InputElement.TextInput [Tunnel, Bubble] (TextInputEventArgs)&#xD;&#xA;InputElement.TextInputMethodClientRequeryRequested [Bubble] (TextInputMethodClientRequeryRequestedEventArgs)&#xD;&#xA;InputElement.TextInputMethodClientRequested [Tunnel, Bubble] (TextInputMethodClientRequestedEventArgs)&#xD;&#xA;TemplatedControl.TemplateApplied [Direct] (TemplateAppliedEventArgs)" />
+          <Node Bounds="799,470,46,19" Id="BsCkUTJpYdBMadQDxwWAsP">
             <p:NodeReference LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Controls" NeedsToBeDirectParent="true">
@@ -194,7 +195,7 @@
             <Pin Id="AGGyOOsAZmpP5CUIQfUnv7" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="I2adZVn2SQ4MzgAwjktKFA" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Pad Id="O4XaVMy9U94QVPV1w4n8UJ" Bounds="728,422,780,22" ShowValueBox="true" isIOBox="true" Value="**Specialized Listeners**: These encapsulate existing `RoutedEvents` from the codebase, providing a fully assembled node that works out of the box without additional configuration.">
+          <Pad Id="O4XaVMy9U94QVPV1w4n8UJ" Bounds="728,422,601,43" ShowValueBox="true" isIOBox="true" Value="Specialized Listeners: These encapsulate existing `RoutedEvents` from the codebase, providing a fully assembled node that works out of the box without additional configuration.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -203,7 +204,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="927,520,120,95" Id="NippzOciMghOlQ5kOoQ65o">
+          <Node Bounds="799,520,120,95" Id="NippzOciMghOlQ5kOoQ65o">
             <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
               <FullNameCategoryReference ID="Avalonia.Interactivity" />
@@ -235,61 +236,19 @@
               <Pin Id="Fo6as6yH3DCNo4pce9QIsN" Name="Input 1" Kind="InputPin" />
               <Pin Id="HO5tP1YczBBQPeDWpB4dIV" Name="Input 2" Kind="InputPin" />
               <Pin Id="Ip9w2W4Wi2gQXfJlvpoBrf" Name="Result" Kind="OutputPin" />
-              <ControlPoint Id="GHYc1IAFI6BLrLq046rQHE" Bounds="931,528" />
-              <ControlPoint Id="Kd3IdBZ07NoNCCBcjl1Fa5" Bounds="991,528" />
-              <ControlPoint Id="UDdJxKrRMnDLNtDBNcUowd" Bounds="931,608" />
+              <ControlPoint Id="GHYc1IAFI6BLrLq046rQHE" Bounds="803,528" />
+              <ControlPoint Id="Kd3IdBZ07NoNCCBcjl1Fa5" Bounds="863,528" />
+              <ControlPoint Id="UDdJxKrRMnDLNtDBNcUowd" Bounds="803,608" />
             </Patch>
             <Pin Id="FwvYm2spcv7LbOdMaWZZno" Name="Strategies" Kind="InputPin" IsHidden="true" />
             <Pin Id="TcSVYZ6y9YQPxMPOOEogRj" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="174,1269,209,138" Id="FxySxOBHp67LIxlz6fTYds">
-            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="RoutedEventListener" />
-            </p:NodeReference>
-            <Pin Id="N9pBNUwjvN2MwXYZcxAxey" Name="Input" Kind="InputPin" />
-            <Pin Id="G5QwvpeUUU8Lxkwqavn6p1" Name="Routed Event" Kind="InputPin" />
-            <Patch Id="LEPr3nKcqGLO3EVJmUUl6K" Name="Handler" ManuallySortedPins="true">
-              <Pin Id="TgP3oRGsKkFLHVkzeSA7G8" Name="Input 1" Kind="InputPin" />
-              <Pin Id="K54pwiLFkH6MLvJ9R6cOU3" Name="Input 2" Kind="InputPin">
-                <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="VL.Avalonia.vl">
-                  <Choice Kind="TypeFlag" Name="PointerEventArgs" />
-                </p:TypeAnnotation>
-              </Pin>
-              <Pin Id="BEM3TdDCqH1M5VdawlStjN" Name="Result" Kind="OutputPin" />
-              <ControlPoint Id="DWyJNSTMpy1LBJgOiHPJ3U" Bounds="178,1277" />
-              <ControlPoint Id="Q3AK5PJPRnTNxrmELYRd4Y" Bounds="238,1277" />
-              <ControlPoint Id="R6bgLw9s0eKMSkx9SqvwwB" Bounds="178,1400" />
-              <Node Bounds="236,1300,77,26" Id="P5aJEqvi4Z9PIkvZXwxZR6">
-                <p:NodeReference LastCategoryFullName="Avalonia.Input.PointerEventArgs" LastDependency="VL.Avalonia.vl">
-                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                  <FullNameCategoryReference ID="Avalonia.Input.PointerEventArgs" />
-                  <Choice Kind="OperationCallFlag" Name="GetPosition" />
-                </p:NodeReference>
-                <Pin Id="TGoiFvScYeBOvtvbZGuKI1" Name="Input" Kind="StateInputPin" />
-                <Pin Id="RV26ih9nXcwLa5HNovWeWQ" Name="Relative To" Kind="InputPin" />
-                <Pin Id="UMck6tPVRLyMfL8Z7oSoL3" Name="Output" Kind="StateOutputPin" />
-                <Pin Id="FYXs6HRpgzMPagA5T8dsIR" Name="Result" Kind="OutputPin" />
-              </Node>
-              <Node Bounds="308,1331,63,26" Id="MNNS3CAgRfFMsg6J5D6JnI">
-                <p:NodeReference LastCategoryFullName="Avalonia.Point" LastDependency="VL.Avalonia.vl">
-                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                  <FullNameCategoryReference ID="Avalonia.Point" />
-                  <Choice Kind="OperationCallFlag" Name="FromPoint" />
-                </p:NodeReference>
-                <Pin Id="SfM6by3Vw6vNGS93e9bUIX" Name="Input" Kind="StateInputPin" />
-                <Pin Id="FfQlIHFOxMgPBWyerPaNCM" Name="Result" Kind="OutputPin" />
-              </Node>
-            </Patch>
-            <Pin Id="QlvijLIQqdyNuy5MWPRH7R" Name="Strategies" Kind="InputPin" IsHidden="true" />
-            <Pin Id="T39TGgiy7gELLO02IH2BNt" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
-          </Node>
-          <Pad Id="FOYcpRbYnXHPPH3PDpXsZi" Bounds="18,1186,780,22" ShowValueBox="true" isIOBox="true" Value="&quot;Input 2&quot; of RoutedEventListener can be typed:">
+          <Pad Id="FOYcpRbYnXHPPH3PDpXsZi" Bounds="36,549,144,28" ShowValueBox="true" isIOBox="true" Value="This input should be typed for expected EventArgs &gt;&gt;&gt;">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
             <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
@@ -301,7 +260,7 @@
             </p:NodeReference>
             <Pin Id="HKtoLuvxeFzOKn2bGcduj5" Name="Click Event" Kind="OutputPin" />
           </Node>
-          <Node Bounds="122,1230,46,19" Id="PcnkdkL8SvHLe5ovZXtY2n">
+          <Node Bounds="96,1370,46,19" Id="PcnkdkL8SvHLe5ovZXtY2n">
             <p:NodeReference LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Controls" NeedsToBeDirectParent="true">
@@ -334,7 +293,7 @@
             <Pin Id="KLitfxK1EyIK9cT9h93oLT" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="D5RSb7kNV0gOh7qVbw4B7B" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="122,1500,79,19" Id="QKogpDwDb2FO156wH6d3JD">
+          <Node Bounds="96,1640,79,19" Id="QKogpDwDb2FO156wH6d3JD">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Skia" LastDependency="VL.Avalonia.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="AvaloniaLayer" />
@@ -345,18 +304,18 @@
             <Pin Id="KWA5hvUP3HOQE7wiMmTokl" Name="Output" Kind="StateOutputPin" />
             <Pin Id="LURFvxhUoprQIirscIVJoJ" Name="Scaling Factor" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Pad Id="FR3sbU4nxQgL1NbpSFJ98p" Comment="Content" Bounds="124,1211,35,15" ShowValueBox="true" isIOBox="true" Value="text">
+          <Pad Id="FR3sbU4nxQgL1NbpSFJ98p" Comment="Content" Bounds="98,1351,35,15" ShowValueBox="true" isIOBox="true" Value="text">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="122,1570,145,19" Id="DnKUZDp8o2COOmsZMfeURU">
+          <Node Bounds="96,1710,145,19" Id="DnKUZDp8o2COOmsZMfeURU">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="SpIG9kr3NR6Nft33WsJbwK" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="PDHETuCCHIxO7IZ2PCYsJA" Name="Bounds" Kind="InputPin" DefaultValue="980, 500, 616, 439" IsHidden="true" />
+            <Pin Id="PDHETuCCHIxO7IZ2PCYsJA" Name="Bounds" Kind="InputPin" DefaultValue="103, 232, 616, 439" IsHidden="true" />
             <Pin Id="E9uXusfg6tIQGg7NRn9OOo" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="KdzIKoYvy90MbCkFn7Envn" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="P2ofXe5QnAYN1XAe51dJic" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
@@ -364,6 +323,7 @@
             <Pin Id="BMgxHwKYCuBOugnLcyTyyG" Name="Extend Into Title Bar" Kind="InputPin" IsHidden="true" />
             <Pin Id="NpiyO2ZEdO5MdhVhbUM17j" Name="Input" Kind="InputPin" />
             <Pin Id="GNtUClRrG8UNMWrKEBn6oe" Name="Title" Kind="InputPin" />
+            <Pin Id="LQExiovWKcQLqGjCbECvWY" Name="Title Bar Interaction Width" Kind="InputPin" IsHidden="true" />
             <Pin Id="PrAsVgSMkbqMHYoia3LsPK" Name="Color" Kind="InputPin" />
             <Pin Id="PLUON18UbhWLyOPeokNgOu" Name="Clear" Kind="InputPin" />
             <Pin Id="G13Qe5vpmCyNC2swq3chNw" Name="Space" Kind="InputPin" />
@@ -377,64 +337,73 @@
             <Pin Id="HAwgJABxIaZQB3pPrhswJP" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="QW6dJ9LA2jnMC1l1BdNnTX" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Node Bounds="437,1403,122,95" Id="UombW4IM6qQOVjpuNNu4Tm">
+          <Pad Id="Ao6tQiOi869LOdtFNzYor6" Bounds="929,523,207,44" ShowValueBox="true" isIOBox="true" Value="&lt;&lt; On generated listeneers, the args are typed already">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="HFBpP6LC9sKOgKQcSkbYOq" Bounds="9,727,312,35" ShowValueBox="true" isIOBox="true" Value="Inspect RoutedEvents">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">16</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="LUNOvYnCu7hOucNQCnbIxS" Bounds="89,1297,312,35" ShowValueBox="true" isIOBox="true" Value="Example setup">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">16</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="216,1480,120,95" Id="ItJSflCvns9LmVvwVAdape">
             <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
               <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="CustomRoutedEventListener" />
+              <FullNameCategoryReference ID="Avalonia.Interactivity" />
+              <Choice Kind="ProcessAppFlag" Name="RoutedEventListener" />
             </p:NodeReference>
-            <Pin Id="AnJSgQeMbFqLJU2Eco6aGp" Name="Input" Kind="InputPin" />
-            <Pin Id="QNu9LvU5N63LWcRrBOfqYi" Name="Routed Event" Kind="InputPin" />
-            <Patch Id="MLdVnYj0FN9PrKxrclVkzY" Name="Handler" ManuallySortedPins="true">
-              <Pin Id="AxWS0oSbl3UP0R7ZILAfvz" Name="Input 1" Kind="InputPin" />
-              <Pin Id="Hq28TUTLzmuQAbUDuZJxw9" Name="Input 2" Kind="InputPin" />
-              <Pin Id="EcJlfOEu3dYQAQKLxH78mh" Name="Result" Kind="OutputPin" />
-              <ControlPoint Id="U9dvPB6nd24NhjbnCo0xHu" Bounds="441,1411" />
-              <ControlPoint Id="Ja4w3Z1f4SSNTCZvIda7PP" Bounds="501,1411" />
-              <ControlPoint Id="KO455S5EGRfO4HrZrvVuQ4" Bounds="441,1491" />
-              <Node Bounds="499,1431,48,19" Id="D45HoZxzEaTOdozpuUiyyD">
-                <p:NodeReference LastCategoryFullName="Primitive.Object" LastDependency="VL.CoreLib.vl">
-                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                  <FullNameCategoryReference ID="Primitive.Object" />
-                  <Choice Kind="OperationCallFlag" Name="CastAs" />
-                </p:NodeReference>
-                <Pin Id="SMtuBOwdPnJL4IBS9500Is" Name="Input" Kind="StateInputPin" />
-                <Pin Id="N0bNwAF6hLZOMDasl5TPQp" Name="Default" Kind="InputPin" />
-                <Pin Id="BKKnnRv7DtcO3lGwzYbJvD" Name="Result" Kind="OutputPin" />
-                <Pin Id="L6TUhAai6KhLz0hJGybXIl" Name="Success" Kind="OutputPin" />
-              </Node>
+            <Pin Id="BQbHOPsEcEiOAtGWMC2wxe" Name="Input" Kind="InputPin" />
+            <Pin Id="NkkRLf61laMO0nKbinQ76O" Name="Routed Event" Kind="InputPin" />
+            <Patch Id="QZQPXdQ9OBSQD8dGTBI3sZ" Name="Handler" ManuallySortedPins="true">
+              <Pin Id="EvSHrPJdFVWMuOnBhSz20H" Name="Input 1" Kind="InputPin" />
+              <Pin Id="HKFEy07fYp8P4ddnvu6WVL" Name="Input 2" Kind="InputPin">
+                <p:TypeAnnotation LastCategoryFullName="Avalonia.Input" LastDependency="VL.Avalonia.vl">
+                  <Choice Kind="TypeFlag" Name="PointerEventArgs" />
+                </p:TypeAnnotation>
+              </Pin>
+              <Pin Id="LFy7zMuSh4lPVe73sTDQGj" Name="Result" Kind="OutputPin" />
+              <ControlPoint Id="F4otftsDPDKNW9DVvFFMYV" Bounds="220,1488" />
+              <ControlPoint Id="GFLId0QNajILyeJZ5GKpZY" Bounds="280,1488" />
+              <ControlPoint Id="JJcLc6zANwDPgts1G5QbsI" Bounds="220,1568" />
             </Patch>
-            <Pin Id="GQs2To3YSjaPdlB2gktigO" Name="Strategies" Kind="InputPin" IsHidden="true" />
-            <Pin Id="LuOlq6BtH85NSKBVV8E0x2" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
+            <Pin Id="T9y6hoeLbx4OTXcEiOxCxh" Name="Strategies" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HilJywrHpI8NPFuY30Qzu1" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="552,1350,102,19" Id="V1Za1CJL4yTOdgZ3sr6qbd">
-            <p:NodeReference LastCategoryFullName="Avalonia.Input.InputElement" LastDependency="Avalonia.Base.dll">
+          <Node Bounds="331,1398,102,19" Id="LiXIGflgdxCQN7T8zNuGM0">
+            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity.InputElementPointerMovedRoutedEventListener" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <FullNameCategoryReference ID="Avalonia.Input.InputElement" />
+              <FullNameCategoryReference ID="Avalonia.Interactivity.InputElementPointerMovedRoutedEventListener" />
               <Choice Kind="OperationCallFlag" Name="PointerMovedEvent" />
             </p:NodeReference>
-            <Pin Id="Op6WdzYWucSOCO1U7vT2aM" Name="Pointer Moved Event" Kind="OutputPin" />
+            <Pin Id="LV6tEffTHqCLlQNC82fdvb" Name="Pointer Moved Event" Kind="OutputPin" />
           </Node>
-          <Node Bounds="704,121,77,26" Id="O3bwTmV3SixQBfOmtZwg9o">
-            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity.RoutedEventArgs" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="ClassType" Name="RoutedEventArgs" />
-              <Choice Kind="OperationCallFlag" Name="Create" />
-            </p:NodeReference>
-            <Pin Id="Hoo8x5nZNiLNARRZ1iAK5w" Name="Output" Kind="StateOutputPin" />
-          </Node>
-          <Node Bounds="640,201,85,26" Id="VDlY48mkwX9LgGC5CDoaSw">
-            <p:NodeReference LastCategoryFullName="Avalonia.Input.DragEventArgs" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <CategoryReference Kind="ClassType" Name="DragEventArgs" />
-              <Choice Kind="OperationCallFlag" Name="Create" />
-            </p:NodeReference>
-            <Pin Id="OhICjqYaY0iOTazj9lYsSb" Name="Routed Event" Kind="InputPin" />
-            <Pin Id="Gox9LDHDWLHMQDDusvk7c3" Name="Data" Kind="InputPin" />
-            <Pin Id="Lhz8MIGyHu8OziO7DGgqkm" Name="Target" Kind="InputPin" />
-            <Pin Id="SCJa56bxIIPPD3pmX2nU6m" Name="Target Location" Kind="InputPin" />
-            <Pin Id="FwL2NszBt8oOWrwvbRnRY3" Name="Key Modifiers" Kind="InputPin" />
-            <Pin Id="RnZhhWmONuCOQBzOf4oCcd" Name="Output" Kind="StateOutputPin" />
-          </Node>
+          <Pad Id="A2vTsHCYmbrPoIlvq9dTfP" Bounds="-38,598,155,30" ShowValueBox="true" isIOBox="true" Value="Should return true if event is handled e.g. stop bubble up &gt;&gt;">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">7</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -455,25 +424,20 @@
         <Link Id="JmMExU3vtHnQWzM0UbwlHt" Ids="Fo6as6yH3DCNo4pce9QIsN,GHYc1IAFI6BLrLq046rQHE" IsHidden="true" />
         <Link Id="Du4PeEWFntJM9RpNI2B6AE" Ids="HO5tP1YczBBQPeDWpB4dIV,Kd3IdBZ07NoNCCBcjl1Fa5" IsHidden="true" />
         <Link Id="PFrbVjgjvNbPBZ1gepNJjc" Ids="UDdJxKrRMnDLNtDBNcUowd,Ip9w2W4Wi2gQXfJlvpoBrf" IsHidden="true" />
-        <Link Id="PPJcESJezMzLLYaj6uOh9D" Ids="TgP3oRGsKkFLHVkzeSA7G8,DWyJNSTMpy1LBJgOiHPJ3U" IsHidden="true" />
-        <Link Id="V4NWiCyTl5ZLyGkDh52mGx" Ids="K54pwiLFkH6MLvJ9R6cOU3,Q3AK5PJPRnTNxrmELYRd4Y" IsHidden="true" />
-        <Link Id="RtN58WpShhIPMxj9U8xqIt" Ids="R6bgLw9s0eKMSkx9SqvwwB,BEM3TdDCqH1M5VdawlStjN" IsHidden="true" />
         <Link Id="HWNria8tdj9NyygI07s2XK" Ids="HKtoLuvxeFzOKn2bGcduj5,PvTN0HFmvoYMglWJQ3dwHV" />
-        <Link Id="J5BDGDkJ45COsEZ8BfkHtu" Ids="AKskSB8KMueMTgSQt4QwFN,N9pBNUwjvN2MwXYZcxAxey" />
-        <Link Id="GSbtdMs42huMKu8alPOWQh" Ids="Q3AK5PJPRnTNxrmELYRd4Y,TGoiFvScYeBOvtvbZGuKI1" />
-        <Link Id="FCNLZuogH0SQRVDuPBOGCD" Ids="FYXs6HRpgzMPagA5T8dsIR,SfM6by3Vw6vNGS93e9bUIX" />
         <Link Id="M7b2RSBTS72OmJ6oppnimg" Ids="AKskSB8KMueMTgSQt4QwFN,ILDKmVXVFOqNSpAtZMaugC" />
         <Link Id="PuEwrkPeS81NTDUqrehJz8" Ids="FR3sbU4nxQgL1NbpSFJ98p,Rsd7X2nWM1HLqYeLp2kUCQ" />
         <Link Id="BfJ43EwfKcTP1CdjHFXBSg" Ids="KWA5hvUP3HOQE7wiMmTokl,NpiyO2ZEdO5MdhVhbUM17j" />
-        <Link Id="AGShMhtCcLPL9jZwkgLlq3" Ids="AxWS0oSbl3UP0R7ZILAfvz,U9dvPB6nd24NhjbnCo0xHu" IsHidden="true" />
-        <Link Id="NvsCtvIVuR5LYOkAOq6JhR" Ids="Hq28TUTLzmuQAbUDuZJxw9,Ja4w3Z1f4SSNTCZvIda7PP" IsHidden="true" />
-        <Link Id="RZAu5n6mj5hMHvXFvK3Kxl" Ids="KO455S5EGRfO4HrZrvVuQ4,EcJlfOEu3dYQAQKLxH78mh" IsHidden="true" />
-        <Link Id="Bf5gzani571Oktinv6rxZK" Ids="Op6WdzYWucSOCO1U7vT2aM,QNu9LvU5N63LWcRrBOfqYi" />
-        <Link Id="QuHrAc69GB0MZWNw4mWOzT" Ids="Ja4w3Z1f4SSNTCZvIda7PP,SMtuBOwdPnJL4IBS9500Is" />
+        <Link Id="Fv8xlg8vaw9OKJ8kcwY0q6" Ids="Pw4H4rBdPwdMpVBEDO4v0l,VyS8eLoGwAVMvRb5n7M0XV" />
+        <Link Id="EXrAbiknzYjMuRMwwiXfTj" Ids="AKskSB8KMueMTgSQt4QwFN,BQbHOPsEcEiOAtGWMC2wxe" />
+        <Link Id="IC4lgeqyC3aMttwa3kDY26" Ids="EvSHrPJdFVWMuOnBhSz20H,F4otftsDPDKNW9DVvFFMYV" IsHidden="true" />
+        <Link Id="RNawliqP6RYPENte3Sgfha" Ids="HKFEy07fYp8P4ddnvu6WVL,GFLId0QNajILyeJZ5GKpZY" IsHidden="true" />
+        <Link Id="ILLR1WvHv07P5c5gOfuhU6" Ids="JJcLc6zANwDPgts1G5QbsI,LFy7zMuSh4lPVe73sTDQGj" IsHidden="true" />
+        <Link Id="Aj16yaHZPhnLelVIcYLveh" Ids="LV6tEffTHqCLlQNC82fdvb,NkkRLf61laMO0nKbinQ76O" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0137-g9913e5c752" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
 </Document>
