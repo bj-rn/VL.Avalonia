@@ -31,7 +31,14 @@ nuget install VL.Avalonia.Stride
 nuget install VL.Avalonia.Custom
 ```
 
-Works with `vvvv_gamma >= 7.0`
+## Compatibility
+
+| Version | vvvv gamma Version |
+| :--- | :--- |
+| `v0.4.X` | >= `7.1-0116` |
+| `v0.3.1` - `v0.3.16` | `7.0` |
+| `v0.3.0`| `7.0-xxxx`, `6.9` |
+
 
 ## How-to
 
