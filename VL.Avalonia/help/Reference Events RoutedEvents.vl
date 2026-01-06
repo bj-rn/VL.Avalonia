@@ -320,41 +320,44 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="624,543,120,95" Id="BPDOYwOLXefQQYbKqOduRM">
-            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
+          <Node Bounds="596,470,120,95" Id="JbDekXV6Ty9PdVJEKMEnKA">
+            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
               <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
               <FullNameCategoryReference ID="Avalonia.Interactivity" />
-              <Choice Kind="ProcessAppFlag" Name="ButtonClickRoutedEventListener" />
+              <Choice Kind="ProcessAppFlag" Name="ClickRoutedEventListener" />
+              <PinReference Kind="InputPin" Name="Input">
+                <p:DataTypeReference p:Type="TypeReference">
+                  <Choice Kind="TypeFlag" Name="Button" />
+                </p:DataTypeReference>
+              </PinReference>
+              <PinReference Kind="InputPin" Name="Handler">
+                <p:DataTypeReference p:Type="TypeReference" LastCategoryFullName="Primitive.Delegates" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="TypeFlag" Name="Delegate (2 -&gt; 1)" />
+                  <p:TypeArguments>
+                    <TypeReference>
+                      <Choice Kind="TypeFlag" Name="Button" />
+                    </TypeReference>
+                    <TypeReference>
+                      <Choice Kind="TypeFlag" Name="RoutedEventArgs" />
+                    </TypeReference>
+                    <TypeReference LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="TypeFlag" Name="Boolean" />
+                    </TypeReference>
+                  </p:TypeArguments>
+                </p:DataTypeReference>
+              </PinReference>
             </p:NodeReference>
-            <Pin Id="FyKUaTVi3AHMUqhZT4beqT" Name="Input" Kind="InputPin" />
-            <Patch Id="LXvfdpY2vVHONX0Ib7kbfj" Name="Handler" ManuallySortedPins="true">
-              <Pin Id="BFYq6YIJPWAMFA6xNq5vvp" Name="Input 1" Kind="InputPin" />
-              <Pin Id="E2orE3vNW0sL7PE4kLCPVo" Name="Input 2" Kind="InputPin" />
-              <Pin Id="GNLPEJKKbEtQdWYFPX8TiE" Name="Result" Kind="OutputPin" />
-              <ControlPoint Id="GLghs7Hx5SHOAYV0kyfctU" Bounds="628,551" />
-              <ControlPoint Id="BfMQOehgoDdPPABYP6SN9m" Bounds="688,551" />
-              <ControlPoint Id="JJTi0FAOyGULnumxQ2ikxk" Bounds="628,631" />
+            <Pin Id="QQCqcWS53P1N2sKFwPd2GB" Name="Input" Kind="InputPin" />
+            <Patch Id="OI3pEJm0r74MAMYI6kJKk8" Name="Handler" ManuallySortedPins="true">
+              <Pin Id="IZIF3DL5jcyQOFJ5eZNouN" Name="Input 1" Kind="InputPin" />
+              <Pin Id="OCTlHpixZNKOXz0G6kt46W" Name="Input 2" Kind="InputPin" />
+              <Pin Id="BdjEymEULC6PxFvZBEMCzz" Name="Result" Kind="OutputPin" />
+              <ControlPoint Id="FQac52Z2P0YPHLhZB61MZi" Bounds="600,478" />
+              <ControlPoint Id="EjfuxnunzaqQEPtBRJhRFT" Bounds="660,478" />
+              <ControlPoint Id="ONGcjCRK92EMsOMnocxDS7" Bounds="600,558" />
             </Patch>
-            <Pin Id="FBFm3onBDdHOn1PT4mzMbc" Name="Strategies" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Cw3mIC1zbq5L4k5L0KqUsq" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
-          </Node>
-          <Node Bounds="797,440,120,95" Id="BrdjJdzg8Y5LHchGLaDJ0e">
-            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
-              <FullNameCategoryReference ID="Avalonia.Interactivity" />
-              <Choice Kind="ProcessAppFlag" Name="DragDropDragEnterRoutedEventListener" />
-            </p:NodeReference>
-            <Pin Id="IQyheC9TL6ZOitJOB0AAJq" Name="Input" Kind="InputPin" />
-            <Patch Id="NfOfvYeiekHN45m9M9AlMH" Name="Handler" ManuallySortedPins="true">
-              <Pin Id="QXdYTCuVhIbMVezl3UELtN" Name="Input 1" Kind="InputPin" />
-              <Pin Id="H34oHTnSx2sPN29DLKtW89" Name="Input 2" Kind="InputPin" />
-              <Pin Id="ObKh7IEgY3TOHeB20dtjI2" Name="Result" Kind="OutputPin" />
-              <ControlPoint Id="B3bJDlCEZ2vMW2zEMnCWtx" Bounds="801,448" />
-              <ControlPoint Id="FdRXcUnzo47PE5EtSZc1dQ" Bounds="861,448" />
-              <ControlPoint Id="TQUyHCIe5BRPyuLQCmAZxL" Bounds="801,528" />
-            </Patch>
-            <Pin Id="UR0jVDjXubuPzP38N5M7vk" Name="Strategies" Kind="InputPin" IsHidden="true" />
-            <Pin Id="UTIbEEMwm3jPKkppP1l9zA" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PToFhDFV6zDMLW0ODmzLh6" Name="Strategies" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HA5XOvVlou0ODveLauv1bj" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
           </Node>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
@@ -379,14 +382,10 @@
         <Link Id="Iius9epNaJKNRlhL72SuG5" Ids="P1HI7EGB7TiOq1LZSZ4St6,Bkx7sNNqlBXL0eFCu10nsE" />
         <Link Id="L6HhoDJ5l5DPRSUGzefbV7" Ids="RXaX0aRJZYTOs3kb6xfYpe,K2pNtOkwZhiOpTQnbwQZGp" />
         <Link Id="OWrr8mnDH2ENIgFeI3rDu9" Ids="LMgVw3OU9m7LxHPv7KuYpZ,UmeNBtW7SiVLlwGCt4h0bv" />
-        <Link Id="EL2jOJpMpbKOEhHR6v4Kcp" Ids="A187s67KHbHN4b1K2BhRly,FyKUaTVi3AHMUqhZT4beqT" />
-        <Link Id="Q0DPDQnaBm2OnCtaNEcIvr" Ids="BFYq6YIJPWAMFA6xNq5vvp,GLghs7Hx5SHOAYV0kyfctU" IsHidden="true" />
-        <Link Id="OidbZifZwYTLaJUyARCbYK" Ids="E2orE3vNW0sL7PE4kLCPVo,BfMQOehgoDdPPABYP6SN9m" IsHidden="true" />
-        <Link Id="MCQ2X5Es8P6NYqWn3sVTTN" Ids="JJTi0FAOyGULnumxQ2ikxk,GNLPEJKKbEtQdWYFPX8TiE" IsHidden="true" />
-        <Link Id="NHfzoT0ITLvOd0LHVj9pIs" Ids="A187s67KHbHN4b1K2BhRly,IQyheC9TL6ZOitJOB0AAJq" />
-        <Link Id="UDtCp8hBngdOM3ErPwpGzb" Ids="QXdYTCuVhIbMVezl3UELtN,B3bJDlCEZ2vMW2zEMnCWtx" IsHidden="true" />
-        <Link Id="AbnJNFNjuoBQJAwAl7NvR9" Ids="H34oHTnSx2sPN29DLKtW89,FdRXcUnzo47PE5EtSZc1dQ" IsHidden="true" />
-        <Link Id="NvJW6zjuXx1PCC2Vzr2GGD" Ids="TQUyHCIe5BRPyuLQCmAZxL,ObKh7IEgY3TOHeB20dtjI2" IsHidden="true" />
+        <Link Id="S1pU8TZQ9GwLnbe5l5WDVe" Ids="A187s67KHbHN4b1K2BhRly,QQCqcWS53P1N2sKFwPd2GB" />
+        <Link Id="Dsj74QiKyhtNkL4gJ1TF4d" Ids="IZIF3DL5jcyQOFJ5eZNouN,FQac52Z2P0YPHLhZB61MZi" IsHidden="true" />
+        <Link Id="V5RtqdzN364LULSMhxlXqB" Ids="OCTlHpixZNKOXz0G6kt46W,EjfuxnunzaqQEPtBRJhRFT" IsHidden="true" />
+        <Link Id="P94Y0umjKz2LxbiLS3oBkJ" Ids="ONGcjCRK92EMsOMnocxDS7,BdjEymEULC6PxFvZBEMCzz" IsHidden="true" />
       </Patch>
     </Node>
   </Patch>

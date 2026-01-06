@@ -10,13 +10,13 @@
         <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.1" />
-        <PackageReference Include="Avalonia.Skia" Version="[11.2.1]" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />
-        <PackageReference Include="VL.Core" Version="2025.7.0" />
-        <PackageReference Include="VL.Core.Skia" Version="2025.7.0" />
-        <PackageReference Include="VL.CoreLib" Version="2025.7.0" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Skia" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="VL.Core" Version="$(VLVersion)" />
+        <PackageReference Include="VL.Core.Skia" Version="$(VLVersion)" />
+        <PackageReference Include="VL.CoreLib" Version="$(VLVersion)" />
     </ItemGroup>
     <!--
 		Reference the Avalonia runtime assemblies (lib/) instead of the reference assemblies (ref/) from nuget packages.

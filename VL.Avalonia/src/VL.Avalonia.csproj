@@ -18,11 +18,11 @@
         <None Remove="Utils\**" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.2.1" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
-        <PackageReference Include="VL.Core" Version="2025.7.0" />
-        <PackageReference Include="VL.Core.Skia" Version="2025.7.0" />
-        <PackageReference Include="VL.CoreLib" Version="2025.7.0" />
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="VL.Core" Version="$(VLVersion)" />
+        <PackageReference Include="VL.Core.Skia" Version="$(VLVersion)" />
+        <PackageReference Include="VL.CoreLib" Version="$(VLVersion)" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference
