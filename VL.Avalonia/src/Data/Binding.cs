@@ -1,4 +1,5 @@
 ﻿using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Avalonia;
 using VL.Core.Import;
 using VL.Lib.Reactive;
@@ -86,7 +87,7 @@ namespace VL.Avalonia.Data
                     switch (_mode)
                     {
                         case SupportedBindingMode.TwoWay:
-                            var observable = _input.GetObservable(_property);
+                            var observable = _input.GetObservable(_property).Skip(1);
 
                             observable.Subscribe(x =>
                                 (_channel ?? _internalChannel).OnNext((TValue)x)
@@ -106,6 +107,7 @@ namespace VL.Avalonia.Data
         public void Dispose()
         {
             _subscriptions?.Clear();
+            _internalChannel?.Dispose();
         }
     }
 }

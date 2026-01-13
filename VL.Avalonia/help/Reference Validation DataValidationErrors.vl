@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RCxA4er7NlKN4Lcmau2uCx" LanguageVersion="2025.7.0" Version="0.128">
-  <NugetDependency Id="Dr83O57uCliNY0gtpcKMoq" Location="VL.CoreLib" Version="2025.7.0" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="RCxA4er7NlKN4Lcmau2uCx" LanguageVersion="2025.7.1-0142-gabf274b680" Version="0.128">
+  <NugetDependency Id="Dr83O57uCliNY0gtpcKMoq" Location="VL.CoreLib" Version="2025.7.1-0142-gabf274b680" />
   <Patch Id="Pd5gMJG4E4hNSyLtWpzjct">
     <Canvas Id="C9LRcJArBBFNtKwWyXnaRx" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -29,6 +29,7 @@
             <Pin Id="UXrmM09ceWFOQLIAu1xRzu" Name="Extend Into Title Bar" Kind="InputPin" IsHidden="true" />
             <Pin Id="UW4vV2Gi2RJLuJ7iNCljWA" Name="Input" Kind="InputPin" />
             <Pin Id="Q7ZjkGIdxRJLAPibb3vXnx" Name="Title" Kind="InputPin" />
+            <Pin Id="DFVXa4PhW56Of652Fl2v0J" Name="Title Bar Interaction Width" Kind="InputPin" IsHidden="true" />
             <Pin Id="Knkkruaa6CTPOurGQbnl5R" Name="Color" Kind="InputPin" />
             <Pin Id="Ttcxy5GGQUbQAvqzyfNGhZ" Name="Clear" Kind="InputPin" />
             <Pin Id="LJ0Y8nb5VxVLFfrXIAZuzV" Name="Space" Kind="InputPin" />
@@ -54,20 +55,17 @@
             <Pin Id="K2icAT4IcMTQWCQWhm0lpV" Name="Scaling Factor" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="497,600,69,19" Id="AixAnflKepFQOERT8i9lmZ">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
+            <p:NodeReference LastCategoryFullName="Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <FullNameCategoryReference ID="Avalonia.Avalonia.Themes.Variants" />
               <Choice Kind="OperationCallFlag" Name="DarkTheme" />
             </p:NodeReference>
             <Pin Id="EE5dgng7oQCMnh7iUpozgT" Name="Dark Theme" Kind="OutputPin" />
           </Node>
           <Node Bounds="423,530,65,19" Id="SpAp6KsCLG4MZ3VJUkoR4U">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+            <p:NodeReference LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Controls" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true">
-                  <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true" />
-                </p:OuterCategoryReference>
+                <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="Grid" />
             </p:NodeReference>
@@ -284,9 +282,8 @@
                     <Patch Id="VJKTlofyjjiLXebVQBdfq5" Name="Create" ManuallySortedPins="true" />
                     <Patch Id="DQcaxvldBzdOduIXezOPTl" Name="Then" ManuallySortedPins="true" />
                     <Node Bounds="450,100,86,19" Id="RZYBVT85qRmNHr5sSrpRjT">
-                      <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+                      <p:NodeReference LastCategoryFullName="Avalonia.Styles" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
                         <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                        <FullNameCategoryReference ID="Avalonia.Avalonia.Styles" />
                         <Choice Kind="ProcessAppFlag" Name="SetBackground" />
                         <PinReference Kind="InputPin" Name="Value">
                           <p:DataTypeReference p:Type="TypeReference" LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -436,22 +433,9 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="497,550,70,19" Id="SwA0pKJLAEUNWJom0LaNOB">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Themes.Variants" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <FullNameCategoryReference ID="Avalonia.Avalonia.Themes.Variants" />
-              <Choice Kind="OperationCallFlag" Name="LightTheme" />
-            </p:NodeReference>
-            <Pin Id="AvgxHtXMAv4PRYtfLq4HxQ" Name="Light Theme" Kind="OutputPin" />
-          </Node>
         </Canvas>
         <Patch Id="G3C1IlOA3XWNnbj7Kph0Ql" Name="Create" />
         <Patch Id="Kqs04QAtTSDOSHV1IaQofK" Name="Update" />
-        <!--
-
-    ************************  ************************
-
--->
         <ProcessDefinition Id="QsCHrSuwOTTQFfIYGYYR53">
           <Fragment Id="QqOwNwnybsRO9SPK33WMEN" Patch="G3C1IlOA3XWNnbj7Kph0Ql" Enabled="true" />
           <Fragment Id="R2HZJ0CFP1BNLga6T35XOM" Patch="Kqs04QAtTSDOSHV1IaQofK" Enabled="true" />
@@ -481,6 +465,6 @@
   </Patch>
   <NugetDependency Id="VHp4aSZYJIiOfdbOnKSvjN" Location="VL.Avalonia" Version="0.3.10" />
   <NugetDependency Id="UkQDUp6hmoJOhIn4diYz0l" Location="VL.Avalonia.Skia" Version="0.3.10" />
-  <NugetDependency Id="AyUqGhjSvrcL01m9a4xEDm" Location="VL.Skia" Version="2025.7.0" />
+  <NugetDependency Id="AyUqGhjSvrcL01m9a4xEDm" Location="VL.Skia" Version="2025.7.1-0142-gabf274b680" />
   <NugetDependency Id="NxgLWgzcYrsODUE6lplzfJ" Location="Avalonia" Version="11.2.1" />
 </Document>
