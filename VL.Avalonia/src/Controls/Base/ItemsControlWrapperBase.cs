@@ -6,6 +6,7 @@ using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
+using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
@@ -30,13 +31,16 @@ public abstract partial class ItemsControlWrapperBase<TControl, TValue>
         );
     }
 
-    protected Spread<TValue> _items;
-
     /// <param name="items">
     /// The collection of items
     /// </param>
     [Fragment(Order = PinOrder.Main)]
     public virtual void SetItems(Spread<TValue> items) => _itemsSourceBinding.SetItems(items);
+
+    [Fragment(Order = PinOrder.Main)]
+    public void SetItemsChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<Spread<TValue>> itemsChannel
+    ) => _itemsSourceBinding.SetChannel(itemsChannel);
 
     /// <param name="itemTemplate">
     /// The template used to display each item in the collection

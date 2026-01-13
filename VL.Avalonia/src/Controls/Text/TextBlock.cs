@@ -1,8 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
+using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
@@ -13,14 +15,35 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode()]
-public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T>
+public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T>, IDisposable
     where T : TextBlock, new()
 {
+    private readonly ChannelOptionalBinding<string?> _textBinding;
+
+    public TextBlockWrapperBase()
+    {
+        _textBinding = new ChannelOptionalBinding<string?>(_output, TextBlock.TextProperty);
+    }
+
     /// <param name="text">
     /// The text content displayed by the TextBlock
     /// </param>
-    [ImplementProperty("TextBlock.TextProperty", Order = -10)]
-    protected Optional<string> _text;
+    [Fragment(Order = PinOrder.Main)]
+    public void SetText(Optional<string> text)
+    {
+        _textBinding.SetValue(text);
+    }
+
+    /// <param name="textChannel">
+    /// Binds TextBlock text source to the provided channel
+    /// </param>
+    [Fragment(Order = PinOrder.Main)]
+    public void SetTextChannel(
+        [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<string?> textChannel
+    )
+    {
+        _textBinding.SetChannel(textChannel);
+    }
 
     #region Font Properties
 
@@ -157,6 +180,12 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T>
     protected Optional<float> _baselineOffset;
 
     #endregion
+
+    [Fragment(IsHidden = true)]
+    public void Dispose()
+    {
+        _textBinding?.Dispose();
+    }
 }
 
 /// <summary>
