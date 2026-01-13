@@ -1798,24 +1798,26 @@
     ************************ Color ************************
 
 -->
-              <Node Name="Color" Bounds="2035,570,88,114" Id="F9Dq7dmWQ2pQSBP4oMvPrd">
+              <Node Name="Color" Bounds="2035,570,90,114" Id="F9Dq7dmWQ2pQSBP4oMvPrd">
                 <p:NodeReference>
                   <Choice Kind="OperationDefinition" Name="Operation" />
                   <CategoryReference Kind="Category" Name="Primitive" />
                 </p:NodeReference>
                 <p:HideCategory p:Type="Boolean">false</p:HideCategory>
                 <Patch Id="NC3Ap9Y9qq0OUB80bCsUKw">
-                  <Pin Id="TH0l0Gppn0TLzMVGOwo3Am" Name="Input" Kind="InputPin" />
-                  <Node Bounds="2047,627,64,26" AutoConnect="true" Id="OvifZuhfzq7PQBvYZYzw04">
+                  <Node Bounds="2059,611,53,26" AutoConnect="true" Id="TInAkKzypJbLtR9NmPkKXw">
                     <p:NodeReference LastCategoryFullName="Avalonia.Media.Color" LastDependency="VL.Avalonia.dll">
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-                      <FullNameCategoryReference ID="Avalonia.Media.Color" />
-                      <Choice Kind="OperationCallFlag" Name="FromColor" />
+                      <CategoryReference Kind="ClassType" Name="Color" NeedsToBeDirectParent="true">
+                        <p:OuterCategoryReference Kind="Category" Name="Media" NeedsToBeDirectParent="true" />
+                      </CategoryReference>
+                      <Choice Kind="OperationCallFlag" Name="ToColor" />
                     </p:NodeReference>
-                    <Pin Id="TpaN1hLlNo0PjJxLIRplvP" Name="Input" Kind="StateInputPin" />
-                    <Pin Id="HnjSbJE2OkrNLzvrzyok9B" Name="Result" Kind="OutputPin" />
+                    <Pin Id="E8WHCfZ98W0Pg9SmtUjK19" Name="Input" Kind="StateInputPin" />
+                    <Pin Id="MQZLiCDa4aAPkUpelzxZp2" Name="Result" Kind="OutputPin" />
                   </Node>
-                  <Pin Id="SQDPIRsAKINOqiqlDGICnY" Name="Result" Kind="OutputPin" />
+                  <Pin Id="AtPo7VdAtTDPOTBbCpwbDI" Name="Input" Kind="InputPin" />
+                  <Pin Id="D4fyKQqGXlHLh7eSOvrcSy" Name="Result" Kind="OutputPin" />
                 </Patch>
               </Node>
               <!--
@@ -1841,7 +1843,7 @@
                   </Node>
                   <Pin Id="Vd9QEM0TClpMvyGLK1J0vD" Name="Input" Kind="InputPin" />
                   <Pin Id="O1XoP4zhzCVOdScjDUI6wI" Name="Output" Kind="OutputPin" />
-                  <Node Bounds="1551,760,53,19" AutoConnect="true" Id="U6PHJjy4XI2OWO4wVdZZ8D">
+                  <Node Bounds="1551,760,53,26" AutoConnect="true" Id="U6PHJjy4XI2OWO4wVdZZ8D">
                     <p:NodeReference LastCategoryFullName="Color.RGBA" LastDependency="VL.Avalonia.dll">
                       <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                       <FullNameCategoryReference ID="Color.RGBA" />
