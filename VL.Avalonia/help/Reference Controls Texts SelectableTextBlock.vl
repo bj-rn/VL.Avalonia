@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="SqwreGqwNPSMJPF6MWQ40X" LanguageVersion="2025.7.0-0517-ge070c1d18e" Version="0.128">
-  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.0-0517-ge070c1d18e" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="SqwreGqwNPSMJPF6MWQ40X" LanguageVersion="2025.7.1-0142-gabf274b680" Version="0.128">
+  <NugetDependency Id="VgH6qsmFRcKPn1TU4MUtNp" Location="VL.CoreLib" Version="2025.7.1-0142-gabf274b680" />
   <Patch Id="ByJYRoNuXytMKx0VmtiA8Z">
     <Canvas Id="OSq9MxHF0ssO5kOcXxGsU2" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -20,13 +20,16 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
+            <Pin Id="FCf5qQu2kvfLYc02HoWcmf" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="Tm6S3xdi7MTL3QnB1IJ4iX" Name="Bounds" Kind="InputPin" DefaultValue="-1861, 96, 414, 839" IsHidden="true" />
             <Pin Id="LWpad0IR1sTLNn6CDwdcj2" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="UalAAbZuONxQT1LrGhKsCw" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
-            <Pin Id="FCf5qQu2kvfLYc02HoWcmf" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="DO1o4DuTNdrOSx2gBwDP7M" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Go7s1DOlW7KMFEHkVACnLR" Name="Always On Top" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MMBuyxNOiYyPfFjw2Pr1wY" Name="Extend Into Title Bar" Kind="InputPin" IsHidden="true" />
             <Pin Id="KZZgWkli1uXOTkuC1kmcIT" Name="Input" Kind="InputPin" />
             <Pin Id="Phl0syqifnJLlMDB3oeBGI" Name="Title" Kind="InputPin" />
+            <Pin Id="Py34HKqttopMj7V0eBgmNi" Name="Title Bar Interaction Width" Kind="InputPin" IsHidden="true" />
             <Pin Id="ChCWx1tnreYOI5jt1kAEOj" Name="Color" Kind="InputPin" />
             <Pin Id="HlQ1NdqGemPOW7b5W6Utwm" Name="Clear" Kind="InputPin" />
             <Pin Id="OUrmiwZYO0kNtM81uzaQ2i" Name="Space" Kind="InputPin" />
@@ -68,12 +71,10 @@
             </p:ValueBoxSettings>
           </Pad>
           <Node Bounds="277,840,65,19" Id="EI0EeOr4XA4LV34NHVmH7G">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+            <p:NodeReference LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Controls" NeedsToBeDirectParent="true">
-                <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true">
-                  <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true" />
-                </p:OuterCategoryReference>
+                <p:OuterCategoryReference Kind="Category" Name="Avalonia" NeedsToBeDirectParent="true" />
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="Grid" />
             </p:NodeReference>
@@ -133,6 +134,7 @@
               <Choice Kind="ProcessAppFlag" Name="SelectableTextBlock" />
             </p:NodeReference>
             <Pin Id="J6runWaKvA6M8nOR6qLljT" Name="Text" Kind="InputPin" />
+            <Pin Id="EafM4NXZbHgPCDwW0KUbcS" Name="Text Channel" Kind="InputPin" IsHidden="true" />
             <Pin Id="Q5dFvBheQHbNEpv7CrusBp" Name="Style" Kind="InputPin" />
             <Pin Id="EvBmgKQNPwPQDQb574zYpZ" Name="Output" Kind="OutputPin" />
             <Pin Id="V0p4gu7mSJONSxzIcgQF1Y" Name="Classes" Kind="InputPin" IsHidden="true" />
@@ -175,6 +177,7 @@
               <Choice Kind="ProcessAppFlag" Name="SelectableTextBlock" />
             </p:NodeReference>
             <Pin Id="NpelWPtQnqMOixKDLcVNgZ" Name="Text" Kind="InputPin" DefaultValue="This is a single line." />
+            <Pin Id="Jzx7Yz4jFwONRZ3b8zFL7u" Name="Text Channel" Kind="InputPin" IsHidden="true" />
             <Pin Id="QwA8PyKOTVwLc0Zx92wkl2" Name="Style" Kind="InputPin" />
             <Pin Id="VspmrIN4N2vLAh4wZsiT5V" Name="Output" Kind="OutputPin" />
             <Pin Id="HTx1oFCtXBcP3evkYPTCQe" Name="Classes" Kind="InputPin" IsHidden="true" />
@@ -206,7 +209,7 @@
             <Pin Id="QPMhUqNgAReOzNyt06Aea8" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="GILzpLU0KdYOiaFfTqYQvU" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Pad Id="O8SmJujUfsTLYW93nk9m7w" Comment="Font Style" Bounds="414,330,65,15" ShowValueBox="true" isIOBox="true" Value="Italic">
+          <Pad Id="O8SmJujUfsTLYW93nk9m7w" Comment="Font Style" Bounds="414,330,66,15" ShowValueBox="true" isIOBox="true" Value="Italic">
             <p:TypeAnnotation LastCategoryFullName="Avalonia.Media" LastDependency="VL.Avalonia.vl">
               <Choice Kind="TypeFlag" Name="FontStyle" />
             </p:TypeAnnotation>
@@ -232,6 +235,7 @@
               <Choice Kind="ProcessAppFlag" Name="SelectableTextBlock" />
             </p:NodeReference>
             <Pin Id="K5DqmKMyCHZPcE7ykLKIPS" Name="Text" Kind="InputPin" DefaultValue="This is a single line." />
+            <Pin Id="UIDYI6uuNcgMjiW6WD3MwJ" Name="Text Channel" Kind="InputPin" IsHidden="true" />
             <Pin Id="Bh91JQLZHzuP5LxLCFleLH" Name="Style" Kind="InputPin" />
             <Pin Id="MnHhVh8k1VaOeMHJSd1Yrl" Name="Output" Kind="OutputPin" />
             <Pin Id="IC8G7F17EbTQG6TmoC8dc2" Name="Classes" Kind="InputPin" IsHidden="true" />
@@ -369,7 +373,7 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.0-0517-ge070c1d18e" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0142-gabf274b680" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
 </Document>

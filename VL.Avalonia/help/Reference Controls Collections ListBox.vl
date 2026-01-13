@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="FWzy8CFctN7Pv1V6MX02wr" LanguageVersion="2025.7.1-0137-g9913e5c752" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0137-g9913e5c752" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="FWzy8CFctN7Pv1V6MX02wr" LanguageVersion="2025.7.1-0142-gabf274b680" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0142-gabf274b680" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -272,6 +272,7 @@
               <Choice Kind="ProcessAppFlag" Name="TextBlock" />
             </p:NodeReference>
             <Pin Id="S5HSFpeRlmDO82zTwXfr63" Name="Text" Kind="InputPin" />
+            <Pin Id="OnAbGcxcOeYOdwuUdu3AL7" Name="Text Channel" Kind="InputPin" IsHidden="true" />
             <Pin Id="PUVNJKTa3GVLWYl2UNsO73" Name="Style" Kind="InputPin" />
             <Pin Id="SlJcKJ2afokLGUvxjJxVLZ" Name="Output" Kind="OutputPin" />
             <Pin Id="PhV0SGe7apsNav7AW5Jm7J" Name="Classes" Kind="InputPin" IsHidden="true" />
@@ -416,6 +417,7 @@
               <Choice Kind="ProcessAppFlag" Name="TextBlock" />
             </p:NodeReference>
             <Pin Id="FEfh9NiycuBP1bNiG6h2zc" Name="Text" Kind="InputPin" />
+            <Pin Id="In9Sbumop79OI0GE9N5HR4" Name="Text Channel" Kind="InputPin" IsHidden="true" />
             <Pin Id="AUqx0apjf2EPP8t0RtFrvL" Name="Style" Kind="InputPin" />
             <Pin Id="CIz2N0q2UugNrZPBrCDtx0" Name="Output" Kind="OutputPin" />
             <Pin Id="ASNkJuF9KNMNSHi7DMb5qU" Name="Classes" Kind="InputPin" IsHidden="true" />
@@ -552,7 +554,7 @@
             <Pin Id="ONfa6KPZQGlOZec2lqswBc" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="Oys56ujgO0MPK7VyqWLOuS" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="76,390,53,19" Id="B8sB6o5FyVJLl2XnUhnGBB">
+          <Node Bounds="74,390,53,19" Id="B8sB6o5FyVJLl2XnUhnGBB">
             <p:NodeReference LastCategoryFullName="Reactive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Reactive" NeedsToBeDirectParent="true" />
@@ -619,10 +621,11 @@
         <Link Id="BKiS3H4cnVQLxNAMPypdnB" Ids="EIh9K7puw40L6py2NsffHT,Shdz0qK68iKNBMUNsy0B7a" />
         <Link Id="BE6ULa3oACaNmGTmE1gNKi" Ids="N2DdpALgg7PPWxiEWJUwC3,IT2Eer2mJojLUltjxwDFA3" />
         <Link Id="HgjyuNPTo3fNQUoj4xdYou" Ids="NzsPzVCRez9PoEzkrE6zG1,MtQHJXDufyVPw7fY6FG7VF" />
+        <Link Id="PnKVfuJO4DVQMd7q2e3rTM" Ids="Fuaj2uNGx8ULaYjU60qy3a,G5b2IVL6HUSMU3TYHew3Uf" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0137-g9913e5c752" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0142-gabf274b680" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
 </Document>
