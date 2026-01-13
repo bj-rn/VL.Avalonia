@@ -74,13 +74,15 @@ namespace VL.Avalonia.Data
 
         protected virtual void Bind()
         {
+            _subscriptions?.Clear();
+
             if (_input != null && _property != null)
             {
-                var channelToBind = (_channel ?? _internalChannel) as IObservable<object?>;
+                var channel = (_channel ?? _internalChannel);
 
-                if (channelToBind != null)
+                if (channel != null)
                 {
-                    _subscriptions?.Clear();
+                    var channelToBind = channel.Select(x => (object?)x);
 
                     _subscriptions?.Add(_input.Bind(_property, channelToBind));
 
@@ -89,8 +91,14 @@ namespace VL.Avalonia.Data
                         case SupportedBindingMode.TwoWay:
                             var observable = _input.GetObservable(_property).Skip(1);
 
-                            observable.Subscribe(x =>
-                                (_channel ?? _internalChannel).OnNext((TValue)x)
+                            _subscriptions?.Add(
+                                observable.Subscribe(x =>
+                                {
+                                    if (x is TValue v)
+                                        channel.OnNext(v);
+                                    else if (x is null)
+                                        channel.OnNext(default!);
+                                })
                             );
 
                             return;
@@ -100,8 +108,6 @@ namespace VL.Avalonia.Data
                     }
                 }
             }
-
-            _subscriptions?.Clear();
         }
 
         public void Dispose()
