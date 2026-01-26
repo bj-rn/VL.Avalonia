@@ -643,6 +643,129 @@
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
+          <Node Bounds="854,830,120,114" Id="JyqB0JsReZlPNZFCDppTUw">
+            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
+              <FullNameCategoryReference ID="Avalonia.Interactivity" />
+              <Choice Kind="ProcessAppFlag" Name="PastingFromClipboardRoutedEventListener" />
+            </p:NodeReference>
+            <Pin Id="RkEugODkNLcNySa271bzZm" Name="Input" Kind="InputPin" />
+            <Patch Id="OuDOGm5wkcbNxRujzcJzap" Name="Handler" ManuallySortedPins="true">
+              <Pin Id="VlNAQg4yekuM3DR0wv32wL" Name="Input 1" Kind="InputPin" />
+              <Pin Id="E1fxNV6NQwOOIP8sdpLYM5" Name="Input 2" Kind="InputPin" />
+              <Pin Id="Pcpn4gbEO98L9l0ESiwVUB" Name="Result" Kind="OutputPin" />
+              <ControlPoint Id="GWRIWWABmhALc7af8zptXJ" Bounds="858,838" />
+              <ControlPoint Id="UVbE0yGeVDMMUfHq5Wmn6I" Bounds="918,838" />
+              <ControlPoint Id="OKHvKppybpGLAmGWhZr1fv" Bounds="858,937" />
+              <Node Bounds="882,887,58,26" Id="ElB5M5oVJxIN4O9XvAXl2p">
+                <p:NodeReference LastCategoryFullName="System.Console" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <Choice Kind="OperationCallFlag" Name="WriteLine" />
+                </p:NodeReference>
+                <Pin Id="Dx7uEF0FXi1ObIPM5VKLZq" Name="Value" Kind="InputPin" />
+                <Pin Id="SiyK0zfYy0aLpgufCdb4PO" Name="Apply" Kind="InputPin" DefaultValue="True" />
+              </Node>
+              <Pad Id="NvmmQwAl9GKQIsFiKvBGoR" Comment="" Bounds="884,867,35,15" ShowValueBox="true" isIOBox="true" Value="PastingFromClipboard">
+                <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="ImmutableTypeFlag" Name="String" />
+                </p:TypeAnnotation>
+              </Pad>
+            </Patch>
+            <Pin Id="QJLG5ZOl4zvLM4eWZs0EIK" Name="Strategies" Kind="InputPin" IsHidden="true" />
+            <Pin Id="V0CeaRoWKxXMSWATDdXuTG" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
+          </Node>
+          <Node Bounds="851,700,120,106" Id="TypioKfII0aOFWXIKsgHmH">
+            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl" OverloadStrategy="AllPinsThatAreNotCommon">
+              <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
+              <FullNameCategoryReference ID="Avalonia.Interactivity" />
+              <Choice Kind="ProcessAppFlag" Name="CopyingToClipboardRoutedEventListener" />
+              <PinReference Kind="InputPin" Name="Input">
+                <p:DataTypeReference p:Type="TypeReference">
+                  <Choice Kind="TypeFlag" Name="TextBox" />
+                </p:DataTypeReference>
+              </PinReference>
+              <PinReference Kind="InputPin" Name="Handler">
+                <p:DataTypeReference p:Type="TypeReference" LastCategoryFullName="Primitive.Delegates" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="TypeFlag" Name="Delegate (2 -&gt; 1)" />
+                  <p:TypeArguments>
+                    <TypeReference>
+                      <Choice Kind="TypeFlag" Name="TextBox" />
+                    </TypeReference>
+                    <TypeReference>
+                      <Choice Kind="TypeFlag" Name="RoutedEventArgs" />
+                    </TypeReference>
+                    <TypeReference LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                      <Choice Kind="TypeFlag" Name="Boolean" />
+                    </TypeReference>
+                  </p:TypeArguments>
+                </p:DataTypeReference>
+              </PinReference>
+            </p:NodeReference>
+            <Pin Id="QvF4jykgF3aOP1uek47PKF" Name="Input" Kind="InputPin" />
+            <Patch Id="ET4MQMoN7kNOUl39RaL9Hr" Name="Handler" ManuallySortedPins="true">
+              <Pin Id="IWbtzXHoQCDOfhrNR6G5Ay" Name="Input 1" Kind="InputPin" />
+              <Pin Id="N9O6qtNbyCnMh0IHVDwJ4Q" Name="Input 2" Kind="InputPin" />
+              <Pin Id="Ho8BNZQEHwLOqG4JXTJa0U" Name="Result" Kind="OutputPin" />
+              <ControlPoint Id="L4M5bqiWSz3Nwwv4HEcNyt" Bounds="855,708" />
+              <ControlPoint Id="HlD5MHC5kLaNcntjvihH4q" Bounds="915,708" />
+              <ControlPoint Id="Ndnshm4IW2dPVaHITCC7dk" Bounds="855,788" />
+              <Node Bounds="896,760,58,26" Id="U5TXmQy5wZcMpIcKUMMndj">
+                <p:NodeReference LastCategoryFullName="System.Console" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <Choice Kind="OperationCallFlag" Name="WriteLine" />
+                </p:NodeReference>
+                <Pin Id="DPoTOtyNTHuOBrMf9h0wcu" Name="Value" Kind="InputPin" />
+                <Pin Id="IhzYvAVq0wcLbHVxWkIJ4y" Name="Apply" Kind="InputPin" DefaultValue="True" />
+              </Node>
+              <Pad Id="QeEQPsgeyRRLq4IxlAfsAa" Comment="" Bounds="898,740,35,15" ShowValueBox="true" isIOBox="true" Value="CopyingToClipboard">
+                <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="ImmutableTypeFlag" Name="String" />
+                </p:TypeAnnotation>
+              </Pad>
+            </Patch>
+            <Pin Id="GfJlhXk0NW5Mm9czIBMsRq" Name="Strategies" Kind="InputPin" IsHidden="true" />
+            <Pin Id="SEc7JKw6cAoMzhbQX6sG9g" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
+          </Node>
+          <Node Bounds="856,980,120,103" Id="QK8XbO7BKtKNtE7DOAW0Pw">
+            <p:NodeReference LastCategoryFullName="Avalonia.Interactivity" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="RegionFlag" Name="Region (Stateless)" Fixed="true" />
+              <FullNameCategoryReference ID="Avalonia.Interactivity" />
+              <Choice Kind="ProcessAppFlag" Name="CuttingToClipboardRoutedEventListener" />
+            </p:NodeReference>
+            <Pin Id="MZfRW9enI6WPV0F6limudN" Name="Input" Kind="InputPin" />
+            <Patch Id="K0xJlNYOP9ZPErYnufJtlw" Name="Handler" ManuallySortedPins="true">
+              <Pin Id="FyF5vBbFLexLBcveZbkuFb" Name="Input 1" Kind="InputPin" />
+              <Pin Id="N23NLrwBLBJNRtIcvqnxMS" Name="Input 2" Kind="InputPin" />
+              <Pin Id="Mfi7IiKN0EANqn2Fr4DWU2" Name="Result" Kind="OutputPin" />
+              <ControlPoint Id="FwdVAhitxenNhyNrgtDpVe" Bounds="860,988" />
+              <ControlPoint Id="VSu1Nbu5H4dQFVIA4IHlx9" Bounds="920,988" />
+              <ControlPoint Id="RHlc5XCozNQO0dM8dBAjsr" Bounds="860,1068" />
+              <Node Bounds="896,1037,58,26" Id="AlAj8JXl3gELXQOG393Yop">
+                <p:NodeReference LastCategoryFullName="System.Console" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <Choice Kind="OperationCallFlag" Name="WriteLine" />
+                </p:NodeReference>
+                <Pin Id="BBTTDK8fLeVQVcgcPBbjbA" Name="Value" Kind="InputPin" />
+                <Pin Id="TWXMCYJj1GANiiZcKAKJXF" Name="Apply" Kind="InputPin" DefaultValue="True" />
+              </Node>
+              <Pad Id="OQe3wotAiKGMV4UvAc6o9D" Comment="" Bounds="898,1017,35,15" ShowValueBox="true" isIOBox="true" Value="CuttingToClipboard">
+                <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="ImmutableTypeFlag" Name="String" />
+                </p:TypeAnnotation>
+              </Pad>
+            </Patch>
+            <Pin Id="FqE1AF0YpVpOZHgr7VeUfz" Name="Strategies" Kind="InputPin" IsHidden="true" />
+            <Pin Id="J2QwSLAwxxNQVoXD2dECK9" Name="Handled Events Too" Kind="InputPin" IsHidden="true" />
+          </Node>
+          <Pad Id="C18HwxduZpvM9jWtZK2BIm" Bounds="832,650,115,19" ShowValueBox="true" isIOBox="true" Value="Copy paste events">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -689,6 +812,21 @@
         <Link Id="Oc3w9f10VceLZbb3a9BBKj" Ids="L3EPFGxXjFwLeZk97iEn0O,UPySGeisKbdMp0vmyDVV1I" />
         <Link Id="TVgMALVSEwwPfOfHzwcHW9" Ids="M1kMwEGoEOzOcTURefXmdL,FZ9wVfD7hxwPCk0WGJT9zY" />
         <Link Id="GZnXFEEuonoLttJKQ8D3NP" Ids="OV9JSxlyo6DPUXxU72OSUQ,PXhk2nYTvg8MwQCefcvudP" />
+        <Link Id="AXtQZpS4vEMLcA4loB1sg3" Ids="RHUyH67vVVoLzatpAcFGqi,RkEugODkNLcNySa271bzZm" />
+        <Link Id="L5DfMmrA8YeNp9Nu19so38" Ids="VlNAQg4yekuM3DR0wv32wL,GWRIWWABmhALc7af8zptXJ" IsHidden="true" />
+        <Link Id="IgeWaMtXh8nPZndqiTRG7z" Ids="E1fxNV6NQwOOIP8sdpLYM5,UVbE0yGeVDMMUfHq5Wmn6I" IsHidden="true" />
+        <Link Id="KCq75CdbJG9LuMwlL5GZu7" Ids="OKHvKppybpGLAmGWhZr1fv,Pcpn4gbEO98L9l0ESiwVUB" IsHidden="true" />
+        <Link Id="KHog3eFymICPl9Gn6EzToB" Ids="NvmmQwAl9GKQIsFiKvBGoR,Dx7uEF0FXi1ObIPM5VKLZq" />
+        <Link Id="VpkkP7mEGGhNwVRbgYUdST" Ids="RHUyH67vVVoLzatpAcFGqi,QvF4jykgF3aOP1uek47PKF" />
+        <Link Id="Lam4Ubsk4JBPwcI6OPyBXQ" Ids="IWbtzXHoQCDOfhrNR6G5Ay,L4M5bqiWSz3Nwwv4HEcNyt" IsHidden="true" />
+        <Link Id="RmAmil0CDuJPYK7lCQ3A1s" Ids="N9O6qtNbyCnMh0IHVDwJ4Q,HlD5MHC5kLaNcntjvihH4q" IsHidden="true" />
+        <Link Id="Fg5n6yPgPFkOq9bPA8cmnl" Ids="Ndnshm4IW2dPVaHITCC7dk,Ho8BNZQEHwLOqG4JXTJa0U" IsHidden="true" />
+        <Link Id="CYqA2k2DdraNTIezbrjNes" Ids="QeEQPsgeyRRLq4IxlAfsAa,DPoTOtyNTHuOBrMf9h0wcu" />
+        <Link Id="IRSEHwU3ii0Mu3iaGSDVKR" Ids="RHUyH67vVVoLzatpAcFGqi,MZfRW9enI6WPV0F6limudN" />
+        <Link Id="LqC80AC0TjFMBImKi2jnit" Ids="FyF5vBbFLexLBcveZbkuFb,FwdVAhitxenNhyNrgtDpVe" IsHidden="true" />
+        <Link Id="VqmRS94sJr5O3AahoPVyaQ" Ids="N23NLrwBLBJNRtIcvqnxMS,VSu1Nbu5H4dQFVIA4IHlx9" IsHidden="true" />
+        <Link Id="T4NalztnQv1Pmb6BsZOG7d" Ids="RHlc5XCozNQO0dM8dBAjsr,Mfi7IiKN0EANqn2Fr4DWU2" IsHidden="true" />
+        <Link Id="Owh9Jb5Uv2gNPu5QPrh2X4" Ids="OQe3wotAiKGMV4UvAc6o9D,BBTTDK8fLeVQVcgcPBbjbA" />
       </Patch>
     </Node>
   </Patch>

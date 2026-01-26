@@ -8,6 +8,7 @@ using Avalonia.Rendering.Composition;
 using Avalonia.Skia;
 using VL.Lib.IO.Notifications;
 using VL.Skia;
+using Platform = Avalonia.Input.Platform;
 using Point = Avalonia.Point;
 using Size = Avalonia.Size;
 using TouchDevice = Avalonia.Input.TouchDevice;
@@ -357,7 +358,10 @@ namespace VL.Avalonia.Skia
         // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L388
         public object? TryGetFeature(Type featureType)
         {
-            // throws
+            if (featureType == typeof(Platform.IClipboard))
+            {
+                return AvaloniaLocator.Current.GetService<Platform.IClipboard>();
+            }
             return null;
         }
 

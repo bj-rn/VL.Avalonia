@@ -8,6 +8,7 @@ using Avalonia.Themes.Fluent;
 using Avalonia.Threading;
 using VL.Core;
 using VL.Lib.Animation;
+using Platform = Avalonia.Input.Platform;
 
 namespace VL.Avalonia.Skia;
 
@@ -27,8 +28,11 @@ public static class AppBuilderExtensions
                 AvaloniaSynchronizationContext.AutoInstall = false;
 
                 var platformGraphics = new GammaPlatformGraphics();
+
                 AvaloniaLocator
-                    .CurrentMutable.Bind<ICursorFactory>()
+                    .CurrentMutable.Bind<Platform.IClipboard>()
+                    .ToSingleton<GammaPlatformClipboard>()
+                    .Bind<ICursorFactory>()
                     .ToConstant(new GammaSkiaCursorFactory())
                     .Bind<IKeyboardDevice>()
                     .ToConstant(GammaDevices.KeyboardDevice)
