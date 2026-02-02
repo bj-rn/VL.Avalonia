@@ -76,7 +76,7 @@ namespace VL.Avalonia.Data
 
         [Fragment(Order = PinOrder.Action)]
         public void SetInitialValueHandling(
-            [Pin(Visibility = Model.PinVisibility.Hidden)]
+            [Pin(Visibility = Model.PinVisibility.Optional)]
                 SupprotedBindingInitialValueHandling initialValueHandling =
                 SupprotedBindingInitialValueHandling.ChannelToControl
         )
