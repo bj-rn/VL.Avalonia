@@ -82,6 +82,9 @@ namespace VL.Avalonia.Data
 
                 if (channel != null)
                 {
+                    // Sets initial value on control from channel
+                    _input.SetValue(_property, channel.Value);
+
                     var channelToBind = channel.Select(x => (object?)x);
 
                     _subscriptions?.Add(_input.Bind(_property, channelToBind));
