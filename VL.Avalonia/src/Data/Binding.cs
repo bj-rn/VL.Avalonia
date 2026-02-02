@@ -12,6 +12,17 @@ namespace VL.Avalonia.Data
         TwoWay,
     }
 
+    public enum SupprotedBindingInitialValueHandling
+    {
+        None,
+
+        /// <summary>Sets channel value to control before bind</summary>
+        ChannelToControl,
+
+        /// <summary>Control value to channel before bind</summary>
+        ControlToChannel,
+    }
+
     [ProcessNode(FragmentSelection = FragmentSelection.Explicit)]
     public abstract class Binding<TControl, TProp, TValue> : IDisposable
         where TControl : AvaloniaObject
@@ -19,6 +30,8 @@ namespace VL.Avalonia.Data
     {
         protected TControl? _input;
         protected TProp? _property;
+        protected SupprotedBindingInitialValueHandling _initialValueHandling =
+            SupprotedBindingInitialValueHandling.ChannelToControl;
         protected IChannel<TValue>? _channel;
         protected IChannel<TValue>? _internalChannel = ChannelHelpers.CreateChannelOfType<TValue>();
 
@@ -62,6 +75,20 @@ namespace VL.Avalonia.Data
         }
 
         [Fragment(Order = PinOrder.Action)]
+        public void SetInitialValueHandling(
+            [Pin(Visibility = Model.PinVisibility.Hidden)]
+                SupprotedBindingInitialValueHandling initialValueHandling =
+                SupprotedBindingInitialValueHandling.ChannelToControl
+        )
+        {
+            if (_initialValueHandling != initialValueHandling)
+            {
+                _initialValueHandling = initialValueHandling;
+                Bind();
+            }
+        }
+
+        [Fragment(Order = PinOrder.Action)]
         public void SetChannel(IChannel<TValue>? channel)
         {
             if (_channel != channel)
@@ -82,8 +109,25 @@ namespace VL.Avalonia.Data
 
                 if (channel != null)
                 {
-                    // Sets initial value on control from channel
-                    _input.SetValue(_property, channel.Value);
+                    // Initial value handling
+
+                    if (
+                        _initialValueHandling
+                        is SupprotedBindingInitialValueHandling.ChannelToControl
+                    )
+                    {
+                        // Set from channel to control
+                        _input.SetValue(_property, channel.Value);
+                    }
+                    if (
+                        _initialValueHandling
+                        is SupprotedBindingInitialValueHandling.ControlToChannel
+                    )
+                    {
+                        var pv = _input.GetValue(_property);
+                        //  Set from control to channel
+                        channel.SetValue((TValue?)pv);
+                    }
 
                     var channelToBind = channel.Select(x => (object?)x);
 
