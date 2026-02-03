@@ -9,6 +9,7 @@ using VL.Lib.IO.Notifications;
 using VL.Model;
 using VL.Skia;
 using Application = Avalonia.Application;
+using Control = Avalonia.Controls.Control;
 using RectangleF = Stride.Core.Mathematics.RectangleF;
 using Vector2 = Stride.Core.Mathematics.Vector2;
 
@@ -144,5 +145,8 @@ namespace VL.Avalonia.Skia
             // TODO: this is a hack to trigger the render loop
             GammaRenderTimer.Instance.TriggerTick(TimeSpan.FromMilliseconds(16));
         }
+
+        public void GetControl([Pin(Visibility = PinVisibility.Optional)] out Control control) =>
+            control = controlRoot;
     }
 }
