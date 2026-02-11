@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="JAHcsB1F8eNLAJZQVhjCvI" LanguageVersion="2025.7.1-0142-gabf274b680" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0142-gabf274b680" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="JAHcsB1F8eNLAJZQVhjCvI" LanguageVersion="2025.7.1-0116-gaeae322323" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0116-gaeae322323" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -174,7 +174,7 @@
               <Choice Kind="TypeFlag" Name="VerticalAlignment" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="332,230,145,19" Id="LD6IpN8VOaGLcLlt9tKDT5">
+          <Node Bounds="332,230,165,19" Id="LD6IpN8VOaGLcLlt9tKDT5">
             <p:NodeReference LastCategoryFullName="Stride" LastDependency="VL.Stride.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="RenderTexture" />
@@ -185,7 +185,7 @@
             <Pin Id="N5jSNCsm8PqMLyOaCrfLUd" Name="Render View" Kind="InputPin" />
             <Pin Id="QcbHyeTjGLvNWYAmMEz3mO" Name="Format" Kind="InputPin" />
             <Pin Id="TPHg1M3rLiKQYJRut2wGe6" Name="View Format" Kind="InputPin" />
-            <Pin Id="UrdocgExssyNaYaX25ubWo" Name="Color Shared" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UrdocgExssyNaYaX25ubWo" Name="Color Shared" Kind="InputPin" DefaultValue="True" />
             <Pin Id="PWi6I2cBgX4OEdGxMdX1h9" Name="Depth Format" Kind="InputPin" />
             <Pin Id="DTrrDBS4UOONk1g90xwojG" Name="Depth Shared" Kind="InputPin" IsHidden="true" />
             <Pin Id="L4OtrUW6rFXMVnChQk896w" Name="Clear Flags" Kind="InputPin" IsHidden="true" />
@@ -198,6 +198,7 @@
             <Pin Id="TDq0cab8RKKOptj1HZV048" Name="Depth" Kind="OutputPin" />
             <Pin Id="P5a1InKlaPoPMgyas30oNQ" Name="Auto Render" Kind="InputPin" IsHidden="true" />
           </Node>
+          <Pad Id="Ea5onSyrCD6OAK7mXALsGR" Comment="Color" Bounds="19,350,190,132" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -216,12 +217,13 @@
         <Link Id="It376kEtXjTOPuqBwdDqJD" Ids="QypZ0zCUkdVPNFYhO007Qn,MXQcpNhYZ1ZNUR7aInj5M3" />
         <Link Id="TQ338dvK6ggP19moGqtq9c" Ids="NmutiM7FxjBNIgYWWxnKk5,T5HWz05zhreLzTuGLEHMNq" />
         <Link Id="BEgOPEbfyjHNPVhkMDbHeZ" Ids="UYV17Du5xrgOLTaEgUqcgw,EZ6fXESkiMRPNKjvznlI0O" />
+        <Link Id="BMJiJFlJcRZLVeTKm2jvvW" Ids="UYV17Du5xrgOLTaEgUqcgw,Ea5onSyrCD6OAK7mXALsGR" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0142-gabf274b680" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0116-gaeae322323" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
-  <NugetDependency Id="NokSxNcfSOzL0sKnq1vvbm" Location="VL.Stride" Version="2025.7.1-0142-gabf274b680" />
+  <NugetDependency Id="NokSxNcfSOzL0sKnq1vvbm" Location="VL.Stride" Version="2025.7.1-0116-gaeae322323" />
   <NugetDependency Id="QGXtiIIvc05L3X79qU3T9c" Location="VL.Avalonia.Stride" Version="0.0.0" />
 </Document>
