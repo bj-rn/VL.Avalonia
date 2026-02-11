@@ -3,6 +3,7 @@ using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Rendering;
 using Avalonia.Skia;
+using Avalonia.Threading;
 using SkiaSharp;
 using Stride.Core.Mathematics;
 using Stride.Graphics;
@@ -12,11 +13,10 @@ using VL.Lib.Mathematics;
 
 namespace VL.Avalonia.Stride.Controls
 {
-    public class StrideTextureControl : SkiaMediaControlBase
+    public class StrideTextureControl : SkiaMediaControlBase, IDisposable
     {
         public Texture? Texture { get; set; }
 
-        // Use our new wrapper around VL.Skia.FromSharedHandle
         private readonly TextureToSkImageShared _converter = new TextureToSkImageShared();
 
         public override void Render(DrawingContext context)
@@ -34,8 +34,12 @@ namespace VL.Avalonia.Stride.Controls
                 )
             );
 
-            // Keep the render loop alive
-            // Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
+            Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
+        }
+
+        public void Dispose()
+        {
+            _converter.Dispose();
         }
     }
 
@@ -44,6 +48,12 @@ namespace VL.Avalonia.Stride.Controls
         private readonly Texture? _texture;
         private readonly TextureToSkImageShared _converter;
         private readonly float _scaling;
+
+        private static readonly SKPaint SharedPaint = new SKPaint
+        {
+            FilterQuality = SKFilterQuality.High,
+            IsAntialias = true,
+        };
 
         public StrideTextureDrawingOperation(
             Texture? texture,
@@ -63,54 +73,41 @@ namespace VL.Avalonia.Stride.Controls
         public override void Render(ImmediateDrawingContext context)
         {
             var leaseFeature = context.TryGetFeature<ISkiaSharpApiLeaseFeature>();
-            if (leaseFeature != null)
-            {
-                using (var lease = leaseFeature.Lease())
-                {
-                    var canvas = lease.SkCanvas;
+            if (leaseFeature == null)
+                return;
 
-                    // Update and convert
-                    SKImage? skImage = _converter.Update(_texture);
+            using var lease = leaseFeature.Lease();
+            var canvas = lease.SkCanvas;
 
-                    if (skImage == null)
-                        return;
+            SKImage? skImage = _converter.Update(_texture);
+            if (skImage == null)
+                return;
 
-                    canvas.Save();
+            canvas.Save();
 
-                    var boundsRectangle = Bounds.FromRect();
-                    RectangleF targetBounds = boundsRectangle;
-                    var imageSize = new Vector2(skImage.Width, skImage.Height);
+            var boundsRectangle = Bounds.FromRect();
+            RectangleF targetBounds = boundsRectangle;
+            var imageSize = new Vector2(skImage.Width, skImage.Height);
 
-                    AspectRatioUtils.FixAspectRatio(
-                        ref boundsRectangle,
-                        ref imageSize,
-                        Mode,
-                        Anchor,
-                        out targetBounds
-                    );
+            AspectRatioUtils.FixAspectRatio(
+                ref boundsRectangle,
+                ref imageSize,
+                Mode,
+                Anchor,
+                out targetBounds
+            );
 
-                    var paint = new SKPaint
-                    {
-                        FilterQuality = SKFilterQuality.High,
-                        IsAntialias = true,
-                    };
+            var destRect = SKRect.Create(
+                targetBounds.X,
+                targetBounds.Y,
+                targetBounds.Width,
+                targetBounds.Height
+            );
 
-                    var destRect = SKRect.Create(
-                        targetBounds.X,
-                        targetBounds.Y,
-                        targetBounds.Width,
-                        targetBounds.Height
-                    );
-
-                    canvas.DrawImage(skImage, destRect, paint);
-                    canvas.Restore();
-                }
-            }
+            canvas.DrawImage(skImage, destRect, SharedPaint);
+            canvas.Restore();
         }
 
-        public override void Dispose()
-        {
-            // The converter is owned by the Control, not the Operation
-        }
+        public override void Dispose() { }
     }
 }

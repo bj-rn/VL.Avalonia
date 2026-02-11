@@ -1,105 +1,73 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using SkiaSharp;
-using Stride.Engine;
+﻿using SkiaSharp;
 using Stride.Graphics;
-using VL.Core;
 using VL.Skia;
-using StrideRenderContext = Stride.Rendering.RenderContext;
+using VL.Stride.Textures;
 
 namespace VL.Avalonia.Stride.Controls
 {
-    /// <summary>
-    /// Converts a Stride Texture to SKImage using VL.Skia.FromSharedHandle.
-    /// Handles creating a shared copy if the source texture is not shared.
-    /// </summary>
     public class TextureToSkImageShared : IDisposable
     {
-        private readonly FromSharedHandle _sharedHandleConverter;
-
-        // Intermediate shared texture (used if input texture isn't shared)
-        private Texture? _sharedCopy;
+        private readonly TextureToSkImage _textureToSkImage;
+        private SKImage? _lastRasterImage;
+        private bool _disposed;
 
         public TextureToSkImageShared()
         {
-            _sharedHandleConverter = new FromSharedHandle();
+            _textureToSkImage = new TextureToSkImage();
         }
 
+        /// <summary>
+        /// Converts the given Stride Texture to an SKImage that can be drawn on Avalonia's canvas.
+        /// </summary>
         public SKImage? Update(Texture? texture)
         {
             if (texture == null)
             {
-                _sharedHandleConverter.Update(IntPtr.Zero);
+                DisposeLastImage();
                 return null;
             }
 
-            // 1. Get the handle
-            IntPtr handle = texture.SharedHandle;
+            // Get the GPU-backed SKImage (live view, cached by TextureToSkImage on texture.Tags)
+            SKImage? gpuImage = _textureToSkImage.Update(texture);
+            if (gpuImage == null)
+                return null;
 
-            // 2. If no handle, we must copy to a shared texture
-            if (handle == IntPtr.Zero)
-            {
-                // Recreate shared copy if dimensions/format changed
-                if (
-                    _sharedCopy == null
-                    || _sharedCopy.Width != texture.Width
-                    || _sharedCopy.Height != texture.Height
-                    || _sharedCopy.Format != texture.Format
-                )
-                {
-                    _sharedCopy?.Dispose();
+            // The gpuImage is bound to VL.Skia's EGL GRContext.
+            // Avalonia has its own GRContext — drawing a foreign GPU SKImage will either
+            // fail silently or show only the first frame.
+            // Solution: convert to raster while VL.Skia's context is current.
 
-                    var desc = texture.Description;
-                    desc.Options = TextureOptions.Shared; // Force Shared
-                    desc.Usage = GraphicsResourceUsage.Default;
+            // Make VL.Skia's render context current for the GPU readback
+            var renderContext = RenderContext.ForCurrentApp();
+            using var _ = renderContext.MakeCurrent(forRendering: false);
 
-                    _sharedCopy = Texture.New(texture.GraphicsDevice, desc);
-                }
+            // Readback GPU → CPU. This is the per-frame cost but avoids all the
+            // EGL reimport overhead of the SharedHandle approach.
+            var rasterImage = gpuImage.ToRasterImage(ensurePixelData: true);
+            if (rasterImage == null)
+                return _lastRasterImage; // fallback to previous frame
 
-                // Copy content
-                var cmd = GetCommandList();
-                if (cmd != null)
-                {
-                    cmd.Copy(texture, _sharedCopy);
-                }
+            // Dispose previous raster image
+            DisposeLastImage();
+            _lastRasterImage = rasterImage;
 
-                handle = _sharedCopy.SharedHandle;
-
-                if (handle == IntPtr.Zero)
-                    return null;
-            }
-            else
-            {
-                // Input is already shared, free our copy if we had one
-                if (_sharedCopy != null)
-                {
-                    _sharedCopy.Dispose();
-                    _sharedCopy = null;
-                }
-            }
-
-            // 3. AGGRESSIVE UPDATE:
-            // The FromSharedHandle class caches the SKImage if the handle pointer is the same.
-            // Since our texture content changes (video/game) but the handle (address) stays the same,
-            // we MUST invalidate the cache by passing Zero first.
-            // This forces the EGL/GL backend to recreate the image from the latest content.
-            _sharedHandleConverter.Update(IntPtr.Zero);
-
-            // 4. Update with the real handle
-            return _sharedHandleConverter.Update(handle);
+            return _lastRasterImage;
         }
 
-        private static CommandList? GetCommandList()
+        private void DisposeLastImage()
         {
-            var game = AppHost.Current.Services.GetService<Game>();
-            return game != null
-                ? StrideRenderContext.GetShared(game.Services).GetThreadContext().CommandList
-                : null;
+            _lastRasterImage?.Dispose();
+            _lastRasterImage = null;
         }
 
         public void Dispose()
         {
-            _sharedHandleConverter.Dispose();
-            _sharedCopy?.Dispose();
+            if (_disposed)
+                return;
+            _disposed = true;
+
+            DisposeLastImage();
+            // TextureToSkImage's SKImages are owned by texture.Tags via DisposeBy — not ours to dispose.
         }
     }
 }
