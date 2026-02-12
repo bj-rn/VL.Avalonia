@@ -71,11 +71,8 @@ namespace VL.Avalonia.Skia
             }
         }
 
-        private readonly List<CallerInfo> _callerInfos = new List<CallerInfo>();
-        public IEnumerable<object> Surfaces => _callerInfos;
-
         // TODO: Implement
-        // NEEDS WINDO HANDLE HERE
+        // NEEDS WINDOW HANDLE HERE
         public IPlatformHandle? Handle => new PlatformHandle(IntPtr.Zero, "STUB");
 
         public IInputRoot InputRoot { get; set; }
@@ -287,7 +284,6 @@ namespace VL.Avalonia.Skia
         public WindowTransparencyLevel TransparencyLevel { get; set; } =
             WindowTransparencyLevel.None;
 
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L76
         public AcrylicPlatformCompensationLevels AcrylicCompensationLevels { get; } =
             new(1.0, 1.0, 1.0);
 
@@ -295,13 +291,16 @@ namespace VL.Avalonia.Skia
 
         public IPopupImpl? CreatePopup() => null;
 
+        private readonly List<object> _surfaces = new List<object>();
+        public IEnumerable<object> Surfaces => _surfaces;
+
         internal void Render(CallerInfo caller)
         {
             var bounds = caller.ViewportBounds.ToAvaloniaRect();
             SetClientSize(bounds.Size);
 
-            _callerInfos.Clear();
-            _callerInfos.Add(caller);
+            _surfaces.Clear();
+            _surfaces.Add(caller);
 
             caller.Canvas.Save();
             try
@@ -323,8 +322,6 @@ namespace VL.Avalonia.Skia
 
         public PixelPoint PointToScreen(Point point) => PixelPoint.FromPoint(point, _scaling);
 
-        // example from Godot
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L364
         public void SetCursor(ICursorImpl? cursor)
         {
             // TODO:
@@ -335,8 +332,6 @@ namespace VL.Avalonia.Skia
             // TODO:
         }
 
-        // copy paste from here
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L376
         public void SetTransparencyLevelHint(
             IReadOnlyList<WindowTransparencyLevel> transparencyLevels
         )
@@ -354,8 +349,6 @@ namespace VL.Avalonia.Skia
             }
         }
 
-        // example from Godot
-        // https://github.com/MrJul/Estragonia/blob/0aa807421c9e52bc56128c69798ffc11093f0a61/src/JLeb.Estragonia/GodotTopLevelImpl.cs#L388
         public object? TryGetFeature(Type featureType)
         {
             if (featureType == typeof(Platform.IClipboard))

@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Platform;
+using SkiaSharp;
 using VL.Skia;
 
 namespace VL.Avalonia.Skia
@@ -8,9 +9,19 @@ namespace VL.Avalonia.Skia
     {
         public IRenderTarget CreateRenderTarget(IEnumerable<object> surfaces)
         {
+            CallerInfo? callerInfo = null;
+            SKSurface? gpuSurface = null;
+
             foreach (var s in surfaces)
+            {
                 if (s is CallerInfo c)
-                    return new GammaSkiaRenderTarget(c);
+                    callerInfo = c;
+                if (s is SKSurface surf)
+                    gpuSurface = surf;
+            }
+
+            if (callerInfo != null)
+                return new GammaSkiaRenderTarget(callerInfo);
 
             throw new NotSupportedException(
                 "Don't know how to create a Skia render target from any of provided surfaces"

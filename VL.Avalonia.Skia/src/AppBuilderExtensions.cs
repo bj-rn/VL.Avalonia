@@ -56,13 +56,6 @@ public static class AppBuilderExtensions
                     .ToConstant(
                         new Compositor(platformGraphics, useUiThreadForSynchronousCommits: true)
                     );
-            })
-            .AfterPlatformServicesSetup(_ =>
-            {
-                var renderInterface = new GammaSkiaPlatformRenderInterface();
-                AvaloniaLocator
-                    .CurrentMutable.Bind<IPlatformRenderInterface>()
-                    .ToConstant(renderInterface);
             });
 
     private static PlatformHotkeyConfiguration CreatePlatformHotKeyConfiguration() =>

@@ -2,6 +2,7 @@
 using Avalonia;
 using Avalonia.Platform;
 using Avalonia.Skia;
+using VL.Skia;
 
 namespace VL.Avalonia.Skia
 {
@@ -32,14 +33,16 @@ namespace VL.Avalonia.Skia
 
             public ISkiaGpuRenderTarget? TryCreateRenderTarget(IEnumerable<object> surfaces)
             {
-                // Shouldn't get called
-                throw new NotImplementedException();
+                foreach (var s in surfaces)
+                    if (s is CallerInfo c)
+                        return new GammaSkiaRenderTarget(c);
+
+                return null;
             }
 
             public ISkiaSurface? TryCreateSurface(PixelSize size, ISkiaGpuRenderSession? session)
             {
-                // Shouldn't get called
-                throw new NotImplementedException();
+                return null;
             }
 
             public object? TryGetFeature(Type featureType)
