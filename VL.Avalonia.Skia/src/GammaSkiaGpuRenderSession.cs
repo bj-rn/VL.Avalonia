@@ -21,8 +21,9 @@ namespace VL.Avalonia.Skia
             var info = new SKImageInfo(width, height, SKColorType.Rgba8888, SKAlphaType.Premul);
 
             // Try GPU surface first, fall back to raster
+            // IMPORTANT: Explicitly ask for TopLeft origin to match the SurfaceOrigin property
             if (GrContext != null)
-                _surface = SKSurface.Create(GrContext, false, info);
+                _surface = SKSurface.Create(GrContext, false, info, 1, GRSurfaceOrigin.TopLeft);
 
             _surface ??= SKSurface.Create(info);
         }
@@ -35,12 +36,23 @@ namespace VL.Avalonia.Skia
         public void Dispose()
         {
             // Avalonia finished rendering onto _surface.
-            // Blit the result to the original VL.Skia canvas.
             _surface.Canvas.Flush();
             GrContext?.Flush();
 
             using var image = _surface.Snapshot();
-            _callerInfo.Canvas.DrawImage(image, 0, 0);
+
+            // Blit the result to the original VL.Skia canvas.
+            _callerInfo.Canvas.Save();
+
+            // CRITICAL: Reset matrix to Identity to draw in device pixels.
+            // This prevents double-scaling and ensures alignment with DeviceClipBounds.
+            _callerInfo.Canvas.ResetMatrix();
+
+            // We must draw at the position of the clip bounds in device space
+            var bounds = _callerInfo.Canvas.DeviceClipBounds;
+            _callerInfo.Canvas.DrawImage(image, bounds.Left, bounds.Top);
+
+            _callerInfo.Canvas.Restore();
 
             _surface.Dispose();
         }
