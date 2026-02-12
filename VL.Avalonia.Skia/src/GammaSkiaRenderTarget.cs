@@ -1,37 +1,48 @@
 ﻿using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Platform;
+using Avalonia.Skia;
 using Avalonia.Skia.Helpers;
 using SkiaSharp;
 using VL.Skia;
 
 namespace VL.Avalonia.Skia
 {
-    // Will break likely on latest Avalonia 11.3.0 this interface is IRenderTarget2
-    // https://github.com/AvaloniaUI/Avalonia/blob/master/src/Skia/Avalonia.Skia/Gpu/SkiaGpuRenderTarget.cs#L8
-    sealed class GammaSkiaRenderTarget : IRenderTarget
+    sealed class GammaSkiaRenderTarget : IRenderTarget, ISkiaGpuRenderTarget
     {
-        private readonly CallerInfo callerInfo;
+        private readonly CallerInfo _callerInfo;
+        private readonly SKSurface? _gpuSurface;
 
-        public GammaSkiaRenderTarget(CallerInfo callerInfo)
+        public GammaSkiaRenderTarget(CallerInfo callerInfo, SKSurface? gpuSurface)
         {
-            this.callerInfo = callerInfo;
+            _callerInfo = callerInfo;
+            _gpuSurface = gpuSurface;
         }
 
         public bool IsCorrupted
         {
             get
             {
-                return IsDiposed(callerInfo.Canvas);
+                return IsDiposed(_callerInfo.Canvas);
 
                 [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "get_IsDisposed")]
                 static extern bool IsDiposed(SKNativeObject obj);
             }
         }
 
+        public ISkiaGpuRenderSession BeginRenderingSession()
+        {
+            return new GammaSkiaGpuRenderSession(
+                _callerInfo.GRContext,
+                _gpuSurface!,
+                _callerInfo.Scaling
+            );
+        }
+
         public IDrawingContextImpl CreateDrawingContext(bool useScaledDrawing)
         {
-            return DrawingContextHelper.WrapSkiaCanvas(callerInfo.Canvas, new Vector(96, 96));
+            // CPU fallback when GRContext is null
+            return DrawingContextHelper.WrapSkiaCanvas(_callerInfo.Canvas, new Vector(96, 96));
         }
 
         public void Dispose() { }
