@@ -300,68 +300,18 @@ namespace VL.Avalonia.Skia
         private readonly List<object> _surfaces = new List<object>();
         public IEnumerable<object> Surfaces => _surfaces;
 
-        private SKSurface? EnsureGpuSurface(GRContext? grContext, int width, int height)
-        {
-            if (grContext == null || width <= 0 || height <= 0)
-                return null;
-
-            var isSameContext =
-                _lastGrContextRef != null
-                && _lastGrContextRef.TryGetTarget(out var prev)
-                && prev == grContext;
-
-            if (
-                _gpuSurface != null
-                && isSameContext
-                && _lastWidth == width
-                && _lastHeight == height
-            )
-            {
-                return _gpuSurface;
-            }
-
-            _gpuSurface?.Dispose();
-
-            var info = new SKImageInfo(width, height, SKColorType.Rgba8888, SKAlphaType.Premul);
-            _gpuSurface = SKSurface.Create(grContext, false, info);
-
-            _lastGrContextRef = new WeakReference<GRContext>(grContext);
-            _lastWidth = width;
-            _lastHeight = height;
-
-            return _gpuSurface;
-        }
-
         internal void Render(CallerInfo caller)
         {
             var bounds = caller.ViewportBounds.ToAvaloniaRect();
             SetClientSize(bounds.Size);
 
-            var width = (int)bounds.Width;
-            var height = (int)bounds.Height;
-            var gpuSurface = EnsureGpuSurface(caller.GRContext, width, height);
-
             _surfaces.Clear();
             _surfaces.Add(caller);
-
-            if (gpuSurface != null)
-            {
-                gpuSurface.Canvas.Clear(SKColors.Transparent);
-                _surfaces.Add(gpuSurface);
-            }
 
             caller.Canvas.Save();
             try
             {
                 Paint?.Invoke(bounds);
-
-                // Blit the GPU surface result onto the original VL.Skia canvas
-                if (gpuSurface != null)
-                {
-                    gpuSurface.Canvas.Flush();
-                    caller.GRContext?.Flush();
-                    gpuSurface.Draw(caller.Canvas, 0, 0, null);
-                }
             }
             finally
             {
@@ -371,8 +321,7 @@ namespace VL.Avalonia.Skia
 
         public void Dispose()
         {
-            _gpuSurface?.Dispose();
-            _gpuSurface = null;
+            // TODO
         }
 
         public Point PointToClient(PixelPoint point) => point.ToPoint(_scaling);

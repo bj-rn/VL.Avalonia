@@ -11,37 +11,30 @@ namespace VL.Avalonia.Skia
     sealed class GammaSkiaRenderTarget : IRenderTarget, ISkiaGpuRenderTarget
     {
         private readonly CallerInfo _callerInfo;
-        private readonly SKSurface? _gpuSurface;
 
-        public GammaSkiaRenderTarget(CallerInfo callerInfo, SKSurface? gpuSurface)
+        public GammaSkiaRenderTarget(CallerInfo callerInfo)
         {
             _callerInfo = callerInfo;
-            _gpuSurface = gpuSurface;
         }
 
         public bool IsCorrupted
         {
             get
             {
-                return IsDiposed(_callerInfo.Canvas);
+                return IsDisposed(_callerInfo.Canvas);
 
                 [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "get_IsDisposed")]
-                static extern bool IsDiposed(SKNativeObject obj);
+                static extern bool IsDisposed(SKNativeObject obj);
             }
         }
 
         public ISkiaGpuRenderSession BeginRenderingSession()
         {
-            return new GammaSkiaGpuRenderSession(
-                _callerInfo.GRContext,
-                _gpuSurface!,
-                _callerInfo.Scaling
-            );
+            return new GammaSkiaGpuRenderSession(_callerInfo);
         }
 
         public IDrawingContextImpl CreateDrawingContext(bool useScaledDrawing)
         {
-            // CPU fallback when GRContext is null
             return DrawingContextHelper.WrapSkiaCanvas(_callerInfo.Canvas, new Vector(96, 96));
         }
 

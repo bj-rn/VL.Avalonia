@@ -183,6 +183,8 @@ namespace VL.Avalonia.Skia
                 {
                     var canvas = lease.SkCanvas;
 
+                    var ctx = lease.GrContext;
+
                     canvas.Save();
 
                     if (Layer != null)

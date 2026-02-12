@@ -21,7 +21,7 @@ namespace VL.Avalonia.Skia
             }
 
             if (callerInfo != null)
-                return new GammaSkiaRenderTarget(callerInfo, gpuSurface);
+                return new GammaSkiaRenderTarget(callerInfo);
 
             throw new NotSupportedException(
                 "Don't know how to create a Skia render target from any of provided surfaces"

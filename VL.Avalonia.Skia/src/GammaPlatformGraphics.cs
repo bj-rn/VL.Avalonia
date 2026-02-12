@@ -2,7 +2,6 @@
 using Avalonia;
 using Avalonia.Platform;
 using Avalonia.Skia;
-using SkiaSharp;
 using VL.Skia;
 
 namespace VL.Avalonia.Skia
@@ -34,19 +33,9 @@ namespace VL.Avalonia.Skia
 
             public ISkiaGpuRenderTarget? TryCreateRenderTarget(IEnumerable<object> surfaces)
             {
-                CallerInfo? callerInfo = null;
-                SKSurface? gpuSurface = null;
-
                 foreach (var s in surfaces)
-                {
                     if (s is CallerInfo c)
-                        callerInfo = c;
-                    if (s is SKSurface surf)
-                        gpuSurface = surf;
-                }
-
-                if (callerInfo != null && gpuSurface != null)
-                    return new GammaSkiaRenderTarget(callerInfo, gpuSurface);
+                        return new GammaSkiaRenderTarget(c);
 
                 return null;
             }
