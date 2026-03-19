@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="Uv2x9X9aBSIN4lxXzYj8CP" LanguageVersion="2025.7.2-0011-g09fc2b0187" Version="0.128">
+  <NugetDependency Id="S2V0xMV3KHROkKDGLvkunV" Location="VL.CoreLib" Version="2025.7.2-0011-g09fc2b0187" />
+  <Patch Id="ULdLBdekTt5OIZYHtfGx6x">
+    <Canvas Id="BEE2YcxmUfUPEjxpNyQERk" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="ANDhU2vvzFVO9LWNba29LV">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="EPvvMGo0MvdOVtQHj5Pk9Z">
+        <Canvas Id="ShGIfCDZtG4NL2N3JU1zWL" CanvasType="Group">
+          <Node Bounds="303,140,87,19" Id="EX16lxyU4gFNBLVs84Bhnz">
+            <p:NodeReference LastCategoryFullName="TouchFormAdapterUtils" LastDependency="TouchFormAdapterUtils.csproj">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="TouchFormAdapterUtils" />
+              <Choice Kind="ProcessAppFlag" Name="TouchKeyboard" />
+            </p:NodeReference>
+            <Pin Id="T2jJOnUL03lMKU76xw3I8d" Name="Show" Kind="InputPin" />
+            <Pin Id="K8vdaGBveIINvgShuPmKxT" Name="Hide" Kind="InputPin" />
+            <Pin Id="CQwyTrVmvhULVrBgUQjHjl" Name="Success" Kind="OutputPin" />
+            <Pin Id="S5oyyMA41h2Li69BWCyv62" Name="Status" Kind="OutputPin" />
+          </Node>
+          <Pad Id="RQviq8gHa6HPoaSsgmdf31" Comment="Status" Bounds="387,190,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="LzGmmlMaAjCMmi5jRaD2KX" Comment="Success" Bounds="305,210,35,35" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="BfwVZAtaap0MsxdUhAx8U7" Comment="Show" Bounds="258,80,35,35" ShowValueBox="true" isIOBox="true" Value="false">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="DcM0SNTrlxaNMbvpjFhwVp" Comment="Hide" Bounds="415,80,35,35" ShowValueBox="true" isIOBox="true" Value="false">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+        </Canvas>
+        <Patch Id="IFI0EoUVBK8PYjxfEJSuts" Name="Create" />
+        <Patch Id="SYKeG7OAVQPNUwRVkydg8t" Name="Update" />
+        <ProcessDefinition Id="C0OG7N7j8CiNn4BZrBUz1M">
+          <Fragment Id="L90XDOtG6uWPUH5PrePqXH" Patch="IFI0EoUVBK8PYjxfEJSuts" Enabled="true" />
+          <Fragment Id="LAV2lCwnltGLFj9GsAVccV" Patch="SYKeG7OAVQPNUwRVkydg8t" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="K7W2daozHNcMCicGEV8wIJ" Ids="S5oyyMA41h2Li69BWCyv62,RQviq8gHa6HPoaSsgmdf31" />
+        <Link Id="GANPvXxPU1xNBxH7mhGi8u" Ids="CQwyTrVmvhULVrBgUQjHjl,LzGmmlMaAjCMmi5jRaD2KX" />
+        <Link Id="SSmuuQJUJsTM89QrEARRu0" Ids="BfwVZAtaap0MsxdUhAx8U7,T2jJOnUL03lMKU76xw3I8d" />
+        <Link Id="GmdPJB7IwSWMv5Mv7bRuMs" Ids="DcM0SNTrlxaNMbvpjFhwVp,K8vdaGBveIINvgShuPmKxT" />
+      </Patch>
+    </Node>
+  </Patch>
+  <ProjectDependency Id="AAeTWwzPq5WOgwv9L9cZLn" Location="./csharp/TouchFormAdapterUtils/TouchFormAdapterUtils.csproj" />
+</Document>
