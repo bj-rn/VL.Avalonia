@@ -766,6 +766,30 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="379,410,57,19" Id="UOrrNWnY5XeN4wDnMyRujp">
+            <p:NodeReference LastCategoryFullName="Avalonia.DataValidation.DataValidationErrors" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <FullNameCategoryReference ID="Avalonia.DataValidation.DataValidationErrors" />
+              <Choice Kind="OperationCallFlag" Name="SetErrors" />
+            </p:NodeReference>
+            <Pin Id="C8Z0bpqcAkyP4ZQx6LFqri" Name="Control" Kind="InputPin" />
+            <Pin Id="CXyEEI2t5m2POz7tDm8fxZ" Name="Errors" Kind="InputPin" />
+            <Pin Id="BJXKmFyYtu3Okg1Ex8xeBi" Name="Apply" Kind="InputPin" />
+          </Node>
+          <Node Bounds="405,361,65,19" Id="HjV4aeQQMwzM5fl8SJPVcX">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="RecordType" Name="Spread" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="FromValue" />
+            </p:NodeReference>
+            <Pin Id="NofeRzno9RnNGC4O7JVoZI" Name="Input" Kind="InputPin" />
+            <Pin Id="CArmHhDtPjmMuui5MJZLd1" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Kzs3JBXGnogNnhIJDZ0v4W" Comment="" Bounds="407,350,35,15" ShowValueBox="true" isIOBox="true" Value="text">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -827,6 +851,9 @@
         <Link Id="VqmRS94sJr5O3AahoPVyaQ" Ids="N23NLrwBLBJNRtIcvqnxMS,VSu1Nbu5H4dQFVIA4IHlx9" IsHidden="true" />
         <Link Id="T4NalztnQv1Pmb6BsZOG7d" Ids="RHlc5XCozNQO0dM8dBAjsr,Mfi7IiKN0EANqn2Fr4DWU2" IsHidden="true" />
         <Link Id="Owh9Jb5Uv2gNPu5QPrh2X4" Ids="OQe3wotAiKGMV4UvAc6o9D,BBTTDK8fLeVQVcgcPBbjbA" />
+        <Link Id="RwwmDwdv3yyPcxBJQg4oCx" Ids="JRSdWE2wELmLN6QyflAF7Y,C8Z0bpqcAkyP4ZQx6LFqri" />
+        <Link Id="NtXTivuUBP6PYYg5FSQcQx" Ids="CArmHhDtPjmMuui5MJZLd1,CXyEEI2t5m2POz7tDm8fxZ" />
+        <Link Id="IO5dkuM8lZAPGs9Mh7xzW9" Ids="Kzs3JBXGnogNnhIJDZ0v4W,NofeRzno9RnNGC4O7JVoZI" />
       </Patch>
     </Node>
   </Patch>
