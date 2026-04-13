@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls;
+﻿using System.Reactive.Linq;
+using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Styling;
 using VL.Avalonia.Attributes;
@@ -40,7 +41,7 @@ namespace VL.Avalonia.Controls
                 {
                     _itemSourceBinding = _output.Bind(
                         ItemsControl.ItemsSourceProperty,
-                        itemsSource
+                        itemsSource.StartWith(itemsSource.Value)
                     );
                 }
                 else
