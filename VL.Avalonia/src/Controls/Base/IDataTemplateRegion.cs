@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace VL.Avalonia.Controls.Base
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Base interface for DataTemplate region in VL

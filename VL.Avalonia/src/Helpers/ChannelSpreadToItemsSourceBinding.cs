@@ -4,6 +4,7 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Helpers;
 
+[Obsolete]
 public class ChannelSpreadToItemsSourceBinding<T> : IDisposable
 {
     private IChannel<Spread<T>> _internalChannel => ChannelHelpers.CreateChannelOfType<Spread<T>>();
