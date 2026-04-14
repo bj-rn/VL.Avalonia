@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RKwxb1s4E8WPqFxSH51ZnO" LanguageVersion="2025.7.1-0142-gabf274b680" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0142-gabf274b680" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="RKwxb1s4E8WPqFxSH51ZnO" LanguageVersion="2025.7.1" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -21,7 +21,7 @@
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="EMAaVQMVNf2MIIhNQanTL4" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="1223, 114, 477, 794" IsHidden="true" />
+            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="1637, 127, 477, 828" IsHidden="true" />
             <Pin Id="OhUk0lcXRfZPS1pGZZQXFi" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="Crih6r1mjYkP4zxje5Ginm" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="EyUbJWQNM3mPPTWltTE2st" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
@@ -117,7 +117,6 @@
             </p:NodeReference>
             <Pin Id="CqwfkuiP6k9LXX8yAr6AAi" Name="Items" Kind="InputPin" />
             <Pin Id="BIX0LUUfD4dOhvnkQhbOBW" Name="Items 2" Kind="InputPin" />
-            <Pin Id="DqdXjSnaeduNXYuy81JLHz" Name="Items Channel" Kind="InputPin" IsHidden="true" />
             <Pin Id="LtyZp9IDt59PP6aUyvEQD9" Name="Style" Kind="InputPin" />
             <Pin Id="FXNC0yIHwOgOtr30RjblSA" Name="Output" Kind="OutputPin" />
             <Pin Id="PZbuKLCRcVQOApL3S5l8DT" Name="Classes" Kind="InputPin" IsHidden="true" />
@@ -454,15 +453,6 @@
             <Pin Id="GBAXhBLznMLPT8hlT5oRMZ" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="GMbKsmm4EJmQJl2gzbrXJB" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="501,301,65,19" Id="Kn0gXo7Hl75NSQ8DO9O6LT">
-            <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls.TreeViewItemExtensions" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="OperationCallFlag" Name="Level" />
-            </p:NodeReference>
-            <Pin Id="GmjnfUyFPaLMRnvY6ZPNwM" Name="Input" Kind="StateInputPin" />
-            <Pin Id="U6I7xCtE56iMvKHeQ4Cs9Y" Name="Result" Kind="OutputPin" />
-          </Node>
-          <Pad Id="R9rQ6lkj0zXMpoHcZ9bTlK" Comment="" Bounds="503,350,35,15" ShowValueBox="true" isIOBox="true" />
           <Pad Id="Qvizz54fTNoOT20rDo12nr" Comment="Header" Bounds="363,560,35,15" ShowValueBox="true" isIOBox="true" Value="Ciao">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="String" />
@@ -519,6 +509,38 @@
             <Pin Id="TvG8hPzKUXgPwLZfXWLvTg" Name="Value" Kind="InputPin" DefaultValue="Stretch" />
             <Pin Id="AQ0aWfbml8FQC3ssqwTfL5" Name="Output" Kind="OutputPin" />
           </Node>
+          <Pad Id="FlnJggqD4J5Qa0Yxg9j6SR" Comment="Selection Mode" Bounds="323,621,99,15" ShowValueBox="true" isIOBox="true" Value="Multiple">
+            <p:TypeAnnotation LastCategoryFullName="Avalonia.Controls.Base" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="TypeFlag" Name="SelectionMode" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="425,730,79,19" Id="MkBTZWPmWdxM6hI71pq4os">
+            <p:NodeReference LastCategoryFullName="Avalonia.Controls.Collections" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="SelectedItems (TreeView)" />
+            </p:NodeReference>
+            <Pin Id="KnAuZhQBBI0L5AzahQPqJO" Name="Input" Kind="InputPin" />
+            <Pin Id="C1P9YUh5yJKMa9aJutJxQz" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="H2DDkLHYoxBL6deHNAwhrL" Comment="" Bounds="427,790,423,145" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Collections.Interfaces" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="IReadOnlyList" />
+              <p:TypeArguments>
+                <TypeReference>
+                  <Choice Kind="TypeFlag" Name="Object" />
+                </TypeReference>
+              </p:TypeArguments>
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="PritRmJuuiwLconacVM98B" Bounds="411,681,340,41" ShowValueBox="true" isIOBox="true" Value="SelectedItems (TreeView) &#xD;&#xA;special node for handling tree view multiselect">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -541,18 +563,19 @@
         <Link Id="BXyadQOfviiPHWhq0XoxeQ" Ids="U5hFK7uI0ZnQSg7nZHacRh,SsuVFnWegByMqtXvJBAFNv" />
         <Link Id="NMqPz8ORzvCLyZyDQva6eo" Ids="NVSMEslLRnSLjfpM6q5mbf,HZAdbwUweDTNNrkkxHsLf4" />
         <Link Id="DOoECltQa0RMTjIqiNiRCR" Ids="Kpri7HP5vOkMiYYjkuUPKw,S4M4wVRrUktPPhxW71FCYB" />
-        <Link Id="VA6mAp4901tPazSd6BICw1" Ids="NVSMEslLRnSLjfpM6q5mbf,GmjnfUyFPaLMRnvY6ZPNwM" />
-        <Link Id="O4jxGtYxFw1QWcjssGiB5y" Ids="U6I7xCtE56iMvKHeQ4Cs9Y,R9rQ6lkj0zXMpoHcZ9bTlK" />
         <Link Id="OfzsFqg5ST1PmXB7S2isA7" Ids="Qvizz54fTNoOT20rDo12nr,GXCjIDaA9vxP9JZC5aezxd" />
         <Link Id="H039GGnlwxePofKqV743UL" Ids="PgsX0MbyQH2NrYgZVAzwVe,DpoAs6E1KgCOxLZPW1FNuf" />
         <Link Id="DU6Y75txjLwN063BCP0avo" Ids="Fs0i6u6end2OLGiMiuP2Hk,CqwfkuiP6k9LXX8yAr6AAi" />
         <Link Id="CoAWNWbSoY4MjwGvx9F0jZ" Ids="Gyf0IxvavGeLXbZbyeFCmA,Aeea5PdvJBuPsdXbUntUkm" />
         <Link Id="UMTf2fSGrKeNKF1X2n0TC2" Ids="HgB7YhShqRKOacOfqSokM8,LXssJ9TbL6QLBejx8lDKYV" />
         <Link Id="C9qNe78bhRkLt4pDGvGAkr" Ids="AQ0aWfbml8FQC3ssqwTfL5,H99Ad8oZIfyOOXahIQ3DO7" />
+        <Link Id="OljOcKvWnn8NVZMi1KCi2j" Ids="FlnJggqD4J5Qa0Yxg9j6SR,QwotfRwmfYJPi56u77LsUz" />
+        <Link Id="M0Ax3ouPZ2pPCqSPhD7Fp4" Ids="FXNC0yIHwOgOtr30RjblSA,KnAuZhQBBI0L5AzahQPqJO" />
+        <Link Id="JqPpGS4p8OCPCwocBroYOO" Ids="C1P9YUh5yJKMa9aJutJxQz,H2DDkLHYoxBL6deHNAwhrL" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0142-gabf274b680" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
 </Document>
