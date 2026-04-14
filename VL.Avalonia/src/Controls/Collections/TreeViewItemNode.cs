@@ -13,13 +13,13 @@ namespace VL.Avalonia.Controls
         : HeaderedItemsControlBaseNode<TreeViewItem, T>,
             IDisposable
     {
-        private TwoWayBinding<bool> _isExpandedBinding;
-        private TwoWayBinding<bool> _isSelectedBinding;
+        protected TwoWayBinding<bool> IsExpandedBinding;
+        protected TwoWayBinding<bool> IsSelectedBinding;
 
         public TreeViewItemNodeBase()
         {
-            _isExpandedBinding = new(_output, TreeViewItem.IsExpandedProperty);
-            _isSelectedBinding = new(_output, TreeViewItem.IsSelectedProperty);
+            IsExpandedBinding = new(_output, TreeViewItem.IsExpandedProperty);
+            IsSelectedBinding = new(_output, TreeViewItem.IsSelectedProperty);
         }
 
         /// <inheritdoc cref="TreeViewItem.IsExpandedProperty"/>
@@ -27,7 +27,7 @@ namespace VL.Avalonia.Controls
             [Pin(Visibility = PinVisibility.Optional)] IChannel<bool> isExpandedChannel
         )
         {
-            _isExpandedBinding.Bind(isExpandedChannel);
+            IsExpandedBinding.Bind(isExpandedChannel);
         }
 
         /// <inheritdoc cref="TreeViewItem.IsSelectedProperty"/>
@@ -35,13 +35,13 @@ namespace VL.Avalonia.Controls
             [Pin(Visibility = PinVisibility.Optional)] IChannel<bool> isSelectedChannel
         )
         {
-            _isSelectedBinding.Bind(isSelectedChannel);
+            IsSelectedBinding.Bind(isSelectedChannel);
         }
 
         public override void Dispose()
         {
-            _isExpandedBinding?.Dispose();
-            _isSelectedBinding?.Dispose();
+            IsExpandedBinding?.Dispose();
+            IsSelectedBinding?.Dispose();
 
             base.Dispose();
         }
