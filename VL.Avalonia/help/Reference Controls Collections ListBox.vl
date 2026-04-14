@@ -648,16 +648,6 @@
             <Pin Id="Jr12916W7DYOpMTSMemoYS" Name="Result" Kind="OutputPin" />
           </Node>
           <Pad Id="CnO1Sl5JxovNRjaoFXAHS4" Comment="" Bounds="414,361,108,128" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="769,481,85,26" Id="OEBWQ2UehVlLJnWSZ9p6lT">
-            <p:NodeReference LastCategoryFullName="Avalonia.Controls.ListBox" LastDependency="VL.Avalonia.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <FullNameCategoryReference ID="Avalonia.Controls.ListBox" />
-              <Choice Kind="OperationCallFlag" Name="SelectionModel" />
-            </p:NodeReference>
-            <Pin Id="G4SWItFyj0INCzRwlEEk6R" Name="Input" Kind="StateInputPin" />
-            <Pin Id="Jxd3FsGgIOfOJbU3OOQeMh" Name="Result" Kind="OutputPin" />
-          </Node>
-          <Pad Id="Ktk5oiPFGyJP999fWphY8R" Comment="" Bounds="771,540,190,132" ShowValueBox="true" isIOBox="true" />
           <Pad Id="KPOGmsNbvbMLd2kBUX2bxu" Comment="Is Text Search Enabled" Bounds="763,301,35,35" ShowValueBox="true" isIOBox="true" Value="True">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
@@ -691,6 +681,16 @@
             <Pin Id="BwF1dYtYWhbL48dYfcg0HU" Name="Result" Kind="OutputPin" />
           </Node>
           <Pad Id="FXlQZuOGZsJM1vOZsXm362" Comment="" Bounds="1046,560,190,132" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="803,470,82,26" Id="MXRNv2QPr4ALedZ3RgelGu">
+            <p:NodeReference LastCategoryFullName="Avalonia.Controls.ListBox" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <FullNameCategoryReference ID="Avalonia.Controls.ListBox" />
+              <Choice Kind="OperationCallFlag" Name="SelectionMode" />
+            </p:NodeReference>
+            <Pin Id="AAEF8BsDkTONn8vdNJDQxy" Name="Input" Kind="StateInputPin" />
+            <Pin Id="FeEhpwCR5ATQWREZpfiTtA" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="ATKjf7Rme6ANQepUBId48y" Comment="" Bounds="805,520,99,15" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -728,14 +728,14 @@
         <Link Id="NzdLLu0Qr7PQQW0KQnenzl" Ids="HfixXu9C9EdL2gC1ab4fEL,VrHKazSJs8RPGA1O0DiQWO" />
         <Link Id="UXv3eAS0v1xMiBjfx83OfF" Ids="PfNkUPBI3vUNx5SgxIP2dR,R44HEkbwzy1QLMhiPLqoyV" />
         <Link Id="AWPQqQq1UznN04U4ZN4jrk" Ids="Jr12916W7DYOpMTSMemoYS,CnO1Sl5JxovNRjaoFXAHS4" />
-        <Link Id="Q3xWCvC6dDkNhBFWBik3hT" Ids="SqfFfugQ37eOyerFKzPE6h,G4SWItFyj0INCzRwlEEk6R" />
-        <Link Id="BAYOMgR7DY6NJY6uEG7FGk" Ids="Jxd3FsGgIOfOJbU3OOQeMh,Ktk5oiPFGyJP999fWphY8R" />
         <Link Id="Mye2rgD2dKoOuQXfqdIbPW" Ids="KPOGmsNbvbMLd2kBUX2bxu,JZdgJvLEC7DPdKpkkum6SZ" />
         <Link Id="EXx1Ku6XrvVQaPIwqsHIMC" Ids="HEaMcqB2o32NpzSz5XOkfW,LMvLePjBJgWNzpoW8ONNRw" />
         <Link Id="Gr8qjFquzRNLAj1iTEwnT9" Ids="HEaMcqB2o32NpzSz5XOkfW,VcRAgsRUao4OPK6Q97jlTN" />
         <Link Id="UjhRz92PzgtLOtVUmXkOIk" Ids="VcRAgsRUao4OPK6Q97jlTN,B1u5WQLXpj1OSwy0G6lEFQ" />
         <Link Id="DhfZoZhcg6tOeW0lunYkh9" Ids="SqfFfugQ37eOyerFKzPE6h,ITcVwDM8b5JNPviinXqm4q" />
         <Link Id="OQX6J859ztsP8bLdAR9uTV" Ids="BwF1dYtYWhbL48dYfcg0HU,FXlQZuOGZsJM1vOZsXm362" />
+        <Link Id="OWgj5JJpDaOLmmWwqN3jMA" Ids="SqfFfugQ37eOyerFKzPE6h,AAEF8BsDkTONn8vdNJDQxy" />
+        <Link Id="Ttg8A27xQfdNiw3RO3AORj" Ids="FeEhpwCR5ATQWREZpfiTtA,ATKjf7Rme6ANQepUBId48y" />
       </Patch>
     </Node>
   </Patch>

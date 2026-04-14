@@ -101,9 +101,4 @@ namespace VL.Avalonia.Controls
             _itemSourceBinding?.Dispose();
         }
     }
-
-    public static class ItemsContolExtensions
-    {
-        public static int ItemCount(this ItemsControl input) => input?.ItemCount ?? 0;
-    }
 }

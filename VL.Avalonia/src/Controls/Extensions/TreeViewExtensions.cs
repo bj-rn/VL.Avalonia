@@ -3,7 +3,7 @@ using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls
 {
-    public static partial class Extensions
+    public static partial class LayoutableExtensions
     {
         /// <summary>
         /// Gets TreeView selected item.

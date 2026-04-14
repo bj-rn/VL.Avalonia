@@ -91,10 +91,4 @@ namespace VL.Avalonia.Controls
             base.Dispose();
         }
     }
-
-    public static class SelectingItemsControlExtensions
-    {
-        public static int SelectedIndex(this SelectingItemsControl input) =>
-            input?.SelectedIndex ?? 0;
-    }
 }

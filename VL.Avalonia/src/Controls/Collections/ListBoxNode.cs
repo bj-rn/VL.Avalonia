@@ -1,6 +1,4 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
-using Avalonia.Controls.Selection;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
@@ -60,19 +58,5 @@ namespace VL.Avalonia.Controls
         {
             base.SetItemsSource(itemsSource);
         }
-    }
-
-    public static class ListBoxExtensions
-    {
-        public static System.Collections.IList? SelectedItems(this ListBox input) =>
-            input?.SelectedItems;
-
-        public static ISelectionModel? SelectionModel(this ListBox input) => input?.Selection;
-
-        public static void SelectAll(this ListBox input) => input?.SelectAll();
-
-        public static void UnselectAll(this ListBox input) => input?.UnselectAll();
-
-        public static IScrollable? Scroll(this ListBox input) => input?.Scroll;
     }
 }
