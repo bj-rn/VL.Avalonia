@@ -2,7 +2,7 @@
 
 namespace VL.Avalonia.Controls
 {
-    public static partial class LayoutableExtensions
+    public static class MenuExtensions
     {
         /// <summary>
         /// Opens menu
