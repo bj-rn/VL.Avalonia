@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="GS1LMcvxrmBM1Tn0nlrzA8" LanguageVersion="2025.7.2-0024-gd24d4e22e9" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.2-0024-gd24d4e22e9" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="GS1LMcvxrmBM1Tn0nlrzA8" LanguageVersion="2025.7.1" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -866,6 +866,25 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="647,133,84,95" Id="LlLJp4kmE7cPTuEiQOXRqu">
+            <p:NodeReference LastCategoryFullName="Avalonia.Controls" LastDependency="VL.Avalonia.vl">
+              <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="DataTemplate" />
+            </p:NodeReference>
+            <Pin Id="AgZFOL4jBNZN9W5Zb82FSM" Name="State Output" Kind="OutputPin" IsHidden="true" />
+            <Pin Id="RDFLwObsxvWObevYjL0Zcl" Name="Output" Kind="OutputPin" />
+            <Pin Id="LjyavQjKHjVLWQ92TTglyr" Name="Has Changed" Kind="OutputPin" />
+            <Patch Id="AmyZuIwizjZQb1XwKLFQDg" ManuallySortedPins="true">
+              <Patch Id="KyyQ3rCKiOnMlQwt1hutbH" Name="Update" ManuallySortedPins="true">
+                <Pin Id="KJppGPSY7P3OvroQcHRU9i" Name="Input 1" Kind="InputPin" />
+                <Pin Id="ED1ej51czvJLsaBiuKopbT" Name="Output" Kind="OutputPin" />
+              </Patch>
+              <Patch Id="Vc9E1eGZgTcQFWifadgOlb" Name="Create" ManuallySortedPins="true" />
+              <ControlPoint Id="VL4TOdGH1o8MnWdflfHmTC" Bounds="651,141" />
+              <ControlPoint Id="GGjm48Vn1opQTfBfcKMHAi" Bounds="651,221" />
+            </Patch>
+            <Pin Id="DEjwj1C4opyN6pLepLIpsC" Name="Node Context" Kind="InputPin" IsHidden="true" />
+          </Node>
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -884,7 +903,6 @@
         <Link Id="L5AY9x0ZvYiOjsykyqOzTC" Ids="H4xht8xgxNGPWtoOcR6FDa,Jfj0inWBbH2PLGdZTACIem" />
         <Link Id="KKpiqsrdCObOsPEwfTBEVC" Ids="KdcFaGRAEpBLY41GCAXjJn,Fib5y6EZpemPVt3xMno3TR" />
         <Link Id="LIPYx2UqG0jPSPDZuQNkHZ" Ids="Ai0MxQXGtx0LQFCye4g6nL,DEDPGKKMYkzQH5BNN3syAz" />
-        <Link Id="OYpzG0jzkPBMLqh467vlWW" Ids="LwpbUagaVCFQKyXfhR9g1X,L97xW2GziTYPoO7MONjXpC" />
         <Link Id="B7GP8weE9hdNDyekBSNtzE" Ids="R8QD65mKxOoPEcxh6ZlRt1,ECTFaMYORauOHx6XSThfDj" />
         <Link Id="DNFDegatfS2LRgKcdHYGQz" Ids="JylIqA1Wf0VQIDjiPfqur5,CTt2MtZKwYXNx0pQGypcJj" />
         <Link Id="LZ9HZUgR2PQOUWSyCgBd7c" Ids="Md5v1VVkjvMMJsd8mFq0lH,Bh9nIAluq65MPogbAJKXMG" />
@@ -934,10 +952,13 @@
         <Link Id="HPgDt1iDVXyN9aD8UllQXY" Ids="IXe3FsonB0oOTz4oZDZ8cL,GmG69bGWPzbLARcZ4a4cYK" />
         <Link Id="DziNWlzgvMNNGWRXT3K2An" Ids="DveSahROCJWMv7hD9YpBPS,CWjoRnQyXQ3Phcl9Zt87Og" />
         <Link Id="A8hAeIZCIyQMQ4vhLBpx7X" Ids="CWjoRnQyXQ3Phcl9Zt87Og,KTfIs0QEAkzLXlyq696KmY" />
+        <Link Id="HsM7KLavgpWLcLGH82FKE6" Ids="LwpbUagaVCFQKyXfhR9g1X,L97xW2GziTYPoO7MONjXpC" />
+        <Link Id="HdjjZ2gJHORL7oeyZl1Ins" Ids="KJppGPSY7P3OvroQcHRU9i,VL4TOdGH1o8MnWdflfHmTC" IsHidden="true" />
+        <Link Id="KBdHfBz7r6QO0YUTADGY7y" Ids="GGjm48Vn1opQTfBfcKMHAi,ED1ej51czvJLsaBiuKopbT" IsHidden="true" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.2-0024-gd24d4e22e9" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
 </Document>

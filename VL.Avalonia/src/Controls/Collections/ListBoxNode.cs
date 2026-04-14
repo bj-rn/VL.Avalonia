@@ -9,6 +9,7 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls
 {
+    /// <inheritdoc cref="ListBox"/>
     [ProcessNode]
     public abstract partial class ListBoxNodeBase<T> : SelectingItemsControlNodeBase<ListBox, T>
     {
@@ -25,6 +26,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
+    /// <inheritdoc cref="ListBox"/>
     [ProcessNode(Name = "ListBox")]
     public class ListBoxNode<T> : ListBoxNodeBase<T>
     {
@@ -38,6 +40,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
+    /// <inheritdoc cref="ListBox"/>
     [ProcessNode(Name = "ListBox (Spectral)")]
     public class ListBoxSpectralNode<T> : ListBoxNodeBase<T>
     {
@@ -48,6 +51,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
+    /// <inheritdoc cref="ListBox"/>
     [ProcessNode(Name = "ListBox (Reactive)")]
     public class ListBoxReactiveNode<T> : ListBoxNodeBase<T>
     {
