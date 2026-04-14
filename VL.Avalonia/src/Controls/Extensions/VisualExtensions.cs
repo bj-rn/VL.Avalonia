@@ -9,7 +9,7 @@ namespace VL.Avalonia.Controls
     /// <summary>
     /// Extension methods for <see cref="Visual"/>.
     /// </summary>
-    public static partial class VisualExtensions
+    public static class VisualExtensions
     {
         /// <inheritdoc cref="Visual.Bounds"/>
         public static RectangleF Bounds(this Visual? visual) =>
