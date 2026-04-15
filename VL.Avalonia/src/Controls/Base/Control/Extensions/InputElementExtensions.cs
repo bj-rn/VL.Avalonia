@@ -18,7 +18,7 @@ namespace VL.Avalonia.Input
         public static bool Focusable(this InputElement input) => input?.Focusable ?? false;
 
         /// <inheritdoc cref="InputElement.Focusable"/>
-        public static void SetIsFocusable(this InputElement input, bool focusable = true)
+        public static void SetFocusable(this InputElement input, bool focusable = true) // Changed from SetIsFocusable
         {
             if (input is not null)
                 input.Focusable = focusable;

@@ -7,26 +7,28 @@ using VL.Avalonia.Attributes;
 namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref= "ContentControl"/>
-    public abstract class ContentControlNodeBase<TControl, TValue> : ControlNodeBase<TControl>
+    public abstract class ContentControlNodeBase<TControl, TValue>
+        : TemplatedControlNodeBase<TControl>
         where TControl : ContentControl, new()
     {
         /// <inheritdoc cref= "ContentControl.ContentProperty"/>
         [ImplementProperty(
             typeof(ContentControl),
-            nameof(ContentControl.Content),
+            nameof(ContentControl.ContentProperty),
             Order = PinOrder.Main
         )]
         private Optional<object> _content;
 
+        /// <inheritdoc cref="ContentControl.ContentTemplateProperty"/>
         [ImplementProperty(
             typeof(ContentControl),
-            nameof(ContentControl.ContentTemplate),
+            nameof(ContentControl.ContentTemplateProperty),
             Order = PinOrder.Secondary,
             PinVisibility = Model.PinVisibility.Optional
         )]
         private Optional<IDataTemplate> _contentTemplate;
 
-        /// <inheritdoc cref="ContentControl.HorizontalContentAlignment"/>
+        /// <inheritdoc cref="ContentControl.HorizontalContentAlignmentProperty"/>
         [ImplementProperty(
             typeof(ContentControl),
             nameof(ContentControl.HorizontalContentAlignmentProperty),
@@ -35,7 +37,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<HorizontalAlignment> _horizontalContentAlignment;
 
-        /// <inheritdoc cref="ContentControl.VerticalContentAlignment"/>
+        /// <inheritdoc cref="ContentControl.VerticalContentAlignmentProperty"/>
         [ImplementProperty(
             typeof(ContentControl),
             nameof(ContentControl.VerticalContentAlignmentProperty),

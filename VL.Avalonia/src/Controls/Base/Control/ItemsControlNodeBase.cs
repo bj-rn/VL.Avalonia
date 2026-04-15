@@ -15,7 +15,7 @@ namespace VL.Avalonia.Controls
     /// </summary>
     [ProcessNode(FragmentSelection = FragmentSelection.Explicit)]
     public abstract partial class ItemsControlNodeBase<TControl, TValue>
-        : ControlNodeBase<TControl>,
+        : TemplatedControlNodeBase<TControl>,
             IDisposable
         where TControl : ItemsControl, new()
     {
@@ -30,7 +30,6 @@ namespace VL.Avalonia.Controls
         /// <summary>
         /// Binds observable items source.
         /// </summary>
-        /// <param name="itemsSource">Observable items source</param>
         public virtual void SetItemsSource(IChannel<IReadOnlyList<TValue>> itemsSource)
         {
             if (!ReferenceEquals(_itemsSource, itemsSource))
@@ -55,9 +54,8 @@ namespace VL.Avalonia.Controls
         }
 
         /// <summary>
-        /// Sets items
+        /// Sets items on source
         /// </summary>
-        /// <param name="items">Spread of items</param>
         public virtual void SetItems(Spread<TValue> items)
         {
             if (!ReferenceEquals(_items, items))
@@ -78,29 +76,32 @@ namespace VL.Avalonia.Controls
             }
         }
 
+        /// <inheritdoc cref="ItemsControl.ItemTemplate"/>
         [ImplementProperty(
             typeof(ItemsControl),
             nameof(ItemsControl.ItemTemplateProperty),
             Order = PinOrder.DataTemplate,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<IDataTemplate> _itemTemplate;
+        private Optional<IDataTemplate> _itemTemplate;
 
+        /// <inheritdoc cref="ItemsControl.ItemsPanel"/>
         [ImplementProperty(
             typeof(ItemsControl),
             nameof(ItemsControl.ItemsPanelProperty),
             Order = PinOrder.DataTemplate,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<ITemplate<Panel>> _itemsPanel;
+        private Optional<ITemplate<Panel>> _itemsPanel;
 
+        /// <inheritdoc cref="ItemsControl.ItemContainerTheme"/>
         [ImplementProperty(
             typeof(ItemsControl),
             nameof(ItemsControl.ItemContainerThemeProperty),
             Order = PinOrder.DataTemplate,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<ControlTheme> _itemContainerTheme;
+        private Optional<ControlTheme> _itemContainerTheme;
 
         public virtual void Dispose()
         {

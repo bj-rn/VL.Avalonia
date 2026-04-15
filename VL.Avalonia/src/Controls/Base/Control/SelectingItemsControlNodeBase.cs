@@ -65,29 +65,32 @@ namespace VL.Avalonia.Controls
             }
         }
 
+        /// <inheritdoc cref="SelectingItemsControl.AutoScrollToSelectedItem"/>
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.AutoScrollToSelectedItemProperty),
             Order = PinOrder.Styled,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<bool> _autoScrollToSelectedItem;
+        private Optional<bool> _autoScrollToSelectedItem;
 
+        /// <inheritdoc cref="SelectingItemsControl.WrapSelection"/>
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.WrapSelectionProperty),
             Order = PinOrder.Styled,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<bool> _wrapSelection;
+        private Optional<bool> _wrapSelection;
 
+        /// <inheritdoc cref="SelectingItemsControl.IsTextSearchEnabled"/>
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.IsTextSearchEnabledProperty),
             Order = PinOrder.Styled,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<bool> _isTextSearchEnabled;
+        private Optional<bool> _isTextSearchEnabled;
 
         public override void Dispose()
         {

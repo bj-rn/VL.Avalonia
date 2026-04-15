@@ -6,7 +6,7 @@ using VL.Avalonia.Attributes;
 namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref= "TemplatedControl"/>
-    public abstract class TemplatedControlNodeBase<T> : ControlNodeBase<T>
+    public abstract partial class TemplatedControlNodeBase<T> : ControlNodeBase<T>
         where T : TemplatedControl, new()
     {
         /*

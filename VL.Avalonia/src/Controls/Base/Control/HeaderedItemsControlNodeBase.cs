@@ -8,23 +8,25 @@ namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref="HeaderedItemsControl"/>
     [ProcessNode]
-    public abstract partial class HeaderedItemsControlBaseNode<TControl, TValue>
+    public abstract partial class HeaderedItemsControlNodeBase<TControl, TValue>
         : ItemsControlNodeBase<TControl, TValue>
         where TControl : HeaderedItemsControl, new()
     {
+        /// <inheritdoc cref="HeaderedItemsControl.Header"/>
         [ImplementProperty(
             typeof(HeaderedItemsControl),
-            nameof(HeaderedContentControl.HeaderProperty),
+            nameof(HeaderedItemsControl.HeaderProperty),
             Order = PinOrder.Main
         )]
-        protected Optional<object> _header;
+        private Optional<object> _header;
 
+        /// <inheritdoc cref="HeaderedItemsControl.HeaderTemplate"/>
         [ImplementProperty(
             typeof(HeaderedItemsControl),
-            nameof(HeaderedContentControl.HeaderTemplateProperty),
+            nameof(HeaderedItemsControl.HeaderTemplateProperty),
             Order = PinOrder.Secondary,
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<IDataTemplate> _headerTemplate;
+        private Optional<IDataTemplate> _headerTemplate;
     }
 }
