@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
@@ -10,7 +10,7 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "AutoCompleteBox (Spectral)")]
-public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<AutoCompleteBox>
+public partial class AutoCompleteBoxSpectralWrapper<T> : ControlNodeBase<AutoCompleteBox>
 {
     #region Core Content Properties
 
@@ -191,3 +191,4 @@ public partial class AutoCompleteBoxSpectralWrapper<T> : ControlWrapperBase<Auto
 
     #endregion
 }
+

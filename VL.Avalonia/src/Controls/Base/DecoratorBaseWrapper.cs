@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using VL.Avalonia.Attributes;
 using VL.Core;
@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls
     /// Base class for controls which decorate a single child control.
     /// </summary>
     [ProcessNode]
-    public partial class DecoratorBaseWrapper<T> : ControlWrapperBase<T>
+    public partial class DecoratorBaseWrapper<T> : ControlNodeBase<T>
         where T : Decorator, new()
     {
         /// <param name="child">Sets the <see cref="Decorator.Child"/> for the Decorator</param>
@@ -25,3 +25,4 @@ namespace VL.Avalonia.Controls
         private Optional<Thickness> _padding;
     }
 }
+

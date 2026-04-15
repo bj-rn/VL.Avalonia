@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using VL.Avalonia.Attributes;
@@ -13,7 +13,7 @@ namespace VL.Avalonia.Animation.Transitions
     public interface IAvaloniaTransition
     {
         /// <summary>
-        /// Function we gonna call in ControlWrapperBase to get AvaloniaProperty by name from registry
+        /// Function we gonna call in ControlNodeBase to get AvaloniaProperty by name from registry
         /// </summary>
         /// <param name="owner">Instance of Control</param>
         /// <param name="transition">Transition</param>
@@ -79,3 +79,4 @@ namespace VL.Avalonia.Animation.Transitions
         }
     }
 }
+

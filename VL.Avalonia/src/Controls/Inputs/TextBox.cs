@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
@@ -9,7 +9,7 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode]
-public abstract partial class TextBoxWrapperBase<T> : ControlWrapperBase<T>
+public abstract partial class TextBoxWrapperBase<T> : ControlNodeBase<T>
     where T : TextBox, new()
 {
     protected ChannelTwoWayBinding<string> _textBinding;
@@ -226,3 +226,4 @@ public abstract partial class TextBoxWrapperBase<T> : ControlWrapperBase<T>
 /// </summary>
 [ProcessNode(Name = "TextBox")]
 public partial class TextBoxWrapper : TextBoxWrapperBase<TextBox> { }
+

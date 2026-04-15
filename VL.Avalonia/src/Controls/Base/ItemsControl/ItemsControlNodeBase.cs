@@ -1,4 +1,4 @@
-﻿using System.Reactive.Linq;
+using System.Reactive.Linq;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Styling;
@@ -15,14 +15,14 @@ namespace VL.Avalonia.Controls
     /// </summary>
     [ProcessNode(FragmentSelection = FragmentSelection.Explicit)]
     public abstract partial class ItemsControlNodeBase<TControl, TValue>
-        : ControlWrapperBase<TControl>,
+        : ControlNodeBase<TControl>,
             IDisposable
         where TControl : ItemsControl, new()
     {
         private IChannel<IReadOnlyList<TValue>>? _itemsSource;
         private IDisposable? _itemSourceBinding;
 
-        private Spread<TValue>? _items;
+        private IReadOnlyList<TValue>? _items;
 
         [Fragment]
         public ItemsControlNodeBase() { }
@@ -79,19 +79,25 @@ namespace VL.Avalonia.Controls
         }
 
         [ImplementProperty(
-            "ItemsControl.ItemTemplateProperty",
+            typeof(ItemsControl),
+            nameof(ItemsControl.ItemTemplateProperty),
+            Order = PinOrder.DataTemplate,
             PinVisibility = Model.PinVisibility.Optional
         )]
         protected Optional<IDataTemplate> _itemTemplate;
 
         [ImplementProperty(
-            "ItemsControl.ItemsPanelProperty",
+            typeof(ItemsControl),
+            nameof(ItemsControl.ItemsPanelProperty),
+            Order = PinOrder.DataTemplate,
             PinVisibility = Model.PinVisibility.Optional
         )]
         protected Optional<ITemplate<Panel>> _itemsPanel;
 
         [ImplementProperty(
-            "ItemsControl.ItemContainerThemeProperty",
+            typeof(ItemsControl),
+            nameof(ItemsControl.ItemContainerThemeProperty),
+            Order = PinOrder.DataTemplate,
             PinVisibility = Model.PinVisibility.Optional
         )]
         protected Optional<ControlTheme> _itemContainerTheme;

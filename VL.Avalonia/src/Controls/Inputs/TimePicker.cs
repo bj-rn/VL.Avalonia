@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -14,7 +14,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/>TemplateParts: "PART_FirstColumnDivider", PART_FirstPickerHost", PART_FlyoutButton", PART_FlyoutButtonContentGrid", PART_HourTextBlock", PART_MinuteTextBlock", PART_SecondTextBlock", PART_PeriodTextBlock", PART_PickerPresenter", PART_Popup", PART_SecondColumnDivider", PART_SecondPickerHost",  PART_ThirdColumnDivider", PART_ThirdPickerHost", PART_FourthPickerHost".
 /// </summary>
 [ProcessNode(Name = "TimePicker")]
-public partial class TimePickerWrapper : ControlWrapperBase<TimePicker>
+public partial class TimePickerWrapper : ControlNodeBase<TimePicker>
 {
     #region Core
 
@@ -77,3 +77,4 @@ public partial class TimePickerWrapper : ControlWrapperBase<TimePicker>
 
     #endregion
 }
+

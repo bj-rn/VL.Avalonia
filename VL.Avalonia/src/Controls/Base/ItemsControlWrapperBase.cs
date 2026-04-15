@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Styling;
 using VL.Avalonia.Attributes;
@@ -16,7 +16,7 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 [ProcessNode]
 public abstract partial class ItemsControlWrapperBase<TControl, TValue>
-    : ControlWrapperBase<TControl>
+    : ControlNodeBase<TControl>
     where TControl : ItemsControl, new()
 {
     #region Core Data Properties
@@ -92,3 +92,4 @@ public abstract partial class ItemsControlWrapperBase<TControl, TValue>
 
     #endregion
 }
+

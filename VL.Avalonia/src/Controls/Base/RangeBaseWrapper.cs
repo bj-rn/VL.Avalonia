@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Primitives;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -11,7 +11,7 @@ namespace VL.Avalonia.Controls;
 /// Base class for controls that display a value within a range.
 /// </summary>
 [ProcessNode]
-public abstract partial class RangeBaseWrapper<T> : ControlWrapperBase<T>
+public abstract partial class RangeBaseWrapper<T> : ControlNodeBase<T>
     where T : RangeBase, new()
 {
     #region Core Properties
@@ -71,3 +71,4 @@ public abstract partial class RangeBaseWrapper<T> : ControlWrapperBase<T>
 
     #endregion
 }
+

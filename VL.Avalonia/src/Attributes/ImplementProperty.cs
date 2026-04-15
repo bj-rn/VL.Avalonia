@@ -3,17 +3,29 @@
 /// <summary>
 /// New attempt on general purpose property attribute handler
 /// </summary>
-/// <typeparam name="T"></typeparam>
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 public class ImplementProperty : Attribute
 {
+    [Obsolete]
     public string PropertyPath { get; }
+    public Type? OwnerType { get; }
+    public string? PropertyName { get; }
+
     public int Order { get; set; }
     public Model.PinVisibility PinVisibility { get; set; }
 
+    [Obsolete(
+        "Use ImplementProperty(string propertyPath) or ImplementProperty(Type ownerType, string propertyName) instead."
+    )]
     public ImplementProperty(string propertyPath)
     {
         PropertyPath = propertyPath;
+    }
+
+    public ImplementProperty(Type ownerType, string propertyName)
+    {
+        OwnerType = ownerType;
+        PropertyName = propertyName;
     }
 }
 

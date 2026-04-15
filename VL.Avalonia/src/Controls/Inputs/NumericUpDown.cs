@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Layout;
@@ -16,7 +16,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/numericupdown">NumericUpDown</see>
 /// </summary>
 [ProcessNode(Name = "NumericUpDown")]
-public partial class NumericUpDownWrapper<T> : ControlWrapperBase<T>
+public partial class NumericUpDownWrapper<T> : ControlNodeBase<T>
     where T : NumericUpDown, new()
 {
     protected ChannelTwoWayBinding<float?, decimal?> _valueBinding;
@@ -235,3 +235,4 @@ public partial class NumericUpDownWrapper<T> : ControlWrapperBase<T>
 
     #endregion
 }
+

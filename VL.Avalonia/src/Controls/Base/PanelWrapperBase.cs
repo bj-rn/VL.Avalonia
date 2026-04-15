@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Core;
@@ -12,7 +12,7 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class PanelWrapperBase<T> : ControlWrapperBase<T>
+public abstract partial class PanelWrapperBase<T> : ControlNodeBase<T>
     where T : Panel, new()
 {
     private Spread<Control> _children;
@@ -50,3 +50,4 @@ public abstract partial class PanelWrapperBase<T> : ControlWrapperBase<T>
     [ImplementProperty("Panel.BackgroundProperty", PinVisibility = Model.PinVisibility.Optional)]
     public Optional<IBrush> _background;
 }
+

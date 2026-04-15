@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Layout;
 using VL.Avalonia.Attributes;
@@ -12,7 +12,7 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode]
-public abstract partial class ContentControlWrapperBase<T> : ControlWrapperBase<T>
+public abstract partial class ContentControlWrapperBase<T> : ControlNodeBase<T>
     where T : ContentControl, new()
 {
     #region Core Content Properties
@@ -70,3 +70,4 @@ public abstract partial class ContentControlWrapperBase<T> : ControlWrapperBase<
 
     #endregion
 }
+

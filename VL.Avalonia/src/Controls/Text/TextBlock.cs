@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
@@ -15,7 +15,7 @@ namespace VL.Avalonia.Controls;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 [ProcessNode()]
-public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T>, IDisposable
+public abstract partial class TextBlockWrapperBase<T> : ControlNodeBase<T>, IDisposable
     where T : TextBlock, new()
 {
     private readonly ChannelOptionalBinding<string?> _textBinding;
@@ -194,3 +194,4 @@ public abstract partial class TextBlockWrapperBase<T> : ControlWrapperBase<T>, I
 /// </summary>
 [ProcessNode(Name = "TextBlock")]
 public partial class TextBlockWrapper : TextBlockWrapperBase<TextBlock> { }
+

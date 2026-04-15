@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
@@ -9,7 +9,7 @@ using AvaloniaThickness = Avalonia.Thickness;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "Border")]
-public partial class BorderWrapper : ControlWrapperBase<Border>
+public partial class BorderWrapper : ControlNodeBase<Border>
 {
     [ImplementProperty("Border.ChildProperty", Order = -10)]
     protected Optional<Control> _child;
@@ -35,3 +35,4 @@ public partial class BorderWrapper : ControlWrapperBase<Border>
     [ImplementProperty("Border.MarginProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<AvaloniaThickness> _margin;
 }
+

@@ -6,7 +6,7 @@ using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Styling;
 
-namespace VL.Avalonia.Controls
+namespace VL.Avalonia.Controls.Base.Items
 {
     /// <summary>
     /// Extension methods for <see cref="ItemsControl"/>.

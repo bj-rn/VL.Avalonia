@@ -12,11 +12,17 @@ namespace VL.Avalonia.Controls
         : ItemsControlNodeBase<TControl, TValue>
         where TControl : HeaderedItemsControl, new()
     {
-        [ImplementProperty("HeaderedContentControl.HeaderProperty")]
+        [ImplementProperty(
+            typeof(HeaderedItemsControl),
+            nameof(HeaderedContentControl.HeaderProperty),
+            Order = PinOrder.Main
+        )]
         protected Optional<object> _header;
 
         [ImplementProperty(
-            "HeaderedContentControl.HeaderTemplateProperty",
+            typeof(HeaderedItemsControl),
+            nameof(HeaderedContentControl.HeaderTemplateProperty),
+            Order = PinOrder.Secondary,
             PinVisibility = Model.PinVisibility.Optional
         )]
         protected Optional<IDataTemplate> _headerTemplate;

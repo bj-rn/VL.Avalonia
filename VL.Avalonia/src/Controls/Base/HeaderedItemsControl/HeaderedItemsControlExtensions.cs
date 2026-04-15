@@ -2,7 +2,7 @@
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 
-namespace VL.Avalonia.Controls
+namespace VL.Avalonia.Controls.Base.Items
 {
     /// <summary>
     /// Extension methods for <see cref="HeaderedItemsControl"/>.

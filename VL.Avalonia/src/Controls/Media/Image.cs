@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Core;
@@ -14,7 +14,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/image">Slider</see>
 /// </summary>
 [ProcessNode(Name = "Image")]
-public partial class ImageWrapper : ControlWrapperBase<Image>
+public partial class ImageWrapper : ControlNodeBase<Image>
 {
     protected Optional<Path> _source;
 
@@ -61,3 +61,4 @@ public partial class ImageWrapper : ControlWrapperBase<Image>
     )]
     protected Optional<StretchDirection> _stretchDirection;
 }
+

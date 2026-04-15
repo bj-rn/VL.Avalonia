@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using VL.Avalonia.Controls;
@@ -15,7 +15,7 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// https://github.com/AvaloniaUI/Avalonia/blob/56dd94c0b9dd8aeacb907676764872705b1986e5/src/Avalonia.Controls.ColorPicker/ColorSlider/ColorSlider.Properties.cs
     /// </summary>
     [ProcessNode(Name = "ColorView")]
-    public partial class ColorViewWrapper<T> : ControlWrapperBase<T>
+    public partial class ColorViewWrapper<T> : ControlNodeBase<T>
         where T : ColorView, new()
     {
         protected ChannelTwoWayBinding<HsvColor> _hsvBinding;
@@ -532,3 +532,4 @@ namespace VL.Avalonia.Custom.Controls.Value
         }
     }
 }
+

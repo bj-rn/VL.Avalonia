@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -14,7 +14,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/>TemplateParts: PART_ButtonContentGrid, PART_DayTextBlock, PART_FirstSpacer, PART_FlyoutButton, PART_MonthTextBlock, PART_PickerPresenter, PART_Popup, PART_SecondSpacer, PART_YearTextBlock
 /// </summary>
 [ProcessNode(Name = "DatePicker")]
-public partial class DatePickerWrapper : ControlWrapperBase<DatePicker>
+public partial class DatePickerWrapper : ControlNodeBase<DatePicker>
 {
     #region Core
 
@@ -157,3 +157,4 @@ public partial class DatePickerWrapper : ControlWrapperBase<DatePicker>
 
     #endregion
 }
+

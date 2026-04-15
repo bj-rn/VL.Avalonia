@@ -12,7 +12,8 @@ namespace VL.Avalonia.Controls
     )]
     public class DataTemplateSelectorNode : IDataTemplate
     {
-        protected Spread<IDataTemplate> Templates { get; set; } = Spread<IDataTemplate>.Empty;
+        protected IReadOnlyList<IDataTemplate> Templates { get; set; } =
+            Spread<IDataTemplate>.Empty;
 
         [Fragment]
         public DataTemplateSelectorNode() { }
