@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls
     /// <inheritdoc cref="TreeViewItem"/>
     [ProcessNode]
     public abstract class TreeViewItemNodeBase<T>
-        : HeaderedItemsControlBaseNode<TreeViewItem, T>,
+        : HeaderedItemsControlNodeBase<TreeViewItem, T>,
             IDisposable
     {
         protected TwoWayBinding<bool> IsExpandedBinding;
