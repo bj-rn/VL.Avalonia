@@ -11,7 +11,7 @@ namespace VL.Avalonia.Controls;
 /// Base class for <c>ToggleButton</c> inheriting controls
 /// </summary>
 [ProcessNode]
-public abstract partial class ToggleButtonWrapperBase<T> : ButtonWrapperBase<T>
+public abstract partial class ToggleButtonWrapperBase<T> : ButtonNodeBase<T>
     where T : ToggleButton, new()
 {
     protected ChannelTwoWayBinding<bool, bool?> _isCheckedBinding;

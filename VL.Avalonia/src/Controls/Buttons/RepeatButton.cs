@@ -10,7 +10,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/repeatbutton">RepeatButton</see>
 /// </summary>
 [ProcessNode(Name = "RepeatButton")]
-public partial class RepeatButtonWrapper : ButtonWrapperBase<RepeatButton>
+public partial class RepeatButtonWrapper : ButtonNodeBase<RepeatButton>
 {
     #region Timing Properties
 

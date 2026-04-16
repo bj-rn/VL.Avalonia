@@ -19,11 +19,16 @@ namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref="AvaloniaObject"/>
     [ProcessNode]
-    public abstract class AvaloniaObjectNodeBase<T>
+    public abstract class AvaloniaObjectNodeBase<T> : IDisposable
         where T : AvaloniaObject, new()
     {
         protected readonly T _output = new();
         public T Output => _output;
+
+        public virtual void Dispose()
+        {
+            // Disposing base
+        }
     }
 
     /// <inheritdoc cref="Animatable"/>
@@ -55,7 +60,7 @@ namespace VL.Avalonia.Controls
                         tc.Add(transition);
                     }
                 }
-                // BUG FIX: Set the property once after building the collection
+
                 Output.SetCurrentValue(Animatable.TransitionsProperty, tc);
             }
             else

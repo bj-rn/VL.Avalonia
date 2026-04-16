@@ -103,9 +103,10 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<ControlTheme> _itemContainerTheme;
 
-        public virtual void Dispose()
+        public override void Dispose()
         {
             _itemSourceBinding?.Dispose();
+            base.Dispose();
         }
     }
 }

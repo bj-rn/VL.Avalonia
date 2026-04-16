@@ -1,11 +1,13 @@
 ﻿using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
-using Avalonia.Data;
 using VL.Avalonia.Attributes;
+using VL.Core;
+using VL.Core.Import;
 
 namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref= "TemplatedControl"/>
+    [ProcessNode]
     public abstract partial class TemplatedControlNodeBase<T> : ControlNodeBase<T>
         where T : TemplatedControl, new()
     {

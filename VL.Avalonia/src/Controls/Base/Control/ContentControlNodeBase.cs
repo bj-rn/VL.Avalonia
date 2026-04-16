@@ -1,13 +1,15 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.Data;
 using Avalonia.Layout;
 using VL.Avalonia.Attributes;
+using VL.Core;
+using VL.Core.Import;
 
 namespace VL.Avalonia.Controls
 {
     /// <inheritdoc cref= "ContentControl"/>
-    public abstract class ContentControlNodeBase<TControl, TValue>
+    [ProcessNode]
+    public abstract partial class ContentControlNodeBase<TControl>
         : TemplatedControlNodeBase<TControl>
         where TControl : ContentControl, new()
     {

@@ -2,7 +2,7 @@
 using Avalonia;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Helpers
+namespace VL.Avalonia.Data
 {
     public class TwoWayBinding<TChannel, TProperty> : IDisposable
     {

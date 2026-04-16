@@ -23,8 +23,8 @@ namespace VL.Avalonia.Data
         ControlToChannel,
     }
 
-    [ProcessNode(FragmentSelection = FragmentSelection.Explicit)]
-    public abstract class Binding<TControl, TProp, TValue> : IDisposable
+    [ProcessNode(Name = "Binding", FragmentSelection = FragmentSelection.Explicit)]
+    public abstract class BindingNode<TControl, TProp, TValue> : IDisposable
         where TControl : AvaloniaObject
         where TProp : AvaloniaProperty
     {
@@ -40,7 +40,7 @@ namespace VL.Avalonia.Data
         private CompositeDisposable _subscriptions = new();
 
         [Fragment]
-        public Binding() { }
+        public BindingNode() { }
 
         [Fragment(Order = PinOrder.Main)]
         public void SetInput(TControl? input)

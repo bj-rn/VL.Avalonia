@@ -4,7 +4,7 @@ using VL.Core.Import;
 namespace VL.Avalonia.Data
 {
     [ProcessNode(Name = "Binding (Name)")]
-    public class BindingName<TControl, TValue> : Binding<TControl, AvaloniaProperty, TValue>
+    public class BindingNameNode<TControl, TValue> : BindingNode<TControl, AvaloniaProperty, TValue>
         where TControl : AvaloniaObject
     {
         private string _propertyName;
