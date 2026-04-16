@@ -3,7 +3,9 @@ using VL.Core.Import;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="Button"/>
+    /// <summary>
+    /// Wrapper for <see cref="Button"/>
+    /// </summary>
     [ProcessNode(Name = "Button")]
     public class ButtonNode : ButtonNodeBase<Button> { }
 }

@@ -17,7 +17,9 @@ using Matrix = Stride.Core.Mathematics.Matrix;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="AvaloniaObject"/>
+    /// <summary>
+    /// Base wrapper for <see cref="AvaloniaObject"/>
+    /// </summary>
     [ProcessNode]
     public abstract class AvaloniaObjectNodeBase<T> : IDisposable
         where T : AvaloniaObject, new()
@@ -31,14 +33,16 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="Animatable"/>
+    /// <summary>
+    /// Base wrapper for <see cref="Animatable"/>
+    /// </summary>
     [ProcessNode]
     public abstract class AnimatableNodeBase<T> : AvaloniaObjectNodeBase<T>
         where T : Animatable, new()
     {
         private IReadOnlyList<IAvaloniaTransition>? _transitions;
 
-        /// <param name="transitions"><inheritdoc cref="Animatable.Transitions" path="/summary/node()"/></param>
+        /// <param name="transitions">Sets the property transitions for the control.</param>
         [Fragment(Order = PinOrder.Animatable)]
         public void SetTransitions(
             [Pin(Visibility = Model.PinVisibility.Optional)]
@@ -70,7 +74,9 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="StyledElement"/>
+    /// <summary>
+    /// Base wrapper for <see cref="StyledElement"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class StyledElementNodeBase<T> : AnimatableNodeBase<T>
         where T : StyledElement, new()
@@ -119,7 +125,7 @@ namespace VL.Avalonia.Controls
             }
         }
 
-        /// <inheritdoc cref="StyledElement.Name"/>
+        /// <summary>Sets the name of the styled element.</summary>
         [ImplementProperty(
             typeof(StyledElement),
             nameof(StyledElement.NameProperty),
@@ -129,12 +135,14 @@ namespace VL.Avalonia.Controls
         private Optional<string> _name;
     }
 
-    /// <inheritdoc cref="Visual"/>
+    /// <summary>
+    /// Base wrapper for <see cref="Visual"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class VisualNodeBase<T> : StyledElementNodeBase<T>
         where T : Visual, new()
     {
-        /// <inheritdoc cref="Visual.IsVisible"/>
+        /// <summary>Sets a value indicating whether this control is visible.</summary>
         [ImplementProperty(
             typeof(Visual),
             nameof(Visual.IsVisibleProperty),
@@ -143,7 +151,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<bool> _isVisible;
 
-        /// <inheritdoc cref="Visual.Effect"/>
+        /// <summary>Sets the effect applied to this control.</summary>
         [ImplementProperty(
             typeof(Visual),
             nameof(Visual.EffectProperty),
@@ -154,7 +162,7 @@ namespace VL.Avalonia.Controls
 
         private Optional<Matrix> _renderTransform;
 
-        /// <param name="renderTransform"><inheritdoc cref="Visual.RenderTransformProperty" path="/summary/node()"/></param>
+        /// <param name="renderTransform">Sets the render transform for the control.</param>
         [Fragment(Order = PinOrder.Visual)]
         public void SetRenderTransform(
             [Pin(Visibility = Model.PinVisibility.Optional)] Optional<Matrix> renderTransform
@@ -190,12 +198,14 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="Layoutable"/>
+    /// <summary>
+    /// Base wrapper for <see cref="Layoutable"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class LayoutableNodeBase<T> : VisualNodeBase<T>
         where T : Layoutable, new()
     {
-        /// <inheritdoc cref="Layoutable.HorizontalAlignment"/>
+        /// <summary>Sets the horizontal alignment of the layoutable element.</summary>
         [ImplementProperty(
             typeof(Layoutable),
             nameof(Layoutable.HorizontalAlignmentProperty),
@@ -204,7 +214,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<HorizontalAlignment> _horizontalAlignment;
 
-        /// <inheritdoc cref="Layoutable.VerticalAlignment"/>
+        /// <summary>Sets the vertical alignment of the layoutable element.</summary>
         [ImplementProperty(
             typeof(Layoutable),
             nameof(Layoutable.VerticalAlignmentProperty),
@@ -214,17 +224,21 @@ namespace VL.Avalonia.Controls
         private Optional<VerticalAlignment> _verticalAlignment;
     }
 
-    /// <inheritdoc cref="Interactive"/>
+    /// <summary>
+    /// Base wrapper for <see cref="Interactive"/>
+    /// </summary>
     [ProcessNode]
     public abstract class InteractiveNodeBase<T> : LayoutableNodeBase<T>
         where T : Interactive, new() { }
 
-    /// <inheritdoc cref="InputElement"/>
+    /// <summary>
+    /// Base wrapper for <see cref="InputElement"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class InputElementNodeBase<T> : InteractiveNodeBase<T>
         where T : InputElement, new()
     {
-        /// <inheritdoc cref="InputElement.Focusable"/>
+        /// <summary>Sets a value indicating whether this input element can receive focus.</summary>
         [ImplementProperty(
             typeof(InputElement),
             nameof(InputElement.FocusableProperty),
@@ -233,7 +247,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<bool> _focusable;
 
-        /// <inheritdoc cref="InputElement.IsEnabled"/>
+        /// <summary>Sets a value indicating whether this input element is enabled.</summary>
         [ImplementProperty(
             typeof(InputElement),
             nameof(InputElement.IsEnabledProperty),
@@ -243,12 +257,14 @@ namespace VL.Avalonia.Controls
         private Optional<bool> _isEnabled;
     }
 
-    /// <inheritdoc cref="Control"/>
+    /// <summary>
+    /// Base wrapper for <see cref="Control"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class ControlNodeBase<T> : InputElementNodeBase<T>
         where T : Control, new()
     {
-        /// <inheritdoc cref="Control.FocusAdorner"/>
+        /// <summary>Sets the focus adorner for the control.</summary>
         [ImplementProperty(
             typeof(Control),
             nameof(Control.FocusAdornerProperty),
@@ -257,7 +273,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<ITemplate<Control>> _focusAdorner;
 
-        /// <inheritdoc cref="Control.ContextMenu"/>
+        /// <summary>Sets the context menu for the control.</summary>
         [ImplementProperty(
             typeof(Control),
             nameof(Control.ContextMenuProperty),
@@ -266,7 +282,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<ContextMenu> _contextMenu;
 
-        /// <inheritdoc cref="Control.ContextFlyout"/>
+        /// <summary>Sets the context flyout for the control.</summary>
         [ImplementProperty(
             typeof(Control),
             nameof(Control.ContextFlyoutProperty),
@@ -275,7 +291,4 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<FlyoutBase> _contextFlyout;
     }
-
-    [ProcessNode(Name = "Control")]
-    public class ControlNode : ControlNodeBase<Control> { }
 }

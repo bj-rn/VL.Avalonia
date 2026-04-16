@@ -23,6 +23,7 @@ namespace VL.Avalonia.Controls
         [Fragment]
         public SelectingItemsControlNodeBase() { }
 
+        /// <param name="selectedItemChannel">Binds the control selected item.</param>
         public virtual void SetSelectedItemChannel(IChannel<TValue> selectedItemChannel)
         {
             if (!ReferenceEquals(_selectedItemChannel, selectedItemChannel))
@@ -65,7 +66,7 @@ namespace VL.Avalonia.Controls
             }
         }
 
-        /// <inheritdoc cref="SelectingItemsControl.AutoScrollToSelectedItem"/>
+        /// <summary>Sets a value indicating whether to automatically scroll to newly selected items.</summary>
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.AutoScrollToSelectedItemProperty),
@@ -74,7 +75,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<bool> _autoScrollToSelectedItem;
 
-        /// <inheritdoc cref="SelectingItemsControl.WrapSelection"/>
+        /// <summary> Sets a value which indicates whether to wrap around when the first or last item is reached.</summary>
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.WrapSelectionProperty),
@@ -83,7 +84,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<bool> _wrapSelection;
 
-        /// <inheritdoc cref="SelectingItemsControl.IsTextSearchEnabled"/>
+        /// <summary>Sets a value indicating whether to automatically scroll to newly selected items.</summary>
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.IsTextSearchEnabledProperty),

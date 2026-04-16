@@ -1,4 +1,5 @@
 ﻿using System.Reactive;
+using System.Windows.Input;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
@@ -10,7 +11,9 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="Button"/>
+    /// <summary>
+    /// Base wrapper for <see cref="Button"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class ButtonNodeBase<T> : ContentControlNodeBase<T>, IDisposable
         where T : Button, new()
@@ -22,13 +25,13 @@ namespace VL.Avalonia.Controls
             _commandBinding = new UnitCommandBinding(_output, Button.CommandProperty);
         }
 
-        /// <param name="commandChannel"><inheritdoc cref="Button.CommandProperty" path="/summary/node()"/></param>
+        /// <param name="commandChannel">Binds button <see cref="ICommand"/> to <see cref="IChannel{T}"/> <see cref="Unit"/></param>
         [Fragment(Order = PinOrder.Action)]
         public void SetCommandChannel(IChannel<Unit> commandChannel) =>
             _commandBinding.Bind(commandChannel);
 
         // TODO:
-        ///// <inheritdoc cref="Button.CommandParameter"/>
+        ///// <summary>Sets a parameter to be passed to the <see cref="Button.Command"/>.</summary>
         //[ImplementProperty(
         //    typeof(Button),
         //    nameof(Button.CommandParameterProperty),
@@ -37,7 +40,7 @@ namespace VL.Avalonia.Controls
         //)]
         //private Optional<object> _commandParameter;
 
-        /// <inheritdoc cref="Button.HotKey"/>
+        /// <summary>Sets an <see cref="KeyGesture"/> associated with this control.</summary>
         [ImplementProperty(
             typeof(Button),
             nameof(Button.HotKeyProperty),
@@ -46,7 +49,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<KeyGesture> _hotKey;
 
-        /// <inheritdoc cref="Button.ClickMode"/>
+        /// <summary>Sets a value indicating how the <see cref="Button"/> should react to clicks.</summary>
         [ImplementProperty(
             typeof(Button),
             nameof(Button.ClickModeProperty),
@@ -55,7 +58,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<ClickMode> _clickMode;
 
-        /// <inheritdoc cref="Button.IsDefault"/>
+        /// <summary>Sets a value indicating whether the button is the default button for the window.</summary>
         [ImplementProperty(
             typeof(Button),
             nameof(Button.IsDefaultProperty),
@@ -64,7 +67,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<bool> _isDefault;
 
-        /// <inheritdoc cref="Button.IsCancel"/>
+        /// <summary>Sets sets a value indicating whether the button is the Cancel button for the window.</summary>
         [ImplementProperty(
             typeof(Button),
             nameof(Button.IsCancelProperty),
@@ -73,7 +76,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<bool> _isCancel;
 
-        /// <inheritdoc cref="Button.Flyout"/>
+        /// <summary>Sets the Flyout that should be shown with this button.</summary>
         [ImplementProperty(
             typeof(Button),
             nameof(Button.FlyoutProperty),

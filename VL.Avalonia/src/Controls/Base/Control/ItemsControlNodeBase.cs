@@ -27,9 +27,7 @@ namespace VL.Avalonia.Controls
         [Fragment]
         public ItemsControlNodeBase() { }
 
-        /// <summary>
-        /// Binds observable items source.
-        /// </summary>
+        /// <param name="itemsSource">Binds observable items source.</param>
         public virtual void SetItemsSource(IChannel<IReadOnlyList<TValue>> itemsSource)
         {
             if (!ReferenceEquals(_itemsSource, itemsSource))
@@ -53,9 +51,7 @@ namespace VL.Avalonia.Controls
             }
         }
 
-        /// <summary>
-        /// Sets items on source
-        /// </summary>
+        /// <summary>Sets items on source.</summary>
         public virtual void SetItems(Spread<TValue> items)
         {
             if (!ReferenceEquals(_items, items))
@@ -76,7 +72,7 @@ namespace VL.Avalonia.Controls
             }
         }
 
-        /// <inheritdoc cref="ItemsControl.ItemTemplate"/>
+        /// <summary>Sets the data template used to display the items in the control.</summary>
         [ImplementProperty(
             typeof(ItemsControl),
             nameof(ItemsControl.ItemTemplateProperty),
@@ -85,7 +81,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<IDataTemplate> _itemTemplate;
 
-        /// <inheritdoc cref="ItemsControl.ItemsPanel"/>
+        /// <summary>Sets the panel used to display the items.</summary>
         [ImplementProperty(
             typeof(ItemsControl),
             nameof(ItemsControl.ItemsPanelProperty),
@@ -94,7 +90,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<ITemplate<Panel>> _itemsPanel;
 
-        /// <inheritdoc cref="ItemsControl.ItemContainerTheme"/>
+        /// <summary>Sets the <see cref="ControlTheme"/> that is applied to the container element generated for each item.</summary>
         [ImplementProperty(
             typeof(ItemsControl),
             nameof(ItemsControl.ItemContainerThemeProperty),

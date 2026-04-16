@@ -12,7 +12,7 @@ namespace VL.Avalonia.Controls
         : ItemsControlNodeBase<TControl, TValue>
         where TControl : HeaderedItemsControl, new()
     {
-        /// <inheritdoc cref="HeaderedItemsControl.Header"/>
+        /// <summary>Sets the content of the control's header.</summary>
         [ImplementProperty(
             typeof(HeaderedItemsControl),
             nameof(HeaderedItemsControl.HeaderProperty),
@@ -20,7 +20,7 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<object> _header;
 
-        /// <inheritdoc cref="HeaderedItemsControl.HeaderTemplate"/>
+        /// <summary>Sets the data template used to display the header content of the control.</summary>
         [ImplementProperty(
             typeof(HeaderedItemsControl),
             nameof(HeaderedItemsControl.HeaderTemplateProperty),

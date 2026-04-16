@@ -6,7 +6,9 @@ using VL.Core.Import;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref= "TemplatedControl"/>
+    /// <summary>
+    /// Base wrapper for <see cref="TemplatedControl"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class TemplatedControlNodeBase<T> : ControlNodeBase<T>
         where T : TemplatedControl, new()
@@ -33,11 +35,11 @@ namespace VL.Avalonia.Controls
          */
 
         /*
-         * Attached Properties (Set on child elements inside the template, not on this control):
+         * Attached Properties:
          * - bool IsTemplateFocusTarget
          */
 
-        /// <inheritdoc cref= "TemplatedControl.TemplateProperty"/>
+        /// <summary>Sets the template that defines the control's appearance.</summary>
         [ImplementProperty(
             typeof(TemplatedControl),
             nameof(TemplatedControl.TemplateProperty),

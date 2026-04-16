@@ -4,16 +4,19 @@ using Avalonia.Layout;
 using VL.Avalonia.Attributes;
 using VL.Core;
 using VL.Core.Import;
+using VL.Model;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref= "ContentControl"/>
+    /// <summary>
+    /// Base wrapper for <see cref="ContentControl"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class ContentControlNodeBase<TControl>
         : TemplatedControlNodeBase<TControl>
         where TControl : ContentControl, new()
     {
-        /// <inheritdoc cref= "ContentControl.ContentProperty"/>
+        /// <summary>Sets the content to display.</summary>
         [ImplementProperty(
             typeof(ContentControl),
             nameof(ContentControl.ContentProperty),
@@ -21,30 +24,30 @@ namespace VL.Avalonia.Controls
         )]
         private Optional<object> _content;
 
-        /// <inheritdoc cref="ContentControl.ContentTemplateProperty"/>
+        /// <summary>Sets the data template used to display the content of the control.</summary>
         [ImplementProperty(
             typeof(ContentControl),
             nameof(ContentControl.ContentTemplateProperty),
             Order = PinOrder.Secondary,
-            PinVisibility = Model.PinVisibility.Optional
+            PinVisibility = PinVisibility.Optional
         )]
         private Optional<IDataTemplate> _contentTemplate;
 
-        /// <inheritdoc cref="ContentControl.HorizontalContentAlignmentProperty"/>
+        /// <summary>Sets sets the horizontal alignment of the content within the control.</summary>
         [ImplementProperty(
             typeof(ContentControl),
             nameof(ContentControl.HorizontalContentAlignmentProperty),
             Order = PinOrder.Layoutable,
-            PinVisibility = Model.PinVisibility.Optional
+            PinVisibility = PinVisibility.Optional
         )]
         private Optional<HorizontalAlignment> _horizontalContentAlignment;
 
-        /// <inheritdoc cref="ContentControl.VerticalContentAlignmentProperty"/>
+        /// <summary>Sets the vertical alignment of the content within the control.</summary>
         [ImplementProperty(
             typeof(ContentControl),
             nameof(ContentControl.VerticalContentAlignmentProperty),
             Order = PinOrder.Layoutable,
-            PinVisibility = Model.PinVisibility.Optional
+            PinVisibility = PinVisibility.Optional
         )]
         private Optional<VerticalAlignment> _verticalContentAlignment;
     }
