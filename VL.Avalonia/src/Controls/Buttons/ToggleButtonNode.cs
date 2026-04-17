@@ -5,7 +5,7 @@ using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
-namespace VL.Avalonia.Controls.Buttons
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Base wrapper for <see cref="ToggleButton"/>
