@@ -7,46 +7,53 @@ using VL.Model;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="TreeViewItem"/>
+    /// <summary>
+    /// Base wrapper for <see cref="TreeViewItem"/>
+    /// </summary>
     [ProcessNode]
     public abstract class TreeViewItemNodeBase<T>
         : HeaderedItemsControlNodeBase<TreeViewItem, T>,
             IDisposable
     {
-        protected TwoWayBinding<bool> IsExpandedBinding;
-        protected TwoWayBinding<bool> IsSelectedBinding;
+        private TwoWayBinding<bool> _isExpandedBinding;
+        private TwoWayBinding<bool> _isSelectedBinding;
 
         public TreeViewItemNodeBase()
         {
-            IsExpandedBinding = new(_output, TreeViewItem.IsExpandedProperty);
-            IsSelectedBinding = new(_output, TreeViewItem.IsSelectedProperty);
+            _isExpandedBinding = new(_output, TreeViewItem.IsExpandedProperty);
+            _isSelectedBinding = new(_output, TreeViewItem.IsSelectedProperty);
         }
 
         /// <inheritdoc cref="TreeViewItem.IsExpandedProperty"/>
+        [Fragment(Order = PinOrder.Action)]
         public void SetIsExpandedChannel(
             [Pin(Visibility = PinVisibility.Optional)] IChannel<bool> isExpandedChannel
         )
         {
-            IsExpandedBinding.Bind(isExpandedChannel);
+            _isExpandedBinding.Bind(isExpandedChannel);
         }
 
         /// <inheritdoc cref="TreeViewItem.IsSelectedProperty"/>
+        [Fragment(Order = PinOrder.Action)]
         public void SetIsSelectedChannel(
             [Pin(Visibility = PinVisibility.Optional)] IChannel<bool> isSelectedChannel
         )
         {
-            IsSelectedBinding.Bind(isSelectedChannel);
+            _isSelectedBinding.Bind(isSelectedChannel);
         }
 
         public override void Dispose()
         {
-            IsExpandedBinding?.Dispose();
-            IsSelectedBinding?.Dispose();
+            _isExpandedBinding?.Dispose();
+            _isSelectedBinding?.Dispose();
 
             base.Dispose();
         }
     }
 
+    /// <summary>
+    /// Wrapper for <see cref="TreeViewItem"/>
+    /// </summary>
     [ProcessNode(Name = "TreeViewItem")]
     public class TreeViewItemNode<T> : TreeViewItemNodeBase<T>
     {
@@ -60,6 +67,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
+    /// <inheritdoc cref="TreeViewItemNode{T}"/>
     [ProcessNode(Name = "TreeViewItem (Spectral)")]
     public class TreeViewItemSpectralNode<T> : TreeViewItemNodeBase<T>
     {
@@ -70,6 +78,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
+    /// <inheritdoc cref="TreeViewItemNode{T}"/>
     [ProcessNode(Name = "TreeViewItem (Reactive)")]
     public class TreeViewItemReactiveNode<T> : TreeViewItemNodeBase<T>
     {

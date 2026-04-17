@@ -51,7 +51,7 @@ namespace VL.Avalonia.Controls
             }
         }
 
-        /// <summary>Sets items on source.</summary>
+        /// <param name="items">Sets items on source.</param>
         public virtual void SetItems(Spread<TValue> items)
         {
             if (!ReferenceEquals(_items, items))

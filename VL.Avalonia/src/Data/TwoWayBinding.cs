@@ -7,7 +7,7 @@ namespace VL.Avalonia.Data
     public class TwoWayBinding<TChannel, TProperty> : IDisposable
     {
         private readonly AvaloniaObject _control;
-        private readonly StyledProperty<TProperty?> _property;
+        private readonly AvaloniaProperty<TProperty?> _property;
 
         private IChannel<TChannel>? _channel;
         private IDisposable? _subscription;
@@ -17,7 +17,7 @@ namespace VL.Avalonia.Data
 
         public TwoWayBinding(
             AvaloniaObject control,
-            StyledProperty<TProperty?> property,
+            AvaloniaProperty<TProperty?> property,
             Func<TChannel?, TProperty?>? toProperty = null,
             Func<TProperty?, TChannel?>? toChannel = null
         )
@@ -81,7 +81,7 @@ namespace VL.Avalonia.Data
 
     public class TwoWayBinding<T> : TwoWayBinding<T, T>
     {
-        public TwoWayBinding(AvaloniaObject control, StyledProperty<T?> property)
+        public TwoWayBinding(AvaloniaObject control, AvaloniaProperty<T?> property)
             : base(control, property) { }
     }
 }

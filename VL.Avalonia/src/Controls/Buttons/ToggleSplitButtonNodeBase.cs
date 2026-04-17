@@ -1,5 +1,4 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using VL.Avalonia.Data;
 using VL.Core.Import;
 using VL.Lib.Reactive;
@@ -10,28 +9,34 @@ namespace VL.Avalonia.Controls
     /// Base wrapper for <see cref="ToggleSplitButton"/>
     /// </summary>
     [ProcessNode]
-    public abstract class ToggleSplitButtonNode<T> : SplitButtonNodeBase<T>, IDisposable
+    public abstract class ToggleSplitButtonNodeBase<T> : SplitButtonNodeBase<T>, IDisposable
         where T : ToggleSplitButton, new()
     {
-        private readonly TwoWayBinding<bool, bool> _isCheckedBinding;
+        private readonly TwoWayBinding<bool> _isCheckedBinding;
 
-        public ToggleSplitButtonNode()
+        public ToggleSplitButtonNodeBase()
         {
-            _isCheckedBinding = new TwoWayBinding<bool, bool>(
+            _isCheckedBinding = new TwoWayBinding<bool>(
                 _output,
                 ToggleSplitButton.IsCheckedProperty
             );
         }
 
-        /// <param name="isCheckedChannel">Binds <see cref="ToggleButton.IsChecked"/> property.</param>
+        /// <param name="isCheckedChannel">Binds <see cref="ToggleSplitButton.IsChecked"/> property.</param>
         [Fragment(Order = PinOrder.Action)]
         public void SetIsCheckedChannel(IChannel<bool> isCheckedChannel) =>
             _isCheckedBinding.Bind(isCheckedChannel);
+
+        public override void Dispose()
+        {
+            _isCheckedBinding.Dispose();
+            base.Dispose();
+        }
     }
 
     /// <summary>
     /// Wrapper for <see cref="ToggleSplitButton"/>
     /// </summary>
     [ProcessNode(Name = "ToggleSplitButton")]
-    public class ToggleSplitButtonNode : ToggleSplitButtonNode<ToggleSplitButton> { }
+    public class ToggleSplitButtonNode : ToggleSplitButtonNodeBase<ToggleSplitButton> { }
 }

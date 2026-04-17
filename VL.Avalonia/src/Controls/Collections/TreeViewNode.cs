@@ -1,49 +1,84 @@
-﻿using System.Reactive.Linq;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Data;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
+using VL.Model;
 
-namespace VL.Avalonia.Controls.Collections
+namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="TreeView"/>
+    /// <summary>
+    /// Base wrapper for <see cref="TreeView"/>
+    /// </summary>
     [ProcessNode]
-    public abstract partial class TreeViewNodeBase<T> : ItemsControlNodeBase<TreeView, T>
+    public abstract partial class TreeViewNodeBase<TControl, TValue>
+        : ItemsControlNodeBase<TControl, TValue>,
+            IDisposable
+        where TControl : TreeView, new()
     {
-        /// <inheritdoc cref="TreeView.AutoScrollToSelectedItemProperty"/>
-        [ImplementProperty(
-            "TreeView.AutoScrollToSelectedItemProperty",
-            PinVisibility = Model.PinVisibility.Optional
-        )]
-        protected Optional<bool> _autoScrollToSelectedItem;
+        private readonly TwoWayBinding<TValue?, object?> _selectedItemBinding;
 
-        /// <inheritdoc cref="TreeView.SelectionModeProperty"/>
+        public TreeViewNodeBase()
+        {
+            _selectedItemBinding = new TwoWayBinding<TValue?, object?>(
+                _output,
+                TreeView.SelectedItemProperty,
+                x => (object?)x,
+                y => (TValue?)y
+            );
+        }
+
+        /// <param name="selectedItemChannel">Binds <see cref="TreeView.SelectedItem"/> property.</param>
+        [Fragment(Order = PinOrder.Action)]
+        public void SetSelectedItemChannel(
+            [Pin(Visibility = PinVisibility.Optional)] IChannel<TValue?> selectedItemChannel
+        ) => _selectedItemBinding.Bind(selectedItemChannel);
+
+        /// <summary>Sets a value indicating whether to automatically scroll to newly selected items.</summary>
         [ImplementProperty(
-            "TreeView.SelectionModeProperty",
-            PinVisibility = Model.PinVisibility.Optional
+            typeof(TreeView),
+            nameof(TreeView.AutoScrollToSelectedItemProperty),
+            Order = PinOrder.Style,
+            PinVisibility = PinVisibility.Optional
         )]
-        protected Optional<SelectionMode> _selectionMode;
+        private Optional<bool> _autoScrollToSelectedItem;
+
+        /// <summary>Sets the selection mode.</summary>
+        [ImplementProperty(
+            typeof(TreeView),
+            nameof(TreeView.SelectionModeProperty),
+            Order = PinOrder.Style,
+            PinVisibility = PinVisibility.Optional
+        )]
+        private Optional<SelectionMode> _selectionMode;
+
+        public override void Dispose()
+        {
+            _selectedItemBinding.Dispose();
+            base.Dispose();
+        }
     }
 
-    /// <inheritdoc cref="TreeView"/>
+    /// <summary>
+    /// Wrapper for <see cref="TreeView"/>
+    /// </summary>
     [ProcessNode(Name = "TreeView")]
-    public class TreeViewNode<T> : TreeViewNodeBase<T>
+    public class TreeViewNode<T> : TreeViewNodeBase<TreeView, T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
-            [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
-                Spread<T> items
+            [Pin(PinGroupKind = PinGroupKind.Collection, PinGroupDefaultCount = 1)] Spread<T> items
         )
         {
             base.SetItems(items);
         }
     }
 
-    /// <inheritdoc cref="TreeView"/>
+    /// <inheritdoc cref="TreeViewNode{T}"/>
     [ProcessNode(Name = "TreeView (Spectral)")]
-    public class TreeViewSpectralNode<T> : TreeViewNodeBase<T>
+    public class TreeViewSpectralNode<T> : TreeViewNodeBase<TreeView, T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(Spread<T> items)
@@ -52,59 +87,14 @@ namespace VL.Avalonia.Controls.Collections
         }
     }
 
-    /// <inheritdoc cref="TreeView"/>
+    /// <inheritdoc cref="TreeViewNode{T}"/>
     [ProcessNode(Name = "TreeView (Reactive)")]
-    public class TreeViewNodeReactive<T> : TreeViewNodeBase<T>
+    public class TreeViewNodeReactive<T> : TreeViewNodeBase<TreeView, T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItemsSource(IChannel<IReadOnlyList<T>> itemsSource)
         {
             base.SetItemsSource(itemsSource);
         }
-    }
-
-    [ProcessNode(Name = "SelectedItems (TreeView)")]
-    public class TreeViewSelectedItemsHandler<T> : IDisposable
-    {
-        private TreeView? _input;
-        private IDisposable? _subscription;
-        private IReadOnlyList<T>? _output;
-
-        public void SetInput(TreeView? input)
-        {
-            if (ReferenceEquals(_input, input))
-                return;
-
-            _subscription?.Dispose();
-            _input = input;
-
-            if (_input is not null)
-            {
-                // Create an observable stream from the SelectionChanged event
-                _subscription = Observable
-                    .FromEventPattern<SelectionChangedEventArgs>(
-                        h => _input.SelectionChanged += h,
-                        h => _input.SelectionChanged -= h
-                    )
-                    .Subscribe(_ => _output = null);
-            }
-
-            _output = null;
-        }
-
-        public IReadOnlyList<T> Output
-        {
-            get
-            {
-                if (_output == null)
-                {
-                    _output = _input?.SelectedItems?.OfType<T>().ToSpread() ?? Spread<T>.Empty;
-                }
-
-                return _output;
-            }
-        }
-
-        public void Dispose() => _subscription?.Dispose();
     }
 }

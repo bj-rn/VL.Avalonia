@@ -7,24 +7,24 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="ListBox"/>
+    /// <summary>
+    /// Base wrapper for <see cref="ListBox"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class ListBoxNodeBase<T> : SelectingItemsControlNodeBase<ListBox, T>
     {
+        /// <summary>Sets the selection mode.</summary>
         [ImplementProperty(
-            "ListBox.SelectionModeProperty",
+            typeof(ListBox),
+            nameof(ListBox.SelectionModeProperty),
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<SelectionMode> _selectionMode;
-
-        [Fragment(Order = PinOrder.Secondary)]
-        public override void SetSelectedItemChannel(IChannel<T> selectedItemChannel)
-        {
-            base.SetSelectedItemChannel(selectedItemChannel);
-        }
+        private Optional<SelectionMode> _selectionMode;
     }
 
-    /// <inheritdoc cref="ListBox"/>
+    /// <summary>
+    /// Wrapper for <see cref="ListBox"/>
+    /// </summary>
     [ProcessNode(Name = "ListBox")]
     public class ListBoxNode<T> : ListBoxNodeBase<T>
     {
@@ -38,7 +38,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="ListBox"/>
+    /// <inheritdoc cref="ListBoxNode{T}"/>
     [ProcessNode(Name = "ListBox (Spectral)")]
     public class ListBoxSpectralNode<T> : ListBoxNodeBase<T>
     {
@@ -49,7 +49,7 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="ListBox"/>
+    /// <inheritdoc cref="ListBoxNode{T}"/>
     [ProcessNode(Name = "ListBox (Reactive)")]
     public class ListBoxReactiveNode<T> : ListBoxNodeBase<T>
     {
