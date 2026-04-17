@@ -39,6 +39,12 @@ namespace VL.Avalonia.Controls
             PinVisibility = Model.PinVisibility.Optional
         )]
         private Optional<bool> _isThreeState;
+
+        public override void Dispose()
+        {
+            _isCheckedBinding.Dispose();
+            base.Dispose();
+        }
     }
 
     /// <summary>
