@@ -8,7 +8,7 @@ using VL.Model;
 namespace VL.Avalonia.Controls.Buttons
 {
     /// <summary>
-    /// Base wrapper for <see cref="ButtonSpinner"/>
+    /// Wrapper for <see cref="ButtonSpinner"/>
     /// </summary>
     [ProcessNode(Name = "ButtonSpinner")]
     public partial class ButtonSpinnerNode<T> : SpinnerNodeBase<T>
@@ -18,7 +18,7 @@ namespace VL.Avalonia.Controls.Buttons
         [ImplementProperty(
             typeof(ButtonSpinner),
             nameof(ButtonSpinner.AllowSpinProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = PinVisibility.Optional
         )]
         private Optional<bool> _allowSpin;
@@ -27,7 +27,7 @@ namespace VL.Avalonia.Controls.Buttons
         [ImplementProperty(
             typeof(ButtonSpinner),
             nameof(ButtonSpinner.ShowButtonSpinnerProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = PinVisibility.Optional
         )]
         private Optional<bool> _showButtonSpinner;
@@ -36,7 +36,7 @@ namespace VL.Avalonia.Controls.Buttons
         [ImplementProperty(
             typeof(ButtonSpinner),
             nameof(ButtonSpinner.ButtonSpinnerLocationProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = PinVisibility.Optional
         )]
         private Optional<Location> _buttonSpinnerLocation;

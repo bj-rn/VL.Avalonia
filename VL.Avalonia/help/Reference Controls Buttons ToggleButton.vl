@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="UwamItYlP3JLvJhq3aY9dq" LanguageVersion="2025.7.1-0142-gabf274b680" Version="0.128">
-  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1-0142-gabf274b680" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="UwamItYlP3JLvJhq3aY9dq" LanguageVersion="2025.7.1" Version="0.128">
+  <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.1" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -21,7 +21,7 @@
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="EMAaVQMVNf2MIIhNQanTL4" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="824, 412, 616, 431" IsHidden="true" />
+            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="1878, 370, 616, 429" IsHidden="true" />
             <Pin Id="OhUk0lcXRfZPS1pGZZQXFi" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="Crih6r1mjYkP4zxje5Ginm" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="EyUbJWQNM3mPPTWltTE2st" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
@@ -78,58 +78,59 @@
               </CategoryReference>
               <Choice Kind="ProcessAppFlag" Name="Grid" />
             </p:NodeReference>
-            <Pin Id="TGaok5fEPzFPJ1BwEp0YEC" Name="Children" Kind="InputPin" />
             <Pin Id="H99Ad8oZIfyOOXahIQ3DO7" Name="Style" Kind="InputPin" />
             <Pin Id="L21LApOHcwpOjwzk7C6uMT" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="GzGud4pMRGnPW6e6j1pZfk" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="RbapXoJbNpwQJpa0SuXGM6" Name="Transitions" Kind="InputPin" IsHidden="true" />
-            <Pin Id="F0aY7jqUhu9PMVUNXWpHdO" Name="Render Transform" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GTnVDL8WC3EPISWXjw1oCS" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EyrYDuxS7stNiUqpayYsEs" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="RgZKxTejPekLoynbizZweX" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
             <Pin Id="UUVgr4IckaGPgwWdGE9K9Q" Name="Context Menu" Kind="InputPin" IsHidden="true" />
             <Pin Id="P5N0fjyvUxRPTlnvUu1jSI" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TGaok5fEPzFPJ1BwEp0YEC" Name="Children" Kind="InputPin" />
+            <Pin Id="F0aY7jqUhu9PMVUNXWpHdO" Name="Render Transform" Kind="InputPin" IsHidden="true" />
             <Pin Id="TtVkaw2PoNaMNA7YeN9fJH" Name="Is Visible" Kind="InputPin" IsHidden="true" />
             <Pin Id="VYap7nkIYrePsFzDuif0AH" Name="Effect" Kind="InputPin" IsHidden="true" />
             <Pin Id="LQ8yicTxiZONGppn8koXUM" Name="Focusable" Kind="InputPin" IsHidden="true" />
+            <Pin Id="DaUfXBRmvCRL7gzLRaUoFv" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
             <Pin Id="IaD5Nn2nUpDOha3H7gX0s7" Name="Background" Kind="InputPin" IsHidden="true" />
             <Pin Id="OTBwPBPnHP3MucEsdvzmTw" Name="Column Definitions" Kind="InputPin" />
             <Pin Id="HyxrwKbRYnJPEbby4q8H4Y" Name="Row Definitions" Kind="InputPin" />
             <Pin Id="J3ownK7QtMDOy8dLJ91tZ4" Name="Output" Kind="OutputPin" />
             <Pin Id="DfanQRoPnVpNzHh3gtD9B6" Name="Show Grid Lines" Kind="InputPin" IsHidden="true" />
-            <Pin Id="GTnVDL8WC3EPISWXjw1oCS" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="EyrYDuxS7stNiUqpayYsEs" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="VnhApcw7tjvLgI6LmaLZ7j" Name="Z Index" Kind="InputPin" IsHidden="true" />
-            <Pin Id="DaUfXBRmvCRL7gzLRaUoFv" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="170,240,77,19" Id="PstKQw79UNEPLJIQbm00ZB">
+          <Node Bounds="170,240,85,19" Id="PstKQw79UNEPLJIQbm00ZB">
             <p:NodeReference LastCategoryFullName="Avalonia.Avalonia.Controls.Buttons" LastDependency="VL.Avalonia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="ToggleButton" />
             </p:NodeReference>
             <Pin Id="BxjYdjxwdegLw77MxamPen" Name="Content" Kind="InputPin" />
+            <Pin Id="EE0d18Gd3PZQKf9GSoLEgR" Name="Content Template" Kind="InputPin" IsHidden="true" />
             <Pin Id="JVbkIET64a1Pw4fYvbWTf3" Name="Style" Kind="InputPin" />
-            <Pin Id="SEzExra8hhlM3A9SBTLHNP" Name="Classes" Kind="InputPin" IsHidden="true" />
-            <Pin Id="CCdG9FdfGG9OujnD2m0rBb" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Pxseb587D8oPdkkUSgpuUM" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="VKptAaZwce8NpfN9dGF25v" Name="Hot Key" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NUV8iCtk4aqPs1QDEkYaLZ" Name="Is Default" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TtTaCZ7x8DbQEwCXitXuUs" Name="Is Cancel" Kind="InputPin" IsHidden="true" />
             <Pin Id="BGzLl9wZo7CNpvyPS6yEfd" Name="Is Checked Channel" Kind="InputPin" />
             <Pin Id="EzikkV15w4OOU7jy0Uq7vY" Name="Output" Kind="OutputPin" />
-            <Pin Id="Pxseb587D8oPdkkUSgpuUM" Name="Command Channel" Kind="InputPin" />
+            <Pin Id="SEzExra8hhlM3A9SBTLHNP" Name="Classes" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CCdG9FdfGG9OujnD2m0rBb" Name="Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GjxzG1Ib5zDNXlNQLi3jg1" Name="Click Mode" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CvFC94amqUZOhNKm6AnDIU" Name="Is Three State" Kind="InputPin" />
             <Pin Id="QKjY5duyQllMAGEG4YhIRn" Name="Transitions" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NItp8Mfls00LOuDT9f1BG3" Name="Render Transform" Kind="InputPin" IsHidden="true" />
+            <Pin Id="MXdAQtT1atUQNRW4lggYs9" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PZhHJTlZ3SnQJFdAg2n78S" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="UmJPVD7qv04LbFgvCyAnC0" Name="Horizontal Content Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="A4TZgP4Q6sTPAugLWp0cGm" Name="Vertical Content Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="TxPwdK1rWQXP78xcQXb9s0" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
             <Pin Id="HArlnqsyZ0eOPo2AjEwQZC" Name="Context Menu" Kind="InputPin" IsHidden="true" />
             <Pin Id="HM1B9Zib28AOj0RwzkA73w" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
+            <Pin Id="T5J9PFwpf7iLoyrv52HzXi" Name="Control Template" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IdeD9HwXc4eLrN7SptrUV1" Name="Flyout" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NItp8Mfls00LOuDT9f1BG3" Name="Render Transform" Kind="InputPin" IsHidden="true" />
             <Pin Id="IsFESzF6f2WPEAXzyrouRO" Name="Is Visible" Kind="InputPin" IsHidden="true" />
             <Pin Id="GwZhX4ovezpN7kNfk77uV9" Name="Effect" Kind="InputPin" IsHidden="true" />
             <Pin Id="FwVxEIYmVhsN5E4HSkW360" Name="Focusable" Kind="InputPin" IsHidden="true" />
-            <Pin Id="EE0d18Gd3PZQKf9GSoLEgR" Name="Content Template" Kind="InputPin" IsHidden="true" />
-            <Pin Id="UmJPVD7qv04LbFgvCyAnC0" Name="Horizontal Content Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="A4TZgP4Q6sTPAugLWp0cGm" Name="Vertical Content Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="GjxzG1Ib5zDNXlNQLi3jg1" Name="Click Mode" Kind="InputPin" IsHidden="true" />
-            <Pin Id="IdeD9HwXc4eLrN7SptrUV1" Name="Flyout" Kind="InputPin" IsHidden="true" />
-            <Pin Id="VKptAaZwce8NpfN9dGF25v" Name="Hot Key" Kind="InputPin" IsHidden="true" />
-            <Pin Id="CvFC94amqUZOhNKm6AnDIU" Name="Is Three State" Kind="InputPin" IsHidden="true" />
-            <Pin Id="MXdAQtT1atUQNRW4lggYs9" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="PZhHJTlZ3SnQJFdAg2n78S" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="RarA8PI1Zo9NGWCrIFQn1q" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="K1u8q1nKcHsNptLiFBn9SN" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="170,200,55,19" Id="Fk0XX4yNsKvNzUI3HHOjuY">
@@ -143,16 +144,15 @@
             <Pin Id="VcCVrrbwdDJOBlryWRgh8J" Name="Classes" Kind="InputPin" IsHidden="true" />
             <Pin Id="BzUahjBrjM7Mz6MckQszfP" Name="Name" Kind="InputPin" IsHidden="true" />
             <Pin Id="IIGOWeV2tuJMF6wCUVqIrA" Name="Transitions" Kind="InputPin" IsHidden="true" />
-            <Pin Id="HVTX4rigUG8LlsntbDFf4j" Name="Render Transform" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Nuiv17ly4ynO5U3URIrDr0" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GQxP40N1XPoP6puKaAUb2g" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
             <Pin Id="IrNk4ImFhrmQbIkKmqCS7J" Name="Focus Adorner" Kind="InputPin" IsHidden="true" />
             <Pin Id="FPNxHDUtZdnNtN5QiiiEcr" Name="Context Menu" Kind="InputPin" IsHidden="true" />
             <Pin Id="LicGn6ApXXeM77d4VgJFwD" Name="Context Flyout" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HVTX4rigUG8LlsntbDFf4j" Name="Render Transform" Kind="InputPin" IsHidden="true" />
             <Pin Id="DkS7bnqGw0aQdxxwKECWxz" Name="Is Visible" Kind="InputPin" IsHidden="true" />
             <Pin Id="Nf7WVAx2cViPdDsqtsdJI7" Name="Effect" Kind="InputPin" IsHidden="true" />
             <Pin Id="PsVchpM5NYuLhyVMoImXrp" Name="Focusable" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Nuiv17ly4ynO5U3URIrDr0" Name="Horizontal Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="GQxP40N1XPoP6puKaAUb2g" Name="Vertical Alignment" Kind="InputPin" IsHidden="true" />
-            <Pin Id="NCSEvdwoo00MGOipV97jS9" Name="Z Index" Kind="InputPin" IsHidden="true" />
             <Pin Id="H2GbrBoQOtDLoEcMfO0h7w" Name="Is Enabled" Kind="InputPin" IsHidden="true" />
           </Node>
           <Node Bounds="369,90,53,19" Id="HphrVKGKa7ELnJWsqi4xTd">
@@ -241,6 +241,15 @@
             <Pin Id="V2sorgxWUHrO89gM4KiuUR" Name="Value" Kind="InputPin" DefaultValue="24" />
             <Pin Id="GZaE0vGYBzoLHrbcAZEJzs" Name="Output" Kind="OutputPin" />
           </Node>
+          <Pad Id="TiJpu3udqnSOAurxhgLa0i" Comment="Is Three State" Bounds="311,210,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="KvnL0NwTinHPvAkfyU328s" Comment="" Bounds="401,150,190,132" ShowValueBox="true" isIOBox="true" />
         </Canvas>
         <Patch Id="E4nQOcIT0zvOYgkhprkSgE" Name="Create" />
         <Patch Id="Gt5OjD78KcqMMXj2SHrzkR" Name="Update" />
@@ -261,10 +270,12 @@
         <Link Id="PvrX9aT4bkuN3wXaH8Hr83" Ids="Kru96q2MFWeLvryTpuKDRP,LEWxiKdSZ5ROQlabVpRsdx" />
         <Link Id="IJJoAZVq7nRL04gL2ZqpzU" Ids="GZaE0vGYBzoLHrbcAZEJzs,TVdky3WRBT5NeOMMa9Ib7Z" />
         <Link Id="Lkv4ONWDyu5N3YGY88VXp6" Ids="NY8GklQdRnVL4TiCp4R6WS,H99Ad8oZIfyOOXahIQ3DO7" />
+        <Link Id="RpkHAVaoDcyLVCV0wAJTOc" Ids="TiJpu3udqnSOAurxhgLa0i,CvFC94amqUZOhNKm6AnDIU" />
+        <Link Id="DeQNSpG3RWnLDa52uSHhNI" Ids="H7gIn3DpbVELgwnkCWlnr9,KvnL0NwTinHPvAkfyU328s" />
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1-0142-gabf274b680" />
+  <NugetDependency Id="HF5XBGKJyIxO2f8Jk3IKOc" Location="VL.Skia" Version="2025.7.1" />
   <NugetDependency Id="E6pDWWk4kMXNaTPH7M7Mur" Location="VL.Avalonia.Skia" Version="0.0.0" />
   <NugetDependency Id="Mxm6h5qpwdOMsjVxhVzJ6D" Location="VL.Avalonia" Version="0.0.0" />
 </Document>

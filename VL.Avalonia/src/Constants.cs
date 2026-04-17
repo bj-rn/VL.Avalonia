@@ -13,9 +13,11 @@ public struct PinOrder
 
     public const int Secondary = -40;
 
+    public const int Setters = -37;
+
     public const int Action = -35;
 
-    public const int Styled = -30;
+    public const int Style = -30;
 
     public const int Animatable = -20;
 

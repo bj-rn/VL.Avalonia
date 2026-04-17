@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Controls.Buttons;
 using VL.Core;
 using VL.Core.Import;
 
@@ -10,7 +11,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/radiobutton">RadioButton</see>
 /// </summary>
 [ProcessNode(Name = "RadioButton")]
-public partial class RadioButtonWrapper : ToggleButtonWrapperBase<RadioButton>
+public partial class RadioButtonWrapper : ToggleButtonNodeBase<RadioButton>
 {
     [ImplementProperty("RadioButton.GroupNameProperty")]
     protected Optional<string> _groupName;

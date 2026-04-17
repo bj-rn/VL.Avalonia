@@ -84,7 +84,7 @@ namespace VL.Avalonia.Controls
         private Optional<IAvaloniaStyle> _style;
 
         /// <param name="style">Applies style setters to control</param>
-        [Fragment(Order = PinOrder.Styled)]
+        [Fragment(Order = PinOrder.Setters)]
         public void SetStyle(Optional<IAvaloniaStyle> style)
         {
             if (_style == style)
@@ -105,7 +105,7 @@ namespace VL.Avalonia.Controls
         private Optional<string> _classes;
 
         /// <param name="classes">Applies classes to control</param>
-        [Fragment(Order = PinOrder.Styled)]
+        [Fragment(Order = PinOrder.Style)]
         public void SetClasses(
             [Pin(Visibility = Model.PinVisibility.Optional)] Optional<string> classes
         )
@@ -129,7 +129,7 @@ namespace VL.Avalonia.Controls
         [ImplementProperty(
             typeof(StyledElement),
             nameof(StyledElement.NameProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = Model.PinVisibility.Optional
         )]
         private Optional<string> _name;

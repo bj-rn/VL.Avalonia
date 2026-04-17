@@ -70,7 +70,7 @@ namespace VL.Avalonia.Controls
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.AutoScrollToSelectedItemProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = Model.PinVisibility.Optional
         )]
         private Optional<bool> _autoScrollToSelectedItem;
@@ -79,7 +79,7 @@ namespace VL.Avalonia.Controls
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.WrapSelectionProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = Model.PinVisibility.Optional
         )]
         private Optional<bool> _wrapSelection;
@@ -88,7 +88,7 @@ namespace VL.Avalonia.Controls
         [ImplementProperty(
             typeof(SelectingItemsControl),
             nameof(SelectingItemsControl.IsTextSearchEnabledProperty),
-            Order = PinOrder.Styled,
+            Order = PinOrder.Style,
             PinVisibility = Model.PinVisibility.Optional
         )]
         private Optional<bool> _isTextSearchEnabled;
