@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls.Primitives;
 
-namespace VL.Avalonia.Controls.Buttons
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Extension methods for <see cref="ToggleButton"/>.

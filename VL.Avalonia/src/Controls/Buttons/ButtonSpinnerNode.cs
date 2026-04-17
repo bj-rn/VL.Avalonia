@@ -1,11 +1,10 @@
 ﻿using Avalonia.Controls;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls.Base;
 using VL.Core;
 using VL.Core.Import;
 using VL.Model;
 
-namespace VL.Avalonia.Controls.Buttons
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Wrapper for <see cref="ButtonSpinner"/>
