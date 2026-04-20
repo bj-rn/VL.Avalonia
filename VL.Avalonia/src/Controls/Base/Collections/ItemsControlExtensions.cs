@@ -5,6 +5,7 @@ using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Styling;
+using VL.Lib.Collections;
 
 namespace VL.Avalonia.Controls
 {
@@ -19,7 +20,15 @@ namespace VL.Avalonia.Controls
         ) => itemsControl?.ItemContainerGenerator;
 
         /// <inheritdoc cref="ItemsControl.Items"/>
-        public static ItemCollection? Items(this ItemsControl itemsControl) => itemsControl?.Items;
+        public static IReadOnlyList<T> Items<T>(this ItemsControl itemsControl)
+        {
+            var items = itemsControl?.Items;
+
+            if (items == null || items.Count == 0)
+                return Spread<T>.Empty;
+
+            return items.OfType<T>().ToSpread();
+        }
 
         /// <inheritdoc cref="ItemsControl.ItemContainerTheme"/>
         public static ControlTheme? ItemContainerTheme(this ItemsControl itemsControl) =>

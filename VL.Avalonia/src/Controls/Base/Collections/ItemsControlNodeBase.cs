@@ -21,7 +21,6 @@ namespace VL.Avalonia.Controls
     {
         private IChannel<IReadOnlyList<TValue>>? _itemsSource;
         private IDisposable? _itemSourceBinding;
-
         private ISpread? _items;
 
         [Fragment]
@@ -99,7 +98,10 @@ namespace VL.Avalonia.Controls
 
         public override void Dispose()
         {
+            _itemsSource = null;
             _itemSourceBinding?.Dispose();
+            _items = null;
+
             base.Dispose();
         }
     }

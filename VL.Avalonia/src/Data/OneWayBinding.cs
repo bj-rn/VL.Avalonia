@@ -4,7 +4,10 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Data
 {
-    public class TwoWayBinding<TValue, TProperty> : IDisposable
+    /// <summary>
+    /// Handles case when setter is protected
+    /// </summary>
+    public class OneWayBinding<TValue, TProperty> : IDisposable
     {
         private readonly AvaloniaObject _control;
         private readonly AvaloniaProperty<TProperty?> _property;
@@ -12,24 +15,16 @@ namespace VL.Avalonia.Data
         private IChannel<TValue>? _channel;
         private IDisposable? _subscription;
 
-        private readonly Func<TValue?, TProperty?> _toProperty;
         private readonly Func<TProperty?, TValue?> _toChannel;
 
-        public TwoWayBinding(
+        public OneWayBinding(
             AvaloniaObject control,
             AvaloniaProperty<TProperty?> property,
-            Func<TValue?, TProperty?>? toProperty = null,
             Func<TProperty?, TValue?>? toChannel = null
         )
         {
             _control = control;
             _property = property;
-
-            _toProperty =
-                toProperty
-                ?? (
-                    v => v is null ? default : (TProperty?)Convert.ChangeType(v, typeof(TProperty))
-                );
 
             _toChannel =
                 toChannel
@@ -46,28 +41,13 @@ namespace VL.Avalonia.Data
 
             if (channel != null)
             {
-                var controlObservable = _control
+                _subscription = _control
                     .GetObservable(_property)
                     .Select(_toChannel)
-                    // Skip the initial value from the control, trust the channel first
-                    .Skip(1);
-
-                _subscription = Observable
-                    .Merge(controlObservable, channel)
-                    .StartWith(channel.Value)
                     .DistinctUntilChanged()
                     .Subscribe(value =>
                     {
-                        // 1. Update VL Channel safely
                         channel.EnsureValue(value);
-
-                        // 2. Update Avalonia cleanly
-                        var propertyValue = _toProperty(value);
-
-                        if (!Equals(_control.GetValue(_property), propertyValue))
-                        {
-                            _control.SetCurrentValue(_property, propertyValue);
-                        }
                     });
             }
         }
@@ -79,9 +59,9 @@ namespace VL.Avalonia.Data
         }
     }
 
-    public class TwoWayBinding<T> : TwoWayBinding<T, T>
+    public class OneWayBinding<T> : OneWayBinding<T, T>
     {
-        public TwoWayBinding(AvaloniaObject control, AvaloniaProperty<T?> property)
+        public OneWayBinding(AvaloniaObject control, AvaloniaProperty<T?> property)
             : base(control, property) { }
     }
 }
