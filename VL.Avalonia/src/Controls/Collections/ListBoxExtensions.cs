@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Selection;
+using VL.Lib.Collections;
 using AvaSelectionMode = Avalonia.Controls.SelectionMode;
 
 namespace VL.Avalonia.Controls
@@ -15,13 +16,32 @@ namespace VL.Avalonia.Controls
         public static IScrollable? Scroll(this ListBox listBox) => listBox?.Scroll;
 
         /// <inheritdoc cref="ListBox.SelectedItems"/>
-        public static IList? SelectedItems(this ListBox listBox) => listBox?.SelectedItems;
+        public static IReadOnlyList<T> SelectedItems<T>(this ListBox listBox)
+        {
+            var items = listBox?.SelectedItems;
+
+            if (items == null || items.Count == 0)
+                return Spread<T>.Empty;
+
+            return items.OfType<T>().ToSpread();
+        }
 
         /// <inheritdoc cref="ListBox.SelectedItems"/>
-        public static void SetSelectedItems(this ListBox listBox, IList? selectedItems)
+        public static void SetSelectedItems<T>(this ListBox listBox, IReadOnlyList<T> selectedItems)
         {
             if (listBox is not null)
-                listBox.SelectedItems = selectedItems;
+            {
+                var mutableList = new AvaloniaList<object>();
+
+                foreach (var item in selectedItems ?? [])
+                {
+                    // TODO: Not sure if we should filter out nulls here.
+                    if (item is not null)
+                        mutableList.Add(item);
+                }
+
+                listBox.SelectedItems = mutableList;
+            }
         }
 
         /// <inheritdoc cref="ListBox.Selection"/>

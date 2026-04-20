@@ -8,11 +8,11 @@ namespace VL.Avalonia.Controls;
 /// MenuItem is highly flexible and can represent a clickable action, a parent for a submenu, a separator, or a toggleable/radio option.
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/menuitem">MenuItem</see>
 /// </summary>
-[ProcessNode(Name = "MenuItem (Spectral)")]
+//[ProcessNode(Name = "MenuItem (Spectral)")]
 public partial class MenuItemSpectralWrapper : MenuItemSpectralWrapper<object?> { }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
-[ProcessNode(Name = "MenuItem")]
+//[ProcessNode(Name = "MenuItem")]
 public partial class MenuItemWrapper : MenuItemSpectralWrapper
 {
     /// <param name="items">
@@ -26,11 +26,11 @@ public partial class MenuItemWrapper : MenuItemSpectralWrapper
 }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
-[ProcessNode(Name = "MenuItem (Spectral Advanced Experimental)")]
+//[ProcessNode(Name = "MenuItem (Spectral Advanced Experimental)")]
 public partial class MenuItemSpectralWrapper<T> : MenuItemWrapperBase<T> { }
 
 /// <inheritdoc cref="MenuItemSpectralWrapper"/>
-[ProcessNode(Name = "MenuItem (Advanced Experimental)")]
+//[ProcessNode(Name = "MenuItem (Advanced Experimental)")]
 public partial class MenuItemWrapper<T> : MenuItemSpectralWrapper<T>
 {
     /// <param name="items">

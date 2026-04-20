@@ -7,17 +7,19 @@ using VL.Model;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="HeaderedItemsControl"/>
+    /// <summary>
+    /// Base wrapper for <see cref="HeaderedSelectingItemsControl"/>
+    /// </summary>
     [ProcessNode]
-    public abstract partial class HeaderedItemsControlNodeBase<TControl, TValue>
-        : ItemsControlNodeBase<TControl, TValue>
-        where TControl : HeaderedItemsControl, new()
+    public abstract partial class HeaderedSelectingItemsControlNodeBase<TControl, TValue>
+        : SelectingItemsControlNodeBase<TControl, TValue>
+        where TControl : HeaderedSelectingItemsControl, new()
     {
         /// <summary>Sets the content of the control's header.</summary>
         [ImplementProperty(
             typeof(HeaderedItemsControl),
             nameof(HeaderedItemsControl.HeaderProperty),
-            Order = PinOrder.Main
+            Order = PinOrder.Secondary
         )]
         private Optional<object> _header;
 

@@ -52,15 +52,42 @@ namespace VL.Avalonia.Controls
     }
 
     /// <summary>
-    /// Wrapper for <see cref="TreeViewItem"/>
+    /// Ungeneric wrapper for <see cref="TreeViewItem"/>
     /// </summary>
     [ProcessNode(Name = "TreeViewItem")]
+    public class TreeViewItemNode : TreeViewItemNodeBase<object>
+    {
+        [Fragment(Order = PinOrder.Main)]
+        public override void SetItems(
+            [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+                Spread<object?> items
+        )
+        {
+            base.SetItems(items);
+        }
+    }
+
+    /// <inheritdoc cref="TreeViewItemNode"/>
+    [ProcessNode(Name = "TreeViewItem (Spectral)")]
+    public class TreeViewItemSpectralNode : TreeViewItemNodeBase<object>
+    {
+        [Fragment(Order = PinOrder.Main)]
+        public override void SetItems(Spread<object?> items)
+        {
+            base.SetItems(items);
+        }
+    }
+
+    /// <summary>
+    /// Generic wrapper for <see cref="TreeViewItem"/>
+    /// </summary>
+    [ProcessNode(Name = "TreeViewItem (Advanced)")]
     public class TreeViewItemNode<T> : TreeViewItemNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
             [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
-                Spread<T> items
+                Spread<T?> items
         )
         {
             base.SetItems(items);
@@ -68,18 +95,18 @@ namespace VL.Avalonia.Controls
     }
 
     /// <inheritdoc cref="TreeViewItemNode{T}"/>
-    [ProcessNode(Name = "TreeViewItem (Spectral)")]
+    [ProcessNode(Name = "TreeViewItem (Advanced Spectral)")]
     public class TreeViewItemSpectralNode<T> : TreeViewItemNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]
-        public override void SetItems(Spread<T> items)
+        public override void SetItems(Spread<T?> items)
         {
             base.SetItems(items);
         }
     }
 
     /// <inheritdoc cref="TreeViewItemNode{T}"/>
-    [ProcessNode(Name = "TreeViewItem (Reactive)")]
+    [ProcessNode(Name = "TreeViewItem (Advanced Reactive)")]
     public class TreeViewItemReactiveNode<T> : TreeViewItemNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]

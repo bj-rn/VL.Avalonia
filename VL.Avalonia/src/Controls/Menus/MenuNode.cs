@@ -1,6 +1,4 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Attributes;
-using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
@@ -8,28 +6,19 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls
 {
     /// <summary>
-    /// Base wrapper for <see cref="ListBox"/>
+    /// Base wrapper for <see cref="Menu"/>
     /// </summary>
     [ProcessNode]
-    public abstract partial class ListBoxNodeBase<T> : SelectingItemsControlNodeBase<ListBox, T>
-    {
-        /// <summary>Sets the selection mode.</summary>
-        [ImplementProperty(
-            typeof(ListBox),
-            nameof(ListBox.SelectionModeProperty),
-            PinVisibility = Model.PinVisibility.Optional
-        )]
-        private Optional<SelectionMode> _selectionMode;
-    }
+    public abstract class MenuNodeBase<T> : MenuBaseNode<Menu, T> { }
 
     /// <summary>
-    /// Ungeneric wrapper for <see cref="ListBox"/>
+    /// Ungeneric wrapper for <see cref="Menu"/>
     /// </summary>
-    [ProcessNode(Name = "ListBox")]
-    public class ListBoxNode : ListBoxNodeBase<object>
+    [ProcessNode(Name = "Menu")]
+    public class MenuNode : MenuNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
-        public override void SetItems(
+        public void SetItems(
             [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
                 Spread<object?> items
         )
@@ -38,9 +27,9 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="ListBoxNode"/>
-    [ProcessNode(Name = "ListBox (Spectral)")]
-    public class ListBoxSpectralNode : ListBoxNodeBase<object>
+    /// <inheritdoc cref="MenuNode"/>
+    [ProcessNode(Name = "Menu (Spectral)")]
+    public class MenuSpectralNode : MenuNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(Spread<object?> items)
@@ -50,10 +39,10 @@ namespace VL.Avalonia.Controls
     }
 
     /// <summary>
-    /// Generic wrapper for <see cref="ListBox"/>
+    /// Generic wrapper for <see cref="Menu"/>
     /// </summary>
-    [ProcessNode(Name = "ListBox (Advanced)")]
-    public class ListBoxNode<T> : ListBoxNodeBase<T>
+    [ProcessNode(Name = "Menu (Advanced)")]
+    public class MenuNode<T> : MenuNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
@@ -65,9 +54,9 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="ListBoxNode{T}"/>
-    [ProcessNode(Name = "ListBox (Advanced Spectral)")]
-    public class ListBoxSpectralNode<T> : ListBoxNodeBase<T>
+    /// <inheritdoc cref="MenuNode{T}"/>
+    [ProcessNode(Name = "Menu (Advanced Spectral)")]
+    public class MenuSpectralNode<T> : MenuNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(Spread<T?> items)
@@ -76,9 +65,9 @@ namespace VL.Avalonia.Controls
         }
     }
 
-    /// <inheritdoc cref="ListBoxNode{T}"/>
-    [ProcessNode(Name = "ListBox (Advanced Reactive)")]
-    public class ListBoxReactiveNode<T> : ListBoxNodeBase<T>
+    /// <inheritdoc cref="MenuNode{T}"/>
+    [ProcessNode(Name = "Menu (Advanced Reactive)")]
+    public class MenuReactiveNode<T> : MenuNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItemsSource(IChannel<IReadOnlyList<T>> itemsSource)
