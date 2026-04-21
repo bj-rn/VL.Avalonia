@@ -205,6 +205,15 @@ namespace VL.Avalonia.Controls
     public abstract partial class LayoutableNodeBase<T> : VisualNodeBase<T>
         where T : Layoutable, new()
     {
+        /// <summary>Sets the margin around the element.</summary>
+        [ImplementProperty(
+            typeof(Layoutable),
+            nameof(Layoutable.MarginProperty),
+            Order = PinOrder.Layoutable,
+            PinVisibility = Model.PinVisibility.Optional
+        )]
+        private Optional<Thickness> _margin;
+
         /// <summary>Sets the horizontal alignment of the layoutable element.</summary>
         [ImplementProperty(
             typeof(Layoutable),

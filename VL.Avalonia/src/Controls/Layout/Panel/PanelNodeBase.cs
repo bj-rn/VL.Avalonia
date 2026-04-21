@@ -31,9 +31,12 @@ namespace VL.Avalonia.Controls
 
             collection.Clear();
 
-            if (children is not null)
+            foreach (var child in _children)
             {
-                collection.AddRange(children);
+                if (child is Control control)
+                {
+                    collection.Add(control);
+                }
             }
         }
 

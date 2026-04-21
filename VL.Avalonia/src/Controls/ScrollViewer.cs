@@ -11,10 +11,6 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls;
 
-/// <summary>
-/// The <c>ScrollViewer</c> is a content control that provides scrolling for its child content when it overflows the available space. It supports both horizontal and vertical scrolling, snap points, auto-hide scrollbars, scroll chaining, inertia, deferred scrolling, and change events.
-/// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/scrollviewer">ScrollViewer</see>
-/// </summary>
 [ProcessNode(Name = "ScrollViewer")]
 public partial class ScrollViewerWrapper : ContentControlWrapperBase<ScrollViewer>
 {

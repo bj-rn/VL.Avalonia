@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Data;
 using VL.Avalonia.Attributes;
+using VL.Core;
 using VL.Core.Import;
 using VL.Model;
 
@@ -60,8 +60,8 @@ namespace VL.Avalonia.Controls
             _output.SetValue(
                 ColumnDefinition.WidthProperty,
                 new GridLength(
-                    _gridLengthValue.GetValueOrDefault(0f),
-                    _gridUnitType.GetValueOrDefault(GridUnitType.Star)
+                    _gridLengthValue.ValueOrDefault(0f),
+                    _gridUnitType.ValueOrDefault(GridUnitType.Star)
                 )
             );
         }
