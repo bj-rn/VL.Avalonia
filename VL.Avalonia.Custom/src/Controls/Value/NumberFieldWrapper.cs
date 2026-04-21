@@ -8,5 +8,5 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/>NumberField<br/>
     /// </summary>
     [ProcessNode(Name = "NumberField")]
-    public partial class NumberFieldWrapper : NumericUpDownWrapper<NumberField> { }
+    public partial class NumberFieldWrapper : NumericUpDownNodeBase<NumberField> { }
 }

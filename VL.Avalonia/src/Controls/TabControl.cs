@@ -13,7 +13,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/tabcontrol">TabControl</see>
 /// </summary>
 [ProcessNode(Name = "TabControl (Spectral)")]
-public partial class TabControlSpectralWrapper<T> : SelectingItemsControlWrapperBase<TabControl, T>
+public partial class TabControlSpectralWrapper<T> : SelectingItemsControlNodeBase<TabControl, T>
 {
     #region TabControl Properties
 
