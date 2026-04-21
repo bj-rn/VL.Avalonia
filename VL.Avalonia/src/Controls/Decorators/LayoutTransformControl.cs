@@ -11,7 +11,7 @@ namespace VL.Avalonia.Controls
     /// Base wrapper for <see cref="LayoutTransformControl"/>
     /// </summary>
     [ProcessNode]
-    public abstract partial class LayoutTransformControlBase<T> : DecoratorNodeBase<T>
+    public abstract partial class LayoutTransformControlNodeBase<T> : DecoratorNodeBase<T>
         where T : LayoutTransformControl, new()
     {
         /// <summary>Sets a graphics transformation that should apply to this element when layout is performed.</summary>
@@ -35,5 +35,6 @@ namespace VL.Avalonia.Controls
     /// Wrapper for <see cref="LayoutTransformControl"/>
     /// </summary>
     [ProcessNode(Name = "LayoutTransformControl")]
-    public class LayoutTransformControlNode : LayoutTransformControlBase<LayoutTransformControl> { }
+    public class LayoutTransformControlNode
+        : LayoutTransformControlNodeBase<LayoutTransformControl> { }
 }

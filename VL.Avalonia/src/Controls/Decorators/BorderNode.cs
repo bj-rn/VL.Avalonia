@@ -50,7 +50,7 @@ namespace VL.Avalonia.Controls
             Order = PinOrder.Style,
             PinVisibility = PinVisibility.Optional
         )]
-        protected Optional<AvaThickness> _borderThickness;
+        private Optional<AvaThickness> _borderThickness;
 
         /// <summary>Sets the radius of the border rounded corners.</summary>
         [ImplementProperty(
@@ -59,7 +59,7 @@ namespace VL.Avalonia.Controls
             Order = PinOrder.Style,
             PinVisibility = PinVisibility.Optional
         )]
-        protected Optional<CornerRadius> _cornerRadius;
+        private Optional<CornerRadius> _cornerRadius;
 
         /// <summary>Sets the box shadow effect parameters</summary>
         [ImplementProperty(
@@ -68,9 +68,12 @@ namespace VL.Avalonia.Controls
             Order = PinOrder.Style,
             PinVisibility = PinVisibility.Optional
         )]
-        protected Optional<BoxShadows> _boxShadow;
+        private Optional<BoxShadows> _boxShadow;
     }
 
+    /// <summary>
+    /// Wrapper for <see cref="Border"/>
+    /// </summary>
     [ProcessNode(Name = "Border")]
     public class BorderNode : BorderNodeBase<Border> { }
 }
