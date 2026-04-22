@@ -8,5 +8,5 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/slider">Editable Slider</see>
     /// </summary>
     [ProcessNode(Name = "EditableSlider")]
-    public partial class EditableSliderWrapper : RangeBaseWrapper<EditableSlider> { }
+    public partial class EditableSliderWrapper : RangeBaseNodeBase<EditableSlider> { }
 }

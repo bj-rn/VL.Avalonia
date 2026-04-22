@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Core;
@@ -11,7 +11,7 @@ namespace VL.Avalonia.Controls;
 /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/path-icon">Slider</see>
 /// </summary>
 [ProcessNode(Name = "PathIcon")]
-public partial class PathIconWrapper : ControlWrapperBase<PathIcon>
+public partial class PathIconWrapper : ControlNodeBase<PathIcon>
 {
     /// <param name="data">
     /// Sets geometry for the icon.
@@ -19,3 +19,4 @@ public partial class PathIconWrapper : ControlWrapperBase<PathIcon>
     [ImplementProperty("PathIcon.DataProperty", Order = PinOrder.Main)]
     protected Optional<Geometry> _data;
 }
+

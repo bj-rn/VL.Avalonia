@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Media;
 using VL.Avalonia.Controls;
 using VL.Avalonia.Helpers;
@@ -12,7 +12,7 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/colorpicker/">Custom Color Picker</see>
     /// </summary>
     [ProcessNode(Name = "ColorHexTextBox")]
-    public partial class ColorHexTextBoxWrapper : ControlWrapperBase<ColorHexTextBox>
+    public partial class ColorHexTextBoxWrapper : ControlNodeBase<ColorHexTextBox>
     {
         protected ChannelTwoWayBinding<HsvColor> _hsvBinding;
         protected ChannelTwoWayBinding<Color> _color;
@@ -37,3 +37,4 @@ namespace VL.Avalonia.Custom.Controls.Value
         public void SetColor(IChannel<Color> color) => _color.SetChannel(color);
     }
 }
+

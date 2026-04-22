@@ -1,10 +1,11 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Helpers;
 using VL.Avalonia.Styles;
 using VL.Core;
 using VL.Core.Import;
 
 namespace VL.Avalonia.Controls;
+
+// TODO: REFACTOR
 
 /// <summary>
 /// Implements styling, classes, name

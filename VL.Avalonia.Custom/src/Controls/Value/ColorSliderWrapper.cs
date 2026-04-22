@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
-using VL.Avalonia.Attributes;
 using VL.Avalonia.Controls;
 using VL.Avalonia.Helpers;
 using VL.Core;
@@ -15,7 +14,7 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/colorpicker/">ColorSlider</see>
     /// </summary>
     [ProcessNode(Name = "ColorSlider")]
-    public partial class ColorSliderWrapper : RangeBaseWrapper<ColorSlider>
+    public partial class ColorSliderWrapper : RangeBaseNodeBase<ColorSlider>
     {
         public ColorSliderWrapper()
         {

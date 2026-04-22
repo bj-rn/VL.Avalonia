@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using VL.Core.Import;
 
 namespace VL.Avalonia.Controls;
@@ -7,4 +7,5 @@ namespace VL.Avalonia.Controls;
 /// The Separator control is used to provide visual separators within a Menu control.
 /// </summary>
 [ProcessNode(Name = "Separator")]
-public partial class SeparatorWrapper : ControlWrapperBase<Separator> { }
+public partial class SeparatorWrapper : ControlNodeBase<Separator> { }
+

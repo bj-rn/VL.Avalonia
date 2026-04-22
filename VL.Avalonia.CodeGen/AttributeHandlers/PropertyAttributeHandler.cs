@@ -4,29 +4,6 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Microsoft.CodeAnalysis;
 
-// TEMPLATE
-/*
-    protected Optional<IBrush> _background;
-    /// <inheritdoc cref="_background"/>
-    [Fragment(Order = -10)]
-    public void SetBackground([Pin(Visibility = Model.PinVisibility.Optional)] Optional<IBrush> background)
-    {
-        if (_background != background)
-        {
-            if (background.HasValue)
-            {
-                _output.SetValue(Border.BackgroundProperty, (cast)background.Value);
-            }
-            else
-            {
-                _output.ClearValue(Border.BackgroundProperty);
-            }
-
-            _background = background;
-        }
-    }
-*/
-
 namespace VL.Avalonia.CodeGen.AttributeHandlers
 {
     public sealed class PropertyAttributeHandler : IAttributeHandler
@@ -60,45 +37,18 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
             var typeCast = tProperty == null ? "" : $"({tProperty})";
 
             var order = int.Parse(
-                attr.NamedArguments.Where(x => x.Key == "Order")
-                    .FirstOrDefault()
-                    .Value.Value?.ToString()
+                attr.NamedArguments.FirstOrDefault(x => x.Key == "Order").Value.Value?.ToString()
                 ?? "0"
             );
+
             var pinVisibility = PinVisibilities[
-                attr.NamedArguments.Where(x => x.Key == "PinVisibility")
-                    .FirstOrDefault()
+                attr.NamedArguments.FirstOrDefault(x => x.Key == "PinVisibility")
                     .Value.Value?.ToString()
                 ?? "0"
             ];
 
-            var xmlDoc = fieldSymbol.GetDocumentationCommentXml();
-            var paramDoc = "";
-
-            if (!string.IsNullOrEmpty(xmlDoc))
-            {
-                var doc = new XmlDocument();
-                doc.LoadXml(xmlDoc);
-
-                var param = doc.SelectSingleNode("//param");
-
-                if (param != null)
-                {
-                    paramDoc = $"/// {param.OuterXml}";
-                    paramDoc = Regex.Replace(paramDoc, @"[\r\n]+", " ");
-                }
-            }
-
-            var fieldType = fieldSymbol.Type as INamedTypeSymbol;
-            var typeArg =
-                fieldType
-                    ?.TypeArguments.FirstOrDefault()
-                    ?.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat) ?? "object";
-
-            var propertyPath = attr.ConstructorArguments.ElementAt(0).Value?.ToString();
-
+            // 1. Resolve names first so we can use paramBase in the XML documentation
             var paramBase = fieldName.TrimStart('_');
-
             var paramName =
                 paramBase.Length > 0
                     ? char.ToLower(paramBase[0]) + paramBase.Substring(1)
@@ -111,14 +61,139 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
                         : fieldName
                 );
 
+            // 2. Parse existing XML documentation on the field
+            var xmlDoc = fieldSymbol.GetDocumentationCommentXml();
+            var paramDocText = "";
+            bool isInheritDoc = false;
+
+            if (!string.IsNullOrEmpty(xmlDoc))
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlDoc);
+
+                var memberNode = doc.SelectSingleNode("/member");
+                if (memberNode != null)
+                {
+                    var existingParam = memberNode.SelectSingleNode("param");
+                    var inheritNode = memberNode.SelectSingleNode("inheritdoc");
+
+                    if (existingParam != null)
+                    {
+                        paramDocText = existingParam.InnerXml.Trim();
+                    }
+                    else if (inheritNode != null)
+                    {
+                        isInheritDoc = true;
+                    }
+                    else
+                    {
+                        var summaryNode = memberNode.SelectSingleNode("summary");
+                        if (summaryNode != null)
+                        {
+                            paramDocText = summaryNode.InnerXml.Trim();
+                        }
+                    }
+                }
+            }
+
+            // 3. Get generic type argument for Optional<T>
+            var fieldType = fieldSymbol.Type as INamedTypeSymbol;
+            var typeArg =
+                fieldType
+                    ?.TypeArguments.FirstOrDefault()
+                    ?.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat) ?? "object";
+
+            // 4. Resolve PropertyPath based on which constructor the user used
+            string propertyPath = "";
+            if (attr.ConstructorArguments.Length == 1)
+            {
+                propertyPath = attr.ConstructorArguments[0].Value?.ToString() ?? "";
+            }
+            else if (attr.ConstructorArguments.Length == 2)
+            {
+                var ownerTypeSymbol = attr.ConstructorArguments[0].Value as INamedTypeSymbol;
+                var propertyValueName = attr.ConstructorArguments[1].Value?.ToString();
+
+                var typeString = ownerTypeSymbol?.ToDisplayString(
+                    SymbolDisplayFormat.FullyQualifiedFormat
+                );
+                propertyPath = $"{typeString}.{propertyValueName}";
+
+                // 4b. AUTO-FETCH AVALONIA DOCS if inheritdoc is used or docs are empty
+                if (
+                    (isInheritDoc || string.IsNullOrEmpty(paramDocText))
+                    && ownerTypeSymbol != null
+                    && !string.IsNullOrEmpty(propertyValueName)
+                )
+                {
+                    // Strip "Property" from "HotKeyProperty" to find the "HotKey" property symbol
+                    string targetPropertyName = propertyValueName!;
+                    if (targetPropertyName.EndsWith("Property"))
+                    {
+                        targetPropertyName = targetPropertyName.Substring(
+                            0,
+                            targetPropertyName.Length - 8
+                        );
+                    }
+
+                    // Traverse inheritance hierarchy to find the CLR property symbol
+                    var currentType = ownerTypeSymbol;
+                    IPropertySymbol? targetProperty = null;
+                    while (currentType != null && targetProperty == null)
+                    {
+                        targetProperty = currentType
+                            .GetMembers(targetPropertyName)
+                            .OfType<IPropertySymbol>()
+                            .FirstOrDefault();
+                        currentType = currentType.BaseType;
+                    }
+
+                    // If we found the property, extract its <summary>!
+                    if (targetProperty != null)
+                    {
+                        var targetXml = targetProperty.GetDocumentationCommentXml();
+                        if (!string.IsNullOrEmpty(targetXml))
+                        {
+                            var targetDoc = new XmlDocument();
+                            targetDoc.LoadXml(targetXml);
+                            var targetSummary = targetDoc.SelectSingleNode("/member/summary");
+                            if (targetSummary != null)
+                            {
+                                paramDocText = targetSummary.InnerXml.Trim();
+                            }
+                        }
+                    }
+                }
+            }
+
+            string finalParamDoc = "";
+            if (!string.IsNullOrWhiteSpace(paramDocText))
+            {
+                paramDocText = Regex.Replace(
+                    paramDocText,
+                    @"<see\s+cref=""[A-Z]:([^""]+)""\s*/>",
+                    match => match.Groups[1].Value.Split('.').Last()
+                );
+                paramDocText = Regex.Replace(paramDocText, @"<[^>]+>", "");
+                paramDocText = Regex.Replace(paramDocText, @"[\r\n\t]+", " ");
+
+                // Use standard \r\n and no leading whitespace for the first slash
+                finalParamDoc =
+                    $"/// <summary>Sets the {paramBase} property.</summary>\r\n        /// <param name=\"{paramBase}\">{paramDocText}</param>";
+            }
+
+            // 6. Generate the final template
             var template =
                 $@"
-    {paramDoc}
-    [Fragment(Order = {order})]
-    public void {methodName}([Pin(Visibility = {pinVisibility})] Optional<{typeArg}> {paramBase})
-    {{
-        if ({fieldName} != {paramBase})
+        {finalParamDoc}
+        [Fragment(Order = {order})]
+        public void {methodName}([Pin(Visibility = {pinVisibility})] Optional<{typeArg}> {paramBase})
         {{
+            if ({fieldName} == {paramBase})
+                return;
+
+            {fieldName} = {paramBase};
+
             if ({paramBase}.HasValue)
             {{
                 _output.SetValue({propertyPath}, {typeCast} {paramBase}.Value);
@@ -127,11 +202,7 @@ namespace VL.Avalonia.CodeGen.AttributeHandlers
             {{
                 _output.ClearValue({propertyPath});
             }}
-
-            {fieldName} = {paramBase};
-        }}
-    }}
-";
+        }}";
 
             return template;
         }

@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls.Shapes;
+using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Core;
@@ -7,7 +7,7 @@ using VL.Core.Import;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "Rectangle")]
-public partial class RectangleWrapper : ControlWrapperBase<Rectangle>
+public partial class RectangleWrapper : ControlNodeBase<Rectangle>
 {
     [ImplementProperty("Rectangle.FillProperty")]
     protected Optional<IBrush> _fill;
@@ -21,3 +21,4 @@ public partial class RectangleWrapper : ControlWrapperBase<Rectangle>
     [ImplementProperty("Rectangle.OpacityProperty", PinVisibility = Model.PinVisibility.Optional)]
     protected Optional<float> _opacity;
 }
+

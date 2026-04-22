@@ -4,7 +4,7 @@ using Avalonia.Media;
 using Avalonia.Media.Transformation;
 using Stride.Core.Extensions;
 using Stride.Core.Mathematics;
-using VL.Avalonia.Animation.Transitions;
+using VL.Avalonia.Animation;
 using VL.Avalonia.Extensions;
 using VL.Avalonia.Helpers;
 using VL.Core;

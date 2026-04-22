@@ -1,5 +1,5 @@
 ﻿using Avalonia.Controls;
-using VL.Avalonia.Helpers;
+using VL.Avalonia.Data;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Lib.Reactive;
@@ -7,70 +7,106 @@ using VL.Model;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="TreeViewItem"/>
+    /// <summary>
+    /// Base wrapper for <see cref="TreeViewItem"/>
+    /// </summary>
     [ProcessNode]
     public abstract class TreeViewItemNodeBase<T>
-        : HeaderedItemsControlBaseNode<TreeViewItem, T>,
+        : HeaderedItemsControlNodeBase<TreeViewItem, T>,
             IDisposable
     {
-        protected TwoWayBinding<bool> IsExpandedBinding;
-        protected TwoWayBinding<bool> IsSelectedBinding;
+        private TwoWayBinding<bool> _isExpandedBinding;
+        private TwoWayBinding<bool> _isSelectedBinding;
 
         public TreeViewItemNodeBase()
         {
-            IsExpandedBinding = new(_output, TreeViewItem.IsExpandedProperty);
-            IsSelectedBinding = new(_output, TreeViewItem.IsSelectedProperty);
+            _isExpandedBinding = new(_output, TreeViewItem.IsExpandedProperty);
+            _isSelectedBinding = new(_output, TreeViewItem.IsSelectedProperty);
         }
 
         /// <inheritdoc cref="TreeViewItem.IsExpandedProperty"/>
+        [Fragment(Order = PinOrder.Action)]
         public void SetIsExpandedChannel(
             [Pin(Visibility = PinVisibility.Optional)] IChannel<bool> isExpandedChannel
         )
         {
-            IsExpandedBinding.Bind(isExpandedChannel);
+            _isExpandedBinding.Bind(isExpandedChannel);
         }
 
         /// <inheritdoc cref="TreeViewItem.IsSelectedProperty"/>
+        [Fragment(Order = PinOrder.Action)]
         public void SetIsSelectedChannel(
             [Pin(Visibility = PinVisibility.Optional)] IChannel<bool> isSelectedChannel
         )
         {
-            IsSelectedBinding.Bind(isSelectedChannel);
+            _isSelectedBinding.Bind(isSelectedChannel);
         }
 
         public override void Dispose()
         {
-            IsExpandedBinding?.Dispose();
-            IsSelectedBinding?.Dispose();
+            _isExpandedBinding?.Dispose();
+            _isSelectedBinding?.Dispose();
 
             base.Dispose();
         }
     }
 
+    /// <summary>
+    /// Ungeneric wrapper for <see cref="TreeViewItem"/>
+    /// </summary>
     [ProcessNode(Name = "TreeViewItem")]
-    public class TreeViewItemNode<T> : TreeViewItemNodeBase<T>
+    public class TreeViewItemNode : TreeViewItemNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
             [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
-                Spread<T> items
+                Spread<object?> items
         )
         {
             base.SetItems(items);
         }
     }
 
+    /// <inheritdoc cref="TreeViewItemNode"/>
     [ProcessNode(Name = "TreeViewItem (Spectral)")]
-    public class TreeViewItemSpectralNode<T> : TreeViewItemNodeBase<T>
+    public class TreeViewItemSpectralNode : TreeViewItemNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
-        public override void SetItems(Spread<T> items)
+        public override void SetItems(Spread<object?> items)
         {
             base.SetItems(items);
         }
     }
 
-    [ProcessNode(Name = "TreeViewItem (Reactive)")]
+    /// <summary>
+    /// Generic wrapper for <see cref="TreeViewItem"/>
+    /// </summary>
+    [ProcessNode(Name = "TreeViewItem (Advanced)")]
+    public class TreeViewItemNode<T> : TreeViewItemNodeBase<T>
+    {
+        [Fragment(Order = PinOrder.Main)]
+        public override void SetItems(
+            [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+                Spread<T?> items
+        )
+        {
+            base.SetItems(items);
+        }
+    }
+
+    /// <inheritdoc cref="TreeViewItemNode{T}"/>
+    [ProcessNode(Name = "TreeViewItem (Advanced Spectral)")]
+    public class TreeViewItemSpectralNode<T> : TreeViewItemNodeBase<T>
+    {
+        [Fragment(Order = PinOrder.Main)]
+        public override void SetItems(Spread<T?> items)
+        {
+            base.SetItems(items);
+        }
+    }
+
+    /// <inheritdoc cref="TreeViewItemNode{T}"/>
+    [ProcessNode(Name = "TreeViewItem (Advanced Reactive)")]
     public class TreeViewItemReactiveNode<T> : TreeViewItemNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]

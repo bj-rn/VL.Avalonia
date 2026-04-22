@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using VL.Avalonia.Controls;
@@ -14,7 +14,7 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/colorpicker/">ColorSpectrum</see>
     /// </summary>
     [ProcessNode(Name = "ColorSpectrum")]
-    public partial class ColorSpectrumWrapper : ControlWrapperBase<ColorSpectrum>
+    public partial class ColorSpectrumWrapper : ControlNodeBase<ColorSpectrum>
     {
         protected ChannelTwoWayBinding<Color> _colorBinding;
         protected ChannelTwoWayBinding<HsvColor> _hsvColorBinding;
@@ -214,3 +214,4 @@ namespace VL.Avalonia.Custom.Controls.Value
         }
     }
 }
+

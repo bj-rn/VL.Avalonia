@@ -1,7 +1,7 @@
 ﻿using Avalonia.Media;
 using Stride.Core.Mathematics;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls.Base.Primitives;
+using VL.Avalonia.Controls;
 using VL.Avalonia.Extensions;
 using VL.Core;
 using VL.Core.Import;
@@ -9,7 +9,7 @@ using VL.Core.Import;
 namespace VL.Avalonia.Media.Effects
 {
     [ProcessNode]
-    public abstract partial class EffectWrapperBase<T> : AnimatableWrapperBase<T>
+    public abstract partial class EffectWrapperBase<T> : AnimatableNodeBase<T>
         where T : Effect, new() { }
 
     [ProcessNode(Name = "BlurEffect")]

@@ -7,50 +7,77 @@ using VL.Lib.Reactive;
 
 namespace VL.Avalonia.Controls
 {
-    /// <inheritdoc cref="ListBox"/>
+    /// <summary>
+    /// Base wrapper for <see cref="ListBox"/>
+    /// </summary>
     [ProcessNode]
     public abstract partial class ListBoxNodeBase<T> : SelectingItemsControlNodeBase<ListBox, T>
     {
+        /// <summary>Sets the selection mode.</summary>
         [ImplementProperty(
-            "ListBox.SelectionModeProperty",
+            typeof(ListBox),
+            nameof(ListBox.SelectionModeProperty),
             PinVisibility = Model.PinVisibility.Optional
         )]
-        protected Optional<SelectionMode> _selectionMode;
-
-        [Fragment(Order = PinOrder.Secondary)]
-        public override void SetSelectedItemChannel(IChannel<T> selectedItemChannel)
-        {
-            base.SetSelectedItemChannel(selectedItemChannel);
-        }
+        private Optional<SelectionMode> _selectionMode;
     }
 
-    /// <inheritdoc cref="ListBox"/>
+    /// <summary>
+    /// Ungeneric wrapper for <see cref="ListBox"/>
+    /// </summary>
     [ProcessNode(Name = "ListBox")]
-    public class ListBoxNode<T> : ListBoxNodeBase<T>
+    public class ListBoxNode : ListBoxNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
             [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
-                Spread<T> items
+                Spread<object?> items
         )
         {
             base.SetItems(items);
         }
     }
 
-    /// <inheritdoc cref="ListBox"/>
+    /// <inheritdoc cref="ListBoxNode"/>
     [ProcessNode(Name = "ListBox (Spectral)")]
-    public class ListBoxSpectralNode<T> : ListBoxNodeBase<T>
+    public class ListBoxSpectralNode : ListBoxNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
-        public override void SetItems(Spread<T> items)
+        public override void SetItems(Spread<object?> items)
         {
             base.SetItems(items);
         }
     }
 
-    /// <inheritdoc cref="ListBox"/>
-    [ProcessNode(Name = "ListBox (Reactive)")]
+    /// <summary>
+    /// Generic wrapper for <see cref="ListBox"/>
+    /// </summary>
+    [ProcessNode(Name = "ListBox (Advanced)")]
+    public class ListBoxNode<T> : ListBoxNodeBase<T>
+    {
+        [Fragment(Order = PinOrder.Main)]
+        public override void SetItems(
+            [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
+                Spread<T?> items
+        )
+        {
+            base.SetItems(items);
+        }
+    }
+
+    /// <inheritdoc cref="ListBoxNode{T}"/>
+    [ProcessNode(Name = "ListBox (Advanced Spectral)")]
+    public class ListBoxSpectralNode<T> : ListBoxNodeBase<T>
+    {
+        [Fragment(Order = PinOrder.Main)]
+        public override void SetItems(Spread<T?> items)
+        {
+            base.SetItems(items);
+        }
+    }
+
+    /// <inheritdoc cref="ListBoxNode{T}"/>
+    [ProcessNode(Name = "ListBox (Advanced Reactive)")]
     public class ListBoxReactiveNode<T> : ListBoxNodeBase<T>
     {
         [Fragment(Order = PinOrder.Main)]

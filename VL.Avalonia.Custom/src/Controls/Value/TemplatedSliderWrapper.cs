@@ -10,7 +10,7 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/slider">Slider</see>
     /// </summary>
     [ProcessNode(Name = "TemplatedSlider")]
-    public partial class TemplatedSliderWrapper : RangeBaseWrapper<TemplatedSlider>
+    public partial class TemplatedSliderWrapper : RangeBaseNodeBase<TemplatedSlider>
     {
         /// <param name="content">
         /// Dialog Button. Whether this button is the cancel button (triggered by Escape key)

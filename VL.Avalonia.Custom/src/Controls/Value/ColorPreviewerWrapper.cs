@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Primitives;
 using Avalonia.Media;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Controls;
@@ -14,7 +14,7 @@ namespace VL.Avalonia.Custom.Controls.Value
     /// <br/><br/><see href="https://docs.avaloniaui.net/docs/reference/controls/colorpicker/">Custom Color Picker</see>
     /// </summary>
     [ProcessNode(Name = "ColorPreviewer")]
-    public partial class ColorPreviewerWrapper : ControlWrapperBase<ColorPreviewer>
+    public partial class ColorPreviewerWrapper : ControlNodeBase<ColorPreviewer>
     {
         protected ChannelTwoWayBinding<HsvColor, HsvColor> _hsvBinding;
 
@@ -39,3 +39,4 @@ namespace VL.Avalonia.Custom.Controls.Value
         protected Optional<bool> _isAccentColorsVisible;
     }
 }
+

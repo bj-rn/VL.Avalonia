@@ -1,4 +1,4 @@
-﻿using SkiaSharp;
+using SkiaSharp;
 using Stride.Core.Mathematics;
 using VL.Avalonia.Skia;
 using VL.Core;
@@ -10,7 +10,7 @@ using VL.Skia;
 namespace VL.Avalonia.Controls
 {
     [ProcessNode]
-    public abstract class SkiaMediaControlWrapperBase<T> : ControlWrapperBase<T>
+    public abstract class SkiaMediaControlWrapperBase<T> : ControlNodeBase<T>
         where T : SkiaMediaControlBase, new()
     {
         protected Optional<SizeMode> _mode;
@@ -206,3 +206,4 @@ namespace VL.Avalonia.Controls
         }
     }
 }
+
