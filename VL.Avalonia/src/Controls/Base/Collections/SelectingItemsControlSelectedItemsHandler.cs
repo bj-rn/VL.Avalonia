@@ -7,21 +7,14 @@ using VL.Lib.Collections;
 namespace VL.Avalonia.Controls
 {
     [ProcessNode]
-    public abstract class SelectingItemsControlSelectedItemsHandler<TControl, TValue>
+    public abstract class SelectingItemsControlSelectedItemsHandler<TControl, T>
         where TControl : SelectingItemsControl
     {
         private TControl? _input;
         private IDisposable? _subscription;
-        private IReadOnlyList<TValue> _output = Spread<TValue>.Empty;
+        private IReadOnlyList<T> _output = Spread<T>.Empty;
 
-        private Func<TControl, IReadOnlyList<TValue>> _selector;
-
-        public SelectingItemsControlSelectedItemsHandler(
-            Func<TControl, IReadOnlyList<TValue>> selector
-        )
-        {
-            _selector = selector;
-        }
+        protected abstract Func<TControl, IReadOnlyList<T>> Selector { get; }
 
         public virtual void SetInput(TControl? input)
         {
@@ -39,11 +32,11 @@ namespace VL.Avalonia.Controls
                         h => _input.SelectionChanged += h,
                         h => _input.SelectionChanged -= h
                     )
-                    .Subscribe(ev => _output = _selector(_input));
+                    .Subscribe(ev => _output = Selector(_input));
             }
         }
 
-        public IReadOnlyList<TValue> Output => _output;
+        public IReadOnlyList<T> Output => _output;
 
         public virtual void Dispose()
         {

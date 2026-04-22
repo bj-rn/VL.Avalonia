@@ -13,6 +13,9 @@ namespace VL.Avalonia.Controls
     public abstract partial class DefinitionNodeBase<T> : AvaloniaObjectNodeBase<T>
         where T : DefinitionBase, new()
     {
+        protected const float DefaultGridLengthValue = 1.0f;
+        protected const GridUnitType DefaultGridUnit = GridUnitType.Star;
+
         /// <summary>Sets shared size group property. Marks column / row definition as belonging to a group "Foo" or "Bar".</summary>
         [ImplementProperty(
             typeof(DefinitionBase),

@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using VL.Core.Import;
 
+// TODO: REFACTOR
+
 namespace VL.Avalonia.Data
 {
     [ProcessNode(Name = "Binding (Name)")]
@@ -16,13 +18,19 @@ namespace VL.Avalonia.Data
             {
                 _propertyName = propertyName;
 
-                var prop = AvaloniaPropertyRegistry.Instance.FindRegistered(
-                    _input?.GetType(),
-                    propertyName
-                );
-                if (prop != null)
+                var inputType = _input?.GetType();
+
+                if (inputType != null)
                 {
-                    SetProperty(prop);
+                    var prop = AvaloniaPropertyRegistry.Instance.FindRegistered(
+                        inputType,
+                        propertyName
+                    );
+
+                    if (prop != null)
+                    {
+                        SetProperty(prop);
+                    }
                 }
             }
         }

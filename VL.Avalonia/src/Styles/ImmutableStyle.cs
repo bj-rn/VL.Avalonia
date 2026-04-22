@@ -1,8 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Styling;
-using VL.Avalonia.Animation.Transitions;
-using VL.Avalonia.Helpers;
+using VL.Avalonia.Animation;
 using VL.Lib.Collections;
 
 namespace VL.Avalonia.Styles

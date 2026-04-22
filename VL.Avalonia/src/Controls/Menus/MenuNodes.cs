@@ -18,7 +18,7 @@ namespace VL.Avalonia.Controls
     public class MenuNode : MenuNodeBase<object>
     {
         [Fragment(Order = PinOrder.Main)]
-        public void SetItems(
+        public override void SetItems(
             [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
                 Spread<object?> items
         )

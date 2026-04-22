@@ -17,7 +17,7 @@ namespace VL.Avalonia.Controls
         [ImplementProperty(
             typeof(HeaderedItemsControl),
             nameof(HeaderedItemsControl.HeaderProperty),
-            Order = PinOrder.Main
+            Order = PinOrder.Secondary
         )]
         private Optional<object> _header;
 

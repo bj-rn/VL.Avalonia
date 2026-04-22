@@ -8,7 +8,7 @@ using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Media.Transformation;
 using Stride.Core.Mathematics;
-using VL.Avalonia.Animation.Transitions;
+using VL.Avalonia.Animation;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Styles;
 using VL.Core;
@@ -17,22 +17,6 @@ using Matrix = Stride.Core.Mathematics.Matrix;
 
 namespace VL.Avalonia.Controls
 {
-    /// <summary>
-    /// Base wrapper for <see cref="AvaloniaObject"/>
-    /// </summary>
-    [ProcessNode]
-    public abstract class AvaloniaObjectNodeBase<T> : IDisposable
-        where T : AvaloniaObject, new()
-    {
-        protected readonly T _output = new();
-        public T Output => _output;
-
-        public virtual void Dispose()
-        {
-            // Disposing base
-        }
-    }
-
     /// <summary>
     /// Base wrapper for <see cref="Animatable"/>
     /// </summary>

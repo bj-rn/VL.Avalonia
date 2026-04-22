@@ -12,11 +12,12 @@ namespace VL.Avalonia.Controls
     [ProcessNode(Name = "ColumnDefinition")]
     public partial class ColumnDefinitionNode : DefinitionNodeBase<ColumnDefinition>
     {
-        private Optional<float> _gridLengthValue;
-        private Optional<GridUnitType> _gridUnitType;
+        private float _gridLengthValue = DefaultGridLengthValue;
+        private GridUnitType _gridUnitType = DefaultGridUnit;
 
         /// <param name="gridLengthValue">Size in pixels or star units.</param>
-        public void SetGridLengthValue(Optional<float> gridLengthValue)
+        [Fragment(Order = PinOrder.Main)]
+        public void SetGridLengthValue(float gridLengthValue = DefaultGridLengthValue)
         {
             if (_gridLengthValue == gridLengthValue)
                 return;
@@ -27,7 +28,8 @@ namespace VL.Avalonia.Controls
         }
 
         /// <param name="gridUnitType">Type of grid unit (Pixel, Star, Auto).</param>
-        public void SetGridUnitType(Optional<GridUnitType> gridUnitType)
+        [Fragment(Order = PinOrder.Main)]
+        public void SetGridUnitType(GridUnitType gridUnitType = DefaultGridUnit)
         {
             if (_gridUnitType == gridUnitType)
                 return;
@@ -59,10 +61,7 @@ namespace VL.Avalonia.Controls
         {
             _output.SetValue(
                 ColumnDefinition.WidthProperty,
-                new GridLength(
-                    _gridLengthValue.ValueOrDefault(0f),
-                    _gridUnitType.ValueOrDefault(GridUnitType.Star)
-                )
+                new GridLength(_gridLengthValue, _gridUnitType)
             );
         }
     }

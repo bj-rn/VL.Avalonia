@@ -21,7 +21,9 @@ namespace VL.Avalonia.Controls
         {
             _selectedTimeBinding = new TwoWayBinding<TimeSpan?, TimeSpan?>(
                 _output,
-                TimePicker.SelectedTimeProperty
+                TimePicker.SelectedTimeProperty,
+                x => x,
+                y => y
             );
         }
 

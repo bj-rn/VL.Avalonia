@@ -4,10 +4,12 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Primitives.PopupPositioning;
 using VL.Avalonia.Attributes;
 using VL.Core;
+using VL.Core.Import;
 
 namespace VL.Avalonia.Controls
 {
-    public abstract class ContextMenuNodeBase<T> : MenuBaseNode<ContextMenu, T>
+    [ProcessNode]
+    public abstract partial class ContextMenuNodeBase<T> : MenuBaseNode<ContextMenu, T>
     {
         /// <summary>Sets the Horizontal offset of the popup in relation to the <see cref="Popup.PlacementTarget"/>.</summary>
         [ImplementProperty(

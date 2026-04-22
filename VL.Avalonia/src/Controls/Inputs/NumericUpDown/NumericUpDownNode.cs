@@ -57,7 +57,7 @@ namespace VL.Avalonia.Controls
         private Optional<string> _watermark;
 
         /// <summary>Sets the minimum allowed value.</summary>
-        [ImplementProperty(
+        [ImplementProperty<float, decimal>(
             typeof(NumericUpDown),
             nameof(NumericUpDown.MinimumProperty),
             Order = PinOrder.Style,
@@ -66,7 +66,7 @@ namespace VL.Avalonia.Controls
         private Optional<float> _minimum;
 
         /// <summary>Sets the maximum allowed value.</summary>
-        [ImplementProperty(
+        [ImplementProperty<float, decimal>(
             typeof(NumericUpDown),
             nameof(NumericUpDown.MaximumProperty),
             Order = PinOrder.Style,
@@ -75,7 +75,7 @@ namespace VL.Avalonia.Controls
         private Optional<float> _maximum;
 
         /// <summary>Sets the amount by which to increment or decrement the value.</summary>
-        [ImplementProperty(
+        [ImplementProperty<float, decimal>(
             typeof(NumericUpDown),
             nameof(NumericUpDown.IncrementProperty),
             Order = PinOrder.Style,

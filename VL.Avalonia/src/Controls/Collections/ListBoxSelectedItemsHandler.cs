@@ -12,8 +12,8 @@ namespace VL.Avalonia.Controls
     public class ListBoxSelectedItemsHandler<T>
         : SelectingItemsControlSelectedItemsHandler<ListBox, T>
     {
-        public ListBoxSelectedItemsHandler()
-            : base(input => input.SelectedItems?.OfType<T>().ToSpread() ?? Spread<T>.Empty) { }
+        protected override Func<ListBox, IReadOnlyList<T>> Selector =>
+            input => input.SelectedItems?.OfType<T>().ToSpread() ?? Spread<T>.Empty;
 
         public override void SetInput(ListBox? input)
         {

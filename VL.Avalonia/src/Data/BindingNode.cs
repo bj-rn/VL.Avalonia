@@ -4,6 +4,8 @@ using Avalonia;
 using VL.Core.Import;
 using VL.Lib.Reactive;
 
+// TODO: REFACTOR
+
 namespace VL.Avalonia.Data
 {
     public enum SupportedBindingMode
@@ -45,10 +47,13 @@ namespace VL.Avalonia.Data
         [Fragment(Order = PinOrder.Main)]
         public void SetInput(TControl? input)
         {
-            if (_input != input)
-            {
-                _input = input;
+            if (ReferenceEquals(_input, input))
+                return;
 
+            _input = input;
+
+            if (_input is not null)
+            {
                 Bind();
             }
         }
