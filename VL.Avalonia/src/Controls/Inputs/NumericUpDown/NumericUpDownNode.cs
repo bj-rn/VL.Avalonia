@@ -36,7 +36,7 @@ namespace VL.Avalonia.Controls
         /// <param name="valueChannel">
         /// The current numeric value of the control
         /// </param>
-        [Fragment(Order = PinOrder.Action)]
+        [Fragment(Order = PinOrder.Main)]
         public void SetValueChannel(IChannel<float?> valueChannel) =>
             _valueBinding.Bind(valueChannel);
 
@@ -52,7 +52,8 @@ namespace VL.Avalonia.Controls
         [ImplementProperty(
             typeof(NumericUpDown),
             nameof(NumericUpDown.WatermarkProperty),
-            Order = PinOrder.Style
+            Order = PinOrder.Style,
+            PinVisibility = PinVisibility.Optional
         )]
         private Optional<string> _watermark;
 
