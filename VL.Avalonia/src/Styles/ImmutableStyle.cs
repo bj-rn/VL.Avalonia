@@ -2,6 +2,7 @@
 using Avalonia.Animation;
 using Avalonia.Styling;
 using VL.Avalonia.Animation;
+using VL.Core;
 using VL.Lib.Collections;
 
 namespace VL.Avalonia.Styles
@@ -13,16 +14,19 @@ namespace VL.Avalonia.Styles
     /// <param name="Input">Upstream style setters</param>
     /// <param name="StyleValue">Setter property value</param>
     /// <param name="StyleName">Setter property name</param>
-    public record struct ImmutableSetter<T>(IAvaloniaStyle? Input, T? StyleValue, string StyleName)
-        : IAvaloniaStyle
+    public record struct ImmutableSetter<T>(
+        IAvaloniaStyle? Input,
+        Optional<T> StyleValue,
+        string StyleName
+    ) : IAvaloniaStyle
     {
         public Style BuildStyle(StyledElement owner, Style style)
         {
-            if (StyleValue != null)
+            if (StyleValue.HasValue)
             {
                 // Transitions should be built for control
                 // so seems only place to add special case
-                if (StyleValue is Spread<IAvaloniaTransition> transitions)
+                if (StyleValue.Value is Spread<IAvaloniaTransition> transitions)
                 {
                     var transitionsCollection = new Transitions();
 
@@ -44,7 +48,7 @@ namespace VL.Avalonia.Styles
                     }
                 }
 
-                style.TryAddSetter(owner, StyleName, StyleValue);
+                style.TryAddSetter(owner, StyleName, StyleValue.Value);
             }
 
             Input?.BuildStyle(owner, style);
