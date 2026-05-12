@@ -82,12 +82,28 @@ namespace VL.Avalonia.Skia
 
         public void SetInputRoot(IInputRoot inputRoot) => InputRoot = inputRoot;
 
+        /// <summary>
+        /// When true (default), <see cref="Notify"/> subtracts the on-screen origin captured
+        /// during the last <see cref="Render"/> from incoming positions so the layer hit-tests in
+        /// its local space — useful when the layer is rendered as a sub-region of a larger
+        /// viewport (e.g. embedded in a VL.ImGui SkiaWidget on Stride). The
+        /// <see cref="SendNotification"/> path is unaffected; its caller supplies its own
+        /// position transform.
+        /// </summary>
+        public bool CompensateRenderOffset { get; set; } = true;
+
+        private Point _renderOffset;
+
         internal bool Notify(INotification notification, CallerInfo caller)
         {
             var position = new Point(0, 0);
 
             if (notification is NotificationWithPosition n)
+            {
                 position = n.Position.ToPoint();
+                if (CompensateRenderOffset)
+                    position = new Point(position.X - _renderOffset.X, position.Y - _renderOffset.Y);
+            }
 
             return HandleNotification(notification, position);
         }
@@ -337,6 +353,7 @@ namespace VL.Avalonia.Skia
         {
             var bounds = caller.ViewportBounds.ToAvaloniaRect();
             SetClientSize(bounds.Size);
+            _renderOffset = bounds.Position;
 
             _surfaces.Clear();
             _surfaces.Add(caller);
