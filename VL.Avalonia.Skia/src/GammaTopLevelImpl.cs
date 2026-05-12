@@ -128,6 +128,15 @@ namespace VL.Avalonia.Skia
             Point position
         )
         {
+            // While touches are active, Stride still emits synthetic mouse events that Windows
+            // generates at OS level for the touch (via VL.Stride.InputTranslation's separate
+            // MouseButtonListener — independent of the touch-notification fallback we suppress
+            // with notification.Handled). Avalonia has only one mouse pointer instance, so these
+            // synthetic clicks compete with the touch pointers for capture and break multi-touch.
+            // Drop them whenever any touch is in flight.
+            if (_activeTouchIds.Count > 0)
+                return true;
+
             var e = default(RawInputEventArgs);
 
             if (notification is MouseButtonNotification m)
@@ -291,11 +300,14 @@ namespace VL.Avalonia.Skia
 
             input(e);
 
-            // Always mark touch notifications as handled. Otherwise Stride's InputTranslation
-            // emits a synthetic MouseDown fallback for every unhandled touch, which Avalonia
-            // then routes alongside the real touch event, breaking multi-touch (a single Mouse
-            // pointer can't track multiple fingers). Avalonia's own e.Handled stays false on
-            // capture, so we can't rely on it.
+            // Mark the notification as handled. Otherwise Stride's InputTranslation emits a
+            // synthetic MouseDown fallback for every unhandled touch, which Avalonia then
+            // routes alongside the real touch event, breaking multi-touch (a single Mouse
+            // pointer can't track multiple fingers). We set the flag on the notification
+            // itself rather than only returning true, so it propagates even when the upstream
+            // caller (e.g. VL.Stride.SkiaRenderer's input subscription) discards the bool.
+            // Avalonia's own e.Handled stays false on capture, so we can't rely on it.
+            notification.Handled = true;
             return true;
         }
 
