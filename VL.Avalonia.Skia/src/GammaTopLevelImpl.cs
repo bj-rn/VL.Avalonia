@@ -251,25 +251,23 @@ namespace VL.Avalonia.Skia
             Point position
         )
         {
-            var e = default(RawInputEventArgs);
-
             var eventType = notification.Kind.GetTouchPointerEventType();
 
-            input(
-                e = new RawPointerEventArgs(
-                    TouchDevice,
-                    Timestamp,
-                    InputRoot,
-                    eventType,
-                    position / _scaling,
-                    _inputModifiers
-                )
-            );
+            var e = new RawPointerEventArgs(
+                TouchDevice,
+                Timestamp,
+                InputRoot,
+                eventType,
+                position / _scaling,
+                _inputModifiers
+            )
+            {
+                RawPointerId = notification.Id,
+            };
 
-            if (e != null)
-                return e.Handled;
+            input(e);
 
-            return false;
+            return e.Handled;
         }
 
         public Action<Rect>? Paint { get; set; }
