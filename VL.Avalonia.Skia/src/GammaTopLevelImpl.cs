@@ -105,6 +105,7 @@ namespace VL.Avalonia.Skia
             return HandleNotification(notification, position);
         }
 
+
         internal bool HandleNotification(INotification notification, Point position)
         {
             if (InputRoot is null || Input is not { } input)
@@ -245,6 +246,12 @@ namespace VL.Avalonia.Skia
             return false;
         }
 
+        // Stride recycles touch ids (0, 1, 2 ...) after a finger lifts, which confuses Avalonia's
+        // per-pointer capture tracking. Map each incoming touch session to a locally-unique
+        // RawPointerId that's never reused, so back-to-back touches look like distinct pointers.
+        private long _nextRawPointerId = 1;
+        private readonly Dictionary<int, long> _activeTouchIds = new();
+
         private bool HandleTouchNotification(
             TouchNotification notification,
             Action<RawInputEventArgs> input,
@@ -252,6 +259,23 @@ namespace VL.Avalonia.Skia
         )
         {
             var eventType = notification.Kind.GetTouchPointerEventType();
+
+            long rawPointerId;
+            switch (notification.Kind)
+            {
+                case TouchNotificationKind.TouchDown:
+                    rawPointerId = _nextRawPointerId++;
+                    _activeTouchIds[notification.Id] = rawPointerId;
+                    break;
+                case TouchNotificationKind.TouchUp:
+                    if (!_activeTouchIds.Remove(notification.Id, out rawPointerId))
+                        rawPointerId = _nextRawPointerId++;
+                    break;
+                default:
+                    if (!_activeTouchIds.TryGetValue(notification.Id, out rawPointerId))
+                        rawPointerId = _nextRawPointerId++;
+                    break;
+            }
 
             var e = new RawPointerEventArgs(
                 TouchDevice,
@@ -262,12 +286,17 @@ namespace VL.Avalonia.Skia
                 _inputModifiers
             )
             {
-                RawPointerId = notification.Id,
+                RawPointerId = rawPointerId,
             };
 
             input(e);
 
-            return e.Handled;
+            // Always mark touch notifications as handled. Otherwise Stride's InputTranslation
+            // emits a synthetic MouseDown fallback for every unhandled touch, which Avalonia
+            // then routes alongside the real touch event, breaking multi-touch (a single Mouse
+            // pointer can't track multiple fingers). Avalonia's own e.Handled stays false on
+            // capture, so we can't rely on it.
+            return true;
         }
 
         public Action<Rect>? Paint { get; set; }
