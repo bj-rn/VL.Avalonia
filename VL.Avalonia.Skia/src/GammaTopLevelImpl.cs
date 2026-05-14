@@ -82,12 +82,28 @@ namespace VL.Avalonia.Skia
 
         public void SetInputRoot(IInputRoot inputRoot) => InputRoot = inputRoot;
 
+        /// <summary>
+        /// When true (default), <see cref="Notify"/> subtracts the on-screen origin captured
+        /// during the last <see cref="Render"/> from incoming positions so the layer hit-tests in
+        /// its local space — useful when the layer is rendered as a sub-region of a larger
+        /// viewport (e.g. embedded in a VL.ImGui SkiaWidget on Stride). The
+        /// <see cref="SendNotification"/> path is unaffected; its caller supplies its own
+        /// position transform.
+        /// </summary>
+        public bool CompensateRenderOffset { get; set; } = true;
+
+        private Point _renderOffset;
+
         internal bool Notify(INotification notification, CallerInfo caller)
         {
             var position = new Point(0, 0);
 
             if (notification is NotificationWithPosition n)
+            {
                 position = n.Position.ToPoint();
+                if (CompensateRenderOffset)
+                    position = new Point(position.X - _renderOffset.X, position.Y - _renderOffset.Y);
+            }
 
             return HandleNotification(notification, position);
         }
@@ -104,6 +120,7 @@ namespace VL.Avalonia.Skia
 
             return HandleNotification(notification, position);
         }
+
 
         internal bool HandleNotification(INotification notification, Point position)
         {
@@ -127,6 +144,15 @@ namespace VL.Avalonia.Skia
             Point position
         )
         {
+            // While touches are active, Stride still emits synthetic mouse events that Windows
+            // generates at OS level for the touch (via VL.Stride.InputTranslation's separate
+            // MouseButtonListener — independent of the touch-notification fallback we suppress
+            // with notification.Handled). Avalonia has only one mouse pointer instance, so these
+            // synthetic clicks compete with the touch pointers for capture and break multi-touch.
+            // Drop them whenever any touch is in flight.
+            if (_activeTouchIds.Count > 0)
+                return true;
+
             var e = default(RawInputEventArgs);
 
             if (notification is MouseButtonNotification m)
@@ -245,6 +271,12 @@ namespace VL.Avalonia.Skia
             return false;
         }
 
+        // Stride recycles touch ids (0, 1, 2 ...) after a finger lifts, which confuses Avalonia's
+        // per-pointer capture tracking. Map each incoming touch session to a locally-unique
+        // RawPointerId that's never reused, so back-to-back touches look like distinct pointers.
+        private long _nextRawPointerId = 1;
+        private readonly Dictionary<int, long> _activeTouchIds = new();
+
         private bool HandleTouchNotification(
             TouchNotification notification,
             Action<RawInputEventArgs> input,
@@ -252,6 +284,23 @@ namespace VL.Avalonia.Skia
         )
         {
             var eventType = notification.Kind.GetTouchPointerEventType();
+
+            long rawPointerId;
+            switch (notification.Kind)
+            {
+                case TouchNotificationKind.TouchDown:
+                    rawPointerId = _nextRawPointerId++;
+                    _activeTouchIds[notification.Id] = rawPointerId;
+                    break;
+                case TouchNotificationKind.TouchUp:
+                    if (!_activeTouchIds.Remove(notification.Id, out rawPointerId))
+                        rawPointerId = _nextRawPointerId++;
+                    break;
+                default:
+                    if (!_activeTouchIds.TryGetValue(notification.Id, out rawPointerId))
+                        rawPointerId = _nextRawPointerId++;
+                    break;
+            }
 
             var e = new RawPointerEventArgs(
                 TouchDevice,
@@ -262,12 +311,20 @@ namespace VL.Avalonia.Skia
                 _inputModifiers
             )
             {
-                RawPointerId = notification.Id,
+                RawPointerId = rawPointerId,
             };
 
             input(e);
 
-            return e.Handled;
+            // Mark the notification as handled. Otherwise Stride's InputTranslation emits a
+            // synthetic MouseDown fallback for every unhandled touch, which Avalonia then
+            // routes alongside the real touch event, breaking multi-touch (a single Mouse
+            // pointer can't track multiple fingers). We set the flag on the notification
+            // itself rather than only returning true, so it propagates even when the upstream
+            // caller (e.g. VL.Stride.SkiaRenderer's input subscription) discards the bool.
+            // Avalonia's own e.Handled stays false on capture, so we can't rely on it.
+            notification.Handled = true;
+            return true;
         }
 
         public Action<Rect>? Paint { get; set; }
@@ -296,6 +353,7 @@ namespace VL.Avalonia.Skia
         {
             var bounds = caller.ViewportBounds.ToAvaloniaRect();
             SetClientSize(bounds.Size);
+            _renderOffset = bounds.Position;
 
             _surfaces.Clear();
             _surfaces.Add(caller);

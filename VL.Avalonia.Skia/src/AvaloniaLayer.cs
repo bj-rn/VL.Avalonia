@@ -110,6 +110,29 @@ namespace VL.Avalonia.Skia
             }
         }
 
+        private Optional<bool> _compensateRenderOffset;
+
+        /// <param name="compensateRenderOffset">
+        /// When the AvaloniaLayer is rendered as a sub-region of a larger viewport (e.g. embedded
+        /// in a VL.ImGui SkiaWidget on Stride), notifications still arrive in outer window-pixel
+        /// coordinates, while Avalonia hit-tests in its own layer-local space starting at (0, 0).
+        /// Enable this to subtract the captured render origin from incoming Notify positions so
+        /// the layer hit-tests where it visually renders. Default true. Disable for setups that
+        /// already handle the offset themselves.
+        /// </param>
+        [Fragment(Order = -10)]
+        public void SetCompensateRenderOffset(
+            [Pin(Visibility = PinVisibility.Optional)] Optional<bool> compensateRenderOffset
+        )
+        {
+            if (_compensateRenderOffset != compensateRenderOffset)
+            {
+                topLevelImpl.CompensateRenderOffset =
+                    !compensateRenderOffset.HasValue || compensateRenderOffset.Value;
+                _compensateRenderOffset = compensateRenderOffset;
+            }
+        }
+
         public void Dispose()
         {
             controlRoot.StopRendering();
