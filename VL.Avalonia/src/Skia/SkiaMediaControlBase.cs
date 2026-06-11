@@ -18,7 +18,17 @@ namespace VL.Avalonia.Skia
 
     public class SkiaImageControl : SkiaMediaControlBase
     {
-        public SKImage? Image { get; set; }
+        private SKImage? image;
+
+        public SKImage? Image
+        {
+            get => image;
+            set
+            {
+                image = value;
+                InvalidateVisual();
+            }
+        }
 
         public override void Render(DrawingContext context)
         {
@@ -30,13 +40,22 @@ namespace VL.Avalonia.Skia
                     Anchor ?? RectangleAnchor.Center
                 )
             );
-            Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
         }
     }
 
     public class SkiaPictureControl : SkiaMediaControlBase
     {
-        public SKPicture? Picture { get; set; }
+        private SKPicture? picture;
+
+        public SKPicture? Picture
+        {
+            get => picture;
+            set
+            {
+                picture = value;
+                InvalidateVisual();
+            }
+        }
 
         public override void Render(DrawingContext context)
         {
@@ -48,14 +67,33 @@ namespace VL.Avalonia.Skia
                     Anchor ?? RectangleAnchor.Center
                 )
             );
-            Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
         }
     }
 
     public class SkiaLayerControl : SkiaMediaControlBase
     {
-        public ILayer? Layer { get; set; }
-        public RectangleF? LayerBounds { get; set; }
+        private ILayer? layer;
+        private RectangleF? layerBounds;
+
+        public ILayer? Layer
+        {
+            get => layer;
+            set
+            {
+                layer = value;
+                InvalidateVisual();
+            }
+        }
+
+        public RectangleF? LayerBounds
+        {
+            get => layerBounds;
+            set
+            {
+                layerBounds = value;
+                InvalidateVisual();
+            }
+        }
 
         public override void Render(DrawingContext context)
         {
@@ -71,8 +109,6 @@ namespace VL.Avalonia.Skia
                     (float)scaling
                 )
             );
-
-            Dispatcher.UIThread.InvokeAsync(InvalidateVisual, DispatcherPriority.Background);
         }
     }
 }

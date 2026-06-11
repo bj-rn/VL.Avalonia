@@ -9,23 +9,12 @@ namespace VL.Avalonia.Skia
         private readonly CallerInfo _callerInfo;
         private readonly SKSurface _surface;
 
-        public GammaSkiaGpuRenderSession(CallerInfo callerInfo)
+        public GammaSkiaGpuRenderSession(CallerInfo callerInfo, SKSurface surface)
         {
             _callerInfo = callerInfo;
             GrContext = callerInfo.GRContext;
             ScaleFactor = callerInfo.Scaling;
-
-            var bounds = callerInfo.Canvas.DeviceClipBounds;
-            var width = Math.Max(1, bounds.Width);
-            var height = Math.Max(1, bounds.Height);
-            var info = new SKImageInfo(width, height, SKColorType.Rgba8888, SKAlphaType.Premul);
-
-            // Try GPU surface first, fall back to raster
-            // IMPORTANT: Explicitly ask for TopLeft origin to match the SurfaceOrigin property
-            if (GrContext != null)
-                _surface = SKSurface.Create(GrContext, false, info, 1, GRSurfaceOrigin.TopLeft);
-
-            _surface ??= SKSurface.Create(info);
+            _surface = surface;
         }
 
         public GRContext GrContext { get; }
@@ -37,9 +26,6 @@ namespace VL.Avalonia.Skia
         {
             // Avalonia finished rendering onto _surface.
             _surface.Canvas.Flush();
-            GrContext?.Flush();
-
-            using var image = _surface.Snapshot();
 
             // Blit the result to the original VL.Skia canvas.
             _callerInfo.Canvas.Save();
@@ -50,11 +36,9 @@ namespace VL.Avalonia.Skia
 
             // We must draw at the position of the clip bounds in device space
             var bounds = _callerInfo.Canvas.DeviceClipBounds;
-            _callerInfo.Canvas.DrawImage(image, bounds.Left, bounds.Top);
+            _callerInfo.Canvas.DrawSurface(_surface, bounds.Left, bounds.Top);
 
             _callerInfo.Canvas.Restore();
-
-            _surface.Dispose();
         }
     }
 }

@@ -62,6 +62,9 @@ namespace VL.Avalonia.Skia
 
                 if (Image != null)
                 {
+                    if (Image.IsDisposed())
+                        return;
+
                     var boundsRectangle = Bounds.FromRect();
                     var imageResolution = new Vector2(Image.Width, Image.Height);
 
