@@ -14,7 +14,10 @@ namespace VL.Avalonia.Controls
         where T : Canvas, new()
     {
         [Fragment]
-        public CanvasNodeBase([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public CanvasNodeBase(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
     }
 
     /// <summary>
@@ -24,7 +27,8 @@ namespace VL.Avalonia.Controls
     public class CanvasNode : CanvasNodeBase<Canvas>
     {
         [Fragment]
-        public CanvasNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public CanvasNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext)
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetChildren(
@@ -41,7 +45,10 @@ namespace VL.Avalonia.Controls
     public class CanvasNodeSpectral : CanvasNodeBase<Canvas>
     {
         [Fragment]
-        public CanvasNodeSpectral([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public CanvasNodeSpectral(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetChildren(IReadOnlyList<Control> children)

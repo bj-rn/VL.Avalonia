@@ -22,13 +22,17 @@ namespace VL.Avalonia.Controls
     {
         private TwoWayBinding<string, string> _textBinding;
         private TwoWayBinding<TValue?, object?> _selectedItemBinding;
-
         private IChannel<IReadOnlyList<TValue>>? _itemsSource;
+
+        private readonly TwoWayBinding<bool> _isDropDownOpenBinding;
+
         private IDisposable? _itemSourceBinding;
         private ISpread? _items;
 
         [Fragment]
-        public AutoCompleteBoxNodeBase([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext)
+        public AutoCompleteBoxNodeBase(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
             : base(nodeContext)
         {
             _textBinding = new TwoWayBinding<string, string>(_output, AutoCompleteBox.TextProperty);
@@ -37,6 +41,10 @@ namespace VL.Avalonia.Controls
                 AutoCompleteBox.SelectedItemProperty,
                 x => (object?)x,
                 x => (TValue?)x
+            );
+            _isDropDownOpenBinding = new TwoWayBinding<bool>(
+                _output,
+                AutoCompleteBox.IsDropDownOpenProperty
             );
         }
 
@@ -141,13 +149,9 @@ namespace VL.Avalonia.Controls
         private Optional<AutoCompleteFilterPredicate<string>> _textFilter;
 
         /// <summary>Sets whether the dropdown is currently open.</summary>
-        [ImplementProperty(
-            typeof(AutoCompleteBox),
-            nameof(AutoCompleteBox.IsDropDownOpenProperty),
-            Order = PinOrder.Style,
-            PinVisibility = PinVisibility.Optional
-        )]
-        private Optional<bool> _isDropDownOpen;
+        public void SetIsDropDownOpenChannel(
+            [Pin(Visibility = PinVisibility.Visible)] IChannel<bool>? isDropDownOpenChannel
+        ) => _isDropDownOpenBinding.Bind(isDropDownOpenChannel);
 
         /// <summary>Sets the maximum height of the dropdown when open.</summary>
         [ImplementProperty(
@@ -232,7 +236,10 @@ namespace VL.Avalonia.Controls
     public class AutoCompleteBoxNode : AutoCompleteBoxNodeBase<AutoCompleteBox, object>
     {
         [Fragment]
-        public AutoCompleteBoxNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public AutoCompleteBoxNode(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
@@ -249,7 +256,10 @@ namespace VL.Avalonia.Controls
     public class AutoCompleteBoxSpectralNode : AutoCompleteBoxNodeBase<AutoCompleteBox, object>
     {
         [Fragment]
-        public AutoCompleteBoxSpectralNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public AutoCompleteBoxSpectralNode(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(Spread<object?> items)
@@ -265,7 +275,10 @@ namespace VL.Avalonia.Controls
     public class AutoCompleteBoxNode<T> : AutoCompleteBoxNodeBase<AutoCompleteBox, T>
     {
         [Fragment]
-        public AutoCompleteBoxNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public AutoCompleteBoxNode(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(
@@ -281,7 +294,10 @@ namespace VL.Avalonia.Controls
     public class AutoCompleteBoxSpectralNode<T> : AutoCompleteBoxNodeBase<AutoCompleteBox, T>
     {
         [Fragment]
-        public AutoCompleteBoxSpectralNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public AutoCompleteBoxSpectralNode(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetItems(Spread<T?> items)
@@ -295,7 +311,10 @@ namespace VL.Avalonia.Controls
     public class AutoCompleteBoxReactiveNode<T> : AutoCompleteBoxNodeBase<AutoCompleteBox, T>
     {
         [Fragment]
-        public AutoCompleteBoxReactiveNode([Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext) : base(nodeContext) { }
+        public AutoCompleteBoxReactiveNode(
+            [Pin(Visibility = VL.Model.PinVisibility.Hidden)] NodeContext nodeContext
+        )
+            : base(nodeContext) { }
 
         [Fragment(Order = PinOrder.Main)]
         public override void SetItemsSource(IChannel<IReadOnlyList<T>> itemsSource)
