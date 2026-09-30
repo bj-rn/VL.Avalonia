@@ -149,8 +149,9 @@ namespace VL.Avalonia.Controls
         private Optional<AutoCompleteFilterPredicate<string>> _textFilter;
 
         /// <summary>Sets whether the dropdown is currently open.</summary>
+        [Fragment(Order = PinOrder.Style)]
         public void SetIsDropDownOpenChannel(
-            [Pin(Visibility = PinVisibility.Visible)] IChannel<bool>? isDropDownOpenChannel
+            [Pin(Visibility = PinVisibility.Optional)] IChannel<bool>? isDropDownOpenChannel
         ) => _isDropDownOpenBinding.Bind(isDropDownOpenChannel);
 
         /// <summary>Sets the maximum height of the dropdown when open.</summary>
