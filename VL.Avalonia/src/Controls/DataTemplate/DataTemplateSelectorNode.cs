@@ -16,58 +16,81 @@ namespace VL.Avalonia.Controls
         /// <summary>
         /// Used internally to convert patch to delegate
         /// </summary>
-        public TState InvokeRegion(TState state, TIn input, out Control output);
+        TState InvokeRegion(TState state, TIn input, out Control output);
     }
 
-    [ProcessNode(
-        Name = "DataTemplateSelector",
-        HasStateOutput = true,
-        FragmentSelection = FragmentSelection.Explicit
-    )]
-    public class DataTemplateSelectorNode : IDataTemplate
+    /// <summary>
+    /// Builds data with the first of its templates that matches it.
+    /// </summary>
+    /// <remarks>
+    /// A change of templates, including a template handing out a new instance when it is
+    /// invalidated, or invalidating the selector itself, hands out a new <see cref="Output"/>,
+    /// so the controls using it build their content again.
+    /// </remarks>
+    [ProcessNode(Name = "DataTemplateSelector", FragmentSelection = FragmentSelection.Explicit)]
+    public class DataTemplateSelectorNode
     {
-        protected IReadOnlyList<IDataTemplate> Templates { get; set; } =
-            Spread<IDataTemplate>.Empty;
+        private Selector _output = new(Spread<IDataTemplate>.Empty);
 
         [Fragment]
         public DataTemplateSelectorNode() { }
 
         [Fragment]
-        public virtual void SetTemplates(
+        public IDataTemplate Output => _output;
+
+        [Fragment]
+        public void Update(
             [Pin(PinGroupKind = Model.PinGroupKind.Collection, PinGroupDefaultCount = 1)]
-                Spread<IDataTemplate> templates
+                Spread<IDataTemplate> templates,
+            bool invalidate = false
         )
         {
-            if (!ReferenceEquals(Templates, templates))
-            {
-                Templates = templates ?? Spread<IDataTemplate>.Empty;
-            }
+            templates ??= Spread<IDataTemplate>.Empty;
+            if (invalidate || !_output.Holds(templates))
+                _output = new Selector(templates);
         }
 
-        public Control? Build(object? param)
+        private sealed class Selector(IReadOnlyList<IDataTemplate> templates) : IDataTemplate
         {
-            foreach (var template in Templates)
+            /// <summary>
+            /// Whether it holds the same templates in the same order. A pin group may hand over a
+            /// new spread with the same templates, which must not rebuild the content.
+            /// </summary>
+            public bool Holds(IReadOnlyList<IDataTemplate> other)
             {
-                if (template != null && template.Match(param))
-                {
-                    return template.Build(param);
-                }
-            }
-
-            return null;
-        }
-
-        public bool Match(object? data)
-        {
-            foreach (var template in Templates)
-            {
-                if (template != null && template.Match(data))
-                {
+                if (ReferenceEquals(templates, other))
                     return true;
+                if (templates.Count != other.Count)
+                    return false;
+                for (var i = 0; i < templates.Count; i++)
+                {
+                    if (!ReferenceEquals(templates[i], other[i]))
+                        return false;
                 }
+                return true;
             }
 
-            return false;
+            public Control? Build(object? param)
+            {
+                foreach (var template in templates)
+                {
+                    if (template != null && template.Match(param))
+                        return template.Build(param);
+                }
+
+                return null;
+            }
+
+            public bool Match(object? data)
+            {
+                foreach (var template in templates)
+                {
+                    if (template != null && template.Match(data))
+                        return true;
+                }
+
+                return false;
+            }
         }
     }
 }
