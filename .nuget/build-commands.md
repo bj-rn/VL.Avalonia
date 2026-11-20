@@ -1,3 +1,5 @@
+For a clean local Release build, run `.\_purge.cmd` from the repository root before the commands below. It removes the package projects' `lib` (including Debug builds and NuGet staging), `obj`, and `bin\Release` directories, plus the code generator's `obj` and `bin\Release`. It keeps existing `.nupkg` files in `packages`.
+
 dotnet build .\VL.Avalonia\src\VL.Avalonia.csproj --configuration Release --output .\VL.Avalonia\lib\net8.0\
 nuget pack .nuget\VL.Avalonia.nuspec -Version 0.0.1-pre -OutputDirectory .\packages
 
