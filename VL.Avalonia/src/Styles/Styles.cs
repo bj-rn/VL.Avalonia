@@ -7,6 +7,7 @@ using Avalonia.Controls.Primitives.PopupPositioning;
 using Avalonia.Controls.Templates;
 using Avalonia.Data.Converters;
 using Avalonia.Input;
+using Avalonia.Labs.Panels;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -1941,6 +1942,47 @@ namespace VL.Avalonia.Styles
     {
         public SetVerticalSpacing()
             : base("VerticalSpacing", (x) => (double)x) { }
+    }
+
+    #endregion
+
+    #region FlexPanel
+
+    // RowSpacing and ColumnSpacing are covered by SetRowSpacing / SetColumnSpacing (Grid region).
+
+    [ProcessNode(Name = "SetDirection")]
+    public class SetDirection : StyleSetter<FlexDirection>
+    {
+        public SetDirection()
+            : base("Direction") { }
+    }
+
+    [ProcessNode(Name = "SetJustifyContent")]
+    public class SetJustifyContent : StyleSetter<JustifyContent>
+    {
+        public SetJustifyContent()
+            : base("JustifyContent") { }
+    }
+
+    [ProcessNode(Name = "SetAlignItems")]
+    public class SetAlignItems : StyleSetter<AlignItems>
+    {
+        public SetAlignItems()
+            : base("AlignItems") { }
+    }
+
+    [ProcessNode(Name = "SetAlignContent")]
+    public class SetAlignContent : StyleSetter<AlignContent>
+    {
+        public SetAlignContent()
+            : base("AlignContent") { }
+    }
+
+    [ProcessNode(Name = "SetWrap")]
+    public class SetWrap : StyleSetter<FlexWrap>
+    {
+        public SetWrap()
+            : base("Wrap") { }
     }
 
     #endregion

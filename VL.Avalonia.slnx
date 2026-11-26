@@ -3,6 +3,7 @@
     <File Path=".github/workflows/main.yml" />
     <File Path="Directory.Packages.props" />
     <File Path="README.md" />
+
   </Folder>
   <Folder Name="/Solution Items/.nuget/">
     <File Path=".nuget/VL.Avalonia.Custom.nuspec" />
@@ -13,9 +14,11 @@
   <Folder Name="/Solution Items/instructions/">
     <File Path=".github/instructions/control-refactoring.md" />
   </Folder>
-  <Project Path="VL.Avalonia.CodeGen/VL.Avalonia.CodeGen.csproj" />
-  <Project Path="VL.Avalonia.Custom/src/VL.Avalonia.Custom.csproj" />
-  <Project Path="VL.Avalonia.Skia/src/VL.Avalonia.Skia.csproj" />
-  <Project Path="VL.Avalonia.Stride/src/VL.Avalonia.Stride.csproj" />
-  <Project Path="VL.Avalonia/src/VL.Avalonia.csproj" />
+  <Folder Name="/Core/">
+    <Project Path="VL.Avalonia.CodeGen/VL.Avalonia.CodeGen.csproj" />
+    <Project Path="VL.Avalonia.Custom/src/VL.Avalonia.Custom.csproj" />
+    <Project Path="VL.Avalonia.Skia/src/VL.Avalonia.Skia.csproj" />
+    <Project Path="VL.Avalonia.Stride/src/VL.Avalonia.Stride.csproj" />
+    <Project Path="VL.Avalonia/src/VL.Avalonia.csproj" />
+  </Folder>
 </Solution>
