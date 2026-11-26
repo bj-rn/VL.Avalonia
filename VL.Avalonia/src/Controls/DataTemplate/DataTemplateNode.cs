@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.LogicalTree;
 using VL.Core.Import;
 using VL.Core.PublicAPI;
 
@@ -26,13 +25,8 @@ namespace VL.Avalonia.Controls
     /// controls using it build their content again.
     /// </remarks>
     [ProcessNode(FragmentSelection = FragmentSelection.Explicit)]
-    public abstract class DataTemplateNodeBase<T> : IRegion<IDataTemplateInlay<T>>, IDisposable
+    public abstract class DataTemplateNodeBase<T> : TemplateRegionBase<IDataTemplateInlay<T>, T>
     {
-        private readonly Dictionary<InputDescription, object?> _inputs = new();
-        private readonly Dictionary<OutputDescription, object?> _outputs = new();
-        private readonly Dictionary<Control, Instance> _instances = new();
-        private Instance[]? _snapshot;
-        private Func<IDataTemplateInlay<T>>? _factory;
         private Template _output;
 
         protected DataTemplateNodeBase()
@@ -40,92 +34,25 @@ namespace VL.Avalonia.Controls
             _output = new Template(this);
         }
 
-        protected readonly record struct Instance(
-            Control Control,
-            IDataTemplateInlay<T> Inlay,
-            T Data
-        );
-
         [Fragment]
         public IDataTemplate Output => _output;
-
-        /// <summary>
-        /// The live instances, rebuilt only when one is added or removed. An instance released
-        /// while the array is walked stays in it; check <see cref="IsLive"/> before using it.
-        /// </summary>
-        protected Instance[] Instances => _snapshot ??= _instances.Values.ToArray();
-
-        protected bool IsLive(in Instance instance) =>
-            _instances.TryGetValue(instance.Control, out var live) && live.Inlay == instance.Inlay;
 
         protected void Invalidate() => _output = new Template(this);
 
         private Control? Build(object? param)
         {
-            if (param is not T data || _factory is null)
+            if (param is not T data || CreateInlay() is not { } inlay)
                 return null;
 
-            var inlay = _factory();
             var control = inlay.Update(data);
             if (control is null)
             {
-                (inlay as IDisposable)?.Dispose();
+                DisposeInlay(inlay);
                 return null;
             }
 
-            Release(control);
-            _instances[control] = new Instance(control, inlay, data);
-            _snapshot = null;
-            control.DetachedFromLogicalTree += OnDetached;
+            Track(control, inlay, data);
             return control;
-        }
-
-        private void OnDetached(object? sender, LogicalTreeAttachmentEventArgs e)
-        {
-            if (sender is Control control)
-                Release(control);
-        }
-
-        private void Release(Control control)
-        {
-            control.DetachedFromLogicalTree -= OnDetached;
-            if (_instances.Remove(control, out var instance))
-            {
-                _snapshot = null;
-                (instance.Inlay as IDisposable)?.Dispose();
-            }
-        }
-
-        void IRegion<IDataTemplateInlay<T>>.SetPatchInlayFactory(
-            Func<IDataTemplateInlay<T>> patchInlayFactory
-        ) => _factory = patchInlayFactory;
-
-        void IRegion<IDataTemplateInlay<T>>.AcknowledgeInput(
-            in InputDescription description,
-            object? outerValue
-        ) => _inputs[description] = outerValue;
-
-        void IRegion<IDataTemplateInlay<T>>.RetrieveInput(
-            in InputDescription description,
-            IDataTemplateInlay<T> patchInlay,
-            out object? innerValue
-        ) => _inputs.TryGetValue(description, out innerValue);
-
-        void IRegion<IDataTemplateInlay<T>>.AcknowledgeOutput(
-            in OutputDescription description,
-            IDataTemplateInlay<T> patchInlay,
-            object? innerValue
-        ) => _outputs[description] = innerValue;
-
-        void IRegion<IDataTemplateInlay<T>>.RetrieveOutput(
-            in OutputDescription description,
-            out object? outerValue
-        ) => _outputs.TryGetValue(description, out outerValue);
-
-        public void Dispose()
-        {
-            foreach (var control in _instances.Keys.ToList())
-                Release(control);
         }
 
         private sealed class Template(DataTemplateNodeBase<T> node) : IDataTemplate
@@ -173,7 +100,7 @@ namespace VL.Avalonia.Controls
             foreach (var instance in Instances)
             {
                 if (IsLive(instance))
-                    instance.Inlay.Update(instance.Data);
+                    instance.Inlay.Update(instance.State);
             }
         }
     }
