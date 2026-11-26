@@ -7,7 +7,7 @@ namespace VL.Avalonia.Controls;
 [ProcessNode]
 public abstract class AttachedPropertyBase
 {
-    protected internal Optional<Control> _input;
+    internal Optional<Control> _input;
 
     public void SetInput(Optional<Control> input)
     {

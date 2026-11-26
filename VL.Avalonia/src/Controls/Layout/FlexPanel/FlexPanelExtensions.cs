@@ -7,7 +7,7 @@ using AvaFlexDirection = Avalonia.Labs.Panels.FlexDirection;
 using AvaFlexWrap = Avalonia.Labs.Panels.FlexWrap;
 using AvaJustifyContent = Avalonia.Labs.Panels.JustifyContent;
 
-namespace VL.Avalonia.Labs.Panels.Controls
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Extension methods for <see cref="FlexPanel"/>.

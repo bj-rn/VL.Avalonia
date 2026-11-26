@@ -1,13 +1,12 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Labs.Panels;
 using VL.Avalonia.Attributes;
-using VL.Avalonia.Controls;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Model;
 
-namespace VL.Avalonia.Labs.Panels.Controls
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Base wrapper for <see cref="FlexPanel"/>

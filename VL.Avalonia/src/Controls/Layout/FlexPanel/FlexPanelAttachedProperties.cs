@@ -2,9 +2,8 @@
 using Avalonia.Labs.Panels;
 using VL.Core;
 using VL.Core.Import;
-using VL.Avalonia.Controls;
 
-namespace VL.Avalonia.Labs.Panels.Controls
+namespace VL.Avalonia.Controls
 {
     /// <summary>
     /// Cross-axis alignment override for a child item of a <see cref="FlexPanel"/>.
