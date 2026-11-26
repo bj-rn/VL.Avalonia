@@ -1,7 +1,7 @@
 using Avalonia.Labs.Panels;
 using VL.Core.Import;
 
-[assembly: ImportAsIs(Namespace = "VL.Avalonia.Labs.Panels", Category = "Avalonia.Controls")]
+[assembly: ImportAsIs(Namespace = "VL.Avalonia.Labs.Panels", Category = "Avalonia")]
 
 [assembly: ImportType(typeof(FlexDirection), Category = "Avalonia.Controls.Flex")]
 [assembly: ImportType(typeof(FlexWrap), Category = "Avalonia.Controls.Flex")]

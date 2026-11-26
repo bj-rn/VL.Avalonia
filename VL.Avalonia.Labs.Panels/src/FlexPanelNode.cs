@@ -7,7 +7,7 @@ using VL.Core.Import;
 using VL.Lib.Collections;
 using VL.Model;
 
-namespace VL.Avalonia.Labs.Panels
+namespace VL.Avalonia.Labs.Panels.Controls
 {
     /// <summary>
     /// Base wrapper for <see cref="FlexPanel"/>
