@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
+using Avalonia.Data;
 using VL.Core.Import;
 using VL.Lib.Collections;
 
@@ -20,7 +21,8 @@ namespace VL.Avalonia.Controls
     }
 
     /// <summary>
-    /// Builds data with the first of its templates that matches it.
+    /// Builds data with the first of its templates that matches it. In a tree, the child items
+    /// come from that template too, when it is a tree data template.
     /// </summary>
     /// <remarks>
     /// A change of templates, including a template handing out a new instance when it is
@@ -50,7 +52,7 @@ namespace VL.Avalonia.Controls
                 _output = new Selector(templates);
         }
 
-        private sealed class Selector(IReadOnlyList<IDataTemplate> templates) : IDataTemplate
+        private sealed class Selector(IReadOnlyList<IDataTemplate> templates) : ITreeDataTemplate
         {
             /// <summary>
             /// Whether it holds the same templates in the same order. A pin group may hand over a
@@ -90,6 +92,17 @@ namespace VL.Avalonia.Controls
                 }
 
                 return false;
+            }
+
+            public InstancedBinding? ItemsSelector(object item)
+            {
+                foreach (var template in templates)
+                {
+                    if (template != null && template.Match(item))
+                        return (template as ITreeDataTemplate)?.ItemsSelector(item);
+                }
+
+                return null;
             }
         }
     }
