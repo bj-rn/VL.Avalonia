@@ -29,6 +29,7 @@ jobs:
           dotnet build .\VL.Avalonia.Skia\src\VL.Avalonia.Skia.csproj --configuration Release --output .\VL.Avalonia.Skia\lib\net8.0\
           dotnet build .\VL.Avalonia.Stride\src\VL.Avalonia.Stride.csproj --configuration Release --output .\VL.Avalonia.Stride\lib\net8.0\
           dotnet build .\VL.Avalonia.Custom\src\VL.Avalonia.Custom.csproj --configuration Release --output .\VL.Avalonia.Custom\lib\net8.0\
+          dotnet build .\VL.Avalonia.Labs.Panels\src\VL.Avalonia.Labs.Panels.csproj --configuration Release --output .\VL.Avalonia.Labs.Panels\lib\net8.0\
 
       - name: Extract version and detect pre-release
         id: version
@@ -47,6 +48,7 @@ jobs:
           nuget pack .nuget\VL.Avalonia.Skia.nuspec -Version ${{ env.VERSION }} -OutputDirectory .\packages
           nuget pack .nuget\VL.Avalonia.Custom.nuspec -Version ${{ env.VERSION }} -OutputDirectory .\packages
           nuget pack .nuget\VL.Avalonia.Stride.nuspec -Version ${{ env.VERSION }} -OutputDirectory .\packages
+          nuget pack .nuget\VL.Avalonia.Labs.Panels.nuspec -Version ${{ env.VERSION }} -OutputDirectory .\packages
 
       - name: Publish to NuGet.org
         run: |
