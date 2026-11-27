@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using VL.Avalonia.Attributes;
 using VL.Avalonia.Data;
+using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
@@ -22,12 +23,9 @@ namespace VL.Avalonia.Controls
     {
         private TwoWayBinding<string, string> _textBinding;
         private TwoWayBinding<TValue?, object?> _selectedItemBinding;
-        private IChannel<IReadOnlyList<TValue>>? _itemsSource;
+        private readonly ItemsSourceSync<TValue> _itemsSync;
 
         private readonly TwoWayBinding<bool> _isDropDownOpenBinding;
-
-        private IDisposable? _itemSourceBinding;
-        private ISpread? _items;
 
         [Fragment]
         public AutoCompleteBoxNodeBase(
@@ -46,6 +44,7 @@ namespace VL.Avalonia.Controls
                 _output,
                 AutoCompleteBox.IsDropDownOpenProperty
             );
+            _itemsSync = new ItemsSourceSync<TValue>(_output, AutoCompleteBox.ItemsSourceProperty);
         }
 
         /// <param name="textChannel">The text content of the TextBox</param>
@@ -55,47 +54,11 @@ namespace VL.Avalonia.Controls
         ) => _textBinding.Bind(textChannel);
 
         /// <param name="items">The collection of items that provides the data for the dropdown suggestions</param>
-        public virtual void SetItems(Spread<TValue?> items)
-        {
-            if (ReferenceEquals(_items, items))
-                return;
-
-            _itemSourceBinding?.Dispose();
-            _items = items;
-            _itemsSource = null;
-
-            if (_items != null)
-            {
-                _output.SetValue(AutoCompleteBox.ItemsSourceProperty, items);
-            }
-            else
-            {
-                _output.ClearValue(AutoCompleteBox.ItemsSourceProperty);
-            }
-        }
+        public virtual void SetItems(Spread<TValue?> items) => _itemsSync.SetItems(items!);
 
         /// <param name="itemsSource">The collection of items that provides the data for the dropdown suggestions</param>
-        public virtual void SetItemsSource(IChannel<IReadOnlyList<TValue>> itemsSource)
-        {
-            if (ReferenceEquals(_itemsSource, itemsSource))
-                return;
-
-            _itemSourceBinding?.Dispose();
-            _itemsSource = itemsSource;
-            _items = null;
-
-            if (_itemsSource != null)
-            {
-                _itemSourceBinding = _output.Bind(
-                    AutoCompleteBox.ItemsSourceProperty,
-                    itemsSource.StartWith(itemsSource.Value)
-                );
-            }
-            else
-            {
-                _output.ClearValue(AutoCompleteBox.ItemsSourceProperty);
-            }
-        }
+        public virtual void SetItemsSource(IChannel<IReadOnlyList<TValue>> itemsSource) =>
+            _itemsSync.SetChannel(itemsSource);
 
         /// <param name="itemChannel">The currently selected item from the dropdown</param>
         [Fragment(Order = PinOrder.Action)]
@@ -222,9 +185,7 @@ namespace VL.Avalonia.Controls
             _textBinding?.Dispose();
             _selectedItemBinding?.Dispose();
 
-            _itemsSource = null;
-            _itemSourceBinding?.Dispose();
-            _items = null;
+            _itemsSync.Dispose();
 
             base.Dispose();
         }

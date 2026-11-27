@@ -18,6 +18,16 @@ Be sure your commit messages follow this specification: https://www.conventional
 - `fix/` - bug fix
 - `wip/` - testing
 
+## Tests
+
+Tests live in `tests/VL.Avalonia.Tests` (xUnit + Avalonia.Headless) and cover our own additions, not what Avalonia already tests. They are not run in CI, so run them before opening a PR:
+
+```sh
+dotnet test tests/VL.Avalonia.Tests/VL.Avalonia.Tests.csproj
+```
+
+Or use Test Explorer in Visual Studio. If the test run aborts, make sure the x64 `dotnet` is used (`"C:\Program Files\dotnet\dotnet.exe"`). Close vvvv first if the build fails because it has the output DLLs open.
+
 ## Help patches
 
 If you're adding a brand new feature, you need to make sure you add a help patch entry, here's a few tips:
