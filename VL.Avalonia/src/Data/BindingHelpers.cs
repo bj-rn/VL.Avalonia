@@ -105,23 +105,31 @@ namespace VL.Avalonia.Data
                 }
             }
 
+            // None means neither side is copied over when binding - only later changes flow.
+            var skipInitialValue =
+                initialValueHandling is SupprotedBindingInitialValueHandling.None;
+
+            // GetObservable pushes the current property value on subscribe, which is the initial
+            // control -> channel handoff; None drops it.
+            IObservable<object?> PropertyChanges()
+            {
+                var changes = target.GetObservable(property);
+                return skipInitialValue ? changes.Skip(1) : changes;
+            }
+
             if (mode == BindingMode.OneTime)
             {
                 // The channel always carries a current value, so there is nothing to wait for.
                 if (initialValueHandling is SupprotedBindingInitialValueHandling.ControlToChannel)
                     PushToChannel(target.GetValue(property));
-                else
+                else if (!skipInitialValue)
                     PushToProperty();
 
                 return Disposable.Empty;
             }
 
             if (mode == BindingMode.OneWayToSource)
-            {
-                // GetObservable pushes the current property value on subscribe, which covers the
-                // initial control -> channel handoff.
-                return target.GetObservable(property).Subscribe(PushToChannel);
-            }
+                return PropertyChanges().Subscribe(PushToChannel);
 
             // Initial value handling. Applied before subscribing so it cannot be mistaken for a change.
             // ChannelToControl needs no explicit write - the StartWith below already pushes the
@@ -133,10 +141,11 @@ namespace VL.Avalonia.Data
             // is prepended explicitly, otherwise the property would keep its old value until the
             // channel next changes. DistinctUntilChanged keeps a channel that re-publishes an
             // unchanged value every frame from writing the property every frame.
-            var source = channel
-                .StartWith(channel.Value)
-                .DistinctUntilChanged()
-                .Select(ToPropertyObject);
+            IObservable<TValue?> channelValues = skipInitialValue
+                ? channel
+                : channel.StartWith(channel.Value);
+
+            var source = channelValues.DistinctUntilChanged().Select(ToPropertyObject);
 
             var toTarget = target.Bind(property, source, priority);
 
@@ -148,7 +157,7 @@ namespace VL.Avalonia.Data
             return new CompositeDisposable(2)
             {
                 toTarget,
-                target.GetObservable(property).Subscribe(PushToChannel),
+                PropertyChanges().Subscribe(PushToChannel),
             };
         }
 

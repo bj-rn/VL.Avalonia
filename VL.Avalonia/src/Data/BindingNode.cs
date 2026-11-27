@@ -14,6 +14,7 @@ namespace VL.Avalonia.Data
 
     public enum SupprotedBindingInitialValueHandling
     {
+        /// <summary>Neither value is copied before bind, only later changes flow</summary>
         None,
 
         /// <summary>Sets channel value to control before bind</summary>
