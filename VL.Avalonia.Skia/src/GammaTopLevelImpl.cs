@@ -193,7 +193,7 @@ namespace VL.Avalonia.Skia
                 if (m.Kind == MouseNotificationKind.MouseDown)
                     _inputModifiers |= m.Buttons.ToModifier();
                 else if (m.Kind == MouseNotificationKind.MouseUp)
-                    _inputModifiers ^= m.Buttons.ToModifier();
+                    _inputModifiers &= ~m.Buttons.ToModifier();
             }
 
             if (notification is MouseDownNotification mouseDown)
@@ -256,7 +256,10 @@ namespace VL.Avalonia.Skia
 
             if (notification is KeyCodeNotification keyCode)
             {
-                _inputModifiers = keyCode.KeyData.ToModifier();
+                // Only replace the keyboard bits; held mouse buttons must survive a key press.
+                _inputModifiers =
+                    (_inputModifiers & ~RawInputModifiers.KeyboardMask)
+                    | keyCode.KeyData.ToModifier();
             }
 
             if (notification is KeyDownNotification keyDown)
