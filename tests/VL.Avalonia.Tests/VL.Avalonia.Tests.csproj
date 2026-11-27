@@ -5,6 +5,8 @@
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <!-- Needed to inspect RawPointerEventArgs.Type/InputModifiers, which Avalonia strips from its reference assemblies. -->
+        <AvaloniaAccessUnstablePrivateApis>true</AvaloniaAccessUnstablePrivateApis>
     </PropertyGroup>
 
     <ItemGroup>
