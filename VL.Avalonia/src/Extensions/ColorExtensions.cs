@@ -31,6 +31,6 @@ namespace VL.Avalonia.Extensions
             new Color4(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
 
         public static Color4 ToColor(this Color? color) =>
-            color.HasValue ? color.ToColor() : Color4.White;
+            color.HasValue ? color.Value.ToColor() : Color4.White;
     }
 }
