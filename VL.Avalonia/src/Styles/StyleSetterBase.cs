@@ -130,7 +130,9 @@ namespace VL.Avalonia.Styles
         {
             if (_scale != scale || _rotation != rotation || _translation != translation)
             {
-                var value = TransformOperationsHelper.TransformSRT(scale, rotation, translation);
+                var value = scale.HasNoValue && rotation.HasNoValue && translation.HasNoValue
+                    ? default(Optional<TransformOperations>)
+                    : TransformOperationsHelper.TransformSRT(scale, rotation, translation);
 
                 _output = _output with { StyleValue = value };
 
@@ -170,10 +172,12 @@ namespace VL.Avalonia.Styles
             {
                 _output = _output with
                 {
-                    StyleValue = new Thickness(
-                        horizontal.HasValue ? horizontal.Value : 0,
-                        vertical.HasValue ? vertical.Value : 0
-                    ),
+                    StyleValue = horizontal.HasNoValue && vertical.HasNoValue
+                        ? default(Optional<Thickness>)
+                        : new Thickness(
+                            horizontal.HasValue ? horizontal.Value : 0,
+                            vertical.HasValue ? vertical.Value : 0
+                        ),
                 };
 
                 _horizontal = horizontal;
@@ -204,12 +208,14 @@ namespace VL.Avalonia.Styles
             {
                 _output = _output with
                 {
-                    StyleValue = new Thickness(
-                        left.HasValue ? left.Value : 0,
-                        top.HasValue ? top.Value : 0,
-                        right.HasValue ? right.Value : 0,
-                        bottom.HasValue ? bottom.Value : 0
-                    ),
+                    StyleValue = left.HasNoValue && top.HasNoValue && right.HasNoValue && bottom.HasNoValue
+                        ? default(Optional<Thickness>)
+                        : new Thickness(
+                            left.HasValue ? left.Value : 0,
+                            top.HasValue ? top.Value : 0,
+                            right.HasValue ? right.Value : 0,
+                            bottom.HasValue ? bottom.Value : 0
+                        ),
                 };
 
                 _left = left;
@@ -235,10 +241,12 @@ namespace VL.Avalonia.Styles
             {
                 _output = _output with
                 {
-                    StyleValue = new CornerRadius(
-                        top.HasValue ? top.Value : 0,
-                        bottom.HasValue ? bottom.Value : 0
-                    ),
+                    StyleValue = top.HasNoValue && bottom.HasNoValue
+                        ? default(Optional<CornerRadius>)
+                        : new CornerRadius(
+                            top.HasValue ? top.Value : 0,
+                            bottom.HasValue ? bottom.Value : 0
+                        ),
                 };
 
                 _top = top;
@@ -274,12 +282,18 @@ namespace VL.Avalonia.Styles
             {
                 _output = _output with
                 {
-                    StyleValue = new CornerRadius(
-                        topLeft.HasValue ? topLeft.Value : 0,
-                        topRight.HasValue ? topRight.Value : 0,
-                        bottomRight.HasValue ? bottomRight.Value : 0,
-                        bottomLeft.HasValue ? bottomLeft.Value : 0
-                    ),
+                    StyleValue =
+                        topLeft.HasNoValue
+                        && topRight.HasNoValue
+                        && bottomRight.HasNoValue
+                        && bottomLeft.HasNoValue
+                            ? default(Optional<CornerRadius>)
+                            : new CornerRadius(
+                                topLeft.HasValue ? topLeft.Value : 0,
+                                topRight.HasValue ? topRight.Value : 0,
+                                bottomRight.HasValue ? bottomRight.Value : 0,
+                                bottomLeft.HasValue ? bottomLeft.Value : 0
+                            ),
                 };
 
                 _topLeft = topLeft;
