@@ -84,7 +84,7 @@ namespace VL.Avalonia.Media.Effects
         {
             if (_direction != direction)
             {
-                if (_direction.HasValue)
+                if (direction.HasValue)
                 {
                     _output.SetValue(
                         DropShadowDirectionEffect.DirectionProperty,
