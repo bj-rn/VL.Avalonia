@@ -2,6 +2,8 @@
 
 This report surveys `VL.Avalonia`, `VL.Avalonia.CodeGen`, `VL.Avalonia.Custom`, `VL.Avalonia.Skia`, and `VL.Avalonia.Stride` (wrapping Avalonia 11.2.1 for vvvv/VL) to identify high-value unit-test candidates covering custom library logic rather than Avalonia's own property/control behaviour. Across 289 project and source files, we identified **20 concrete test candidates** spanning reactive `IChannel<T>` bindings, Roslyn incremental code generation, VL template regions and `TreeDataTemplate` child reconciliation, routed/standard event lifecycles, immutable style graphs, CSS selector parsing, Skia host input/DPI/multi-touch translation, control reparenting, attached-property sanitization, and math/color/animation conversions—alongside **21 high- and medium-confidence bugs** discovered during inspection. Most candidates (13 of 20) can run as fast, platform-free `Unit` tests (`AvaloniaObject`/`AvaloniaProperty` and `Channel<T>` work without a windowing backend), 6 require `Avalonia.Headless` (logical/visual tree realization, routed-event bubbling, `Application`/XAML loading, or template parts), and 1 uses Roslyn's `CSharpGeneratorDriver` (`Generator`).
 
+> **Status:** all 21 bugs have been triaged and resolved (#121–#139); see [Suspicious code found — status](#suspicious-code-found--status). The test candidates are still open, apart from the partial coverage listed under [Already covered](#already-covered).
+
 ---
 
 ## Already covered
@@ -10,6 +12,31 @@ The following files already have tests implemented or planned and are excluded f
 
 - `VL.Avalonia\src\Helpers\ItemsReconciler.cs` — in-place diff/reconciliation of an `AvaloniaList<T>` against a new `IReadOnlyList<T>`.
 - `VL.Avalonia\src\Helpers\ItemsSourceSync.cs` — synchronization from `IChannel<IReadOnlyList<T>>` or `Spread<T>` to `ItemsControl.ItemsSource` via a persistent `AvaloniaList<T>`.
+
+Partly covered by the regression tests added while fixing the [suspicious code](#suspicious-code-found--status). These cover the fixed bugs only, not each candidate's full test list:
+
+| Candidate | Tests |
+|-----------|-------|
+| 1 Binding engine | `BindingNameNodeTests`, `BindingInitialValueTests` |
+| 2 Typed bindings | `DefaultBindingConverterTests` |
+| 3 Source generators | `SourceGeneratorTests` |
+| 5 Event listeners | `RoutedEventListenerTests` |
+| 6 Styles | `StyleSettersTests` |
+| 7 Skia TopLevel input | `GammaTopLevelInputModifierTests` |
+| 8 Channel helpers | `ChannelCommandTests` |
+| 9 Reparenting | `ReparentingHelperTests` |
+| 11 Multi-selection | `ListBoxSelectedItemsHandlerTests` |
+| 12 Attached properties | `AttachedPropertyNodeTests`, `NodeDisposalTests` (AttachedFlyout) |
+| 13 Animations | `EasingsTests`, `CompositePageTransitionTests` |
+| 14 Transforms & color | `RenderTransformTests`, `ColorExtensionsTests`, `DropShadowDirectionEffectTests` |
+| 15 Control node disposal | `NodeDisposalTests` |
+| 17 Key translation | `KeyUtilsTests` |
+| 18 Skia draw operations | `SkiaDrawingOperationTests` |
+| 19 Gamma dispatcher | `GammaDispatcherTests` |
+
+No tests yet: 4 (DataTemplates), 10 (selector parser), 16 (custom value controls), 20 (introspection).
+
+The "Suspicious" notes inside the detailed candidates below are resolved; see the status table.
 
 ---
 
@@ -313,32 +340,40 @@ The following files already have tests implemented or planned and are excluded f
 
 ---
 
-## Suspicious code found
+## Suspicious code found — status
 
-The following likely bugs were identified while reading the codebase (none were modified):
+All 21 items were verified against the source. Real bugs were fixed one PR each, with regression tests that fail on the original code.
 
-1. **`VL.Avalonia\src\Animation\Easings.cs:18-105` (Confidence: High)** — Copy-paste bug across **18 out of 28 easing wrapper classes**: every `*EaseInOutWrapper` and `*EaseOutWrapper` (`Back`, `Bounce`, `Circular`, `Cubic`, `Elastic`, `Exponential`, `Quadratic`, `Quartic`, `Quintic`, `Sine`) inherits `EasingWrapperBase<*EaseIn>` instead of `<*EaseInOut>` / `<*EaseOut>`. Every `EaseOut` and `EaseInOut` node in VL actually evaluates `EaseIn`.
-2. **`VL.Avalonia\src\Extensions\ColorExtensions.cs:33-34` (Confidence: High)** — `public static Color4 ToColor(this Color? color) => color.HasValue ? color.ToColor() : Color4.White;` calls `color.ToColor()` on `Color?` instead of `color.Value.ToColor()`, causing unconditional infinite recursion (`StackOverflowException`) whenever `color.HasValue` is `true`.
-3. **`VL.Avalonia\src\Media\Effects.cs:83-101` (Confidence: High)** — `DropShadowDirectionEffectWrapper.SetDirection` checks `if (_direction.HasValue)` (the *previous* field value) before `_direction = direction;`. On the first call with a valid direction, `_direction.HasValue` is `false`, so it calls `ClearValue` instead of `SetValue` and then caches `_direction = direction` so subsequent frames with the same input also skip `SetValue`. Conversely, clearing the pin (`direction = NoValue`) enters the `if` branch and sets `0.0` instead of `ClearValue`.
-4. **`VL.Avalonia\src\Styles\Styles.cs:151, 158, 381, 592, 607` (Confidence: High)** — Five style-setter process nodes (`SetRenderTransformOrigin`, `SetZIndex`, `SetBorderThickness`, `SetItemsSource<T>`, `SetDisplayMemberBinding`) inherit `StyleSetterBase<T>` instead of `StyleSetter<T>`. Because `StyleSetterBase<T>` (`StyleSetterBase.cs:24-58`) has no `SetValue` method, these 5 nodes have no value input pin and are complete no-ops.
-5. **`VL.Avalonia\src\Controls\Buttons\SplitButtonNode.cs:45-60` (Confidence: High)** — `SplitButtonNodeBase` binds `[ImplementProperty]` to `Button.HotKeyProperty` and `Button.FlyoutProperty`. `SplitButton` derives from `ContentControl` (not `Button`) and defines its own `SplitButton.HotKeyProperty` and `SplitButton.FlyoutProperty` (cf. `SplitButtonExtensions.cs:38-58`), so the `Flyout` and `HotKey` pins on `SplitButton` and `ToggleSplitButton` never set the control's flyout or hotkey.
-6. **`VL.Avalonia\src\Controls\Base\Control\ControlNodeBase.cs:168-175` (Confidence: High)** — `VisualNodeBase.SetRenderTransform` decomposes `Matrix` into `roll` (radians), converts it via `MathUtil.RadiansToDegrees(roll)`, and passes degrees into `TransformOperations.Builder.AppendRotate(double)`, which expects **radians** (compare `Styles.cs:135` and `TransformOperationsHelper.cs:20`). Control rotations via `RenderTransform` are 57.2958× too fast.
-7. **`VL.Avalonia\src\Interactivity\RoutedEventListener.cs:127-130, 151-158, 172-186` (Confidence: High)** — `Resubscribe()` captures `var target = Input;` in its disposal closure (`line 94`) but references the mutable property `Event` (`target.RemoveHandler(Event, ...)` at `line 129`). Because `SetRoutedEvent` overwrites `Event` *before* calling `Resubscribe()`, changing from `EventA` to `EventB` removes `EventB` (leaking `EventA`), and changing `Event` to `null` (or an unresolved event name) throws `ArgumentNullException` inside `RemoveHandler`.
-8. **`VL.Avalonia\src\Helpers\ChannelCommandBinding.cs:14, 21-27, 36-39` & `VL.Avalonia\src\Helpers\CommandToChannel.cs:54-61` (Confidence: High)** — `ChannelCommandBindingBase<T>` leaks its constructor-created internal channel when `SetCommandChannel` replaces `_commandChannel`, and `Dispose()` disposes the caller's external `IChannel<T>`. Meanwhile `TChannelCommand<T>.CanExecute` (`CommandToChannel.cs:55`) throws `NotImplementedException()`.
-9. **`VL.Avalonia\src\Data\BindingNameNode.cs:28-65` (Confidence: High)** — In `BindingNameAdvancedNode`, `ResolveProperty()` returns `false` without setting `_property = null` when `_input` becomes `null`, `_propertyName` becomes `null`/empty, or the new `_input` type does not register `_propertyName`. Switching `_input` from `TextBox` (`"Text"`) to `Border` causes `SetInput` (`BindingNode.cs:71-79`) to call `Bind()` with the stale `TextBox.TextProperty` on `Border`; setting `propertyName` to an invalid name leaves the old binding active.
-10. **`VL.Avalonia\src\Data\BindingHelpers.cs:108-153` (Confidence: High)** — `SupprotedBindingInitialValueHandling.None` (`BindingNode.cs:17`) is never handled: `OneTime` (`lines 111-115`) falls into `else PushToProperty()`, and `OneWay`/`TwoWay` (`lines 136-138`) unconditionally prepend `.StartWith(channel.Value)`, overwriting the control's initial value even when `None` was selected.
-11. **`VL.Avalonia\src\Data\TwoWayBinding.cs:28-37` & `VL.Avalonia\src\Data\OneWayBinding.cs:29-31` (Confidence: High)** — Fallback converters call `Convert.ChangeType(v, typeof(TProperty))` without `Nullable.GetUnderlyingType(...)` or `CultureInfo.InvariantCulture`, throwing `InvalidCastException` for any `Nullable<T>` type argument and making string↔number conversions culture-dependent.
-12. **`VL.Avalonia\src\Controls\Base\Collections\SelectingItemsControlSelectedItemsHandler.cs:10, 21-45` & `TreeViewSelectedItemsHandler.cs:11, 21-43` (Confidence: High)** — Both classes declare `public virtual void Dispose()` without implementing `IDisposable`, so VL never disposes their `SelectionChanged` subscriptions; `SetInput` also fails to clear/sync `_output` when switching controls or disconnecting input.
-13. **`VL.Avalonia\src\Controls\Menus\MenuItemNodeBase.cs:17-36`, `VL.Avalonia\src\Controls\Inputs\AutoCompleteBox\AutoCompleteBoxNode.cs:183-191`, & `VL.Avalonia\src\Controls\Flyouts\AttachedFlyout.cs:44-61` (Confidence: High)** — Resource/subscription leaks: `MenuItemNodeBase` never overrides `Dispose()` to dispose its 4 bindings (`_commandBinding`, `_isSelectedBinding`, `_isSubMenuOpenBinding`, `_isCheckedBinding`); `AutoCompleteBoxNodeBase.Dispose()` forgets `_isDropDownOpenBinding.Dispose()`; `AttachedFlyoutWrapper` discards the `IDisposable` from `_showAttachedFlyoutChannel.Subscribe(...)`.
-14. **`VL.Avalonia\src\Animation\PageTransitions\CompositePageTransition.cs:20-39` (Confidence: High)** — `SetPageTransitions` checks `if (_pageTransitions != pageTransitions)` and updates `_output.PageTransitions`, but never assigns `_pageTransitions = pageTransitions;`, rebuilding a new `List<IPageTransition>` every frame.
-15. **`VL.Avalonia.Skia\src\GammaTopLevelImpl.cs:195-197, 257-260, 322-336` (Confidence: High)** — Input state bugs: (a) `MouseUp` uses XOR (`_inputModifiers ^= m.Buttons.ToModifier()`), which *sets* the mouse-button flag if `MouseDown` occurred outside the window; (b) `HandleKeyNotification` overwrites `_inputModifiers = keyCode.KeyData.ToModifier()`, wiping active mouse-button modifiers during key+drag; (c) `HandleTouchNotification` never removes cancelled touches from `_activeTouchIds`, permanently suppressing all mouse events (`if (_activeTouchIds.Count > 0) return true;`) after a touch cancel.
-16. **`VL.Avalonia.Skia\src\GammaDispatcherImpl.cs:18` (Confidence: High)** — `public long Now => (long)_clock.Time.Seconds * 1000;` casts `double` seconds to `long` *before* multiplying by `1000`, quantizing Avalonia's dispatcher clock to whole 1000ms steps (`(long)(_clock.Time.Seconds * 1000)` was intended).
-17. **`VL.Avalonia\src\Skia\SkiaMediaDrawingOperationBase.cs:61-83` (Confidence: High)** — `SkiaImageDrawingOperation.Render` calls `canvas.Save()` at line 61 and returns early at line 66 (`if (Image.IsDisposed()) return;`) without calling `canvas.Restore()`.
-18. **`VL.Avalonia\src\Helpers\ReparentingHelper.cs:44-46` (Confidence: High)** — `case ItemsControl itemsControl: itemsControl.Items.Remove(control);` throws `InvalidOperationException` when `itemsControl.ItemsSource` is active.
-19. **`VL.Avalonia.CodeGen\AvaloniaSourceGenerator.cs:113-115` & `AvaloniaReflectionGenerator.cs:29` (Confidence: Medium-High)** — `context.AddSource($"{classSymbol.Name}.g.cs", ...)` omits generic arity and namespace, colliding if two partial `[ProcessNode]` classes share `Name`; `AvaloniaReflectionGenerator.Initialize` wraps registration in an empty `catch (Exception) { }`.
-20. **`VL.Avalonia\src\Controls\Base\AttachedProperty\AttachedPropertyBase.cs:12-20`, `GridAttachedProperties.cs:41`, & `ToolTip.cs:33-48` (Confidence: Medium-High)** — Changing `_input` from one control to another leaves old attached properties set on the previous control; passing `new Optional<Control>(null!)` throws `NullReferenceException` on `_input.Value.ClearValue(...)`.
-21. **`VL.Avalonia\src\Styles\StyleSetterBase.cs:125-291` & `VL.Avalonia.Skia\src\KeyUtils.cs:77-406` (Confidence: Medium)** — Multi-pin style setters (`StyleSetterSRT`, `StyleSetterThickness*`, `StyleSetterCornerRadius*`) emit `Thickness(0)` / `CornerRadius(0)` / identity transform instead of `NoValue` when all pins are disconnected; `KeyUtils.ToKey` omits generic `Keys.ShiftKey`, `Keys.ControlKey`, and `Keys.Menu`, mapping Shift/Ctrl/Alt presses to `Key.None`.
+| # | Area | Status | PR | Tests |
+|---|------|--------|----|-------|
+| 1 | `Easings.cs` EaseOut/EaseInOut wrappers derive from EaseIn | Fixed (20 wrappers, not 18) | #121 | `EasingsTests` |
+| 2 | `ColorExtensions` `Color?.ToColor()` infinite recursion | Fixed | #122 | `ColorExtensionsTests` |
+| 3 | `DropShadowDirectionEffectWrapper.SetDirection` checks the old value | Fixed | #123 | `DropShadowDirectionEffectTests` |
+| 4 | Style setters derived from `StyleSetterBase<T>` have no value pin | Partly real: 3 of 5 nodes fixed (`SetItemsSource`/`SetDisplayMemberBinding` are commented out) | #125 | `StyleSettersTests` |
+| 5 | `SplitButton` binds `Button.*Property` | False positive: `SplitButton` properties are `AddOwner` of `Button`'s | — | — |
+| 6 | `SetRenderTransform` passes degrees to `AppendRotate` | Fixed | #124 | `RenderTransformTests` |
+| 7 | `RoutedEventListener` removes the new event instead of the old one | Fixed | #126 | `RoutedEventListenerTests` |
+| 8 | Channel command helpers: leaked/disposed channels, `CanExecute` throws | Fixed (classes are unused; deletion still open) | #127 | `ChannelCommandTests` |
+| 9 | `BindingNameAdvancedNode` keeps a stale `_property` | Fixed | #128 | `BindingNameNodeTests` |
+| 10 | `BindingHelpers` ignores `InitialValueHandling.None` | Fixed (also the control→channel side) | #129 | `BindingInitialValueTests` |
+| 11 | Default `Convert.ChangeType` converters fail for `Nullable<T>` / culture | Fixed | #130 | `DefaultBindingConverterTests` |
+| 12 | Selected-items handlers don't implement `IDisposable` | Half real: ListBox/selecting base fixed, TreeView handler was already correct | #131 | `ListBoxSelectedItemsHandlerTests` |
+| 13 | Binding/subscription leaks in `MenuItemNodeBase`, `AutoCompleteBoxNode`, `AttachedFlyout` | Fixed | #132 | `NodeDisposalTests` |
+| 14 | `CompositePageTransition` never caches its input | Fixed (null spread now clears too) | #133 | `CompositePageTransitionTests` |
+| 15 | Skia input: (a) MouseUp XOR, (b) key handler wipes mouse buttons, (c) touch cancel | (a)+(b) fixed. (c) can't be fixed here: VL's `TouchNotificationKind` has no cancel, reported to VL.StandardLibs | #134 | `GammaTopLevelInputModifierTests` |
+| 16 | `GammaDispatcherImpl.Now` truncates to whole seconds | Fixed | #125 | `GammaDispatcherTests` |
+| 17 | `canvas.Save()` without `Restore()` on early return / exception | Fixed (`SKAutoCanvasRestore` in image, picture and layer ops) | #135 | `SkiaDrawingOperationTests` |
+| 18 | `ReparentingHelper` throws for an `ItemsControl` using `ItemsSource` | Fixed | #136 | `ReparentingHelperTests` |
+| 19 | CodeGen hint-name collisions, empty catch in the reflection generator | Fixed (unique hint names, `VLAGEN001` build error) | #137 | `SourceGeneratorTests` |
+| 20 | Attached properties left on the previous input, `Optional` holding null throws | Fixed (all 31 attached-property nodes and ToolTip) | #138 | `AttachedPropertyNodeTests` |
+| 21 | Multi-pin style setters send 0 instead of no value; `KeyUtils.ToKey` misses generic modifier keys | Fixed (two separate bugs) | #139 | `StyleSettersTests`, `KeyUtilsTests` |
 
+Open follow-ups:
+
+- #8: delete the unused channel command classes.
+- #15: re-read Shift/Ctrl/Alt state from each key event; handle a touch cancel once VL.StandardLibs adds one.
+- #19: the generator still doesn't support nested `[ProcessNode]` classes.
+- #20: attached values stay on the control when the node is deleted (the nodes aren't disposable).
 ---
 
 ## Skipped
