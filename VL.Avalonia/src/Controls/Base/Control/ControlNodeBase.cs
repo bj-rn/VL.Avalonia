@@ -170,8 +170,7 @@ namespace VL.Avalonia.Controls
                 var builder = TransformOperations.CreateBuilder(3);
 
                 builder.AppendScale(scale.X, scale.Y);
-                var angleDegrees = MathUtil.RadiansToDegrees(roll);
-                builder.AppendRotate(angleDegrees);
+                builder.AppendRotate(roll);
                 builder.AppendTranslate(translation.X, translation.Y);
 
                 _output.SetValue(Visual.RenderTransformProperty, builder.Build());
