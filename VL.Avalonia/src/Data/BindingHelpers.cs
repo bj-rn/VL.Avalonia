@@ -140,10 +140,12 @@ namespace VL.Avalonia.Data
             // A channel is a plain subject - it replays nothing on subscribe - so the current value
             // is prepended explicitly, otherwise the property would keep its old value until the
             // channel next changes. DistinctUntilChanged keeps a channel that re-publishes an
-            // unchanged value every frame from writing the property every frame.
+            // unchanged value every frame from writing the property every frame. Deferred because
+            // Avalonia subscribes a lower-priority binding only once it can take effect, which may
+            // be long after this call.
             IObservable<TValue?> channelValues = skipInitialValue
                 ? channel
-                : channel.StartWith(channel.Value);
+                : Observable.Defer(() => channel.StartWith(channel.Value));
 
             var source = channelValues.DistinctUntilChanged().Select(ToPropertyObject);
 
@@ -153,11 +155,12 @@ namespace VL.Avalonia.Data
                 return toTarget;
 
             // Avalonia has no subject-based Bind overload: the reverse direction is a separate
-            // subscription, mirroring what BindingOperations.Apply does internally.
+            // subscription, mirroring what BindingOperations.Apply does internally. It is disposed
+            // first: removing toTarget resets the property, which must not be written to the channel.
             return new CompositeDisposable(2)
             {
-                toTarget,
                 PropertyChanges().Subscribe(PushToChannel),
+                toTarget,
             };
         }
 
