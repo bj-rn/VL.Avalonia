@@ -111,5 +111,15 @@ namespace VL.Avalonia.Controls
         public void SetIsCheckedChannel(
             [Pin(Visibility = Model.PinVisibility.Optional)] IChannel<bool>? isCheckedChannel
         ) => _isCheckedBinding.Bind(isCheckedChannel);
+
+        public override void Dispose()
+        {
+            _commandBinding.Dispose();
+            _isSelectedBinding.Dispose();
+            _isSubMenuOpenBinding.Dispose();
+            _isCheckedBinding.Dispose();
+
+            base.Dispose();
+        }
     }
 }

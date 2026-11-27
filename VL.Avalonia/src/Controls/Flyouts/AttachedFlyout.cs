@@ -8,7 +8,7 @@ using VL.Lib.Reactive;
 namespace VL.Avalonia.Controls;
 
 [ProcessNode(Name = "AttachedFlyout")]
-public partial class AttachedFlyoutWrapper<T>
+public partial class AttachedFlyoutWrapper<T> : IDisposable
     where T : Control
 {
     private T? _input;
@@ -40,16 +40,19 @@ public partial class AttachedFlyoutWrapper<T>
     }
 
     private IChannel<Unit>? _showAttachedFlyoutChannel;
+    private IDisposable? _showAttachedFlyoutSubscription;
 
     public void SetShowAttachedFlyoutChannel(IChannel<Unit>? showAttachedFlyoutChannel)
     {
         if (_showAttachedFlyoutChannel != showAttachedFlyoutChannel)
         {
+            _showAttachedFlyoutSubscription?.Dispose();
+            _showAttachedFlyoutSubscription = null;
             _showAttachedFlyoutChannel = showAttachedFlyoutChannel;
 
             if (_showAttachedFlyoutChannel != null)
             {
-                _showAttachedFlyoutChannel.Subscribe(_ =>
+                _showAttachedFlyoutSubscription = _showAttachedFlyoutChannel.Subscribe(_ =>
                 {
                     if (_input != null)
                     {
@@ -58,6 +61,13 @@ public partial class AttachedFlyoutWrapper<T>
                 });
             }
         }
+    }
+
+    public void Dispose()
+    {
+        _showAttachedFlyoutSubscription?.Dispose();
+        _showAttachedFlyoutSubscription = null;
+        _showAttachedFlyoutChannel = null;
     }
 
     internal void UpdateSetters()
