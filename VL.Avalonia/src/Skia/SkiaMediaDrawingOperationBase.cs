@@ -58,7 +58,7 @@ namespace VL.Avalonia.Skia
                 using var lease = leaseFeature.Lease();
                 var canvas = lease.SkCanvas;
 
-                canvas.Save();
+                using var restore = new SKAutoCanvasRestore(canvas);
 
                 if (Image != null)
                 {
@@ -78,8 +78,6 @@ namespace VL.Avalonia.Skia
 
                     canvas.DrawImage(Image, bounds.ToRect().ToSKRect());
                 }
-
-                canvas.Restore();
             }
         }
 
@@ -113,7 +111,7 @@ namespace VL.Avalonia.Skia
                 {
                     var canvas = lease.SkCanvas;
 
-                    canvas.Save();
+                    using var restore = new SKAutoCanvasRestore(canvas);
 
                     if (Picture != null)
                     {
@@ -144,8 +142,6 @@ namespace VL.Avalonia.Skia
 
                         canvas.DrawPicture(Picture, ref matrix);
                     }
-
-                    canvas.Restore();
                 }
             }
         }
@@ -186,7 +182,8 @@ namespace VL.Avalonia.Skia
                 {
                     var canvas = lease.SkCanvas;
 
-                    canvas.Save();
+                    // Restores even if the user layer throws, so Avalonia's own save stack stays intact.
+                    using var restore = new SKAutoCanvasRestore(canvas);
 
                     if (Layer != null)
                     {
@@ -255,8 +252,6 @@ namespace VL.Avalonia.Skia
 
                         Layer.Render(callerInfo);
                     }
-
-                    canvas.Restore();
                 }
             }
         }
