@@ -308,14 +308,18 @@ static class KeyUtils
                 return Key.NumLock;
             case Keys.Scroll:
                 return Key.Scroll;
+            // WinForms reports modifier presses with the generic codes, not the L/R ones.
+            case Keys.ShiftKey:
             case Keys.LShiftKey:
                 return Key.LeftShift;
             case Keys.RShiftKey:
                 return Key.RightShift;
+            case Keys.ControlKey:
             case Keys.LControlKey:
                 return Key.LeftCtrl;
             case Keys.RControlKey:
                 return Key.RightCtrl;
+            case Keys.Menu:
             case Keys.LMenu:
                 return Key.LeftAlt;
             case Keys.RMenu:
