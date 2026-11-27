@@ -44,19 +44,21 @@ namespace VL.Avalonia.Data
         }
 
         /// <summary>
-        /// Resolves the current property name against the current input's type.
+        /// Resolves the current property name against the current input's type. A missing input,
+        /// an empty name or a name the input doesn't register resolve to <c>null</c>, which detaches
+        /// the binding instead of keeping the previous property.
         /// </summary>
         /// <returns>True if the resolved property changed.</returns>
         private bool ResolveProperty()
         {
             var inputType = _input?.GetType();
 
-            if (inputType is null || string.IsNullOrEmpty(_propertyName))
-                return false;
+            var prop =
+                inputType is null || string.IsNullOrEmpty(_propertyName)
+                    ? null
+                    : AvaloniaPropertyRegistry.Instance.FindRegistered(inputType, _propertyName);
 
-            var prop = AvaloniaPropertyRegistry.Instance.FindRegistered(inputType, _propertyName);
-
-            if (prop is null || prop == _property)
+            if (prop == _property)
                 return false;
 
             _property = prop;
