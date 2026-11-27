@@ -148,14 +148,14 @@ namespace VL.Avalonia.Styles
     }
 
     [ProcessNode(Name = "SetRenderTransformOrigin")]
-    public class SetRenderTransformOrigin : StyleSetterBase<RelativePoint>
+    public class SetRenderTransformOrigin : StyleSetter<RelativePoint>
     {
         public SetRenderTransformOrigin()
             : base("RenderTransformOrigin") { }
     }
 
     [ProcessNode(Name = "SetZIndex")]
-    public class SetZIndex : StyleSetterBase<int>
+    public class SetZIndex : StyleSetter<int>
     {
         public SetZIndex()
             : base("ZIndex") { }
@@ -378,7 +378,7 @@ namespace VL.Avalonia.Styles
     }
 
     [ProcessNode(Name = "SetBorderThickness")]
-    public class SetBorderThickness : StyleSetterBase<Thickness>
+    public class SetBorderThickness : StyleSetter<Thickness>
     {
         public SetBorderThickness()
             : base("BorderThickness") { }

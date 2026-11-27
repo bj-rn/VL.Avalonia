@@ -19,6 +19,9 @@
         <PackageReference Include="VL.Core.Skia" Version="$(VLVersion)" />
         <PackageReference Include="VL.CoreLib" Version="$(VLVersion)" />
     </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="VL.Avalonia.Tests" />
+    </ItemGroup>
     <!--
 		Reference the Avalonia runtime assemblies (lib/) instead of the reference assemblies (ref/) from nuget packages.
 		The reference assemblies have patches to prevent using some platform interfaces we need :(

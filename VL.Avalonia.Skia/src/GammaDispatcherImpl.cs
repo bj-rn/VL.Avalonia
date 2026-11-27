@@ -15,7 +15,7 @@ namespace VL.Avalonia.Skia
         private readonly SendOrPostCallback _invokeTimer; // cached delegate
 
         // TODO: Is there a better way to get the current milliseconds?
-        public long Now => (long)_clock.Time.Seconds * 1000;
+        public long Now => (long)(_clock.Time.Seconds * 1000);
 
         public bool CurrentThreadIsLoopThread => _mainThread == Thread.CurrentThread;
 
