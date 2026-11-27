@@ -1,6 +1,10 @@
+using System.Collections;
+using System.Collections.Specialized;
+using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
+using VL.Avalonia.Helpers;
 using VL.Core.Import;
 using VL.Core.PublicAPI;
 
@@ -123,15 +127,18 @@ namespace VL.Avalonia.Controls
         }
 
         /// <summary>
-        /// The children of one data item, shared by the tree items showing it. Replays the latest
-        /// children to a tree item that asks after the patch has run.
+        /// The children of one data item, shared by the tree items showing it. They see one list
+        /// that follows the children from the patch, so a new list only adds and removes the
+        /// child items that changed. A list that reports its own changes is handed on as is.
         /// </summary>
         private sealed class ChildrenSource(TreeDataTemplateNodeBase<T, TChild> owner, object key)
             : IObservable<object?>
         {
             private readonly List<IObserver<object?>> _observers = new();
+            private readonly AvaloniaList<TChild> _list = new();
             private IReadOnlyList<TChild>? _children;
             private bool _hasChildren;
+            private IEnumerable? _current;
 
             public object Key => key;
 
@@ -142,6 +149,8 @@ namespace VL.Avalonia.Controls
 
             public bool IsIdle => Built <= 0 && _observers.Count == 0;
 
+            private IEnumerable Current => _current ?? _list;
+
             public void Push(IReadOnlyList<TChild>? children)
             {
                 if (_hasChildren && ReferenceEquals(_children, children))
@@ -149,15 +158,31 @@ namespace VL.Avalonia.Controls
 
                 _children = children;
                 _hasChildren = true;
+
+                IEnumerable current;
+                if (children is IList and INotifyCollectionChanged)
+                {
+                    current = children;
+                    _list.Clear();
+                }
+                else
+                {
+                    ItemsReconciler.Sync(_list, children);
+                    current = _list;
+                }
+
+                if (ReferenceEquals(current, Current))
+                    return;
+
+                _current = current;
                 foreach (var observer in _observers.ToArray())
-                    observer.OnNext(children);
+                    observer.OnNext(current);
             }
 
             public IDisposable Subscribe(IObserver<object?> observer)
             {
                 _observers.Add(observer);
-                if (_hasChildren)
-                    observer.OnNext(_children);
+                observer.OnNext(Current);
                 return new Subscription(this, observer);
             }
 
@@ -216,8 +241,9 @@ namespace VL.Avalonia.Controls
     /// <summary>
     /// Runs the patch of every built control again each frame, with that control's data item,
     /// so nodes that need more than one frame work inside. The children follow the patch: a new
-    /// list (by reference) replaces the child items. Later returned controls are ignored: the
-    /// control placed is the one from the first call.
+    /// list (by reference) is compared with the shown one, and only the child items that changed
+    /// are added or removed. Later returned controls are ignored: the control placed is the one
+    /// from the first call.
     /// </summary>
     [ProcessNode(Name = "TreeDataTemplate (Advanced Experimental)")]
     [Region(SupportedBorderControlPoints = ControlPointType.None)]

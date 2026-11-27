@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Styling;
 using VL.Avalonia.Attributes;
+using VL.Avalonia.Helpers;
 using VL.Core;
 using VL.Core.Import;
 using VL.Lib.Collections;
@@ -19,55 +20,20 @@ namespace VL.Avalonia.Controls
             IDisposable
         where TControl : MenuFlyout, new()
     {
-        private IChannel<IReadOnlyList<TValue>>? _itemsSource;
-        private IDisposable? _itemSourceBinding;
-        private ISpread? _items;
+        private readonly ItemsSourceSync<TValue> _itemsSync;
 
         [Fragment]
-        public MenuFlyoutNodeBase() { }
+        public MenuFlyoutNodeBase()
+        {
+            _itemsSync = new ItemsSourceSync<TValue>(_output, MenuFlyout.ItemsSourceProperty);
+        }
 
         /// <param name="itemsSource">Binds observable items source.</param>
-        public virtual void SetItemsSource(IChannel<IReadOnlyList<TValue>> itemsSource)
-        {
-            if (ReferenceEquals(_itemsSource, itemsSource))
-                return;
-
-            _itemSourceBinding?.Dispose();
-            _itemsSource = itemsSource;
-            _items = null;
-
-            if (_itemsSource != null)
-            {
-                _itemSourceBinding = _output.Bind(
-                    MenuFlyout.ItemsSourceProperty,
-                    itemsSource.StartWith(itemsSource.Value)
-                );
-            }
-            else
-            {
-                _output.ClearValue(MenuFlyout.ItemsSourceProperty);
-            }
-        }
+        public virtual void SetItemsSource(IChannel<IReadOnlyList<TValue>> itemsSource) =>
+            _itemsSync.SetChannel(itemsSource);
 
         /// <param name="items">Sets items on source.</param>
-        public virtual void SetItems(Spread<TValue?> items)
-        {
-            if (ReferenceEquals(_items, items))
-                return;
-
-            _itemSourceBinding?.Dispose();
-            _items = items;
-            _itemsSource = null;
-
-            if (_items != null)
-            {
-                _output.SetValue(MenuFlyout.ItemsSourceProperty, items);
-            }
-            else
-            {
-                _output.ClearValue(MenuFlyout.ItemsSourceProperty);
-            }
-        }
+        public virtual void SetItems(Spread<TValue?> items) => _itemsSync.SetItems(items!);
 
         /// <summary>Sets the template used for the items</summary>
         [ImplementProperty(
@@ -98,9 +64,7 @@ namespace VL.Avalonia.Controls
 
         public override void Dispose()
         {
-            _itemsSource = null;
-            _itemSourceBinding?.Dispose();
-            _items = null;
+            _itemsSync.Dispose();
 
             base.Dispose();
         }
