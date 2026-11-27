@@ -41,6 +41,8 @@ namespace VL.Avalonia.Controls
                 _input.Value.ClearValue(Grid.RowProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Grid.RowProperty);
     }
 
     /// <summary>
@@ -77,6 +79,8 @@ namespace VL.Avalonia.Controls
                 _input.Value.ClearValue(Grid.RowSpanProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Grid.RowSpanProperty);
     }
 
     /// <summary>
@@ -114,6 +118,8 @@ namespace VL.Avalonia.Controls
                 _input.Value.ClearValue(Grid.ColumnProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Grid.ColumnProperty);
     }
 
     /// <summary>
@@ -150,6 +156,8 @@ namespace VL.Avalonia.Controls
                 _input.Value.ClearValue(Grid.ColumnSpanProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Grid.ColumnSpanProperty);
     }
 
     /// <summary>
@@ -190,5 +198,7 @@ namespace VL.Avalonia.Controls
                 _input.Value.ClearValue(Grid.IsSharedSizeScopeProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Grid.IsSharedSizeScopeProperty);
     }
 }

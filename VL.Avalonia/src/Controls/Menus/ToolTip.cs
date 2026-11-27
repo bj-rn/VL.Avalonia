@@ -34,7 +34,11 @@ public abstract class ToolTipWrapperBase<T>
     {
         if (_input != input)
         {
-            _input?.ClearValue(ToolTip.TipProperty);
+            if (_input != null)
+            {
+                _input.ClearValue(ToolTip.TipProperty);
+                ClearSetters(_input);
+            }
 
             _input = input;
 
@@ -49,6 +53,11 @@ public abstract class ToolTipWrapperBase<T>
 
     public T? Output => _input;
     protected abstract void UpdateSetters();
+
+    /// <summary>
+    /// Removes what this node attached to a control it no longer receives as input.
+    /// </summary>
+    protected abstract void ClearSetters(T control);
 
     protected Optional<IAvaloniaStyle> _style;
 
@@ -335,5 +344,15 @@ public partial class ToolTipWrapper<T> : ToolTipWrapperBase<T>
         UpdateShowDelay();
         UpdateBetweenShowDelay();
         UpdateShowOnDisabledProperty();
+    }
+
+    protected override void ClearSetters(T control)
+    {
+        control.ClearValue(ToolTip.PlacementProperty);
+        control.ClearValue(ToolTip.HorizontalOffsetProperty);
+        control.ClearValue(ToolTip.VerticalOffsetProperty);
+        control.ClearValue(ToolTip.ShowDelayProperty);
+        control.ClearValue(ToolTip.BetweenShowDelayProperty);
+        control.ClearValue(ToolTip.ShowOnDisabledProperty);
     }
 }

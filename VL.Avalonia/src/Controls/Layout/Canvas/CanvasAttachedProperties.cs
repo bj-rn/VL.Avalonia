@@ -43,6 +43,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Canvas.LeftProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Canvas.LeftProperty);
     }
 
     /// <summary>
@@ -82,6 +84,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Canvas.RightProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Canvas.RightProperty);
     }
 
     /// <summary>
@@ -121,6 +125,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Canvas.TopProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Canvas.TopProperty);
     }
 
     /// <summary>
@@ -160,5 +166,7 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Canvas.BottomProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Canvas.BottomProperty);
     }
 }

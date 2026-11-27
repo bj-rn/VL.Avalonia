@@ -42,5 +42,7 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(DockPanel.DockProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(DockPanel.DockProperty);
     }
 }
