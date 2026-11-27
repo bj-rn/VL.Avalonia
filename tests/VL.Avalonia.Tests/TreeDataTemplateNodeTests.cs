@@ -157,6 +157,17 @@ public class TreeDataTemplateNodeTests
     }
 
     [AvaloniaFact]
+    public void Shown_children_do_not_find_an_item_of_another_type()
+    {
+        var node = Create<TreeDataTemplateNode<string, string>>();
+        var (recorder, _) = Subscribe(node.Output, "root");
+        Show(node.Output, "root");
+
+        // A tree view asks every expanded children list for the clicked item.
+        Assert.Equal(-1, ((IList)recorder.Last).IndexOf(new object()));
+    }
+
+    [AvaloniaFact]
     public void Children_are_kept_while_one_of_two_controls_for_the_item_is_shown()
     {
         var node = Create<TreeDataTemplateNode<string, string>>();

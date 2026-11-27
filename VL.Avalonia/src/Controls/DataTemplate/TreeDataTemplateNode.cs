@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Specialized;
-using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
@@ -135,7 +134,7 @@ namespace VL.Avalonia.Controls
             : IObservable<object?>
         {
             private readonly List<IObserver<object?>> _observers = new();
-            private readonly AvaloniaList<TChild> _list = new();
+            private readonly ItemsList<TChild> _list = new();
             private IReadOnlyList<TChild>? _children;
             private bool _hasChildren;
             private IEnumerable? _current;

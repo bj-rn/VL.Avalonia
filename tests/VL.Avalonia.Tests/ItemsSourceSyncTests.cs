@@ -43,7 +43,7 @@ public class ItemsSourceSyncTests
 
     private AvaloniaList<Item> AssignedList(params Item[] expected)
     {
-        var list = Assert.IsType<AvaloniaList<Item>>(_host.Items);
+        var list = Assert.IsType<ItemsList<Item>>(_host.Items);
         Assert.Equal(expected, list);
         return list;
     }
