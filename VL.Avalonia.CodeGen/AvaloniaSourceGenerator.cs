@@ -60,9 +60,12 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
         SourceProductionContext context,
         ClassDeclarationSyntax classDecl,
         SemanticModel semanticModel,
-        ISymbol classSymbol
+        INamedTypeSymbol? classSymbol
     )
     {
+        if (classSymbol is null)
+            return;
+
         var generatedMethods = new List<string>();
 
         foreach (var member in classDecl.Members.OfType<FieldDeclarationSyntax>())
@@ -111,11 +114,39 @@ public class AvaloniaSourceGenerator : IIncrementalGenerator
                 if (generatedClass != null)
                 {
                     context.AddSource(
-                        $"{classSymbol.Name}.g.cs",
+                        GetHintName(classSymbol, classDecl),
                         SourceText.From(generatedClass, System.Text.Encoding.UTF8)
                     );
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Hint names must be unique per generator, so the short class name isn't enough: generic
+    /// and non-generic classes, equal names in other namespaces and the parts of a partial class
+    /// would all collide, and a collision fails the whole generator.
+    /// </summary>
+    internal static string GetHintName(INamedTypeSymbol classSymbol, ClassDeclarationSyntax classDecl)
+    {
+        var types = new Stack<string>();
+        for (var type = classSymbol; type is not null; type = type.ContainingType)
+            types.Push(type.MetadataName.Replace('`', '_'));
+
+        var name = string.Join("+", types);
+        if (classSymbol.ContainingNamespace is { IsGlobalNamespace: false } ns)
+            name = ns.ToDisplayString() + "." + name;
+
+        var declarations = classSymbol.DeclaringSyntaxReferences;
+        if (declarations.Length > 1)
+        {
+            var index = declarations
+                .Select((d, i) => (d, i))
+                .First(x => x.d.SyntaxTree == classDecl.SyntaxTree && x.d.Span == classDecl.Span)
+                .i;
+            name += "." + index;
+        }
+
+        return name + ".g.cs";
     }
 }
