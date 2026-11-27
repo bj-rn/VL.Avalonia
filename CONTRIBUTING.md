@@ -32,6 +32,7 @@ Or use Test Explorer in Visual Studio. If the test run aborts, make sure the x64
 
 If you're adding a brand new feature, you need to make sure you add a help patch entry, here's a few tips:
 
+- Put help patches in the matching topic folder under `VL.Avalonia/help`, using at most two folder levels (for example, `Controls/Buttons/Reference Button.vl`). Keep the help-type prefix, but don't repeat the folder names in the filename.
 - Keep the help patch simple & show the essence of the feature, remember some people may be looking at using this for the first time & it's important the help patches are clear and concise.
 - Keep assets minimal (3D Models, textures) to avoid bloating the repository
 - If you think a more involved example is necessary, you can always add a `Example` to the while keeping `Reference` minimalistic [providing-help](https://thegraybook.vvvv.org/reference/extending/providing-help.html)
