@@ -26,9 +26,9 @@ namespace VL.Avalonia.Data
             _control = control;
             _property = property;
 
-            _toChannel =
-                toChannel
-                ?? (v => v is null ? default! : (TValue)Convert.ChangeType(v, typeof(TValue)));
+            // Nullable- and culture-safe; a value that can't be converted becomes default
+            // instead of throwing inside the subscription.
+            _toChannel = toChannel ?? (v => BindingHelpers.ChangeType<TValue>(v));
         }
 
         public void Bind(IChannel<TValue>? channel)
