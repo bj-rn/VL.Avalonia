@@ -11,7 +11,7 @@ namespace VL.Avalonia.Helpers;
 public abstract class ChannelCommandBindingBase<T> : ICommand, IDisposable
     where T : new()
 {
-    internal IChannel<T>? _commandChannel = ChannelHelpers.CreateChannelOfType<T>();
+    internal IChannel<T>? _commandChannel;
 
     public event EventHandler? CanExecuteChanged;
 
@@ -33,9 +33,12 @@ public abstract class ChannelCommandBindingBase<T> : ICommand, IDisposable
         _commandChannel?.OnNext((T?)parameter);
     }
 
+    /// <summary>
+    /// Lets go of the command channel; the channel belongs to the caller and stays alive.
+    /// </summary>
     public void Dispose()
     {
-        _commandChannel?.Dispose();
+        _commandChannel = null;
     }
 }
 
