@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="RKwxb1s4E8WPqFxSH51ZnO" LanguageVersion="2025.7.4" Version="0.128">
+<Document xmlns:p="property" xmlns:r="reflection" Id="BHU2I2awJ0yM1q1kdZihXO" LanguageVersion="2025.7.4" Version="0.128">
   <NugetDependency Id="Ot7vXDEqh1dN0UsIHsH4U7" Location="VL.CoreLib" Version="2025.7.4" />
   <Patch Id="LPQUwJLLlOYLXskhc7Jdh3">
     <Canvas Id="IHBvRxhWlXkM79FL00Nths" DefaultCategory="Main" CanvasType="FullCategory" />
@@ -21,7 +21,7 @@
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="EMAaVQMVNf2MIIhNQanTL4" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="1144, 122, 477, 889" IsHidden="true" />
+            <Pin Id="IP7Iro64gNDNN8POA18lhR" Name="Bounds" Kind="InputPin" DefaultValue="2660, 205, 477, 889" IsHidden="true" />
             <Pin Id="OhUk0lcXRfZPS1pGZZQXFi" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
             <Pin Id="Crih6r1mjYkP4zxje5Ginm" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
             <Pin Id="EyUbJWQNM3mPPTWltTE2st" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
@@ -261,7 +261,7 @@
               </Patch>
             </Patch>
           </Node>
-          <Node Bounds="492,182,356,394" Id="K2qXpzuSH3qPFAzhrUtlil">
+          <Node Bounds="492,182,365,394" Id="K2qXpzuSH3qPFAzhrUtlil">
             <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
               <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
               <CategoryReference Kind="Category" Name="Primitive" />
@@ -327,7 +327,7 @@
                 <Pin Id="ENDbk7IFp2cL789oEJzOA2" Name="Items" Kind="InputPin" />
                 <Pin Id="BkvbgKCrrv2NVHgKV6ZeuK" Name="Output" Kind="StateOutputPin" />
               </Node>
-              <Node Bounds="722,260,97,26" Id="EXHeuLy0GCZQVG5edrlakl">
+              <Node Bounds="748,250,97,26" Id="EXHeuLy0GCZQVG5edrlakl">
                 <p:NodeReference LastCategoryFullName="Main.MyTreeItem" LastDependency="Reference Controls Collections TreeView Advanced.vl">
                   <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                   <CategoryReference Kind="RecordType" Name="MyTreeItemViewModel" />
@@ -358,7 +358,7 @@
                   <Choice Kind="TypeFlag" Name="String" />
                 </p:TypeAnnotation>
               </Pad>
-              <Pad Id="EquDp0fXyEJLDD2p8YgNMB" Comment="Title" Bounds="724,240,51,15" ShowValueBox="true" isIOBox="true" Value="Leaf 1">
+              <Pad Id="EquDp0fXyEJLDD2p8YgNMB" Comment="Title" Bounds="750,230,51,15" ShowValueBox="true" isIOBox="true" Value="Leaf 1">
                 <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
                   <Choice Kind="TypeFlag" Name="String" />
                 </p:TypeAnnotation>
@@ -550,7 +550,7 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="QFowQi7PHNVLZTIS21gN5b" Bounds="123,640,347,189" ShowValueBox="true" isIOBox="true" Value="On current state you have to consider following:&#xD;&#xA;Spread here means, new reference on every change &gt;&#xD;&#xA;&#xD;&#xA;So:&#xD;&#xA;- mutating records in spread would reset TreeView &#xD;&#xA;- changing spread would reset tree view&#xD;&#xA;&#xD;&#xA;e.g. Children - MutableList, Items are Classes with bindable channels">
+          <Pad Id="QFowQi7PHNVLZTIS21gN5b" Bounds="123,640,351,242" ShowValueBox="true" isIOBox="true" Value="On current state you have to consider following:&#xD;&#xA;Spread here means, new reference on every change &gt;&#xD;&#xA;&#xD;&#xA;So:&#xD;&#xA;- mutating records in spread would reset TreeView &#xD;&#xA;- changing spread would reset tree view&#xD;&#xA;&#xD;&#xA;e.g. Children - MutableList, Items are Classes with bindable channels&#xD;&#xA;&#xD;&#xA;To make it beer in `vvvv` terms - `reconciliation` on Items added so it checks items in spread ">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>

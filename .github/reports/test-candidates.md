@@ -372,6 +372,7 @@ All 21 items were verified against the source. Real bugs were fixed one PR each,
 | 22 | `SelectorHelper` throws until `Avalonia.Markup` happens to be loaded (`.First()` over loaded assemblies, init flag never set); parse errors arrive wrapped in `TargetInvocationException` | Fixed | — | `SelectorHelperTests` |
 | 23 | `BindingHelpers` replays the channel value from bind time: a lower-priority binding that Avalonia subscribes later (e.g. `Style` under a local value) shows a stale value | Fixed (`Observable.Defer`) | — | `BindingEngineTests` |
 | 24 | Disposing a two-way binding writes the property's reset value (`null`) into the channel | Fixed (reverse subscription disposed first) | — | `BindingEngineTests` |
+| 25 | `TwoWayBinding` pushes control values the channel can't hold: a `Channel<TreeViewItem>` on an `object` SelectedItem pin (or a `(T)y` converter on TreeView (Advanced)) throws `InvalidCastException` on a plain-object selection, which kills the binding and surfaces in `ItemsReconciler` `InsertRange` | Fixed (value dropped, channel keeps its value) | — | `SelectedItemChannelTests` |
 
 Open follow-ups:
 
