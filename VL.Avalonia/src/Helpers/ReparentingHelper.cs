@@ -1,3 +1,4 @@
+using System.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using VL.Core;
@@ -21,34 +22,54 @@ namespace VL.Avalonia.Helpers
         public static void DetachFromParent(NodeContext nodeContext, Control control)
         {
             var parent = control.Parent;
-            if (parent is null)
-                return;
+            if (TryDetach(control))
+                EnqueueReparentWarning(nodeContext, control, parent!);
+        }
 
-            switch (parent)
+        /// <summary>
+        /// Detaches <paramref name="control"/> from its current parent without raising a warning.
+        /// Returns false if it had no parent or the parent can't give it up.
+        /// </summary>
+        internal static bool TryDetach(Control control)
+        {
+            switch (control.Parent)
             {
                 case Panel panel:
                     panel.Children.Remove(control);
-                    break;
+                    return true;
                 case ContentControl contentControl when ReferenceEquals(contentControl.Content, control):
                     contentControl.Content = null;
-                    break;
+                    return true;
                 case ContentPresenter contentPresenter when ReferenceEquals(contentPresenter.Content, control):
                     contentPresenter.Content = null;
-                    break;
+                    return true;
                 case Decorator decorator when ReferenceEquals(decorator.Child, control):
                     decorator.Child = null;
-                    break;
+                    return true;
                 case Viewbox viewbox when ReferenceEquals(viewbox.Child, control):
                     viewbox.Child = null;
-                    break;
+                    return true;
                 case ItemsControl itemsControl:
-                    itemsControl.Items.Remove(control);
-                    break;
+                    return TryRemoveItem(itemsControl, control);
                 default:
-                    return;
+                    return false;
+            }
+        }
+
+        private static bool TryRemoveItem(ItemsControl itemsControl, Control control)
+        {
+            if (itemsControl.ItemsSource is null)
+                return itemsControl.Items.Remove(control);
+
+            // Items is read-only while ItemsSource is in use; the item has to leave the source.
+            if (itemsControl.ItemsSource is IList { IsReadOnly: false, IsFixedSize: false } source
+                && source.Contains(control))
+            {
+                source.Remove(control);
+                return true;
             }
 
-            EnqueueReparentWarning(nodeContext, control, parent);
+            return false;
         }
 
         private static void EnqueueReparentWarning(NodeContext nodeContext, Control control, StyledElement previousParent)
