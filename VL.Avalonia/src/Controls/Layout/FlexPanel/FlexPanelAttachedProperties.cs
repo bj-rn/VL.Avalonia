@@ -43,6 +43,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Flex.AlignSelfProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Flex.AlignSelfProperty);
     }
 
     /// <summary>
@@ -83,6 +85,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Flex.OrderProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Flex.OrderProperty);
     }
 
     /// <summary>
@@ -129,6 +133,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Flex.BasisProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Flex.BasisProperty);
     }
 
     /// <summary>
@@ -169,6 +175,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Flex.ShrinkProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Flex.ShrinkProperty);
     }
 
     /// <summary>
@@ -209,6 +217,8 @@ namespace VL.Avalonia.Controls
                 _input.Value?.ClearValue(Flex.GrowProperty);
             }
         }
+
+        protected override void ClearSetters(Control control) => control.ClearValue(Flex.GrowProperty);
     }
 
     /// <summary>
