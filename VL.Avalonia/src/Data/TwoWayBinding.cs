@@ -43,9 +43,11 @@ namespace VL.Avalonia.Data
             {
                 var controlObservable = _control
                     .GetObservable(_property)
-                    .Select(_toChannel)
                     // Skip the initial value from the control, trust the channel first
-                    .Skip(1);
+                    .Skip(1)
+                    .Select(v => (ok: TryToChannel(channel, v, out var value), value))
+                    .Where(x => x.ok)
+                    .Select(x => x.value);
 
                 _subscription = Observable
                     .Merge(controlObservable, channel)
@@ -65,6 +67,32 @@ namespace VL.Avalonia.Data
                         }
                     });
             }
+        }
+
+        /// <summary>
+        /// Converts a control value for the channel. A value that can't be converted, or that the
+        /// channel can't hold, is dropped and the channel keeps its value: a throw here would end
+        /// the binding and surface in whatever changed the control.
+        /// </summary>
+        private bool TryToChannel(IChannel<TValue> channel, TProperty? propertyValue, out TValue? value)
+        {
+            try
+            {
+                value = _toChannel(propertyValue);
+            }
+            catch (Exception e)
+                when (e is InvalidCastException or FormatException or OverflowException or ArgumentException)
+            {
+                value = default;
+                return false;
+            }
+
+            // The channel can be typed narrower than TValue: VL connects a Channel<TreeViewItem>
+            // to an IChannel<object> pin, and that channel casts every value it gets.
+            var type = channel.ClrTypeOfValues;
+            return value is null
+                ? !type.IsValueType || Nullable.GetUnderlyingType(type) is not null
+                : type.IsInstanceOfType(value);
         }
 
         public void Dispose()
