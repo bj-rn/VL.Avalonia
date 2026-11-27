@@ -20,6 +20,8 @@ namespace VL.Avalonia.Animation.PageTransitions
         {
             if (_pageTransitions != pageTransitions)
             {
+                _pageTransitions = pageTransitions;
+
                 if (pageTransitions != null)
                 {
                     var transitions = new List<IPageTransition>();
