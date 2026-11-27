@@ -19,6 +19,8 @@
     <ItemGroup>
         <ProjectReference Include="..\..\VL.Avalonia\src\VL.Avalonia.csproj" />
         <ProjectReference Include="..\..\VL.Avalonia.Skia\src\VL.Avalonia.Skia.csproj" />
+        <!-- Same global properties as VL.Avalonia's analyzer reference, so MSBuild builds CodeGen only once. -->
+        <ProjectReference Include="..\..\VL.Avalonia.CodeGen\VL.Avalonia.CodeGen.csproj" SetTargetFramework="TargetFramework=netstandard2.0" />
     </ItemGroup>
 
     <ItemGroup>
