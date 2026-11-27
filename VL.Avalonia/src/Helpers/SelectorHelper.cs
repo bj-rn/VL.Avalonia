@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.ExceptionServices;
 using Avalonia.Styling;
 
 namespace VL.Avalonia.Helpers;
@@ -80,9 +81,8 @@ public static class SelectorHelper
             if (_reflectionInitialized)
                 return;
 
-            var markupAssembly = AppDomain
-                .CurrentDomain.GetAssemblies()
-                .First(a => a.GetName().Name == "Avalonia.Markup");
+            // Referencing a public type loads Avalonia.Markup even if nothing else has used it yet.
+            var markupAssembly = typeof(global::Avalonia.Data.Binding).Assembly;
 
             _parserType = markupAssembly.GetType("Avalonia.Markup.Parsers.SelectorParser");
             _parserCtor = _parserType.GetConstructor(new[] { typeof(Func<string, string, Type>) });
@@ -149,7 +149,17 @@ public static class SelectorHelper
         var resolver = GetCurrentResolver(typeResolver);
         var parser = GetParserInstance(resolver);
 
-        var result = _parseMethod.Invoke(parser, new object[] { selectorString });
+        object? result;
+        try
+        {
+            result = _parseMethod.Invoke(parser, new object[] { selectorString });
+        }
+        catch (TargetInvocationException e) when (e.InnerException is not null)
+        {
+            // Surface the parser's own message (e.g. "Unexpected end of selector") instead of the reflection wrapper.
+            ExceptionDispatchInfo.Capture(e.InnerException).Throw();
+            throw;
+        }
 
         if (result is Selector)
         {

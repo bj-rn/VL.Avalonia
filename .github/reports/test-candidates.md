@@ -2,7 +2,7 @@
 
 This report surveys `VL.Avalonia`, `VL.Avalonia.CodeGen`, `VL.Avalonia.Custom`, `VL.Avalonia.Skia`, and `VL.Avalonia.Stride` (wrapping Avalonia 11.2.1 for vvvv/VL) to identify high-value unit-test candidates covering custom library logic rather than Avalonia's own property/control behaviour. Across 289 project and source files, we identified **20 concrete test candidates** spanning reactive `IChannel<T>` bindings, Roslyn incremental code generation, VL template regions and `TreeDataTemplate` child reconciliation, routed/standard event lifecycles, immutable style graphs, CSS selector parsing, Skia host input/DPI/multi-touch translation, control reparenting, attached-property sanitization, and math/color/animation conversions—alongside **21 high- and medium-confidence bugs** discovered during inspection. Most candidates (13 of 20) can run as fast, platform-free `Unit` tests (`AvaloniaObject`/`AvaloniaProperty` and `Channel<T>` work without a windowing backend), 6 require `Avalonia.Headless` (logical/visual tree realization, routed-event bubbling, `Application`/XAML loading, or template parts), and 1 uses Roslyn's `CSharpGeneratorDriver` (`Generator`).
 
-> **Status:** all 21 bugs have been triaged and resolved (#121–#139); see [Suspicious code found — status](#suspicious-code-found--status). The test candidates are still open, apart from the partial coverage listed under [Already covered](#already-covered).
+> **Status:** all 21 bugs have been triaged and resolved (#121–#139); see [Suspicious code found — status](#suspicious-code-found--status). Writing tests for the critical candidates (1, 4, 10, 12) found three more bugs (22–24). The test candidates are still open, apart from the partial coverage listed under [Already covered](#already-covered).
 
 ---
 
@@ -13,20 +13,22 @@ The following files already have tests implemented or planned and are excluded f
 - `VL.Avalonia\src\Helpers\ItemsReconciler.cs` — in-place diff/reconciliation of an `AvaloniaList<T>` against a new `IReadOnlyList<T>`.
 - `VL.Avalonia\src\Helpers\ItemsSourceSync.cs` — synchronization from `IChannel<IReadOnlyList<T>>` or `Spread<T>` to `ItemsControl.ItemsSource` via a persistent `AvaloniaList<T>`.
 
-Partly covered by the regression tests added while fixing the [suspicious code](#suspicious-code-found--status). These cover the fixed bugs only, not each candidate's full test list:
+Partly covered by the regression tests added while fixing the [suspicious code](#suspicious-code-found--status), and by the tests for the critical candidates (1, 4, 10, 12). These don't cover each candidate's full test list:
 
 | Candidate | Tests |
 |-----------|-------|
-| 1 Binding engine | `BindingNameNodeTests`, `BindingInitialValueTests` |
+| 1 Binding engine | `BindingNameNodeTests`, `BindingInitialValueTests`, `BindingEngineTests` |
 | 2 Typed bindings | `DefaultBindingConverterTests` |
 | 3 Source generators | `SourceGeneratorTests` |
+| 4 DataTemplates | `DataTemplateNodeTests`, `TreeDataTemplateNodeTests` |
 | 5 Event listeners | `RoutedEventListenerTests` |
 | 6 Styles | `StyleSettersTests` |
 | 7 Skia TopLevel input | `GammaTopLevelInputModifierTests` |
 | 8 Channel helpers | `ChannelCommandTests` |
 | 9 Reparenting | `ReparentingHelperTests` |
+| 10 Selector parser | `SelectorHelperTests` |
 | 11 Multi-selection | `ListBoxSelectedItemsHandlerTests` |
-| 12 Attached properties | `AttachedPropertyNodeTests`, `NodeDisposalTests` (AttachedFlyout) |
+| 12 Attached properties | `AttachedPropertyNodeTests`, `NodeDisposalTests` (AttachedFlyout), `FlexValueHelperTests` |
 | 13 Animations | `EasingsTests`, `CompositePageTransitionTests` |
 | 14 Transforms & color | `RenderTransformTests`, `ColorExtensionsTests`, `DropShadowDirectionEffectTests` |
 | 15 Control node disposal | `NodeDisposalTests` |
@@ -34,7 +36,7 @@ Partly covered by the regression tests added while fixing the [suspicious code](
 | 18 Skia draw operations | `SkiaDrawingOperationTests` |
 | 19 Gamma dispatcher | `GammaDispatcherTests` |
 
-No tests yet: 4 (DataTemplates), 10 (selector parser), 16 (custom value controls), 20 (introspection).
+No tests yet: 16 (custom value controls), 20 (introspection).
 
 The "Suspicious" notes inside the detailed candidates below are resolved; see the status table.
 
@@ -342,7 +344,7 @@ The "Suspicious" notes inside the detailed candidates below are resolved; see th
 
 ## Suspicious code found — status
 
-All 21 items were verified against the source. Real bugs were fixed one PR each, with regression tests that fail on the original code.
+All 21 items were verified against the source. Real bugs were fixed one PR each, with regression tests that fail on the original code. Items 22–24 were found later, while writing tests for the critical candidates.
 
 | # | Area | Status | PR | Tests |
 |---|------|--------|----|-------|
@@ -367,6 +369,9 @@ All 21 items were verified against the source. Real bugs were fixed one PR each,
 | 19 | CodeGen hint-name collisions, empty catch in the reflection generator | Fixed (unique hint names, `VLAGEN001` build error) | #137 | `SourceGeneratorTests` |
 | 20 | Attached properties left on the previous input, `Optional` holding null throws | Fixed (all 31 attached-property nodes and ToolTip) | #138 | `AttachedPropertyNodeTests` |
 | 21 | Multi-pin style setters send 0 instead of no value; `KeyUtils.ToKey` misses generic modifier keys | Fixed (two separate bugs) | #139 | `StyleSettersTests`, `KeyUtilsTests` |
+| 22 | `SelectorHelper` throws until `Avalonia.Markup` happens to be loaded (`.First()` over loaded assemblies, init flag never set); parse errors arrive wrapped in `TargetInvocationException` | Fixed | — | `SelectorHelperTests` |
+| 23 | `BindingHelpers` replays the channel value from bind time: a lower-priority binding that Avalonia subscribes later (e.g. `Style` under a local value) shows a stale value | Fixed (`Observable.Defer`) | — | `BindingEngineTests` |
+| 24 | Disposing a two-way binding writes the property's reset value (`null`) into the channel | Fixed (reverse subscription disposed first) | — | `BindingEngineTests` |
 
 Open follow-ups:
 
@@ -374,6 +379,7 @@ Open follow-ups:
 - #15: re-read Shift/Ctrl/Alt state from each key event; handle a touch cancel once VL.StandardLibs adds one.
 - #19: the generator still doesn't support nested `[ProcessNode]` classes.
 - #20: attached values stay on the control when the node is deleted (the nodes aren't disposable).
+- `BindingHelpers` `isBusy` guard: no test can catch its removal, because a VL channel doesn't republish values set from inside its own notification. Keep it as a safeguard; it isn't covered.
 ---
 
 ## Skipped
