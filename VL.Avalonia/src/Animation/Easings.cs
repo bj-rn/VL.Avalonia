@@ -15,55 +15,55 @@ public abstract class EasingWrapperBase<T>
 public class BackEaseInWrapper : EasingWrapperBase<BackEaseIn> { }
 
 [ProcessNode(Name = "BackEaseInOut")]
-public class BackEaseInOutWrapper : EasingWrapperBase<BackEaseIn> { }
+public class BackEaseInOutWrapper : EasingWrapperBase<BackEaseInOut> { }
 
 [ProcessNode(Name = "BackEaseOut")]
-public class BackEaseOutWrapper : EasingWrapperBase<BackEaseIn> { }
+public class BackEaseOutWrapper : EasingWrapperBase<BackEaseOut> { }
 
 [ProcessNode(Name = "BounceEaseIn")]
 public class BounceEaseInWrapper : EasingWrapperBase<BounceEaseIn> { }
 
 [ProcessNode(Name = "BounceEaseInOut")]
-public class BounceEaseInOutWrapper : EasingWrapperBase<BounceEaseIn> { }
+public class BounceEaseInOutWrapper : EasingWrapperBase<BounceEaseInOut> { }
 
 [ProcessNode(Name = "BounceEaseOut")]
-public class BounceEaseOutWrapper : EasingWrapperBase<BounceEaseIn> { }
+public class BounceEaseOutWrapper : EasingWrapperBase<BounceEaseOut> { }
 
 [ProcessNode(Name = "CircularEaseIn")]
 public class CircularEaseInWrapper : EasingWrapperBase<CircularEaseIn> { }
 
 [ProcessNode(Name = "CircularEaseInOut")]
-public class CircularEaseInOutWrapper : EasingWrapperBase<CircularEaseIn> { }
+public class CircularEaseInOutWrapper : EasingWrapperBase<CircularEaseInOut> { }
 
 [ProcessNode(Name = "CircularEaseOut")]
-public class CircularEaseOutWrapper : EasingWrapperBase<CircularEaseIn> { }
+public class CircularEaseOutWrapper : EasingWrapperBase<CircularEaseOut> { }
 
 [ProcessNode(Name = "CubicEaseIn")]
 public class CubicEaseInWrapper : EasingWrapperBase<CubicEaseIn> { }
 
 [ProcessNode(Name = "CubicEaseInOut")]
-public class CubicEaseInOutWrapper : EasingWrapperBase<CubicEaseIn> { }
+public class CubicEaseInOutWrapper : EasingWrapperBase<CubicEaseInOut> { }
 
 [ProcessNode(Name = "CubicEaseOut")]
-public class CubicEaseOutWrapper : EasingWrapperBase<CubicEaseIn> { }
+public class CubicEaseOutWrapper : EasingWrapperBase<CubicEaseOut> { }
 
 [ProcessNode(Name = "ElasticEaseIn")]
 public class ElasticEaseInWrapper : EasingWrapperBase<ElasticEaseIn> { }
 
 [ProcessNode(Name = "ElasticEaseInOut")]
-public class ElasticEaseInOutWrapper : EasingWrapperBase<ElasticEaseIn> { }
+public class ElasticEaseInOutWrapper : EasingWrapperBase<ElasticEaseInOut> { }
 
 [ProcessNode(Name = "ElasticEaseOut")]
-public class ElasticEaseOutWrapper : EasingWrapperBase<ElasticEaseIn> { }
+public class ElasticEaseOutWrapper : EasingWrapperBase<ElasticEaseOut> { }
 
 [ProcessNode(Name = "ExponentialEaseIn")]
 public class ExponentialEaseInWrapper : EasingWrapperBase<ExponentialEaseIn> { }
 
 [ProcessNode(Name = "ExponentialEaseInOut")]
-public class ExponentialEaseInOutWrapper : EasingWrapperBase<ExponentialEaseIn> { }
+public class ExponentialEaseInOutWrapper : EasingWrapperBase<ExponentialEaseInOut> { }
 
 [ProcessNode(Name = "ExponentialEaseOut")]
-public class ExponentialEaseOutWrapper : EasingWrapperBase<ExponentialEaseIn> { }
+public class ExponentialEaseOutWrapper : EasingWrapperBase<ExponentialEaseOut> { }
 
 [ProcessNode(Name = "LinearEasing")]
 public class LinearEasingWrapper : EasingWrapperBase<LinearEasing> { }
@@ -72,34 +72,34 @@ public class LinearEasingWrapper : EasingWrapperBase<LinearEasing> { }
 public class QuadraticEaseInWrapper : EasingWrapperBase<QuadraticEaseIn> { }
 
 [ProcessNode(Name = "QuadraticEaseInOut")]
-public class QuadraticEaseInOutWrapper : EasingWrapperBase<QuadraticEaseIn> { }
+public class QuadraticEaseInOutWrapper : EasingWrapperBase<QuadraticEaseInOut> { }
 
 [ProcessNode(Name = "QuadraticEaseOut")]
-public class QuadraticEaseOutWrapper : EasingWrapperBase<QuadraticEaseIn> { }
+public class QuadraticEaseOutWrapper : EasingWrapperBase<QuadraticEaseOut> { }
 
 [ProcessNode(Name = "QuarticEaseIn")]
 public class QuarticEaseInWrapper : EasingWrapperBase<QuarticEaseIn> { }
 
 [ProcessNode(Name = "QuarticEaseInOut")]
-public class QuarticEaseInOutWrapper : EasingWrapperBase<QuarticEaseIn> { }
+public class QuarticEaseInOutWrapper : EasingWrapperBase<QuarticEaseInOut> { }
 
 [ProcessNode(Name = "QuarticEaseOut")]
-public class QuarticEaseOutWrapper : EasingWrapperBase<QuarticEaseIn> { }
+public class QuarticEaseOutWrapper : EasingWrapperBase<QuarticEaseOut> { }
 
 [ProcessNode(Name = "QuinticEaseIn")]
 public class QuinticEaseInWrapper : EasingWrapperBase<QuinticEaseIn> { }
 
 [ProcessNode(Name = "QuinticEaseInOut")]
-public class QuinticEaseInOutWrapper : EasingWrapperBase<QuinticEaseIn> { }
+public class QuinticEaseInOutWrapper : EasingWrapperBase<QuinticEaseInOut> { }
 
 [ProcessNode(Name = "QuinticEaseOut")]
-public class QuinticEaseOutWrapper : EasingWrapperBase<QuinticEaseIn> { }
+public class QuinticEaseOutWrapper : EasingWrapperBase<QuinticEaseOut> { }
 
 [ProcessNode(Name = "SineEaseIn")]
 public class SineEaseInWrapper : EasingWrapperBase<SineEaseIn> { }
 
 [ProcessNode(Name = "SineEaseInOut")]
-public class SineEaseInOutWrapper : EasingWrapperBase<SineEaseIn> { }
+public class SineEaseInOutWrapper : EasingWrapperBase<SineEaseInOut> { }
 
 [ProcessNode(Name = "SineEaseOut")]
-public class SineEaseOutWrapper : EasingWrapperBase<SineEaseIn> { }
+public class SineEaseOutWrapper : EasingWrapperBase<SineEaseOut> { }
