@@ -184,6 +184,7 @@ namespace VL.Avalonia.Controls
         {
             _textBinding?.Dispose();
             _selectedItemBinding?.Dispose();
+            _isDropDownOpenBinding.Dispose();
 
             _itemsSync.Dispose();
 
