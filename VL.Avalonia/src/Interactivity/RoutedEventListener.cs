@@ -92,6 +92,7 @@ namespace VL.Avalonia.Interactivity
             }
 
             var target = Input;
+            var routedEvent = Event;
 
             void HandlerAdapter(object? sender, RoutedEventArgs args)
             {
@@ -117,7 +118,7 @@ namespace VL.Avalonia.Interactivity
 
             // Subscribe using the untyped AddHandler which supports all routing strategies
             target.AddHandler(
-                Event,
+                routedEvent,
                 (EventHandler<RoutedEventArgs>)HandlerAdapter,
                 Strategies,
                 HandledEveventsToo
@@ -126,7 +127,7 @@ namespace VL.Avalonia.Interactivity
             // Cleanup
             _subscription.Disposable = Disposable.Create(() =>
             {
-                target.RemoveHandler(Event, (EventHandler<RoutedEventArgs>)HandlerAdapter);
+                target.RemoveHandler(routedEvent, (EventHandler<RoutedEventArgs>)HandlerAdapter);
             });
         }
 
