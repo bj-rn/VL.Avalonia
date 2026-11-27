@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Specialized;
 using Avalonia;
-using Avalonia.Collections;
 using Avalonia.Threading;
 using VL.Lib.Reactive;
 
@@ -17,7 +16,7 @@ namespace VL.Avalonia.Helpers
     {
         private readonly AvaloniaObject _target;
         private readonly AvaloniaProperty _property;
-        private readonly AvaloniaList<T> _list = new();
+        private readonly ItemsList<T> _list = new();
         private readonly object _gate = new();
 
         private IChannel<IReadOnlyList<T>>? _channel;
